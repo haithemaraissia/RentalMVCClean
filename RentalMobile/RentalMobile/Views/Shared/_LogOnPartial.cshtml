@@ -1,0 +1,26 @@
+﻿@if (Request.IsAuthenticated)
+{ 
+    <ul id="UserMenu" class="topmenu">
+        <li class="toplast"><a href="#" style="height: 13; line-height: 0.5;"><span>Hi @User.Identity.Name</span>
+        </a>
+            <ul>
+                @{
+                if (User.IsInRole("Tenant"))
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Tenant") </li>
+                    }
+                else if (User.IsInRole("Landlord"))
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Landlord") </li>
+                    }
+                }
+                <li>@Html.ActionLink("Log Off", "LogOff", "Account") </li>
+            </ul>
+        </li>
+    </ul>
+    <link href="../../css/dotcss/UserMenu.css" rel="stylesheet" type="text/css" />
+}
+else
+{
+    @Html.ActionLink("Log in", "LogOn", "Account") 
+}

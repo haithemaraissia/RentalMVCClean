@@ -1,0 +1,135 @@
+﻿@model RentalMobile.Models.Specialist
+@{
+    ViewBag.Title = "Specialist Profile";
+    Layout = "~/Views/Shared/Profiles/_Specialist.cshtml";
+}
+@section profile
+{
+    @Html.Partial("_ProfileDetail", (object)ViewBag.Specialist)
+}
+@section map
+{
+    <div id="map" class="panel">
+        <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.SpecialistGoogleMap&amp;z=13&amp;output=embed">
+        </iframe>
+        <br />
+    </div>
+}
+@section account
+{
+    <div id="account" class="panel">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Edit Profile" onclick="location.href='/Specialist/Edit/@ViewBag.SpecialistId'"/>
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Edit Email" onclick="location.href='/Account/ChangeEmail'" />
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Change Passowrd" onclick="location.href='/Account/ChangePassword'" />
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Change Address" onclick="location.href='/Specialist/ChangeAddress/@ViewBag.SpecialistId'"/>
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Specialist/Delete/@ViewBag.SpecialistId'"/>
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Specialist/UpdateProfilePicture/@ViewBag.SpecialistId'"/>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+@section maintenance
+{
+    <div id="maintenance">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="New Requests" />
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Current Requests" onclick="location.href='./SpecialistMaintenance/Create';" />
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Archived Requests" onclick="location.href='./SpecialistMaintenance';" />
+                </div>
+                @*       <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Archived Requests" />
+                </div>*@
+            </div>
+            @* <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Future: Hire Specialist" />
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Future" />
+                </div>
+            </div>*@
+        </section>
+    </div>
+}
+@section job
+{
+    <div id="job">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="New Offers" onclick="location.href='';" />
+                </div>
+                @*                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Submit Application" onclick="location.href='';" />
+                </div>*@
+            </div>
+            @*            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="View Application" onclick="location.href='';" />
+                </div>
+            </div>*@
+        </section>
+    </div>
+}
+@section property
+{
+    <div id="property">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="View Property" onclick="location.href='';" />
+                </div>
+            </div>
+        </section>
+    </div>
+}
+@section contract
+{
+    <div id="contract" class="panel">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="View Contract" onclick="location.href='';" />
+                </div>
+            </div>
+        </section>
+    </div>
+}
+@section payment
+{
+    <div id="payment" class="panel">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Payment History" onclick="location.href='./SpecialistMaintenance/Create';" />
+                </div>
+            </div>
+        </section>
+    </div>
+}

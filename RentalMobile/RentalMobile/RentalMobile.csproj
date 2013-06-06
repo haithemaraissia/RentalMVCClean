@@ -1,0 +1,720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E67FC65-FF32-43FA-875C-401948AAA097}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RentalMobile</RootNamespace>
+    <AssemblyName>RentalMobile</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MvcJqGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.15.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="plUploadHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\plUploadHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
+    <Compile Include="Controllers\AdvancedSearchController.cs" />
+    <Compile Include="Controllers\AgentController.cs" />
+    <Compile Include="Controllers\AgentProfileController.cs" />
+    <Compile Include="Controllers\AgentsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LandlordController.cs" />
+    <Compile Include="Controllers\MaintainController.cs" />
+    <Compile Include="Controllers\MaintenanceOrderController.cs" />
+    <Compile Include="Controllers\MaintenancePhotoGalleryController.cs" />
+    <Compile Include="Controllers\MorePhotoController.cs" />
+    <Compile Include="Controllers\NewUnitTestController.cs" />
+    <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\OwnerProfileController.cs" />
+    <Compile Include="Controllers\OwnersController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\ProfessionalsController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
+    <Compile Include="Controllers\SpecialistController.cs" />
+    <Compile Include="Controllers\SpecialistsController.cs" />
+    <Compile Include="Controllers\TenantController.cs" />
+    <Compile Include="Controllers\TenantFavoriteController.cs" />
+    <Compile Include="Controllers\TenantMaintenanceController.cs" />
+    <Compile Include="Controllers\TenantProfileController.cs" />
+    <Compile Include="Controllers\TenantsController.cs" />
+    <Compile Include="Controllers\TenantShowingController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UnitFeatureTestController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\UploadMaintenancePhotoController.cs" />
+    <Compile Include="Design\General.aspx.cs">
+      <DependentUpon>General.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Design\General.aspx.designer.cs">
+      <DependentUpon>General.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ImageUploadHandler.ashx.cs">
+      <DependentUpon>ImageUploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ProfileImageUploadHandler.ashx.cs">
+      <DependentUpon>ProfileImageUploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\GoogleGeoCodeResponse.cs" />
+    <Compile Include="Helpers\HtmlHelperExtension.cs" />
+    <Compile Include="Helpers\UploadHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="MobileViewEngine.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Agent.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C_MaintenanceExteriorHome_ImprovementsandRepairs.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceOrder.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenancePhoto.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceProvider.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Owner.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OwnerMaintenance.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalContextGenerator.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalContextGenerator.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalContextGenerator.cs" />
+    <Compile Include="Models\RentalContextGenerator1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalModel.Designer.cs" />
+    <Compile Include="Models\RentalModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceType.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Sessions.cs" />
+    <Compile Include="Models\Specialist.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tenant.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TenantFavorite.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TenantMaintenance.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TenantSavedSearch.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TenantShowing.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Unit.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitAppliance.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitCommunityAmenity.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitExteriorAmenity.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitFeature.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitGallery.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitInteriorAmenity.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitLuxuryAmenity.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitPricing.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UrgencyType.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\TenantMaintenanceViewModel.cs" />
+    <Compile Include="ModelViews\TenantModelView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalMobile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap\css\bootstrap.css" />
+    <Content Include="css\bootstrap\css\bootstrap.min.css" />
+    <Content Include="css\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="css\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="css\bootstrap\js\bootstrap.js" />
+    <Content Include="css\bootstrap\js\bootstrap.min.js" />
+    <Content Include="css\dotcss\base.css" />
+    <Content Include="css\dotcss\entypo\entypo.svg" />
+    <Content Include="css\dotcss\entypo\stylesheet.css" />
+    <Content Include="css\dotcss\fancy.css" />
+    <Content Include="css\dotcss\font\fontello-ie7.css" />
+    <Content Include="css\dotcss\font\fontello.css" />
+    <Content Include="css\dotcss\jPages.css" />
+    <Content Include="css\dotcss\jquery.bxslider.css" />
+    <Content Include="css\dotcss\jquery.dropdown.css" />
+    <Content Include="css\dotcss\jquery.fancybox-thumbs.css" />
+    <Content Include="css\dotcss\jquery.fancybox.css" />
+    <Content Include="css\dotcss\lato\Lato-Bla-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-BlaIta-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-Bol-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-BolIta-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-Hai-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-HaiIta-webfont.svg" />
+    <Content Include="css\dotcss\lato\Lato-Lig-webfont.svg" />
+    <Content Include="css\dotcss\UserMenu.css" />
+    <Content Include="css\Html5Reset.css" />
+    <Content Include="css\Mobile.css" />
+    <Content Include="Design\General.aspx" />
+    <Content Include="Documentation\BrainStorming+MaintenanceData\BrainStorming.txt" />
+    <Content Include="Documentation\UnitProperty\P3.txt" />
+    <Content Include="Documentation\UnitProperty\P4.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\blue-gradient.png" />
+    <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.RentalModel1.Designer.cs.dll" />
+    <Content Include="Photo\Owner\Profile\carrie\0\img_apple-touch-icon-72x72.png" />
+    <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-1.jpg" />
+    <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-6.jpg" />
+    <Content Include="Photo\Tenant\Profile\bon\10\img_agent-480x350.png" />
+    <Content Include="Photo\Tenant\Profile\bon\10\img_big-800x500-1.jpg" />
+    <Content Include="Photo\Tenant\Profile\bon\10\img_big-800x500-4.jpg" />
+    <Content Include="Photo\Tenant\Profile\bon\10\img_big-800x500-5.jpg" />
+    <Content Include="Photo\Tenant\Profile\fill\15\img_big-800x500-1.jpg" />
+    <Content Include="Photo\Tenant\Profile\jon\17\img_apple-touch-icon-114x114.png" />
+    <Content Include="Photo\Tenant\Profile\robert\5\img_avatar-placeholder.png" />
+    <Content Include="Photo\Tenant\Profile\robert\5\img_bg.jpg" />
+    <Content Include="Photo\Tenant\Profile\robert\5\img_big-800x500-4.jpg" />
+    <Content Include="Photo\Tenant\Profile\robert\5\img_DowntownSkyline006.jpg" />
+    <Content Include="Photo\Tenant\Profile\yizzi\0\img_apple-touch-icon-114x114.png" />
+    <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
+    <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
+    <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.14.js" />
+    <Content Include="Scripts\jquery-ui-1.8.14.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.0.min.js" />
+    <Content Include="Scripts\js\fitvids.min.js" />
+    <Content Include="Scripts\js\grid.locale-en.js" />
+    <Content Include="Scripts\js\jPages.min.js" />
+    <Content Include="Scripts\js\jquery-1.5.2.min.js" />
+    <Content Include="Scripts\js\jquery-ui.min.js" />
+    <Content Include="Scripts\js\jquery.bxslider.min.js" />
+    <Content Include="Scripts\js\jquery.customSelect.min.js" />
+    <Content Include="Scripts\js\jquery.dropdown.js" />
+    <Content Include="Scripts\js\jquery.easytabs.min.js" />
+    <Content Include="Scripts\js\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\js\jquery.fancybox.js" />
+    <Content Include="Scripts\js\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\jquery.nivo.slider.js" />
+    <Content Include="Scripts\js\jquery.tipsy.js" />
+    <Content Include="Scripts\js\scripts.js" />
+    <Content Include="Scripts\js\switcher.js" />
+    <Content Include="Scripts\modernizr-2.0.6.js" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\done.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\error.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="Scripts\plupload\plupload.flash.swf" />
+    <Content Include="Scripts\plupload\plupload.full.js" />
+    <Content Include="Scripts\plupload\plupload.full.source.js" />
+    <Content Include="Scripts\plupload\plupload.silverlight.xap" />
+    <Content Include="Scripts\plupload\UploadImages.js" />
+    <Content Include="Scripts\plupload\ww.jquery.js" />
+    <Content Include="Scripts\plupload\ww.jquery.min.js" />
+    <Content Include="UploadedImages\jack\img_2.jpg" />
+    <Content Include="UploadedImages\jack\img_5.jpg" />
+    <Content Include="UploadedImages\jack\Profile\4\img_1.jpg" />
+    <Content Include="UploadedImages\jack\Profile\4\img_2.jpg" />
+    <Content Include="UploadedImages\jack\Profile\4\img_3.jpg" />
+    <Content Include="UploadedImages\jack\Profile\4\img_4.jpg" />
+    <Content Include="UploadedImages\jack\Profile\4\img_5.jpg" />
+    <Content Include="UploadedImages\jack\Profile\img_1.jpg" />
+    <Content Include="UploadedImages\jack\Requests\4\img_barbershop.jpg" />
+    <Content Include="UploadedImages\jack\Requests\53\img_barbershop.jpg" />
+    <Content Include="UploadedImages\jack\Requests\59\img_avatar-placeholder.png" />
+    <Content Include="UploadedImages\jack\Requests\59\img_DowntownSkyline006.jpg" />
+    <Content Include="UploadedImages\jack\Requests\59\img_small-avatar-placeholder.png" />
+    <Content Include="UploadedImages\jack\Requests\59\img_static-image.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_agent-480x350.png" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-1.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-2.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-3.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-4.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-5.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-6.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_big-800x500-7.jpg" />
+    <Content Include="UploadedImages\jack\Requests\5\img_gallery-480x350.png" />
+    <Content Include="UploadedImages\jack\Requests\5\img_nemo.jpg" />
+    <Content Include="UploadedImages\jack\Requests\60\img_apple-touch-icon-114x114.png" />
+    <Content Include="UploadedImages\jack\Requests\60\img_avatar-placeholder.png" />
+    <Content Include="UploadedImages\jack\Requests\60\img_bg-body.jpg" />
+    <Content Include="UploadedImages\jack\Requests\60\img_bg-top-bar.png" />
+    <Content Include="UploadedImages\jack\Requests\60\img_DowntownSkyline006.jpg" />
+    <Content Include="UploadedImages\jack\Requests\60\img_form-slider-bg.gif" />
+    <Content Include="UploadedImages\jack\Requests\img_2.jpg" />
+    <Content Include="UploadedImages\jack\Requests\img_Ad1.png" />
+    <Content Include="UploadedImages\jack\Requests\img_BKS_cover.jpg" />
+    <Content Include="UploadedImages\jack\Requests\img_logo_dawn.png" />
+    <Content Include="UploadedImages\lobna\Requests\img_af.png" />
+    <Content Include="UploadedImages\lobna\Requests\img_avatar-placeholder.png" />
+    <Content Include="UploadedImages\Samir\Requests\5\img_agent-480x350.png" />
+    <Content Include="UploadedImages\Samir\Requests\5\img_big-800x500-2.jpg" />
+    <Content Include="UploadedImages\Samir\Requests\5\img_big-800x500-3.jpg" />
+    <Content Include="UploadedImages\Samir\Requests\5\img_big-800x500-4.jpg" />
+    <Content Include="UploadedImages\Samir\Requests\5\img_big-800x500-5.jpg" />
+    <Content Include="UploadedImages\test\Requests\0\img_AQ.GIF" />
+    <Content Include="UploadedImages\test\Requests\0\img_at.png" />
+    <Content Include="UploadedImages\test\Requests\0\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\0\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\0\img_walle.jpg" />
+    <Content Include="UploadedImages\test\Requests\16\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\16\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\16\img_up.jpg" />
+    <Content Include="UploadedImages\test\Requests\16\img_walle - Copy.jpg" />
+    <Content Include="UploadedImages\test\Requests\16\img_walle.jpg" />
+    <Content Include="UploadedImages\test\Requests\17\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\18\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\19\img_up.jpg" />
+    <Content Include="UploadedImages\test\Requests\20\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\21\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\23\img_walle - Copy.jpg" />
+    <Content Include="UploadedImages\test\Requests\23\img_walle.jpg" />
+    <Content Include="UploadedImages\test\Requests\24\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\25\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\26\img_nemo.jpg" />
+    <Content Include="UploadedImages\test\Requests\27\img_toystory.jpg" />
+    <Content Include="UploadedImages\test\Requests\28\img_up.jpg" />
+    <Content Include="UploadedImages\test\Requests\28\img_walle - Copy.jpg" />
+    <Content Include="UploadedImages\test\Requests\28\img_walle.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Chrysanthemum.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Desert.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Hydrangeas.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Jellyfish.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Koala.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Lighthouse.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Penguins.jpg" />
+    <Content Include="UploadedImages\test\Requests\37\img_Tulips.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="css\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="WIP\Design\advices.html" />
+    <Content Include="WIP\Pool\building.html" />
+    <Content Include="WIP\Pool\buy.html" />
+    <Content Include="WIP\Pool\home-nivoslider.html" />
+    <Content Include="WIP\Pool\home-static-image.html" />
+    <Content Include="WIP\Pool\home-static-video.html" />
+    <Content Include="WIP\Pool\mortgage.html" />
+    <Content Include="WIP\Pool\property-single.html" />
+    <Content Include="WIP\Pool\sell.html" />
+    <Content Include="WIP\ToDo.txt" />
+    <Content Include="WIP\Used\advanced-search.html" />
+    <Content Include="WIP\Used\advices.html" />
+    <Content Include="WIP\Used\company-single.html" />
+    <Content Include="WIP\Used\company.html" />
+    <Content Include="WIP\Used\contact.html" />
+    <Content Include="WIP\Used\CSS3 Menu.html" />
+    <Content Include="WIP\Used\home2.html" />
+    <Content Include="WIP\Used\index.html" />
+    <Content Include="WIP\Used\registration.html" />
+    <Content Include="WIP\Used\rent.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="css\dotcss\entypo\entypo.eot" />
+    <None Include="css\dotcss\entypo\entypo.eot%40" />
+    <None Include="css\dotcss\entypo\entypo.ttf" />
+    <None Include="css\dotcss\entypo\entypo.woff" />
+    <None Include="css\dotcss\font\fontello.eot%4042186164" />
+    <None Include="css\dotcss\font\fontello.svg%4042186164" />
+    <None Include="css\dotcss\font\fontello.ttf%4042186164" />
+    <None Include="css\dotcss\font\fontello.woff%4042186164" />
+    <None Include="css\dotcss\lato\Lato-Bla-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-Bla-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-Bla-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-Bla-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-BlaIta-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-BlaIta-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-BlaIta-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-BlaIta-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-Bol-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-Bol-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-Bol-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-Bol-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-BolIta-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-BolIta-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-BolIta-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-BolIta-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-Hai-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-Hai-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-Hai-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-Hai-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-HaiIta-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-HaiIta-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-HaiIta-webfont.ttf" />
+    <None Include="css\dotcss\lato\Lato-HaiIta-webfont.woff" />
+    <None Include="css\dotcss\lato\Lato-Lig-webfont.eot" />
+    <None Include="css\dotcss\lato\Lato-Lig-webfont.eot%40" />
+    <None Include="css\dotcss\lato\Lato-Lig-webfont.ttf" />
+    <Content Include="Design\Tenant\Index.cshtml" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListOfContractorAnglieListEdited.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor2010.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ZillowDataSource - Partioned.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\Functions and tools.docx" />
+    <None Include="Documentation\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
+    <None Include="Documentation\Process\Functions.docx" />
+    <None Include="Documentation\Structure\Sitemap.docx" />
+    <None Include="Documentation\UnitProperty\AllProperties.docx" />
+    <None Include="Documentation\UnitProperty\P1.docx" />
+    <None Include="Documentation\UnitProperty\P2.docx" />
+    <Content Include="Handler\ImageUploadHandler.ashx" />
+    <Content Include="Handler\ProfileImageUploadHandler.ashx" />
+    <None Include="Models\RentalContextGenerator.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RentalContextGenerator.Context1.cs</LastGenOutput>
+    </None>
+    <None Include="Models\RentalContextGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RentalContextGenerator1.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Models\RentalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RentalModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Account\ChangeEmail.cshtml" />
+    <Content Include="Views\Account\ChangeEmailSuccess.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordSuccess.cshtml" />
+    <Content Include="Views\Account\Upload.cshtml" />
+    <Content Include="Views\AddMaintenancePhoto\Index.cshtml" />
+    <Content Include="Views\AdvancedSearch\Index.cshtml" />
+    <Content Include="Views\AgentProfile\Index.cshtml" />
+    <Content Include="Views\Agents\Index.cshtml" />
+    <Content Include="Views\Agent\ChangeAddress.cshtml" />
+    <Content Include="Views\Agent\Delete.cshtml" />
+    <Content Include="Views\Agent\Edit.cshtml" />
+    <Content Include="Views\Agent\Index.cshtml" />
+    <Content Include="Views\Agent\_ProfileDetail.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Maintain\Index.cshtml" />
+    <Content Include="Views\MaintenanceOrder\Create.cshtml" />
+    <Content Include="Views\MaintenanceOrder\Delete.cshtml" />
+    <Content Include="Views\MaintenanceOrder\Details.cshtml" />
+    <Content Include="Views\MaintenanceOrder\Edit.cshtml" />
+    <Content Include="Views\MaintenanceOrder\Index.cshtml" />
+    <Content Include="Views\MaintenanceOrder\_MaintenancePhotoGallery.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Create.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Delete.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Details.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Edit.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Index.cshtml" />
+    <Content Include="Views\MaintenancePhotoGallery\Json.cshtml" />
+    <Content Include="Views\MorePhoto\Index.cshtml" />
+    <Content Include="Views\NewUnitTest\Create.cshtml" />
+    <Content Include="Views\NewUnitTest\Delete.cshtml" />
+    <Content Include="Views\NewUnitTest\Details.cshtml" />
+    <Content Include="Views\NewUnitTest\Edit.cshtml" />
+    <Content Include="Views\NewUnitTest\Index.cshtml" />
+    <Content Include="Views\OwnerProfile\Index.cshtml" />
+    <Content Include="Views\Owners\Index.cshtml" />
+    <Content Include="Views\Owner\ChangeAddress.cshtml" />
+    <Content Include="Views\Owner\Delete.cshtml" />
+    <Content Include="Views\Owner\Edit.cshtml" />
+    <Content Include="Views\Owner\Index.cshtml" />
+    <Content Include="Views\Owner\_ProfileDetail.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Professionals\Index.cshtml" />
+    <Content Include="Views\Professionals\_ProfileDetail.cshtml" />
+    <Content Include="Views\Property\Index.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\Provider\ChangeAddress.cshtml" />
+    <Content Include="Views\Provider\Delete.cshtml" />
+    <Content Include="Views\Provider\Edit.cshtml" />
+    <Content Include="Views\Provider\Index.cshtml" />
+    <Content Include="Views\Provider\_ProfileDetail.cshtml" />
+    <Content Include="Views\Rent\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_BrandHeader.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_BreadCrumb.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_Features.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_Footer.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_Head.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_IEHandler.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_InitialScripts.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_Partners.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_TopBar.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_TopScroller.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_ProviderBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_ProviderMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_PhotoGalleryBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_PhotoGalleryMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_SpecialistBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_SpecialistMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_TenantBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_TenantMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Profiles\_Agent.cshtml" />
+    <Content Include="Views\Shared\Profiles\_Owner.cshtml" />
+    <Content Include="Views\Shared\Profiles\_Provider.cshtml" />
+    <Content Include="Views\Shared\Profiles\_Specialist.cshtml" />
+    <Content Include="Views\Shared\Profiles\_Tenant.cshtml" />
+    <Content Include="Views\Shared\Template\_ConceptLayoutPage.cshtml" />
+    <Content Include="Views\Shared\Template\_DefaultLayout.cshtml" />
+    <Content Include="Views\Shared\Template\_DotLayoutPage.cshtml" />
+    <Content Include="Views\Shared\Template\_Layout.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\Copy of Copy %283%29 of _Unit.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Agent.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Owner.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Professional.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Provider.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Tenant.cshtml" />
+    <Content Include="Views\Shared\ViewofProfiles\_Unit.cshtml" />
+    <Content Include="Views\Specialists\Index.cshtml" />
+    <Content Include="Views\Specialist\ChangeAddress.cshtml" />
+    <Content Include="Views\Specialist\Delete.cshtml" />
+    <Content Include="Views\Specialist\Edit.cshtml" />
+    <Content Include="Views\Specialist\Index.cshtml" />
+    <Content Include="Views\Specialist\_ProfileDetail.cshtml" />
+    <Content Include="Views\TenantFavorite\Delete.cshtml" />
+    <Content Include="Views\TenantMaintenance\Create.cshtml" />
+    <Content Include="Views\TenantMaintenance\Delete.cshtml" />
+    <Content Include="Views\TenantMaintenance\Details.cshtml" />
+    <Content Include="Views\TenantMaintenance\Edit.cshtml" />
+    <Content Include="Views\TenantMaintenance\Index.cshtml" />
+    <Content Include="Views\TenantMaintenance\_MaintenancePhotoGallery.cshtml" />
+    <Content Include="Views\TenantMaintenance\_MaintenancePhotoGalleryList.cshtml" />
+    <Content Include="Views\TenantProfile\Index.cshtml" />
+    <Content Include="Views\TenantShowing\Create.cshtml" />
+    <Content Include="Views\TenantShowing\Delete.cshtml" />
+    <Content Include="Views\TenantShowing\Details.cshtml" />
+    <Content Include="Views\TenantShowing\Edit.cshtml" />
+    <Content Include="Views\TenantShowing\Index.cshtml" />
+    <Content Include="Views\TenantShowing\_PartialViewPage.cshtml" />
+    <Content Include="Views\Tenants\Index.cshtml" />
+    <Content Include="Views\Tenant\ChangeAddress.cshtml" />
+    <Content Include="Views\Tenant\Delete.cshtml" />
+    <Content Include="Views\Tenant\Edit.cshtml" />
+    <Content Include="Views\Tenant\Index.cshtml" />
+    <Content Include="Views\Tenant\_ProfileDetail.cshtml" />
+    <Content Include="Views\UnitDetail\Index.cshtml" />
+    <Content Include="Views\UnitFeatureTest\Create.cshtml" />
+    <Content Include="Views\UnitFeatureTest\Delete.cshtml" />
+    <Content Include="Views\UnitFeatureTest\Details.cshtml" />
+    <Content Include="Views\UnitFeatureTest\Edit.cshtml" />
+    <Content Include="Views\UnitFeatureTest\Index.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\Delete.cshtml" />
+    <Content Include="Views\Unit\Details.cshtml" />
+    <Content Include="Views\Unit\Edit.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
+    <Content Include="Views\Upload\Index.cshtml" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Scripts\plupload\ww.jquery.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\M\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\M\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\M\LogOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\M\_LogOnPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\M\About.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\M\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10659</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

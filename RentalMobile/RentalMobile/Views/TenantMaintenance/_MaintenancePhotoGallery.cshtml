@@ -1,0 +1,21 @@
+﻿@model IEnumerable<RentalMobile.Models.MaintenancePhoto>
+<table>
+    @{
+        if (Model.Any())
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(Model.First().PhotoPath)" alt=""/>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    Empty Image
+                </td>
+            </tr>
+        }
+    }
+</table>
