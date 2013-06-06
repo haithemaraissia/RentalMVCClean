@@ -780,6 +780,8 @@
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
