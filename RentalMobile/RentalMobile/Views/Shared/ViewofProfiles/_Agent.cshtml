@@ -20,9 +20,8 @@
                 <h2 class="section-titling">
                     Central Park West, $390.000</h2>
                 <div class="tab-container mini-tabs eight columns">
-                    @Html.Partial("Menu/ViewsofProfile/_ProviderMiniTabMenu")
+                    @Html.Partial("Menu/ViewsofProfile/_AgentMiniTabMenu")
                     @RenderSection("provider", false)
-                    @RenderSection("work", false)
                     @RenderSection("video", false)
                     @RenderSection("map", false)
                 </div>
@@ -32,10 +31,9 @@
             </section>
             <section class="row double-bottom">
                 <div class="tab-container big-tabs sixteen columns">
-                    @Html.Partial("Menu/ViewsofProfile/_ProviderBigTabMenu")
+                    @Html.Partial("Menu/ViewsofProfile/_AgentBigTabMenu")
                     @RenderSection("description", false)
-                    @RenderSection("coverage", false)
-                    @RenderSection("team", false)
+                    @RenderSection("property", false)
                     @RenderSection("comments", false)
                 </div>
             </section>

@@ -782,6 +782,12 @@
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_AgentBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_AgentMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_OwnerBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_OwnerMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantMiniTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantBigTabMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
