@@ -253,6 +253,7 @@
     <Content Include="css\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="css\bootstrap\js\bootstrap.js" />
     <Content Include="css\bootstrap\js\bootstrap.min.js" />
+    <Content Include="css\datetimepicker\jquery.simple-dtpicker.css" />
     <Content Include="css\dotcss\base.css" />
     <Content Include="css\dotcss\entypo\entypo.svg" />
     <Content Include="css\dotcss\entypo\stylesheet.css" />
@@ -418,6 +419,7 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Scripts\dattimepicker\jquery.simple-dtpicker.js" />
     <Content Include="Scripts\html5.js" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
@@ -462,6 +464,7 @@
     <Content Include="Scripts\plupload\UploadImages.js" />
     <Content Include="Scripts\plupload\ww.jquery.js" />
     <Content Include="Scripts\plupload\ww.jquery.min.js" />
+    <Content Include="Scripts\timepicker\jquery-ui-timepicker-addon.js" />
     <Content Include="UploadedImages\jack\img_2.jpg" />
     <Content Include="UploadedImages\jack\img_5.jpg" />
     <Content Include="UploadedImages\jack\Profile\4\img_1.jpg" />
