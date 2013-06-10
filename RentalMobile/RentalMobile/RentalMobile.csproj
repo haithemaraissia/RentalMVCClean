@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="plUploadHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\plUploadHandler.dll</HintPath>
+      <HintPath>..\..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\bin\Debug\plUploadHandler.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -106,6 +106,7 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\RentalApplicationController.cs" />
     <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Controllers\SpecialistController.cs" />
     <Compile Include="Controllers\SpecialistsController.cs" />
@@ -318,7 +319,10 @@
     <Content Include="css\pupload\Css\Images\warning.gif" />
     <Content Include="css\pupload\Css\Reset.css" />
     <Content Include="css\pupload\Css\Standard.css" />
+    <Content Include="css\smartwizard\smart_wizard.css" />
+    <Content Include="css\smartwizard\smart_wizard_vertical.css" />
     <Content Include="Design\General.aspx" />
+    <Content Include="Design\SmartWizard.htm" />
     <Content Include="Documentation\BrainStorming+MaintenanceData\BrainStorming.txt" />
     <Content Include="Documentation\UnitProperty\P3.txt" />
     <Content Include="Documentation\UnitProperty\P4.txt" />
@@ -464,6 +468,8 @@
     <Content Include="Scripts\plupload\UploadImages.js" />
     <Content Include="Scripts\plupload\ww.jquery.js" />
     <Content Include="Scripts\plupload\ww.jquery.min.js" />
+    <Content Include="Scripts\smartwizard\jquery.smartWizard-2.0.js" />
+    <Content Include="Scripts\smartwizard\jquery.smartWizard-2.0.min.js" />
     <Content Include="Scripts\timepicker\jquery-ui-timepicker-addon.js" />
     <Content Include="UploadedImages\jack\img_2.jpg" />
     <Content Include="UploadedImages\jack\img_5.jpg" />
@@ -791,6 +797,7 @@
     <Content Include="Views\Shared\Menu\ViewsofProfile\_OwnerMiniTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantMiniTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantBigTabMenu.cshtml" />
+    <Content Include="Views\RentalApplication\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

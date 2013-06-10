@@ -3,6 +3,46 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile", "RentalMobile\RentalMobile.csproj", "{7E67FC65-FF32-43FA-875C-401948AAA097}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "techlab-SmartWizard-1636c86", "..\..\..\..\Desktop\techlab-SmartWizard-1636c86\techlab-SmartWizard-1636c86\", "{175AD342-56E4-4003-BBE8-E7EE9C1503EC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/techlab-SmartWizard-1636c86"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Desktop\techlab-SmartWizard-1636c86\techlab-SmartWizard-1636c86\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\techlab-SmartWizard-1636c86\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/techlab-SmartWizard-1636c86"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Desktop\techlab-SmartWizard-1636c86\techlab-SmartWizard-1636c86\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\techlab-SmartWizard-1636c86\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51648"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Westwind.plUploadHandler", "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\", "{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Westwind.plUploadHandler"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Westwind.plUploadHandler\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Westwind.plUploadHandler"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Westwind.plUploadHandler\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56941"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +53,14 @@ Global
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{175AD342-56E4-4003-BBE8-E7EE9C1503EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{175AD342-56E4-4003-BBE8-E7EE9C1503EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{175AD342-56E4-4003-BBE8-E7EE9C1503EC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{175AD342-56E4-4003-BBE8-E7EE9C1503EC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
