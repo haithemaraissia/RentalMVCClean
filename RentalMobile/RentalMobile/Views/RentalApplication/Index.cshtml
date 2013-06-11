@@ -146,11 +146,17 @@
 		
 		
 </script>
-<form action="#" class="sixteen columns shadded wide-on-small-screen">
+<form action="#" class=" ">
 <input type='hidden' name="issubmit" value="1">
 <!-- Tabs -->
-<div id="wizard" class="swMain sixteen columns">
-    <ul>
+<style>
+    form li small
+    {
+        top: 0;
+    }
+</style>
+<div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
+    <ul class="sixteen columns">
         <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
             class="stepDesc">Step 1<br />
             <small>Step 1 description</small> </span></a></li>
@@ -164,216 +170,13 @@
             class="stepDesc">Step 4<br />
             <small>Step 4 description</small> </span></a></li>
     </ul>
-    @*<div id="wizard" class="swMain sixteen columns">
-
-    <ul>
-        <li class="four columns">
-            <a rel="2" isdone="0" class="" href="#step-1"><span class="stepNumber one columns ">1</span> <span class="stepDesc two columns">Account
-                                                                                                             Details<br>
-                                                                                                                    <small>Fill your account details</small> </span></a> 
-
-        </li>
-        
-        <li class="four columns">
-            <a rel="2" isdone="0" class="" href="#step-1"><span class="stepNumber one columns ">1</span> <span class="stepDesc two columns">Account
-                                                                                                             Details<br>
-                                                                                                                    <small>Fill your account details</small> </span></a> 
-
-        </li>
-        
-        <li class="four columns">
-            <a rel="2" isdone="0" class="" href="#step-1"><span class="stepNumber one columns ">1</span> <span class="stepDesc two columns">Account
-                                                                                                             Details<br>
-                                                                                                                    <small>Fill your account details</small> </span></a> 
-
-        </li>
-        
-        <li class="four columns">
-            <a rel="2" isdone="0" class="" href="#step-1"><span class="stepNumber one columns ">1</span> <span class="stepDesc two columns">Account
-                                                                                   Details<br>
-                                                                                   <small>Fill your account details</small> </span></a> 
-
-        </li>
-     
-          </ul>
-       
-    <div id="step-1" class="sixteen columns">
+    <div id="step-1" class="sixteen columns" style="height: auto;">
         <h2 class="StepTitle">
             Step 1: Account Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Username :
-                </td>
-                <td align="left">
-                    <input type="text" id="username" name="username" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_username"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Password :
-                </td>
-                <td align="left">
-                    <input type="password" id="password" name="password" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_password"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Confirm Password :
-                </td>
-                <td align="left">
-                    <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_cpassword"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-2">
-        <h2 class="StepTitle">
-            Step 2: Profile Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    First Name :
-                </td>
-                <td align="left">
-                    <input type="text" id="firstname" name="firstname" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_firstname"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Last Name :
-                </td>
-                <td align="left">
-                    <input type="text" id="lastname" name="lastname" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_lastname"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Gender :
-                </td>
-                <td align="left">
-                    <select id="gender" name="gender" class="txtBox">
-                        <option value="">-select-</option>
-                        <option value="Female">Female</option>
-                        <option value="Male">Male</option>
-                    </select>
-                </td>
-                <td align="left">
-                    <span id="msg_gender"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-3">
-        <h2 class="StepTitle">
-            Step 3: Contact Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Email :
-                </td>
-                <td align="left">
-                    <input type="text" id="email" name="email" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_email"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Phone :
-                </td>
-                <td align="left">
-                    <input type="text" id="phone" name="phone" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_phone"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Address :
-                </td>
-                <td align="left">
-                    <textarea name="address" id="address" class="txtBox" rows="3"></textarea>
-                </td>
-                <td align="left">
-                    <span id="msg_address"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-4">
-        <h2 class="StepTitle">
-            Step 4: Other Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Hobbies :
-                </td>
-                <td align="left">
-                    <input type="text" id="phone" name="phone" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_phone"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    About You :
-                </td>
-                <td align="left">
-                    <textarea name="address" id="address" class="txtBox" rows="5"></textarea>
-                </td>
-                <td align="left">
-                    <span id="msg_address"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>*@
-    <div id="step-1" class="sixteen columns">
-             <h2 class="StepTitle">
-            Step 1: Account Details</h2>
-  3 columns
+        <h3>
+            3 columns</h3>
         <section class="sixteen columns add-bottom relative">
             <ul>
-                
                 <li class="five columns">
                     <label for="name-field" class="screen-reader-text">
                         Name</label>
@@ -399,16 +202,15 @@
                         E-mail</label>
                     <input id="email-field" type="email" placeholder="Email" class="full-width" />
                 </li>
-                      <li class="five columns">
+                <li class="five columns">
                     <label for="email-field" class="screen-reader-text">
                         E-mail</label>
                     <input id="email-field" type="email" placeholder="Email" class="full-width" />
                 </li>
             </ul>
         </section>
-        
-        
-    2 Columns
+        <h3>
+            2 columns</h3>
         <section class="sixteen columns add-bottom relative">
             <ul>
                 <li class="eight columns">
@@ -423,11 +225,10 @@
                 </li>
             </ul>
         </section>
-        
-
+        <h3>
+            4 columns</h3>
         <section class="sixteen columns add-bottom relative">
             <ul>
-                @* 4 columns*@
                 <li class="three columns">
                     <label for="name-field" class="screen-reader-text">
                         Name</label>
@@ -453,210 +254,71 @@
                         E-mail</label>
                     <input id="email-field" type="email" placeholder="Email" class="full-width" />
                 </li>
-              
             </ul>
         </section>
-        <h2 class="StepTitle">
-            Step 1: Account Details</h2>
-        <section class="row double-bottom">
-            <div class="sixteen columns prop-details">
-                <div class="six columns ">
-                    <label>
-                        Username :</label>
-                    <input type="text" id="username" name="username" value="" class="txtBox">
-                    <span id="msg_username"></span>&nbsp;
-                </div>
-                <div class="six columns ">
-                    <label>
-                        Password :</label>
-                    <input type="text" id="username" name="username" value="" class="txtBox">
-                    <span id="msg_username"></span>&nbsp;
-                </div>
-            </div>
-            @*            <div class="sixteen columns prop-details">
-                <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Change Passowrd" onclick="location.href='/Account/ChangePassword'" />
-                </div>
-                <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Change Address" onclick="location.href='/Owner/ChangeAddress/@ViewBag.OwnerId'"/>
-                </div>
-            </div>
-            <div class="sixteen columns prop-details">
-                <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
-                </div>
-                <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Owner/UpdateProfilePicture/@ViewBag.OwnerId'"/>
-                </div>
-            </div>*@
-        </section>
-        <h2 class="StepTitle">
-            Step 1: Account Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center" class="sixteen columns">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Username :
-                </td>
-                <td align="left">
-                    <input type="text" id="username" name="username" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_username"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Password :
-                </td>
-                <td align="left">
-                    <input type="password" id="password" name="password" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_password"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Confirm Password :
-                </td>
-                <td align="left">
-                    <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_cpassword"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-2">
-        <h2 class="StepTitle">
-            Step 2: Profile Details</h2>
+        
+        
+        <h3>Default</h3>
         <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    First Name :
-                </td>
-                <td align="left">
-                    <input type="text" id="firstname" name="firstname" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_firstname"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Last Name :
-                </td>
-                <td align="left">
-                    <input type="text" id="lastname" name="lastname" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_lastname"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Gender :
-                </td>
-                <td align="left">
+                            <tr>
+                                <td align="center" colspan="3">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Username :
+                                </td>
+                                <td align="left">
+                                    <input type="text" id="username" name="username" value="" class="txtBox">
+                                </td>
+                                <td align="left">
+                                    <span id="msg_username"></span>&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Password :
+                                </td>
+                                <td align="left">
+                                    <input type="password" id="password" name="password" value="" class="txtBox">
+                                </td>
+                                <td align="left">
+                                    <span id="msg_password"></span>&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Confirm Password :
+                                </td>
+                                <td align="left">
+                                    <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
+                                </td>
+                                <td align="left">
+                                    <span id="msg_cpassword"></span>&nbsp;
+                                </td>
+                            </tr>
+                        </table>
+    </div>
+    <div id="step-2" class="sixteen columns" style="height: auto;">
+        <section class="sixteen columns add-bottom relative">
+            <ul>
+                <li class="five columns">
+                    <label for="name-field" class="screen-reader-text">
+                        Gender :</label>
                     <select id="gender" name="gender" class="txtBox">
                         <option value="">-select-</option>
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
                     </select>
-                </td>
-                <td align="left">
-                    <span id="msg_gender"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-3">
-        <h2 class="StepTitle">
-            Step 3: Contact Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Email :
-                </td>
-                <td align="left">
-                    <input type="text" id="email" name="email" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_email"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Phone :
-                </td>
-                <td align="left">
-                    <input type="text" id="phone" name="phone" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_phone"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Address :
-                </td>
-                <td align="left">
-                    <textarea name="address" id="address" class="txtBox" rows="3"></textarea>
-                </td>
-                <td align="left">
-                    <span id="msg_address"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="step-4">
-        <h2 class="StepTitle">
-            Step 4: Other Details</h2>
-        <table cellspacing="3" cellpadding="3" align="center">
-            <tr>
-                <td align="center" colspan="3">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Hobbies :
-                </td>
-                <td align="left">
-                    <input type="text" id="phone" name="phone" value="" class="txtBox">
-                </td>
-                <td align="left">
-                    <span id="msg_phone"></span>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    About You :
-                </td>
-                <td align="left">
-                    <textarea name="address" id="address" class="txtBox" rows="5"></textarea>
-                </td>
-                <td align="left">
-                    <span id="msg_address"></span>&nbsp;
-                </td>
-            </tr>
-        </table>
+                </li>
+                <li class="five columns">
+                    <label for="name-field" class="screen-reader-text">
+                        Name</label>
+                    <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 <!-- End SmartWizard Content -->
@@ -664,164 +326,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-
-
-
-
-<table align="center" border="0" cellpadding="0" cellspacing="0">
-<tr><td>
- 
-<form action="#" method="POST">
-  <input type='hidden' name="issubmit" value="1">
-<!-- Tabs -->
-  		<div id="wizard" class="swMain">
-  			<ul>
-  				<li><a href="#step-1">
-                <span class="stepNumber">1</span>
-                <span class="stepDesc">
-                   Account Details<br />
-                   <small>Fill your account details</small>
-                </span>
-            </a></li>
-  				<li><a href="#step-2">
-                <span class="stepNumber">2</span>
-                <span class="stepDesc">
-                   Profile Details<br />
-                   <small>Fill your profile details</small>
-                </span>
-            </a></li>
-  				<li><a href="#step-3">
-                <span class="stepNumber">3</span>
-                <span class="stepDesc">
-                   Contact Details<br />
-                   <small>Fill your contact details</small>
-                </span>
-             </a></li>
-  				<li><a href="#step-4">
-                <span class="stepNumber">3</span>
-                <span class="stepDesc">
-                   Other Details<br />
-                   <small>Fill your other details</small>
-                </span>
-            </a></li>
-  			</ul>
-  			<div id="step-1">	
-            <h2 class="StepTitle">Step 1: Account Details</h2>
-            <table cellspacing="3" cellpadding="3" align="center">
-          			<tr>
-                    	<td align="center" colspan="3">&nbsp;</td>
-          			</tr>        
-          			<tr>
-                    	<td align="right">Username :</td>
-                    	<td align="left">
-                    	  <input type="text" id="username" name="username" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_username"></span>&nbsp;</td>
-          			</tr>
-          			<tr>
-                    	<td align="right">Password :</td>
-                    	<td align="left">
-                    	  <input type="password" id="password" name="password" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_password"></span>&nbsp;</td>
-          			</tr> 
-                <tr>
-                    	<td align="right">Confirm Password :</td>
-                    	<td align="left">
-                    	  <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_cpassword"></span>&nbsp;</td>
-          			</tr>                                   			
-  			   </table>          			
-        </div>
-  			<div id="step-2">
-            <h2 class="StepTitle">Step 2: Profile Details</h2>	
-            <table cellspacing="3" cellpadding="3" align="center">
-          			<tr>
-                    	<td align="center" colspan="3">&nbsp;</td>
-          			</tr>        
-          			<tr>
-                    	<td align="right">First Name :</td>
-                    	<td align="left">
-                    	  <input type="text" id="firstname" name="firstname" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_firstname"></span>&nbsp;</td>
-          			</tr>
-          			<tr>
-                    	<td align="right">Last Name :</td>
-                    	<td align="left">
-                    	  <input type="text" id="lastname" name="lastname" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_lastname"></span>&nbsp;</td>
-          			</tr> 
-          			<tr>
-                    	<td align="right">Gender :</td>
-                    	<td align="left">
-                        <select id="gender" name="gender" class="txtBox">
-                          <option value="">-select-</option>
-                          <option value="Female">Female</option>
-                          <option value="Male">Male</option>                 
-                        </select>
-                      </td>
-                    	<td align="left"><span id="msg_gender"></span>&nbsp;</td>
-          			</tr>                                   			
-  			   </table>        
-        </div>                      
-  			<div id="step-3">
-            <h2 class="StepTitle">Step 3: Contact Details</h2>	
-            <table cellspacing="3" cellpadding="3" align="center">
-          			<tr>
-                    	<td align="center" colspan="3">&nbsp;</td>
-          			</tr>        
-          			<tr>
-                    	<td align="right">Email :</td>
-                    	<td align="left">
-                    	  <input type="text" id="email" name="email" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_email"></span>&nbsp;</td>
-          			</tr>
-          			<tr>
-                    	<td align="right">Phone :</td>
-                    	<td align="left">
-                    	  <input type="text" id="phone" name="phone" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_phone"></span>&nbsp;</td>
-          			</tr>          			
-          			<tr>
-                    	<td align="right">Address :</td>
-                    	<td align="left">
-                            <textarea name="address" id="address" class="txtBox" rows="3"></textarea>
-                      </td>
-                    	<td align="left"><span id="msg_address"></span>&nbsp;</td>
-          			</tr>                                   			
-  			   </table>               				          
-        </div>
-  			<div id="step-4">
-            <h2 class="StepTitle">Step 4: Other Details</h2>	
-            <table cellspacing="3" cellpadding="3" align="center">
-          			<tr>
-                    	<td align="center" colspan="3">&nbsp;</td>
-          			</tr>        
-          			<tr>
-                    	<td align="right">Hobbies :</td>
-                    	<td align="left">
-                    	  <input type="text" id="phone" name="phone" value="" class="txtBox">
-                      </td>
-                    	<td align="left"><span id="msg_phone"></span>&nbsp;</td>
-          			</tr>          			
-          			<tr>
-                    	<td align="right">About You :</td>
-                    	<td align="left">
-                            <textarea name="address" id="address" class="txtBox" rows="5"></textarea>
-                      </td>
-                    	<td align="left"><span id="msg_address"></span>&nbsp;</td>
-          			</tr>                                   			
-  			   </table>                 			
-        </div>
-  		</div>
-<!-- End SmartWizard Content -->  		
-</form> 
-  		
-</td></tr>
-</table> 
