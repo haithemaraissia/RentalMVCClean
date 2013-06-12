@@ -1,0 +1,67 @@
+Pay Application Fee so that the owner can verify the tenant 
+
+Steps
+-1-Find Listing
+-2-Schedule showing
+-3-Submit application
+-4-Pay Application Fee  THROUGH AMAZON MARKETPLACE( FOR OWNERS, WE RECOMMEND EXPERIAN on the email..)
+-5-Contract your Maintenance 
+Get the keys
+-6-Generate Contract between Owner and Tenant
+-7-Generate Contract between Tenant and Provider
+-8-Pay the Rent
+Through Market Place
+-9-Pay The Maintenance 
+Through Market Place
+
+
+
+
+
+-10-When the Tenant payment failed or don't pay the Owner
+-11-When the Tenant payment failed or don't pay the Provider
+
+
+
+
+
+IF Succesful,
+
+-12-Advertise for each one.
+-13-Post Project for each one
+-14-Projects tabs like tenants and Professional Tabs
+-15-Detail Project and Professional with bid on project ( commenting Or COntacting the owner) and for the professioal ( maybe invite to projects)
+
+http://docs.aws.amazon.com/AmazonFPS/latest/SandboxLanding/index.html?accountId=GRSGHQDCZSVC43EZTGPVZ12II9FMUF1CRV1XFD&wrequestlength=48&awssig=h5S6kCsSh0MVe2YmVBC6vwqUDmo=
+
+
+https://payments-sandbox.amazon.com/sdui/sdui/marketplacebuttoncreate
+
+http://docs.aws.amazon.com/AmazonSimplePay/latest/ASPGettingStartedGuide/Welcome.html
+
+https://payments.amazon.com/sdui/sdui/about?nodeId=30017#mpwidg_def
+
+
+http://docs.aws.amazon.com/AmazonSimplePay/latest/ASPGettingStartedGuide/nomktplc.html
+
+http://dotnet.dzone.com/news/amazon-simple-pay-aspnet
+
+
+
+
+--------------------\
+Applicant Information
+Employment Information
+Housing History
+OCCUPANT
+	Co-singer
+	Regular
+Additional Information
+	PETS
+	EMERGENCY
+	VEHICULE
+Background Information
+ 
+http://www.jankoatwarpspeed.com/turn-any-webform-into-a-powerful-wizard-with-jquery-formtowizard-plugin/
+
+

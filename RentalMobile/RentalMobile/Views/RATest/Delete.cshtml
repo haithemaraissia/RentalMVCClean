@@ -1,0 +1,163 @@
+﻿@model RentalMobile.Models.RentalApplication
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RentalApplication</legend>
+
+    <div class="display-label">ApplicationId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ApplicationId)
+    </div>
+
+    <div class="display-label">FirstName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">LastName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">MiddleName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MiddleName)
+    </div>
+
+    <div class="display-label">DateofBirth</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateofBirth)
+    </div>
+
+    <div class="display-label">SocialSecurityNumber</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SocialSecurityNumber)
+    </div>
+
+    <div class="display-label">DriverLicense</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DriverLicense)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">CellPhone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CellPhone)
+    </div>
+
+    <div class="display-label">EmailAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmailAddress)
+    </div>
+
+    <div class="display-label">Income</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Income)
+    </div>
+
+    <div class="display-label">EmployerPhone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerPhone)
+    </div>
+
+    <div class="display-label">WorkStartDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WorkStartDate)
+    </div>
+
+    <div class="display-label">WorkEndDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WorkEndDate)
+    </div>
+
+    <div class="display-label">EmployerAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerAddress)
+    </div>
+
+    <div class="display-label">EmployerCity</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerCity)
+    </div>
+
+    <div class="display-label">EmployerState</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerState)
+    </div>
+
+    <div class="display-label">EmployerZipcode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerZipcode)
+    </div>
+
+    <div class="display-label">EmployerFax</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployerFax)
+    </div>
+
+    <div class="display-label">CoSignerName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerName)
+    </div>
+
+    <div class="display-label">CoSignerAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerAddress)
+    </div>
+
+    <div class="display-label">CoSignerCity</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerCity)
+    </div>
+
+    <div class="display-label">CoSignerState</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerState)
+    </div>
+
+    <div class="display-label">CoSignerZipcode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerZipcode)
+    </div>
+
+    <div class="display-label">CoSignerPhone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerPhone)
+    </div>
+
+    <div class="display-label">CoSignerRelationShip</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoSignerRelationShip)
+    </div>
+
+    <div class="display-label">OtherOccupant</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherOccupant)
+    </div>
+
+    <div class="display-label">Adult</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Adult)
+    </div>
+
+    <div class="display-label">Relationship</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Relationship)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

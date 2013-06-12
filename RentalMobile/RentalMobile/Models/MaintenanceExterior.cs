@@ -12,36 +12,30 @@ namespace RentalMobile.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class C_MaintenanceExteriorHome_ImprovementsandRepairs
+    public partial class MaintenanceExterior
     {
         public int CompanyId { get; set; }
-        public string Architects_Architectural { get; set; }
         public string Asphalt_Paving { get; set; }
         public string Awnings { get; set; }
-        public string Barns__Gazebos_and_Sheds { get; set; }
-        public string Concrete { get; set; }
-        public string Concrete_Breaking_and_Cutting { get; set; }
-        public string Decks__Patios_and_Enclosures { get; set; }
-        public string Design_and_Build { get; set; }
-        public string Exterior_Doors { get; set; }
+        public string Concrete_Installation___Repair { get; set; }
+        public string Decks__Patios___Enclosures { get; set; }
         public string Fence_Install_and_Repair { get; set; }
-        public string Foundation { get; set; }
-        public string Garage_Carport { get; set; }
-        public string Gutter_Cleaning_and_Installation { get; set; }
-        public string Hot_Tubs__Spas_and_Jacuzzis { get; set; }
-        public string Lakes__Ponds_and_Waterfalls { get; set; }
-        public string Landscaping_Design___Installation { get; set; }
+        public string Gutter_Services { get; set; }
+        public string Hurricane_Shutter_Systems { get; set; }
+        public string Interlocking___Stonework { get; set; }
+        public string Ironwork___Wrought_Iron { get; set; }
+        public string Landscaping_Installation { get; set; }
         public string Lawn_Care { get; set; }
         public string Masonry_and_Brick_Work { get; set; }
-        public string Painting { get; set; }
-        public string Plaster_and_Stucco { get; set; }
-        public string Roofing { get; set; }
-        public string Sandblasting___Power_Washing { get; set; }
+        public string Power_Washing { get; set; }
+        public string Roofing_Services { get; set; }
         public string Siding { get; set; }
+        public string Skylights { get; set; }
         public string Sprinkler_Systems_and_Irrigation { get; set; }
+        public string Stucco___Plaster { get; set; }
         public string Swimming_Pool_Install { get; set; }
         public string Tree_Service { get; set; }
         public string Waterproofing { get; set; }
-        public string Windows { get; set; }
+        public string Windows___Exterior_Doors { get; set; }
     }
 }

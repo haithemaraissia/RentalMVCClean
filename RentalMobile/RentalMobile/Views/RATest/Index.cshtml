@@ -1,0 +1,201 @@
+﻿@model IEnumerable<RentalMobile.Models.RentalApplication>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            ApplicationId
+        </th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            MiddleName
+        </th>
+        <th>
+            DateofBirth
+        </th>
+        <th>
+            SocialSecurityNumber
+        </th>
+        <th>
+            DriverLicense
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            CellPhone
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            Income
+        </th>
+        <th>
+            EmployerPhone
+        </th>
+        <th>
+            WorkStartDate
+        </th>
+        <th>
+            WorkEndDate
+        </th>
+        <th>
+            EmployerAddress
+        </th>
+        <th>
+            EmployerCity
+        </th>
+        <th>
+            EmployerState
+        </th>
+        <th>
+            EmployerZipcode
+        </th>
+        <th>
+            EmployerFax
+        </th>
+        <th>
+            CoSignerName
+        </th>
+        <th>
+            CoSignerAddress
+        </th>
+        <th>
+            CoSignerCity
+        </th>
+        <th>
+            CoSignerState
+        </th>
+        <th>
+            CoSignerZipcode
+        </th>
+        <th>
+            CoSignerPhone
+        </th>
+        <th>
+            CoSignerRelationShip
+        </th>
+        <th>
+            OtherOccupant
+        </th>
+        <th>
+            Adult
+        </th>
+        <th>
+            Relationship
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialSecurityNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverLicense)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Relationship)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

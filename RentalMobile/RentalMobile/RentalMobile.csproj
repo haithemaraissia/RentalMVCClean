@@ -106,6 +106,7 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\RATestController.cs" />
     <Compile Include="Controllers\RentalApplicationController.cs" />
     <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Controllers\SpecialistController.cs" />
@@ -145,7 +146,7 @@
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\C_MaintenanceExteriorHome_ImprovementsandRepairs.cs">
+    <Compile Include="Models\MaintenanceExterior.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceOrder.cs">
@@ -161,6 +162,9 @@
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerMaintenance.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalApplication.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalContextGenerator.Context1.cs">
@@ -324,6 +328,7 @@
     <Content Include="Design\General.aspx" />
     <Content Include="Design\SmartWizard.htm" />
     <Content Include="Documentation\BrainStorming+MaintenanceData\BrainStorming.txt" />
+    <Content Include="Documentation\Process\ProcessAction2.txt" />
     <Content Include="Documentation\UnitProperty\P3.txt" />
     <Content Include="Documentation\UnitProperty\P4.txt" />
     <Content Include="Global.asax" />
@@ -798,6 +803,11 @@
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantMiniTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantBigTabMenu.cshtml" />
     <Content Include="Views\RentalApplication\Index.cshtml" />
+    <Content Include="Views\RATest\Index.cshtml" />
+    <Content Include="Views\RATest\Details.cshtml" />
+    <Content Include="Views\RATest\Create.cshtml" />
+    <Content Include="Views\RATest\Edit.cshtml" />
+    <Content Include="Views\RATest\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

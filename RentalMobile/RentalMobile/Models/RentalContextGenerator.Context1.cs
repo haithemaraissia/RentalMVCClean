@@ -48,7 +48,8 @@ namespace RentalMobile.Models
         public DbSet<UnitPricing> UnitPricings { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<UnitFeature> UnitFeatures { get; set; }
-        public DbSet<C_MaintenanceExteriorHome_ImprovementsandRepairs> C_MaintenanceExteriorHome_ImprovementsandRepairs { get; set; }
         public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
+        public DbSet<RentalApplication> RentalApplications { get; set; }
+        public DbSet<MaintenanceExterior> MaintenanceExteriors { get; set; }
     }
 }
