@@ -1,4 +1,5 @@
-﻿@model RentalMobile.Models.MaintenanceOrder
+﻿@model RentalMobile.Models.RentalApplication
+@using RentalMobile.Helpers;
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
@@ -82,7 +83,7 @@
     function validateStep1() {
         var isValid = true;
         // Validate Username
-        var un = $('#username').val();
+        var un = $('#firstname').val();
         if (!un && un.length <= 0) {
             isValid = false;
             $('#msg_username').html('Please fill username').show();
@@ -91,7 +92,7 @@
         }
 
         // validate password
-        var pw = $('#password').val();
+        var pw = $('#lastname').val();
         if (!pw && pw.length <= 0) {
             isValid = false;
             $('#msg_password').html('Please fill password').show();
@@ -99,24 +100,24 @@
             $('#msg_password').html('').hide();
         }
 
-        // validate confirm password
-        var cpw = $('#cpassword').val();
-        if (!cpw && cpw.length <= 0) {
-            isValid = false;
-            $('#msg_cpassword').html('Please fill confirm password').show();
-        } else {
-            $('#msg_cpassword').html('').hide();
-        }
+        //        // validate confirm password
+        //        var cpw = $('#cpassword').val();
+        //        if (!cpw && cpw.length <= 0) {
+        //            isValid = false;
+        //            $('#msg_cpassword').html('Please fill confirm password').show();
+        //        } else {
+        //            $('#msg_cpassword').html('').hide();
+        //        }
 
-        // validate password match
-        if (pw && pw.length > 0 && cpw && cpw.length > 0) {
-            if (pw != cpw) {
-                isValid = false;
-                $('#msg_cpassword').html('Password mismatch').show();
-            } else {
-                $('#msg_cpassword').html('').hide();
-            }
-        }
+        //        // validate password match
+        //        if (pw && pw.length > 0 && cpw && cpw.length > 0) {
+        //            if (pw != cpw) {
+        //                isValid = false;
+        //                $('#msg_cpassword').html('Password mismatch').show();
+        //            } else {
+        //                $('#msg_cpassword').html('').hide();
+        //            }
+        //        }
         return isValid;
     }
 
@@ -140,7 +141,7 @@
 
     // Email Validation
     function isValidEmailAddress(emailAddress) {
-        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         return pattern.test(emailAddress);
     } 
 		
@@ -159,7 +160,7 @@
     <ul class="sixteen columns">
         <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
             class="stepDesc">Step 1<br />
-            <small>Step 1 description</small> </span></a></li>
+            <small>Applicant Information</small> </span></a></li>
         <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
             class="stepDesc">Step 2<br />
             <small>Step 2 description</small> </span></a></li>
@@ -170,135 +171,141 @@
             class="stepDesc">Step 4<br />
             <small>Step 4 description</small> </span></a></li>
     </ul>
-    <div id="step-1" class="sixteen columns" style="height: auto;">
+    <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
         <h2 class="StepTitle">
-            Step 1: Account Details</h2>
-        <h3>
-            3 columns</h3>
-        <section class="sixteen columns add-bottom relative">
+            Applicant Details</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    <label for="name-field" class="screen-reader-text">
-                        Name</label>
-                    <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
+                    @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
                 </li>
                 <li class="five columns">
-                    <label for="name-field" class="screen-reader-text">
-                        Name</label>
-                    <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
-                </li>
-                <li class="five columns ">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
                 </li>
                 <li class="five columns">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
                 </li>
                 <li class="five columns">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
                 </li>
                 <li class="five columns">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
                 </li>
             </ul>
         </section>
-        <h3>
-            2 columns</h3>
-        <section class="sixteen columns add-bottom relative">
+        <h2 class="StepTitle">
+            Occupant</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
-                <li class="eight columns">
-                    <label for="name-field" class="screen-reader-text">
-                        Password</label>
-                    <input id="name-field" type="text" placeholder="Passowrd" class="full-width" />
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerName, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
                 </li>
-                <li class="seven columns">
-                    <label for="name-field" class="screen-reader-text">
-                        City</label>
-                    <input id="name-field" type="text" placeholder="City" class="full-width" />
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerCity, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerState, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerZipcode, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Need to be Cosigner EmailAddress" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.OtherOccupant, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Adult, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Adult, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Relationship, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Relationship, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
                 </li>
             </ul>
         </section>
-        <h3>
-            4 columns</h3>
-        <section class="sixteen columns add-bottom relative">
-            <ul>
-                <li class="three columns">
-                    <label for="name-field" class="screen-reader-text">
-                        Name</label>
-                    <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
-                </li>
-                <li class="three columns">
-                    <label for="name-field" class="screen-reader-text">
-                        Name</label>
-                    <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
-                </li>
-                <li class="three columns ">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                </li>
-                <li class="three columns omega ">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                </li>
-                <li class="three columns ">
-                    <label for="email-field" class="screen-reader-text">
-                        E-mail</label>
-                    <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                </li>
-            </ul>
-        </section>
-        
-        
-        <h3>Default</h3>
-        <table cellspacing="3" cellpadding="3" align="center">
-                            <tr>
-                                <td align="center" colspan="3">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    Username :
-                                </td>
-                                <td align="left">
-                                    <input type="text" id="username" name="username" value="" class="txtBox">
-                                </td>
-                                <td align="left">
-                                    <span id="msg_username"></span>&nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    Password :
-                                </td>
-                                <td align="left">
-                                    <input type="password" id="password" name="password" value="" class="txtBox">
-                                </td>
-                                <td align="left">
-                                    <span id="msg_password"></span>&nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    Confirm Password :
-                                </td>
-                                <td align="left">
-                                    <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
-                                </td>
-                                <td align="left">
-                                    <span id="msg_cpassword"></span>&nbsp;
-                                </td>
-                            </tr>
-                        </table>
+        @*            <h3>Default</h3>
+            <table cellspacing="3" cellpadding="3" align="center">
+                <tr>
+                    <td align="center" colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        Username :
+                    </td>
+                    <td align="left">
+                        <input type="text" id="username" name="username" value="" class="txtBox">
+                    </td>
+                    <td align="left">
+                        <span id="msg_username"></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        Password :
+                    </td>
+                    <td align="left">
+                        <input type="password" id="password" name="password" value="" class="txtBox">
+                    </td>
+                    <td align="left">
+                        <span id="msg_password"></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        Confirm Password :
+                    </td>
+                    <td align="left">
+                        <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
+                    </td>
+                    <td align="left">
+                        <span id="msg_cpassword"></span>&nbsp;
+                    </td>
+                </tr>
+            </table>*@
     </div>
     <div id="step-2" class="sixteen columns" style="height: auto;">
         <section class="sixteen columns add-bottom relative">
@@ -319,7 +326,239 @@
                 </li>
             </ul>
         </section>
+        <h2 class="StepTitle">
+            Background Information</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                </li>
+            </ul>
+        </section>
+        <h2 class="StepTitle">
+            Additional Information: PETS EMERGENCY VEHICULE</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerName, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerCity, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerState, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerZipcode, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Need to be Cosigner EmailAddress" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.OtherOccupant, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Adult, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Adult, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Relationship, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Relationship, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                </li>
+            </ul>
+        </section>
     </div>
+    <div id="step-3">
+        <h2 class="StepTitle">
+            Employment Information</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_email", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.FirstName, new { id = "email", required = "required", @class = "full-width", placeholder = "First Name" })
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div id="step-4">
+        <h2 class="StepTitle">
+            Housing History</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                </li>
+            </ul>
+        </section>
+    </div>
+@*    <div id="step-3-">
+                  <h3>
+                    2 columns</h3>
+                <section class="sixteen columns add-bottom relative">
+                    <ul>
+                        <li class="eight columns">
+                            <label for="name-field" class="screen-reader-text">
+                                Password</label>
+                            <input id="name-field" type="text" placeholder="Passowrd" class="full-width" />
+                        </li>
+                        <li class="seven columns">
+                            <label for="name-field" class="screen-reader-text">
+                                City</label>
+                            <input id="name-field" type="text" placeholder="City" class="full-width" />
+                        </li>
+                    </ul>
+                </section>
+                <h3>
+                    4 columns</h3>
+                <section class="sixteen columns add-bottom relative">
+                    <ul>
+                        <li class="three columns">
+                            <label for="name-field" class="screen-reader-text">
+                                Name</label>
+                            <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
+                        </li>
+                        <li class="three columns">
+                            <label for="name-field" class="screen-reader-text">
+                                Name</label>
+                            <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
+                        </li>
+                        <li class="three columns ">
+                            <label for="email-field" class="screen-reader-text">
+                                E-mail</label>
+                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                        </li>
+                        <li class="three columns omega ">
+                            <label for="email-field" class="screen-reader-text">
+                                E-mail</label>
+                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                        </li>
+                        <li class="three columns ">
+                            <label for="email-field" class="screen-reader-text">
+                                E-mail</label>
+                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
+                        </li>
+                    </ul>
+                </section>
+                </div>*@
 </div>
 <!-- End SmartWizard Content -->
 </form>
