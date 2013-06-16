@@ -26,6 +26,10 @@
                 $('form').submit();
             }
         }
+
+        $(function () {
+            $("#datepicker").datepicker();
+        });
     });
 
     function validateAllSteps() {
@@ -38,12 +42,12 @@
             $('#wizard').smartWizard('setError', { stepnum: 1, iserror: false });
         }
 
-        if (validateStep3() == false) {
-            isStepValid = false;
-            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: true });
-        } else {
-            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: false });
-        }
+        //        if (validateStep3() == false) {
+        //            isStepValid = false;
+        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: true });
+        //        } else {
+        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: false });
+        //        }
 
         if (!isStepValid) {
             $('#wizard').smartWizard('showMessage', 'Please correct the errors in the steps and continue');
@@ -67,15 +71,15 @@
         }
 
         // validate step3
-        if (step == 3) {
-            if (validateStep3() == false) {
-                isStepValid = false;
-                $('#wizard').smartWizard('showMessage', 'Please correct the errors in step' + step + ' and click next.');
-                $('#wizard').smartWizard('setError', { stepnum: step, iserror: true });
-            } else {
-                $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
-            }
-        }
+        //        if (step == 3) {
+        //            if (validateStep3() == false) {
+        //                isStepValid = false;
+        //                $('#wizard').smartWizard('showMessage', 'Please correct the errors in step' + step + ' and click next.');
+        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: true });
+        //            } else {
+        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
+        //            }
+        //        }
 
         return isStepValid;
     }
@@ -179,39 +183,77 @@
                 <li class="five columns">
                     @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
                     @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
-                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.MiddleName, new { id = "middlenamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.MiddleName, new { id = "middlename", required = "required", @class = "full-width", placeholder = "Middle Name" })
+                    @Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                    @Html.LabelFor(model => model.LastName, new { id = "lastnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LastName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.DateofBirth, new { id = "dateofbirthlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "datepicker", required = "required", @class = "full-width", placeholder = "Date of Birth" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "socialsecuritynumberlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "socialsecurity", required = "required", @class = "full-width", placeholder = "Social Security #" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                    @Html.LabelFor(model => model.DriverLicense, new { id = "driverlicenselabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "driverlicense", required = "required", @class = "full-width", placeholder = "Driver License" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                    @Html.LabelFor(model => model.Phone, new { id = "phonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Phone, new { id = "phone", required = "required", @class = "full-width", placeholder = "Phone #" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                    @Html.LabelFor(model => model.CellPhone, new { id = "cellphonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CellPhone, new { id = "cellphone", required = "required", @class = "full-width", placeholder = "CellPhone #" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                    @Html.LabelFor(model => model.EmailAddress, new { id = "emailaddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "emailaddress", required = "required", @class = "full-width", placeholder = "Email Address" })
+                </li>
+            </ul>
+        </section>
+        <h2 class="StepTitle">
+            Co-Signer</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerName, new { id = "cosignernamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "cosignername", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerAddress, new { id = "cosigneraddress", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "cosigneraddress", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerCity, new { id = "cosignercitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "cosignercity", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerState, new { id = "cosignerstatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "cosignerstate", required = "required", @class = "full-width", placeholder = "Co-signer's State" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerZipcode, new { id = "cosignerzipcodelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "cosignerzipcode", required = "required", @class = "full-width", placeholder = "Co-signer's Zipcode" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerPhone, new { id = "cosignerphonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "cosignerphone", required = "required", @class = "full-width", placeholder = "Co-signer's Phone" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "cosignerrelationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "cosignerrelationship", required = "required", @class = "full-width", placeholder = "Co-signer's Relationship" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CoSignerEmailAddress, new { id = "cosigneremailaddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CoSignerEmailAddress, new { id = "cosigneremailaddress", required = "required", @class = "full-width", placeholder = "Co-signer's  EmailAddress" })
                 </li>
             </ul>
         </section>
@@ -220,94 +262,189 @@
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerName, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
+                    @Html.LabelFor(model => model.OtherOccupant1Name, new { id = "occupant1namelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant1Name, new { id = "occupant1name", required = "required", @class = "full-width", placeholder = "Occupant1 Name" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
+                    @Html.LabelFor(model => model.IsOccupant1Adult, new { id = "occupant1adultlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.IsOccupant1Adult, new { id = "occupant1adult", required = "required", @class = "full-width", placeholder = "Is Occupant1 Adult?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerCity, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
+                    @Html.LabelFor(model => model.RelationshipOccupant1ToApplicant, new { id = "occupant1relationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.RelationshipOccupant1ToApplicant, new { id = "occupant1relationship", required = "required", @class = "full-width", placeholder = "Occupant1 Relationship's to Application" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerState, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.OtherOccupant2Name, new { id = "occupant2namelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant2Name, new { id = "occupant2name", required = "required", @class = "full-width", placeholder = "Occupant2 Name" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerZipcode, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                    @Html.LabelFor(model => model.IsOccupant2Adult, new { id = "occupant2adultlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.IsOccupant2Adult, new { id = "occupant2adult", required = "required", @class = "full-width", placeholder = "Is Occupant2 Adult?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                    @Html.LabelFor(model => model.RelationshipOccupant2ToApplicant, new { id = "occupant2relationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.RelationshipOccupant2ToApplicant, new { id = "occupant2relationship", required = "required", @class = "full-width", placeholder = "Occupant2 Relationship's to Application" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                    @Html.LabelFor(model => model.OtherOccupant3Name, new { id = "occupant3namelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant3Name, new { id = "occupant3name", required = "required", @class = "full-width", placeholder = "Occupant3 Name" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Need to be Cosigner EmailAddress" })
+                    @Html.LabelFor(model => model.IsOccupant3Adult, new { id = "occupant3adultlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.IsOccupant3Adult, new { id = "occupant3adult", required = "required", @class = "full-width", placeholder = "Is Occupant3 Adult?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.OtherOccupant, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.OtherOccupant, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                    @Html.LabelFor(model => model.RelationshipOccupant3ToApplicant, new { id = "occupant3relationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.RelationshipOccupant3ToApplicant, new { id = "occupant3relationship", required = "required", @class = "full-width", placeholder = "Occupant3 Relationship's to Application" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.Adult, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Adult, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                    @Html.LabelFor(model => model.OtherOccupant4Name, new { id = "occupant4namelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.OtherOccupant4Name, new { id = "occupant4name", required = "required", @class = "full-width", placeholder = "Occupant4 Name" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.Relationship, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Relationship, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                    @Html.LabelFor(model => model.IsOccupant4Adult, new { id = "occupant4adultlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.IsOccupant4Adult, new { id = "occupant4adult", required = "required", @class = "full-width", placeholder = "Is Occupant4 Adult?" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.RelationshipOccupant4ToApplicant, new { id = "occupant4relationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.RelationshipOccupant4ToApplicant, new { id = "occupant4relationship", required = "required", @class = "full-width", placeholder = "Occupant4 Relationship's to Application" })
                 </li>
             </ul>
         </section>
-        @*            <h3>Default</h3>
-            <table cellspacing="3" cellpadding="3" align="center">
-                <tr>
-                    <td align="center" colspan="3">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Username :
-                    </td>
-                    <td align="left">
-                        <input type="text" id="username" name="username" value="" class="txtBox">
-                    </td>
-                    <td align="left">
-                        <span id="msg_username"></span>&nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Password :
-                    </td>
-                    <td align="left">
-                        <input type="password" id="password" name="password" value="" class="txtBox">
-                    </td>
-                    <td align="left">
-                        <span id="msg_password"></span>&nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Confirm Password :
-                    </td>
-                    <td align="left">
-                        <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">
-                    </td>
-                    <td align="left">
-                        <span id="msg_cpassword"></span>&nbsp;
-                    </td>
-                </tr>
-            </table>*@
     </div>
-    <div id="step-2" class="sixteen columns" style="height: auto;">
+    <div id="step-2">
+        <h2 class="StepTitle">
+            Employment Information</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerName, new { id = "employernamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerName, new { id = "employername", required = "required", @class = "full-width", placeholder = "Employer Name" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Income, new { id = "incomelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Income, new { id = "income", required = "required", @class = "full-width", placeholder = "Income Gross" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.WorkStartDate, new { id = "workstartdatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.WorkStartDate, new { id = "workstartdate", required = "required", @class = "full-width", placeholder = "Work Start Date" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.WorkEndDate, new { id = "workenddatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.WorkEndDate, new { id = "workenddatelabel", required = "required", @class = "full-width", placeholder = "Work End Date" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerAddress, new { id = "employeraddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerAddress, new { id = "employeraddress", required = "required", @class = "full-width", placeholder = "Employer Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerCity, new { id = "employercitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerCity, new { id = "employercity", required = "required", @class = "full-width", placeholder = "Employer City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerState, new { id = "employerstatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerState, new { id = "employerstate", required = "required", @class = "full-width", placeholder = "Employer State" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerZipcode, new { id = "employerzipcodelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerZipcode, new { id = "employerzipcode", required = "required", @class = "full-width", placeholder = "Employer Zipcode" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.EmployerFax, new { id = "employerfaxlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmployerFax, new { id = "employerfax", required = "required", @class = "full-width", placeholder = "Employer Fax" })
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div id="step-3">
+        <h2 class="StepTitle">
+            Housing History</h2>
+        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentLandloard, new { id = "currentlandloardlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentLandloard, new { id = "currentlandloard", required = "required", @class = "full-width", placeholder = "Current Landloard" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentLandLoardPhone, new { id = "currentlandloardphonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentLandLoardPhone, new { id = "currentlandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentLandLoardFax, new { id = "currentlandloardfaxlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentLandLoardFax, new { id = "currentlandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentAddress, new { id = "currentaddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentAddress, new { id = "currentaddress", required = "required", @class = "full-width", placeholder = "Current Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentAddressCity, new { id = "currentaddresscitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentAddressCity, new { id = "currentaddresscity", required = "required", @class = "full-width", placeholder = "City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentAddressState, new { id = "currentaddresscitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentAddressState, new { id = "currentaddressstate", required = "required", @class = "full-width", placeholder = "State" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentAddressZip, new { id = "currentaddressziplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentAddressZip, new { id = "currentaddresszip", required = "required", @class = "full-width", placeholder = "Zip" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Rent, new { id = "rentlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Rent, new { id = "rent", required = "required", @class = "full-width", placeholder = "Rent/Month" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentRentStartDate, new { id = "currentrentstartdatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentRentStartDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentRentEndDate, new { id = "currentrentenddatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentRentEndDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "To" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousLandloard, new { id = "previouslandloardlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousLandloard, new { id = "previouslandloard", required = "required", @class = "full-width", placeholder = "Current Landloard" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousLandLoardPhone, new { id = "previouslandloardphonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousLandLoardPhone, new { id = "previouslandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousLandLoardFax, new { id = "previouslandloardfaxlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousLandLoardFax, new { id = "previouslandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousAddress, new { id = "previousaddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousAddress, new { id = "previousaddress", required = "required", @class = "full-width", placeholder = "Previous Address" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousAddressCity, new { id = "previousaddresscitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousAddressCity, new { id = "previousaddresscity", required = "required", @class = "full-width", placeholder = "City" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousAddressState, new { id = "previousaddressstatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousAddressState, new { id = "previousaddressstate", required = "required", @class = "full-width", placeholder = "State" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousAddressZip, new { id = "previousaddressziplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousAddressZip, new { id = "previousaddresszip", required = "required", @class = "full-width", placeholder = "Zipcode" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousRent, new { id = "previousrentlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousRent, new { id = "previousrent", required = "required", @class = "full-width", placeholder = "Previous Rent/Month" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousRentStartDate, new { id = "previousrentstartdatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousRentStartDate, new { id = "previousrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.PreviousRentEndDate, new { id = "previousrentenddatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PreviousRentEndDate, new { id = "previousrentenddate", required = "required", @class = "full-width", placeholder = "To" })
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div id="step-4" class="sixteen columns" style="height: auto;">
         <section class="sixteen columns add-bottom relative">
             <ul>
                 <li class="five columns">
@@ -327,238 +464,193 @@
             </ul>
         </section>
         <h2 class="StepTitle">
-            Background Information</h2>
+            EMERGENCY CONTACT</h2>
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
-                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.EmergencyContactName, new { id = "emergencycontactnamelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactName, new { id = "emergencycontactname", required = "required", @class = "full-width", placeholder = "Emergency Contact" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.EmergencyContactRelationShip, new { id = "emergencycontactrelationshiplabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactRelationShip, new { id = "emergencycontactrelationship", required = "required", @class = "full-width", placeholder = "Relationship" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                    @Html.LabelFor(model => model.EmergencyContactPhone, new { id = "emergencycontactphonelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactPhone, new { id = "emergencycontactphone", required = "required", @class = "full-width", placeholder = "Phone" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.EmergencyContactAddress, new { id = "emergencycontactaddresslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactAddress, new { id = "emergencycontactaddress", required = "required", @class = "full-width", placeholder = "Address" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                    @Html.LabelFor(model => model.EmergencyContactCity, new { id = "emergencycontactcitylabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactCity, new { id = "emergencycontactcity", required = "required", @class = "full-width", placeholder = "City" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                    @Html.LabelFor(model => model.EmergencyContactState, new { id = "emergencycontactstatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactState, new { id = "emergencycontactstate", required = "required", @class = "full-width", placeholder = "State" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                    @Html.LabelFor(model => model.EmergencyContactZipCode, new { id = "emergencycontactzipcodelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EmergencyContactZipCode, new { id = "emergencycontactzipcode", required = "required", @class = "full-width", placeholder = "Zipcode" })
                 </li>
             </ul>
         </section>
         <h2 class="StepTitle">
-            Additional Information: PETS EMERGENCY VEHICULE</h2>
+            EMERGENCY CONTACT
+        </h2>
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerName, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
+                    @Html.LabelFor(model => model.Pets, new { id = "petslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pets, new { id = "pets", required = "required", @class = "full-width", placeholder = "Pets?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
+                    @Html.LabelFor(model => model.PetsNumber, new { id = "petsnumberlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.PetsNumber, new { id = "petsnumber", required = "required", @class = "full-width", placeholder = "How Many?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerCity, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
+                    @Html.LabelFor(model => model.Pet1Brand, new { id = "pet1brandlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet1Brand, new { id = "pet1brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerState, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.Pet1Age, new { id = "pet1agelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet1Age, new { id = "pet1age", required = "required", @class = "full-width", placeholder = "Age" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerZipcode, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                    @Html.LabelFor(model => model.Pet1Weight, new { id = "pet1weightlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet1Weight, new { id = "pet1weight", required = "required", @class = "full-width", placeholder = "Weight" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                    @Html.LabelFor(model => model.Pet2Brand, new { id = "pet2brandlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet2Brand, new { id = "pet2brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                    @Html.LabelFor(model => model.Pet2Age, new { id = "pet2agelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet2Age, new { id = "pet2age", required = "required", @class = "full-width", placeholder = "Age" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CoSignerRelationShip, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Need to be Cosigner EmailAddress" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.OtherOccupant, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.OtherOccupant, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Adult, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Adult, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Relationship, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Relationship, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Other Occupant" })
+                    @Html.LabelFor(model => model.Pet2Weight, new { id = "pet2weightlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Pet2Weight, new { id = "pet2weight", required = "required", @class = "full-width", placeholder = "Weight" })
                 </li>
             </ul>
         </section>
-    </div>
-    <div id="step-3">
         <h2 class="StepTitle">
-            Employment Information</h2>
+            VEHICLE
+        </h2>
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.FirstName, new { id = "msg_email", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.FirstName, new { id = "email", required = "required", @class = "full-width", placeholder = "First Name" })
-                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.Vehicle1Make, new { id = "vehicle1makelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle1Make, new { id = "vehicle1make", required = "required", @class = "full-width", placeholder = "Vehicle1 Make" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.Vehicle1Model, new { id = "vehicle1modellabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle1Model, new { id = "vehicle1model", required = "required", @class = "full-width", placeholder = "Model" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                    @Html.LabelFor(model => model.Vehicle1Year, new { id = "vehicle1yearlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle1Year, new { id = "vehicle1year", required = "required", @class = "full-width", placeholder = "Year" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.Vehicle1LicensePlate, new { id = "vehicle1licenseplatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle1LicensePlate, new { id = "vehicle1licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
+                    @Html.LabelFor(model => model.Vehicle1Color, new { id = "vehicle1colorlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle1Color, new { id = "vehicle1color", required = "required", @class = "full-width", placeholder = "Color" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
+                    @Html.LabelFor(model => model.Vehicle2Make, new { id = "vehicle2makelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle2Make, new { id = "vehicle2make", required = "required", @class = "full-width", placeholder = "Vehicle2 Make" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
+                    @Html.LabelFor(model => model.Vehicle2Model, new { id = "vehicle2modellabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle2Model, new { id = "vehicle2model", required = "required", @class = "full-width", placeholder = "Model" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
+                    @Html.LabelFor(model => model.Vehicle2Year, new { id = "vehicle2yearlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle2Year, new { id = "vehicle2year", required = "required", @class = "full-width", placeholder = "Year" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                    @Html.LabelFor(model => model.Vehicle2LicensePlate, new { id = "vehicle2licenseplatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle2LicensePlate, new { id = "vehicle2licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle2Color, new { id = "vehicle2colorlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle2Color, new { id = "vehicle2color", required = "required", @class = "full-width", placeholder = "Color" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle3Make, new { id = "vehicle3makelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle3Make, new { id = "vehicle3make", required = "required", @class = "full-width", placeholder = "Vehicle3 Make" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle3Model, new { id = "vehicle3modellabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle3Model, new { id = "vehicle3model", required = "required", @class = "full-width", placeholder = "Model" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle3Year, new { id = "vehicle3yearlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle3Year, new { id = "vehicle3year", required = "required", @class = "full-width", placeholder = "Year" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle3LicensePlate, new { id = "vehicle3licenseplatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle3LicensePlate, new { id = "vehicle3licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle3Color, new { id = "vehicle3colorlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle3Color, new { id = "vehicle3color", required = "required", @class = "full-width", placeholder = "Color" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle4Make, new { id = "vehicle4makelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle4Make, new { id = "vehicle4make", required = "required", @class = "full-width", placeholder = "Vehicle4 Make" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle4Model, new { id = "vehicle4modellabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle4Model, new { id = "vehicle4model", required = "required", @class = "full-width", placeholder = "Model" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle4Year, new { id = "vehicle4yearlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle4Year, new { id = "vehicle4year", required = "required", @class = "full-width", placeholder = "Year" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle4LicensePlate, new { id = "vehicle4licenseplatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle4LicensePlate, new { id = "vehicle4licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Vehicle4Color, new { id = "vehicle4colorlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Vehicle4Color, new { id = "vehicle4color", required = "required", @class = "full-width", placeholder = "Color" })
                 </li>
             </ul>
         </section>
-    </div>
-    <div id="step-4">
         <h2 class="StepTitle">
-            Housing History</h2>
+            ADDITIONAL INFORMATION
+        </h2>
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.FirstName, new { id = "firstnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
-                    @Html.LabelFor(model => model.FirstName, new { id = "msg_username", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.Bankruptcy, new { id = "petslabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Bankruptcy, new { id = "pets", required = "required", @class = "full-width", placeholder = "Pets?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.MiddleName, new { id = "lastnamelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.MiddleName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })@Html.LabelFor(model => model.FirstName, new { id = "msg_password", @class = "screen-reader-text" })
+                    @Html.LabelFor(model => model.LeaseDefaulted, new { id = "petsnumberlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.LeaseDefaulted, new { id = "petsnumber", required = "required", @class = "full-width", placeholder = "How Many?" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.LastName, new { id = "lastname", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.LastName, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Middle  Name" })
+                    @Html.LabelFor(model => model.RefusedtoPayRent, new { id = "pet1brandlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.RefusedtoPayRent, new { id = "pet1brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.DateofBirth, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.LabelFor(model => model.EvictedFromRental, new { id = "pet1agelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.EvictedFromRental, new { id = "pet1age", required = "required", @class = "full-width", placeholder = "Age" })
                 </li>
                 <li class="five columns">
-                    @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Social Security #" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.DriverLicense, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Driver License" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Phone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Phone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Phone #" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.CellPhone, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CellPhone, new { id = "name-field", required = "required", @class = "full-width", placeholder = "CellPhone #" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.EmailAddress, new { id = "name-field", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "name-field", required = "required", @class = "full-width", placeholder = "Email Address" })
+                    @Html.LabelFor(model => model.ConvictedofFelony, new { id = "pet1weightlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.ConvictedofFelony, new { id = "pet1weight", required = "required", @class = "full-width", placeholder = "Weight" })
                 </li>
             </ul>
         </section>
     </div>
-@*    <div id="step-3-">
-                  <h3>
-                    2 columns</h3>
-                <section class="sixteen columns add-bottom relative">
-                    <ul>
-                        <li class="eight columns">
-                            <label for="name-field" class="screen-reader-text">
-                                Password</label>
-                            <input id="name-field" type="text" placeholder="Passowrd" class="full-width" />
-                        </li>
-                        <li class="seven columns">
-                            <label for="name-field" class="screen-reader-text">
-                                City</label>
-                            <input id="name-field" type="text" placeholder="City" class="full-width" />
-                        </li>
-                    </ul>
-                </section>
-                <h3>
-                    4 columns</h3>
-                <section class="sixteen columns add-bottom relative">
-                    <ul>
-                        <li class="three columns">
-                            <label for="name-field" class="screen-reader-text">
-                                Name</label>
-                            <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
-                        </li>
-                        <li class="three columns">
-                            <label for="name-field" class="screen-reader-text">
-                                Name</label>
-                            <input id="name-field" type="text" placeholder="Your Name" class="full-width" />
-                        </li>
-                        <li class="three columns ">
-                            <label for="email-field" class="screen-reader-text">
-                                E-mail</label>
-                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                        </li>
-                        <li class="three columns omega ">
-                            <label for="email-field" class="screen-reader-text">
-                                E-mail</label>
-                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                        </li>
-                        <li class="three columns ">
-                            <label for="email-field" class="screen-reader-text">
-                                E-mail</label>
-                            <input id="email-field" type="email" placeholder="Email" class="full-width" />
-                        </li>
-                    </ul>
-                </section>
-                </div>*@
 </div>
 <!-- End SmartWizard Content -->
 </form>

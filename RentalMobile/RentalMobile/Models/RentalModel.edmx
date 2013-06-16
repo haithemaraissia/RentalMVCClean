@@ -230,35 +230,106 @@
           <Key>
             <PropertyRef Name="ApplicationId" />
           </Key>
-          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
           <Property Name="LastName" Type="nvarchar" MaxLength="255" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
           <Property Name="DateofBirth" Type="date" />
-          <Property Name="SocialSecurityNumber" Type="nchar" MaxLength="10" />
-          <Property Name="DriverLicense" Type="nchar" MaxLength="10" />
-          <Property Name="Phone" Type="nchar" MaxLength="10" />
-          <Property Name="CellPhone" Type="nchar" MaxLength="10" />
-          <Property Name="EmailAddress" Type="nchar" MaxLength="10" />
-          <Property Name="Income" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerPhone" Type="nchar" MaxLength="10" />
-          <Property Name="WorkStartDate" Type="nchar" MaxLength="10" />
-          <Property Name="WorkEndDate" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerAddress" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerCity" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerState" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerZipcode" Type="nchar" MaxLength="10" />
-          <Property Name="EmployerFax" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerName" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerAddress" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerCity" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerState" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerZipcode" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerPhone" Type="nchar" MaxLength="10" />
-          <Property Name="CoSignerRelationShip" Type="nchar" MaxLength="10" />
-          <Property Name="OtherOccupant" Type="nchar" MaxLength="10" />
-          <Property Name="Adult" Type="bit" />
-          <Property Name="Relationship" Type="nchar" MaxLength="10" />
+          <Property Name="SocialSecurityNumber" Type="varchar" MaxLength="12" />
+          <Property Name="DriverLicense" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="32" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="32" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CoSignerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CoSignerAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CoSignerCity" Type="varchar" MaxLength="50" />
+          <Property Name="CoSignerState" Type="varchar" MaxLength="30" />
+          <Property Name="CoSignerZipcode" Type="varchar" MaxLength="20" />
+          <Property Name="CoSignerPhone" Type="varchar" MaxLength="32" />
+          <Property Name="CoSignerRelationShip" Type="varchar" MaxLength="50" />
+          <Property Name="CoSignerEmailAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="OtherOccupant1Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOccupant1Adult" Type="bit" />
+          <Property Name="RelationshipOccupant1ToApplicant" Type="varchar" MaxLength="50" />
+          <Property Name="OtherOccupant2Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOccupant2Adult" Type="bit" />
+          <Property Name="RelationshipOccupant2ToApplicant" Type="varchar" MaxLength="50" />
+          <Property Name="OtherOccupant3Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOccupant3Adult" Type="bit" />
+          <Property Name="RelationshipOccupant3ToApplicant" Type="varchar" MaxLength="50" />
+          <Property Name="OtherOccupant4Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOccupant4Adult" Type="bit" />
+          <Property Name="RelationshipOccupant4ToApplicant" Type="varchar" MaxLength="50" />
+          <Property Name="EmployerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Income" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkStartDate" Type="date" />
+          <Property Name="WorkEndDate" Type="date" />
+          <Property Name="EmployerAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmployerCity" Type="varchar" MaxLength="50" />
+          <Property Name="EmployerState" Type="varchar" MaxLength="30" />
+          <Property Name="EmployerZipcode" Type="varchar" MaxLength="20" />
+          <Property Name="EmployerPhone" Type="varchar" MaxLength="32" />
+          <Property Name="EmployerFax" Type="varchar" MaxLength="32" />
+          <Property Name="CurrentLandloard" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentLandLoardPhone" Type="varchar" MaxLength="32" />
+          <Property Name="CurrentLandLoardFax" Type="varchar" MaxLength="32" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentAddressCity" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentAddressState" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentAddressZip" Type="varchar" MaxLength="20" />
+          <Property Name="Rent" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentRentStartDate" Type="date" />
+          <Property Name="CurrentRentEndDate" Type="date" />
+          <Property Name="PreviousLandloard" Type="nvarchar" MaxLength="255" />
+          <Property Name="PreviousLandLoardPhone" Type="varchar" MaxLength="32" />
+          <Property Name="PreviousLandLoardFax" Type="varchar" MaxLength="32" />
+          <Property Name="PreviousAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="PreviousAddressCity" Type="varchar" MaxLength="50" />
+          <Property Name="PreviousAddressState" Type="varchar" MaxLength="30" />
+          <Property Name="PreviousAddressZip" Type="varchar" MaxLength="20" />
+          <Property Name="PreviousRent" Type="varchar" MaxLength="30" />
+          <Property Name="PreviousRentStartDate" Type="date" />
+          <Property Name="PreviousRentEndDate" Type="date" />
+          <Property Name="EmergencyContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactRelationShip" Type="varchar" MaxLength="50" />
+          <Property Name="EmergencyContactPhone" Type="varchar" MaxLength="32" />
+          <Property Name="EmergencyContactAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmergencyContactCity" Type="varchar" MaxLength="50" />
+          <Property Name="EmergencyContactState" Type="varchar" MaxLength="30" />
+          <Property Name="EmergencyContactZipCode" Type="varchar" MaxLength="20" />
+          <Property Name="Pets" Type="bit" />
+          <Property Name="PetsNumber" Type="int" />
+          <Property Name="Pet1Brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pet1Age" Type="int" />
+          <Property Name="Pet1Weight" Type="varchar" MaxLength="20" />
+          <Property Name="Pet2Brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pet2Age" Type="int" />
+          <Property Name="Pet2Weight" Type="varchar" MaxLength="20" />
+          <Property Name="Vehicle1Make" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle1Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vehicle1Year" Type="int" />
+          <Property Name="Vehicle1Color" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle1LicensePlate" Type="varchar" MaxLength="20" />
+          <Property Name="Vehicle2Make" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle2Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vehicle2Year" Type="int" />
+          <Property Name="Vehicle2Color" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle2LicensePlate" Type="varchar" MaxLength="20" />
+          <Property Name="Vehicle3Make" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle3Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vehicle3Year" Type="int" />
+          <Property Name="Vehicle3Color" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle3LicensePlate" Type="varchar" MaxLength="20" />
+          <Property Name="Vehicle4Make" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle4Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vehicle4Year" Type="int" />
+          <Property Name="Vehicle4Color" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle4LicensePlate" Type="varchar" MaxLength="20" />
+          <Property Name="Bankruptcy" Type="bit" />
+          <Property Name="LeaseDefaulted" Type="bit" />
+          <Property Name="RefusedtoPayRent" Type="bit" />
+          <Property Name="EvictedFromRental" Type="bit" />
+          <Property Name="ConvictedofFelony" Type="bit" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -821,8 +892,8 @@
             <End Role="UnitFeature" EntitySet="UnitFeatures" />
           </AssociationSet>
           <EntitySet Name="MaintenanceProviders" EntityType="DB_33736_rentalModel.MaintenanceProvider" />
-          <EntitySet Name="RentalApplications" EntityType="DB_33736_rentalModel.RentalApplication" />
           <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.MaintenanceExterior" />
+          <EntitySet Name="RentalApplications" EntityType="DB_33736_rentalModel.RentalApplication" />
           </EntityContainer>
         <EntityType Name="UnitGallery">
           <Key>
@@ -1425,40 +1496,6 @@
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="RentalApplication">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Type="Int32" Name="ApplicationId" Nullable="false" />
-          <Property Type="String" Name="FirstName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MiddleName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="DateofBirth" />
-          <Property Type="String" Name="SocialSecurityNumber" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="DriverLicense" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Phone" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CellPhone" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Income" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerPhone" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="WorkStartDate" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="WorkEndDate" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerAddress" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerCity" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerState" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerZipcode" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="EmployerFax" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerName" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerAddress" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerCity" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerState" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerZipcode" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerPhone" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="CoSignerRelationShip" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="OtherOccupant" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="Boolean" Name="Adult" />
-          <Property Type="String" Name="Relationship" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
         <EntityType Name="MaintenanceExterior">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -1486,6 +1523,111 @@
           <Property Type="String" Name="Tree_Service" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="String" Name="Waterproofing" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="String" Name="Windows___Exterior_Doors" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RentalApplication">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Type="Int32" Name="ApplicationId" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateofBirth" />
+          <Property Type="String" Name="SocialSecurityNumber" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DriverLicense" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CellPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CoSignerName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CoSignerAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CoSignerCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoSignerState" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoSignerZipcode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoSignerPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoSignerRelationShip" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OtherOccupant1Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOccupant1Adult" />
+          <Property Type="String" Name="RelationshipOccupant1ToApplicant" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OtherOccupant2Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOccupant2Adult" />
+          <Property Type="String" Name="RelationshipOccupant2ToApplicant" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OtherOccupant3Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOccupant3Adult" />
+          <Property Type="String" Name="RelationshipOccupant3ToApplicant" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OtherOccupant4Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOccupant4Adult" />
+          <Property Type="String" Name="RelationshipOccupant4ToApplicant" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Income" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="WorkStartDate" />
+          <Property Type="DateTime" Name="WorkEndDate" />
+          <Property Type="String" Name="EmployerAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmployerCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerState" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerZipcode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerFax" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CurrentLandloard" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CurrentLandLoardPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CurrentLandLoardFax" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CurrentAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CurrentAddressCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CurrentAddressState" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CurrentAddressZip" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Rent" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CurrentRentStartDate" />
+          <Property Type="DateTime" Name="CurrentRentEndDate" />
+          <Property Type="String" Name="PreviousLandloard" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousLandLoardPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PreviousLandLoardFax" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PreviousAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousAddressCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PreviousAddressState" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PreviousAddressZip" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PreviousRent" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="PreviousRentStartDate" />
+          <Property Type="DateTime" Name="PreviousRentEndDate" />
+          <Property Type="String" Name="EmergencyContactName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactRelationShip" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmergencyContactPhone" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmergencyContactAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmergencyContactState" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmergencyContactZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Pets" />
+          <Property Type="Int32" Name="PetsNumber" />
+          <Property Type="String" Name="Pet1Brand" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Pet1Age" />
+          <Property Type="String" Name="Pet1Weight" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Pet2Brand" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Pet2Age" />
+          <Property Type="String" Name="Pet2Weight" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle1Make" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle1Model" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Vehicle1Year" />
+          <Property Type="String" Name="Vehicle1Color" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle1LicensePlate" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle2Make" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle2Model" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Vehicle2Year" />
+          <Property Type="String" Name="Vehicle2Color" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle2LicensePlate" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle3Make" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle3Model" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Vehicle3Year" />
+          <Property Type="String" Name="Vehicle3Color" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle3LicensePlate" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle4Make" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle4Model" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Vehicle4Year" />
+          <Property Type="String" Name="Vehicle4Color" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vehicle4LicensePlate" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Bankruptcy" />
+          <Property Type="Boolean" Name="LeaseDefaulted" />
+          <Property Type="Boolean" Name="RefusedtoPayRent" />
+          <Property Type="Boolean" Name="EvictedFromRental" />
+          <Property Type="Boolean" Name="ConvictedofFelony" />
+          <Property Type="String" Name="CoSignerEmailAddress" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1894,41 +2036,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RentalApplications">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.RentalApplication">
-              <MappingFragment StoreEntitySet="RentalApplication">
-                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
-                <ScalarProperty Name="Adult" ColumnName="Adult" />
-                <ScalarProperty Name="OtherOccupant" ColumnName="OtherOccupant" />
-                <ScalarProperty Name="CoSignerRelationShip" ColumnName="CoSignerRelationShip" />
-                <ScalarProperty Name="CoSignerPhone" ColumnName="CoSignerPhone" />
-                <ScalarProperty Name="CoSignerZipcode" ColumnName="CoSignerZipcode" />
-                <ScalarProperty Name="CoSignerState" ColumnName="CoSignerState" />
-                <ScalarProperty Name="CoSignerCity" ColumnName="CoSignerCity" />
-                <ScalarProperty Name="CoSignerAddress" ColumnName="CoSignerAddress" />
-                <ScalarProperty Name="CoSignerName" ColumnName="CoSignerName" />
-                <ScalarProperty Name="EmployerFax" ColumnName="EmployerFax" />
-                <ScalarProperty Name="EmployerZipcode" ColumnName="EmployerZipcode" />
-                <ScalarProperty Name="EmployerState" ColumnName="EmployerState" />
-                <ScalarProperty Name="EmployerCity" ColumnName="EmployerCity" />
-                <ScalarProperty Name="EmployerAddress" ColumnName="EmployerAddress" />
-                <ScalarProperty Name="WorkEndDate" ColumnName="WorkEndDate" />
-                <ScalarProperty Name="WorkStartDate" ColumnName="WorkStartDate" />
-                <ScalarProperty Name="EmployerPhone" ColumnName="EmployerPhone" />
-                <ScalarProperty Name="Income" ColumnName="Income" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="DriverLicense" ColumnName="DriverLicense" />
-                <ScalarProperty Name="SocialSecurityNumber" ColumnName="SocialSecurityNumber" />
-                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MaintenanceExteriors">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceExterior">
               <MappingFragment StoreEntitySet="MaintenanceExteriors">
@@ -1955,6 +2062,112 @@
                 <ScalarProperty Name="Awnings" ColumnName="Awnings" />
                 <ScalarProperty Name="Asphalt_Paving" ColumnName="Asphalt Paving" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalApplications">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.RentalApplication">
+              <MappingFragment StoreEntitySet="RentalApplication">
+                <ScalarProperty Name="CoSignerEmailAddress" ColumnName="CoSignerEmailAddress" />
+                <ScalarProperty Name="ConvictedofFelony" ColumnName="ConvictedofFelony" />
+                <ScalarProperty Name="EvictedFromRental" ColumnName="EvictedFromRental" />
+                <ScalarProperty Name="RefusedtoPayRent" ColumnName="RefusedtoPayRent" />
+                <ScalarProperty Name="LeaseDefaulted" ColumnName="LeaseDefaulted" />
+                <ScalarProperty Name="Bankruptcy" ColumnName="Bankruptcy" />
+                <ScalarProperty Name="Vehicle4LicensePlate" ColumnName="Vehicle4LicensePlate" />
+                <ScalarProperty Name="Vehicle4Color" ColumnName="Vehicle4Color" />
+                <ScalarProperty Name="Vehicle4Year" ColumnName="Vehicle4Year" />
+                <ScalarProperty Name="Vehicle4Model" ColumnName="Vehicle4Model" />
+                <ScalarProperty Name="Vehicle4Make" ColumnName="Vehicle4Make" />
+                <ScalarProperty Name="Vehicle3LicensePlate" ColumnName="Vehicle3LicensePlate" />
+                <ScalarProperty Name="Vehicle3Color" ColumnName="Vehicle3Color" />
+                <ScalarProperty Name="Vehicle3Year" ColumnName="Vehicle3Year" />
+                <ScalarProperty Name="Vehicle3Model" ColumnName="Vehicle3Model" />
+                <ScalarProperty Name="Vehicle3Make" ColumnName="Vehicle3Make" />
+                <ScalarProperty Name="Vehicle2LicensePlate" ColumnName="Vehicle2LicensePlate" />
+                <ScalarProperty Name="Vehicle2Color" ColumnName="Vehicle2Color" />
+                <ScalarProperty Name="Vehicle2Year" ColumnName="Vehicle2Year" />
+                <ScalarProperty Name="Vehicle2Model" ColumnName="Vehicle2Model" />
+                <ScalarProperty Name="Vehicle2Make" ColumnName="Vehicle2Make" />
+                <ScalarProperty Name="Vehicle1LicensePlate" ColumnName="Vehicle1LicensePlate" />
+                <ScalarProperty Name="Vehicle1Color" ColumnName="Vehicle1Color" />
+                <ScalarProperty Name="Vehicle1Year" ColumnName="Vehicle1Year" />
+                <ScalarProperty Name="Vehicle1Model" ColumnName="Vehicle1Model" />
+                <ScalarProperty Name="Vehicle1Make" ColumnName="Vehicle1Make" />
+                <ScalarProperty Name="Pet2Weight" ColumnName="Pet2Weight" />
+                <ScalarProperty Name="Pet2Age" ColumnName="Pet2Age" />
+                <ScalarProperty Name="Pet2Brand" ColumnName="Pet2Brand" />
+                <ScalarProperty Name="Pet1Weight" ColumnName="Pet1Weight" />
+                <ScalarProperty Name="Pet1Age" ColumnName="Pet1Age" />
+                <ScalarProperty Name="Pet1Brand" ColumnName="Pet1Brand" />
+                <ScalarProperty Name="PetsNumber" ColumnName="PetsNumber" />
+                <ScalarProperty Name="Pets" ColumnName="Pets" />
+                <ScalarProperty Name="EmergencyContactZipCode" ColumnName="EmergencyContactZipCode" />
+                <ScalarProperty Name="EmergencyContactState" ColumnName="EmergencyContactState" />
+                <ScalarProperty Name="EmergencyContactCity" ColumnName="EmergencyContactCity" />
+                <ScalarProperty Name="EmergencyContactAddress" ColumnName="EmergencyContactAddress" />
+                <ScalarProperty Name="EmergencyContactPhone" ColumnName="EmergencyContactPhone" />
+                <ScalarProperty Name="EmergencyContactRelationShip" ColumnName="EmergencyContactRelationShip" />
+                <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+                <ScalarProperty Name="PreviousRentEndDate" ColumnName="PreviousRentEndDate" />
+                <ScalarProperty Name="PreviousRentStartDate" ColumnName="PreviousRentStartDate" />
+                <ScalarProperty Name="PreviousRent" ColumnName="PreviousRent" />
+                <ScalarProperty Name="PreviousAddressZip" ColumnName="PreviousAddressZip" />
+                <ScalarProperty Name="PreviousAddressState" ColumnName="PreviousAddressState" />
+                <ScalarProperty Name="PreviousAddressCity" ColumnName="PreviousAddressCity" />
+                <ScalarProperty Name="PreviousAddress" ColumnName="PreviousAddress" />
+                <ScalarProperty Name="PreviousLandLoardFax" ColumnName="PreviousLandLoardFax" />
+                <ScalarProperty Name="PreviousLandLoardPhone" ColumnName="PreviousLandLoardPhone" />
+                <ScalarProperty Name="PreviousLandloard" ColumnName="PreviousLandloard" />
+                <ScalarProperty Name="CurrentRentEndDate" ColumnName="CurrentRentEndDate" />
+                <ScalarProperty Name="CurrentRentStartDate" ColumnName="CurrentRentStartDate" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="CurrentAddressZip" ColumnName="CurrentAddressZip" />
+                <ScalarProperty Name="CurrentAddressState" ColumnName="CurrentAddressState" />
+                <ScalarProperty Name="CurrentAddressCity" ColumnName="CurrentAddressCity" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="CurrentLandLoardFax" ColumnName="CurrentLandLoardFax" />
+                <ScalarProperty Name="CurrentLandLoardPhone" ColumnName="CurrentLandLoardPhone" />
+                <ScalarProperty Name="CurrentLandloard" ColumnName="CurrentLandloard" />
+                <ScalarProperty Name="EmployerFax" ColumnName="EmployerFax" />
+                <ScalarProperty Name="EmployerPhone" ColumnName="EmployerPhone" />
+                <ScalarProperty Name="EmployerZipcode" ColumnName="EmployerZipcode" />
+                <ScalarProperty Name="EmployerState" ColumnName="EmployerState" />
+                <ScalarProperty Name="EmployerCity" ColumnName="EmployerCity" />
+                <ScalarProperty Name="EmployerAddress" ColumnName="EmployerAddress" />
+                <ScalarProperty Name="WorkEndDate" ColumnName="WorkEndDate" />
+                <ScalarProperty Name="WorkStartDate" ColumnName="WorkStartDate" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="RelationshipOccupant4ToApplicant" ColumnName="RelationshipOccupant4ToApplicant" />
+                <ScalarProperty Name="IsOccupant4Adult" ColumnName="IsOccupant4Adult" />
+                <ScalarProperty Name="OtherOccupant4Name" ColumnName="OtherOccupant4Name" />
+                <ScalarProperty Name="RelationshipOccupant3ToApplicant" ColumnName="RelationshipOccupant3ToApplicant" />
+                <ScalarProperty Name="IsOccupant3Adult" ColumnName="IsOccupant3Adult" />
+                <ScalarProperty Name="OtherOccupant3Name" ColumnName="OtherOccupant3Name" />
+                <ScalarProperty Name="RelationshipOccupant2ToApplicant" ColumnName="RelationshipOccupant2ToApplicant" />
+                <ScalarProperty Name="IsOccupant2Adult" ColumnName="IsOccupant2Adult" />
+                <ScalarProperty Name="OtherOccupant2Name" ColumnName="OtherOccupant2Name" />
+                <ScalarProperty Name="RelationshipOccupant1ToApplicant" ColumnName="RelationshipOccupant1ToApplicant" />
+                <ScalarProperty Name="IsOccupant1Adult" ColumnName="IsOccupant1Adult" />
+                <ScalarProperty Name="OtherOccupant1Name" ColumnName="OtherOccupant1Name" />
+                <ScalarProperty Name="CoSignerRelationShip" ColumnName="CoSignerRelationShip" />
+                <ScalarProperty Name="CoSignerPhone" ColumnName="CoSignerPhone" />
+                <ScalarProperty Name="CoSignerZipcode" ColumnName="CoSignerZipcode" />
+                <ScalarProperty Name="CoSignerState" ColumnName="CoSignerState" />
+                <ScalarProperty Name="CoSignerCity" ColumnName="CoSignerCity" />
+                <ScalarProperty Name="CoSignerAddress" ColumnName="CoSignerAddress" />
+                <ScalarProperty Name="CoSignerName" ColumnName="CoSignerName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DriverLicense" ColumnName="DriverLicense" />
+                <ScalarProperty Name="SocialSecurityNumber" ColumnName="SocialSecurityNumber" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2092,8 +2305,8 @@
           <ConnectorPoint PointX="3" PointY="46.172801106770834" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProvider" Width="1.5" PointX="13.375" PointY="8.75" Height="4.6725065104166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.RentalApplication" Width="1.5" PointX="14.375" PointY="0.75" Height="6.5955208333333246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceExterior" Width="1.5" PointX="7.375" PointY="14.75" Height="5.4417122395833246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.RentalApplication" Width="3" PointX="9.375" PointY="14.75" Height="20.05662109375001" />
         </Diagram>
     </Diagrams>
   </Designer>

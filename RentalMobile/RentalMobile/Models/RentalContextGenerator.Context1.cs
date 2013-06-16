@@ -49,7 +49,7 @@ namespace RentalMobile.Models
         public DbSet<Unit> Units { get; set; }
         public DbSet<UnitFeature> UnitFeatures { get; set; }
         public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
-        public DbSet<RentalApplication> RentalApplications { get; set; }
         public DbSet<MaintenanceExterior> MaintenanceExteriors { get; set; }
+        public DbSet<RentalApplication> RentalApplications { get; set; }
     }
 }

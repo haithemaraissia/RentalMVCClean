@@ -5,16 +5,27 @@ Steps
 -2-Schedule showing
 -3-Submit application
 -4-Pay Application Fee  THROUGH AMAZON MARKETPLACE( FOR OWNERS, WE RECOMMEND EXPERIAN on the email..)
--5-Contract your Maintenance 
+-5-Contract your Maintenance : Month to Month, maybe recurring payments
 Get the keys
 -6-Generate Contract between Owner and Tenant
 -7-Generate Contract between Tenant and Provider
--8-Pay the Rent
+-8-Pay the Rent monthly
 Through Market Place
--9-Pay The Maintenance 
+-9-Pay The Maintenance  monthly
 Through Market Place
 
 
+Story:
+Tenat find the listing. He schedule a showing. Owner accep the showing, shows the property.
+Tenat create application, if it doesn;t exist. Tenat submit the application which will be 
+process throug market place. Owner received the application fee and do background checking,
+Owner inform tenant that his application is approved. 
+Tenant choise maintenace and contract with them on monthly basis.
+Owner receive the contract ( view ) betweem Tenant and Mainteance.
+Tenant pay rent. Tenat pay maintenance. Owner recieved receipt.
+Maintenance provide maintenance and recommendation to the owner.
+
+Outside projects will be handled through specialist.
 
 
 
@@ -51,11 +62,11 @@ http://dotnet.dzone.com/news/amazon-simple-pay-aspnet
 
 --------------------\
 Applicant Information
-Employment Information
-Housing History
 OCCUPANT
 	Co-singer
 	Regular
+Employment Information
+Housing History
 Additional Information
 	PETS
 	EMERGENCY
