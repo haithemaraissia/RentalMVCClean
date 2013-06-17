@@ -27,9 +27,7 @@
             }
         }
 
-        $(function () {
-            $("#datepicker").datepicker();
-        });
+
     });
 
     function validateAllSteps() {
@@ -151,6 +149,21 @@
 		
 		
 </script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+    rel="stylesheet" type="text/css" />
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>*@
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#birthday").datepicker();
+        $("#workstartdate").datepicker();
+        $("#workenddate").datepicker();
+        $("#currentrentstartdate").datepicker();
+        $("#currentrentenddate").datepicker();
+        $("#previousrentstartdate").datepicker();
+        $("#previousrentenddate").datepicker();
+    });
+</script>
 <form action="#" class=" ">
 <input type='hidden' name="issubmit" value="1">
 <!-- Tabs -->
@@ -195,7 +208,7 @@
                 </li>
                 <li class="five columns">
                     @Html.LabelFor(model => model.DateofBirth, new { id = "dateofbirthlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "datepicker", required = "required", @class = "full-width", placeholder = "Date of Birth" })
+                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "birthday", required = "required", @class = "full-width", placeholder = "Date of Birth" })
                 </li>
                 <li class="five columns">
                     @Html.LabelFor(model => model.SocialSecurityNumber, new { id = "socialsecuritynumberlabel", @class = "screen-reader-text" })
@@ -315,7 +328,27 @@
     <div id="step-2">
         <h2 class="StepTitle">
             Employment Information</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+        @*        <section class="sixteen columns relative" style="margin-top: 20px; margin-left: 50px;
+            margin-bottom: -10px">
+            <ul>
+            
+            </ul>
+        </section>*@
+        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+            margin-bottom: -10px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.WorkStartDate, new { id = "workstartdatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.WorkStartDate, new { id = "workstartdate", required = "required", @class = "full-width", placeholder = "Work Start Date" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.WorkEndDate, new { id = "workenddatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.WorkEndDate, new { id = "workenddate", required = "required", @class = "full-width", placeholder = "Work End Date" })
+                </li>
+            </ul>
+        </section>
+        <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
+            margin-bottom: -10px">
             <ul>
                 <li class="five columns">
                     @Html.LabelFor(model => model.EmployerName, new { id = "employernamelabel", @class = "screen-reader-text" })
@@ -324,14 +357,6 @@
                 <li class="five columns">
                     @Html.LabelFor(model => model.Income, new { id = "incomelabel", @class = "screen-reader-text" })
                     @Html.TextBoxFor(m => m.Income, new { id = "income", required = "required", @class = "full-width", placeholder = "Income Gross" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.WorkStartDate, new { id = "workstartdatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.WorkStartDate, new { id = "workstartdate", required = "required", @class = "full-width", placeholder = "Work Start Date" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.WorkEndDate, new { id = "workenddatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.WorkEndDate, new { id = "workenddatelabel", required = "required", @class = "full-width", placeholder = "Work End Date" })
                 </li>
                 <li class="five columns">
                     @Html.LabelFor(model => model.EmployerAddress, new { id = "employeraddresslabel", @class = "screen-reader-text" })
@@ -359,6 +384,23 @@
     <div id="step-3">
         <h2 class="StepTitle">
             Housing History</h2>
+        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+            margin-bottom: -10px">
+            <ul>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.Rent, new { id = "rentlabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.Rent, new { id = "rent", required = "required", @class = "full-width", placeholder = "Rent/Month" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentRentStartDate, new { id = "currentrentstartdatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentRentStartDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
+                </li>
+                <li class="five columns">
+                    @Html.LabelFor(model => model.CurrentRentEndDate, new { id = "currentrentenddatelabel", @class = "screen-reader-text" })
+                    @Html.TextBoxFor(m => m.CurrentRentEndDate, new { id = "currentrentenddate", required = "required", @class = "full-width", placeholder = "To" })
+                </li>
+            </ul>
+        </section>
         <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
             <ul>
                 <li class="five columns">
@@ -388,18 +430,6 @@
                 <li class="five columns">
                     @Html.LabelFor(model => model.CurrentAddressZip, new { id = "currentaddressziplabel", @class = "screen-reader-text" })
                     @Html.TextBoxFor(m => m.CurrentAddressZip, new { id = "currentaddresszip", required = "required", @class = "full-width", placeholder = "Zip" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Rent, new { id = "rentlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Rent, new { id = "rent", required = "required", @class = "full-width", placeholder = "Rent/Month" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.CurrentRentStartDate, new { id = "currentrentstartdatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CurrentRentStartDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.CurrentRentEndDate, new { id = "currentrentenddatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.CurrentRentEndDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "To" })
                 </li>
                 <li class="five columns">
                     @Html.LabelFor(model => model.PreviousLandloard, new { id = "previouslandloardlabel", @class = "screen-reader-text" })
