@@ -18,7 +18,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            return View(db.RentalApplications.ToList());
+            return View(db.RentalApplications.Where(x =>x.TenantId == 5).ToList());
         }
 
         //

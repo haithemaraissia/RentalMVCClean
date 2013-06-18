@@ -808,6 +808,10 @@
     <Content Include="Views\RATest\Create.cshtml" />
     <Content Include="Views\RATest\Edit.cshtml" />
     <Content Include="Views\RATest\Delete.cshtml" />
+    <Content Include="Views\RentalApplication\Details.cshtml" />
+    <Content Include="Views\RentalApplication\Create.cshtml" />
+    <Content Include="Views\RentalApplication\Delete.cshtml" />
+    <Content Include="Views\RentalApplication\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

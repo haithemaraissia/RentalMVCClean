@@ -1,619 +1,627 @@
-﻿@model RentalMobile.Models.RentalApplication
-@using RentalMobile.Helpers;
+﻿@model IEnumerable<RentalMobile.Models.RentalApplication>
+
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+    ViewBag.Title = "Index";
 }
-<h2>
-    Create</h2>
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<link href="../../css/smartwizard/smart_wizard.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../../Scripts/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="../../Scripts/smartwizard/jquery.smartWizard-2.0.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        // Smart Wizard     	
-        $('#wizard').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback, enableFinishButton: true });
 
-        function leaveAStepCallback(obj) {
-            var step_num = obj.attr('rel');
-            return validateSteps(step_num);
-        }
+<h2>Index</h2>
 
-        function onFinishCallback() {
-            if (validateAllSteps()) {
-                $('form').submit();
-            }
-        }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            ApplicationId
+        </th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            MiddleName
+        </th>
+        <th>
+            DateofBirth
+        </th>
+        <th>
+            SocialSecurityNumber
+        </th>
+        <th>
+            DriverLicense
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            CellPhone
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            CoSignerName
+        </th>
+        <th>
+            CoSignerAddress
+        </th>
+        <th>
+            CoSignerCity
+        </th>
+        <th>
+            CoSignerState
+        </th>
+        <th>
+            CoSignerZipcode
+        </th>
+        <th>
+            CoSignerPhone
+        </th>
+        <th>
+            CoSignerRelationShip
+        </th>
+        <th>
+            OtherOccupant1Name
+        </th>
+        <th>
+            IsOccupant1Adult
+        </th>
+        <th>
+            RelationshipOccupant1ToApplicant
+        </th>
+        <th>
+            OtherOccupant2Name
+        </th>
+        <th>
+            IsOccupant2Adult
+        </th>
+        <th>
+            RelationshipOccupant2ToApplicant
+        </th>
+        <th>
+            OtherOccupant3Name
+        </th>
+        <th>
+            IsOccupant3Adult
+        </th>
+        <th>
+            RelationshipOccupant3ToApplicant
+        </th>
+        <th>
+            OtherOccupant4Name
+        </th>
+        <th>
+            IsOccupant4Adult
+        </th>
+        <th>
+            RelationshipOccupant4ToApplicant
+        </th>
+        <th>
+            EmployerName
+        </th>
+        <th>
+            Income
+        </th>
+        <th>
+            WorkStartDate
+        </th>
+        <th>
+            WorkEndDate
+        </th>
+        <th>
+            EmployerAddress
+        </th>
+        <th>
+            EmployerCity
+        </th>
+        <th>
+            EmployerState
+        </th>
+        <th>
+            EmployerZipcode
+        </th>
+        <th>
+            EmployerPhone
+        </th>
+        <th>
+            EmployerFax
+        </th>
+        <th>
+            CurrentLandloard
+        </th>
+        <th>
+            CurrentLandLoardPhone
+        </th>
+        <th>
+            CurrentLandLoardFax
+        </th>
+        <th>
+            CurrentAddress
+        </th>
+        <th>
+            CurrentAddressCity
+        </th>
+        <th>
+            CurrentAddressState
+        </th>
+        <th>
+            CurrentAddressZip
+        </th>
+        <th>
+            Rent
+        </th>
+        <th>
+            CurrentRentStartDate
+        </th>
+        <th>
+            CurrentRentEndDate
+        </th>
+        <th>
+            PreviousLandloard
+        </th>
+        <th>
+            PreviousLandLoardPhone
+        </th>
+        <th>
+            PreviousLandLoardFax
+        </th>
+        <th>
+            PreviousAddress
+        </th>
+        <th>
+            PreviousAddressCity
+        </th>
+        <th>
+            PreviousAddressState
+        </th>
+        <th>
+            PreviousAddressZip
+        </th>
+        <th>
+            PreviousRent
+        </th>
+        <th>
+            PreviousRentStartDate
+        </th>
+        <th>
+            PreviousRentEndDate
+        </th>
+        <th>
+            EmergencyContactName
+        </th>
+        <th>
+            EmergencyContactRelationShip
+        </th>
+        <th>
+            EmergencyContactPhone
+        </th>
+        <th>
+            EmergencyContactAddress
+        </th>
+        <th>
+            EmergencyContactCity
+        </th>
+        <th>
+            EmergencyContactState
+        </th>
+        <th>
+            EmergencyContactZipCode
+        </th>
+        <th>
+            Pets
+        </th>
+        <th>
+            PetsNumber
+        </th>
+        <th>
+            Pet1Brand
+        </th>
+        <th>
+            Pet1Age
+        </th>
+        <th>
+            Pet1Weight
+        </th>
+        <th>
+            Pet2Brand
+        </th>
+        <th>
+            Pet2Age
+        </th>
+        <th>
+            Pet2Weight
+        </th>
+        <th>
+            Vehicle1Make
+        </th>
+        <th>
+            Vehicle1Model
+        </th>
+        <th>
+            Vehicle1Year
+        </th>
+        <th>
+            Vehicle1Color
+        </th>
+        <th>
+            Vehicle1LicensePlate
+        </th>
+        <th>
+            Vehicle2Make
+        </th>
+        <th>
+            Vehicle2Model
+        </th>
+        <th>
+            Vehicle2Year
+        </th>
+        <th>
+            Vehicle2Color
+        </th>
+        <th>
+            Vehicle2LicensePlate
+        </th>
+        <th>
+            Vehicle3Make
+        </th>
+        <th>
+            Vehicle3Model
+        </th>
+        <th>
+            Vehicle3Year
+        </th>
+        <th>
+            Vehicle3Color
+        </th>
+        <th>
+            Vehicle3LicensePlate
+        </th>
+        <th>
+            Vehicle4Make
+        </th>
+        <th>
+            Vehicle4Model
+        </th>
+        <th>
+            Vehicle4Year
+        </th>
+        <th>
+            Vehicle4Color
+        </th>
+        <th>
+            Vehicle4LicensePlate
+        </th>
+        <th>
+            Bankruptcy
+        </th>
+        <th>
+            LeaseDefaulted
+        </th>
+        <th>
+            RefusedtoPayRent
+        </th>
+        <th>
+            EvictedFromRental
+        </th>
+        <th>
+            ConvictedofFelony
+        </th>
+        <th>
+            CoSignerEmailAddress
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialSecurityNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverLicense)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant1Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant1Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant1ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant2Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant2Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant2ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant3Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant3Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant3ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant4Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant4Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant4ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PetsNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bankruptcy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaseDefaulted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefusedtoPayRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EvictedFromRental)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvictedofFelony)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerEmailAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
 
-    });
-
-    function validateAllSteps() {
-        var isStepValid = true;
-
-        if (validateStep1() == false) {
-            isStepValid = false;
-            $('#wizard').smartWizard('setError', { stepnum: 1, iserror: true });
-        } else {
-            $('#wizard').smartWizard('setError', { stepnum: 1, iserror: false });
-        }
-
-        //        if (validateStep3() == false) {
-        //            isStepValid = false;
-        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: true });
-        //        } else {
-        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: false });
-        //        }
-
-        if (!isStepValid) {
-            $('#wizard').smartWizard('showMessage', 'Please correct the errors in the steps and continue');
-        }
-
-        return isStepValid;
-    }
-
-
-    function validateSteps(step) {
-        var isStepValid = true;
-        // validate step 1
-        if (step == 1) {
-            if (validateStep1() == false) {
-                isStepValid = false;
-                $('#wizard').smartWizard('showMessage', 'Please correct the errors in step' + step + ' and click next.');
-                $('#wizard').smartWizard('setError', { stepnum: step, iserror: true });
-            } else {
-                $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
-            }
-        }
-
-        // validate step3
-        //        if (step == 3) {
-        //            if (validateStep3() == false) {
-        //                isStepValid = false;
-        //                $('#wizard').smartWizard('showMessage', 'Please correct the errors in step' + step + ' and click next.');
-        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: true });
-        //            } else {
-        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
-        //            }
-        //        }
-
-        return isStepValid;
-    }
-
-    function validateStep1() {
-        var isValid = true;
-        // Validate Username
-        var un = $('#firstname').val();
-        if (!un && un.length <= 0) {
-            isValid = false;
-            $('#msg_username').html('Please fill username').show();
-        } else {
-            $('#msg_username').html('').hide();
-        }
-
-        // validate password
-        var pw = $('#lastname').val();
-        if (!pw && pw.length <= 0) {
-            isValid = false;
-            $('#msg_password').html('Please fill password').show();
-        } else {
-            $('#msg_password').html('').hide();
-        }
-
-        //        // validate confirm password
-        //        var cpw = $('#cpassword').val();
-        //        if (!cpw && cpw.length <= 0) {
-        //            isValid = false;
-        //            $('#msg_cpassword').html('Please fill confirm password').show();
-        //        } else {
-        //            $('#msg_cpassword').html('').hide();
-        //        }
-
-        //        // validate password match
-        //        if (pw && pw.length > 0 && cpw && cpw.length > 0) {
-        //            if (pw != cpw) {
-        //                isValid = false;
-        //                $('#msg_cpassword').html('Password mismatch').show();
-        //            } else {
-        //                $('#msg_cpassword').html('').hide();
-        //            }
-        //        }
-        return isValid;
-    }
-
-    function validateStep3() {
-        var isValid = true;
-        //validate email  email
-        var email = $('#email').val();
-        if (email && email.length > 0) {
-            if (!isValidEmailAddress(email)) {
-                isValid = false;
-                $('#msg_email').html('Email is invalid').show();
-            } else {
-                $('#msg_email').html('').hide();
-            }
-        } else {
-            isValid = false;
-            $('#msg_email').html('Please enter email').show();
-        }
-        return isValid;
-    }
-
-    // Email Validation
-    function isValidEmailAddress(emailAddress) {
-        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        return pattern.test(emailAddress);
-    } 
-		
-		
-</script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-    rel="stylesheet" type="text/css" />
-@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>*@
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#birthday").datepicker();
-        $("#workstartdate").datepicker();
-        $("#workenddate").datepicker();
-        $("#currentrentstartdate").datepicker();
-        $("#currentrentenddate").datepicker();
-        $("#previousrentstartdate").datepicker();
-        $("#previousrentenddate").datepicker();
-    });
-</script>
-<form action="#" class=" ">
-<input type='hidden' name="issubmit" value="1">
-<!-- Tabs -->
-<style>
-    form li small
-    {
-        top: 0;
-    }
-</style>
-<div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
-    <ul class="sixteen columns">
-        <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
-            class="stepDesc">Step 1<br />
-            <small>Applicant Information</small> </span></a></li>
-        <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
-            class="stepDesc">Step 2<br />
-            <small>Step 2 description</small> </span></a></li>
-        <li><a href="#step-3" class="four columns"><span class="stepNumber">3</span> <span
-            class="stepDesc">Step 3<br />
-            <small>Step 3 description</small> </span></a></li>
-        <li><a href="#step-4" class="four columns"><span class="stepNumber">4</span> <span
-            class="stepDesc">Step 4<br />
-            <small>Step 4 description</small> </span></a></li>
-    </ul>
-    <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Applicant Details</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.FirstName, new { id = "firstname", required = "required", @class = "full-width", placeholder = "First Name" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.MiddleName, new { id = "middlename", required = "required", @class = "full-width", placeholder = "Middle Name" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.LastName, new { id = "lastname", required = "required", @class = "full-width", placeholder = "Last Name" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.DateofBirth, new { id = "birthday", required = "required", @class = "full-width", placeholder = "Date of Birth" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.SocialSecurityNumber, new { id = "socialsecurity", required = "required", @class = "full-width", placeholder = "Social Security #" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.DriverLicense, new { id = "driverlicense", required = "required", @class = "full-width", placeholder = "Driver License" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Phone, new { id = "phone", required = "required", @class = "full-width", placeholder = "Phone #" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CellPhone, new { id = "cellphone", required = "required", @class = "full-width", placeholder = "CellPhone #" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmailAddress, new { id = "emailaddress", required = "required", @class = "full-width", placeholder = "Email Address" })
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            Co-Signer</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerName, new { id = "cosignername", required = "required", @class = "full-width", placeholder = "Co-signer's Name" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerAddress, new { id = "cosigneraddress", required = "required", @class = "full-width", placeholder = "Co-signer's Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerCity, new { id = "cosignercity", required = "required", @class = "full-width", placeholder = "Co-signer's City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerState, new { id = "cosignerstate", required = "required", @class = "full-width", placeholder = "Co-signer's State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerZipcode, new { id = "cosignerzipcode", required = "required", @class = "full-width", placeholder = "Co-signer's Zipcode" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerPhone, new { id = "cosignerphone", required = "required", @class = "full-width", placeholder = "Co-signer's Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerRelationShip, new { id = "cosignerrelationship", required = "required", @class = "full-width", placeholder = "Co-signer's Relationship" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CoSignerEmailAddress, new { id = "cosigneremailaddress", required = "required", @class = "full-width", placeholder = "Co-signer's  EmailAddress" })
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            Occupant</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.OtherOccupant1Name, new { id = "occupant1name", required = "required", @class = "full-width", placeholder = "Occupant 1 Name" })
-                </li>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.IsOccupant1Adult, new[] { 
-                                                                new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.RelationshipOccupant1ToApplicant, new { id = "occupant1relationship", required = "required", @class = "full-width", placeholder = "Relationship's to Application" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.OtherOccupant2Name, new { id = "occupant2name", required = "required", @class = "full-width", placeholder = "Occupant 2 Name" })
-                </li>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.IsOccupant2Adult, new[] { 
-                                                                new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.RelationshipOccupant2ToApplicant, new
-               {
-                   id = "occupant2relationship",
-                   required = "required",
-                   @class = "full-width",
-                   placeholder = "Relationship's to Application"
-               })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.OtherOccupant3Name, new { id = "occupant3name", required = "required", @class = "full-width", placeholder = "Occupant 3 Name" })
-                </li>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.IsOccupant3Adult, new[] { 
-                                                                new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.RelationshipOccupant3ToApplicant, new { id = "occupant3relationshiplabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.RelationshipOccupant3ToApplicant, new
-               {
-                   id = "occupant3relationship",
-                   required = "required",
-                   @class = "full-width",
-                   placeholder = "Relationship's to Application"
-               })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.OtherOccupant4Name, new { id = "occupant4name", required = "required", @class = "full-width", placeholder = "Occupant 4 Name" })
-                </li>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.IsOccupant4Adult, new[] { 
-                                                                new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.RelationshipOccupant4ToApplicant, new
-               {
-                   id = "occupant4relationship",
-                   required = "required",
-                   @class = "full-width",
-                   placeholder = "Relationship's to Application"
-               })
-                </li>
-            </ul>
-        </section>
-    </div>
-    <div id="step-2" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Employment Information</h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.WorkStartDate, new { id = "workstartdate", required = "required", @class = "full-width", placeholder = "Work Start Date" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.WorkEndDate, new { id = "workenddate", required = "required", @class = "full-width", placeholder = "Work End Date" })
-                </li>
-            </ul>
-        </section>
-        <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerName, new { id = "employername", required = "required", @class = "full-width", placeholder = "Employer Name" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Income, new { id = "income", required = "required", @class = "full-width", placeholder = "Income Gross" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerAddress, new { id = "employeraddress", required = "required", @class = "full-width", placeholder = "Employer Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerCity, new { id = "employercity", required = "required", @class = "full-width", placeholder = "Employer City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerState, new { id = "employerstate", required = "required", @class = "full-width", placeholder = "Employer State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerZipcode, new { id = "employerzipcode", required = "required", @class = "full-width", placeholder = "Employer Zipcode" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmployerFax, new { id = "employerfax", required = "required", @class = "full-width", placeholder = "Employer Fax" })
-                </li>
-            </ul>
-        </section>
-    </div>
-    <div id="step-3" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Housing History</h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandloard, new { id = "currentlandloard", required = "required", @class = "full-width", placeholder = "Current Landloard" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandLoardPhone, new { id = "currentlandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandLoardFax, new { id = "currentlandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Rent, new { id = "rent", required = "required", @class = "full-width", placeholder = "Rent/Month" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentRentStartDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentRentEndDate, new { id = "currentrentenddate", required = "required", @class = "full-width", placeholder = "To" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddress, new { id = "currentaddress", required = "required", @class = "full-width", placeholder = "Current Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressCity, new { id = "currentaddresscity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressState, new { id = "currentaddressstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressZip, new { id = "currentaddresszip", required = "required", @class = "full-width", placeholder = "Zip" })
-                </li>
-            </ul>
-        </section>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandloard, new { id = "previouslandloard", required = "required", @class = "full-width", placeholder = "Current Landloard" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandLoardPhone, new { id = "previouslandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandLoardFax, new { id = "previouslandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRent, new { id = "previousrent", required = "required", @class = "full-width", placeholder = "Previous Rent/Month" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRentStartDate, new { id = "previousrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRentEndDate, new { id = "previousrentenddate", required = "required", @class = "full-width", placeholder = "To" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddress, new { id = "previousaddress", required = "required", @class = "full-width", placeholder = "Previous Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressCity, new { id = "previousaddresscity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressState, new { id = "previousaddressstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressZip, new { id = "previousaddresszip", required = "required", @class = "full-width", placeholder = "Zipcode" })
-                </li>
-            </ul>
-        </section>
-    </div>
-    <div id="step-4" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            EMERGENCY CONTACT</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactName, new { id = "emergencycontactname", required = "required", @class = "full-width", placeholder = "Emergency Contact" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactRelationShip, new { id = "emergencycontactrelationship", required = "required", @class = "full-width", placeholder = "Relationship" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactPhone, new { id = "emergencycontactphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactAddress, new { id = "emergencycontactaddress", required = "required", @class = "full-width", placeholder = "Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactCity, new { id = "emergencycontactcity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactState, new { id = "emergencycontactstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactZipCode, new { id = "emergencycontactzipcode", required = "required", @class = "full-width", placeholder = "Zipcode" })
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            EMERGENCY CONTACT
-        </h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pets, new { id = "pets", required = "required", @class = "full-width", placeholder = "Pets?" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PetsNumber, new { id = "petsnumber", required = "required", @class = "full-width", placeholder = "How Many?" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Brand, new { id = "pet1brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Age, new { id = "pet1age", required = "required", @class = "full-width", placeholder = "Age" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Weight, new { id = "pet1weight", required = "required", @class = "full-width", placeholder = "Weight" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Brand, new { id = "pet2brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Age, new { id = "pet2age", required = "required", @class = "full-width", placeholder = "Age" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Weight, new { id = "pet2weight", required = "required", @class = "full-width", placeholder = "Weight" })
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            VEHICLE
-        </h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle1Make, new { id = "vehicle1makelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle1Make, new { id = "vehicle1make", required = "required", @class = "full-width", placeholder = "Vehicle1 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle1Model, new { id = "vehicle1modellabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle1Model, new { id = "vehicle1model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle1Year, new { id = "vehicle1yearlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle1Year, new { id = "vehicle1year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle1LicensePlate, new { id = "vehicle1licenseplatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle1LicensePlate, new { id = "vehicle1licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle1Color, new { id = "vehicle1colorlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle1Color, new { id = "vehicle1color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2Make, new { id = "vehicle2makelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2Make, new { id = "vehicle2make", required = "required", @class = "full-width", placeholder = "Vehicle2 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2Model, new { id = "vehicle2modellabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2Model, new { id = "vehicle2model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2Year, new { id = "vehicle2yearlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2Year, new { id = "vehicle2year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2LicensePlate, new { id = "vehicle2licenseplatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2LicensePlate, new { id = "vehicle2licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2Color, new { id = "vehicle2colorlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2Color, new { id = "vehicle2color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle3Make, new { id = "vehicle3makelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle3Make, new { id = "vehicle3make", required = "required", @class = "full-width", placeholder = "Vehicle3 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle3Model, new { id = "vehicle3modellabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle3Model, new { id = "vehicle3model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle3Year, new { id = "vehicle3yearlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle3Year, new { id = "vehicle3year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle3LicensePlate, new { id = "vehicle3licenseplatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle3LicensePlate, new { id = "vehicle3licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle3Color, new { id = "vehicle3colorlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle3Color, new { id = "vehicle3color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle4Make, new { id = "vehicle4makelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle4Make, new { id = "vehicle4make", required = "required", @class = "full-width", placeholder = "Vehicle4 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle4Model, new { id = "vehicle4modellabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle4Model, new { id = "vehicle4model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle4Year, new { id = "vehicle4yearlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle4Year, new { id = "vehicle4year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle4LicensePlate, new { id = "vehicle4licenseplatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle4LicensePlate, new { id = "vehicle4licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle4Color, new { id = "vehicle4colorlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle4Color, new { id = "vehicle4color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            ADDITIONAL INFORMATION
-        </h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            <ul>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Bankruptcy, new { id = "petslabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Bankruptcy, new { id = "pets", required = "required", @class = "full-width", placeholder = "Pets?" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.LeaseDefaulted, new { id = "petsnumberlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.LeaseDefaulted, new { id = "petsnumber", required = "required", @class = "full-width", placeholder = "How Many?" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.RefusedtoPayRent, new { id = "pet1brandlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.RefusedtoPayRent, new { id = "pet1brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.EvictedFromRental, new { id = "pet1agelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.EvictedFromRental, new { id = "pet1age", required = "required", @class = "full-width", placeholder = "Age" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.ConvictedofFelony, new { id = "pet1weightlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.ConvictedofFelony, new { id = "pet1weight", required = "required", @class = "full-width", placeholder = "Weight" })
-                </li>
-            </ul>
-        </section>
-    </div>
-</div>
-<!-- End SmartWizard Content -->
-</form>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</table>

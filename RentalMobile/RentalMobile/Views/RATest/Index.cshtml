@@ -42,33 +42,6 @@
             EmailAddress
         </th>
         <th>
-            Income
-        </th>
-        <th>
-            EmployerPhone
-        </th>
-        <th>
-            WorkStartDate
-        </th>
-        <th>
-            WorkEndDate
-        </th>
-        <th>
-            EmployerAddress
-        </th>
-        <th>
-            EmployerCity
-        </th>
-        <th>
-            EmployerState
-        </th>
-        <th>
-            EmployerZipcode
-        </th>
-        <th>
-            EmployerFax
-        </th>
-        <th>
             CoSignerName
         </th>
         <th>
@@ -90,13 +63,253 @@
             CoSignerRelationShip
         </th>
         <th>
-            OtherOccupant
+            OtherOccupant1Name
         </th>
         <th>
-            Adult
+            IsOccupant1Adult
         </th>
         <th>
-            Relationship
+            RelationshipOccupant1ToApplicant
+        </th>
+        <th>
+            OtherOccupant2Name
+        </th>
+        <th>
+            IsOccupant2Adult
+        </th>
+        <th>
+            RelationshipOccupant2ToApplicant
+        </th>
+        <th>
+            OtherOccupant3Name
+        </th>
+        <th>
+            IsOccupant3Adult
+        </th>
+        <th>
+            RelationshipOccupant3ToApplicant
+        </th>
+        <th>
+            OtherOccupant4Name
+        </th>
+        <th>
+            IsOccupant4Adult
+        </th>
+        <th>
+            RelationshipOccupant4ToApplicant
+        </th>
+        <th>
+            EmployerName
+        </th>
+        <th>
+            Income
+        </th>
+        <th>
+            WorkStartDate
+        </th>
+        <th>
+            WorkEndDate
+        </th>
+        <th>
+            EmployerAddress
+        </th>
+        <th>
+            EmployerCity
+        </th>
+        <th>
+            EmployerState
+        </th>
+        <th>
+            EmployerZipcode
+        </th>
+        <th>
+            EmployerPhone
+        </th>
+        <th>
+            EmployerFax
+        </th>
+        <th>
+            CurrentLandloard
+        </th>
+        <th>
+            CurrentLandLoardPhone
+        </th>
+        <th>
+            CurrentLandLoardFax
+        </th>
+        <th>
+            CurrentAddress
+        </th>
+        <th>
+            CurrentAddressCity
+        </th>
+        <th>
+            CurrentAddressState
+        </th>
+        <th>
+            CurrentAddressZip
+        </th>
+        <th>
+            Rent
+        </th>
+        <th>
+            CurrentRentStartDate
+        </th>
+        <th>
+            CurrentRentEndDate
+        </th>
+        <th>
+            PreviousLandloard
+        </th>
+        <th>
+            PreviousLandLoardPhone
+        </th>
+        <th>
+            PreviousLandLoardFax
+        </th>
+        <th>
+            PreviousAddress
+        </th>
+        <th>
+            PreviousAddressCity
+        </th>
+        <th>
+            PreviousAddressState
+        </th>
+        <th>
+            PreviousAddressZip
+        </th>
+        <th>
+            PreviousRent
+        </th>
+        <th>
+            PreviousRentStartDate
+        </th>
+        <th>
+            PreviousRentEndDate
+        </th>
+        <th>
+            EmergencyContactName
+        </th>
+        <th>
+            EmergencyContactRelationShip
+        </th>
+        <th>
+            EmergencyContactPhone
+        </th>
+        <th>
+            EmergencyContactAddress
+        </th>
+        <th>
+            EmergencyContactCity
+        </th>
+        <th>
+            EmergencyContactState
+        </th>
+        <th>
+            EmergencyContactZipCode
+        </th>
+        <th>
+            Pets
+        </th>
+        <th>
+            PetsNumber
+        </th>
+        <th>
+            Pet1Brand
+        </th>
+        <th>
+            Pet1Age
+        </th>
+        <th>
+            Pet1Weight
+        </th>
+        <th>
+            Pet2Brand
+        </th>
+        <th>
+            Pet2Age
+        </th>
+        <th>
+            Pet2Weight
+        </th>
+        <th>
+            Vehicle1Make
+        </th>
+        <th>
+            Vehicle1Model
+        </th>
+        <th>
+            Vehicle1Year
+        </th>
+        <th>
+            Vehicle1Color
+        </th>
+        <th>
+            Vehicle1LicensePlate
+        </th>
+        <th>
+            Vehicle2Make
+        </th>
+        <th>
+            Vehicle2Model
+        </th>
+        <th>
+            Vehicle2Year
+        </th>
+        <th>
+            Vehicle2Color
+        </th>
+        <th>
+            Vehicle2LicensePlate
+        </th>
+        <th>
+            Vehicle3Make
+        </th>
+        <th>
+            Vehicle3Model
+        </th>
+        <th>
+            Vehicle3Year
+        </th>
+        <th>
+            Vehicle3Color
+        </th>
+        <th>
+            Vehicle3LicensePlate
+        </th>
+        <th>
+            Vehicle4Make
+        </th>
+        <th>
+            Vehicle4Model
+        </th>
+        <th>
+            Vehicle4Year
+        </th>
+        <th>
+            Vehicle4Color
+        </th>
+        <th>
+            Vehicle4LicensePlate
+        </th>
+        <th>
+            Bankruptcy
+        </th>
+        <th>
+            LeaseDefaulted
+        </th>
+        <th>
+            RefusedtoPayRent
+        </th>
+        <th>
+            EvictedFromRental
+        </th>
+        <th>
+            ConvictedofFelony
+        </th>
+        <th>
+            CoSignerEmailAddress
         </th>
         <th></th>
     </tr>
@@ -134,33 +347,6 @@
             @Html.DisplayFor(modelItem => item.EmailAddress)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Income)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerState)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerZipcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployerFax)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CoSignerName)
         </td>
         <td>
@@ -182,13 +368,253 @@
             @Html.DisplayFor(modelItem => item.CoSignerRelationShip)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OtherOccupant)
+            @Html.DisplayFor(modelItem => item.OtherOccupant1Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Adult)
+            @Html.DisplayFor(modelItem => item.IsOccupant1Adult)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Relationship)
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant1ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant2Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant2Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant2ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant3Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant3Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant3ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherOccupant4Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOccupant4Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipOccupant4ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyContactZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PetsNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet1Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet2Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle1LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle2LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle3LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle4LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bankruptcy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaseDefaulted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefusedtoPayRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EvictedFromRental)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvictedofFelony)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSignerEmailAddress)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

@@ -330,6 +330,7 @@
           <Property Name="RefusedtoPayRent" Type="bit" />
           <Property Name="EvictedFromRental" Type="bit" />
           <Property Name="ConvictedofFelony" Type="bit" />
+          <Property Name="TenantId" Type="int" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -1628,6 +1629,7 @@
           <Property Type="Boolean" Name="EvictedFromRental" />
           <Property Type="Boolean" Name="ConvictedofFelony" />
           <Property Type="String" Name="CoSignerEmailAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TenantId" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2068,6 +2070,7 @@
           <EntitySetMapping Name="RentalApplications">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.RentalApplication">
               <MappingFragment StoreEntitySet="RentalApplication">
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
                 <ScalarProperty Name="CoSignerEmailAddress" ColumnName="CoSignerEmailAddress" />
                 <ScalarProperty Name="ConvictedofFelony" ColumnName="ConvictedofFelony" />
                 <ScalarProperty Name="EvictedFromRental" ColumnName="EvictedFromRental" />

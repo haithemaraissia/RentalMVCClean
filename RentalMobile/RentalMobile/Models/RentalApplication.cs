@@ -114,5 +114,6 @@ namespace RentalMobile.Models
         public Nullable<bool> EvictedFromRental { get; set; }
         public Nullable<bool> ConvictedofFelony { get; set; }
         public string CoSignerEmailAddress { get; set; }
+        public Nullable<int> TenantId { get; set; }
     }
 }
