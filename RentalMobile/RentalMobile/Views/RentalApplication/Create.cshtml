@@ -164,8 +164,10 @@
         $("#previousrentenddate").datepicker();
     });
 </script>
-<form action="#" class=" ">
-<input type='hidden' name="issubmit" value="1">
+@using (Html.BeginForm())
+{
+  @Html.ValidationSummary(true)
+@*<input type='hidden' name="issubmit" value="1">*@
 <!-- Tabs -->
 <style>
     form li small
@@ -262,10 +264,12 @@
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.IsOccupant1Adult, new[] { 
                                                                 new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
+                                                                new SelectListItem { Text = "Yes", Value="Yes" } , 
+                                                                new SelectListItem { Text = "No", Value="No"} })
                 </li>
                 <li class="five columns">
-                    @Html.TextBoxFor(m => m.RelationshipOccupant1ToApplicant, new { id = "occupant1relationship", required = "required", @class = "full-width", placeholder = "Relationship's to Application" })
+                    @Html.TextBoxFor(m => m.RelationshipOccupant1ToApplicant, new { id = "occupant1relationship", 
+                   required = "required", @class = "full-width", placeholder = "Relationship's to Application" })
                 </li>
                 <li class="five columns">
                     @Html.TextBoxFor(m => m.OtherOccupant2Name, new { id = "occupant2name", required = "required", @class = "full-width", placeholder = "Occupant 2 Name" })
@@ -273,7 +277,8 @@
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.IsOccupant2Adult, new[] { 
                                                                 new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
+                                                                new SelectListItem { Text = "Yes", Value="Yes" } , 
+                                                                new SelectListItem { Text = "No", Value="No"} })
                 </li>
                 <li class="five columns">
                     @Html.TextBoxFor(m => m.RelationshipOccupant2ToApplicant, new
@@ -290,7 +295,7 @@
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.IsOccupant3Adult, new[] { 
                                                                 new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
+                                                                new SelectListItem { Text = "Yes", Value="Yes" } , new SelectListItem { Text = "No", Value="No"} })
                 </li>
                 <li class="five columns">
                     @Html.LabelFor(model => model.RelationshipOccupant3ToApplicant, new { id = "occupant3relationshiplabel", @class = "screen-reader-text" })
@@ -308,7 +313,7 @@
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.IsOccupant4Adult, new[] { 
                                                                 new SelectListItem { Text = "Adult ?", Value="", Selected = true} , 
-                                                                new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
+                                                                new SelectListItem { Text = "Yes", Value="Yes" } , new SelectListItem { Text = "No", Value="No"} })
                 </li>
                 <li class="five columns">
                     @Html.TextBoxFor(m => m.RelationshipOccupant4ToApplicant, new
@@ -475,7 +480,7 @@
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.Pets, new[] { 
                         new SelectListItem { Text = "Any Pets ?", Value="", Selected = true} , 
-                        new SelectListItem { Text = "Yes", Value="1" } , new SelectListItem { Text = "No", Value="0"} })
+                        new SelectListItem { Text = "Yes", Value="Yes" } , new SelectListItem { Text = "No", Value="No"} })
                 </li>
                 <li class="five columns">
                     @Html.DropDownListFor(m => m.PetsNumber, new[] { 
@@ -632,7 +637,7 @@
     </div>
 </div>
 <!-- End SmartWizard Content -->
-</form>
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

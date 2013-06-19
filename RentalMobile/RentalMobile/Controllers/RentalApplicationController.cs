@@ -17,7 +17,9 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            return View(db.RentalApplications.Where(x => x.TenantId == 5).ToList());
+            //return View(db.RentalApplications.Where(x => x.TenantId == 5).ToList());
+
+            return View(db.RentalApplications.ToList());
         }
 
         //
@@ -49,7 +51,7 @@ namespace RentalMobile.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             return View(rentalapplication);
         }
 
