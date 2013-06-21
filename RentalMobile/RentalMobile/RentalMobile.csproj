@@ -89,6 +89,10 @@
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\AgentProfileController.cs" />
     <Compile Include="Controllers\AgentsController.cs" />
+    <Compile Include="Controllers\ChangeMaintenanceController.cs" />
+    <Compile Include="Controllers\ChangeProviderController.cs" />
+    <Compile Include="Controllers\ChooseMaintenanceController.cs" />
+    <Compile Include="Controllers\ChooseProviderController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -812,6 +816,11 @@
     <Content Include="Views\RentalApplication\Create.cshtml" />
     <Content Include="Views\RentalApplication\Delete.cshtml" />
     <Content Include="Views\RentalApplication\Edit.cshtml" />
+    <Content Include="Views\RentalApplication\Submit.cshtml" />
+    <Content Include="Views\ChooseMaintenance\Index.cshtml" />
+    <Content Include="Views\ChangeMaintenance\Index.cshtml" />
+    <Content Include="Views\ChooseProvider\Index.cshtml" />
+    <Content Include="Views\ChangeProvider\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

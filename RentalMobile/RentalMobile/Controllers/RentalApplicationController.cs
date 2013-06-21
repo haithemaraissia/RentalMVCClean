@@ -100,6 +100,33 @@ namespace RentalMobile.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+        //
+        // GET: /RATest/Edit/5
+
+        public ActionResult Submit(int id)
+        {
+            RentalApplication rentalapplication = db.RentalApplications.Find(id);
+            return View(rentalapplication);
+        }
+
+        //
+        // POST: /RATest/Edit/5
+
+        [HttpPost]
+        public ActionResult Submit(RentalApplication rentalapplication)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(rentalapplication).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(rentalapplication);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
