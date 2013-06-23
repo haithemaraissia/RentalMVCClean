@@ -1,34 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentalMobile.Helpers;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
-{
-    public class RentalApplicationController : Controller
+{ 
+    [Authorize]
+    public class TenantRentalApplicationController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public static Guid UserGUID = (Guid) UserHelper.GetUserGUID();
+        public int TenantID = (int) UserHelper.GetTenantID(UserGUID);
 
-        //
+
         // GET: /RATest/
 
         public ViewResult Index()
         {
-            //return View(db.RentalApplications.Where(x => x.TenantId == 5).ToList());
 
-            return View(db.RentalApplications.ToList());
+            var tenantrentalapplication  = db.RentalApplications.
+                Where(t => t.TenantId == TenantID);
+
+            return View(tenantrentalapplication.FirstOrDefault());
         }
 
         //
         // GET: /RATest/Details/5
 
-        public ViewResult Details(int id)
+        public ViewResult Details()
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
-            return View(rentalapplication);
+            var tenantrentalapplication = db.RentalApplications.Where(t => t.TenantId == TenantID);
+            if (!tenantrentalapplication.Any())
+            {
+                RedirectToActionPermanent("Create");
+            }
+
+            return View(tenantrentalapplication.FirstOrDefault());
         }
 
         //
@@ -47,6 +60,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
+                rentalapplication.TenantId = TenantID;
                 db.RentalApplications.Add(rentalapplication);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -58,10 +72,15 @@ namespace RentalMobile.Controllers
         //
         // GET: /RATest/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
-            return View(rentalapplication);
+            var tenantrentalapplication = db.RentalApplications.Where(t => t.TenantId == TenantID);
+            if (!tenantrentalapplication.Any())
+            {
+                RedirectToActionPermanent("Create");
+            }
+
+            return View(tenantrentalapplication.FirstOrDefault());
         }
 
         //
@@ -105,10 +124,15 @@ namespace RentalMobile.Controllers
         //
         // GET: /RATest/Edit/5
 
-        public ActionResult Submit(int id)
+        public ActionResult Submit()
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
-            return View(rentalapplication);
+            var tenantrentalapplication = db.RentalApplications.Where(t => t.TenantId == TenantID);
+            if (!tenantrentalapplication.Any())
+            {
+                RedirectToActionPermanent("Create");
+            }
+
+            return View(tenantrentalapplication.FirstOrDefault());
         }
 
         //
@@ -124,7 +148,7 @@ namespace RentalMobile.Controllers
             //CHECK THAT AN APPLICATION EXIST
             //PROCESS TO AMAZONPAYPAL
             //YOU DON'T NEED MODEL VALIDATION
-            
+
 
 
             //ALOS WHEN SUCCED

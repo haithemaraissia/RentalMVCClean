@@ -1,0 +1,632 @@
+﻿@model RentalMobile.Models.RentalApplication
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            ApplicationId
+        </th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            MiddleName
+        </th>
+        <th>
+            DateofBirth
+        </th>
+        <th>
+            SocialSecurityNumber
+        </th>
+        <th>
+            DriverLicense
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            CellPhone
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            CoSignerName
+        </th>
+        <th>
+            CoSignerAddress
+        </th>
+        <th>
+            CoSignerCity
+        </th>
+        <th>
+            CoSignerState
+        </th>
+        <th>
+            CoSignerZipcode
+        </th>
+        <th>
+            CoSignerPhone
+        </th>
+        <th>
+            CoSignerRelationShip
+        </th>
+        <th>
+            OtherOccupant1Name
+        </th>
+        <th>
+            IsOccupant1Adult
+        </th>
+        <th>
+            RelationshipOccupant1ToApplicant
+        </th>
+        <th>
+            OtherOccupant2Name
+        </th>
+        <th>
+            IsOccupant2Adult
+        </th>
+        <th>
+            RelationshipOccupant2ToApplicant
+        </th>
+        <th>
+            OtherOccupant3Name
+        </th>
+        <th>
+            IsOccupant3Adult
+        </th>
+        <th>
+            RelationshipOccupant3ToApplicant
+        </th>
+        <th>
+            OtherOccupant4Name
+        </th>
+        <th>
+            IsOccupant4Adult
+        </th>
+        <th>
+            RelationshipOccupant4ToApplicant
+        </th>
+        <th>
+            EmployerName
+        </th>
+        <th>
+            Income
+        </th>
+        <th>
+            WorkStartDate
+        </th>
+        <th>
+            WorkEndDate
+        </th>
+        <th>
+            EmployerAddress
+        </th>
+        <th>
+            EmployerCity
+        </th>
+        <th>
+            EmployerState
+        </th>
+        <th>
+            EmployerZipcode
+        </th>
+        <th>
+            EmployerPhone
+        </th>
+        <th>
+            EmployerFax
+        </th>
+        <th>
+            CurrentLandloard
+        </th>
+        <th>
+            CurrentLandLoardPhone
+        </th>
+        <th>
+            CurrentLandLoardFax
+        </th>
+        <th>
+            CurrentAddress
+        </th>
+        <th>
+            CurrentAddressCity
+        </th>
+        <th>
+            CurrentAddressState
+        </th>
+        <th>
+            CurrentAddressZip
+        </th>
+        <th>
+            Rent
+        </th>
+        <th>
+            CurrentRentStartDate
+        </th>
+        <th>
+            CurrentRentEndDate
+        </th>
+        <th>
+            PreviousLandloard
+        </th>
+        <th>
+            PreviousLandLoardPhone
+        </th>
+        <th>
+            PreviousLandLoardFax
+        </th>
+        <th>
+            PreviousAddress
+        </th>
+        <th>
+            PreviousAddressCity
+        </th>
+        <th>
+            PreviousAddressState
+        </th>
+        <th>
+            PreviousAddressZip
+        </th>
+        <th>
+            PreviousRent
+        </th>
+        <th>
+            PreviousRentStartDate
+        </th>
+        <th>
+            PreviousRentEndDate
+        </th>
+        <th>
+            EmergencyContactName
+        </th>
+        <th>
+            EmergencyContactRelationShip
+        </th>
+        <th>
+            EmergencyContactPhone
+        </th>
+        <th>
+            EmergencyContactAddress
+        </th>
+        <th>
+            EmergencyContactCity
+        </th>
+        <th>
+            EmergencyContactState
+        </th>
+        <th>
+            EmergencyContactZipCode
+        </th>
+        <th>
+            Pets
+        </th>
+        <th>
+            PetsNumber
+        </th>
+        <th>
+            Pet1Brand
+        </th>
+        <th>
+            Pet1Age
+        </th>
+        <th>
+            Pet1Weight
+        </th>
+        <th>
+            Pet2Brand
+        </th>
+        <th>
+            Pet2Age
+        </th>
+        <th>
+            Pet2Weight
+        </th>
+        <th>
+            Vehicle1Make
+        </th>
+        <th>
+            Vehicle1Model
+        </th>
+        <th>
+            Vehicle1Year
+        </th>
+        <th>
+            Vehicle1Color
+        </th>
+        <th>
+            Vehicle1LicensePlate
+        </th>
+        <th>
+            Vehicle2Make
+        </th>
+        <th>
+            Vehicle2Model
+        </th>
+        <th>
+            Vehicle2Year
+        </th>
+        <th>
+            Vehicle2Color
+        </th>
+        <th>
+            Vehicle2LicensePlate
+        </th>
+        <th>
+            Vehicle3Make
+        </th>
+        <th>
+            Vehicle3Model
+        </th>
+        <th>
+            Vehicle3Year
+        </th>
+        <th>
+            Vehicle3Color
+        </th>
+        <th>
+            Vehicle3LicensePlate
+        </th>
+        <th>
+            Vehicle4Make
+        </th>
+        <th>
+            Vehicle4Model
+        </th>
+        <th>
+            Vehicle4Year
+        </th>
+        <th>
+            Vehicle4Color
+        </th>
+        <th>
+            Vehicle4LicensePlate
+        </th>
+        <th>
+            Bankruptcy
+        </th>
+        <th>
+            LeaseDefaulted
+        </th>
+        <th>
+            RefusedtoPayRent
+        </th>
+        <th>
+            EvictedFromRental
+        </th>
+        <th>
+            ConvictedofFelony
+        </th>
+        <th>
+            CoSignerEmailAddress
+        </th>
+        <th></th>
+    </tr>
+
+
+@if (Model != null)
+{
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.SocialSecurityNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.DriverLicense)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.OtherOccupant1Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.IsOccupant1Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.RelationshipOccupant1ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.OtherOccupant2Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.IsOccupant2Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.RelationshipOccupant2ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.OtherOccupant3Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.IsOccupant3Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.RelationshipOccupant3ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.OtherOccupant4Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.IsOccupant4Adult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.RelationshipOccupant4ToApplicant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.WorkStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.WorkEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerZipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmployerFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Rent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CurrentRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousLandloard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousLandLoardPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousLandLoardFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousAddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousAddressState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousAddressZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousRentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PreviousRentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactRelationShip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EmergencyContactZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.PetsNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet1Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet1Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet1Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet2Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet2Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Pet2Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle1Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle1Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle1Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle1Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle1LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle2Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle2Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle2Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle2Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle2LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle3Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle3Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle3Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle3Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle3LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle4Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle4Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle4Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle4Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Vehicle4LicensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Bankruptcy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.LeaseDefaulted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.RefusedtoPayRent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.EvictedFromRental)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ConvictedofFelony)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.CoSignerEmailAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=Model.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=Model.PrimaryKey */ })
+        </td>
+    </tr>
+
+}
+
+
+</table>

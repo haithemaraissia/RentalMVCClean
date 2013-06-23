@@ -119,6 +119,7 @@
     <Compile Include="Controllers\TenantFavoriteController.cs" />
     <Compile Include="Controllers\TenantMaintenanceController.cs" />
     <Compile Include="Controllers\TenantProfileController.cs" />
+    <Compile Include="Controllers\TenantRentalApplicationController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\TenantShowingController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
@@ -821,6 +822,24 @@
     <Content Include="Views\ChangeMaintenance\Index.cshtml" />
     <Content Include="Views\ChooseProvider\Index.cshtml" />
     <Content Include="Views\ChangeProvider\Index.cshtml" />
+    <Content Include="Views\TenantRentalApplication\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\TenantRentalApplication\Details.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\TenantRentalApplication\Create.cshtml" />
+    <Content Include="Views\TenantRentalApplication\Edit.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\TenantRentalApplication\Delete.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\TenantRentalApplication\Submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
