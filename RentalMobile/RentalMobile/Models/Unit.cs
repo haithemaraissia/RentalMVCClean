@@ -46,6 +46,8 @@ namespace RentalMobile.Models
         public Nullable<int> DaysOnSite { get; set; }
         public Nullable<int> FloorId { get; set; }
         public Nullable<System.DateTime> AvailableDate { get; set; }
+        public string PosterRole { get; set; }
+        public Nullable<int> PosterID { get; set; }
     
         public virtual UnitAppliance UnitAppliance { get; set; }
         public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }

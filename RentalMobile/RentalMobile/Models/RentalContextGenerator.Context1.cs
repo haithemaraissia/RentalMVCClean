@@ -51,5 +51,11 @@ namespace RentalMobile.Models
         public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
         public DbSet<MaintenanceExterior> MaintenanceExteriors { get; set; }
         public DbSet<RentalApplication> RentalApplications { get; set; }
+        public DbSet<OwnerPendingApplication> OwnerPendingApplications { get; set; }
+        public DbSet<AgentAcceptedApplication> AgentAcceptedApplications { get; set; }
+        public DbSet<AgentPendingApplication> AgentPendingApplications { get; set; }
+        public DbSet<AgentRejectedApplication> AgentRejectedApplications { get; set; }
+        public DbSet<OwnerAcceptedApplication> OwnerAcceptedApplications { get; set; }
+        public DbSet<OwnerRejectedApplication> OwnerRejectedApplications { get; set; }
     }
 }

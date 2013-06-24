@@ -151,6 +151,15 @@
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AgentAcceptedApplication.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgentPendingApplication.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgentRejectedApplication.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MaintenanceExterior.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -166,7 +175,16 @@
     <Compile Include="Models\Owner.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OwnerAcceptedApplication.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OwnerMaintenance.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OwnerPendingApplication.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OwnerRejectedApplication.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalApplication.cs">
@@ -840,6 +858,11 @@
       </SubType>
     </Content>
     <Content Include="Views\TenantRentalApplication\Submit.cshtml" />
+    <Content Include="Views\Owner\PendingApplication.cshtml" />
+    <Content Include="Views\Owner\AcceptedApplication.cshtml" />
+    <Content Include="Views\Owner\RejectedApplication.cshtml" />
+    <Content Include="Views\Owner\AcceptApplication.cshtml" />
+    <Content Include="Views\Owner\RejectApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

@@ -127,5 +127,43 @@ namespace RentalMobile.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+
+
+
+
+
+        //Handling the application
+        //Should be the same for Agent
+
+        public ActionResult PendingApplication()
+        {
+            return View();
+        }
+
+        public ActionResult AcceptApplication(int id)
+        {
+            return View();
+        }
+
+        public ActionResult AcceptedApplication()
+        {
+            return View();
+        }
+
+
+
+        public ActionResult RejectApplication(int id)
+        {
+            return View();
+        }
+        public ActionResult RejectedApplication()
+        {
+            return View();
+        }
+
+
+        //
     }
 }
