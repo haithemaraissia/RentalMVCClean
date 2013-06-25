@@ -3,6 +3,16 @@
     ViewBag.Title = "Submit Application";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
+@{
+    if (ViewData["confirmationmsg"] != null)
+    {
+    <script type="text/javascript">
+
+        alert('@ViewData["confirmationmsg"].ToString() ');
+        window.location.href = "/Tenant";
+    </script>   
+    }
+}
 <section class="sixteen columns">
     <h3 class="tagline">
         SELECT PROPERTY</h3>
@@ -10,16 +20,17 @@
 <section class="sixteen columns">
     <h2>
         Advanced</h2>
-    @using (Html.BeginForm("Register", "Account", new { @class = "boxed shadded wide-on-small-screen" }))
+    @*            @using (Html.BeginForm("Submit", "TenantRentalApplication", new { @class = "boxed shadded wide-on-small-screen" }))*@
+    @using (Html.BeginForm("Submit", "TenantRentalApplication"))
     {
         @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
         
         <ul class="grid-form row remove-bottom">
             <li class="four columns alpha">
-                <input id="prop-type-field" type="text" placeholder="Property ID" required />
+                <input id="propertyIdcustom" type="text" placeholder="Property ID" required name="propertyIdcustom" />
             </li>
             <li class="two columns omega">
-                <input type="submit" value="Select" />
+                <input type="submit" value="Select" name="propertyIdcustom" />
             </li>
         </ul>
     }
@@ -310,43 +321,39 @@
     <!-- /.List -->
 </section>
 <!-- /section: rent -->
-
-
-    <!-- Scripts & Plugins
-  	================================================== -->
-    <!-- BX Slider -->
-    <script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
-    <!-- Tabs -->
-    <script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
-    <!-- Gallery switcher -->
-    <script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
-    <!-- jQuery dropdown -->
-    <script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
-    <!-- jQuery Custom selects-->
-    <script src="../../Scripts/js/jquery.customSelect.min.js"
-        type="text/javascript"></script>
-
-    <script type="text/javascript">
+<!-- Scripts & Plugins
+            ================================================== -->
+<!-- BX Slider -->
+<script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript">
+</script>
+<!-- Tabs -->
+<script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
+<!-- Gallery switcher -->
+<script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
+<!-- jQuery dropdown -->
+<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+<!-- jQuery Custom selects-->
+<script src="../../Scripts/js/jquery.customSelect.min.js" type="text/javascript"></script>
+<script type="text/javascript">
 		
-        $(document).ready(function($) {
+    $(document).ready(function($) {
 			
-            // Init bx slider 
-            $('.bxslider').bxSlider({
-                mode: 'fade',
-                captions: true,
-                pagerCustom: '#bx-pager',
-                auto: true,
-            });
-
-            //Easy tabs
-            $('.tab-container').easytabs();
-
-            //Custom selects
-            $('.custom-select').customSelect();
-			
-		
-
+        // Init bx slider 
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true,
+            pagerCustom: '#bx-pager',
+            auto: true,
         });
+
+        //Easy tabs
+        $('.tab-container').easytabs();
+
+        //Custom selects
+        $('.custom-select').customSelect();
+			
+		
+
+    });
 	  	
-    </script>
-    
+</script>

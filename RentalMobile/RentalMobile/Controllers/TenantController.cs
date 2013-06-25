@@ -27,6 +27,7 @@ namespace RentalMobile.Controllers
             ViewBag.TenantProfile = tenant;
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;
+            ViewBag.tenantApplicationCount  =   db.RentalApplications.Where(t => t.TenantId == tenant.TenantId).Count();
             return View(tenant);
         }
 

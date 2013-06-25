@@ -135,20 +135,28 @@ namespace RentalMobile.Controllers
             return View();
         }
 
+
+
+        //    [HttpPost]
+        //            public ActionResult Submit(string propertyIdcustom)
+        //{
+        //    return View();
+        //}
+
         //
         // POST: /RATest/Edit/5
 
         [HttpPost]
-        public ActionResult Submit(int propertyId)
+        public ActionResult Submit(string propertyIdcustom)
         {
 
             //Property
 
-
+            var propertyId = (Convert.ToInt32(propertyIdcustom));
             var property = db.Units.FirstOrDefault(t => t.UnitId == propertyId);
             if (property == null)
             {
-                RedirectToActionPermanent("submit");
+                return RedirectToAction("submit");
             }
 
 
@@ -158,7 +166,8 @@ namespace RentalMobile.Controllers
             var tenantrentalapplication = db.RentalApplications.Where(t => t.TenantId == TenantID);
             if (!tenantrentalapplication.Any())
             {
-                RedirectToActionPermanent("Create");
+                return RedirectToAction("Create", "TenantRentalApplication");
+
             }
 
 
@@ -177,7 +186,7 @@ namespace RentalMobile.Controllers
             //WHEN AMAZON PAYMENT SUCCEED
             if (property != null)
             {
-                var posterrole = property.PosterRole;
+                var posterrole = property.PosterRole.Trim();
 
                 switch (posterrole)
                 {
@@ -185,13 +194,17 @@ namespace RentalMobile.Controllers
                     case "Owner":
                         //Insert into Pending Application
                         if (property.PosterID != null)
-                            InsertOwnerPendingApplication(tenantrentalapplication.First(), (int) property.PosterID);
+                            InsertOwnerPendingApplication(tenantrentalapplication.First(), (int)property.PosterID);
+                        ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Owner.";
+
+                        //Confirmation that is has been posted
                         break;
 
                     case "Agent":
                         //Insert into Pending Application
                         if (property.PosterID != null)
                             InsertAgentPendingApplication(tenantrentalapplication.First(), (int)property.PosterID);
+                        ViewData["confirmationmsg"] = "Pass";
                         break;
 
                 }

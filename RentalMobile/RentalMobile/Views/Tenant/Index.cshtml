@@ -496,27 +496,49 @@
 }
 @section application
 {
-    <div id="application">
-        <section class="row double-bottom">
-            <div class="sixteen columns prop-details">
-                <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Create Application" onclick="location.href='./TenantRentalApplication/Create';" />
+    @if (ViewBag.tenantApplicationCount == 0)
+    {
+        <div id="application">
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="Create Application" onclick="location.href='./TenantRentalApplication/Create';" />
+                    </div>
+                    <div class="six columns push by-two">
+                        <input type="submit" class="full-width tall" value="Submit Application" onclick="location.href='./TenantRentalApplication/Submit';" />
+                    </div>
                 </div>
-                <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Submit Application" onclick="location.href='./TenantRentalApplication/Submit';" />
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="Edit Application" onclick="location.href='./TenantRentalApplication/Edit';" />
+                    </div>
+                    <div class="six columns push by-two">
+                        <input type="submit" class="full-width tall" value="View Application" onclick="location.href='./TenantRentalApplication/Details';" />
+                    </div>
                 </div>
-            </div>
-            <div class="sixteen columns prop-details">
-                <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Edit Application" onclick="location.href='./TenantRentalApplication/Edit';" />
+            </section>
+        </div>
+    }
+    else
+    {
+        <div id="application">
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="Submit Application" onclick="location.href='./TenantRentalApplication/Submit';" />
+                    </div>
+                    <div class="six columns push by-two">
+                        <input type="submit" class="full-width tall" value="Edit Application" onclick="location.href='./TenantRentalApplication/Edit';" />
+                    </div>
                 </div>
-                
-                 <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="View Application" onclick="location.href='./TenantRentalApplication/Details';" />
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="View Application" onclick="location.href='./TenantRentalApplication/Details';" />
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
+    }
 }
 @section contract
 {
