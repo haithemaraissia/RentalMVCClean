@@ -1,8 +1,76 @@
-﻿@model dynamic
+﻿@model IEnumerable<RentalMobile.Models.OwnerAcceptedApplication>
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Accepted";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
 
-<h2>title</h2>
+<h2>Index</h2>
+
+
+<table  style="width: 100%">
+    <tr>
+        <th>
+            ApplicationId
+        </th>
+        <th>
+            Applicant FirstName
+        </th>
+        <th>
+            Applicant LastName
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            CellPhone
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            TenantId
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantId)
+        </td>
+        <td>
+            
+@*            
+            
+            
+                        @Html.ActionLink("Accept", "AcceptApplication", new {  id=item.ApplicationId }) |    
+            @Html.ActionLink("Reject", "AcceptApplication", new { id=item.ApplicationId  }) *@
+            
+
+
+            @*            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>

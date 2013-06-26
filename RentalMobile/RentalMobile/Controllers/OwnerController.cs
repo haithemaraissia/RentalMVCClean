@@ -10,7 +10,7 @@ using RentalMobile.Helpers;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
-{ 
+{
     public class OwnerController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
@@ -27,7 +27,7 @@ namespace RentalMobile.Controllers
         }
 
         // GET: /Owner/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Owner owner = db.Owners.Find(id);
@@ -75,7 +75,7 @@ namespace RentalMobile.Controllers
         }
 
         // GET: /Owner/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Owner owner = db.Owners.Find(id);
@@ -87,7 +87,7 @@ namespace RentalMobile.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             Owner owner = db.Owners.Find(id);
             db.Owners.Remove(owner);
             db.SaveChanges();
@@ -139,30 +139,256 @@ namespace RentalMobile.Controllers
 
         public ActionResult PendingApplication()
         {
-            return View();
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+
+            return View(db.OwnerPendingApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
 
         public ActionResult AcceptApplication(int id)
         {
-            return View();
+            var pa = db.OwnerPendingApplications.Find(id);
+            if (pa != null)
+            {
+                var approvedapplication = new OwnerAcceptedApplication
+                    {
+                        FirstName = pa.FirstName,
+                        LastName = pa.LastName,
+                        MiddleName = pa.MiddleName,
+                        SocialSecurityNumber = pa.SocialSecurityNumber,
+                        DriverLicense = pa.DriverLicense,
+                        Phone = pa.Phone,
+                        CellPhone = pa.CellPhone,
+                        EmailAddress = pa.EmailAddress,
+                        CoSignerName = pa.CoSignerName,
+                        CoSignerAddress = pa.CoSignerAddress,
+                        CoSignerCity = pa.CoSignerCity,
+                        CoSignerState = pa.CoSignerState,
+                        CoSignerZipcode = pa.CoSignerZipcode,
+                        CoSignerPhone = pa.CoSignerPhone,
+                        CoSignerRelationShip = pa.CoSignerRelationShip,
+                        CoSignerEmailAddress = pa.CoSignerEmailAddress,
+                        OtherOccupant1Name = pa.OtherOccupant1Name,
+                        IsOccupant1Adult = pa.IsOccupant1Adult,
+                        RelationshipOccupant1ToApplicant = pa.RelationshipOccupant1ToApplicant,
+                        OtherOccupant2Name = pa.OtherOccupant2Name,
+                        IsOccupant2Adult = pa.IsOccupant2Adult,
+                        RelationshipOccupant2ToApplicant = pa.RelationshipOccupant2ToApplicant,
+                        OtherOccupant3Name = pa.OtherOccupant3Name,
+                        IsOccupant3Adult = pa.IsOccupant3Adult,
+                        RelationshipOccupant3ToApplicant = pa.RelationshipOccupant3ToApplicant,
+                        OtherOccupant4Name = pa.OtherOccupant4Name,
+                        IsOccupant4Adult = pa.IsOccupant4Adult,
+                        RelationshipOccupant4ToApplicant = pa.RelationshipOccupant4ToApplicant,
+                        EmployerName = pa.EmployerName,
+                        Income = pa.Income,
+                        WorkStartDate = pa.WorkStartDate,
+                        WorkEndDate = pa.WorkEndDate,
+                        EmployerAddress = pa.EmployerAddress,
+                        EmployerCity = pa.EmployerCity,
+                        EmployerState = pa.EmployerState,
+                        EmployerZipcode = pa.EmployerZipcode,
+                        EmployerPhone = pa.EmployerPhone,
+                        EmployerFax = pa.EmployerFax,
+                        CurrentLandloard = pa.CurrentLandloard,
+                        CurrentLandLoardPhone = pa.CurrentLandLoardPhone,
+                        CurrentLandLoardFax = pa.CurrentLandLoardFax,
+                        CurrentAddress = pa.CurrentAddress,
+                        CurrentAddressCity = pa.CurrentAddressCity,
+                        CurrentAddressState = pa.CurrentAddressState,
+                        CurrentAddressZip = pa.CurrentAddressZip,
+                        Rent = pa.Rent,
+                        CurrentRentStartDate = pa.CurrentRentStartDate,
+                        CurrentRentEndDate = pa.CurrentRentEndDate,
+                        PreviousLandloard = pa.PreviousLandloard,
+                        PreviousLandLoardPhone = pa.PreviousLandLoardPhone,
+                        PreviousLandLoardFax = pa.PreviousLandLoardFax,
+                        PreviousAddress = pa.PreviousAddress,
+                        PreviousAddressCity = pa.PreviousAddressCity,
+                        PreviousAddressState = pa.PreviousAddressState,
+                        PreviousAddressZip = pa.PreviousAddressZip,
+                        PreviousRent = pa.PreviousRent,
+                        PreviousRentStartDate = pa.PreviousRentStartDate,
+                        PreviousRentEndDate = pa.PreviousRentEndDate,
+                        EmergencyContactName = pa.EmergencyContactName,
+                        EmergencyContactRelationShip = pa.EmergencyContactRelationShip,
+                        EmergencyContactPhone = pa.EmergencyContactPhone,
+                        EmergencyContactAddress = pa.EmergencyContactAddress,
+                        EmergencyContactCity = pa.EmergencyContactCity,
+                        EmergencyContactState = pa.EmergencyContactState,
+                        EmergencyContactZipCode = pa.EmergencyContactZipCode,
+                        Pets = pa.Pets,
+                        PetsNumber = pa.PetsNumber,
+                        Pet1Brand = pa.Pet1Brand,
+                        Pet1Age = pa.Pet1Age,
+                        Pet1Weight = pa.Pet1Weight,
+                        Pet2Brand = pa.Pet2Brand,
+                        Pet2Age = pa.Pet2Age,
+                        Pet2Weight = pa.Pet2Weight,
+                        Vehicle1Make = pa.Vehicle1Make,
+                        Vehicle1Model = pa.Vehicle1Model,
+                        Vehicle1Year = pa.Vehicle1Year,
+                        Vehicle1Color = pa.Vehicle1Color,
+                        Vehicle1LicensePlate = pa.Vehicle1LicensePlate,
+                        Vehicle2Make = pa.Vehicle2Make,
+                        Vehicle2Model = pa.Vehicle2Model,
+                        Vehicle2Year = pa.Vehicle2Year,
+                        Vehicle2Color = pa.Vehicle2Color,
+                        Vehicle2LicensePlate = pa.Vehicle2LicensePlate,
+                        Vehicle3Make = pa.Vehicle3Make,
+                        Vehicle3Model = pa.Vehicle3Model,
+                        Vehicle3Year = pa.Vehicle3Year,
+                        Vehicle3Color = pa.Vehicle3Color,
+                        Vehicle3LicensePlate = pa.Vehicle3LicensePlate,
+                        Vehicle4Make = pa.Vehicle4Make,
+                        Vehicle4Model = pa.Vehicle4Model,
+                        Vehicle4Year = pa.Vehicle4Year,
+                        Vehicle4Color = pa.Vehicle4Color,
+                        Vehicle4LicensePlate = pa.Vehicle4LicensePlate,
+                        Bankruptcy = pa.Bankruptcy,
+                        LeaseDefaulted = pa.LeaseDefaulted,
+                        RefusedtoPayRent = pa.RefusedtoPayRent,
+                        EvictedFromRental = pa.EvictedFromRental,
+                        ConvictedofFelony = pa.ConvictedofFelony,
+                        TenantId = pa.TenantId,
+                        OwnerId = pa.OwnerId
+                    };
+          
+            db.OwnerAcceptedApplications.Add(approvedapplication);
+            db.OwnerPendingApplications.Remove(pa);
+            db.SaveChanges();
         }
+            return RedirectToAction("PendingApplication");
+  }
 
         public ActionResult AcceptedApplication()
         {
-            return View();
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+
+            return View(db.OwnerAcceptedApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
-
-
 
         public ActionResult RejectApplication(int id)
         {
-            return View();
-        }
-        public ActionResult RejectedApplication()
-        {
-            return View();
+            var pa = db.OwnerPendingApplications.Find(id);
+            if (pa != null)
+            {
+                var rejectedapplication = new OwnerRejectedApplication
+                {
+                    FirstName = pa.FirstName,
+                    LastName = pa.LastName,
+                    MiddleName = pa.MiddleName,
+                    SocialSecurityNumber = pa.SocialSecurityNumber,
+                    DriverLicense = pa.DriverLicense,
+                    Phone = pa.Phone,
+                    CellPhone = pa.CellPhone,
+                    EmailAddress = pa.EmailAddress,
+                    CoSignerName = pa.CoSignerName,
+                    CoSignerAddress = pa.CoSignerAddress,
+                    CoSignerCity = pa.CoSignerCity,
+                    CoSignerState = pa.CoSignerState,
+                    CoSignerZipcode = pa.CoSignerZipcode,
+                    CoSignerPhone = pa.CoSignerPhone,
+                    CoSignerRelationShip = pa.CoSignerRelationShip,
+                    CoSignerEmailAddress = pa.CoSignerEmailAddress,
+                    OtherOccupant1Name = pa.OtherOccupant1Name,
+                    IsOccupant1Adult = pa.IsOccupant1Adult,
+                    RelationshipOccupant1ToApplicant = pa.RelationshipOccupant1ToApplicant,
+                    OtherOccupant2Name = pa.OtherOccupant2Name,
+                    IsOccupant2Adult = pa.IsOccupant2Adult,
+                    RelationshipOccupant2ToApplicant = pa.RelationshipOccupant2ToApplicant,
+                    OtherOccupant3Name = pa.OtherOccupant3Name,
+                    IsOccupant3Adult = pa.IsOccupant3Adult,
+                    RelationshipOccupant3ToApplicant = pa.RelationshipOccupant3ToApplicant,
+                    OtherOccupant4Name = pa.OtherOccupant4Name,
+                    IsOccupant4Adult = pa.IsOccupant4Adult,
+                    RelationshipOccupant4ToApplicant = pa.RelationshipOccupant4ToApplicant,
+                    EmployerName = pa.EmployerName,
+                    Income = pa.Income,
+                    WorkStartDate = pa.WorkStartDate,
+                    WorkEndDate = pa.WorkEndDate,
+                    EmployerAddress = pa.EmployerAddress,
+                    EmployerCity = pa.EmployerCity,
+                    EmployerState = pa.EmployerState,
+                    EmployerZipcode = pa.EmployerZipcode,
+                    EmployerPhone = pa.EmployerPhone,
+                    EmployerFax = pa.EmployerFax,
+                    CurrentLandloard = pa.CurrentLandloard,
+                    CurrentLandLoardPhone = pa.CurrentLandLoardPhone,
+                    CurrentLandLoardFax = pa.CurrentLandLoardFax,
+                    CurrentAddress = pa.CurrentAddress,
+                    CurrentAddressCity = pa.CurrentAddressCity,
+                    CurrentAddressState = pa.CurrentAddressState,
+                    CurrentAddressZip = pa.CurrentAddressZip,
+                    Rent = pa.Rent,
+                    CurrentRentStartDate = pa.CurrentRentStartDate,
+                    CurrentRentEndDate = pa.CurrentRentEndDate,
+                    PreviousLandloard = pa.PreviousLandloard,
+                    PreviousLandLoardPhone = pa.PreviousLandLoardPhone,
+                    PreviousLandLoardFax = pa.PreviousLandLoardFax,
+                    PreviousAddress = pa.PreviousAddress,
+                    PreviousAddressCity = pa.PreviousAddressCity,
+                    PreviousAddressState = pa.PreviousAddressState,
+                    PreviousAddressZip = pa.PreviousAddressZip,
+                    PreviousRent = pa.PreviousRent,
+                    PreviousRentStartDate = pa.PreviousRentStartDate,
+                    PreviousRentEndDate = pa.PreviousRentEndDate,
+                    EmergencyContactName = pa.EmergencyContactName,
+                    EmergencyContactRelationShip = pa.EmergencyContactRelationShip,
+                    EmergencyContactPhone = pa.EmergencyContactPhone,
+                    EmergencyContactAddress = pa.EmergencyContactAddress,
+                    EmergencyContactCity = pa.EmergencyContactCity,
+                    EmergencyContactState = pa.EmergencyContactState,
+                    EmergencyContactZipCode = pa.EmergencyContactZipCode,
+                    Pets = pa.Pets,
+                    PetsNumber = pa.PetsNumber,
+                    Pet1Brand = pa.Pet1Brand,
+                    Pet1Age = pa.Pet1Age,
+                    Pet1Weight = pa.Pet1Weight,
+                    Pet2Brand = pa.Pet2Brand,
+                    Pet2Age = pa.Pet2Age,
+                    Pet2Weight = pa.Pet2Weight,
+                    Vehicle1Make = pa.Vehicle1Make,
+                    Vehicle1Model = pa.Vehicle1Model,
+                    Vehicle1Year = pa.Vehicle1Year,
+                    Vehicle1Color = pa.Vehicle1Color,
+                    Vehicle1LicensePlate = pa.Vehicle1LicensePlate,
+                    Vehicle2Make = pa.Vehicle2Make,
+                    Vehicle2Model = pa.Vehicle2Model,
+                    Vehicle2Year = pa.Vehicle2Year,
+                    Vehicle2Color = pa.Vehicle2Color,
+                    Vehicle2LicensePlate = pa.Vehicle2LicensePlate,
+                    Vehicle3Make = pa.Vehicle3Make,
+                    Vehicle3Model = pa.Vehicle3Model,
+                    Vehicle3Year = pa.Vehicle3Year,
+                    Vehicle3Color = pa.Vehicle3Color,
+                    Vehicle3LicensePlate = pa.Vehicle3LicensePlate,
+                    Vehicle4Make = pa.Vehicle4Make,
+                    Vehicle4Model = pa.Vehicle4Model,
+                    Vehicle4Year = pa.Vehicle4Year,
+                    Vehicle4Color = pa.Vehicle4Color,
+                    Vehicle4LicensePlate = pa.Vehicle4LicensePlate,
+                    Bankruptcy = pa.Bankruptcy,
+                    LeaseDefaulted = pa.LeaseDefaulted,
+                    RefusedtoPayRent = pa.RefusedtoPayRent,
+                    EvictedFromRental = pa.EvictedFromRental,
+                    ConvictedofFelony = pa.ConvictedofFelony,
+                    TenantId = pa.TenantId,
+                    OwnerId = pa.OwnerId
+                };
+
+                db.OwnerRejectedApplications.Add(rejectedapplication);
+                db.OwnerPendingApplications.Remove(pa);
+                db.SaveChanges();
+            }
+            return RedirectToAction("PendingApplication");
         }
 
+        public ActionResult RejectedApplication()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+
+            return View(db.OwnerRejectedApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
+        }
 
         //
     }

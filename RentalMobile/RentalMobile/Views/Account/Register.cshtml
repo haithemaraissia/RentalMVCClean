@@ -13,7 +13,7 @@
     {
         @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
         
-       
+       <ul class="grid-form row remove-bottom">
             <li class="four columns">
                 @Html.TextBoxFor(m => m.UserName, new { required = "required", CssClassPropertyAttribute = "full-width", placeholder = "Name" })
                 @Html.ValidationMessageFor(m => m.UserName)

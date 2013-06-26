@@ -861,8 +861,6 @@
     <Content Include="Views\Owner\PendingApplication.cshtml" />
     <Content Include="Views\Owner\AcceptedApplication.cshtml" />
     <Content Include="Views\Owner\RejectedApplication.cshtml" />
-    <Content Include="Views\Owner\AcceptApplication.cshtml" />
-    <Content Include="Views\Owner\RejectApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

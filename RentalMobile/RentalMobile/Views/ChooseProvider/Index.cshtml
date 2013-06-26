@@ -48,7 +48,7 @@
     }
     @section unitrequestshowing
     {
-        -2-FROM CHosign provider  
+        -2-FROM CHosign provider
         <h4>
             Recuest showing</h4>
         <p>
@@ -61,22 +61,40 @@
             <li class="three columns alpha">
                 <label for="your-name" class="screen-reader-text">
                     Your name</label>
-                <input id="your-name" placeholder="Your name" type="text" required>
+                @{
+                    if (@ViewBag.TenantName != null)
+                    {
+                        <input id = "your-name" placeholder = "Your name" type = "text" required value = "@ViewBag.TenantName" />
+                    }
+                    else
+                    {
+                        <input id="your-name1" placeholder="Your name" type="text" required />
+                    } 
+                }
             </li>
             <li class="three columns omega">
                 <label for="your-email" class="screen-reader-text">
                     E-mail</label>
-                <input id="your-email" placeholder="email" type="email" required>
+                 @{
+                    if (@ViewBag.TenantEmail != null)
+                    {
+                        <input id = "your-email" placeholder = "email" type = "text" required value = "@ViewBag.TenantEmail" />
+                    }
+                    else
+                    {
+                        <input id="your-email1" placeholder="email" type="text" required />
+                    } 
+                }
             </li>
             <li class="three columns alpha">
                 <label for="your-telephone" class="screen-reader-text">
                     Your telephone</label>
-                <input id="your-telephone" placeholder="telephone" type="text" required>
+                        <input id="your-telephone1" placeholder="telephone" type="text"  />
             </li>
             <li class="three columns omega">
                 <label for="showing-date" class="screen-reader-text">
                     Showing date</label>
-                <input id="showing-date" placeholder="showing date" type="text" required>
+                <input id="datepicker" placeholder="showing date" type="text" required>
             </li>
         </ul>
         <input type="submit" class="full-width tall" value="Hire This Crew">
@@ -197,10 +215,8 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
-            
-            
             <div id="Interiors">
                 <h4 class="section-titling">
                     Interiors</h4>
@@ -274,12 +290,11 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
-            
-            
             <div id="MaintenanceandRepairs">
-                <h4 class="section-titling"> Maintenance and Repairs</h4>
+                <h4 class="section-titling">
+                    Maintenance and Repairs</h4>
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
@@ -350,11 +365,11 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
-            
             <div id="NewConstruction">
-                <h4 class="section-titling">Constructions</h4>
+                <h4 class="section-titling">
+                    Constructions</h4>
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
@@ -425,11 +440,8 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
-
-
-            
             <div id="Custom Services">
                 <h4 class="section-titling">
                     Custom Services</h4>
@@ -503,11 +515,8 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
-            
-
-            
             <div id="Utilities">
                 <h4 class="section-titling">
                     Utilities</h4>
@@ -581,7 +590,7 @@
                     </ul>
                     <br />
                     <br />
-                </div> 
+                </div>
             </div>
         </section>
     }
@@ -593,37 +602,8 @@
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
-                        </figure>
-                        <h4>
-                            <a href="#">James Brian</a></h4>
-                        <p class="prop-extract">
-                            Et malesuada Morbi velit iaculis nonummy leo dis turpis lorem congue facilisis feugiat
-                            a lorem suscipit.</p>
-                        <p class="price">
-                            Experience: <span>10 years</span></p>
-                    </article>
-                </li>
-                                <li>
-                    <article>
-                        <figure>
-                            <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
-                        </figure>
-                        <h4>
-                            <a href="#">James Brian</a></h4>
-                        <p class="prop-extract">
-                            Et malesuada Morbi velit iaculis nonummy leo dis turpis lorem congue facilisis feugiat
-                            a lorem suscipit.</p>
-                        <p class="price">
-                            Experience: <span>10 years</span></p>
-                    </article>
-                                </li>
-                <li>
-                    <article>
-                        <figure>
-                            <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -638,7 +618,8 @@
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -653,7 +634,8 @@
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -668,7 +650,8 @@
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -683,7 +666,8 @@
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -694,11 +678,44 @@
                             Experience: <span>10 years</span></p>
                     </article>
                 </li>
-                                <li>
+                <li>
                     <article>
                         <figure>
                             <a href="#">James Brian</a>
-                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb" width="160" height="115">
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
+                        </figure>
+                        <h4>
+                            <a href="#">James Brian</a></h4>
+                        <p class="prop-extract">
+                            Et malesuada Morbi velit iaculis nonummy leo dis turpis lorem congue facilisis feugiat
+                            a lorem suscipit.</p>
+                        <p class="price">
+                            Experience: <span>10 years</span></p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <figure>
+                            <a href="#">James Brian</a>
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
+                        </figure>
+                        <h4>
+                            <a href="#">James Brian</a></h4>
+                        <p class="prop-extract">
+                            Et malesuada Morbi velit iaculis nonummy leo dis turpis lorem congue facilisis feugiat
+                            a lorem suscipit.</p>
+                        <p class="price">
+                            Experience: <span>10 years</span></p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <figure>
+                            <a href="#">James Brian</a>
+                            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="property-thumb"
+                                width="160" height="115">
                         </figure>
                         <h4>
                             <a href="#">James Brian</a></h4>
@@ -937,5 +954,21 @@
                 });
             });
         </script>
+        
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+         <script>
+             $(function () {
+                 $("#datepicker").datepicker();
+                 $("#anim").change(function () {
+                     $("#datepicker").datepicker("option", "showAnim", $(this).val());
+                 });
+             });
+</script>
     }
 </section>
