@@ -56,7 +56,8 @@
             mi magna, eget aliquet urna. Curabitur ut justo est. Quisque iaculis risus et tortor
             congue porta. Suspendisse eleifend tempor dapibus.
         </p>
-        <form action="#">
+       @using (Html.BeginForm("Index", "ChangeProvider"))
+    {
         <ul class="grid-form">
             <li class="three columns alpha">
                 <label for="your-name" class="screen-reader-text">
@@ -79,8 +80,7 @@
                 <input id="showing-date" placeholder="showing date" type="text" required>
             </li>
         </ul>
-        <input type="submit" class="full-width tall" value="Hire This Crew">
-        </form>
+        <input type="submit" class="full-width tall" value="Hire This Crew" />
     }
 </section>
 <section class="row double-bottom">

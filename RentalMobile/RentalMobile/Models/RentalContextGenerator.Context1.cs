@@ -57,5 +57,8 @@ namespace RentalMobile.Models
         public DbSet<AgentRejectedApplication> AgentRejectedApplications { get; set; }
         public DbSet<OwnerAcceptedApplication> OwnerAcceptedApplications { get; set; }
         public DbSet<OwnerRejectedApplication> OwnerRejectedApplications { get; set; }
+        public DbSet<MaintenanceProviderAcceptedJob> MaintenanceProviderAcceptedJobs { get; set; }
+        public DbSet<MaintenanceProviderNewJobOffer> MaintenanceProviderNewJobOffers { get; set; }
+        public DbSet<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobs { get; set; }
     }
 }

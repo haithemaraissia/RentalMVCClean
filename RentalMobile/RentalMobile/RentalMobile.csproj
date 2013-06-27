@@ -172,6 +172,15 @@
     <Compile Include="Models\MaintenanceProvider.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MaintenanceProviderAcceptedJob.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceProviderNewJobOffer.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceProviderRejectedJob.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Owner.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -861,6 +870,7 @@
     <Content Include="Views\Owner\PendingApplication.cshtml" />
     <Content Include="Views\Owner\AcceptedApplication.cshtml" />
     <Content Include="Views\Owner\RejectedApplication.cshtml" />
+    <Content Include="Views\ChooseProvider\Select.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

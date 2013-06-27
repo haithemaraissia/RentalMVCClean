@@ -14,6 +14,9 @@
           <EntitySet Name="MaintenanceOrder" EntityType="DB_33736_rentalModel.Store.MaintenanceOrder" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenancePhoto" EntityType="DB_33736_rentalModel.Store.MaintenancePhoto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProvider" EntityType="DB_33736_rentalModel.Store.MaintenanceProvider" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderAcceptedJobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderNewJobOffers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderRejectedJobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Owner" EntityType="DB_33736_rentalModel.Store.Owner" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerAcceptedApplication" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerMaintenance" EntityType="DB_33736_rentalModel.Store.OwnerMaintenance" store:Type="Tables" Schema="dbo" />
@@ -521,6 +524,42 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderAcceptedJobs">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+          <Property Name="TenantName" Type="nchar" MaxLength="10" />
+          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="PropertyId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderNewJobOffers">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+          <Property Name="TenantName" Type="nchar" MaxLength="10" />
+          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="PropertyId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderRejectedJobs">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" />
+          <Property Name="TenantName" Type="nchar" MaxLength="10" />
+          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="PropertyId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -1551,6 +1590,9 @@
           <EntitySet Name="AgentRejectedApplications" EntityType="DB_33736_rentalModel.AgentRejectedApplication" />
           <EntitySet Name="OwnerAcceptedApplications" EntityType="DB_33736_rentalModel.OwnerAcceptedApplication" />
           <EntitySet Name="OwnerRejectedApplications" EntityType="DB_33736_rentalModel.OwnerRejectedApplication" />
+          <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.MaintenanceProviderAcceptedJob" />
+          <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.MaintenanceProviderNewJobOffer" />
+          <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" />
           </EntityContainer>
         <EntityType Name="UnitGallery">
           <Key>
@@ -2931,6 +2973,42 @@
           <Property Type="Int32" Name="TenantId" />
           <Property Type="Int32" Name="OwnerId" Nullable="false" />
         </EntityType>
+        <EntityType Name="MaintenanceProviderAcceptedJob">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="TenantId" />
+          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="PropertyId" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderNewJobOffer">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="TenantId" />
+          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="PropertyId" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderRejectedJob">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="TenantId" />
+          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="PropertyId" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4124,6 +4202,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceProviderAcceptedJobs">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProviderAcceptedJob">
+              <MappingFragment StoreEntitySet="MaintenanceProviderAcceptedJobs">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="TenantEmailAddress" ColumnName="TenantEmailAddress" />
+                <ScalarProperty Name="TenantName" ColumnName="TenantName" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceProviderNewJobOffers">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProviderNewJobOffer">
+              <MappingFragment StoreEntitySet="MaintenanceProviderNewJobOffers">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="TenantEmailAddress" ColumnName="TenantEmailAddress" />
+                <ScalarProperty Name="TenantName" ColumnName="TenantName" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceProviderRejectedJobs">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProviderRejectedJob">
+              <MappingFragment StoreEntitySet="MaintenanceProviderRejectedJobs">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="TenantEmailAddress" ColumnName="TenantEmailAddress" />
+                <ScalarProperty Name="TenantName" ColumnName="TenantName" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4266,6 +4383,9 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.AgentRejectedApplication" Width="1.5" PointX="19.375" PointY="0.75" Height="20.633525390624996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerAcceptedApplication" Width="1.5" PointX="21.375" PointY="0.75" Height="20.633525390624996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerRejectedApplication" Width="1.5" PointX="5.375" PointY="21.75" Height="20.633525390624996" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderAcceptedJob" Width="1.5" PointX="11.375" PointY="4.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderNewJobOffer" Width="1.5" PointX="12.375" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" Width="1.5" PointX="15.375" PointY="22.75" Height="2.3648893229166674" />
         </Diagram>
     </Diagrams>
   </Designer>

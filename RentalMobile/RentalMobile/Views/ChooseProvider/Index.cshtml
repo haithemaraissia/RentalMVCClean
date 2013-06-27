@@ -56,49 +56,49 @@
             mi magna, eget aliquet urna. Curabitur ut justo est. Quisque iaculis risus et tortor
             congue porta. Suspendisse eleifend tempor dapibus.
         </p>
-        <form action="#">
-        <ul class="grid-form">
-            <li class="three columns alpha">
-                <label for="your-name" class="screen-reader-text">
-                    Your name</label>
-                @{
-                    if (@ViewBag.TenantName != null)
-                    {
-                        <input id = "your-name" placeholder = "Your name" type = "text" required value = "@ViewBag.TenantName" />
-                    }
-                    else
-                    {
-                        <input id="your-name1" placeholder="Your name" type="text" required />
-                    } 
-                }
-            </li>
-            <li class="three columns omega">
-                <label for="your-email" class="screen-reader-text">
-                    E-mail</label>
-                 @{
-                    if (@ViewBag.TenantEmail != null)
-                    {
-                        <input id = "your-email" placeholder = "email" type = "text" required value = "@ViewBag.TenantEmail" />
-                    }
-                    else
-                    {
-                        <input id="your-email1" placeholder="email" type="text" required />
-                    } 
-                }
-            </li>
-            <li class="three columns alpha">
-                <label for="your-telephone" class="screen-reader-text">
-                    Your telephone</label>
-                        <input id="your-telephone1" placeholder="telephone" type="text"  />
-            </li>
-            <li class="three columns omega">
-                <label for="showing-date" class="screen-reader-text">
-                    Showing date</label>
-                <input id="datepicker" placeholder="showing date" type="text" required>
-            </li>
-        </ul>
-        <input type="submit" class="full-width tall" value="Hire This Crew">
-        </form>
+        @*    @using (Html.BeginForm("Select", "ChooseProvider", new { propertyIdcustom = 2, providerid = 1 }, FormMethod.Post))*@
+        @using (Html.BeginForm("Select", "ChooseProvider", FormMethod.Post))
+        {
+              
+            <div>
+            @Html.Hidden("propertyIdcustom", 2); </div>
+              
+            <ul class="grid-form"> <li class="four columns alpha"> <label for="your-name" class="screen-reader-text">
+            Your name</label>
+            @{
+            if (@ViewBag.TenantName != null)
+            {
+                <input id = "your-name" placeholder = "Your name" type = "text" required value =
+                "@ViewBag.TenantName" style="text-align: center"/>
+            }
+            else
+            {
+                <input id="your-name1" placeholder="Your name" type="text" required style="text-align:
+                center"/>
+            }
+            }
+            </li> <li class="four columns omega"> <label for="your-email" class="screen-reader-text">
+            E-mail</label>
+            @{
+            if (@ViewBag.TenantEmail != null)
+            {
+                <input id = "your-email" placeholder = "email" type = "text" required value = "@ViewBag.TenantEmail"
+                style="text-align: center"/>
+            }
+            else
+            {
+                <input id="your-email1" placeholder="email" type="text" required style="text-align:
+                center"/>
+            }
+            }
+            </li> <li class="four columns alpha"> <label for="enddate" class="screen-reader-text">
+            Start date</label> <input id="startdatepicker" runat="server" placeholder="Start
+            Date" type="text" required style="text-align: center"/> </li> <li class="four columns
+            omega"> <label for="enddate" class="screen-reader-text"> End date</label> <input
+            id="enddatepicker" runat="server" placeholder="End Date" type="text" required style="text-align:
+            center"/> </li> </ul>
+        <input type="submit" class="full-width tall" value="Hire This Crew" />
+        }
     }
 </section>
 <section class="row double-bottom">
@@ -954,21 +954,30 @@
                 });
             });
         </script>
-        
-        
-        
-        
-        
-        
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-         <script>
-             $(function () {
-                 $("#datepicker").datepicker();
-                 $("#anim").change(function () {
-                     $("#datepicker").datepicker("option", "showAnim", $(this).val());
-                 });
-             });
-</script>
+        <script>
+            $(function () {
+                $("#enddatepicker").datepicker(
+                {
+                    onSelect: function () {
+                   @ViewBag.EndDate = $(this).datepicker('enddatepicker');
+                }
+            });
+                $("#anim").change(function () {
+                    $("#enddatepicker").datepicker("option", "showAnim", $(this).val());
+                });
+
+                $("#startdatepicker").datepicker(
+                {
+                    onSelect: function () {
+                   @ViewBag.StartDate = $(this).datepicker('startdatepicker');
+                }
+            });
+                $("#anim").change(function () {
+                    $("#startdatepicker").datepicker("option", "showAnim", $(this).val());
+                });
+            });
+        </script>
     }
 </section>
