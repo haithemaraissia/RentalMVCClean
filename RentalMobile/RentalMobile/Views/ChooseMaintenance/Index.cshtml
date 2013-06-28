@@ -47,12 +47,15 @@
 									<li class="new">New construction</li>
 								</ul>
 								<p class="propr-details">1 bedroom  /  2 bathrom  / 1,300 sqft </p>
-								<p class="prop-webid">Web ID #1</p>
+								<p class="prop-webid">Web ID #111</p>
 								<ul class="toolbar">
 									<li class="dollar"><a href="#">Compare</a></li>
                                     <li class="map"><a href="#">Map</a></li>
 								    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-								    <li class="next-arr">@Html.RouteLink("Property", new { id = 0 }, null)></li>
+                                    
+								    <li class="next-arr">@Html.ActionLink("Select", "Index", "ChooseProvider", new { providerid = 0 }, null)></li>
+
+								    @*<li class="next-arr">@Html.RouteLink("Property", new { providerid = 0 }, null)></li>*@
                                   @*  @Html.RouteLink("Description", "Property",new { id = 0 } )*@
 						@*			<li class="next-arr">@Html.ActionLink("Description", "Index", "Property", new { id = 0 }, null)></li>
 *@								</ul>

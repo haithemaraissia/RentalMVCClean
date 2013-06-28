@@ -65,7 +65,26 @@ namespace RentalMobile.Controllers
         [HttpPost]
         public ActionResult Select(FormCollection form)
         {
-            return View();//ViewBag.StartDate
+
+            //form["ProviderId"] from url
+            //from["PropertyId"] this we have tocreate a new view
+     
+            return RedirectToAction("Index", new { providerid = 0 });
+
+
+
+
+
+
+
+            //form["HiddenStart"]
+            //form["HiddenEnd"]
+
+            //Tenant
+            // var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+
+            //Provider
+            //var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
 
         }
 
@@ -155,7 +174,7 @@ namespace RentalMobile.Controllers
         //}
 
 
-        protected void InsertPendingJobOffer(int providerid, Tenant tenant, int propertyid)
+        protected void InsertPendingJobOffer(int providerid, Tenant tenant, int propertyid, DateTime startDate, DateTime endDate)
         {
             var provider = db.MaintenanceProviders.FirstOrDefault(t => t.MaintenanceProviderId == (Convert.ToInt32(providerid)));
             if (provider == null) return;
@@ -166,8 +185,8 @@ namespace RentalMobile.Controllers
                     TenantName = tenant.FirstName + " " + tenant.LastName,
                     TenantEmailAddress = tenant.EmailAddress,
                     PropertyId = propertyid,
-                    StartDate = (DateTime)ViewBag.StartDate,
-                    EndDate = (DateTime)ViewBag.EndDate
+                    StartDate = startDate,
+                    EndDate = endDate
                 };
             db.MaintenanceProviderNewJobOffers.Add(mpj);
             db.SaveChanges();
