@@ -56,31 +56,32 @@
             mi magna, eget aliquet urna. Curabitur ut justo est. Quisque iaculis risus et tortor
             congue porta. Suspendisse eleifend tempor dapibus.
         </p>
-       @using (Html.BeginForm("Index", "ChangeProvider"))
-    {
-        <ul class="grid-form">
-            <li class="three columns alpha">
-                <label for="your-name" class="screen-reader-text">
-                    Your name</label>
-                <input id="your-name" placeholder="Your name" type="text" required>
-            </li>
-            <li class="three columns omega">
-                <label for="your-email" class="screen-reader-text">
-                    E-mail</label>
-                <input id="your-email" placeholder="email" type="email" required>
-            </li>
-            <li class="three columns alpha">
-                <label for="your-telephone" class="screen-reader-text">
-                    Your telephone</label>
-                <input id="your-telephone" placeholder="telephone" type="text" required>
-            </li>
-            <li class="three columns omega">
-                <label for="showing-date" class="screen-reader-text">
-                    Showing date</label>
-                <input id="showing-date" placeholder="showing date" type="text" required>
-            </li>
-        </ul>
-        <input type="submit" class="full-width tall" value="Hire This Crew" />
+        @using (Html.BeginForm("Index", "ChangeProvider"))
+        {
+            <ul class="grid-form">
+                <li class="three columns alpha">
+                    <label for="your-name" class="screen-reader-text">
+                        Your name</label>
+                    <input id="your-name" placeholder="Your name" type="text" required>
+                </li>
+                <li class="three columns omega">
+                    <label for="your-email" class="screen-reader-text">
+                        E-mail</label>
+                    <input id="your-email" placeholder="email" type="email" required>
+                </li>
+                <li class="three columns alpha">
+                    <label for="your-telephone" class="screen-reader-text">
+                        Your telephone</label>
+                    <input id="your-telephone" placeholder="telephone" type="text" required>
+                </li>
+                <li class="three columns omega">
+                    <label for="showing-date" class="screen-reader-text">
+                        Showing date</label>
+                    <input id="showing-date" placeholder="showing date" type="text" required>
+                </li>
+            </ul>
+            <input type="submit" class="full-width tall" value="Hire This Crew" />
+        }
     }
 </section>
 <section class="row double-bottom">

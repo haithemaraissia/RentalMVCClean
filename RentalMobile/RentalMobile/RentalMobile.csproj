@@ -871,6 +871,7 @@
     <Content Include="Views\Owner\AcceptedApplication.cshtml" />
     <Content Include="Views\Owner\RejectedApplication.cshtml" />
     <Content Include="Views\ChooseProvider\Select.cshtml" />
+    <Content Include="Views\ChooseProvider\Submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

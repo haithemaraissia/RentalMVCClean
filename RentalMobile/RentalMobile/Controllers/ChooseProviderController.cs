@@ -31,6 +31,10 @@ namespace RentalMobile.Controllers
 
             //Tenant Telephone not required
 
+
+
+            TempData["providerid"] = providerid;
+
             return View(provider);
         }
 
@@ -61,15 +65,79 @@ namespace RentalMobile.Controllers
         //   public ActionResult Select(string propertyIdcustom, string providerid, FormCollection collection)
 
 
+        public ActionResult Submit()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Submit(string propertyIdcustom)
+        {
+
+            var startdate = TempData["startDate"];
+            var endate = TempData["endDate"];
+            var providerid = TempData["providerid"];
+
+
+                ////PROCESS TO AMAZONPAYPAL
+                ////YOU DON'T NEED MODEL VALIDATION
+
+                ////ALSO WHEN SUCCED
+                ////ADD ROW IN PAYMENT WITH DESCRIPTION OF THIS TRANSACTION
+
+                ////ALSO SEND EMAIL TO LISTER
+                ////SO HE OR SHE DOES BACKGROUND CHECKING AND ACCPET/DENY JOB OFFER
+
+
+
+                //Tenant propose job for the provider
+                //It will in pending jobs for provider
+                //If provider accept
+                //Notify Tenant, OWner, PRovider
+                //Generate Contracts for all
+
+
+                var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
+                var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+
+                //Property
+                var propertyId = (Convert.ToInt32(propertyIdcustom));
+                var property = db.Units.FirstOrDefault(t => t.UnitId == propertyId);
+                if (property == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+
+                InsertPendingJobOffer(provider.MaintenanceProviderId, tenant, propertyId, (DateTime) startdate,(DateTime) endate);
+                ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Provider.";
+                return View(provider);
+
+
+
+
+        }
+
 
         [HttpPost]
         public ActionResult Select(FormCollection form)
         {
 
+            TempData["startDate"] = form["HiddenStartDate"];
+            TempData["endDate"] = form["HiddenEndDate"];
+
+            //QueryString
+           // TempData["providerid"] = Url.RequestContext.RouteData.Values["providerid"].ToString();
+
+           // TempData["UserID"] = UserHelper.GetTenantID();
             //form["ProviderId"] from url
             //from["PropertyId"] this we have tocreate a new view
      
-            return RedirectToAction("Index", new { providerid = 0 });
+            //return RedirectToAction("Index", new { providerid = 0 });
+
+            return RedirectToAction("Submit");
+
 
 
 

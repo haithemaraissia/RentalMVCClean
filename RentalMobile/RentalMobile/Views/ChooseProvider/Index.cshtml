@@ -110,7 +110,7 @@
                                                                                           id="enddatepicker" runat="server" placeholder="End Date" type="text" required style="text-align:
                                                                                                                                                                                                                                                                                                                                                                                                                                                center"/> </li> </ul>
             <input type="hidden" name="HiddenStartDate"  id="HiddenStart" value="" />
-               <input type="hidden" name="HiddenEndDate"  id="HiddenEndDate" value="" />
+               <input type="hidden" name="HiddenEndDate"  id="HiddenEnd" value="" />
         <input type="submit" class="full-width tall" value="Hire This Crew" />
         }
     }
@@ -1018,7 +1018,7 @@
                     $('#HiddenStartDate').val(object);
 
                     var object1 = $('#enddatepicker').val();
-                    $('#HiddenEndDate').val(object);
+                    $('#HiddenEndDate').val(object1);
                 });
             });
         </script>
