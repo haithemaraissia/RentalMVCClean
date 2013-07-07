@@ -140,6 +140,20 @@ namespace RentalMobile.Controllers
         //    return PartialView("_ProviderFavDetail",Providerfavorite);
         //}
 
+
+
+
+
+        //Continue from here like OWner for pendingm, accpeted and rejected
+        public ActionResult NewJobOffer()
+        {
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+
+            return View(db.MaintenanceProviderAcceptedJobs.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList());
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

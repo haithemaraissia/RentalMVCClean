@@ -107,6 +107,8 @@
     <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProfessionalsController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
@@ -902,6 +904,10 @@
     <Content Include="Views\Owner\RejectedApplication.cshtml" />
     <Content Include="Views\ChooseProvider\Select.cshtml" />
     <Content Include="Views\ChooseProvider\Submit.cshtml" />
+    <Content Include="Views\Provider\NewJobOffer.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\ProjectDetail\Index.cshtml" />
+    <Content Include="Views\Project\MakeOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

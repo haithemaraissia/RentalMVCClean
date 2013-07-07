@@ -57,18 +57,18 @@ namespace RentalMobile.Models
         public DbSet<AgentRejectedApplication> AgentRejectedApplications { get; set; }
         public DbSet<OwnerAcceptedApplication> OwnerAcceptedApplications { get; set; }
         public DbSet<OwnerRejectedApplication> OwnerRejectedApplications { get; set; }
-        public DbSet<MaintenanceProviderAcceptedJob> MaintenanceProviderAcceptedJobs { get; set; }
-        public DbSet<MaintenanceProviderNewJobOffer> MaintenanceProviderNewJobOffers { get; set; }
-        public DbSet<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobs { get; set; }
-        public DbSet<AgentProject> AgentProjects { get; set; }
-        public DbSet<OwnerProject> OwnerProjects { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
         public DbSet<AgentAcceptedPostedProject> AgentAcceptedPostedProjects { get; set; }
         public DbSet<AgentPendingPostedProject> AgentPendingPostedProjects { get; set; }
+        public DbSet<AgentProject> AgentProjects { get; set; }
         public DbSet<AgentRejectedPostedProject> AgentRejectedPostedProjects { get; set; }
         public DbSet<OwnerAcceptedPostedProject> OwnerAcceptedPostedProjects { get; set; }
         public DbSet<OwnerPendingPostedProject> OwnerPendingPostedProjects { get; set; }
+        public DbSet<OwnerProject> OwnerProjects { get; set; }
         public DbSet<OwnerRejectedPostedProject> OwnerRejectedPostedProjects { get; set; }
+        public DbSet<MaintenanceProviderAcceptedJob> MaintenanceProviderAcceptedJobs { get; set; }
+        public DbSet<MaintenanceProviderNewJobOffer> MaintenanceProviderNewJobOffers { get; set; }
+        public DbSet<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobs { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
     }
 }

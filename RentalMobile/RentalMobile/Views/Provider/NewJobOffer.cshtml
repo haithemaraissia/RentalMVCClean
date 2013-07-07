@@ -1,0 +1,73 @@
+﻿@model IEnumerable<RentalMobile.Models.MaintenanceProviderAcceptedJob>
+@{
+    ViewBag.Title = "Pending Job Offer";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table  style="width: 100%">
+    <tr>
+        <th>
+            ProjectID
+        </th>
+        <th>
+            AgentId
+        </th>
+        <th>
+            SpecialistId
+        </th>
+        <th>
+            ServiceTypeID
+        </th>
+        <th>
+            Budget
+        </th>
+        <th>
+            Currency
+        </th>
+        <th>
+            CurrencyCode
+        </th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+         <td>
+            @Html.DisplayFor(modelItem => item.MaintenanceProviderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantEmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PropertyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @*   @Html.ActionLink("Accept", "AcceptApplication", new {  id=item.ApplicationId }) |    
+            @Html.ActionLink("Reject", "RejectApplication", new { id=item.ApplicationId  }) *@
+            
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+            Add Accept offer, reject offer
