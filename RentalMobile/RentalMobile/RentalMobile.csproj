@@ -908,6 +908,7 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Views\Project\MakeOffer.cshtml" />
+    <Content Include="Views\ProjectDetail\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
