@@ -109,9 +109,9 @@
             omega"> <label for="enddate" class="screen-reader-text"> End date</label> <input
                                                                                           id="enddatepicker" runat="server" placeholder="End Date" type="text" required style="text-align:
                                                                                                                                                                                                                                                                                                                                                                                                                                                center"/> </li> </ul>
-            <input type="hidden" name="HiddenStartDate"  id="HiddenStart" value="" />
-               <input type="hidden" name="HiddenEndDate"  id="HiddenEnd" value="" />
-        <input type="submit" class="full-width tall" value="Hire This Crew" />
+            <input type="hidden" name="HiddenStartDate"  id="HiddenStartDate" value="" />
+               <input type="hidden" name="HiddenEndDate"  id="HiddenEndDate" value="" />
+        <input type="submit" class="full-width tall" value="Hire This Crew" id="HireCrew" />
         }
     }
 </section>
@@ -1013,7 +1013,7 @@
 
 
 
-                $("#submit").click(function () {
+                $("#HireCrew").click(function () {
                     var object = $('#startdatepicker').val();
                     $('#HiddenStartDate').val(object);
 

@@ -8,8 +8,12 @@
         <EntityContainer Name="DB_33736_rentalModelStoreContainer">
           <EntitySet Name="Agent" EntityType="DB_33736_rentalModel.Store.Agent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentAcceptedApplication" EntityType="DB_33736_rentalModel.Store.AgentAcceptedApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AgentAcceptedPostedProject" EntityType="DB_33736_rentalModel.Store.AgentAcceptedPostedProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentPendingApplication" EntityType="DB_33736_rentalModel.Store.AgentPendingApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AgentPendingPostedProject" EntityType="DB_33736_rentalModel.Store.AgentPendingPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AgentProject" EntityType="DB_33736_rentalModel.Store.AgentProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedApplication" EntityType="DB_33736_rentalModel.Store.AgentRejectedApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AgentRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.AgentRejectedPostedProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.Store.MaintenanceExteriors" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceOrder" EntityType="DB_33736_rentalModel.Store.MaintenanceOrder" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenancePhoto" EntityType="DB_33736_rentalModel.Store.MaintenancePhoto" store:Type="Tables" Schema="dbo" />
@@ -19,9 +23,15 @@
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderRejectedJobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Owner" EntityType="DB_33736_rentalModel.Store.Owner" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerAcceptedApplication" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OwnerAcceptedPostedProject" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedPostedProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerMaintenance" EntityType="DB_33736_rentalModel.Store.OwnerMaintenance" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerPendingApplication" EntityType="DB_33736_rentalModel.Store.OwnerPendingApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OwnerPendingPostedProject" EntityType="DB_33736_rentalModel.Store.OwnerPendingPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OwnerProject" EntityType="DB_33736_rentalModel.Store.OwnerProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerRejectedApplication" EntityType="DB_33736_rentalModel.Store.OwnerRejectedApplication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OwnerRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.OwnerRejectedPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project" EntityType="DB_33736_rentalModel.Store.Project" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProjectPhoto" EntityType="DB_33736_rentalModel.Store.ProjectPhoto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalApplication" EntityType="DB_33736_rentalModel.Store.RentalApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialist" EntityType="DB_33736_rentalModel.Store.Specialist" store:Type="Tables" Schema="dbo" />
@@ -238,6 +248,20 @@
           <Property Name="TenantId" Type="int" />
           <Property Name="AgentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
+        <EntityType Name="AgentAcceptedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="AgentId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="AgentPendingApplication">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -344,6 +368,27 @@
           <Property Name="ConvictedofFelony" Type="bit" />
           <Property Name="TenantId" Type="int" />
           <Property Name="AgentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgentPendingPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="AgentId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="AgentProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="AgentId" Type="int" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AgentRejectedApplication">
           <Key>
@@ -452,6 +497,20 @@
           <Property Name="TenantId" Type="int" />
           <Property Name="AgentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
+        <EntityType Name="AgentRejectedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="AgentId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="MaintenanceExteriors">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -529,10 +588,10 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenantId" Type="int" />
-          <Property Name="TenantName" Type="nchar" MaxLength="10" />
-          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="TenantName" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenantEmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
@@ -541,10 +600,10 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenantId" Type="int" />
-          <Property Name="TenantName" Type="nchar" MaxLength="10" />
-          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="TenantName" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenantEmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
@@ -553,10 +612,10 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenantId" Type="int" />
-          <Property Name="TenantName" Type="nchar" MaxLength="10" />
-          <Property Name="TenantEmailAddress" Type="nchar" MaxLength="10" />
+          <Property Name="TenantName" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenantEmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
@@ -692,6 +751,20 @@
           <Property Name="TenantId" Type="int" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="OwnerAcceptedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="OwnerMaintenance">
           <Key>
             <PropertyRef Name="OwnerID" />
@@ -806,6 +879,27 @@
           <Property Name="TenantId" Type="int" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="OwnerPendingPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="OwnerProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="OwnerRejectedApplication">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -912,6 +1006,53 @@
           <Property Name="ConvictedofFelony" Type="bit" />
           <Property Name="TenantId" Type="int" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnerRejectedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrimaryPhoto" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="GoogleMap" Type="nvarchar(max)" />
+          <Property Name="Country" Type="varchar" MaxLength="128" />
+          <Property Name="State" Type="nvarchar" MaxLength="20" />
+          <Property Name="Region" Type="varchar" MaxLength="128" />
+          <Property Name="City" Type="varchar" MaxLength="128" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="NumberofPhoto" Type="int" />
+          <Property Name="Budget" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="DaysOnSite" Type="int" />
+          <Property Name="AvailableDate" Type="smalldatetime" />
+          <Property Name="PosterRole" Type="char" MaxLength="10" />
+          <Property Name="PosterID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProjectPhoto">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="RentalApplication">
           <Key>
@@ -1593,6 +1734,16 @@
           <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.MaintenanceProviderAcceptedJob" />
           <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.MaintenanceProviderNewJobOffer" />
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" />
+          <EntitySet Name="AgentProjects" EntityType="DB_33736_rentalModel.AgentProject" />
+          <EntitySet Name="OwnerProjects" EntityType="DB_33736_rentalModel.OwnerProject" />
+          <EntitySet Name="Projects" EntityType="DB_33736_rentalModel.Project" />
+          <EntitySet Name="ProjectPhotoes" EntityType="DB_33736_rentalModel.ProjectPhoto" />
+          <EntitySet Name="AgentAcceptedPostedProjects" EntityType="DB_33736_rentalModel.AgentAcceptedPostedProject" />
+          <EntitySet Name="AgentPendingPostedProjects" EntityType="DB_33736_rentalModel.AgentPendingPostedProject" />
+          <EntitySet Name="AgentRejectedPostedProjects" EntityType="DB_33736_rentalModel.AgentRejectedPostedProject" />
+          <EntitySet Name="OwnerAcceptedPostedProjects" EntityType="DB_33736_rentalModel.OwnerAcceptedPostedProject" />
+          <EntitySet Name="OwnerPendingPostedProjects" EntityType="DB_33736_rentalModel.OwnerPendingPostedProject" />
+          <EntitySet Name="OwnerRejectedPostedProjects" EntityType="DB_33736_rentalModel.OwnerRejectedPostedProject" />
           </EntityContainer>
         <EntityType Name="UnitGallery">
           <Key>
@@ -2977,10 +3128,10 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="TenantId" />
-          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="PropertyId" />
           <Property Type="DateTime" Name="StartDate" />
           <Property Type="DateTime" Name="EndDate" />
@@ -2989,10 +3140,10 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="TenantId" />
-          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="PropertyId" />
           <Property Type="DateTime" Name="StartDate" />
           <Property Type="DateTime" Name="EndDate" />
@@ -3001,13 +3152,144 @@
           <Key>
             <PropertyRef Name="MaintenanceProviderId" />
           </Key>
-          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="TenantId" />
-          <Property Type="String" Name="TenantName" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="TenantEmailAddress" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenantName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TenantEmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="PropertyId" />
           <Property Type="DateTime" Name="StartDate" />
           <Property Type="DateTime" Name="EndDate" />
+        </EntityType>
+        <EntityType Name="AgentProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Type="Int32" Name="AgentId" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnerProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Type="Int32" Name="OwnerId" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Type="Int32" Name="ProjectID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrimaryPhoto" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GoogleMap" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Region" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NumberofPhoto" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="Int32" Name="DaysOnSite" />
+          <Property Type="DateTime" Name="AvailableDate" />
+          <Property Type="String" Name="PosterRole" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="PosterID" />
+        </EntityType>
+        <EntityType Name="ProjectPhoto">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AgentAcceptedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="AgentId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
+        </EntityType>
+        <EntityType Name="AgentPendingPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="AgentId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
+        </EntityType>
+        <EntityType Name="AgentRejectedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="AgentId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
+        </EntityType>
+        <EntityType Name="OwnerAcceptedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="OwnerId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
+        </EntityType>
+        <EntityType Name="OwnerPendingPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="OwnerId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
+        </EntityType>
+        <EntityType Name="OwnerRejectedPostedProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="OwnerId" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="ServiceTypeID" Nullable="false" />
+          <Property Type="Double" Name="Budget" />
+          <Property Type="String" Name="Currency" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyCode" />
+          <Property Type="DateTime" Name="Date" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -4241,7 +4523,148 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="AgentProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.AgentProject">
+              <MappingFragment StoreEntitySet="AgentProject">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerProject">
+              <MappingFragment StoreEntitySet="OwnerProject">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="PosterID" ColumnName="PosterID" />
+                <ScalarProperty Name="PosterRole" ColumnName="PosterRole" />
+                <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
+                <ScalarProperty Name="DaysOnSite" ColumnName="DaysOnSite" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="NumberofPhoto" ColumnName="NumberofPhoto" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PrimaryPhoto" ColumnName="PrimaryPhoto" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectPhotoes">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.ProjectPhoto">
+              <MappingFragment StoreEntitySet="ProjectPhoto">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentAcceptedPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.AgentAcceptedPostedProject">
+              <MappingFragment StoreEntitySet="AgentAcceptedPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentPendingPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.AgentPendingPostedProject">
+              <MappingFragment StoreEntitySet="AgentPendingPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentRejectedPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.AgentRejectedPostedProject">
+              <MappingFragment StoreEntitySet="AgentRejectedPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerAcceptedPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerAcceptedPostedProject">
+              <MappingFragment StoreEntitySet="OwnerAcceptedPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerPendingPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerPendingPostedProject">
+              <MappingFragment StoreEntitySet="OwnerPendingPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerRejectedPostedProjects">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerRejectedPostedProject">
+              <MappingFragment StoreEntitySet="OwnerRejectedPostedProject">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -4262,7 +4685,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RentalModel" ZoomLevel="108">
+      <Diagram Name="RentalModel" ZoomLevel="77">
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitGallery" Width="1.5" PointX="3" PointY="1.5" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.TenantShowing" Width="1.5" PointX="9.5" PointY="1.25" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Tenant" Width="1.5" PointX="7.125" PointY="1.25" Height="4.2879036458333326" />
@@ -4383,9 +4806,19 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.AgentRejectedApplication" Width="1.5" PointX="19.375" PointY="0.75" Height="20.633525390624996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerAcceptedApplication" Width="1.5" PointX="21.375" PointY="0.75" Height="20.633525390624996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerRejectedApplication" Width="1.5" PointX="5.375" PointY="21.75" Height="20.633525390624996" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderAcceptedJob" Width="1.5" PointX="11.375" PointY="4.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderNewJobOffer" Width="1.5" PointX="12.375" PointY="0.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" Width="1.5" PointX="15.375" PointY="22.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderAcceptedJob" Width="1.5" PointX="16.875" PointY="27.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderNewJobOffer" Width="1.5" PointX="17.875" PointY="23.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" Width="1.5" PointX="19" PointY="27.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.AgentProject" Width="1.5" PointX="11.375" PointY="4.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerProject" Width="1.5" PointX="12.375" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.Project" Width="1.5" PointX="21.375" PointY="22.75" Height="4.8648079427083246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.ProjectPhoto" Width="1.5" PointX="23.375" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.AgentAcceptedPostedProject" Width="1.5" PointX="23.375" PointY="3.75" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.AgentPendingPostedProject" Width="1.5" PointX="23.375" PointY="7.75" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.AgentRejectedPostedProject" Width="1.5" PointX="23.375" PointY="11.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerAcceptedPostedProject" Width="1.5" PointX="23.375" PointY="15.75" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingPostedProject" Width="1.5" PointX="23.375" PointY="19.75" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerRejectedPostedProject" Width="1.5" PointX="23.375" PointY="23.75" Height="2.7494921874999818" />
         </Diagram>
     </Diagrams>
   </Designer>

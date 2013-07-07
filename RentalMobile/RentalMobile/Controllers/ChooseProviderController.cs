@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -60,7 +61,7 @@ namespace RentalMobile.Controllers
         //    return View();
         //}
 
-         //public ActionResult Index(string propertyIdcustom, string providerid)
+        //public ActionResult Index(string propertyIdcustom, string providerid)
 
         //   public ActionResult Select(string propertyIdcustom, string providerid, FormCollection collection)
 
@@ -80,39 +81,39 @@ namespace RentalMobile.Controllers
             var providerid = TempData["providerid"];
 
 
-                ////PROCESS TO AMAZONPAYPAL
-                ////YOU DON'T NEED MODEL VALIDATION
+            ////PROCESS TO AMAZONPAYPAL
+            ////YOU DON'T NEED MODEL VALIDATION
 
-                ////ALSO WHEN SUCCED
-                ////ADD ROW IN PAYMENT WITH DESCRIPTION OF THIS TRANSACTION
+            ////ALSO WHEN SUCCED
+            ////ADD ROW IN PAYMENT WITH DESCRIPTION OF THIS TRANSACTION
 
-                ////ALSO SEND EMAIL TO LISTER
-                ////SO HE OR SHE DOES BACKGROUND CHECKING AND ACCPET/DENY JOB OFFER
-
-
-
-                //Tenant propose job for the provider
-                //It will in pending jobs for provider
-                //If provider accept
-                //Notify Tenant, OWner, PRovider
-                //Generate Contracts for all
+            ////ALSO SEND EMAIL TO LISTER
+            ////SO HE OR SHE DOES BACKGROUND CHECKING AND ACCPET/DENY JOB OFFER
 
 
-                var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
-                var tenant = db.Tenants.Find(UserHelper.GetTenantID());
 
-                //Property
-                var propertyId = (Convert.ToInt32(propertyIdcustom));
-                var property = db.Units.FirstOrDefault(t => t.UnitId == propertyId);
-                if (property == null)
-                {
-                    return RedirectToAction("Index");
-                }
+            //Tenant propose job for the provider
+            //It will in pending jobs for provider
+            //If provider accept
+            //Notify Tenant, OWner, PRovider
+            //Generate Contracts for all
 
 
-                InsertPendingJobOffer(provider.MaintenanceProviderId, tenant, propertyId, (DateTime) startdate,(DateTime) endate);
-                ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Provider.";
-                return View(provider);
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
+            var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+
+            //Property
+            var propertyId = (Convert.ToInt32(propertyIdcustom));
+            var property = db.Units.FirstOrDefault(t => t.UnitId == propertyId);
+            if (property == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+
+            InsertPendingJobOffer(provider.MaintenanceProviderId, tenant, propertyId, Convert.ToDateTime(startdate), Convert.ToDateTime(endate));
+            ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Provider.";
+            return View(provider);
 
 
 
@@ -128,12 +129,12 @@ namespace RentalMobile.Controllers
             TempData["endDate"] = form["HiddenEndDate"];
 
             //QueryString
-           // TempData["providerid"] = Url.RequestContext.RouteData.Values["providerid"].ToString();
+            // TempData["providerid"] = Url.RequestContext.RouteData.Values["providerid"].ToString();
 
-           // TempData["UserID"] = UserHelper.GetTenantID();
+            // TempData["UserID"] = UserHelper.GetTenantID();
             //form["ProviderId"] from url
             //from["PropertyId"] this we have tocreate a new view
-     
+
             //return RedirectToAction("Index", new { providerid = 0 });
 
             return RedirectToAction("Submit");
@@ -244,21 +245,42 @@ namespace RentalMobile.Controllers
 
         protected void InsertPendingJobOffer(int providerid, Tenant tenant, int propertyid, DateTime startDate, DateTime endDate)
         {
-            var provider = db.MaintenanceProviders.FirstOrDefault(t => t.MaintenanceProviderId == (Convert.ToInt32(providerid)));
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
             if (provider == null) return;
             //var opa = new OwnerPendingApplication
-            var mpj = new MaintenanceProviderNewJobOffer()
+
+
+            try
+            {
+                var mpj = new MaintenanceProviderNewJobOffer()
+                             {
+                                 TenantId = tenant.TenantId,
+                                 TenantName = tenant.FirstName + " " + tenant.LastName,
+                                 TenantEmailAddress = tenant.EmailAddress,
+                                 PropertyId = propertyid,
+                                 StartDate = startDate,
+                                 EndDate = endDate
+                             };
+                db.MaintenanceProviderNewJobOffers.Add(mpj);
+                db.SaveChanges();
+                ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Owner.";
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
                 {
-                    TenantId = tenant.TenantId,
-                    TenantName = tenant.FirstName + " " + tenant.LastName,
-                    TenantEmailAddress = tenant.EmailAddress,
-                    PropertyId = propertyid,
-                    StartDate = startDate,
-                    EndDate = endDate
-                };
-            db.MaintenanceProviderNewJobOffers.Add(mpj);
-            db.SaveChanges();
-            ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Owner.";
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+
         }
 
 
