@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -308,6 +312,24 @@
     <Compile Include="ModelViews\TenantModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalMobile.cs" />
+    <Compile Include="Reports\PDFThisHMTL.aspx.cs">
+      <DependentUpon>PDFThisHMTL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportDownload.aspx.cs">
+      <DependentUpon>ReportDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportDownload.aspx.designer.cs">
+      <DependentUpon>ReportDownload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ASPNETDB.MDF" />
@@ -492,6 +514,9 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Reports\PDFThisHMTL.aspx" />
+    <Content Include="Reports\ReportDownload.aspx" />
+    <Content Include="Reports\Test.aspx" />
     <Content Include="Scripts\dattimepicker\jquery.simple-dtpicker.js" />
     <Content Include="Scripts\html5.js" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
