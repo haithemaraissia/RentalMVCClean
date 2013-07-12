@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AdControl.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\EntityFramework.dll</HintPath>
@@ -141,6 +145,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AdHandler.ashx.cs">
+      <DependentUpon>AdHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ImageUploadHandler.ashx.cs">
       <DependentUpon>ImageUploadHandler.ashx</DependentUpon>
@@ -312,22 +319,25 @@
     <Compile Include="ModelViews\TenantModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalMobile.cs" />
-    <Compile Include="Reports\PDFThisHMTL.aspx.cs">
-      <DependentUpon>PDFThisHMTL.aspx</DependentUpon>
+    <Compile Include="WebForms\Ads\AdTest.aspx.cs">
+      <DependentUpon>AdTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\ReportDownload.aspx.cs">
-      <DependentUpon>ReportDownload.aspx</DependentUpon>
+    <Compile Include="WebForms\Ads\AdTest.aspx.designer.cs">
+      <DependentUpon>AdTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Reports\PDFReport.aspx.cs">
+      <DependentUpon>PDFReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\ReportDownload.aspx.designer.cs">
-      <DependentUpon>ReportDownload.aspx</DependentUpon>
+    <Compile Include="WebForms\Reports\PDFReport.aspx.designer.cs">
+      <DependentUpon>PDFReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Test.aspx.cs">
+    <Compile Include="WebForms\Reports\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\Test.aspx.designer.cs">
+    <Compile Include="WebForms\Reports\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -514,9 +524,9 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
-    <Content Include="Reports\PDFThisHMTL.aspx" />
-    <Content Include="Reports\ReportDownload.aspx" />
-    <Content Include="Reports\Test.aspx" />
+    <Content Include="WebForms\Ads\AdTest.aspx" />
+    <Content Include="WebForms\Reports\PDFReport.aspx" />
+    <Content Include="WebForms\Reports\Test.aspx" />
     <Content Include="Scripts\dattimepicker\jquery.simple-dtpicker.js" />
     <Content Include="Scripts\html5.js" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
@@ -638,7 +648,9 @@
     <Content Include="UploadedImages\test\Requests\37\img_Lighthouse.jpg" />
     <Content Include="UploadedImages\test\Requests\37\img_Penguins.jpg" />
     <Content Include="UploadedImages\test\Requests\37\img_Tulips.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -689,6 +701,7 @@
     <Content Include="WIP\Used\rent.html" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\GeoLiteCity.dat" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />
     <None Include="css\dotcss\entypo\entypo.ttf" />
@@ -741,6 +754,7 @@
     <None Include="Documentation\UnitProperty\P2.docx" />
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
+    <Content Include="Handler\AdHandler.ashx" />
     <None Include="Models\RentalContextGenerator.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RentalContextGenerator.Context1.cs</LastGenOutput>
