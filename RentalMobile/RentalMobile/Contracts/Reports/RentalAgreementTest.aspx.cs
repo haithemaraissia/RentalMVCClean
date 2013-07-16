@@ -9,28 +9,13 @@ using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 
-namespace RentalMobile.Reports
+namespace RentalMobile.Contracts.Reports
 {
-    public partial class PdfReport : System.Web.UI.Page
+    public partial class RentalAgreementTest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //DefaultLcid();
-            ////ReportProperties();
-            //DownloadPdf();
-
-
-
-        }
-
-
-
-        public void DefaultLcid()
-        {
-            if (Session["LCID"] == null)
-            {
-                Session["LCID"] = 1;
-            }
+           DownloadPdf();
         }
 
         protected void DownloadPdf()
@@ -55,41 +40,6 @@ namespace RentalMobile.Reports
             pdfDoc.Close();
             Response.Write(pdfDoc);
             Response.End();
-        }
-
-        protected void ReportProperties()
-        {
-            var contractId = GetContractId();
-            //ContractIDLabel.Text = Resources.Resource.ContractIDLabel + contractId;
-            //Page1();
-            //Page2();
-            //Page3();
-            //Page4();
-        }
-
-        protected int GetContractId()
-        {
-            if (Request.QueryString["ID"] == null)
-            {
-                Response.Redirect("~/Home.aspx");
-                return 0;
-            }
-            return int.Parse(Request.QueryString["ID"]);
-        }
-
-
-
-
-        protected void OutsideofformButton_Click(object sender, EventArgs e)
-        {
-            //var test = Request.Url.AbsoluteUri + "?ID=1";
-            //Response.Write(test);
-
-            DefaultLcid();
-            DownloadPdf();
-
-
-
         }
     }
 }

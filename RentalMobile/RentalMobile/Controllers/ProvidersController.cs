@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Models;
-
 namespace RentalMobile.Controllers
 {
     public class ProvidersController : Controller
@@ -19,6 +18,11 @@ namespace RentalMobile.Controllers
             ViewBag.providerProfile = provider;
             ViewBag.providerId = provider.MaintenanceProviderId;
             ViewBag.providerGoogleMap = provider.GoogleMap;
+
+            //For Advertismement
+            ViewBag.MiddleBannerKeywordFilter = Advertisement.MiddleBanner("11", "2");
+           // For Advertismement
+
             return View(provider);
         }
 

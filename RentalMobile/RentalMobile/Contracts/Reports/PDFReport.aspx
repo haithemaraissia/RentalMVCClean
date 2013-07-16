@@ -27,7 +27,7 @@
     <div>
         <div id="Report" runat="server">
             
-            <asp:Label ID="Label1" runat="server" Text="HELLO THERE"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="HELLO THERE">This will be automated linkd geenered by MVC in their end</asp:Label>
             </div>
     
     </div>

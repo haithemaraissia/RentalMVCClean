@@ -1,0 +1,4 @@
+﻿It is done with Controller, 
+Not need to keep these files. Only for back up and following.
+
+All the ads should be derived from Controllers/AdControl
