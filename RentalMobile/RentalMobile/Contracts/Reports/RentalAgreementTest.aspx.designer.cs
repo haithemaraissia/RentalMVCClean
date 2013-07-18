@@ -112,6 +112,51 @@ namespace RentalMobile.Contracts.Reports {
         protected global::System.Web.UI.WebControls.Label SiteNameLabel;
         
         /// <summary>
+        /// FirstMonthRent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FirstMonthRent;
+        
+        /// <summary>
+        /// SecurityDeposit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SecurityDeposit;
+        
+        /// <summary>
+        /// TotalPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TotalPayment;
+        
+        /// <summary>
+        /// OwnerPayableName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OwnerPayableName;
+        
+        /// <summary>
+        /// SiteNameLabel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SiteNameLabel2;
+        
+        /// <summary>
         /// TenantRefundedNumberofDays control.
         /// </summary>
         /// <remarks>
