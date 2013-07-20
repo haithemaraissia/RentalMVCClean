@@ -527,7 +527,7 @@
           <Property Name="PropertyAddress" Type="nvarchar" MaxLength="255" />
           <Property Name="PropertyCity" Type="varchar" MaxLength="128" />
           <Property Name="MonthlyRent" Type="float" />
-          <Property Name="BeginingDate" Type="date" />
+          <Property Name="BeginingDate" Type="int" />
           <Property Name="StartDate" Type="date" />
           <Property Name="EndDate" Type="date" />
           <Property Name="FirstMonthRent" Type="float" />

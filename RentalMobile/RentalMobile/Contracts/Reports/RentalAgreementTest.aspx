@@ -99,7 +99,7 @@
                                                 for repair of damages to premises and/or common areas above ordinary wear and tear,
                                                 and e) any other amount legally allowable under the terms of this agreement. A written
                                                 accounting of said charges shall be presented to RESIDENT within
-                                                <asp:Label ID="NotiveofMoveOutNumberofDays" runat="server" Text="2" ForeColor="Red" />&nbsp;
+                                                <asp:Label ID="NoticeofMoveOutNumberofDays" runat="server" Text="2" ForeColor="Red" />&nbsp;
                                                 days of move-out. If deposits do not cover such costs and damages, the RESIDENT
                                                 shall immediately pay said additional costs for damages to OWNER.
                                             </p>
