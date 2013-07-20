@@ -14,6 +14,7 @@
           <EntitySet Name="AgentProject" EntityType="DB_33736_rentalModel.Store.AgentProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedApplication" EntityType="DB_33736_rentalModel.Store.AgentRejectedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.AgentRejectedPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GeneratedRentalContract" EntityType="DB_33736_rentalModel.Store.GeneratedRentalContract" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.Store.MaintenanceExteriors" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceOrder" EntityType="DB_33736_rentalModel.Store.MaintenanceOrder" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenancePhoto" EntityType="DB_33736_rentalModel.Store.MaintenancePhoto" store:Type="Tables" Schema="dbo" />
@@ -510,6 +511,38 @@
           <Property Name="Currency" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrencyCode" Type="int" />
           <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="GeneratedRentalContract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LandLoardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LandLoardRole" Type="char" MaxLength="10" />
+          <Property Name="LandLoradID" Type="int" />
+          <Property Name="LandLoardAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="TenantName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenantID" Type="int" />
+          <Property Name="PropertyID" Type="int" />
+          <Property Name="PropertyAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="PropertyCity" Type="varchar" MaxLength="128" />
+          <Property Name="MonthlyRent" Type="float" />
+          <Property Name="BeginingDate" Type="date" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="FirstMonthRent" Type="float" />
+          <Property Name="SecurityDeposit" Type="float" />
+          <Property Name="TotalPayment" Type="float" />
+          <Property Name="TenantRefundedNumberofDays" Type="int" />
+          <Property Name="NoticeofMoveoutNumberofDays" Type="int" />
+          <Property Name="LateFeeCharge" Type="float" />
+          <Property Name="PercentageofLateFeeCharge" Type="int" />
+          <Property Name="LateFeeStartingDay" Type="int" />
+          <Property Name="ExceptedUtilites" Type="nvarchar" MaxLength="255" />
+          <Property Name="PetDeposit" Type="float" />
+          <Property Name="PetMonthly" Type="float" />
+          <Property Name="ParkingSpaceNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParkingFee" Type="float" />
         </EntityType>
         <EntityType Name="MaintenanceExteriors">
           <Key>
@@ -1744,6 +1777,7 @@
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" />
           <EntitySet Name="Projects" EntityType="DB_33736_rentalModel.Project" />
           <EntitySet Name="ProjectPhotoes" EntityType="DB_33736_rentalModel.ProjectPhoto" />
+          <EntitySet Name="GeneratedRentalContracts" EntityType="DB_33736_rentalModel.GeneratedRentalContract" />
           </EntityContainer>
         <EntityType Name="UnitGallery">
           <Key>
@@ -3291,6 +3325,38 @@
           <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="GeneratedRentalContract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LandLoardName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LandLoardRole" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="LandLoradID" />
+          <Property Type="String" Name="LandLoardAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TenantName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TenantID" />
+          <Property Type="Int32" Name="PropertyID" />
+          <Property Type="String" Name="PropertyAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PropertyCity" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="MonthlyRent" />
+          <Property Type="DateTime" Name="BeginingDate" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+          <Property Type="Double" Name="FirstMonthRent" />
+          <Property Type="Double" Name="SecurityDeposit" />
+          <Property Type="Double" Name="TotalPayment" />
+          <Property Type="Int32" Name="TenantRefundedNumberofDays" />
+          <Property Type="Int32" Name="NoticeofMoveoutNumberofDays" />
+          <Property Type="Double" Name="LateFeeCharge" />
+          <Property Type="Int32" Name="PercentageofLateFeeCharge" />
+          <Property Type="Int32" Name="LateFeeStartingDay" />
+          <Property Type="String" Name="ExceptedUtilites" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="PetDeposit" />
+          <Property Type="Double" Name="PetMonthly" />
+          <Property Type="String" Name="ParkingSpaceNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="ParkingFee" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4664,6 +4730,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GeneratedRentalContracts">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.GeneratedRentalContract">
+              <MappingFragment StoreEntitySet="GeneratedRentalContract">
+                <ScalarProperty Name="ParkingFee" ColumnName="ParkingFee" />
+                <ScalarProperty Name="ParkingSpaceNumber" ColumnName="ParkingSpaceNumber" />
+                <ScalarProperty Name="PetMonthly" ColumnName="PetMonthly" />
+                <ScalarProperty Name="PetDeposit" ColumnName="PetDeposit" />
+                <ScalarProperty Name="ExceptedUtilites" ColumnName="ExceptedUtilites" />
+                <ScalarProperty Name="LateFeeStartingDay" ColumnName="LateFeeStartingDay" />
+                <ScalarProperty Name="PercentageofLateFeeCharge" ColumnName="PercentageofLateFeeCharge" />
+                <ScalarProperty Name="LateFeeCharge" ColumnName="LateFeeCharge" />
+                <ScalarProperty Name="NoticeofMoveoutNumberofDays" ColumnName="NoticeofMoveoutNumberofDays" />
+                <ScalarProperty Name="TenantRefundedNumberofDays" ColumnName="TenantRefundedNumberofDays" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="SecurityDeposit" ColumnName="SecurityDeposit" />
+                <ScalarProperty Name="FirstMonthRent" ColumnName="FirstMonthRent" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="BeginingDate" ColumnName="BeginingDate" />
+                <ScalarProperty Name="MonthlyRent" ColumnName="MonthlyRent" />
+                <ScalarProperty Name="PropertyCity" ColumnName="PropertyCity" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+                <ScalarProperty Name="TenantName" ColumnName="TenantName" />
+                <ScalarProperty Name="LandLoardAddress" ColumnName="LandLoardAddress" />
+                <ScalarProperty Name="LandLoradID" ColumnName="LandLoradID" />
+                <ScalarProperty Name="LandLoardRole" ColumnName="LandLoardRole" />
+                <ScalarProperty Name="LandLoardName" ColumnName="LandLoardName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4819,6 +4918,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderRejectedJob" Width="1.5" PointX="23.375" PointY="19.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Project" Width="1.5" PointX="23.375" PointY="23.75" Height="4.8648079427083246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.ProjectPhoto" Width="1.5" PointX="25.375" PointY="0.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.GeneratedRentalContract" Width="1.5" PointX="25.375" PointY="3.75" Height="6.2109179687499818" />
         </Diagram>
     </Diagrams>
   </Designer>

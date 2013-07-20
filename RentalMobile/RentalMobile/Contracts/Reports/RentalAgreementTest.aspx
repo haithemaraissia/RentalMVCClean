@@ -159,11 +159,11 @@
                                                 or space
                                                 <asp:Label ID="ParkingSpaceNumber" runat="server" Text="___" ForeColor="Red"></asp:Label>.
                                                 The parking fee for this space (if applicable is $<asp:Label ID="Parkingfee" runat="server"
-                                                    Text="0" ForeColor="Red" /></asp:Label> monthly. Said space shall not be used
-                                                for the washing, painting, or repair of vehicles. No other parking space shall be
-                                                used by RESIDENT or RESIDENT'S guest(s). RESIDENT is responsible for oil leaks and
-                                                other vehicle discharges for which RESIDENT shall be charged for cleaning if deemed
-                                                necessary by OWNER.</p>
+                                                    Text="0" ForeColor="Red" />
+                                                monthly. Said space shall not be used for the washing, painting, or repair of vehicles.
+                                                No other parking space shall be used by RESIDENT or RESIDENT'S guest(s). RESIDENT
+                                                is responsible for oil leaks and other vehicle discharges for which RESIDENT shall
+                                                be charged for cleaning if deemed necessary by OWNER.</p>
                                             <br />
                                             <p>
                                                 11. <b>NOISE:</b> RESIDENT agrees not to cause or allow any noise or activity on

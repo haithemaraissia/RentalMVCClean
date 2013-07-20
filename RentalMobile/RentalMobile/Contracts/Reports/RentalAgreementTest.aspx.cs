@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using RentalMobile.Models;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
@@ -40,6 +41,14 @@ namespace RentalMobile.Contracts.Reports
             pdfDoc.Close();
             Response.Write(pdfDoc);
             Response.End();
+        }
+
+        public void GetContract()
+        {
+              private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+
+        var contract = db.GeneratedRentalContracts.Where(x=>x/)
+
         }
     }
 }

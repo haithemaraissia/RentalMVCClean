@@ -116,6 +116,14 @@
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Models\GeneratedRentalContract.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RentalContextGenerator1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Ads\AdTestController.cs" />
     <Compile Include="Controllers\AdvancedSearchController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
@@ -272,11 +280,6 @@
       <DependentUpon>RentalContextGenerator.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalContextGenerator.cs" />
-    <Compile Include="Models\RentalContextGenerator1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\RentalModel.Designer.cs" />
     <Compile Include="Models\RentalModel1.Designer.cs">
       <AutoGen>True</AutoGen>

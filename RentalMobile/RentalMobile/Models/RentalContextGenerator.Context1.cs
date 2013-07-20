@@ -70,5 +70,6 @@ namespace RentalMobile.Models
         public DbSet<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobs { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
+        public DbSet<GeneratedRentalContract> GeneratedRentalContracts { get; set; }
     }
 }
