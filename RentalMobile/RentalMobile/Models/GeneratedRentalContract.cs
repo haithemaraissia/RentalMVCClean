@@ -25,7 +25,7 @@ namespace RentalMobile.Models
         public string PropertyAddress { get; set; }
         public string PropertyCity { get; set; }
         public Nullable<double> MonthlyRent { get; set; }
-        public int? BeginingDate { get; set; }
+        public Nullable<int> BeginingDate { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<double> FirstMonthRent { get; set; }

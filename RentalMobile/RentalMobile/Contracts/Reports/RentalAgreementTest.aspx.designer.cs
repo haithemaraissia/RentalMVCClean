@@ -31,6 +31,15 @@ namespace RentalMobile.Contracts.Reports {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Report;
         
         /// <summary>
+        /// LeaseNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LeaseNumber;
+        
+        /// <summary>
         /// Owner control.
         /// </summary>
         /// <remarks>

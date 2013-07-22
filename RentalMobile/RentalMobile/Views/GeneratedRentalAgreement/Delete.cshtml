@@ -1,0 +1,148 @@
+﻿@model RentalMobile.Models.GeneratedRentalContract
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>GeneratedRentalContract</legend>
+
+    <div class="display-label">LandLoardName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LandLoardName)
+    </div>
+
+    <div class="display-label">LandLoardRole</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LandLoardRole)
+    </div>
+
+    <div class="display-label">LandLoradID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LandLoradID)
+    </div>
+
+    <div class="display-label">LandLoardAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LandLoardAddress)
+    </div>
+
+    <div class="display-label">TenantName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenantName)
+    </div>
+
+    <div class="display-label">TenantID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenantID)
+    </div>
+
+    <div class="display-label">PropertyID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PropertyID)
+    </div>
+
+    <div class="display-label">PropertyAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PropertyAddress)
+    </div>
+
+    <div class="display-label">PropertyCity</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PropertyCity)
+    </div>
+
+    <div class="display-label">MonthlyRent</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MonthlyRent)
+    </div>
+
+    <div class="display-label">BeginingDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BeginingDate)
+    </div>
+
+    <div class="display-label">StartDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">EndDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">FirstMonthRent</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstMonthRent)
+    </div>
+
+    <div class="display-label">SecurityDeposit</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecurityDeposit)
+    </div>
+
+    <div class="display-label">TotalPayment</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalPayment)
+    </div>
+
+    <div class="display-label">TenantRefundedNumberofDays</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenantRefundedNumberofDays)
+    </div>
+
+    <div class="display-label">NoticeofMoveoutNumberofDays</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoticeofMoveoutNumberofDays)
+    </div>
+
+    <div class="display-label">LateFeeCharge</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LateFeeCharge)
+    </div>
+
+    <div class="display-label">PercentageofLateFeeCharge</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PercentageofLateFeeCharge)
+    </div>
+
+    <div class="display-label">LateFeeStartingDay</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LateFeeStartingDay)
+    </div>
+
+    <div class="display-label">ExceptedUtilites</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExceptedUtilites)
+    </div>
+
+    <div class="display-label">PetDeposit</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PetDeposit)
+    </div>
+
+    <div class="display-label">PetMonthly</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PetMonthly)
+    </div>
+
+    <div class="display-label">ParkingSpaceNumber</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ParkingSpaceNumber)
+    </div>
+
+    <div class="display-label">ParkingFee</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ParkingFee)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

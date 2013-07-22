@@ -51,39 +51,41 @@ namespace RentalMobile.Contracts.Reports
         {
           
             var contract = db.GeneratedRentalContracts.FirstOrDefault(x => x.ID == 1);
+            if (contract != null)
+            {
+                LeaseNumber.Text = contract.ID.ToString(CultureInfo.InvariantCulture);
+                Owner.Text = contract.LandLoardName;
+                Lesser.Text = contract.TenantName;
+                PropertyStreetLabel.Text = contract.PropertyAddress;
+                PropertyCity.Text = contract.PropertyCity;
+                if (contract.MonthlyRent != null)
+                    MonthlyRent.Text = contract.MonthlyRent.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.BeginingDate != null) BeginingDate.Text = contract.BeginingDate.ToString();
+                if (contract.StartDate != null) StartDate.Text = contract.StartDate.Value.ToShortTimeString();
+                if (contract.EndDate != null) EndDate.Text = contract.EndDate.Value.ToShortTimeString();
+                if (contract.FirstMonthRent != null) FirstMonthRent.Text = contract.FirstMonthRent.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.SecurityDeposit != null) SecurityDeposit.Text = contract.SecurityDeposit.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.TotalPayment != null) TotalPayment.Text = contract.TotalPayment.Value.ToString(CultureInfo.InvariantCulture);
+                OwnerPayableName.Text = contract.LandLoardName;
+                if (contract.TenantRefundedNumberofDays != null)
+                    TenantRefundedNumberofDays.Text = contract.TenantRefundedNumberofDays.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.NoticeofMoveoutNumberofDays != null)
+                    NoticeofMoveOutNumberofDays.Text = contract.NoticeofMoveoutNumberofDays.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.LateFeeCharge != null)
+                    LateFeeCharge.Text = contract.LateFeeCharge.Value.ToString(CultureInfo.InvariantCulture);
 
-            if (contract == null) return;
-            Owner.Text = contract.LandLoardName;
-            Lesser.Text = contract.TenantName;
-            PropertyStreetLabel.Text = contract.PropertyAddress;
-            PropertyCity.Text = contract.PropertyCity;
-            if (contract.MonthlyRent != null)
-                MonthlyRent.Text = contract.MonthlyRent.Value.ToString(CultureInfo.InvariantCulture);
-            if (contract.BeginingDate != null) BeginingDate.Text = contract.BeginingDate.ToString();
-            if (contract.StartDate != null) StartDate.Text = contract.StartDate.Value.ToShortTimeString();
-            if (contract.EndDate != null) EndDate.Text = contract.EndDate.Value.ToShortTimeString();
-            if (contract.FirstMonthRent != null) FirstMonthRent.Text = contract.FirstMonthRent.Value.ToString(CultureInfo.InvariantCulture);
-            if (contract.SecurityDeposit != null) SecurityDeposit.Text = contract.SecurityDeposit.Value.ToString(CultureInfo.InvariantCulture);
-            if (contract.TotalPayment != null) TotalPayment.Text = contract.TotalPayment.Value.ToString(CultureInfo.InvariantCulture);
-            OwnerPayableName.Text = contract.LandLoardName;
-            if (contract.TenantRefundedNumberofDays != null)
-                TenantRefundedNumberofDays.Text = contract.TenantRefundedNumberofDays.Value.ToString(CultureInfo.InvariantCulture);
-            if (contract.NoticeofMoveoutNumberofDays != null)
-                NoticeofMoveOutNumberofDays.Text = contract.NoticeofMoveoutNumberofDays.Value.ToString(CultureInfo.InvariantCulture);
-            if (contract.LateFeeCharge != null)
-                LateFeeCharge.Text = contract.LateFeeCharge.Value.ToString(CultureInfo.InvariantCulture);
-
-            if (contract.PercentageofLateFeeCharge != null)
-                PercentageofLateFeeCharge.Text = contract.PercentageofLateFeeCharge.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.PercentageofLateFeeCharge != null)
+                    PercentageofLateFeeCharge.Text = contract.PercentageofLateFeeCharge.Value.ToString(CultureInfo.InvariantCulture);
 
 
 //FifthDay
-            PaidUtilities.Text = contract.ExceptedUtilites.ToString(CultureInfo.InvariantCulture);
-            PetDeposit.Text = contract.PetDeposit.Value.ToString(CultureInfo.InvariantCulture);
-            PetMonthly.Text = contract.PetMonthly.Value.ToString(CultureInfo.InvariantCulture);
-            ParkingSpaceNumber.Text = contract.ParkingSpaceNumber.ToString(CultureInfo.InvariantCulture);
-            Parkingfee.Text = contract.ParkingFee.Value.ToString(CultureInfo.InvariantCulture);
-            OwnerEntireAddress.Text = contract.LandLoardAddress;
+                if (contract.ExceptedUtilites != null) PaidUtilities.Text = contract.ExceptedUtilites.ToString(CultureInfo.InvariantCulture);
+                if (contract.PetDeposit != null) PetDeposit.Text = contract.PetDeposit.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.PetMonthly != null) PetMonthly.Text = contract.PetMonthly.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.ParkingSpaceNumber != null) ParkingSpaceNumber.Text = contract.ParkingSpaceNumber.ToString(CultureInfo.InvariantCulture);
+                if (contract.ParkingFee != null) Parkingfee.Text = contract.ParkingFee.Value.ToString(CultureInfo.InvariantCulture);
+                if (contract.LandLoardAddress != null) OwnerEntireAddress.Text = contract.LandLoardAddress;
+            }
 
 //ParkingSpaceNumber
 //Parkingfee

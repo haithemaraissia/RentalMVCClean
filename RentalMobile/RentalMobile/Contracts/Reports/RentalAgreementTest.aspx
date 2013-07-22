@@ -32,7 +32,7 @@
                                 <td>
                                     <div style="text-align: center;">
                                         <h2>
-                                            <b>LEASE # </b>
+                                            <b>LEASE #  <asp:Label ID="LeaseNumber" runat="server" Text="123" ForeColor="Red"></asp:Label></b>
                                         </h2>
                                     </div>
                                     <br />
@@ -53,18 +53,18 @@
                                     as a private residence, the premises located at
                                     <asp:Label ID="PropertyStreetLabel" runat="server" Text="_____________________________"
                                         ForeColor="Red"></asp:Label>
-                                    in the city of
+                                    &nbsp;in the city of&nbsp;
                                     <asp:Label ID="PropertyCity" runat="server" Text="_____________________________"
                                         ForeColor="Red"></asp:Label>.<p>
                                             <br />
                                             1. <b>TERMS:</b> RESIDENT agrees to pay in advance $
-                                            <asp:Label ID="MonthlyRent" runat="server" Text="______" ForeColor="Red"></asp:Label>per
+                                            <asp:Label ID="MonthlyRent" runat="server" Text="______" ForeColor="Red"></asp:Label>&nbsp;per
                                             month on the
-                                            <asp:Label ID="BeginingDate" runat="server" Text="____" ForeColor="Red"></asp:Label>
-                                            day of each month. This agreement shall commence on
+                                           <asp:Label ID="BeginingDate" runat="server" Text="____" ForeColor="Red"></asp:Label>
+                                             &nbsp;day of each month. This agreement shall commence on
                                             <asp:Label ID="StartDate" runat="server" Text="______" ForeColor="Red"></asp:Label>
-                                            and continue until
-                                            <asp:Label ID="EndDate" runat="server" Text="______" ForeColor="Red"></asp:Label>as
+                                            &nbsp;and continue until
+                                            <asp:Label ID="EndDate" runat="server" Text="______" ForeColor="Red"></asp:Label>&nbsp;as
                                             a leasehold. Thereafter it shall become a month-to-month tenancy. If RESIDENT should
                                             move from the premises prior to the expiration of this time period, he shall be
                                             liable for all rent due until such time that the Residence is occupied by an OWNER
@@ -79,7 +79,7 @@
                                                     runat="server" Text="__________" ForeColor="Red" />, and a Security Deposit
                                                 of $<asp:Label ID="SecurityDeposit" runat="server" Text="__________" ForeColor="Red" />,
                                                 for a total payment of $<asp:Label ID="TotalPayment" runat="server" Text="__________"
-                                                    ForeColor="Red" />. All payments are to be made payable to<asp:Label ID="OwnerPayableName"
+                                                    ForeColor="Red" />. All payments are to be made payable to&nbsp;<asp:Label ID="OwnerPayableName"
                                                         runat="server" Text="__________________________________ " ForeColor="Red" />.</p>
                                             <br />
                                             <p>
@@ -99,8 +99,8 @@
                                                 for repair of damages to premises and/or common areas above ordinary wear and tear,
                                                 and e) any other amount legally allowable under the terms of this agreement. A written
                                                 accounting of said charges shall be presented to RESIDENT within
-                                                <asp:Label ID="NoticeofMoveOutNumberofDays" runat="server" Text="2" ForeColor="Red" />&nbsp;
-                                                days of move-out. If deposits do not cover such costs and damages, the RESIDENT
+                                                <asp:Label ID="NoticeofMoveOutNumberofDays" runat="server" Text="2" ForeColor="Red" />
+                                                &nbsp;days of move-out. If deposits do not cover such costs and damages, the RESIDENT
                                                 shall immediately pay said additional costs for damages to OWNER.
                                             </p>
                                             <br />
@@ -158,9 +158,9 @@
                                                 hereto. RESIDENT is hereby assigned or permitted to park only in the following area
                                                 or space
                                                 <asp:Label ID="ParkingSpaceNumber" runat="server" Text="___" ForeColor="Red"></asp:Label>.
-                                                The parking fee for this space (if applicable is $<asp:Label ID="Parkingfee" runat="server"
+                                                The parking fee for this space (if applicable is $&nbsp;<asp:Label ID="Parkingfee" runat="server"
                                                     Text="0" ForeColor="Red" />
-                                                monthly. Said space shall not be used for the washing, painting, or repair of vehicles.
+                                                &nbsp;monthly. Said space shall not be used for the washing, painting, or repair of vehicles.
                                                 No other parking space shall be used by RESIDENT or RESIDENT'S guest(s). RESIDENT
                                                 is responsible for oil leaks and other vehicle discharges for which RESIDENT shall
                                                 be charged for cleaning if deemed necessary by OWNER.</p>

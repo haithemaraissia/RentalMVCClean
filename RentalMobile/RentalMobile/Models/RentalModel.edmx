@@ -3340,7 +3340,7 @@
           <Property Type="String" Name="PropertyAddress" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PropertyCity" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="MonthlyRent" />
-          <Property Type="DateTime" Name="BeginingDate" />
+          <Property Type="Int32" Name="BeginingDate" />
           <Property Type="DateTime" Name="StartDate" />
           <Property Type="DateTime" Name="EndDate" />
           <Property Type="Double" Name="FirstMonthRent" />
