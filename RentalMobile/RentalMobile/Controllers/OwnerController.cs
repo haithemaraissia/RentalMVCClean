@@ -390,6 +390,32 @@ namespace RentalMobile.Controllers
             return View(db.OwnerRejectedApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
 
+
         //
+
+
+
+
+
+
+
+
+
+
+        //same as index to get the same look and fell
+        public ViewResult GeneratedContract()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+
+        }
+
+        public ViewResult GeneratedRentalAgreement()
+        {
+             return View(db.GeneratedRentalContracts.ToList().FirstOrDefault(x => x.LandLoradID ==  UserHelper.GetOwnerID()));
+        }
     }
 }

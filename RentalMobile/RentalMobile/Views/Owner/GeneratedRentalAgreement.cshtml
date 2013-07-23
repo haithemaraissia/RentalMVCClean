@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<RentalMobile.Models.GeneratedRentalContract>
+
+@{
+    ViewBag.Title = "Genereated Rental Agrement";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table  style="width: 100%; text-align:center">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            TenantName
+        </th>
+        <th>
+            TenantID
+        </th> 
+        <th>
+            PropertyID
+        </th>
+        <th>
+            MonthlyRent
+        </th>
+        <th>
+            StartDate
+        </th>
+        <th>
+            EndDate
+        </th>
+        <th>
+            Action 
+        </th>
+    </tr>
+    
+    @if(Model != null)
+    {
+        
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenantID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <th>
+                <a href="Linke"> My Link</a>
+            </th>
+        </tr>
+    }
+}
+
+</table>

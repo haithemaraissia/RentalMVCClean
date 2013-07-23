@@ -115,7 +115,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
-    <Compile Include="Controllers\GeneratedRentalAgreement.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Models\GeneratedRentalContract.cs">
@@ -969,6 +968,8 @@
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Views\Project\MakeOffer.cshtml" />
     <Content Include="Views\ProjectDetail\Confirm.cshtml" />
+    <Content Include="Views\Owner\GeneratedContract.cshtml" />
+    <Content Include="Views\Owner\GeneratedRentalAgreement.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Index.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Details.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Create.cshtml" />
