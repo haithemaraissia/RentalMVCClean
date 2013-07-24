@@ -97,12 +97,12 @@
     <Compile Include="Contracts\Reports\PDFReport.aspx.designer.cs">
       <DependentUpon>PDFReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contracts\Reports\RentalAgreementTest.aspx.cs">
-      <DependentUpon>RentalAgreementTest.aspx</DependentUpon>
+    <Compile Include="Contracts\Reports\RentalAgreement.aspx.cs">
+      <DependentUpon>RentalAgreement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contracts\Reports\RentalAgreementTest.aspx.designer.cs">
-      <DependentUpon>RentalAgreementTest.aspx</DependentUpon>
+    <Compile Include="Contracts\Reports\RentalAgreement.aspx.designer.cs">
+      <DependentUpon>RentalAgreement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contracts\Reports\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -116,6 +116,7 @@
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
+    <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Models\GeneratedRentalContract.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
@@ -123,6 +124,9 @@
     <Compile Include="Models\RentalContextGenerator1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadedContract.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Ads\AdTestController.cs" />
@@ -361,7 +365,7 @@
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
     <Content Include="Contracts\Reports\PDFReport.aspx" />
-    <Content Include="Contracts\Reports\RentalAgreementTest.aspx" />
+    <Content Include="Contracts\Reports\RentalAgreement.aspx" />
     <Content Include="Contracts\Reports\Test.aspx" />
     <Content Include="css\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap\css\bootstrap-responsive.min.css" />
@@ -968,13 +972,16 @@
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Views\Project\MakeOffer.cshtml" />
     <Content Include="Views\ProjectDetail\Confirm.cshtml" />
-    <Content Include="Views\Owner\GeneratedContract.cshtml" />
+    <Content Include="ToDelete\GeneratedContract.cshtml" />
     <Content Include="Views\Owner\GeneratedRentalAgreement.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Index.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Details.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Create.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Edit.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Delete.cshtml" />
+    <Content Include="Views\Tenant\GeneratedRentalAgreement.cshtml" />
+    <Content Include="Views\Owner\GeneratedContract.cshtml" />
+    <Content Include="Views\Owner\UploadedAgreement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -999,7 +1006,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
-    <Folder Include="ToDelete\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

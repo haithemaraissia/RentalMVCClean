@@ -1,0 +1,45 @@
+﻿@model System.Collections.Generic.List<RentalMobile.Models.UploadedContract>
+@{
+    ViewBag.Title = "Uploaded Owner Contracts";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+}
+<div id="GeneratedReports">
+    <h2>
+        GENEREATED</h2>
+    <table style="width: 100%; text-align: center">
+        @if (Model != null)
+        {
+            int i = 0;
+            foreach (var item in Model)
+            {
+                i += 1;
+                if (i % 3 == 0)
+                {
+            <tr>
+                <td>
+                    <a href="@Url.Content(item.UploadedImagePath)">
+                        <img src="@Url.Content(item.UploadedImagePath)" height="100" width="100"/></a>
+                </td>
+            </tr>
+                }
+                else
+                {
+            <td>
+                <a href="@Url.Content(item.UploadedImagePath)">
+                    <img src="@Url.Content(item.UploadedImagePath)" height="100" width="100"/></a>
+            </td>
+                }
+
+            }
+
+        }
+    </table>
+    <div>
+        <a href="../Owner#contract">Go Back</a>
+    </div>
+   
+    <p>
+        <input type="submit"  class="full-width tall" value="Upload Agreement" onclick="location.href='/UploadAgreement'"/>
+    </p>
+
+</div>

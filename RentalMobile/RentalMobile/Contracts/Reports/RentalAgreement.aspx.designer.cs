@@ -10,7 +10,7 @@
 namespace RentalMobile.Contracts.Reports {
     
     
-    public partial class RentalAgreementTest {
+    public partial class RentalAgreement {
         
         /// <summary>
         /// form1 control.

@@ -252,13 +252,13 @@ namespace RentalMobile.Controllers
                         TenantId = pa.TenantId,
                         OwnerId = pa.OwnerId
                     };
-          
-            db.OwnerAcceptedApplications.Add(approvedapplication);
-            db.OwnerPendingApplications.Remove(pa);
-            db.SaveChanges();
-        }
+
+                db.OwnerAcceptedApplications.Add(approvedapplication);
+                db.OwnerPendingApplications.Remove(pa);
+                db.SaveChanges();
+            }
             return RedirectToAction("PendingApplication");
-  }
+        }
 
         public ActionResult AcceptedApplication()
         {
@@ -415,7 +415,57 @@ namespace RentalMobile.Controllers
 
         public ViewResult GeneratedRentalAgreement()
         {
-             return View(db.GeneratedRentalContracts.ToList().FirstOrDefault(x => x.LandLoradID ==  UserHelper.GetOwnerID()));
+            if (UserHelper.GetOwnerID() != null)
+            {
+                var id = UserHelper.GetOwnerID();
+                if (id != null)
+                {
+                    var ownerId = (int)id;
+
+                    var result = db.GeneratedRentalContracts.Count(x => x.LandLoradID == ownerId);
+                    if (result != 0)
+                    {
+                        return View(db.GeneratedRentalContracts.Where(x => x.LandLoradID == UserHelper.GetOwnerID()).ToList());
+                    }
+                }
+            }
+
+            return db.GeneratedRentalContracts != null ? View(db.GeneratedRentalContracts.ToList()) : null;
         }
+
+
+
+
+        public ViewResult UploadedAgreement()
+        {
+            if (UserHelper.GetOwnerID() != null)
+            {
+                var id = UserHelper.GetOwnerID();
+                if (id != null)
+                {
+                    var ownerId = (int)id;
+
+                    var result = db.UploadedContracts.Count(x => x.UploaderId == ownerId && x.UploaderRole == "Owner");
+                    if (result != 0)
+                    {
+                        return
+                            View(db.UploadedContracts.Where(x => x.UploaderId == UserHelper.GetOwnerID() && x.UploaderRole == "Owner").ToList());
+                    }
+                }
+            }
+
+            return db.GeneratedRentalContracts != null ? View(db.UploadedContracts.ToList()) : null;
+        }
+
+
+
+
+
+
+
+
     }
+
+
+
 }

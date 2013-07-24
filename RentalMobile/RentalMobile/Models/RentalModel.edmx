@@ -51,6 +51,7 @@
           <EntitySet Name="UnitInteriorAmenities" EntityType="DB_33736_rentalModel.Store.UnitInteriorAmenities" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UnitLuxuryAmenities" EntityType="DB_33736_rentalModel.Store.UnitLuxuryAmenities" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UnitPricing" EntityType="DB_33736_rentalModel.Store.UnitPricing" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UploadedContract" EntityType="DB_33736_rentalModel.Store.UploadedContract" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UrgencyType" EntityType="DB_33736_rentalModel.Store.UrgencyType" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_MaintenanceOrder_ServiceType" Association="DB_33736_rentalModel.Store.FK_MaintenanceOrder_ServiceType">
             <End Role="ServiceType" EntitySet="ServiceType" />
@@ -1463,6 +1464,15 @@
           <Property Name="AppilcationFee" Type="float" />
           <Property Name="Section 8 Eligible" Type="bit" />
         </EntityType>
+        <EntityType Name="UploadedContract">
+          <Key>
+            <PropertyRef Name="UploadedImageId" />
+          </Key>
+          <Property Name="UploadedImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UploadedImagePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UploaderId" Type="int" Nullable="false" />
+          <Property Name="UploaderRole" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
         <EntityType Name="UrgencyType">
           <Key>
             <PropertyRef Name="UrgencyTypeID" />
@@ -1778,6 +1788,7 @@
           <EntitySet Name="Projects" EntityType="DB_33736_rentalModel.Project" />
           <EntitySet Name="ProjectPhotoes" EntityType="DB_33736_rentalModel.ProjectPhoto" />
           <EntitySet Name="GeneratedRentalContracts" EntityType="DB_33736_rentalModel.GeneratedRentalContract" />
+          <EntitySet Name="UploadedContracts" EntityType="DB_33736_rentalModel.UploadedContract" />
           </EntityContainer>
         <EntityType Name="UnitGallery">
           <Key>
@@ -3357,6 +3368,15 @@
           <Property Type="String" Name="ParkingSpaceNumber" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Double" Name="ParkingFee" />
         </EntityType>
+        <EntityType Name="UploadedContract">
+          <Key>
+            <PropertyRef Name="UploadedImageId" />
+          </Key>
+          <Property Type="Int32" Name="UploadedImageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UploadedImagePath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UploaderId" Nullable="false" />
+          <Property Type="String" Name="UploaderRole" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4763,6 +4783,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UploadedContracts">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.UploadedContract">
+              <MappingFragment StoreEntitySet="UploadedContract">
+                <ScalarProperty Name="UploaderRole" ColumnName="UploaderRole" />
+                <ScalarProperty Name="UploaderId" ColumnName="UploaderId" />
+                <ScalarProperty Name="UploadedImagePath" ColumnName="UploadedImagePath" />
+                <ScalarProperty Name="UploadedImageId" ColumnName="UploadedImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4919,6 +4949,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Project" Width="1.5" PointX="23.375" PointY="23.75" Height="4.8648079427083246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.ProjectPhoto" Width="1.5" PointX="25.375" PointY="0.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.GeneratedRentalContract" Width="1.5" PointX="25.375" PointY="3.75" Height="6.2109179687499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.UploadedContract" Width="1.5" PointX="25.375" PointY="10.75" Height="1.7879850260416674" />
         </Diagram>
     </Diagrams>
   </Designer>

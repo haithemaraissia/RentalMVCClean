@@ -13,7 +13,7 @@ using iTextSharp.text.pdf;
 
 namespace RentalMobile.Contracts.Reports
 {
-    public partial class RentalAgreementTest : System.Web.UI.Page
+    public partial class RentalAgreement : System.Web.UI.Page
     {    
         public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 

@@ -148,5 +148,31 @@ namespace RentalMobile.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+
+
+
+
+
+        public ViewResult GeneratedRentalAgreement()
+        {
+            if (UserHelper.GetTenantID() != null)
+            {
+                var id = UserHelper.GetTenantID();
+                if (id != null)
+                {
+                    var tenantId = (int)id;
+
+                    var result = db.GeneratedRentalContracts.Count(x => x.TenantID == tenantId);
+                    if (result != 0)
+                    {
+                        return View(db.GeneratedRentalContracts.Where(x => x.TenantID == UserHelper.GetTenantID()).ToList());
+                    }
+                }
+            }
+
+            return db.GeneratedRentalContracts != null ? View(db.GeneratedRentalContracts.ToList()) : null;
+        }
     }
 }
