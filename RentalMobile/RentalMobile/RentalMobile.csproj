@@ -982,6 +982,7 @@
     <Content Include="Views\Tenant\GeneratedRentalAgreement.cshtml" />
     <Content Include="Views\Owner\GeneratedContract.cshtml" />
     <Content Include="Views\Owner\UploadedAgreement.cshtml" />
+    <Content Include="Views\UploadAgreement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

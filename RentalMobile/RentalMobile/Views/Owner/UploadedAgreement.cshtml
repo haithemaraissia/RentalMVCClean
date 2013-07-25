@@ -3,10 +3,21 @@
     ViewBag.Title = "Uploaded Owner Contracts";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
+<style>
+    #TableContainer img
+    {
+        margin: 10px;
+        vertical-align: top;
+        height: 165px;
+        border-radius: 5px;
+        -webkit-box-shadow: 2px 2px 4px #535353;
+        box-shadow: 2px 2px 4px #535353;
+    }
+</style>
 <div id="GeneratedReports">
     <h2>
         GENEREATED</h2>
-    <table style="width: 100%; text-align: center">
+    <table id="TableContainer" class="sixteen columns" style="text-align: center;">
         @if (Model != null)
         {
             int i = 0;
@@ -14,19 +25,26 @@
             {
                 i += 1;
                 if (i % 3 == 0)
-                {
+                {        
+                    
+      
             <tr>
                 <td>
-                    <a href="@Url.Content(item.UploadedImagePath)">
-                        <img src="@Url.Content(item.UploadedImagePath)" height="100" width="100"/></a>
+                    <div class="eight columns">
+                        <a href="@Url.Content(item.UploadedImagePath)">
+                            <img src="@Url.Content(item.UploadedImagePath)" height="100" width="250"/></a>
+                    </div>
                 </td>
-            </tr>
+            </tr> 
+                    
                 }
                 else
                 {
             <td>
-                <a href="@Url.Content(item.UploadedImagePath)">
-                    <img src="@Url.Content(item.UploadedImagePath)" height="100" width="100"/></a>
+                <div class="eight columns">
+                    <a href="@Url.Content(item.UploadedImagePath)">
+                        <img src="@Url.Content(item.UploadedImagePath)" height="100" width="250"/></a>
+                </div>
             </td>
                 }
 
@@ -37,9 +55,7 @@
     <div>
         <a href="../Owner#contract">Go Back</a>
     </div>
-   
     <p>
-        <input type="submit"  class="full-width tall" value="Upload Agreement" onclick="location.href='/UploadAgreement'"/>
+        <input type="submit"  value="Upload Agreement" onclick="location.href='/UploadAgreement'" />
     </p>
-
 </div>

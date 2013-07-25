@@ -17,17 +17,25 @@ namespace RentalMobile.Controllers
 
         //From HERE
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+
+
         public string TenantUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
-        public string TenantPhotoPath = "~/Photo/Tenant/Requests";
-        public string RequestID;
+
+
+        public string TenantPhotoPath = "~/Photo/Tenant/UploadedContract";
+        public string OwnertPhotoPath = "~/Photo/Tenant/UploadedContract";
+
+
+        public string RequestId;
 
         public ActionResult Index()
         {
-            RequestID = TempData["Id"].ToString();
+
+            RequestId = TempData["Id"].ToString();
             ViewBag.UserName = TenantUsername;
-            ViewBag.Type = "Requests";
+            ViewBag.Type = "UploadedContract";
             ViewBag.Id = TempData["Id"].ToString();
-            TempData["Id"] = RequestID;
+            TempData["Id"] = RequestId;
             return View();
         }
 
