@@ -449,7 +449,7 @@ namespace RentalMobile.Controllers
                     if (result != 0)
                     {
                         return
-                            View(db.UploadedContracts.Where(x => x.UploaderId == UserHelper.GetOwnerID() && x.UploaderRole == "Owner").ToList());
+                            View(db.UploadedContracts.Where(x => x.UploaderId == ownerId && x.UploaderRole == "Owner").ToList());
                     }
                 }
             }

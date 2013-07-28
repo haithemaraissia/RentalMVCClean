@@ -529,6 +529,8 @@
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
     <Content Include="obj\Debug\TempPE\Models.RentalModel1.Designer.cs.dll" />
     <Content Include="Photo\Owner\Profile\carrie\0\img_apple-touch-icon-72x72.png" />
+    <Content Include="Photo\Owner\UploadedContract\carrie\2\img_mcvisa.gif" />
+    <Content Include="Photo\Owner\UploadedContract\carrie\2\img_supersavings.jpg" />
     <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-1.jpg" />
     <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-6.jpg" />
     <Content Include="Photo\Tenant\Profile\bon\10\img_agent-480x350.png" />
@@ -771,7 +773,10 @@
     <None Include="Documentation\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
     <None Include="Documentation\BrainStorming+MaintenanceData\Functions and tools.docx" />
     <None Include="Documentation\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
+    <None Include="Documentation\Process\Bugs.docx" />
+    <None Include="Documentation\Process\Current WIP.docx" />
     <None Include="Documentation\Process\Functions.docx" />
+    <None Include="Documentation\Process\ToDo.docx" />
     <None Include="Documentation\Structure\Sitemap.docx" />
     <None Include="Documentation\UnitProperty\AllProperties.docx" />
     <None Include="Documentation\UnitProperty\P1.docx" />
@@ -983,6 +988,7 @@
     <Content Include="Views\Owner\GeneratedContract.cshtml" />
     <Content Include="Views\Owner\UploadedAgreement.cshtml" />
     <Content Include="Views\UploadAgreement\Index.cshtml" />
+    <None Include="Views\Ad\Sitemap.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

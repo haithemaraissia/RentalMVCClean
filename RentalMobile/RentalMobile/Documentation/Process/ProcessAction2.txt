@@ -1,10 +1,10 @@
-Pay Application Fee so that the owner can verify the tenant 
+
 
 Steps
 -1-Find Listing
 -2-Schedule showing
 -3-Submit application
--4-Pay Application Fee  THROUGH AMAZON MARKETPLACE( FOR OWNERS, WE RECOMMEND EXPERIAN on the email..)
+-4-Pay Application Fee  THROUGH AMAZON MARKETPLACE( FOR OWNERS, WE RECOMMEND EXPERIAN on the email.. Pay Application Fee so that the owner can verify the tenant )
 -5-Contract your Maintenance : Month to Month, maybe recurring payments
 Get the keys
 -6-Generate Contract between Owner and Tenant
@@ -14,65 +14,47 @@ Through Market Place
 -9-Pay The Maintenance  monthly
 Through Market Place
 
+-10-When the Tenant payment failed or don't pay the Owner
+	notify Tenant, Owner and Provider
+-11-When the Tenant payment failed or don't pay the Provider
+	notify Tenant, Owner and Provider
+
+Outside projects will be handled through specialist.
+
+Additional Function
+-12-Advertise for each role.
+-13-Post Project for each role.
+-14-Projects tabs like tenants and Professional Tabs
+-15-Detail Project and Professional with bid on project ( commenting Or Contacting the owner) and for the professioal ( maybe invite to projects)
+-16-Owner, Agent, Provider Post Project
+-17-Professional Bid on it
+-18-Owner, Agent, Provider accept offer
+-19-Specialist Accept offer
+-20-Contract is genereated between specialist and Owner, Agent, Provider with Market Place fee
+-21-Owner, Agent post listing.
+-22-When project is finished, rating fro the specialist is provided.
+
+
+-23-New listing can be created from webservice like zillow
+
 
 Story:
-Tenat find the listing. He schedule a showing. Owner accep the showing, shows the property.
+Tenat find the listing. He schedule a showing. Owner accept the showing, shows the property.
 Tenat create application, if it doesn;t exist. Tenat submit the application which will be 
 process throug market place. Owner received the application fee and do background checking,
 Owner inform tenant that his application is approved. 
-Tenant choise maintenace and contract with them on monthly basis.
+Tenant choose maintenace and contract with them on monthly basis.
 Owner receive the contract ( view ) betweem Tenant and Mainteance.
 Tenant pay rent. Tenat pay maintenance. Owner recieved receipt.
 Maintenance provide maintenance and recommendation to the owner.
 
-Outside projects will be handled through specialist.
-
-
-
--10-When the Tenant payment failed or don't pay the Owner
--11-When the Tenant payment failed or don't pay the Provider
-
-
-
-
-
-IF Succesful,
-
--12-Advertise for each one.
--13-Post Project for each one
--14-Projects tabs like tenants and Professional Tabs
--15-Detail Project and Professional with bid on project ( commenting Or COntacting the owner) and for the professioal ( maybe invite to projects)
-
+Resources
 http://docs.aws.amazon.com/AmazonFPS/latest/SandboxLanding/index.html?accountId=GRSGHQDCZSVC43EZTGPVZ12II9FMUF1CRV1XFD&wrequestlength=48&awssig=h5S6kCsSh0MVe2YmVBC6vwqUDmo=
-
-
 https://payments-sandbox.amazon.com/sdui/sdui/marketplacebuttoncreate
-
 http://docs.aws.amazon.com/AmazonSimplePay/latest/ASPGettingStartedGuide/Welcome.html
-
 https://payments.amazon.com/sdui/sdui/about?nodeId=30017#mpwidg_def
-
-
 http://docs.aws.amazon.com/AmazonSimplePay/latest/ASPGettingStartedGuide/nomktplc.html
-
 http://dotnet.dzone.com/news/amazon-simple-pay-aspnet
-
-
-
-
---------------------\
-Applicant Information
-OCCUPANT
-	Co-singer
-	Regular
-Employment Information
-Housing History
-Additional Information
-	PETS
-	EMERGENCY
-	VEHICULE
-Background Information
- 
 http://www.jankoatwarpspeed.com/turn-any-webform-into-a-powerful-wizard-with-jquery-formtowizard-plugin/
 
 

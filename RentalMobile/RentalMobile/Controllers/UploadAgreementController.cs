@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -19,25 +20,84 @@ namespace RentalMobile.Controllers
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
 
-        public string TenantUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
+        public string OwnerUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
 
 
         public string TenantPhotoPath = "~/Photo/Tenant/UploadedContract";
-        public string OwnertPhotoPath = "~/Photo/Tenant/UploadedContract";
+        public string OwnertPhotoPath = "~/Photo/Owner/UploadedContract";
 
 
         public string RequestId;
 
         public ActionResult Index()
         {
+            var role = GetCurrentRole();
+            if (role == "Tenant")
+            {
+                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "UploadedContract";
+                TempData["UserID"] = UserHelper.GetTenantID();
+            }
 
-            RequestId = TempData["Id"].ToString();
-            ViewBag.UserName = TenantUsername;
-            ViewBag.Type = "UploadedContract";
-            ViewBag.Id = TempData["Id"].ToString();
-            TempData["Id"] = RequestId;
+            if (role == "Owner")
+            {
+                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "UploadedContract";
+                TempData["UserID"] = UserHelper.GetOwnerID();
+            }
+
+            if (role == "Agent")
+            {
+                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "UploadedContract";
+                TempData["UserID"] = UserHelper.GetAgentID();
+            }
+
+            if (role == "Specialist")
+            {
+                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "UploadedContract";
+                TempData["UserID"] = UserHelper.GetSpecialistID();
+            }
+            if (role == "Provider")
+            {
+                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "UploadedContract";
+                TempData["UserID"] = UserHelper.GetProviderID();
+            }
+
             return View();
         }
+
+
+        public string GetCurrentRole()
+        {
+            var user = System.Web.HttpContext.Current.User;
+            if (user.IsInRole("Tenant"))
+            {
+                return "Tenant";
+            }
+            if (user.IsInRole("Owner"))
+            {
+                return "Owner";
+            }
+            if (user.IsInRole("Agent"))
+            {
+                return "Agent";
+            }
+            if (user.IsInRole("Provider"))
+            {
+                return "Provider";
+            }
+            return user.IsInRole("Specialist") ? "Specialist" : null;
+        }
+
+
 
 
 
@@ -57,31 +117,33 @@ namespace RentalMobile.Controllers
         public ActionResult Create(FormCollection collection)
         {
             SavePictures();
-            return RedirectToAction("Index", "TenantMaintenance");
+            return RedirectToAction("UploadedAgreement", "Owner");
         }
 
         public void SavePictures()
         {
             var imageStoragePath = Server.MapPath("~/UploadedImages");
-            var photoPath = Server.MapPath(TenantPhotoPath);
-            var directory = @"\" + TenantUsername + @"\" + "Requests" + @"\" + TempData["Id"] + @"\";
-            var path = imageStoragePath + directory;
+            var photoPath = Server.MapPath(OwnertPhotoPath);
+            var directory = @"\" + OwnerUsername + @"\" + "UploadedContract" + @"\" + TempData["UserID"] + @"\";
+             var path = imageStoragePath + directory;
             var uploadDirectory = new DirectoryInfo(path);
+
+            var files = uploadDirectory.GetFiles();
+            
+            directory = @"\" + OwnerUsername + @"\" + TempData["UserID"] + @"\";
             var newdirectory = photoPath + directory;
             if (Directory.Exists(path))
             {
                 UploadHelper.CreateDirectoryIfNotExist(newdirectory);
             }
-            var files = uploadDirectory.GetFiles();
-
             foreach (var f in files)
             {
                 var destinationFile = newdirectory + @"\" + f.Name;
-                var virtualdestinationFile = @"~\Photo\Tenant\Requests" + directory + f.Name;
+                var virtualdestinationFile = @"~\Photo\Owner\UploadedContract" + directory + f.Name;
                 if (!System.IO.File.Exists(destinationFile))
                 {
                     System.IO.File.Move(f.FullName, destinationFile);
-                    AddPicture(Convert.ToInt32(TempData["Id"]), virtualdestinationFile);
+                    AddPicture(Convert.ToInt32(TempData["UserID"]), virtualdestinationFile);
                 }
                 if (System.IO.File.Exists(f.Name))
                     System.IO.File.Delete(f.Name);
@@ -89,12 +151,20 @@ namespace RentalMobile.Controllers
             UploadHelper.DeleteDirectoryIfExist(path);
         }
 
-        public void AddPicture(int maintenanceId, string photoPath)
+        public void AddPicture(int uploaderid, string photoPath)
         {
-            var maintenancephoto = new MaintenancePhoto { MaintenanceID = maintenanceId, PhotoPath = photoPath };
+
+                var uploadedcontractphoto = new UploadedContract
+                                                {
+                                                    UploadedImagePath = photoPath,
+                                                    UploaderId = uploaderid,
+                                                    UploaderRole = "Owner"
+                                                };
+           
             if (!ModelState.IsValid) return;
-            _db.MaintenancePhotoes.Add(maintenancephoto);
+            _db.UploadedContracts.Add(uploadedcontractphoto);
             _db.SaveChanges();
+            
         }
 
     }
