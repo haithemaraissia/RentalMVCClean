@@ -1,0 +1,99 @@
+﻿@model IEnumerable<RentalMobile.Models.UnitAppliance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Unit
+        </th>
+        <th>
+            Range_Oven
+        </th>
+        <th>
+            Full_Refrigerator
+        </th>
+        <th>
+            Dishwasher
+        </th>
+        <th>
+            Sink_Disposal
+        </th>
+        <th>
+            Microwave
+        </th>
+        <th>
+            Central_Vacuum
+        </th>
+        <th>
+            Surround_Sound
+        </th>
+        <th>
+            Wine_Fridge
+        </th>
+        <th>
+            Washer___Dryer_in_Unit
+        </th>
+        <th>
+            Washer_Dryer_Connections
+        </th>
+        <th>
+            Shared_Laundry_Facility
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Range_Oven)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Full_Refrigerator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dishwasher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sink_Disposal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Microwave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Central_Vacuum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surround_Sound)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wine_Fridge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Washer___Dryer_in_Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Washer_Dryer_Connections)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shared_Laundry_Facility)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -25,7 +25,6 @@ namespace RentalMobile.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<UnitGallery> UnitGalleries { get; set; }
         public DbSet<TenantShowing> TenantShowings { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantFavorite> TenantFavorites { get; set; }
@@ -40,14 +39,6 @@ namespace RentalMobile.Models
         public DbSet<Agent> Agents { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Specialist> Specialists { get; set; }
-        public DbSet<UnitAppliance> UnitAppliances { get; set; }
-        public DbSet<UnitCommunityAmenity> UnitCommunityAmenities { get; set; }
-        public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
-        public DbSet<UnitInteriorAmenity> UnitInteriorAmenities { get; set; }
-        public DbSet<UnitLuxuryAmenity> UnitLuxuryAmenities { get; set; }
-        public DbSet<UnitPricing> UnitPricings { get; set; }
-        public DbSet<Unit> Units { get; set; }
-        public DbSet<UnitFeature> UnitFeatures { get; set; }
         public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
         public DbSet<MaintenanceExterior> MaintenanceExteriors { get; set; }
         public DbSet<RentalApplication> RentalApplications { get; set; }
@@ -72,5 +63,14 @@ namespace RentalMobile.Models
         public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
         public DbSet<GeneratedRentalContract> GeneratedRentalContracts { get; set; }
         public DbSet<UploadedContract> UploadedContracts { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<UnitAppliance> UnitAppliances { get; set; }
+        public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
+        public DbSet<UnitFeature> UnitFeatures { get; set; }
+        public DbSet<UnitInteriorAmenity> UnitInteriorAmenities { get; set; }
+        public DbSet<UnitLuxuryAmenity> UnitLuxuryAmenities { get; set; }
+        public DbSet<UnitPricing> UnitPricings { get; set; }
+        public DbSet<UnitGallery> UnitGalleries { get; set; }
+        public DbSet<UnitCommunityAmenity> UnitCommunityAmenities { get; set; }
     }
 }
