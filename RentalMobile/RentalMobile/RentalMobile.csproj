@@ -117,6 +117,7 @@
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UnitTestController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Models\Agent.cs">

@@ -49,8 +49,13 @@ namespace RentalMobile.Controllers
                     db.Units.Add(u.Unit);
                     db.UnitFeatures.Add(u.UnitFeature);
                     db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-
                     db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
+                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
+                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+                    db.UnitPricings.Add(u.UnitPricing);
+                    db.UnitGalleries.Add(u.UnitGallery);
+
+
 
 
                     db.SaveChanges();
