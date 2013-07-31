@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -35,7 +36,7 @@ namespace RentalMobile.Controllers
         {
             ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
             return View();
-        } 
+        }
 
         //
         // POST: /Test/Create
@@ -43,17 +44,25 @@ namespace RentalMobile.Controllers
         [HttpPost]
         public ActionResult Create(UnitModelView u)
         {
-
+            try
+            {
                 if (ModelState.IsValid)
                 {
                     db.Units.Add(u.Unit);
                     db.UnitFeatures.Add(u.UnitFeature);
-                    db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-                    db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
-                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
-                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-                    db.UnitPricings.Add(u.UnitPricing);
-                    db.UnitGalleries.Add(u.UnitGallery);
+                   db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
+                   db.UnitAppliances.Add(u.UnitAppliance);
+                   db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
+                   db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
+                   db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+                   db.UnitPricings.Add(u.UnitPricing);
+
+
+
+
+                    //Think if tyou need or not because of the upload control
+                    
+                    //db.UnitGalleries.Add(u.UnitGallery);
 
 
 
@@ -62,12 +71,31 @@ namespace RentalMobile.Controllers
                     return RedirectToAction("Index");
                 }
                 return View(u);
-          
+            }
+
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+
+
         }
-        
+
         //
         // GET: /Test/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -82,7 +110,7 @@ namespace RentalMobile.Controllers
             try
             {
                 // TODO: Add update logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
@@ -93,7 +121,7 @@ namespace RentalMobile.Controllers
 
         //
         // GET: /Test/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             return View();
@@ -108,7 +136,7 @@ namespace RentalMobile.Controllers
             try
             {
                 // TODO: Add delete logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch

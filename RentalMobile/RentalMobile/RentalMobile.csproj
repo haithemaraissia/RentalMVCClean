@@ -116,6 +116,8 @@
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
+    <Compile Include="Controllers\ProviderProfileController.cs" />
+    <Compile Include="Controllers\SpecialistProfileController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitTestController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
@@ -999,6 +1001,10 @@
     <Content Include="Views\UnitTest\Create.cshtml" />
     <Content Include="Views\UnitTest\Edit.cshtml" />
     <Content Include="Views\UnitTest\Delete.cshtml" />
+    <Content Include="Views\Shared\Menu\_ProviderBigTabMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_ProviderMiniTabMenu.cshtml" />
+    <Content Include="Views\ProviderProfile\Index.cshtml" />
+    <Content Include="Views\SpecialistProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -1041,7 +1047,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>10659</DevelopmentServerPort>
+          <DevelopmentServerPort>56224</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

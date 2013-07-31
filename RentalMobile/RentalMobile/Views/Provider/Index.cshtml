@@ -377,6 +377,142 @@
             </section>
         </div>
 }
+@section team
+{
+    <div id="team">
+        
+        <style>
+            .container .one-third.column
+            {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .thumbnail
+            {
+                height: 100%;
+                position: relative;
+            }
+            .thumbnail img
+            {
+                vertical-align: bottom;
+            }
+            .thumbnail .details
+            {
+                background-color: #1FB4DD;
+                color: #FFFFFF;
+                left: 0;
+                min-height: 40%;
+                opacity: 0;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                transition: all 0.25s ease-in 0s;
+                width: 100%;
+            }
+            .no-opacity .thumbnail .details
+            {
+                background: none repeat scroll 0 0 transparent;
+                min-height: 40%;
+                text-align: center;
+                top: -9999px;
+                width: 100%;
+            }
+            .thumbnail:hover .details
+            {
+                margin-top: 0;
+                opacity: 0.9;
+            }
+            .thumbnail .details h3, .h3
+            {
+                border: medium none;
+                color: #FFFFFF;
+                font-family: atrament-web-1,atrament-web-2, "HelveticaNeue" , "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+                font-size: 28px;
+                font-weight: 300;
+                letter-spacing: 1px;
+                line-height: 30px;
+                margin: 0 auto;
+                padding: 27px 0 5px;
+                text-align: center;
+                text-transform: uppercase;
+            }
+            .thumbnail .details p
+            {
+                font-size: 18px;
+                text-align: center;
+            }
+            div.section
+            {
+                margin: 30px 0;
+                overflow: hidden;
+            }
+            div.section img
+            {
+                height: auto;
+                max-width: 100%;
+            }
+        </style>
+        <div class="sixteen columns content" style="margin-left: 0px; margin-right: 0; margin-top: 10px">
+            <div class="section">
+                <div class="one-third column thumbnail alpha">
+                    <a href="http://www.eleventhedition.com/work/fishbone">
+                        <img alt="Fishbone" src="http://www.eleventhedition.com/images/work/fishbone/fishbone_responsive.png">
+                        <div class="details">
+                            <h3>
+                                Fishbone Interactive</h3>
+                            <p>
+                                Responsive Website</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="one-third column thumbnail">
+                    <a href="http://www.eleventhedition.com/work/abica">
+                        <img alt="Abica" src="http://www.eleventhedition.com/images/work/abica/abica_responsive.png">
+                        <div class="details">
+                            <h3>
+                                Abica</h3>
+                            <p>
+                                Responsive Website</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="one-third column thumbnail omega">
+                    <a href="http://www.eleventhedition.com/work/print-me">
+                        <img alt="PrintMe" src="http://www.eleventhedition.com/images/work/printme/printme_responsive.png">
+                        <div class="details">
+                            <h3>
+                                Print Me</h3>
+                            <p>
+                                Branding + Responsive Website</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="one-third column thumbnail alpha">
+                    <a href="http://www.eleventhedition.com/work/snag">
+                        <img alt="Snag" src="http://www.eleventhedition.com/images/work/snag/snag_responsive.png">
+                        <div class="details">
+                            <h3>
+                                Snag</h3>
+                            <p>
+                                Responsive Website</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <section class="row double-bottom">
+                        <div class="sixteen columns prop-details">
+                            <div class="six columns push by-one">
+                                <input type="submit" class="full-width tall" value="Add Team Member" />
+                            </div>
+                            <div class="six columns push by-two">
+                                <input type="submit" class="full-width tall" value="Remove Team Member" onclick="location.href='./SpecialistMaintenance/Create';" />
+                            </div>
+                        </div> 
+        </section>  
+    </div>
+}
 @section contract
 {
     <div id="contract" class="panel">

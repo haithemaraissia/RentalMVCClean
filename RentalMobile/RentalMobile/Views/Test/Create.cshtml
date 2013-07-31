@@ -13,6 +13,10 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Unit</legend>
+        
+        
+       @*    @Html.HiddenFor(model => model.Unit.UnitId)
+*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Unit.Address)
@@ -214,7 +218,7 @@
         
         
         
-        
+      
         
            <legend>UnitCommunityAmenity</legend>
 
@@ -314,8 +318,7 @@
         
         
         
-        
-        
+     
         <legend>UnitAppliance</legend>
 
          <div class="editor-label">
@@ -837,7 +840,7 @@
         
         
         
-        <legend>UnitGallery</legend>
+     @*   <legend>UnitGallery</legend>
         
          <div class="editor-label">
             @Html.LabelFor(model => model.UnitGallery.Path)
@@ -862,7 +865,7 @@
             @Html.EditorFor(model => model.UnitGallery.Rank)
             @Html.ValidationMessageFor(model => model.UnitGallery.Rank)
         </div>
-
+*@
         <p>
             <input type="submit" value="Create" />
         </p>

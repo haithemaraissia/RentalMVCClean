@@ -13,7 +13,7 @@
         <div class="main" role="main">
             <section class="row">
                 <div class="tab-container mini-tabs sixteen columns">
-                    @Html.Partial("Menu/_SpecialistMiniTabMenu")
+                    @Html.Partial("Menu/_ProviderMiniTabMenu")
                     @RenderSection("profile", false)
                     @RenderSection("map",false)
                     @RenderSection("account",false)
@@ -21,7 +21,7 @@
             </section>
             <section class="row double-bottom">
                 <div class="tab-container big-tabs sixteen columns">
-                    @Html.Partial("Menu/_SpecialistBigTabMenu")
+                    @Html.Partial("Menu/_ProviderBigTabMenu")
                     @RenderSection("comments", false)
                     <div id="favorite">
                         @RenderSection("favorite", false)
@@ -29,6 +29,7 @@
                     @RenderSection("maintenance", false)
                     @RenderSection("job", false)
                     @RenderSection("property", false)
+                    @RenderSection("team", false)
                     @RenderSection("contract", false)
                     @RenderSection("payment", false)
                     @RenderSection("advertise", false)

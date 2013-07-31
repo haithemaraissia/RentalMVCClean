@@ -16,7 +16,10 @@ namespace RentalMobile.ModelViews
         public UnitExteriorAmenity UnitExteriorAmenity { get; set; }
         public UnitLuxuryAmenity UnitLuxuryAmenity { get; set; }
         public UnitPricing UnitPricing { get; set; }
-        public UnitGallery UnitGallery { get; set; }
+
+
+
+     //   public UnitGallery UnitGallery { get; set; }
 
     }
 }
