@@ -1461,7 +1461,7 @@
           <Property Name="CurrencyId" Type="int" />
           <Property Name="AvailableDate" Type="smalldatetime" />
           <Property Name="Deposit" Type="float" />
-          <Property Name="AppilcationFee" Type="float" />
+          <Property Name="ApplicationFee" Type="float" />
           <Property Name="Section 8 Eligible" Type="bit" />
         </EntityType>
         <EntityType Name="UploadedContract">
@@ -1756,7 +1756,6 @@
           <EntitySet Name="UnitGalleries" EntityType="DB_33736_rentalModel.UnitGallery" />
           <EntitySet Name="UnitInteriorAmenities" EntityType="DB_33736_rentalModel.UnitInteriorAmenity" />
           <EntitySet Name="UnitLuxuryAmenities" EntityType="DB_33736_rentalModel.UnitLuxuryAmenity" />
-          <EntitySet Name="UnitPricings" EntityType="DB_33736_rentalModel.UnitPricing" />
           <AssociationSet Name="FK_UnitAppliance_Unit" Association="DB_33736_rentalModel.FK_UnitAppliance_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitAppliance" EntitySet="UnitAppliances" />
@@ -1785,6 +1784,7 @@
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitLuxuryAmenity" EntitySet="UnitLuxuryAmenities" />
           </AssociationSet>
+          <EntitySet Name="UnitPricings" EntityType="DB_33736_rentalModel.UnitPricing" />
           <AssociationSet Name="FK_UnitPricing_Unit" Association="DB_33736_rentalModel.FK_UnitPricing_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitPricing" EntitySet="UnitPricings" />
@@ -3268,19 +3268,6 @@
           <Property Type="Boolean" Name="Solar_Screens" Nullable="false" />
           <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitLuxuryAmenities_Unit" FromRole="UnitLuxuryAmenity" ToRole="Unit" />
         </EntityType>
-        <EntityType Name="UnitPricing">
-          <Key>
-            <PropertyRef Name="UnitId" />
-          </Key>
-          <Property Type="Int32" Name="UnitId" Nullable="false" />
-          <Property Type="Double" Name="Rent" />
-          <Property Type="Int32" Name="CurrencyId" />
-          <Property Type="DateTime" Name="AvailableDate" />
-          <Property Type="Double" Name="Deposit" />
-          <Property Type="Double" Name="AppilcationFee" />
-          <Property Type="Boolean" Name="Section_8_Eligible" />
-          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitPricing_Unit" FromRole="UnitPricing" ToRole="Unit" />
-        </EntityType>
         <Association Name="FK_UnitAppliance_Unit">
           <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
           <End Type="DB_33736_rentalModel.UnitAppliance" Role="UnitAppliance" Multiplicity="0..1" />
@@ -3365,6 +3352,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UnitPricing">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="Double" Name="Rent" />
+          <Property Type="Int32" Name="CurrencyId" />
+          <Property Type="DateTime" Name="AvailableDate" />
+          <Property Type="Double" Name="Deposit" />
+          <Property Type="Double" Name="ApplicationFee" />
+          <Property Type="Boolean" Name="Section_8_Eligible" />
+          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitPricing_Unit" FromRole="UnitPricing" ToRole="Unit" />
+        </EntityType>
         <Association Name="FK_UnitPricing_Unit">
           <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
           <End Type="DB_33736_rentalModel.UnitPricing" Role="UnitPricing" Multiplicity="0..1" />
@@ -4784,7 +4784,7 @@
             <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitPricing">
               <MappingFragment StoreEntitySet="UnitPricing">
                 <ScalarProperty Name="Section_8_Eligible" ColumnName="Section 8 Eligible" />
-                <ScalarProperty Name="AppilcationFee" ColumnName="AppilcationFee" />
+                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
                 <ScalarProperty Name="Deposit" ColumnName="Deposit" />
                 <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
@@ -4896,7 +4896,6 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitGallery" Width="1.5" PointX="27.625" PointY="33.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitInteriorAmenity" Width="1.5" PointX="27.625" PointY="36.125" Height="4.0956022135416674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitLuxuryAmenity" Width="1.5" PointX="27.625" PointY="40.875" Height="4.6725065104166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitPricing" Width="1.5" PointX="27.625" PointY="46.375" Height="2.557190755208353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitAppliance_Unit" >
           <ConnectorPoint PointX="26.125" PointY="28.125" />
           <ConnectorPoint PointX="26.125" PointY="17.259348958333334" />
@@ -4925,21 +4924,22 @@
           <ConnectorPoint PointX="27.625" PointY="34.211293945312491" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitInteriorAmenities_Unit" >
-          <ConnectorPoint PointX="26.125" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="26.125" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.447919166666669" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.614585833333333" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="25.9023446875" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="25.9023446875" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.336591510416671" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.503258177083335" PointY="38.239767752604166" />
           <ConnectorPoint PointX="27.625" PointY="38.239767752604166" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitLuxuryAmenities_Unit" >
-          <ConnectorPoint PointX="26.5312525" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="26.5312525" PointY="43.211253255208334" />
+          <ConnectorPoint PointX="26.419924843750003" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="26.419924843750003" PointY="43.211253255208334" />
           <ConnectorPoint PointX="27.625" PointY="43.211253255208334" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitPricing" Width="1.5" PointX="27.625" PointY="46.875" Height="2.557190755208353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitPricing_Unit" >
-          <ConnectorPoint PointX="25.7187475" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="25.7187475" PointY="47.653595377604177" />
-          <ConnectorPoint PointX="27.625" PointY="47.653595377604177" />
+          <ConnectorPoint PointX="25.60741984375" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="25.60741984375" PointY="48.153595377604177" />
+          <ConnectorPoint PointX="27.625" PointY="48.153595377604177" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

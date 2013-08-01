@@ -19,7 +19,7 @@ namespace RentalMobile.Models
         public Nullable<int> CurrencyId { get; set; }
         public Nullable<System.DateTime> AvailableDate { get; set; }
         public Nullable<double> Deposit { get; set; }
-        public Nullable<double> AppilcationFee { get; set; }
+        public Nullable<double> ApplicationFee { get; set; }
         public Nullable<bool> Section_8_Eligible { get; set; }
     
         public virtual Unit Unit { get; set; }

@@ -49,14 +49,21 @@ namespace RentalMobile.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Units.Add(u.Unit);
+                    db.Units.Add(u.Unit);   
+                    db.UnitPricings.Add(u.UnitPricing);
+
+
+
                     db.UnitFeatures.Add(u.UnitFeature);
                     db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
                     db.UnitAppliances.Add(u.UnitAppliance);
+
+
+
                     db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
                     db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
                     db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-                    db.UnitPricings.Add(u.UnitPricing);
+                
 
 
 
