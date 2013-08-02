@@ -49,13 +49,13 @@ namespace RentalMobile.Models
         public string PosterRole { get; set; }
         public Nullable<int> PosterID { get; set; }
     
-        public virtual UnitAppliance UnitAppliance { get; set; }
-        public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }
         public virtual UnitExteriorAmenity UnitExteriorAmenity { get; set; }
         public virtual UnitFeature UnitFeature { get; set; }
         public virtual ICollection<UnitGallery> UnitGalleries { get; set; }
         public virtual UnitInteriorAmenity UnitInteriorAmenity { get; set; }
         public virtual UnitLuxuryAmenity UnitLuxuryAmenity { get; set; }
         public virtual UnitPricing UnitPricing { get; set; }
+        public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }
+        public virtual UnitAppliance UnitAppliance { get; set; }
     }
 }

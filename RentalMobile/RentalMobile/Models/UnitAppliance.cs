@@ -15,17 +15,17 @@ namespace RentalMobile.Models
     public partial class UnitAppliance
     {
         public int UnitId { get; set; }
-        public Nullable<bool> Range_Oven { get; set; }
-        public Nullable<bool> Full_Refrigerator { get; set; }
-        public Nullable<bool> Dishwasher { get; set; }
-        public Nullable<bool> Sink_Disposal { get; set; }
-        public Nullable<bool> Microwave { get; set; }
-        public Nullable<bool> Central_Vacuum { get; set; }
-        public Nullable<bool> Surround_Sound { get; set; }
-        public Nullable<bool> Wine_Fridge { get; set; }
-        public Nullable<bool> Washer___Dryer_in_Unit { get; set; }
-        public Nullable<bool> Washer_Dryer_Connections { get; set; }
-        public Nullable<bool> Shared_Laundry_Facility { get; set; }
+        public bool Range_Oven { get; set; }
+        public bool Full_Refrigerator { get; set; }
+        public bool Dishwasher { get; set; }
+        public bool Sink_Disposal { get; set; }
+        public bool Microwave { get; set; }
+        public bool Central_Vacuum { get; set; }
+        public bool Surround_Sound { get; set; }
+        public bool Wine_Fridge { get; set; }
+        public bool Washer___Dryer_in_Unit { get; set; }
+        public bool Washer_Dryer_Connections { get; set; }
+        public bool Shared_Laundry_Facility { get; set; }
     
         public virtual Unit Unit { get; set; }
     }

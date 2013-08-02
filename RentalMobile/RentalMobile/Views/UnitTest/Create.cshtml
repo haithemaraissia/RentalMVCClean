@@ -1,7 +1,4 @@
-﻿
-
-@model RentalMobile.ModelViews.UnitModelView
-                      
+﻿@model RentalMobile.ModelViews.UnitModelView
 @using RentalMobile.Helpers;
 @{
     ViewBag.Title = "Create";
@@ -87,7 +84,6 @@
 
     function validateStep1() {
         var isValid = true;
-        
 
 
 
@@ -97,24 +93,25 @@
 
 
 
-//        // Validate Username
-//        var un = $('#firstname').val();
-//        if (!un && un.length <= 0) {
-//            isValid = false;
-//            $('#msg_username').html('Please fill username').show();
-//        } else {
-//            $('#msg_username').html('').hide();
-//        }
 
-//        // validate password
-//        var pw = $('#lastname').val();
-//        if (!pw && pw.length <= 0) {
-//            isValid = false;
-//            $('#msg_password').html('Please fill password').show();
-//        } else {
-//            $('#msg_password').html('').hide();
-//        }
-//        
+        //        // Validate Username
+        //        var un = $('#firstname').val();
+        //        if (!un && un.length <= 0) {
+        //            isValid = false;
+        //            $('#msg_username').html('Please fill username').show();
+        //        } else {
+        //            $('#msg_username').html('').hide();
+        //        }
+
+        //        // validate password
+        //        var pw = $('#lastname').val();
+        //        if (!pw && pw.length <= 0) {
+        //            isValid = false;
+        //            $('#msg_password').html('Please fill password').show();
+        //        } else {
+        //            $('#msg_password').html('').hide();
+        //        }
+        //        
 
 
 
@@ -193,540 +190,582 @@
 </script>
 @using (Html.BeginForm())
 {
-  @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true)
 @*<input type='hidden' name="issubmit" value="1">*@
-<!-- Tabs -->
-<style>
-    form li small
-    {
-        top: 0;
-    }
-</style>
-<div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
-    <ul class="sixteen columns">
-        <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
-            class="stepDesc">Property<br />
-           @* <small>Applicant Information</small>*@ </span></a></li>
-        <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
-            class="stepDesc">Feature<br />
-           @* <small>Employment</small>*@ </span></a></li>
-        <li><a href="#step-3" class="four columns"><span class="stepNumber">3</span> <span
-            class="stepDesc">Amenity<br />
-           @* <small>Step 3 description</small> *@</span></a></li>
-        <li><a href="#step-4" class="four columns"><span class="stepNumber">4</span> <span
-            class="stepDesc">Photo<br />
-          @*  <small>Additional Information</small>*@ </span></a></li>
-    </ul>
-    <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Unit Detail</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            
-            <ul>
-                  <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.City, new { id = "addresscity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.State, new { id = "addressstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.Bed, new { id = "bed", required = "required", @class = "full-width", placeholder = "Bed" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.Bathroom, new { id = "bathroom", required = "required", @class = "full-width", placeholder = "Bathroom" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.SquareFoot, new { id = "squarefoot", required = "required", @class = "full-width", placeholder = "SquareFoot" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
-                <li class="five columns">
-                    Missing 2 properties:
-                    Description 
-                    Primary Photo
+    <!-- Tabs -->
+    <style>
+        form li small
+        {
+            top: 0;
+        }
+    </style>
+    <div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
+        <ul class="sixteen columns">
+            <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
+                class="stepDesc">Property<br />
+                @* <small>Applicant Information</small>*@ </span></a></li>
+            <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
+                class="stepDesc">Feature<br />
+                @* <small>Employment</small>*@ </span></a></li>
+            <li><a href="#step-3" class="four columns"><span class="stepNumber">3</span> <span
+                class="stepDesc">Amenity<br />
+                @* <small>Step 3 description</small> *@</span></a></li>
+            <li><a href="#step-4" class="four columns"><span class="stepNumber">4</span> <span
+                class="stepDesc">Photo<br />
+                @*  <small>Additional Information</small>*@ </span></a></li>
+        </ul>
+        <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
+            <h2 class="StepTitle">
+                Unit Detail</h2>
+            <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+                <ul>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.City, new { id = "addresscity", required = "required", @class = "full-width", placeholder = "City" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.State, new { id = "addressstate", required = "required", @class = "full-width", placeholder = "State" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.Bed, new { id = "bed", required = "required", @class = "full-width", placeholder = "Bed" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.Bathroom, new { id = "bathroom", required = "required", @class = "full-width", placeholder = "Bathroom" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.SquareFoot, new { id = "squarefoot", required = "required", @class = "full-width", placeholder = "SquareFoot" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
+                        <li class="five columns">Missing 2 properties: Description Primary Photo </li>
+                </ul>
+            </section>
+            <h2 class="StepTitle">
+                Pricing</h2>
+            <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+                <ul>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.UnitPricing.Rent, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.UnitPricing.CurrencyId, new { id = "CurrencyID", required = "required", @class = "full-width", placeholder = "CurrencyID" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "AvailableDate", required = "required", @class = "full-width", placeholder = "Available Date" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.UnitPricing.Deposit, new { id = "Deposit", required = "required", @class = "full-width", placeholder = "Deposit" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.UnitPricing.ApplicationFee, new { id = "ApplicationFee", required = "required", @class = "full-width", placeholder = "Application Fee" })
+                    </li>
+                    <li class="five columns" style="text-align: center">
+                        <label id="Section 8">
+                            Section_8
+                        </label>
+                        @Html.EditorFor(m => m.UnitPricing.Section_8_Eligible, new { id = "Section8Eligible", required = "required", @class = "full-width", placeholder = "Section 8 Eligible?" })
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div id="step-2" class="sixteen columns" style="height: auto; padding: 0">
+            <h2 class="StepTitle">
+                Feature</h2>
+            <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
+                margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Speed Internet Access</label>
+                        @Html.EditorFor(m => m.UnitFeature.High_Speed_Internet_Access, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns">
+                        <label id="InternetIncludedLabel">
+                            Internet Included</label>
+                        @Html.EditorFor(m => m.UnitFeature.Internet_Included, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Wireless_Internet_Access">
+                            Wireless Internet Access</label>
+                        @Html.EditorFor(m => m.UnitFeature.Wireless_Internet_Access, new { id = "Wireless_Internet_Access", required = "required", @class = "full-width", placeholder = "Wireless Internet Access" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Some_Paid_Utilities">
+                            Paid Utilities</label>
+                        @Html.EditorFor(m => m.UnitFeature.Some_Paid_Utilities, new { id = "Some_Paid_Utilities", required = "required", @class = "full-width", placeholder = "Some Paid Utilities" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Covered_Parking">
+                            Covered_Parking</label>
+                        @Html.EditorFor(m => m.UnitFeature.Covered_Parking, new { id = "Covered_Parking", required = "required", @class = "full-width", placeholder = "Covered Parking" })
+                    </li>
+                    <li class="five columns">
+                        <label id="PetsallowedLabel">
+                            Pets allowed</label>
+                        @Html.EditorFor(m => m.UnitFeature.Pets_allowed, new { id = "Pets_allowed", required = "required", @class = "full-width", placeholder = "Pets allowed" })
+                    </li>
+                    <li class="five columns">
+                        <label id="SmallDogsLabel">
+                            Small Dogs</label>
+                        @Html.EditorFor(m => m.UnitFeature.Small_Dogs, new { id = "Small_Dogs", required = "required", @class = "full-width", placeholder = "Small Dogs" })
+                    </li>
+                    <li class="five columns">
+                        <label id="LargeDogsLabel">
+                            Large Dogs</label>
+                        @Html.EditorFor(m => m.UnitFeature.Large_Dogs, new { id = "Large_Dogs", required = "required", @class = "full-width", placeholder = "Large Dogs" })
+                    </li>
+                    <li class="five columns">
+                        <label id="AlarmSystemLabel">
+                            Alarm system</label>
+                        @Html.EditorFor(m => m.UnitFeature.Alarm_system, new { id = "AlarmSystem", required = "required", @class = "full-width", placeholder = "Alarm system" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Near_TransportationLabel">
+                            Near Transportation</label>
+                        @Html.EditorFor(m => m.UnitFeature.Near_Transportation, new { id = "Near_Transportation", required = "required", @class = "full-width", placeholder = "Near Transportation" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Short_Term_Lease_AvailableLabel">
+                            Short Term Lease Available</label>
+                        @Html.EditorFor(m => m.UnitFeature.Short_Term_Lease_Available, new { id = "Short_Term_Lease_Available", required = "required", @class = "full-width", placeholder = "Short Term Lease Available" })
+                    </li>
+                    <li class="five columns">
+                        <label id="RV_ParkingLabel">
+                            Alarm_system</label>
+                        @Html.EditorFor(m => m.UnitFeature.RV_Parking, new { id = "RV_Parking", required = "required", @class = "full-width", placeholder = "RV Parking" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Boat_StorageLabel">
+                            Boat Storage</label>
+                        @Html.EditorFor(m => m.UnitFeature.Boat_Storage, new { id = "Boat_Storage", required = "required", @class = "full-width", placeholder = "Boat Storage" })
+                    </li>
+                </ul>
+            </section>
+            <h2 class="StepTitle">
+                Community Amenity</h2>
+            <section class="sixteen columns  relative" style="margin-top: 20px; margin-left: 50px;
+                margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.Neighborhood_Name, new { id = "Neighborhood_Name", required = "required", @class = "full-width", placeholder = "Neighborhood Name" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.Elementary_School, new { id = "Elementary_School", required = "required", @class = "full-width", placeholder = "Elementary School" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.High_School, new { id = "High_School", required = "required", @class = "full-width", placeholder = "High School" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.School_District, new { id = "School_District", required = "required", @class = "full-width", placeholder = "School District" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.Middle_School, new { id = "Middle_School", required = "required", @class = "full-width", placeholder = "Middle School" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.UnitCommunityAmenity.County_Name, new { id = "County_Name", required = "required", @class = "full-width", placeholder = "County Name" })
+                        </div>
+                    </li>
+                    <li class="five columns">
+                        <label id="Assisted_Living_CommunityLabel">
+                            Assisted Living Community</label>
+                        @Html.EditorFor(m => m.UnitCommunityAmenity.Assisted_Living_Community, new { id = "Assisted_Living_Community", required = "required", @class = "full-width", placeholder = "Assisted Living Community" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Over_55_Active_CommunityLabel">
+                            Over 55 Active Community</label>
+                        @Html.EditorFor(m => m.UnitCommunityAmenity.Over_55_Active_Community, new { id = "Over_55_Active_Community", required = "required", @class = "full-width", placeholder = "Over 55 Active Community" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Disability_AccessLabel">
+                            Disability Access</label>
+                        @Html.EditorFor(m => m.UnitCommunityAmenity.Disability_Access, new { id = "Disability_Access", required = "required", @class = "full-width", placeholder = "Disability Access" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Controlled_AccessLabel">
+                            Controlled Access</label>
+                        @Html.EditorFor(m => m.UnitCommunityAmenity.Controlled_Access, new { id = "Controlled_Access", required = "required", @class = "full-width", placeholder = "Controlled Access" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Community_PoolLabel">
+                            Community Pool</label>
+                        @Html.EditorFor(m => m.UnitCommunityAmenity.Community_Pool, new { id = "Community_Pool", required = "required", @class = "full-width", placeholder = "Community_Pool" })
+                    </li>
+                </ul>
+            </section>
+            <h2 class="StepTitle">
+                Unit Appliance</h2>
+            <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
+                margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <label id="Range_OvenLabel">
+                            Range Oven</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Range_Oven, new { id = "Range_Oven", required = "required", @class = "full-width", placeholder = "Range Oven" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Full_RefrigeratorLabel">
+                            Full Refrigerator</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Full_Refrigerator, new { id = "Full_Refrigerator", required = "required", @class = "full-width", placeholder = "Full Refrigerator" })
+                    </li>
+                    <li class="five columns">
+                        <label id="DishwasherLabel">
+                            Dishwasher</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Dishwasher, new { id = "Dishwasher", required = "required", @class = "full-width", placeholder = "Dishwasher" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Sink_DisposalLabel">
+                            Sink Disposal</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Sink_Disposal, new { id = "Sink_Disposal", required = "required", @class = "full-width", placeholder = "Sink Disposal" })
+                    </li>
+                    <li class="five columns">
+                        <label id="MicrowaveLabel">
+                            Microwave</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Microwave, new { id = "Microwave", required = "required", @class = "full-width", placeholder = "Microwave" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Central_VacuumLabel">
+                            Central Vacuum</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Central_Vacuum, new { id = "Central_Vacuum", required = "required", @class = "full-width", placeholder = "Central Vacuum" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Surround_SoundLabel">
+                            Surround Sound</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Surround_Sound, new { id = "Surround_Sound", required = "required", @class = "full-width", placeholder = "Surround_Sound" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Wine_FridgeLabel">
+                            Wine Fridge</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Wine_Fridge, new { id = "Wine_Fridge", required = "required", @class = "full-width", placeholder = "Wine_Fridge" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Washer___Dryer_in_UnitLabel">
+                            Washer/Dryer in Unit</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Washer___Dryer_in_Unit, new { id = "Washer___Dryer_in_Unit", required = "required", @class = "full-width", placeholder = "Washer/Dryer in Unit" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Washer_Dryer_ConnectionsLabel">
+                            Washer/Dryer Connections</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Washer_Dryer_Connections, new { id = "Washer_Dryer_Connections", required = "required", @class = "full-width", placeholder = "Washer_Dryer_Connections" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Shared_Laundry_FacilityLabel">
+                            Shared Laundry Facility</label>
+                        @Html.EditorFor(m => m.UnitAppliance.Shared_Laundry_Facility, new { id = "Shared_Laundry_Facility", required = "required", @class = "full-width", placeholder = "Shared Laundry Facility" })
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div id="step-3" class="sixteen columns" style="height: auto; padding: 0">
+            <h2 class="StepTitle">
+                Interior Amenity</h2>
+            <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <label id="CoolingTypeIdLabel">
+                            Cooling Type
+                        </label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.CoolingTypeId, new { id = "CoolingTypeId", required = "required", @class = "full-width", placeholder = "Cooling Type " })
+                    </li>
+                    <li class="five columns">
+                        <label id="HeatingTypeIdLabel">
+                            Heating Type
+                        </label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.HeatingTypeId, new { id = "HeatingTypeId", required = "required", @class = "full-width", placeholder = "Heating Type" })
+                    </li>
+                    <li class="five columns">
+                        <label id="FireplaceLabel">
+                            Fireplace</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Fireplace, new { id = "Fireplace", required = "required", @class = "full-width", placeholder = "Fireplace" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Hot_Tub_SpaLabel">
+                            Hot Tub Spa</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Hot_Tub_Spa, new { id = "Hot_Tub_Spa", required = "required", @class = "full-width", placeholder = "Hot Tub Spa" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Cable_ReadyLabel">
+                            Cable Ready</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Cable_Ready, new { id = "Cable_Ready", required = "required", @class = "full-width", placeholder = "Cable Ready" })
+                    </li>
+                    <li class="five columns">
+                        <label id="AtticLabel">
+                            Attic</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Attic, new { id = "Attic", required = "required", @class = "full-width", placeholder = "Attic" })
+                    </li>
+                    <li class="five columns">
+                        <label id="BasementTypeLabel">
+                            Basement Type</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.BasementTypeId, new { id = "BasementTypeId", required = "required", @class = "full-width", placeholder = "Basement Type" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Double_Pane_Storm_WindowsLabel">
+                            Double Pane Storm Windows</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Double_Pane_Storm_Windows, new { id = "Double_Pane_Storm_Windows", required = "required", @class = "full-width", placeholder = "Double Pane Storm Windows" })
+                    </li>
+                    <li class="five columns">
+                        <label id="FloorCoveringIdLabel">
+                            Floor Covering
+                        </label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.FloorCoveringId, new { id = "FloorCoveringId", required = "required", @class = "full-width", placeholder = "Floor Covering" })
+                    </li>
+                    <li class="five columns">
+                        <label id="FoundationTypeLabel">
+                            Foundation Type</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.FoundationTypeId, new { id = "FoundationTypeId", required = "required", @class = "full-width", placeholder = "Foundation Type" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Kitchen_IslandLabel">
+                            Kitchen Island</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Kitchen_Island, new { id = "Kitchen_Island", required = "required", @class = "full-width", placeholder = "Kitchen_Island" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Vaulted_CeilingLabel">
+                            Vaulted Ceiling</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Vaulted_Ceiling, new { id = "Vaulted_Ceiling", required = "required", @class = "full-width", placeholder = "Vaulted_Ceiling" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Ceiling_FanLabel">
+                            Ceiling Fan</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Ceiling_Fan, new { id = "Ceiling_Fan", required = "required", @class = "full-width", placeholder = "Ceiling Fan" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Jetted_TubLabel">
+                            Jetted Tub</label>
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
+                    </li>
+                </ul>
+            </section>
+            <h2 class="StepTitle">
+                Exterior Amenity</h2>
+            <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+                                                                                                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <label id="PoolLabel">
+                            Pool
+                        </label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Pool, new { id = "Pool", required = "required", @class = "full-width", placeholder = "Pool" })
+                    </li>
+                    <li class="five columns">
+                        <label id="GardenLabel">
+                            Garden
+                        </label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Garden, new { id = "Garden", required = "required", @class = "full-width", placeholder = "Garden" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Gated_EntryLabel">
+                            Gated Entry</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Gated_Entry, new { id = "Gated_Entry", required = "required", @class = "full-width", placeholder = "Gated Entry" })
+                    </li>
+                    <li class="five columns">
+                        <label id="GreenhouseLabel">
+                            Greenhouse</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Greenhouse, new { id = "Greenhouse", required = "required", @class = "full-width", placeholder = "Greenhouse" })
+                    </li>
+                    <li class="five columns">
+                        <label id="LawnLabel">
+                            Lawn</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Lawn, new { id = "Lawn", required = "required", @class = "full-width", placeholder = "Lawn" })
+                    </li>
+                    <li class="five columns">
+                        <label id="DeckLabel">
+                            Deck</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Deck, new { id = "Deck", required = "required", @class = "full-width", placeholder = "Deck" })
+                    </li>
+                    <li class="five columns">
+                        <label id="DockLabel">
+                            Dock</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Dock, new { id = "Dock", required = "required", @class = "full-width", placeholder = "Dock" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Fenced_YardLabel">
+                            Fenced Yard</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Fenced_Yard, new { id = "Fenced_Yard", required = "required", @class = "full-width", placeholder = "Fenced_Yard" })
+                    </li>
+                    <li class="five columns">
+                        <label id="FSprinkler_SystemLabel">
+                            Sprinkler System</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Sprinkler_System, new { id = "Sprinkler_System", required = "required", @class = "full-width", placeholder = "Sprinkler_System" })
+                    </li>
+                    <li class="five columns">
+                        <label id="PatioLabel">
+                            Patio</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Patio, new { id = "Patio", required = "required", @class = "full-width", placeholder = "Patio" })
+                    </li>
+                    <li class="five columns">
+                        <label id="PondLabel">
+                            Pond</label>
+                        @Html.EditorFor(m => m.UnitExteriorAmenity.Pond, new { id = "Pond", required = "required", @class = "full-width", placeholder = "Pond" })
+                    </li>
+                </ul>
+            </section>
+            <h2 class="StepTitle">
+                Luxury Amenity</h2>
+            <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+                                                                                                                                                                                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="five columns ">
+                        <label id="Tennis_CourtLabel">
+                            Tennis Court
+                        </label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Tennis_Court, new { id = "Tennis_Court", required = "required", @class = "full-width", placeholder = "Tennis Court" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Security_SystemLabel">
+                            Security System
+                        </label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Security_System, new { id = "Security_System", required = "required", @class = "full-width", placeholder = "Security System" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Sports_CourtLabel">
+                            Sports Court</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Sports_Court, new { id = "Sports_Court", required = "required", @class = "full-width", placeholder = "Sports Court" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Basketball_CourtLabel">
+                            Basketball Court</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Basketball_Court, new { id = "Basketball_Court", required = "required", @class = "full-width", placeholder = "Basketball Court" })
+                    </li>
+                    <li class="five columns">
+                        <label id="BarbecueLabel">
+                            Barbecue</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Barbecue, new { id = "Barbecue", required = "required", @class = "full-width", placeholder = "Barbecue" })
+                    </li>
+                    <li class="five columns">
+                        <label id="ElevatorLabel">
+                            Elevator</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Elevator, new { id = "Elevator", required = "required", @class = "full-width", placeholder = "Elevator" })
+                    </li>
+                    <li class="five columns">
+                        <label id="PorchLabel">
+                            Porch</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Porch, new { id = "Porch", required = "required", @class = "full-width", placeholder = "Porch" })
+                    </li>
+                    <li class="five columns">
+                        <label id="SaunaLabel">
+                            Sauna</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Sauna, new { id = "Sauna", required = "required", @class = "full-width", placeholder = "Sauna" })
+                    </li>
+                    <li class="five columns">
+                        <label id="SkylightLabel">
+                            Skylight</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Skylight, new { id = "Skylight", required = "required", @class = "full-width", placeholder = "Skylight" })
+                    </li>
+                    <li class="five columns">
+                        <label id="IntercomLabel">
+                            Intercom</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Intercom, new { id = "Intercom", required = "required", @class = "full-width", placeholder = "Intercom" })
+                    </li>
+                    <li class="five columns">
+                        <label id="WaterfrontLabel">
+                            Waterfront</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Waterfront, new { id = "Waterfront", required = "required", @class = "full-width", placeholder = "Waterfront" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Wet_BarLabel">
+                            Wet_Bar</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Wet_Bar, new { id = "Wet_Bar", required = "required", @class = "full-width", placeholder = "Wet_Bar" })
+                    </li>
+                    <li class="five columns">
+                        <label id="DoormanLabel">
+                            Doorman</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Doorman, new { id = "Doorman", required = "required", @class = "full-width", placeholder = "Doorman" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Solar_HeatLabel">
+                            Solar_Heat</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Solar_Heat, new { id = "Solar_Heat", required = "required", @class = "full-width", placeholder = "Solar_Heat" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Solar_PlumbingLabel">
+                            Solar_Plumbing</label>
+                        @Html.EditorFor(m => 
+                                        m.UnitLuxuryAmenity.Solar_Plumbing, new { id = "Solar_Plumbing", required = "required", @class = "full-width", placeholder = "Solar_Plumbing" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Solar_ScreensLabel">
+                            Solar_Screens</label>
+                        @Html.EditorFor(m => m.UnitLuxuryAmenity.Solar_Screens, new { id = "Solar_Screens", required = "required", @class = "full-width", placeholder = "Solar_Screens" })
+                    </li>
+                </ul>
+            </section>
+        </div>
+        
+        
+        
+        
+        
+        
 
-                </li>
-            </ul>
-        </section>
-        <h2 class="StepTitle">
-            Pricing</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            
-            
-            <ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.Rent, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.CurrencyId, new { id = "CurrencyID", required = "required", @class = "full-width", placeholder = "CurrencyID" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "AvailableDate", required = "required", @class = "full-width", placeholder = "Available Date" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.Deposit, new { id = "Deposit", required = "required", @class = "full-width", placeholder = "Deposit" })
-                </li>
-                
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.ApplicationFee, new { id = "ApplicationFee", required = "required", @class = "full-width", placeholder = "Application Fee" })
-                </li>
-                
-                                                  <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitPricing.Section_8_Eligible, new { id = "Section8Eligible", required = "required", @class = "full-width", placeholder = "Section 8 Eligible?" })
-                </li>
-            </ul>
-        </section>
+        <div id="step-4" class="sixteen columns" style="height: auto; padding: 0">
+            <h2 class="StepTitle">
+                PHOTO</h2>
+            <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
+               
+                @Html.Partial("_PropertyPhoto")
+            </section>
+        </div>
     </div>
-    <div id="step-2" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Feature</h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.WorkStartDate, new { id = "workstartdate", required = "required", @class = "full-width", placeholder = "Work Start Date" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.WorkEndDate, new { id = "workenddate", required = "required", @class = "full-width", placeholder = "Work End Date" })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px; text-align:center">
-            <ul>
-                <li class="five columns ">
-                    <label id="HighSpeedInternetAccessLabel">High Speed Internet Access</label> 
-                    @Html.EditorFor(m => m.UnitFeature.High_Speed_Internet_Access, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
-                </li>
-                <li class="five columns">
-                    <label id="InternetIncludedLabel">Internet Included</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Internet_Included, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
-                </li>
-                <li class="five columns">
-                    <label id="Wireless_Internet_Access" >Wireless_Internet_Access</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Wireless_Internet_Access, new { id = "Wireless_Internet_Access", required = "required", @class = "full-width", placeholder = "Wireless Internet Access" })
-                </li>
-                <li class="five columns">
-                    <label id="Some_Paid_Utilities" >Some_Paid_Utilities</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Some_Paid_Utilities, new { id = "Some_Paid_Utilities", required = "required", @class = "full-width", placeholder = "Some Paid Utilities" })
-                </li>
-                <li class="five columns">
-                    <label id="Covered_Parking">Covered_Parking</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Covered_Parking, new { id = "Covered_Parking", required = "required", @class = "full-width", placeholder = "Covered Parking" })
-                </li>
-                <li class="five columns">
-                    <label id="PetsallowedLabel">Pets allowed</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Pets_allowed, new { id = "Pets_allowed", required = "required", @class = "full-width", placeholder = "Pets allowed" })
-                </li>
-                <li class="five columns">
-                    <label id="LargeDogsLabel">Large Dogs</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Large_Dogs, new { id = "Large_Dogs", required = "required", @class = "full-width", placeholder = "Large Dogs" })
-                </li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitFeature.Small_Dogs, new { id = "employername", required = "required", @class = "full-width", placeholder = "Employer Name" })
-                </li>
-                <li class="five columns"><label id="AlarmSystemLabel" >Large Dogs</label> 
-                    @Html.EditorFor(m => m.UnitFeature.Large_Dogs, new { id = "income", required = "required", @class = "full-width", placeholder = "Income Gross" })
-                </li>
-                <li class="five columns"><label id="AlarmSystemLabel" >Alarm_system</label>
-                    @Html.CheckBoxFor(m => m.UnitFeature.Alarm_system, new { id = "employeraddress", required = "required", @class = "full-width", placeholder = "Employer Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitFeature.Near_Transportation, new { id = "employercity", required = "required", @class = "full-width", placeholder = "Employer City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitFeature.Short_Term_Lease_Available, new { id = "employerstate", required = "required", @class = "full-width", placeholder = "Employer State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitFeature.RV_Parking, new { id = "employerzipcode", required = "required", @class = "full-width", placeholder = "Employer Zipcode" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.UnitFeature.Boat_Storage, new { id = "employerfax", required = "required", @class = "full-width", placeholder = "Employer Fax" })
-                </li>
-
-            </ul>
-        </section>
-    </div>
-    <div id="step-3" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            Housing History</h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandloard, new { id = "currentlandloard", required = "required", @class = "full-width", placeholder = "Current Landloard" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandLoardPhone, new { id = "currentlandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentLandLoardFax, new { id = "currentlandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Rent, new { id = "rent", required = "required", @class = "full-width", placeholder = "Rent/Month" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentRentStartDate, new { id = "currentrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentRentEndDate, new { id = "currentrentenddate", required = "required", @class = "full-width", placeholder = "To" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddress, new { id = "currentaddress", required = "required", @class = "full-width", placeholder = "Current Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressCity, new { id = "currentaddresscity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressState, new { id = "currentaddressstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.CurrentAddressZip, new { id = "currentaddresszip", required = "required", @class = "full-width", placeholder = "Zip" })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-            margin-bottom: -10px">
-            <h2>
-            </h2>
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandloard, new { id = "previouslandloard", required = "required", @class = "full-width", placeholder = "Previous Landloard" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandLoardPhone, new { id = "previouslandloardphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousLandLoardFax, new { id = "previouslandloardfax", required = "required", @class = "full-width", placeholder = "Fax" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRent, new { id = "previousrent", required = "required", @class = "full-width", placeholder = "Previous Rent/Month" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRentStartDate, new { id = "previousrentstartdate", required = "required", @class = "full-width", placeholder = "From" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousRentEndDate, new { id = "previousrentenddate", required = "required", @class = "full-width", placeholder = "To" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddress, new { id = "previousaddress", required = "required", @class = "full-width", placeholder = "Previous Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressCity, new { id = "previousaddresscity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressState, new { id = "previousaddressstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.PreviousAddressZip, new { id = "previousaddresszip", required = "required", @class = "full-width", placeholder = "Zipcode" })
-                </li>
-            </ul>*@
-        </section>
-    </div>
-    <div id="step-4" class="sixteen columns" style="height: auto; padding: 0">
-        <h2 class="StepTitle">
-            EMERGENCY CONTACT</h2>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactName, new { id = "emergencycontactname", required = "required", @class = "full-width", placeholder = "Emergency Contact" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactRelationShip, new { id = "emergencycontactrelationship", required = "required", @class = "full-width", placeholder = "Relationship" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactPhone, new { id = "emergencycontactphone", required = "required", @class = "full-width", placeholder = "Phone" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactAddress, new { id = "emergencycontactaddress", required = "required", @class = "full-width", placeholder = "Address" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactCity, new { id = "emergencycontactcity", required = "required", @class = "full-width", placeholder = "City" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactState, new { id = "emergencycontactstate", required = "required", @class = "full-width", placeholder = "State" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.EmergencyContactZipCode, new { id = "emergencycontactzipcode", required = "required", @class = "full-width", placeholder = "Zipcode" })
-                </li>
-            </ul>*@
-        </section>
-        <h2 class="StepTitle">
-            PET
-        </h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.Pets, new[] { 
-                        new SelectListItem { Text = "Any Pets ?", Value="", Selected = true} , 
-                          new SelectListItem { Text = "Yes", Value="True" } , 
-                                                                new SelectListItem { Text = "No", Value="False"} })
-                </li>
-                <li class="five columns">
-                    @Html.DropDownListFor(m => m.PetsNumber, new[] { 
-                        new SelectListItem { Text = "How Many ?", Value="", Selected = true} , 
-                        new SelectListItem { Text = "1", Value="1" } , new SelectListItem { Text = "2", Value="2"} })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Brand, new { id = "pet1brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Age, new { id = "pet1age", required = "required", @class = "full-width", placeholder = "Age" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet1Weight, new { id = "pet1weight", required = "required", @class = "full-width", placeholder = "Weight" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Brand, new { id = "pet2brand", required = "required", @class = "full-width", placeholder = "Brand/Type" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Age, new { id = "pet2age", required = "required", @class = "full-width", placeholder = "Age" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Pet2Weight, new { id = "pet2weight", required = "required", @class = "full-width", placeholder = "Weight" })
-                </li>
-            </ul>*@
-        </section>
-        <h2 class="StepTitle">
-            VEHICLE
-        </h2>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle1Make, new { id = "vehicle1make", required = "required", @class = "full-width", placeholder = "Vehicle1 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle1Model, new { id = "vehicle1model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle1Year, new { id = "vehicle1year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle1LicensePlate, new { id = "vehicle1licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle1Color, new { id = "vehicle1color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle2Make, new { id = "vehicle2make", required = "required", @class = "full-width", placeholder = "Vehicle2 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle2Model, new { id = "vehicle2model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2Year, new { id = "vehicle2yearlabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2Year, new { id = "vehicle2year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.LabelFor(model => model.Vehicle2LicensePlate, new { id = "vehicle2licenseplatelabel", @class = "screen-reader-text" })
-                    @Html.TextBoxFor(m => m.Vehicle2LicensePlate, new { id = "vehicle2licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle2Color, new { id = "vehicle2color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle3Make, new { id = "vehicle3make", required = "required", @class = "full-width", placeholder = "Vehicle3 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle3Model, new { id = "vehicle3model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle3Year, new { id = "vehicle3year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle3LicensePlate, new { id = "vehicle3licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle3Color, new { id = "vehicle3color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-            </ul>*@
-        </section>
-        <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle4Make, new { id = "vehicle4make", required = "required", @class = "full-width", placeholder = "Vehicle4 Make" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle4Model, new { id = "vehicle4model", required = "required", @class = "full-width", placeholder = "Model" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle4Year, new { id = "vehicle4year", required = "required", @class = "full-width", placeholder = "Year" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle4LicensePlate, new { id = "vehicle4licenseplate", required = "required", @class = "full-width", placeholder = "License Plate" })
-                </li>
-                <li class="five columns">
-                    @Html.TextBoxFor(m => m.Vehicle4Color, new { id = "vehicle4color", required = "required", @class = "full-width", placeholder = "Color" })
-                </li>
-            </ul>*@
-        </section>
-        <h2 class="StepTitle">
-            ADDITIONAL INFORMATION
-        </h2>
-        <section class="fifteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-            @*<ul>
-                <li class="seven columns">
-                    <label id="bankruptcylabel" title="Bankruptcy">
-                        Have you ever filed for bankruptcy?</label>
-                </li>
-                <li class="seven columns">
-                    @Html.EditorFor(m => m.Bankruptcy, new { id = "bankruptcy", required = "required", @class = "full-width" })
-                </li>
-                <li class="seven columns">
-                    <label id="defaultedonleaselabel" title="Defaulted on lease">
-                        Have you ever defaulted on a lease?</label>
-                </li>
-                <li class="seven columns">
-                    @Html.EditorFor(m => m.LeaseDefaulted, new { id = "defaultedonlease", required = "required", @class = "full-width" })
-                </li>
-                <li class="seven columns">
-                    <label id="refusedtopayrentlabel" title="Refused to pay rent">
-                        Have you ever intentionally refused to pay rent?</label>
-                </li>
-                <li class="seven columns">
-                    @Html.EditorFor(m => m.RefusedtoPayRent, new { id = "refusedtopayrent", required = "required", @class = "full-width" })
-                </li>
-                <li class="seven columns">
-                    <label id="evictedfromrentallabel" title="Evicted from a rental">
-                        Have you ever been evicted from a rental?</label>
-                </li>
-                <li class="seven columns">
-                    @Html.EditorFor(m => m.EvictedFromRental, new { id = "evictedfromrental", required = "required", @class = "full-width" })
-                </li>
-                <li class="seven columns">
-                    <label id="convictedoffelonylabel" title="Convicted of felony">
-                        Have you ever been convicted of a felony?</label>
-                </li>
-                <li class="seven columns">
-                    @Html.EditorFor(m => m.ConvictedofFelony, new { id = "convictedoffelony", required = "required", @class = "full-width" })
-                </li>
-            </ul>*@
-        </section>
-    </div>
-</div>
-<!-- End SmartWizard Content -->
+    <!-- End SmartWizard Content -->
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Unit</legend>
-        
-        
-       @*    @Html.HiddenFor(model => model.Unit.UnitId)
-*@
-
-        @*        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.Address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.Address)
-            @Html.ValidationMessageFor(model => model.Unit.Address)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.City)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.City)
-            @Html.ValidationMessageFor(model => model.Unit.City)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.State)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.State)
-            @Html.ValidationMessageFor(model => model.Unit.State)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.Bed)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.Bed)
-            @Html.ValidationMessageFor(model => model.Unit.Bed)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.Bathroom)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.Bathroom)
-            @Html.ValidationMessageFor(model => model.Unit.Bathroom)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.SquareFoot)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.SquareFoot)
-            @Html.ValidationMessageFor(model => model.Unit.SquareFoot)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.YearBuilt)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.YearBuilt)
-            @Html.ValidationMessageFor(model => model.Unit.YearBuilt)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.Description)
-        </div>*@
-        
-
         <div class="editor-field">
             @Html.EditorFor(model => model.Unit.Description)
             @Html.ValidationMessageFor(model => model.Unit.Description)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Unit.PrimaryPhoto)
         </div>
@@ -734,706 +773,8 @@
             @Html.EditorFor(model => model.Unit.PrimaryPhoto)
             @Html.ValidationMessageFor(model => model.Unit.PrimaryPhoto)
         </div>
-        
-        
-        
-        
-        
-        
-        
 
-        <legend>UnitFeature</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.High_Speed_Internet_Access)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.High_Speed_Internet_Access)
-            @Html.ValidationMessageFor(model => model.UnitFeature.High_Speed_Internet_Access)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Internet_Included)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Internet_Included)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Internet_Included)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Wireless_Internet_Access)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Wireless_Internet_Access)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Wireless_Internet_Access)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Some_Paid_Utilities)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Some_Paid_Utilities)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Some_Paid_Utilities)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Covered_Parking)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Covered_Parking)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Covered_Parking)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Pets_allowed)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Pets_allowed)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Pets_allowed)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Cats_Allowed)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Cats_Allowed)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Cats_Allowed)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Small_Dogs)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Small_Dogs)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Small_Dogs)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Large_Dogs)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Large_Dogs)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Large_Dogs)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Alarm_system)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Alarm_system)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Alarm_system)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Near_Transportation)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Near_Transportation)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Near_Transportation)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Short_Term_Lease_Available)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Short_Term_Lease_Available)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Short_Term_Lease_Available)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.RV_Parking)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.RV_Parking)
-            @Html.ValidationMessageFor(model => model.UnitFeature.RV_Parking)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitFeature.Boat_Storage)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitFeature.Boat_Storage)
-            @Html.ValidationMessageFor(model => model.UnitFeature.Boat_Storage)
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-           <legend>UnitCommunityAmenity</legend>
-
-      
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Neighborhood_Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Neighborhood_Name)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Neighborhood_Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Elementary_School)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Elementary_School)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Elementary_School)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.High_School)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.High_School)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.High_School)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.School_District)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.School_District)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.School_District)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Middle_School)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Middle_School)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Middle_School)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.County_Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.County_Name)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.County_Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Assisted_Living_Community)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Assisted_Living_Community)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Assisted_Living_Community)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Over_55_Active_Community)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Over_55_Active_Community)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Over_55_Active_Community)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Disability_Access)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Disability_Access)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Disability_Access)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Controlled_Access)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Controlled_Access)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Controlled_Access)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitCommunityAmenity.Community_Pool)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitCommunityAmenity.Community_Pool)
-            @Html.ValidationMessageFor(model => model.UnitCommunityAmenity.Community_Pool)
-        </div>
-        
-        
-        
-        
-        
-        
-        
-     
-        <legend>UnitAppliance</legend>
-
-         <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Range_Oven)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Range_Oven)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Range_Oven)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Full_Refrigerator)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Full_Refrigerator)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Full_Refrigerator)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Dishwasher)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Dishwasher)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Dishwasher)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Sink_Disposal)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Sink_Disposal)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Sink_Disposal)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Microwave)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Microwave)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Microwave)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Central_Vacuum)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Central_Vacuum)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Central_Vacuum)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Surround_Sound)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Surround_Sound)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Surround_Sound)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Wine_Fridge)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Wine_Fridge)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Wine_Fridge)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Washer___Dryer_in_Unit)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Washer___Dryer_in_Unit)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Washer___Dryer_in_Unit)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Washer_Dryer_Connections)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Washer_Dryer_Connections)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Washer_Dryer_Connections)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitAppliance.Shared_Laundry_Facility)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitAppliance.Shared_Laundry_Facility)
-            @Html.ValidationMessageFor(model => model.UnitAppliance.Shared_Laundry_Facility)
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        <legend>UnitInteriorAmenity</legend>
-        
-           <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.CoolingTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.CoolingTypeId)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.CoolingTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.HeatingTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.HeatingTypeId)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.HeatingTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Fireplace)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Fireplace)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Fireplace)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Hot_Tub_Spa)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Hot_Tub_Spa)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Hot_Tub_Spa)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Cable_Ready)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Cable_Ready)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Cable_Ready)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Attic)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Attic)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Attic)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.BasementTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.BasementTypeId)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.BasementTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Double_Pane_Storm_Windows)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Double_Pane_Storm_Windows)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Double_Pane_Storm_Windows)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.FloorCoveringId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.FloorCoveringId)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.FloorCoveringId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.FoundationTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.FoundationTypeId)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.FoundationTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Kitchen_Island)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Kitchen_Island)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Kitchen_Island)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Vaulted_Ceiling)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Vaulted_Ceiling)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Vaulted_Ceiling)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Ceiling_Fan)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Ceiling_Fan)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Ceiling_Fan)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitInteriorAmenity.Jetted_Tub)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitInteriorAmenity.Jetted_Tub)
-            @Html.ValidationMessageFor(model => model.UnitInteriorAmenity.Jetted_Tub)
-        </div>
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         <legend>UnitExteriorAmenity</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Pool)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Pool)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Pool)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Garden)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Garden)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Garden)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Gated_Entry)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Gated_Entry)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Gated_Entry)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Greenhouse)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Greenhouse)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Greenhouse)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Lawn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Lawn)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Lawn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Deck)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Deck)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Deck)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Dock)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Dock)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Dock)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Fenced_Yard)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Fenced_Yard)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Fenced_Yard)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Sprinkler_System)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Sprinkler_System)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Sprinkler_System)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Patio)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Patio)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Patio)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitExteriorAmenity.Pond)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitExteriorAmenity.Pond)
-            @Html.ValidationMessageFor(model => model.UnitExteriorAmenity.Pond)
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                <legend>UnitLuxuryAmenity</legend>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Tennis_Court)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Tennis_Court)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Tennis_Court)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Security_System)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Security_System)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Security_System)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Sports_Court)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Sports_Court)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Sports_Court)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Basketball_Court)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Basketball_Court)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Basketball_Court)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Fitness_Center)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Fitness_Center)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Fitness_Center)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Barbecue)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Barbecue)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Barbecue)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Elevator)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Elevator)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Elevator)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Porch)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Porch)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Porch)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Sauna)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Sauna)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Sauna)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Skylight)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Skylight)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Skylight)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Intercom)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Intercom)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Intercom)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Waterfront)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Waterfront)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Waterfront)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Wet_Bar)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Wet_Bar)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Wet_Bar)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Doorman)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Doorman)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Doorman)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Solar_Heat)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Solar_Heat)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Solar_Heat)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Solar_Plumbing)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Solar_Plumbing)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Solar_Plumbing)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitLuxuryAmenity.Solar_Screens)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitLuxuryAmenity.Solar_Screens)
-            @Html.ValidationMessageFor(model => model.UnitLuxuryAmenity.Solar_Screens)
-        </div>
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-     @*   <legend>UnitGallery</legend>
+        @*   <legend>UnitGallery</legend>
         
          <div class="editor-label">
             @Html.LabelFor(model => model.UnitGallery.Path)
@@ -1464,12 +805,6 @@
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-
-
-
-

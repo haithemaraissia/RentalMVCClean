@@ -1005,6 +1005,7 @@
     <Content Include="Views\Shared\Menu\_ProviderMiniTabMenu.cshtml" />
     <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\SpecialistProfile\Index.cshtml" />
+    <Content Include="Views\UnitTest\_PropertyPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

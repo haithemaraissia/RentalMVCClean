@@ -15,17 +15,17 @@ namespace RentalMobile.Models
     public partial class UnitCommunityAmenity
     {
         public int UnitId { get; set; }
-        public Nullable<bool> Neighborhood_Name { get; set; }
-        public Nullable<bool> Elementary_School { get; set; }
-        public Nullable<bool> High_School { get; set; }
-        public Nullable<bool> School_District { get; set; }
-        public Nullable<bool> Middle_School { get; set; }
-        public Nullable<bool> County_Name { get; set; }
-        public Nullable<bool> Assisted_Living_Community { get; set; }
-        public Nullable<bool> Over_55_Active_Community { get; set; }
-        public Nullable<bool> Disability_Access { get; set; }
-        public Nullable<bool> Controlled_Access { get; set; }
-        public Nullable<bool> Community_Pool { get; set; }
+        public string Neighborhood_Name { get; set; }
+        public string Elementary_School { get; set; }
+        public string High_School { get; set; }
+        public string School_District { get; set; }
+        public string Middle_School { get; set; }
+        public string County_Name { get; set; }
+        public bool Assisted_Living_Community { get; set; }
+        public bool Over_55_Active_Community { get; set; }
+        public bool Disability_Access { get; set; }
+        public bool Controlled_Access { get; set; }
+        public bool Community_Pool { get; set; }
     
         public virtual Unit Unit { get; set; }
     }

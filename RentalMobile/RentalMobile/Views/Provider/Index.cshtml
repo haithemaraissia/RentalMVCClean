@@ -21,7 +21,7 @@
         <section class="row double-bottom">
             <div class="sixteen columns prop-details">
                 <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Edit Profile" onclick="location.href='/Specialist/Edit/@ViewBag.SpecialistId'"/>
+                    <input type="submit" class="full-width tall" value="Edit Profile" onclick="location.href='/Provider/Edit/@ViewBag.ProviderId'"/>
                 </div>
                 <div class="six columns push by-two">
                     <input type="submit" class="full-width tall" value="Edit Email" onclick="location.href='/Account/ChangeEmail'" />
@@ -32,15 +32,15 @@
                     <input type="submit" class="full-width tall" value="Change Passowrd" onclick="location.href='/Account/ChangePassword'" />
                 </div>
                 <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Change Address" onclick="location.href='/Specialist/ChangeAddress/@ViewBag.SpecialistId'"/>
+                    <input type="submit" class="full-width tall" value="Change Address" onclick="location.href='/Provider/ChangeAddress/@ViewBag.ProviderId'"/>
                 </div>
             </div>
             <div class="sixteen columns prop-details">
                 <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Specialist/Delete/@ViewBag.SpecialistId'"/>
+                    <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Provider/Delete/@ViewBag.ProviderId'"/>
                 </div>
                 <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Specialist/UpdateProfilePicture/@ViewBag.SpecialistId'"/>
+                    <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Provider/UpdateProfilePicture/@ViewBag.ProviderId'"/>
                 </div>
             </div>
         </section>
@@ -376,6 +376,476 @@
                 <!-- /.List -->
             </section>
         </div>
+}
+
+
+@section coverage
+{
+    <div id="coverage" class="panel">
+    
+    
+    Do the Binding and alos the linq for editing 
+        <div id="Exteriors">
+                <h4 class="section-titling">
+                    Exteriors</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+            
+            
+            <div id="Interiors">
+                <h4 class="section-titling">
+                    Interiors</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+            
+            
+            <div id="MaintenanceandRepairs">
+                <h4 class="section-titling"> Maintenance and Repairs</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+            
+            <div id="NewConstruction">
+                <h4 class="section-titling">Constructions</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+
+
+            
+            <div id="Custom Services">
+                <h4 class="section-titling">
+                    Custom Services</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+            
+
+            
+            <div id="Utilities">
+                <h4 class="section-titling">
+                    Utilities</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                        <li>50% Approval</li>
+                    </ul>
+                    <br />
+                    <br />
+                </div> 
+            </div>
+
+    </div>
 }
 @section team
 {
