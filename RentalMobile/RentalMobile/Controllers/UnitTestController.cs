@@ -152,5 +152,33 @@ namespace RentalMobile.Controllers
                 return View();
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        public string TenantUsername = "TEST1";
+        public string TenantPhotoPath = "~/Photo/Tenant/Requests";
+        public string RequestID;
+
+
+        public ActionResult _Partial2(UnitModelView unitModelView)
+        {
+            RequestID = "5";
+            ViewBag.UserName = "Test";
+            ViewBag.Id = "10";
+            ViewBag.Type = "Requests";
+            TempData["Id"] = "5";
+            return PartialView("_Partial2", unitModelView);
+        }
     }
 }

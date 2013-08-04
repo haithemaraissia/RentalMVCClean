@@ -19,7 +19,7 @@ namespace RentalMobile.ModelViews
 
 
 
-     //   public UnitGallery UnitGallery { get; set; }
+       public UnitGallery UnitGallery { get; set; }
 
     }
 }

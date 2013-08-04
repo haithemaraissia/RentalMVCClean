@@ -121,6 +121,7 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitTestController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
+    <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
@@ -1006,6 +1007,12 @@
     <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\SpecialistProfile\Index.cshtml" />
     <Content Include="Views\UnitTest\_PropertyPhoto.cshtml" />
+    <Content Include="Views\UnitTest\_Test.cshtml" />
+    <Content Include="Views\UnitTest\ViewUserControl2.cshtml" />
+    <Content Include="Views\UploadProperty\_Test.cshtml" />
+    <Content Include="Views\UploadProperty\GetPhoto.cshtml" />
+    <Content Include="Views\UploadProperty\Index.cshtml" />
+    <Content Include="Views\UnitTest\_Partial2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

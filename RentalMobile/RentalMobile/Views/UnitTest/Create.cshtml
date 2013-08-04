@@ -1,5 +1,6 @@
 ﻿@model RentalMobile.ModelViews.UnitModelView
 @using RentalMobile.Helpers;
+@using RentalMobile.ModelViews
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
@@ -711,12 +712,13 @@
         
         
 
-        <div id="step-4" class="sixteen columns" style="height: auto; padding: 0">
+        <div id="step-4" class="sixteen columns" style=" height:1200px; padding: 0">
             <h2 class="StepTitle">
                 PHOTO</h2>
-            <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
-               
-                @Html.Partial("_PropertyPhoto")
+            <section class="sixteen columns add-bottom relative" style="margin-top: 10px;">
+   
+                
+                  @Html.Action("_Partial2", Model);
             </section>
         </div>
     </div>
