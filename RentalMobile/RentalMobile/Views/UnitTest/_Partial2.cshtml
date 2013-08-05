@@ -101,9 +101,9 @@
 
             $("#btnStopUpload").click(function () {
                 uploader.stop();
+                $('.stepContainer').height($('#ImageContainer').height() + 550);
+                
 
-
-                //$('.stepContainer').height(400);
             });
             $("#btnStartUpload").click(function () {
                 uploader.start();

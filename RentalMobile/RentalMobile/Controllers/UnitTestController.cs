@@ -36,7 +36,9 @@ namespace RentalMobile.Controllers
         public ActionResult Create()
         {
             ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
-            return View();
+
+            var newunit = new UnitModelView();
+            return View(newunit);
         }
 
         //
