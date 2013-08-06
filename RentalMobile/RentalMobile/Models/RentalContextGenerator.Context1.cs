@@ -66,11 +66,11 @@ namespace RentalMobile.Models
         public DbSet<Unit> Units { get; set; }
         public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
         public DbSet<UnitFeature> UnitFeatures { get; set; }
-        public DbSet<UnitGallery> UnitGalleries { get; set; }
         public DbSet<UnitInteriorAmenity> UnitInteriorAmenities { get; set; }
         public DbSet<UnitLuxuryAmenity> UnitLuxuryAmenities { get; set; }
         public DbSet<UnitPricing> UnitPricings { get; set; }
         public DbSet<UnitCommunityAmenity> UnitCommunityAmenities { get; set; }
         public DbSet<UnitAppliance> UnitAppliances { get; set; }
+        public DbSet<UnitGallery> UnitGalleries { get; set; }
     }
 }

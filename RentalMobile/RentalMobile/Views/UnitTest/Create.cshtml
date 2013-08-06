@@ -41,12 +41,6 @@
             $('#wizard').smartWizard('setError', { stepnum: 1, iserror: false });
         }
 
-        //        if (validateStep3() == false) {
-        //            isStepValid = false;
-        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: true });
-        //        } else {
-        //            $('#wizard').smartWizard('setError', { stepnum: 3, iserror: false });
-        //        }
 
         if (!isStepValid) {
             $('#wizard').smartWizard('showMessage', 'Please correct the errors in the steps and continue');
@@ -68,83 +62,11 @@
                 $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
             }
         }
-
-        // validate step3
-        //        if (step == 3) {
-        //            if (validateStep3() == false) {
-        //                isStepValid = false;
-        //                $('#wizard').smartWizard('showMessage', 'Please correct the errors in step' + step + ' and click next.');
-        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: true });
-        //            } else {
-        //                $('#wizard').smartWizard('setError', { stepnum: step, iserror: false });
-        //            }
-        //        }
-
         return isStepValid;
     }
 
     function validateStep1() {
         var isValid = true;
-
-
-
-
-
-
-
-
-
-
-        //        // Validate Username
-        //        var un = $('#firstname').val();
-        //        if (!un && un.length <= 0) {
-        //            isValid = false;
-        //            $('#msg_username').html('Please fill username').show();
-        //        } else {
-        //            $('#msg_username').html('').hide();
-        //        }
-
-        //        // validate password
-        //        var pw = $('#lastname').val();
-        //        if (!pw && pw.length <= 0) {
-        //            isValid = false;
-        //            $('#msg_password').html('Please fill password').show();
-        //        } else {
-        //            $('#msg_password').html('').hide();
-        //        }
-        //        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //        // validate confirm password
-        //        var cpw = $('#cpassword').val();
-        //        if (!cpw && cpw.length <= 0) {
-        //            isValid = false;
-        //            $('#msg_cpassword').html('Please fill confirm password').show();
-        //        } else {
-        //            $('#msg_cpassword').html('').hide();
-        //        }
-
-        //        // validate password match
-        //        if (pw && pw.length > 0 && cpw && cpw.length > 0) {
-        //            if (pw != cpw) {
-        //                isValid = false;
-        //                $('#msg_cpassword').html('Password mismatch').show();
-        //            } else {
-        //                $('#msg_cpassword').html('').hide();
-        //            }
-        //        }
         return isValid;
     }
 
@@ -200,6 +122,9 @@
             top: 0;
         }
     </style>
+    
+    
+
     <div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
         <ul class="sixteen columns">
             <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
@@ -473,7 +398,7 @@
             <h2 class="StepTitle">
                 Interior Amenity</h2>
             <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="CoolingTypeIdLabel">
@@ -553,7 +478,7 @@
             <h2 class="StepTitle">
                 Exterior Amenity</h2>
             <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-                                                                                                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="PoolLabel">
@@ -617,7 +542,7 @@
             <h2 class="StepTitle">
                 Luxury Amenity</h2>
             <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-                                                                                                                                                                                                                                                                                                                                                         margin-bottom: 10px; text-align: center">
+                margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="Tennis_CourtLabel">
@@ -694,7 +619,7 @@
                     <li class="five columns">
                         <label id="Solar_PlumbingLabel">
                             Solar_Plumbing</label>
-                        @Html.EditorFor(m => 
+                        @Html.EditorFor(m =>
                                         m.UnitLuxuryAmenity.Solar_Plumbing, new { id = "Solar_Plumbing", required = "required", @class = "full-width", placeholder = "Solar_Plumbing" })
                     </li>
                     <li class="five columns">
@@ -706,60 +631,22 @@
             </section>
         </div>
         
-        
-        
-        
-        
-        
-
         <div id="step-4" class="sixteen columns" style=" height:1200px; padding: 0">
             <h2 class="StepTitle">
                 PHOTO</h2>
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px;">
    
                 
-                  @Html.Action("_Partial2", Model);
+                @Html.Action("Partial2", Model);
             </section>
         </div>
     </div>
     <!-- End SmartWizard Content -->
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -801,7 +688,7 @@
             @Html.EditorFor(model => model.UnitGallery.Rank)
             @Html.ValidationMessageFor(model => model.UnitGallery.Rank)
         </div>
-*@
+
         <p>
             <input type="submit" value="Create" />
         </p>
@@ -809,4 +696,42 @@
 }
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
+<table class="model-state">
+    @foreach (var item in ViewContext.ViewData.ModelState)
+    {
+        if (item.Value.Errors.Any())
+        { 
+        <tr>
+            <td>
+                <b>@item.Key</b>
+            </td>
+            <td>@((item.Value == null || item.Value.Value == null) ? "<null>" : item.Value.Value.RawValue)
+            </td>
+            <td>@(string.Join("; ", item.Value.Errors.Select(x => x.ErrorMessage)))
+            </td>
+        </tr>
+        }
+    }
+</table>
+<style>
+    table.model-state
+    {
+        border-color: #600;
+        border-width: 0 0 1px 1px;
+        border-style: solid;
+        border-collapse: collapse;
+        font-size: .8em;
+        font-family: arial;
+    }
+    
+    table.model-state td
+    {
+        border-color: #600;
+        border-width: 1px 1px 0 0;
+        border-style: solid;
+        margin: 0;
+        padding: .25em .75em;
+        background-color: #FFC;
+    }
+</style>

@@ -18,8 +18,7 @@ namespace RentalMobile.ModelViews
         public UnitPricing UnitPricing { get; set; }
 
 
-
-       public UnitGallery UnitGallery { get; set; }
+        public UnitGallery UnitGallery { get; set; }
 
     }
 }

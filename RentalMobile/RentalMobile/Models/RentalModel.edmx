@@ -1403,7 +1403,7 @@
           <Key>
             <PropertyRef Name="UnitGalleryId" />
           </Key>
-          <Property Name="UnitGalleryId" Type="int" Nullable="false" />
+          <Property Name="UnitGalleryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Caption" Type="nvarchar" Nullable="false" MaxLength="30" />
           <Property Name="Rank" Type="int" Nullable="false" />
@@ -1751,7 +1751,6 @@
           <EntitySet Name="Units" EntityType="DB_33736_rentalModel.Unit" />
           <EntitySet Name="UnitExteriorAmenities" EntityType="DB_33736_rentalModel.UnitExteriorAmenity" />
           <EntitySet Name="UnitFeatures" EntityType="DB_33736_rentalModel.UnitFeature" />
-          <EntitySet Name="UnitGalleries" EntityType="DB_33736_rentalModel.UnitGallery" />
           <EntitySet Name="UnitInteriorAmenities" EntityType="DB_33736_rentalModel.UnitInteriorAmenity" />
           <EntitySet Name="UnitLuxuryAmenities" EntityType="DB_33736_rentalModel.UnitLuxuryAmenity" />
           <AssociationSet Name="FK_UnitExteriorAmenities_Unit" Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit">
@@ -1761,10 +1760,6 @@
           <AssociationSet Name="FK_UnitFeature_Unit" Association="DB_33736_rentalModel.FK_UnitFeature_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitFeature" EntitySet="UnitFeatures" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UnitGallery_Unit" Association="DB_33736_rentalModel.FK_UnitGallery_Unit">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="UnitGallery" EntitySet="UnitGalleries" />
           </AssociationSet>
           <AssociationSet Name="FK_UnitInteriorAmenities_Unit" Association="DB_33736_rentalModel.FK_UnitInteriorAmenities_Unit">
             <End Role="Unit" EntitySet="Units" />
@@ -1788,6 +1783,11 @@
           <AssociationSet Name="FK_UnitAppliance_Unit" Association="DB_33736_rentalModel.FK_UnitAppliance_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitAppliance" EntitySet="UnitAppliances" />
+          </AssociationSet>
+          <EntitySet Name="UnitGalleries" EntityType="DB_33736_rentalModel.UnitGallery" />
+          <AssociationSet Name="FK_UnitGallery_Unit" Association="DB_33736_rentalModel.FK_UnitGallery_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="UnitGallery" EntitySet="UnitGalleries" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="TenantShowing">
@@ -3130,12 +3130,12 @@
           <Property Type="Int32" Name="PosterID" />
           <NavigationProperty Name="UnitExteriorAmenity" Relationship="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" FromRole="Unit" ToRole="UnitExteriorAmenity" />
           <NavigationProperty Name="UnitFeature" Relationship="DB_33736_rentalModel.FK_UnitFeature_Unit" FromRole="Unit" ToRole="UnitFeature" />
-          <NavigationProperty Name="UnitGalleries" Relationship="DB_33736_rentalModel.FK_UnitGallery_Unit" FromRole="Unit" ToRole="UnitGallery" />
           <NavigationProperty Name="UnitInteriorAmenity" Relationship="DB_33736_rentalModel.FK_UnitInteriorAmenities_Unit" FromRole="Unit" ToRole="UnitInteriorAmenity" />
           <NavigationProperty Name="UnitLuxuryAmenity" Relationship="DB_33736_rentalModel.FK_UnitLuxuryAmenities_Unit" FromRole="Unit" ToRole="UnitLuxuryAmenity" />
           <NavigationProperty Name="UnitPricing" Relationship="DB_33736_rentalModel.FK_UnitPricing_Unit" FromRole="Unit" ToRole="UnitPricing" />
           <NavigationProperty Name="UnitCommunityAmenity" Relationship="DB_33736_rentalModel.FK_UnitCommunityAmenities_Unit" FromRole="Unit" ToRole="UnitCommunityAmenity" />
           <NavigationProperty Name="UnitAppliance" Relationship="DB_33736_rentalModel.FK_UnitAppliance_Unit" FromRole="Unit" ToRole="UnitAppliance" />
+          <NavigationProperty Name="UnitGalleries" Relationship="DB_33736_rentalModel.FK_UnitGallery_Unit" FromRole="Unit" ToRole="UnitGallery" />
         </EntityType>
         <EntityType Name="UnitExteriorAmenity">
           <Key>
@@ -3175,17 +3175,6 @@
           <Property Type="Boolean" Name="RV_Parking" Nullable="false" />
           <Property Type="Boolean" Name="Boat_Storage" Nullable="false" />
           <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitFeature_Unit" FromRole="UnitFeature" ToRole="Unit" />
-        </EntityType>
-        <EntityType Name="UnitGallery">
-          <Key>
-            <PropertyRef Name="UnitGalleryId" />
-          </Key>
-          <Property Type="Int32" Name="UnitGalleryId" Nullable="false" />
-          <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Caption" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Rank" Nullable="false" />
-          <Property Type="Int32" Name="UnitId" Nullable="false" />
-          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitGallery_Unit" FromRole="UnitGallery" ToRole="Unit" />
         </EntityType>
         <EntityType Name="UnitInteriorAmenity">
           <Key>
@@ -3252,18 +3241,6 @@
               <PropertyRef Name="UnitId" />
             </Principal>
             <Dependent Role="UnitFeature">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UnitGallery_Unit">
-          <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.UnitGallery" Role="UnitGallery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="UnitId" />
-            </Principal>
-            <Dependent Role="UnitGallery">
               <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3373,6 +3350,29 @@
               <PropertyRef Name="UnitId" />
             </Principal>
             <Dependent Role="UnitAppliance">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UnitGallery">
+          <Key>
+            <PropertyRef Name="UnitGalleryId" />
+          </Key>
+          <Property Type="Int32" Name="UnitGalleryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Caption" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Rank" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitGallery_Unit" FromRole="UnitGallery" ToRole="Unit" />
+        </EntityType>
+        <Association Name="FK_UnitGallery_Unit">
+          <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="DB_33736_rentalModel.UnitGallery" Role="UnitGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="UnitGallery">
               <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4688,17 +4688,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UnitGalleries">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitGallery">
-              <MappingFragment StoreEntitySet="UnitGallery">
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="Rank" ColumnName="Rank" />
-                <ScalarProperty Name="Caption" ColumnName="Caption" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="UnitGalleryId" ColumnName="UnitGalleryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UnitInteriorAmenities">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitInteriorAmenity">
               <MappingFragment StoreEntitySet="UnitInteriorAmenities">
@@ -4790,6 +4779,17 @@
                 <ScalarProperty Name="Full_Refrigerator" ColumnName="Full Refrigerator" />
                 <ScalarProperty Name="Range_Oven" ColumnName="Range/Oven" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitGalleries">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitGallery">
+              <MappingFragment StoreEntitySet="UnitGallery">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="UnitGalleryId" ColumnName="UnitGalleryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4891,59 +4891,59 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Unit" Width="1.5" PointX="25.375" PointY="28.125" Height="8.1339322916666674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitExteriorAmenity" Width="1.5" PointX="27.625" PointY="24" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitFeature" Width="1.5" PointX="27.625" PointY="28.25" Height="4.0956022135416674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitGallery" Width="1.5" PointX="27.625" PointY="33.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitInteriorAmenity" Width="1.5" PointX="27.625" PointY="36.125" Height="4.0956022135416674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitLuxuryAmenity" Width="1.5" PointX="27.625" PointY="40.875" Height="4.6725065104166674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" >
-          <ConnectorPoint PointX="26.125" PointY="28.125" />
-          <ConnectorPoint PointX="26.125" PointY="25.759348958333334" />
-          <ConnectorPoint PointX="26.447919166666669" PointY="25.759348958333334" />
-          <ConnectorPoint PointX="26.614585833333333" PointY="25.759348958333334" />
+          <ConnectorPoint PointX="25.8789053125" PointY="28.125" />
+          <ConnectorPoint PointX="25.8789053125" PointY="25.759348958333334" />
+          <ConnectorPoint PointX="26.324871822916666" PointY="25.759348958333334" />
+          <ConnectorPoint PointX="26.491538489583331" PointY="25.759348958333334" />
           <ConnectorPoint PointX="27.625" PointY="25.759348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitFeature_Unit" >
           <ConnectorPoint PointX="26.875" PointY="30.297801106770834" />
           <ConnectorPoint PointX="27.625" PointY="30.297801106770834" />
         </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_UnitGallery_Unit" >
-          <ConnectorPoint PointX="26.875" PointY="34.211293945312491" />
-          <ConnectorPoint PointX="27.625" PointY="34.211293945312491" />
-        </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitInteriorAmenities_Unit" >
-          <ConnectorPoint PointX="26.056823491210938" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="26.056823491210938" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.31291102213542" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.479577688802085" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.583541344401045" PointY="38.239767752604166" />
-          <ConnectorPoint PointX="26.750208011067709" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.015068319702149" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="26.015068319702149" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.27824538630168" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.444912052968345" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.566208526484175" PointY="38.239767752604166" />
+          <ConnectorPoint PointX="26.732875193150839" PointY="38.239767752604166" />
           <ConnectorPoint PointX="27.625" PointY="38.239767752604166" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitLuxuryAmenities_Unit" >
-          <ConnectorPoint PointX="26.396244355468752" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="26.396244355468752" PointY="43.211253255208334" />
-          <ConnectorPoint PointX="26.583541344401045" PointY="43.211253255208334" />
-          <ConnectorPoint PointX="26.750208011067709" PointY="43.211253255208334" />
+          <ConnectorPoint PointX="26.361578719635013" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="26.361578719635013" PointY="43.211253255208334" />
+          <ConnectorPoint PointX="26.566208526484175" PointY="43.211253255208334" />
+          <ConnectorPoint PointX="26.732875193150839" PointY="43.211253255208334" />
           <ConnectorPoint PointX="27.625" PointY="43.211253255208334" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitPricing" Width="1.5" PointX="27.625" PointY="46.875" Height="2.557190755208353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitPricing_Unit" >
-          <ConnectorPoint PointX="25.684659245605467" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="25.684659245605467" PointY="48.153595377604177" />
-          <ConnectorPoint PointX="26.583541344401045" PointY="48.153595377604177" />
-          <ConnectorPoint PointX="26.750208011067709" PointY="48.153595377604177" />
+          <ConnectorPoint PointX="25.663781659851075" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="25.663781659851075" PointY="48.153595377604177" />
+          <ConnectorPoint PointX="26.566208526484175" PointY="48.153595377604177" />
+          <ConnectorPoint PointX="26.732875193150839" PointY="48.153595377604177" />
           <ConnectorPoint PointX="27.625" PointY="48.153595377604177" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitCommunityAmenity" Width="1.5" PointX="27.625" PointY="50.375" Height="3.5186979166666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitCommunityAmenities_Unit" >
-          <ConnectorPoint PointX="26.666874677734377" PointY="36.258932291666667" />
-          <ConnectorPoint PointX="26.666874677734377" PointY="52.134348958333334" />
+          <ConnectorPoint PointX="26.649541859817507" PointY="36.258932291666667" />
+          <ConnectorPoint PointX="26.649541859817507" PointY="52.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="52.134348958333334" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitAppliance" Width="1.5" PointX="27.625" PointY="19.375" Height="3.5186979166666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitAppliance_Unit" >
-          <ConnectorPoint PointX="26.5312525" PointY="28.125" />
-          <ConnectorPoint PointX="26.5312525" PointY="21.134348958333334" />
+          <ConnectorPoint PointX="26.40820515625" PointY="28.125" />
+          <ConnectorPoint PointX="26.40820515625" PointY="21.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="21.134348958333334" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitGallery" Width="1.5" PointX="27.625" PointY="33.125" Height="2.1725878906249818" />
+        <AssociationConnector Association="DB_33736_rentalModel.FK_UnitGallery_Unit" >
+          <ConnectorPoint PointX="26.875" PointY="34.211293945312491" />
+          <ConnectorPoint PointX="27.625" PointY="34.211293945312491" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

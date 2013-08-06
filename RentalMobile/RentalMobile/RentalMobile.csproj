@@ -118,10 +118,11 @@
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\ProviderProfileController.cs" />
     <Compile Include="Controllers\SpecialistProfileController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\Test2Controller.cs" />
     <Compile Include="Controllers\UnitTestController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
+    <Compile Include="Controllers\UploadUnitPictureController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
@@ -269,6 +270,7 @@
     <Compile Include="Models\UrgencyType.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelViews\Test.cs" />
     <Compile Include="ModelViews\UnitModelView.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />
     <Compile Include="Controllers\AdvancedSearchController.cs" />
@@ -995,8 +997,6 @@
     <Content Include="Views\Owner\UploadedAgreement.cshtml" />
     <Content Include="Views\UploadAgreement\Index.cshtml" />
     <None Include="Views\Ad\Sitemap.docx" />
-    <Content Include="Views\Test\Create.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\UnitTest\Index.cshtml" />
     <Content Include="Views\UnitTest\Details.cshtml" />
     <Content Include="Views\UnitTest\Create.cshtml" />
@@ -1013,6 +1013,11 @@
     <Content Include="Views\UploadProperty\GetPhoto.cshtml" />
     <Content Include="Views\UploadProperty\Index.cshtml" />
     <Content Include="Views\UnitTest\_Partial2.cshtml" />
+    <Content Include="Views\Test2\Create.cshtml" />
+    <Content Include="Views\Test2\Delete.cshtml" />
+    <Content Include="Views\Test2\Details.cshtml" />
+    <Content Include="Views\Test2\Edit.cshtml" />
+    <Content Include="Views\Test2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

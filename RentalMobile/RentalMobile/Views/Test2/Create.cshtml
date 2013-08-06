@@ -1,0 +1,246 @@
+﻿@model RentalMobile.ModelViews.Test
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Unit</legend>
+
+  <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.Address)
+            @Html.ValidationMessageFor(model => model.Unit.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.City)
+            @Html.ValidationMessageFor(model => model.Unit.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.State)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.State)
+            @Html.ValidationMessageFor(model => model.Unit.State)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.Bed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.Bed)
+            @Html.ValidationMessageFor(model => model.Unit.Bed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.Bathroom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.Bathroom)
+            @Html.ValidationMessageFor(model => model.Unit.Bathroom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.SquareFoot)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.SquareFoot)
+            @Html.ValidationMessageFor(model => model.Unit.SquareFoot)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.YearBuilt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.YearBuilt)
+            @Html.ValidationMessageFor(model => model.Unit.YearBuilt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.Description)
+            @Html.ValidationMessageFor(model => model.Unit.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit.PrimaryPhoto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit.PrimaryPhoto)
+            @Html.ValidationMessageFor(model => model.Unit.PrimaryPhoto)
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.UnitId, "Unit")
+        </div>
+@*        <div class="editor-field">
+            @Html.DropDownList("UnitId", String.Empty)
+            @Html.ValidationMessageFor(model => model.UnitFeature.UnitId)
+        </div>
+*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.High_Speed_Internet_Access)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.High_Speed_Internet_Access)
+            @Html.ValidationMessageFor(model => model.UnitFeature.High_Speed_Internet_Access)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Internet_Included)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Internet_Included)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Internet_Included)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Wireless_Internet_Access)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Wireless_Internet_Access)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Wireless_Internet_Access)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Some_Paid_Utilities)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Some_Paid_Utilities)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Some_Paid_Utilities)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Covered_Parking)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Covered_Parking)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Covered_Parking)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Pets_allowed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Pets_allowed)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Pets_allowed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Cats_Allowed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Cats_Allowed)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Cats_Allowed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Small_Dogs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Small_Dogs)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Small_Dogs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Large_Dogs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Large_Dogs)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Large_Dogs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Alarm_system)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Alarm_system)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Alarm_system)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Near_Transportation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Near_Transportation)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Near_Transportation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Short_Term_Lease_Available)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Short_Term_Lease_Available)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Short_Term_Lease_Available)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.RV_Parking)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.RV_Parking)
+            @Html.ValidationMessageFor(model => model.UnitFeature.RV_Parking)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitFeature.Boat_Storage)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitFeature.Boat_Storage)
+            @Html.ValidationMessageFor(model => model.UnitFeature.Boat_Storage)
+        </div>
+    
+    
+    
+    
+    
+    
+    
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

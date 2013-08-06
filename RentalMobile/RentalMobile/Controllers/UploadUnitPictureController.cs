@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -11,18 +10,16 @@ using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {
-    public class UploadAgreementController : Controller
+
+    public class UploadUnitPictureController : Controller
     {
-        //From HERE
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
-
-
         public string OwnerUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
-
-
         public string TenantPhotoPath = "~/Photo/Tenant/UploadedContract";
-        public string OwnertPhotoPath = "~/Photo/Owner/UploadedContract";
-
+        public string OwnerPhotoPath = "~/Photo/Owner/UploadedContract";
+        public string AgentPhotoPath = "~/Photo/Agent/UploadedContract";
+        public string ProviderPhotoPath = "~/Photo/Provider/UploadedContract";
+        public string SpecialistPhotoPath = "~/Photo/Specialist/UploadedContract";
 
         public string RequestId;
 
@@ -104,13 +101,13 @@ namespace RentalMobile.Controllers
         public void SavePictures()
         {
             var imageStoragePath = Server.MapPath("~/UploadedImages");
-            var photoPath = Server.MapPath(OwnertPhotoPath);
+            var photoPath = Server.MapPath(OwnerPhotoPath);
             var directory = @"\" + OwnerUsername + @"\" + "UploadedContract" + @"\" + TempData["UserID"] + @"\";
-             var path = imageStoragePath + directory;
+            var path = imageStoragePath + directory;
             var uploadDirectory = new DirectoryInfo(path);
 
             var files = uploadDirectory.GetFiles();
-            
+
             directory = @"\" + OwnerUsername + @"\" + TempData["UserID"] + @"\";
             var newdirectory = photoPath + directory;
             if (Directory.Exists(path))
@@ -135,17 +132,17 @@ namespace RentalMobile.Controllers
         public void AddPicture(int uploaderid, string photoPath)
         {
 
-                var uploadedcontractphoto = new UploadedContract
-                                                {
-                                                    UploadedImagePath = photoPath,
-                                                    UploaderId = uploaderid,
-                                                    UploaderRole = "Owner"
-                                                };
-           
+            var uploadedcontractphoto = new UploadedContract
+            {
+                UploadedImagePath = photoPath,
+                UploaderId = uploaderid,
+                UploaderRole = "Owner"
+            };
+
             if (!ModelState.IsValid) return;
             _db.UploadedContracts.Add(uploadedcontractphoto);
             _db.SaveChanges();
-            
+
         }
 
     }
