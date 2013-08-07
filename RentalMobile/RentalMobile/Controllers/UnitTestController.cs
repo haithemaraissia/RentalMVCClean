@@ -40,17 +40,25 @@ namespace RentalMobile.Controllers
         {
 
             //CREATE YOUR OWN SELECTLIST
-           // ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
+            // ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
 
             //var newunit = new UnitModelView();
             return View();
         }
 
-        //
-        // POST: /Test/Create
+
+
+
+
+
+
+
+
+
+
 
         [HttpPost]
-        public ActionResult Create( UnitModelView u)
+        public ActionResult Create(UnitModelView u)
         {
             try
             {
@@ -58,32 +66,16 @@ namespace RentalMobile.Controllers
                 {
                     db.Units.Add(u.Unit);
                     db.UnitPricings.Add(u.UnitPricing);
-
-
-
                     db.UnitFeatures.Add(u.UnitFeature);
                     db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
                     db.UnitAppliances.Add(u.UnitAppliance);
-
-
-
                     db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
                     db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
                     db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-
-
                     //Think if tyou need or not because of the upload control
-
                     //db.UnitGalleries.Add(u.UnitGallery);
-
-
-
-                    
                     db.SaveChanges();
-
-                    int primaryKey = u.Unit.UnitId;
-SavePictures(u.Unit);
-
+                    SavePictures(u.Unit);
                     return RedirectToAction("Index");
                 }
                 return View(u);
@@ -111,7 +103,25 @@ SavePictures(u.Unit);
 
 
 
+   
+        //////////////////////////// TO COMPLETE////////////////////////////////
+        ////
+        //// POST: /Test/Create
 
+        //public JsonResult GetJsonData()
+        //{
+
+        //    //Think about how to know which Unit is being quered
+        //    var persons = db.UnitGalleries.ToList();
+        //    var p = persons.Select(d => new UnitPhoto { PathPath = d.Path }).ToList();
+
+        //    foreach (var ph in p)
+        //    {
+        //        ph.PathPath = ph.PathPath.Replace(@"~\Photo", @"../../Photo").Replace("\\", "/");
+        //    }
+        //    return Json(p, JsonRequestBehavior.AllowGet);
+        //}
+        //////////////////////////// TO COMPLETE////////////////////////////////
 
 
         //
@@ -147,27 +157,12 @@ SavePictures(u.Unit);
                 {
                     db.Units.Add(u.Unit);
                     db.UnitPricings.Add(u.UnitPricing);
-
-
-
                     db.UnitFeatures.Add(u.UnitFeature);
                     db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
                     db.UnitAppliances.Add(u.UnitAppliance);
-
-
-
                     db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
                     db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
                     db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-
-
-                    //Think if tyou need or not because of the upload control
-
-                    //db.UnitGalleries.Add(u.UnitGallery);
-
-
-
-
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -286,8 +281,6 @@ SavePictures(u.Unit);
 
 
 
-
-
             //RequestID = "5";
             //ViewBag.UserName = "Test";
             //ViewBag.Id = "10";
@@ -297,7 +290,6 @@ SavePictures(u.Unit);
             SavePictures(unitModelView.Unit);
             return PartialView("_Partial2", unitModelView.UnitGallery);
         }
-
 
         public string GetCurrentRole()
         {
@@ -325,7 +317,6 @@ SavePictures(u.Unit);
             photoPath = Server.MapPath(SpecialistPhotoPath);
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
-
 
         public void SavePictures(Unit unit)
         {
@@ -377,7 +368,7 @@ SavePictures(u.Unit);
             UploadHelper.DeleteDirectoryIfExist(path);
         }
 
-        public void AddPicture(Unit unit,int uploaderid, string photoPath, int rank)
+        public void AddPicture(Unit unit, int uploaderid, string photoPath, int rank)
         {
 
             var unitgallery = new UnitGallery
@@ -394,5 +385,47 @@ SavePictures(u.Unit);
 
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult Preview(int id)
+        {
+            var u = new UnitModelView
+            {
+                Unit = db.Units.Find(id),
+                UnitFeature = db.UnitFeatures.Find(id),
+                UnitAppliance = db.UnitAppliances.Find(id),
+                UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                UnitPricing = db.UnitPricings.Find(id),
+                UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+            };
+
+
+            return View(u);
+        }
+
+    }
+
+
+
+    public class UnitPhoto
+    {
+        public string PathPath { get; set; }
     }
 }

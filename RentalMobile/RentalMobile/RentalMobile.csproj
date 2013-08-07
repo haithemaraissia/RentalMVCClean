@@ -1006,9 +1006,9 @@
     <Content Include="Views\Shared\Menu\_ProviderMiniTabMenu.cshtml" />
     <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\SpecialistProfile\Index.cshtml" />
-    <Content Include="Views\UnitTest\_PropertyPhoto.cshtml" />
-    <Content Include="Views\UnitTest\_Test.cshtml" />
-    <Content Include="Views\UnitTest\ViewUserControl2.cshtml" />
+    <Content Include="Views\UnitTest\ToDelete\_PropertyPhoto.cshtml" />
+    <Content Include="Views\UnitTest\ToDelete\_Test.cshtml" />
+    <Content Include="Views\UnitTest\ToDelete\ViewUserControl2.cshtml" />
     <Content Include="Views\UploadProperty\_Test.cshtml" />
     <Content Include="Views\UploadProperty\GetPhoto.cshtml" />
     <Content Include="Views\UploadProperty\Index.cshtml" />
@@ -1018,6 +1018,7 @@
     <Content Include="Views\Test2\Details.cshtml" />
     <Content Include="Views\Test2\Edit.cshtml" />
     <Content Include="Views\Test2\Index.cshtml" />
+    <Content Include="Views\UnitTest\Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
