@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Unit Description";
     Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
-    var jsonUrl = "/property/jsonfun/";
+    //var jsonUrl = "/property/jsonfun/";
+    var jsonUrl = "http://localhost:56224//property/jsonfun/";
 
     if (String.IsNullOrEmpty(Model.Unit.UnitId.ToString(CultureInfo.InvariantCulture)))
     {
@@ -149,16 +150,21 @@
             </div>
             <div class="six columns push by-two">
                 <h4>
-                    General Amenities</h4>
+                    About</h4>
                 <ul class="arrow">
-                    <li>Garage</li>
-                    <li>Exterior lighting</li>
-                    <li>Dish washer</li>
-                    <li>Barbecue</li>
-                    <li>Garden</li>
-                    <li>Burglar alarm</li>
-                    <li>Swimming pool</li>
-                    <li>Central air</li>
+                    <li>Rent</li>
+                    <li>@Model.UnitPricing.Rent @Model.UnitPricing.CurrencyId</li>
+                    <li>Deposit</li>
+                    <li>@Model.UnitPricing.Deposit @Model.UnitPricing.CurrencyId</li>
+                    <li>Available Date</li>
+                    <li>
+                        @if (Model.UnitPricing.AvailableDate != null)
+                        {
+                            @Model.UnitPricing.AvailableDate.Value.Date.ToShortDateString()
+                        }
+                    </li>
+                    <li>Section 8</li>
+                    <li>@Model.UnitPricing.Section_8_Eligible</li>
                 </ul>
             </div>
         </div>
@@ -393,6 +399,39 @@
                     <br />
                 </div>
             </div>
+            @*<div id="UnitAppliance">
+                <h4 class="section-titling">
+                    Appliance</h4>
+                <br />
+              
+               
+                
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
+                            </li>
+                        }
+                      
+                        @if (Model.UnitAppliance.Shared_Laundry_Facility)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility)
+                            </li>
+                        }
+                        @if (Model.UnitAppliance.Wine_Fridge)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <br />
+                <br />
+            </div>*@
             <div id="UnitAppliance">
                 <h4 class="section-titling">
                     Appliance</h4>
@@ -408,13 +447,7 @@
                         @if (Model.UnitCommunityAmenity.Community_Pool)
                         {
                             <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Community_Pool)) </li>
-                        }
-                        @if (Model.UnitAppliance.Dishwasher)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Dishwasher)
-                            </li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Community_Pool)</li>
                         }
                     </ul>
                     <br />
@@ -446,7 +479,15 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Central_Vacuum)
                             </li>
                         }
+                        @if (Model.UnitAppliance.Dishwasher)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Dishwasher)
+                            </li>
+                        }
                     </ul>
+                    <br />
+                    <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
@@ -456,6 +497,14 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Surround_Sound)
                             </li>
                         }
+                        @if (Model.UnitAppliance.Washer_Dryer_Connections)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Washer_Dryer_Connections)
+                            </li>
+                        }
+                        <br />
+                        <br />
                     </ul>
                 </div>
                 <div class="three columns push by-one ">
@@ -464,12 +513,6 @@
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
-                            </li>
-                        }
-                        @if (Model.UnitAppliance.Washer_Dryer_Connections)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Washer_Dryer_Connections)
                             </li>
                         }
                         @if (Model.UnitAppliance.Shared_Laundry_Facility)
@@ -484,231 +527,357 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
                             </li>
                         }
+                        <br />
+                        <br />
                     </ul>
-                </div>
-                <br />
-                <br />
-            </div>
-            <div id="NewConstruction">
-                <h4 class="section-titling">
-                    Constructions</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
                 </div>
             </div>
-            <div id="Custom Services">
+            <div id="InteriorAmenity">
                 <h4 class="section-titling">
-                    Custom Services</h4>
+                    Interior</h4>
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitInteriorAmenity.CoolingTypeId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.HeatingTypeId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Fireplace)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Fireplace)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitInteriorAmenity.Hot_Tub_Spa)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Hot_Tub_Spa)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Cable_Ready)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Cable_Ready)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Jetted_Tub)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Jetted_Tub)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitInteriorAmenity.Attic)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Attic)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.BasementTypeId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitInteriorAmenity.Double_Pane_Storm_Windows)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Double_Pane_Storm_Windows)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.FloorCoveringId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.FloorCoveringId)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.FoundationTypeId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.FoundationTypeId)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitInteriorAmenity.Kitchen_Island)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Kitchen_Island)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Vaulted_Ceiling)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Vaulted_Ceiling)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Ceiling_Fan)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Ceiling_Fan)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
             </div>
-            <div id="Utilities">
+            <div id="ExteriorAmnetiy">
                 <h4 class="section-titling">
-                    Utilities</h4>
+                    Exterior</h4>
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitExteriorAmenity.Pool)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Pool)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Garden)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Garden)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitExteriorAmenity.Gated_Entry)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Gated_Entry)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Greenhouse)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Greenhouse)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitExteriorAmenity.Lawn)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Lawn)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Deck)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Deck)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitExteriorAmenity.Dock)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Dock)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Fenced_Yard)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Fenced_Yard)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
+                        @if (Model.UnitExteriorAmenity.Sprinkler_System)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Sprinkler_System)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Patio)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Patio)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Pond)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Pond)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div id="LuxuryAmnetiy">
+                <h4 class="section-titling">
+                    Luxury</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Tennis_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Tennis_Court)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Security_System)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Security_System)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Sports_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Sports_Court)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Basketball_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Basketball_Court)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Barbecue)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Barbecue)
+                            </li>
+                        }@if (Model.UnitLuxuryAmenity.Elevator)
+                         {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Elevator)
+                            </li>
+                         }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Porch)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Porch)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Sauna)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Sauna)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Skylight)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Skylight)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Intercom)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Intercom)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Waterfront)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Waterfront)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Wet_Bar)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Wet_Bar)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Doorman)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Doorman)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Heat)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Heat)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Plumbing)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Plumbing)
+                            </li>
+
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Screens)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Screens)
+                            </li>
+                        }
                     </ul>
                     <br />
                     <br />
@@ -1044,24 +1213,55 @@
         <script src="../../Scripts/js/scripts.js" type="text/javascript"></script>
         <!-- Custom Scripts -->
         <script>
-    $(document).ready(function () {
+            $(document).ready(function() { //scroll to top link
+                $('.scroll-top').click(function() {
+                    $("html, body").animate({ scrollTop: 0 }, 600);
+                    return false;
+                }); 
+                
+                
+                
+//                //Get the List
+//                var $images = $.getJSON( @jsonUrl, null, function (data) {
+//            return data;
+//        });
 
-        //scroll to top link
-        $('.scroll-top').click(function () {
-            $("html, body").animate({ scrollTop: 0 }, 600);
-            return false;
-        });
 
-        //Get the List
-        var $images = $.getJSON(@jsonUrl, null, function (data) {
-            return data;
-        });
+//        //Lightbox Fancybox
+//        $("#fancybox-manual-c").click(function () {
+//            $.fancybox.open([$images]);
+//        });
 
 
-        //Lightbox Fancybox
-        $("#fancybox-manual-c").click(function () {
-            $.fancybox.open([$images]);
-        });
+
+
+
+                //Get the List from Database
+                links = [];
+                $.getJSON( @jsonUrl, function (data) {
+                    $.each(data, function (i, item) {
+
+                        links.push({
+                            href: item.href,
+                            title: item.title
+                        });
+                    });
+
+                });
+               //JSON.stringify(links);
+$.fancybox.open(links, {
+		helpers : {
+			thumbs : {
+				width: 75,
+				height: 50
+			}
+		}
+	});
+
+
+
+
+
 
 
         //responsive menu
@@ -1146,7 +1346,7 @@
         <script type="text/javascript">
             $(function () {
                 $("#requestFun").click(function () {
-                    $.getJSON("/unitdetail/jsonfun", null, function (data) {
+                    $.getJSON("../../property/jsonfun/24", null, function (data) {
                         $("<li>" + data.href + "</li>").appendTo("#jsonRequestFun");
                         $("<li>" + data.title + "</li>").appendTo("#jsonRequestFun");
                     });

@@ -5,61 +5,101 @@ $(document).ready(function () {
     	$("html, body").animate({ scrollTop: 0 }, 600);
             return false;
     });
-	
-	
-	
+
+    	$("#fancybox-manual-c").click(function() {
+
+        links = [];
+        $.getJSON("http://localhost:56224/property/jsonfun/26/", function (data) {
+            $.each(data, function (i, item) {
+
+                links.push({
+                    href: item.href,
+                    title: item.title
+                });
+            });
+
+        });
+        $.fancybox.open(links);
+
+
+        //JSON.stringify(links);
+//        $.fancybox.open(links, {
+//            helpers: {
+//                thumbs: {
+//                    width: 75,
+//                    height: 50
+//                }
+//            }
+//        });
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//Lightbox Fancybox
 	
-	$("#fancybox-manual-c").click(function() {
-				$.fancybox.open([
-					{
-						href : '../../images/dotimages/single-property/big-800x500-1.jpg',
-						title : 'Property 1 Example'
-					}, {
-						href : '../../images/dotimages/single-property/big-800x500-2.jpg',
-						title : 'Property 2 Example'
-					}, {
-						href : '../../images/dotimages/single-property/big-800x500-3.jpg',
-						title : 'Property 3 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-4.jpg',
-						title : 'Property 4 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-5.jpg',
-						title : 'Property 5 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-6.jpg',
-						title : 'Property 6 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-7.jpg',
-						title : 'Property 7 Example'
-					}, {
-						href : '../../images/dotimages/single-property/big-800x500-4.jpg',
-						title : 'Property 8 Example'
-					}, {
-						href : '../../images/dotimages/single-property/big-800x500-1.jpg',
-						title : 'Property 9 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-2.jpg',
-						title : 'Property 10 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-3.jpg',
-						title : 'Property 11 Example'
-					},{
-						href : '../../images/dotimages/single-property/big-800x500-5.jpg',
-						title : 'Property 12 Example'
-					}
-					
-					
-				], {
-					helpers : {
-						thumbs : {
-							width: 75,
-							height: 50
-						}
-					}
-				});
-			});
+//	$("#fancybox-manual-c").click(function() {
+//				$.fancybox.open([
+//					{
+//						href : '../../images/dotimages/single-property/big-800x500-1.jpg',
+//						title : 'Property 1 Example'
+//					}, {
+//						href : '../../images/dotimages/single-property/big-800x500-2.jpg',
+//						title : 'Property 2 Example'
+//					}, {
+//						href : '../../images/dotimages/single-property/big-800x500-3.jpg',
+//						title : 'Property 3 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-4.jpg',
+//						title : 'Property 4 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-5.jpg',
+//						title : 'Property 5 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-6.jpg',
+//						title : 'Property 6 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-7.jpg',
+//						title : 'Property 7 Example'
+//					}, {
+//						href : '../../images/dotimages/single-property/big-800x500-4.jpg',
+//						title : 'Property 8 Example'
+//					}, {
+//						href : '../../images/dotimages/single-property/big-800x500-1.jpg',
+//						title : 'Property 9 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-2.jpg',
+//						title : 'Property 10 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-3.jpg',
+//						title : 'Property 11 Example'
+//					},{
+//						href : '../../images/dotimages/single-property/big-800x500-5.jpg',
+//						title : 'Property 12 Example'
+//					}
+//					
+//					
+//				], {
+//					helpers : {
+//						thumbs : {
+//							width: 75,
+//							height: 50
+//						}
+//					}
+//				});
+//			});
 	
     
     //responsive menu

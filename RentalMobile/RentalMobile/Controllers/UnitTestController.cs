@@ -12,14 +12,13 @@ using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {
-
     public class UnitTestController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
         //
         // GET: /Test/
-
+     
         public ActionResult Index()
         {
             return View(db.Units.ToList());
@@ -225,7 +224,10 @@ namespace RentalMobile.Controllers
 
 
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+
+        //MAKE SURE THAT USER ARE AUTHENTICATED
         public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
+        //MAKE SURE THAT USER ARE AUTHENTICATED
 
         public string TenantPhotoPath = "~/Photo/Tenant/Property";
         public string OwnerPhotoPath = "~/Photo/Owner/Property";
@@ -397,7 +399,7 @@ namespace RentalMobile.Controllers
 
 
 
-
+        
 
 
 

@@ -537,6 +537,15 @@
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
     <Content Include="obj\Debug\TempPE\Models.RentalModel1.Designer.cs.dll" />
     <Content Include="Photo\Owner\Profile\carrie\0\img_apple-touch-icon-72x72.png" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_b1.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_b3.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_mcvisa.gif" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_royal2.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_supersavings.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_toystory.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_up.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_walle - Copy.jpg" />
+    <Content Include="Photo\Owner\Property\carrie\2\img_walle.jpg" />
     <Content Include="Photo\Owner\UploadedContract\carrie\2\img_mcvisa.gif" />
     <Content Include="Photo\Owner\UploadedContract\carrie\2\img_supersavings.jpg" />
     <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-1.jpg" />
