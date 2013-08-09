@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentalMobile.Helpers;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
@@ -19,8 +20,10 @@ namespace RentalMobile.Controllers
             Unit unit = db.Units.Find(id) ?? db.Units.Find(1);
             ViewBag.UnitId = unit.UnitId;
             ViewBag.UnitGoogleMap = unit.GoogleMap;
+            ViewBag.Sript = FancyBox.Fancy(id);
             return View(unit);
         }
+
 
 
         public ActionResult JsonFun(int id)

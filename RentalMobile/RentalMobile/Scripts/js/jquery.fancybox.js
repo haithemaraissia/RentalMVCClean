@@ -56,11 +56,11 @@
 			margin  : 20,
 
 			width     : 800,
-			height    : 600,
-			minWidth  : 100,
-			minHeight : 100,
-			maxWidth  : 9999,
-			maxHeight : 9999,
+			height: 500,
+			minWidth:   600,
+			minHeight:  300,
+			maxWidth: 800,
+			maxHeight: 500,
 
 			autoSize   : true,
 			autoHeight : false,

@@ -124,6 +124,7 @@
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -564,6 +565,7 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Scripts\js\scripts2.js" />
     <Content Include="WebForms\Ads\AdTest\AdTest.ascx" />
     <Content Include="WebForms\Ads\AdTest\Index.aspx" />
     <Content Include="WebForms\Ads\AdTest\Test.ascx" />

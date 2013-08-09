@@ -18,7 +18,7 @@ namespace RentalMobile.Controllers
 
         //
         // GET: /Test/
-     
+
         public ActionResult Index()
         {
             return View(db.Units.ToList());
@@ -86,11 +86,11 @@ namespace RentalMobile.Controllers
                 foreach (var eve in e.EntityValidationErrors)
                 {
                     Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
                     {
                         Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
+                                          ve.PropertyName, ve.ErrorMessage);
                     }
                 }
                 throw;
@@ -102,7 +102,7 @@ namespace RentalMobile.Controllers
 
 
 
-   
+
         //////////////////////////// TO COMPLETE////////////////////////////////
         ////
         //// POST: /Test/Create
@@ -129,16 +129,16 @@ namespace RentalMobile.Controllers
         public ActionResult Edit(int id)
         {
             var u = new UnitModelView
-                        {
-                            Unit = db.Units.Find(id),
-                            UnitFeature = db.UnitFeatures.Find(id),
-                            UnitAppliance = db.UnitAppliances.Find(id),
-                            UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
-                            UnitPricing = db.UnitPricings.Find(id),
-                            UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
-                            UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
-                            UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
-                        };
+                {
+                    Unit = db.Units.Find(id),
+                    UnitFeature = db.UnitFeatures.Find(id),
+                    UnitAppliance = db.UnitAppliances.Find(id),
+                    UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                    UnitPricing = db.UnitPricings.Find(id),
+                    UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                    UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                    UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+                };
 
 
             return View(u);
@@ -174,11 +174,11 @@ namespace RentalMobile.Controllers
                 foreach (var eve in e.EntityValidationErrors)
                 {
                     Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
                     {
                         Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
+                                          ve.PropertyName, ve.ErrorMessage);
                     }
                 }
                 throw;
@@ -361,7 +361,8 @@ namespace RentalMobile.Controllers
                 if (!System.IO.File.Exists(destinationFile))
                 {
                     System.IO.File.Move(f.FullName, destinationFile);
-                    AddPicture(unit, Convert.ToInt32(TempData["UserID"]), virtualdestinationdirectoryvirtualmapping, counter);
+                    AddPicture(unit, Convert.ToInt32(TempData["UserID"]), virtualdestinationdirectoryvirtualmapping,
+                               counter);
                     counter++;
                 }
                 if (System.IO.File.Exists(f.Name))
@@ -374,12 +375,12 @@ namespace RentalMobile.Controllers
         {
 
             var unitgallery = new UnitGallery
-                                  {
-                                      Path = photoPath,
-                                      Caption = "",
-                                      Rank = rank,
-                                      Unit = unit
-                                  };
+                {
+                    Path = photoPath,
+                    Caption = "",
+                    Rank = rank,
+                    Unit = unit
+                };
 
             if (!ModelState.IsValid) return;
             _db.UnitGalleries.Add(unitgallery);
@@ -399,7 +400,7 @@ namespace RentalMobile.Controllers
 
 
 
-        
+
 
 
 
@@ -407,27 +408,31 @@ namespace RentalMobile.Controllers
         public ActionResult Preview(int id)
         {
             var u = new UnitModelView
-            {
-                Unit = db.Units.Find(id),
-                UnitFeature = db.UnitFeatures.Find(id),
-                UnitAppliance = db.UnitAppliances.Find(id),
-                UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
-                UnitPricing = db.UnitPricings.Find(id),
-                UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
-                UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
-                UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
-            };
+                {
+                    Unit = db.Units.Find(id),
+                    UnitFeature = db.UnitFeatures.Find(id),
+                    UnitAppliance = db.UnitAppliances.Find(id),
+                    UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                    UnitPricing = db.UnitPricings.Find(id),
+                    UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                    UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                    UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+                };
 
+
+            ViewBag.Sript = FancyBox.Fancy(id);
 
             return View(u);
         }
 
-    }
+
+  }
 
 
+        public class UnitPhoto
+        {
+            public string PathPath { get; set; }
+        }
 
-    public class UnitPhoto
-    {
-        public string PathPath { get; set; }
-    }
+  
 }

@@ -136,7 +136,8 @@
                 <p>
                     Test</p>
                 @Model.Unit.Description
-                @*                <p>
+                @*
+                <p>
                     Enter this stately apartment and you are rewarded with a spectacular view of not
                     only Central Parkoin id rhoncus massa. Pellentesque quis orci non lacus tincidunt
                     scelerisque. Integer bibendum commodo urn id suscipit sapien porta in. In sollicitudin
@@ -291,54 +292,23 @@
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        @*   
-                        TO COMPLETE!!!
-                        
-                        
-                        
+                        @* TO COMPLETE!!!
                         <div id="TextBoxes">
-                        @if (Model.UnitCommunityAmenity.Neighborhood_Name)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Neighborhood_Name)
-                            </li>
-                        }
-                        
-                        @if (Model.UnitCommunityAmenity.Elementary_School)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Elementary_School)
-                            </li>
-                        }
-                        @if (Model.UnitCommunityAmenity.High_School)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.High_School)
-                            </li>
-                        }
-                        @if (Model.UnitCommunityAmenity.School_District)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.School_District)
-                            </li>
-                        }
-                        @if (Model.UnitCommunityAmenity.Middle_School)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Middle_School)
-                            </li>
-                        }
-                        @if (Model.UnitCommunityAmenity.County_Name)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.County_Name)
-                            </li>
-                        }   @if (Model.UnitCommunityAmenity.County_Name)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.County_Name)
-                            </li>
-                        }
+                            @if (Model.UnitCommunityAmenity.Neighborhood_Name) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Neighborhood_Name) </li>
+                            } @if (Model.UnitCommunityAmenity.Elementary_School) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Elementary_School) </li>
+                            } @if (Model.UnitCommunityAmenity.High_School) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.High_School) </li>
+                            } @if (Model.UnitCommunityAmenity.School_District) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.School_District) </li>
+                            } @if (Model.UnitCommunityAmenity.Middle_School) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Middle_School) </li>
+                            } @if (Model.UnitCommunityAmenity.County_Name) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.County_Name) </li>
+                            } @if (Model.UnitCommunityAmenity.County_Name) {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.County_Name) </li>
+                            }
                         </div>*@
                         @if (Model.UnitCommunityAmenity.Assisted_Living_Community)
                         {
@@ -403,29 +373,14 @@
                 <h4 class="section-titling">
                     Appliance</h4>
                 <br />
-              
-               
-                
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
-                            </li>
-                        }
-                      
-                        @if (Model.UnitAppliance.Shared_Laundry_Facility)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility)
-                            </li>
-                        }
-                        @if (Model.UnitAppliance.Wine_Fridge)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
-                            </li>
+                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit) </li>
+                        } @if (Model.UnitAppliance.Shared_Laundry_Facility) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility) </li>
+                        } @if (Model.UnitAppliance.Wine_Fridge) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Wine_Fridge) </li>
                         }
                     </ul>
                 </div>
@@ -908,61 +863,51 @@
                             </li>
                         }
                      
-@* <li>
-                        <label id="Wireless_Internet_Access">
-                            Wireless Internet Access</label>
-                        @Html.LabelFor(m => m.UnitFeature.Wireless_Internet_Access)
-                    </li>
-                    <li>
-                        <label id="Some_Paid_Utilities">
-                            Paid Utilities</label>
-                        @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities)
-                    </li>
-                    <li>
-                        <label id="Covered_Parking">
-                            Covered_Parking</label>
-                        @Html.LabelFor(m => m.UnitFeature.Covered_Parking)
-                    </li>
-                    <li>
-                        <label id="PetsallowedLabel">
-                            Pets allowed</label>
-                        @Html.LabelFor(m => m.UnitFeature.Pets_allowed)
-                    </li>
-                    <li>
-                        <label id="SmallDogsLabel">
-                            Small Dogs</label>
-                        @Html.LabelFor(m => m.UnitFeature.Small_Dogs)
-                    </li>
-                    <li>
-                        <label id="LargeDogsLabel">
-                            Large Dogs</label>
-                        @Html.LabelFor(m => m.UnitFeature.Large_Dogs)
-                    </li>
-                    <li>
-                        <label id="AlarmSystemLabel">
-                            Alarm system</label>
-                        @Html.LabelFor(m => m.UnitFeature.Alarm_system)
-                    </li>
-                    <li>
-                        <label id="Near_TransportationLabel">
-                            Near Transportation</label>
-                        @Html.LabelFor(m => m.UnitFeature.Near_Transportation)
-                    </li>
-                    <li>
-                        <label id="Short_Term_Lease_AvailableLabel">
-                            Short Term Lease Available</label>
-                        @Html.LabelFor(m => m.UnitFeature.Short_Term_Lease_Available)
-                    </li>
-                    <li>
-                        <label id="RV_ParkingLabel">
-                            Alarm_system</label>
-                        @Html.LabelFor(m => m.UnitFeature.RV_Parking)
-                    </li>
-                    <li>
-                        <label id="Boat_StorageLabel">
-                            Boat Storage</label>
-                        @Html.LabelFor(m => m.UnitFeature.Boat_Storage)
-                    </li>*@
+@*
+                            <li>
+                                <label id="Wireless_Internet_Access">
+                                    Wireless Internet Access</label>
+                                @Html.LabelFor(m => m.UnitFeature.Wireless_Internet_Access) </li>
+                            <li>
+                                <label id="Some_Paid_Utilities">
+                                    Paid Utilities</label>
+                                @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities) </li>
+                            <li>
+                                <label id="Covered_Parking">
+                                    Covered_Parking</label>
+                                @Html.LabelFor(m => m.UnitFeature.Covered_Parking) </li>
+                            <li>
+                                <label id="PetsallowedLabel">
+                                    Pets allowed</label>
+                                @Html.LabelFor(m => m.UnitFeature.Pets_allowed) </li>
+                            <li>
+                                <label id="SmallDogsLabel">
+                                    Small Dogs</label>
+                                @Html.LabelFor(m => m.UnitFeature.Small_Dogs) </li>
+                            <li>
+                                <label id="LargeDogsLabel">
+                                    Large Dogs</label>
+                                @Html.LabelFor(m => m.UnitFeature.Large_Dogs) </li>
+                            <li>
+                                <label id="AlarmSystemLabel">
+                                    Alarm system</label>
+                                @Html.LabelFor(m => m.UnitFeature.Alarm_system) </li>
+                            <li>
+                                <label id="Near_TransportationLabel">
+                                    Near Transportation</label>
+                                @Html.LabelFor(m => m.UnitFeature.Near_Transportation) </li>
+                            <li>
+                                <label id="Short_Term_Lease_AvailableLabel">
+                                    Short Term Lease Available</label>
+                                @Html.LabelFor(m => m.UnitFeature.Short_Term_Lease_Available) </li>
+                            <li>
+                                <label id="RV_ParkingLabel">
+                                    Alarm_system</label>
+                                @Html.LabelFor(m => m.UnitFeature.RV_Parking) </li>
+                            <li>
+                                <label id="Boat_StorageLabel">
+                                    Boat Storage</label>
+                                @Html.LabelFor(m => m.UnitFeature.Boat_Storage) </li>*@
                     </ul>
                     <br />
                     <br />
@@ -1217,51 +1162,14 @@
                 $('.scroll-top').click(function() {
                     $("html, body").animate({ scrollTop: 0 }, 600);
                     return false;
-                }); 
+                });         
                 
                 
-                
-//                //Get the List
-//                var $images = $.getJSON( @jsonUrl, null, function (data) {
-//            return data;
-//        });
-
-
-//        //Lightbox Fancybox
-//        $("#fancybox-manual-c").click(function () {
-//            $.fancybox.open([$images]);
-//        });
-
-
-
-
-
-                //Get the List from Database
-                links = [];
-                $.getJSON( @jsonUrl, function (data) {
-                    $.each(data, function (i, item) {
-
-                        links.push({
-                            href: item.href,
-                            title: item.title
-                        });
-                    });
-
-                });
-               //JSON.stringify(links);
-$.fancybox.open(links, {
-		helpers : {
-			thumbs : {
-				width: 75,
-				height: 50
-			}
-		}
-	});
-
-
-
-
-
+            //Lightbox Fancybox
+//                $("#fancybox-manual-c").click(function () {
+//                    //  $.fancybox.open([$images]);
+//                    @Html.Raw(ViewBag.Sript)
+//                });
 
 
         //responsive menu
