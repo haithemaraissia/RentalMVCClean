@@ -1206,7 +1206,7 @@
           <Key>
             <PropertyRef Name="SpecialistId" />
           </Key>
-          <Property Name="SpecialistId" Type="int" Nullable="false" />
+          <Property Name="SpecialistId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="255" />

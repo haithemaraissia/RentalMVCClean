@@ -16,7 +16,7 @@
                                     <i class="icon-gplus-1"></i></a></span>
         </p>
         <br />
-        <h6 class="h6custom">
+       <h6 class="h6custom">
             About</h6>
         <p>
             @(Model.Description == null ? Html.TextBoxFor(model => model.Description, new { placeholder = "Description", style = "width:100%; min-height:150px" }) : Html.DisplayFor(model => model.Description, new { style = "width:100%; min-height:150px" }))

@@ -42,6 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.4.2\lib\net40-client\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\itextsharp.dll</HintPath>
@@ -124,6 +127,7 @@
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
@@ -944,6 +948,7 @@
     <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="packages.config" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />
@@ -1030,6 +1035,10 @@
     <Content Include="Views\Test2\Edit.cshtml" />
     <Content Include="Views\Test2\Index.cshtml" />
     <Content Include="Views\UnitTest\Preview.cshtml" />
+    <Content Include="Views\Provider\CompleteProfile.cshtml" />
+    <Content Include="Views\Provider\_Partial2.cshtml" />
+    <Content Include="Views\Specialist\CompleteProfile.cshtml" />
+    <Content Include="Views\Specialist\_Partial2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

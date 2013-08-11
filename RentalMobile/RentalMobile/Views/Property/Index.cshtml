@@ -163,14 +163,32 @@
     @section shareonfb
     {
         <div id="share-on-fb" class="panel">
-            <p>
-                Add your Facebook App here</p>
-            <p>
-                Nulla malesuada tempor mi, in dignissim tortor tempor ut. Donec semper risus feugiat
-                purus fermentum nec cursus elit dignissim. Aliquam convallis hendrerit ligula sed
-                ullamcorper. Phasellus porta aliquam velit quis sodales. Sed accumsan, nunc vel
-                elementum pharetra, magna neque condimentum purus, nec facilisis risus arcu in elit.
-                Morbi pulvinar diam aliquet risus. tristique nec interdum leo.</p>
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Share on Facebook" onclick="location.href='/Property/ShareonFacebook'"/>
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Edit Email" onclick="location.href='/Account/ChangeEmail'" />
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Change Passowrd" onclick="location.href='/Account/ChangePassword'" />
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Change Address" onclick="location.href='/Owner/ChangeAddress/@ViewBag.OwnerId'"/>
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Owner/UpdateProfilePicture/@ViewBag.OwnerId'"/>
+                </div>
+            </div>
+        </section>
         </div>
     }
     @section sendtofriend
@@ -334,16 +352,8 @@
                 });
 
 
-
-                //        //Get the List
-                //        var $images = $.getJSON(@jsonUrl, null, function (data) {
-                //            return data;
-                //        });
-
-
                 //Lightbox Fancybox
                 $("#fancybox-manual-c").click(function () {
-                    //  $.fancybox.open([$images]);
                     @Html.Raw(ViewBag.Sript)
                 });
 

@@ -290,6 +290,7 @@ namespace RentalMobile.Controllers
             //TempData["Id"] = "5";
 
             SavePictures(unitModelView.Unit);
+            ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
             return PartialView("_Partial2", unitModelView.UnitGallery);
         }
 
@@ -387,10 +388,6 @@ namespace RentalMobile.Controllers
             _db.SaveChanges();
 
         }
-
-
-
-
 
 
 

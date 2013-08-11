@@ -25,6 +25,14 @@ namespace RentalMobile.Controllers
         }
 
 
+        public ActionResult ShareonFacebook()
+        {
+            Helpers.Facebook.CheckAuthorization();
+            return Content("Success", "text/plain");
+        }
+
+
+
 
         public ActionResult JsonFun(int id)
         {
