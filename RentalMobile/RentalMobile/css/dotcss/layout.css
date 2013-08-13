@@ -1339,8 +1339,9 @@ li:not(#foo) input[type="radio"] + label {
 ul li a.twitter-registration {	background:url(../../images/dotimages/icons/registration-twitter.png) no-repeat center top; }
 ul li a.facebook-registration {background:url(../../images/dotimages/icons/registration-facebook.png) no-repeat center top; }
 ul li a.google-registration {background:url(../../images/dotimages/icons/registration-google.png) no-repeat center top; }
+ul li a.linkedin-registration {	background:url(../../images/dotimages/icons/registration-linkedin.gif) no-repeat center top; }
 
-ul li a.twitter-registration, ul li a.facebook-registration, ul li a.google-registration {
+ul li a.twitter-registration, ul li a.facebook-registration, ul li a.google-registration, ul li a.linkedin-registration {
 	color: #fff; 
 	font-weight:bold;
 	cursor: pointer;    
@@ -1348,7 +1349,7 @@ ul li a.twitter-registration, ul li a.facebook-registration, ul li a.google-regi
 	padding: 20px 10px 20px 80px;
 	margin:0 0 20px 0;
     text-decoration: none;}
-ul li a.twitter-registration:hover, ul li a.facebook-registration:hover, ul li a.google-registration:hover {
+ul li a.twitter-registration:hover, ul li a.facebook-registration:hover, ul li a.google-registration:hover, ul li a.linkedin-registration:hover {
 background-position: center bottom;
 }
 

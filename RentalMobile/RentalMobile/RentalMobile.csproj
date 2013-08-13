@@ -50,6 +50,10 @@
       <HintPath>bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Mvc.Mailer.dll</HintPath>
+    </Reference>
     <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MvcJqGrid.dll</HintPath>
@@ -377,6 +381,7 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
+    <Content Include="bin\Mvc.Mailer.dll" />
     <Content Include="Contracts\Reports\PDFReport.aspx" />
     <Content Include="Contracts\Reports\RentalAgreement.aspx" />
     <Content Include="Contracts\Reports\Test.aspx" />
@@ -537,6 +542,10 @@
     <Content Include="images\dotimages\sliders\office-slide.png" />
     <Content Include="images\dotimages\small-avatar-placeholder.png" />
     <Content Include="images\dotimages\static-image.jpg" />
+    <Content Include="images\dotimages\wip\linkedin_icon_black.png" />
+    <Content Include="images\dotimages\wip\registration-linkedin---Copy2.gif" />
+    <Content Include="images\dotimages\icons\registration-linkedin.gif" />
+    <Content Include="images\dotimages\wip\registration-linkedin.gif" />
     <Content Include="images\hsep.png" />
     <Content Include="images\mainbk.png" />
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
@@ -570,6 +579,7 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
     <Content Include="Scripts\js\scripts2.js" />
+    <Content Include="Scripts\old\js\jquery.min.js" />
     <Content Include="WebForms\Ads\AdTest\AdTest.ascx" />
     <Content Include="WebForms\Ads\AdTest\Index.aspx" />
     <Content Include="WebForms\Ads\AdTest\Test.ascx" />
@@ -807,6 +817,7 @@
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
     <Content Include="Handler\AdHandler.ashx" />
+    <None Include="images\dotimages\wip\linkedin_icon_black.psd" />
     <None Include="Models\RentalContextGenerator.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RentalContextGenerator.Context1.cs</LastGenOutput>
@@ -1039,6 +1050,13 @@
     <Content Include="Views\Provider\_Partial2.cshtml" />
     <Content Include="Views\Specialist\CompleteProfile.cshtml" />
     <Content Include="Views\Specialist\_Partial2.cshtml" />
+    <Content Include="Views\UserMailer\_Layout.cshtml" />
+    <Content Include="Views\UserMailer\Welcome.cshtml" />
+    <Content Include="Views\UserMailer\PasswordReset.cshtml" />
+    <Content Include="Views\ReportMailer\_Layout.cshtml" />
+    <Content Include="Views\ReportMailer\ReportProduced.cshtml" />
+    <Content Include="Views\ReportMailer\ReportSent.cshtml" />
+    <Content Include="Views\ReportMailer\ReportLoading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -1061,9 +1079,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

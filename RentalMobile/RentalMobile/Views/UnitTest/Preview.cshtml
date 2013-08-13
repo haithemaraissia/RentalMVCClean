@@ -93,11 +93,9 @@
             }
         </style>
         <h4>
-            Recuest showing</h4>
+            Request showing</h4>
         <p>
-            Please complete the form below to request a showing for this property. Quisque non
-            mi magna, eget aliquet urna. Curabitur ut justo est. Quisque iaculis risus et tortor
-            congue porta. Suspendisse eleifend tempor dapibus.
+            Please complete the form below to request a showing for this property.
         </p>
         <form action="#">
         <ul class="grid-form">
@@ -119,7 +117,6 @@
             <li class="four columns omega">
                 <label for="showing-date" class="screen-reader-text">
                     Showing date</label>
-                <input id="datepicker" placeholder="showing date" type="text" required>
                 <input id="datepicker2" placeholder="showing date" type="text" required>
             </li>
         </ul>
@@ -1002,18 +999,17 @@
     @section shareonfb
     {
         <div id="share-on-fb" class="panel">
-              <h2>
-        Login with Social Buttons</h2>
-        <ul class="grid-form row remove-bottom">
-            <li class="four columns alpha"><a class="twitter-registration" href="#">Sign up with your Twitter
-                account</a> </li>
-            <li class="four columns alpha"><a class="facebook-registration" href="#">Sign up with your
-                Facebook account</a> </li>
-            <li class="four columns alpha"><a class="google-registration" href="#">Sign up with your Google
-                account</a> </li>
-        </ul>
-    </div>
-
+            <ul class="grid-form row double-bottom " style="margin:20px">
+                <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center" href="#">Share it with your Twitter</a> </li>
+                <li class="six columns push by-two"><a class="facebook-registration" style="text-align: center" href="#">Share it with your Facebook</a> </li>
+            </ul>
+            <ul class="grid-form row remove-bottom" style="margin:20px">
+                <li class="six columns push by-one"><a class="google-registration" style="text-align: center" href="#">Share it
+                                                        with your Google</a> </li>
+                                                                        <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center" href="#">Share it
+                                                        with your Linked In</a> </li>
+            </ul>
+        </div>
     }
     @section sendtofriend
     {
