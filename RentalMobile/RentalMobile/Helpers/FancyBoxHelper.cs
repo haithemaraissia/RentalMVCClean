@@ -15,7 +15,9 @@ namespace RentalMobile.Helpers
         {
             const string fancyBoxScriptBeginning = @" $.fancybox.open([";
             var unitGallery = db.UnitGalleries.Where(x => x.UnitId == id);
-            var tag = Enumerable.Aggregate(unitGallery, "",
+            if (unitGallery.Any())
+            {
+                 var tag = Enumerable.Aggregate(unitGallery, "",
                                            (current, u) => current + ("{href: '" + u.Path + "', title: '" + u.Caption + "'},"));
 
             tag = tag.Substring(0, tag.Length - 1) + @"], {
@@ -29,6 +31,8 @@ namespace RentalMobile.Helpers
 
 
             return fancyBoxScriptBeginning + tag;
+            }
+            return "";
         }
     }
 }

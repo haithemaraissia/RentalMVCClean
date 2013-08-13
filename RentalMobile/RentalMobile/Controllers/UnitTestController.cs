@@ -237,6 +237,7 @@ namespace RentalMobile.Controllers
         public string RequestID;
         public string photoPath;
 
+
         public ActionResult Partial2(UnitModelView unitModelView)
         {
 
@@ -290,7 +291,7 @@ namespace RentalMobile.Controllers
             //TempData["Id"] = "5";
 
             SavePictures(unitModelView.Unit);
-            ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
+            //ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
             return PartialView("_Partial2", unitModelView.UnitGallery);
         }
 

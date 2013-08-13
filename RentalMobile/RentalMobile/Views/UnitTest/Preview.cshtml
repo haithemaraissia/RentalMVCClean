@@ -174,7 +174,7 @@
                 <h4 class="section-titling">
                     Feature</h4>
                 <br />
-                <div class="three columns push by-one ">
+                <div class="three columns push by-one " id="firstcolumn">
                     <ul class="arrow">
                         @if (Model.UnitFeature.High_Speed_Internet_Access)
                         {
@@ -198,7 +198,7 @@
                     <br />
                     <br />
                 </div>
-                <div class="three columns push by-one ">
+                <div class="three columns push by-one " id="secondcolumn">
                     <ul class="arrow">
                         @if (Model.UnitFeature.Short_Term_Lease_Available)
                         {
@@ -222,7 +222,7 @@
                     <br />
                     <br />
                 </div>
-                <div class="three columns push by-one ">
+                <div class="three columns push by-one " id="thirdcolumn">
                     <ul class="arrow">
                         @if (Model.UnitFeature.Large_Dogs)
                         {
@@ -246,7 +246,7 @@
                     <br />
                     <br />
                 </div>
-                <div class="three columns push by-one ">
+                <div class="three columns push by-one " id="fourthcolumn">
                     <ul class="arrow">
                         @if (Model.UnitFeature.Covered_Parking)
                         {
@@ -258,7 +258,7 @@
                     <br />
                     <br />
                 </div>
-                <div class="three columns push by-one ">
+                <div class="three columns push by-one " id="fifthcolumn">
                     <ul class="arrow">
                         @if (Model.UnitFeature.Some_Paid_Utilities)
                         {
@@ -266,11 +266,21 @@
                                 @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitFeature.Pets_allowed)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitFeature.Pets_allowed)
                             </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
                         }
                         @if (Model.UnitFeature.Small_Dogs)
                         {
@@ -278,7 +288,14 @@
                                 @Html.LabelFor(m => m.UnitFeature.Small_Dogs)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                     </ul>
+                    <br />
+                    <br />
                     <br />
                     <br />
                 </div>
@@ -289,52 +306,68 @@
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        @* TO COMPLETE!!!
-                        <div id="TextBoxes">
-                            @if (Model.UnitCommunityAmenity.Neighborhood_Name) {
-                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Neighborhood_Name) </li>
-                            } @if (Model.UnitCommunityAmenity.Elementary_School) {
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Neighborhood_Name))
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Neighborhood_Name)
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Elementary_School))
+                        {
                             <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Elementary_School) </li>
-                            } @if (Model.UnitCommunityAmenity.High_School) {
+
+
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.High_School))
+                        {
                             <li>@Html.LabelFor(m => m.UnitCommunityAmenity.High_School) </li>
-                            } @if (Model.UnitCommunityAmenity.School_District) {
+
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.School_District))
+                        {
                             <li>@Html.LabelFor(m => m.UnitCommunityAmenity.School_District) </li>
-                            } @if (Model.UnitCommunityAmenity.Middle_School) {
-                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Middle_School) </li>
-                            } @if (Model.UnitCommunityAmenity.County_Name) {
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Middle_School))
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Middle_School)
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.County_Name))
+                        {
                             <li>@Html.LabelFor(m => m.UnitCommunityAmenity.County_Name) </li>
-                            } @if (Model.UnitCommunityAmenity.County_Name) {
-                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.County_Name) </li>
-                            }
-                        </div>*@
+
+
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
                         @if (Model.UnitCommunityAmenity.Assisted_Living_Community)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitCommunityAmenity.Assisted_Living_Community)
                             </li>
                         }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
                         @if (Model.UnitCommunityAmenity.Over_55_Active_Community)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitCommunityAmenity.Over_55_Active_Community)
-                            </li>
-                        }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitCommunityAmenity.Disability_Access)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Disability_Access)
                             </li>
                         }
                     </ul>
@@ -349,19 +382,36 @@
                                 @Html.LabelFor(m => m.UnitCommunityAmenity.Controlled_Access)
                             </li>
                         }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitCommunityAmenity.Community_Pool)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitCommunityAmenity.Community_Pool)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitCommunityAmenity.Disability_Access)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Disability_Access)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                     </ul>
+                    <br />
+                    <br />
                     <br />
                     <br />
                 </div>
@@ -396,45 +446,10 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Range_Oven)
                             </li>
                         }
-                        @if (Model.UnitCommunityAmenity.Community_Pool)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitCommunityAmenity.Community_Pool)</li>
-                        }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
                         @if (Model.UnitAppliance.Sink_Disposal)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitAppliance.Sink_Disposal)
-                            </li>
-                        }
-                        @if (Model.UnitAppliance.Microwave)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Microwave)
-                            </li>
-                        }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitAppliance.Central_Vacuum)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Central_Vacuum)
-                            </li>
-                        }
-                        @if (Model.UnitAppliance.Dishwasher)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Dishwasher)
                             </li>
                         }
                     </ul>
@@ -455,16 +470,33 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Washer_Dryer_Connections)
                             </li>
                         }
-                        <br />
-                        <br />
                     </ul>
+                    <br />
+                    <br />
                 </div>
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit)
+                        @if (Model.UnitAppliance.Full_Refrigerator)
                         {
                             <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
+                                @Html.LabelFor(m => m.UnitAppliance.Full_Refrigerator)</li>
+                        }
+                        @if (Model.UnitAppliance.Microwave)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Microwave)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Wine_Fridge)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
                             </li>
                         }
                         @if (Model.UnitAppliance.Shared_Laundry_Facility)
@@ -473,12 +505,47 @@
                                 @Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility)
                             </li>
                         }
-                        @if (Model.UnitAppliance.Wine_Fridge)
+                        <br />
+                        <br />
+                    </ul>
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Dishwasher)
                         {
                             <li>
-                                @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
+                                @Html.LabelFor(m => m.UnitAppliance.Dishwasher)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitAppliance.Central_Vacuum)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Central_Vacuum)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        <br />
+                        <br />
                         <br />
                         <br />
                     </ul>
@@ -490,18 +557,13 @@
                 <br />
                 <div class="three columns push by-one ">
                     <ul class="arrow">
-                        @if (Model.UnitInteriorAmenity.CoolingTypeId != null)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
-                            </li>
-                        }
-                        @if (Model.UnitInteriorAmenity.HeatingTypeId != null)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
-                            </li>
-                        }
+                        <li>
+                             @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
+                         </li>
+
+                        <li>
+                             @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
+                         </li>
                         @if (Model.UnitInteriorAmenity.Fireplace)
                         {
                             <li>
@@ -544,12 +606,10 @@
                                 @Html.LabelFor(m => m.UnitInteriorAmenity.Attic)
                             </li>
                         }
-                        @if (Model.UnitInteriorAmenity.BasementTypeId != null)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
-                            </li>
-                        }
+
+                        <li>
+                             @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
+                         </li>
                     </ul>
                     <br />
                     <br />
@@ -586,11 +646,21 @@
                                 @Html.LabelFor(m => m.UnitInteriorAmenity.Kitchen_Island)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitInteriorAmenity.Vaulted_Ceiling)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitInteriorAmenity.Vaulted_Ceiling)
                             </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
                         }
                         @if (Model.UnitInteriorAmenity.Ceiling_Fan)
                         {
@@ -598,12 +668,19 @@
                                 @Html.LabelFor(m => m.UnitInteriorAmenity.Ceiling_Fan)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                     </ul>
+                    <br />
+                    <br />
                     <br />
                     <br />
                 </div>
             </div>
-            <div id="ExteriorAmnetiy">
+            <div id="ExteriorAmenity">
                 <h4 class="section-titling">
                     Exterior</h4>
                 <br />
@@ -687,11 +764,21 @@
                                 @Html.LabelFor(m => m.UnitExteriorAmenity.Sprinkler_System)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitExteriorAmenity.Patio)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitExteriorAmenity.Patio)
                             </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
                         }
                         @if (Model.UnitExteriorAmenity.Pond)
                         {
@@ -699,12 +786,19 @@
                                 @Html.LabelFor(m => m.UnitExteriorAmenity.Pond)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                     </ul>
+                    <br />
+                    <br />
                     <br />
                     <br />
                 </div>
             </div>
-            <div id="LuxuryAmnetiy">
+            <div id="LuxuryAmenity">
                 <h4 class="section-titling">
                     Luxury</h4>
                 <br />
@@ -811,11 +905,21 @@
                                 @Html.LabelFor(m => m.UnitLuxuryAmenity.Doorman)
                             </li>
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitLuxuryAmenity.Solar_Heat)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Heat)
                             </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
                         }
                         @if (Model.UnitLuxuryAmenity.Solar_Plumbing)
                         {
@@ -824,173 +928,23 @@
                             </li>
 
                         }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
                         @if (Model.UnitLuxuryAmenity.Solar_Screens)
                         {
                             <li>
                                 @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Screens)
                             </li>
                         }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-            </div>
-            <div id="Feature">
-                <h4 class="section-titling">
-                    Feature</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitFeature.High_Speed_Internet_Access)
+                        else
                         {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.High_Speed_Internet_Access)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Internet_Included)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Internet_Included)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Wireless_Internet_Access)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Wireless_Internet_Access)
-                            </li>
-                        }
-                     
-@*
-                            <li>
-                                <label id="Wireless_Internet_Access">
-                                    Wireless Internet Access</label>
-                                @Html.LabelFor(m => m.UnitFeature.Wireless_Internet_Access) </li>
-                            <li>
-                                <label id="Some_Paid_Utilities">
-                                    Paid Utilities</label>
-                                @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities) </li>
-                            <li>
-                                <label id="Covered_Parking">
-                                    Covered_Parking</label>
-                                @Html.LabelFor(m => m.UnitFeature.Covered_Parking) </li>
-                            <li>
-                                <label id="PetsallowedLabel">
-                                    Pets allowed</label>
-                                @Html.LabelFor(m => m.UnitFeature.Pets_allowed) </li>
-                            <li>
-                                <label id="SmallDogsLabel">
-                                    Small Dogs</label>
-                                @Html.LabelFor(m => m.UnitFeature.Small_Dogs) </li>
-                            <li>
-                                <label id="LargeDogsLabel">
-                                    Large Dogs</label>
-                                @Html.LabelFor(m => m.UnitFeature.Large_Dogs) </li>
-                            <li>
-                                <label id="AlarmSystemLabel">
-                                    Alarm system</label>
-                                @Html.LabelFor(m => m.UnitFeature.Alarm_system) </li>
-                            <li>
-                                <label id="Near_TransportationLabel">
-                                    Near Transportation</label>
-                                @Html.LabelFor(m => m.UnitFeature.Near_Transportation) </li>
-                            <li>
-                                <label id="Short_Term_Lease_AvailableLabel">
-                                    Short Term Lease Available</label>
-                                @Html.LabelFor(m => m.UnitFeature.Short_Term_Lease_Available) </li>
-                            <li>
-                                <label id="RV_ParkingLabel">
-                                    Alarm_system</label>
-                                @Html.LabelFor(m => m.UnitFeature.RV_Parking) </li>
-                            <li>
-                                <label id="Boat_StorageLabel">
-                                    Boat Storage</label>
-                                @Html.LabelFor(m => m.UnitFeature.Boat_Storage) </li>*@
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitFeature.Short_Term_Lease_Available)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Short_Term_Lease_Available)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.RV_Parking)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.RV_Parking)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Boat_Storage)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Boat_Storage)
-                            </li>
+                            
+                            <li style="background: none; border-bottom: 0"></li>
                         }
                     </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitFeature.Large_Dogs)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Large_Dogs)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Alarm_system)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Alarm_system)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Near_Transportation)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Near_Transportation)
-                            </li>
-                        }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitFeature.Some_Paid_Utilities)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Covered_Parking)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Covered_Parking)
-                            </li>
-                        }
-                        @if (Model.UnitFeature.Pets_allowed)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Pets_allowed)
-                            </li>
-                        }
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        @if (Model.UnitFeature.Small_Dogs)
-                        {
-                            <li>
-                                @Html.LabelFor(m => m.UnitFeature.Small_Dogs)
-                            </li>
-                        }
-                    </ul>
-                    <br />
                     <br />
                 </div>
             </div>
@@ -999,15 +953,17 @@
     @section shareonfb
     {
         <div id="share-on-fb" class="panel">
-            <ul class="grid-form row double-bottom " style="margin:20px">
-                <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center" href="#">Share it with your Twitter</a> </li>
-                <li class="six columns push by-two"><a class="facebook-registration" style="text-align: center" href="#">Share it with your Facebook</a> </li>
+            <ul class="grid-form row double-bottom " style="margin: 20px">
+                <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center"
+                    href="#">Share it with your Twitter</a> </li>
+                <li class="six columns push by-two"><a class="facebook-registration" style="text-align: center"
+                    href="#">Share it with your Facebook</a> </li>
             </ul>
-            <ul class="grid-form row remove-bottom" style="margin:20px">
-                <li class="six columns push by-one"><a class="google-registration" style="text-align: center" href="#">Share it
-                                                        with your Google</a> </li>
-                                                                        <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center" href="#">Share it
-                                                        with your Linked In</a> </li>
+            <ul class="grid-form row remove-bottom" style="margin: 20px">
+                <li class="six columns push by-one"><a class="google-registration" style="text-align: center"
+                    href="#">Share it with your Google</a> </li>
+                <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center"
+                    href="#">Share it with your Linked In</a> </li>
             </ul>
         </div>
     }
@@ -1280,5 +1236,6 @@
                 $("#datepicker").appendDtpicker();
             });
         </script>
+        <script src="../../Scripts/helper/AmenitiesAlignment.js"></script>
     }
 </section>
