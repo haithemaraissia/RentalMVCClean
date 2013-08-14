@@ -133,6 +133,7 @@
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
+    <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -579,6 +580,13 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
     <Content Include="Scripts\helper\AmenitiesAlignment.js" />
+    <Content Include="Scripts\jNotify-master\error.png" />
+    <Content Include="Scripts\jNotify-master\info.png" />
+    <Content Include="Scripts\jNotify-master\jquery\jNotify.jquery.css" />
+    <Content Include="Scripts\jNotify-master\jquery\jNotify.jquery.js" />
+    <Content Include="Scripts\jNotify-master\jquery\jNotify.jquery.min.js" />
+    <Content Include="Scripts\jNotify-master\jquery\jquery.js" />
+    <Content Include="Scripts\jNotify-master\success.png" />
     <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
@@ -962,6 +970,7 @@
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="packages.config" />
+    <None Include="Scripts\jNotify-master\index.php" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />

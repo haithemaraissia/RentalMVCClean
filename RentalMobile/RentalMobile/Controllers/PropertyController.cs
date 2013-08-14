@@ -21,6 +21,11 @@ namespace RentalMobile.Controllers
             ViewBag.UnitId = unit.UnitId;
             ViewBag.UnitGoogleMap = unit.GoogleMap;
             ViewBag.Sript = FancyBox.Fancy(id);
+
+            ViewBag.FaceBook = SocialHelper.FacebookShare();
+            ViewBag.Twitter = SocialHelper.TwitterShare();
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare();
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare();
             return View(unit);
         }
 

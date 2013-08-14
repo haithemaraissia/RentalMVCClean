@@ -396,7 +396,39 @@ namespace RentalMobile.Controllers
 
 
 
+        //public JavaScriptResult ShareonFacebook()
+        //{
+        //    Helpers.Facebook.CheckAuthorization();
+        //    return JavaScript(JNotifyConfirmation("Facebook"));
+        //}
 
+
+        public string JNotifyConfirmation(string socialnetwork)
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your post to {0} has been succesfully.", "socialnetwork")
+            + @"{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                        onCompleted : function(){ // added in v2.0
+	   
+	  	                }
+		             });";
+            return jNotifyConfirmationScript;
+        }
 
 
 
@@ -419,18 +451,21 @@ namespace RentalMobile.Controllers
 
 
             ViewBag.Sript = FancyBox.Fancy(id);
-
+            ViewBag.FaceBook = SocialHelper.FacebookShare();
+            ViewBag.Twitter = SocialHelper.TwitterShare();
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare();
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare();
             return View(u);
         }
 
 
-  }
+    }
 
 
-        public class UnitPhoto
-        {
-            public string PathPath { get; set; }
-        }
+    public class UnitPhoto
+    {
+        public string PathPath { get; set; }
+    }
 
-  
+
 }

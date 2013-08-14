@@ -558,12 +558,11 @@
                 <div class="three columns push by-one ">
                     <ul class="arrow">
                         <li>
-                             @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
-                         </li>
-
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
+                        </li>
                         <li>
-                             @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
-                         </li>
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
+                        </li>
                         @if (Model.UnitInteriorAmenity.Fireplace)
                         {
                             <li>
@@ -606,10 +605,9 @@
                                 @Html.LabelFor(m => m.UnitInteriorAmenity.Attic)
                             </li>
                         }
-
                         <li>
-                             @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
-                         </li>
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
+                        </li>
                     </ul>
                     <br />
                     <br />
@@ -955,15 +953,16 @@
         <div id="share-on-fb" class="panel">
             <ul class="grid-form row double-bottom " style="margin: 20px">
                 <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center"
-                    href="#">Share it with your Twitter</a> </li>
-                <li class="six columns push by-two"><a class="facebook-registration" style="text-align: center"
-                    href="#">Share it with your Facebook</a> </li>
+                    href="@Html.Raw(ViewBag.Twitter)">Share it with your Twitter</a> </li>
+                <li class="six columns push by-two"><a target="_blank" class="facebook-registration"
+                    style="text-align: center" href="@Html.Raw(ViewBag.FaceBook)"
+                    onclick="jSuccess();">Share it with your Facebook</a> </li>
             </ul>
             <ul class="grid-form row remove-bottom" style="margin: 20px">
                 <li class="six columns push by-one"><a class="google-registration" style="text-align: center"
-                    href="#">Share it with your Google</a> </li>
+                    href="@Html.Raw(ViewBag.GooglePlusShare)">Share it with your Google</a> </li>
                 <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center"
-                    href="#">Share it with your Linked In</a> </li>
+                    href="@Html.Raw(ViewBag.LinkedIn)">Share it with your Linked In</a> </li>
             </ul>
         </div>
     }
@@ -1236,6 +1235,11 @@
                 $("#datepicker").appendDtpicker();
             });
         </script>
-        <script src="../../Scripts/helper/AmenitiesAlignment.js"></script>
+        <script type="text/javascript" src="../../Scripts/helper/AmenitiesAlignment.js"></script>
+        <!-- jNotify -->
+        <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+            media="screen" />
+        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
+    }
     }
 </section>
