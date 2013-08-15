@@ -158,6 +158,9 @@
     <Compile Include="Models\AgentRejectedPostedProject.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Currency.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedRentalContract.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -590,6 +593,7 @@
     <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
+    <Content Include="UploadedImages\Default\Property\coming_soon.png" />
     <Content Include="WebForms\Ads\AdTest\AdTest.ascx" />
     <Content Include="WebForms\Ads\AdTest\Index.aspx" />
     <Content Include="WebForms\Ads\AdTest\Test.ascx" />
@@ -1068,6 +1072,7 @@
     <Content Include="Views\ReportMailer\ReportProduced.cshtml" />
     <Content Include="Views\ReportMailer\ReportSent.cshtml" />
     <Content Include="Views\ReportMailer\ReportLoading.cshtml" />
+    <Content Include="Views\UnitTest\_EditPictures.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

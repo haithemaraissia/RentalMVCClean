@@ -168,7 +168,9 @@
                     </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
-                        <li class="five columns">Missing 2 properties: Description Primary Photo </li>
+                                        <li class="nine columns">
+                        @Html.TextAreaFor(m => m.Unit.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description", @maxlength = "500" })
+                    </li>
                 </ul>
             </section>
             <h2 class="StepTitle">
@@ -638,9 +640,8 @@
             <h2 class="StepTitle">
                 PHOTO</h2>
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px;">
-   
                 
-                @Html.Action("Partial2", Model);
+                @Html.Action("EditPictures", Model);
             </section>
         </div>
     </div>

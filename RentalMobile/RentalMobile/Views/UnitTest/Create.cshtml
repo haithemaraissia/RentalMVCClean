@@ -165,7 +165,9 @@
                     </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
-                        <li class="five columns">Missing 2 properties: Description Primary Photo </li>
+                    <li class="nine columns">
+                        @Html.TextAreaFor(m => m.Unit.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description" })
+                    </li>
                 </ul>
             </section>
             <h2 class="StepTitle">
@@ -176,7 +178,7 @@
                         @Html.TextBoxFor(m => m.UnitPricing.Rent, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.UnitPricing.CurrencyId, new { id = "CurrencyID", required = "required", @class = "full-width", placeholder = "CurrencyID" })
+                         @Html.DropDownListFor(m => m.Currency, Html.GetCurrency())
                     </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "AvailableDate", required = "required", @class = "full-width", placeholder = "Available Date" })

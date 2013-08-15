@@ -72,5 +72,6 @@ namespace RentalMobile.Models
         public DbSet<UnitCommunityAmenity> UnitCommunityAmenities { get; set; }
         public DbSet<UnitAppliance> UnitAppliances { get; set; }
         public DbSet<UnitGallery> UnitGalleries { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
     }
 }

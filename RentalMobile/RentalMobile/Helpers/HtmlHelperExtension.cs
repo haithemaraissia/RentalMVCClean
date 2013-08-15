@@ -5,12 +5,15 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
 {
+
     public static class HtmlHelperExtensions
     {
 
+        public static DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
         //       public static string RelativePath(this HtmlHelper helper, string photopath)
         //       {
@@ -28,6 +31,15 @@ namespace RentalMobile.Helpers
             };
         }
 
+
+
+
+        public static IEnumerable<SelectListItem> GetCurrency(this HtmlHelper helper)
+        {
+            var query = db.Currencies.Select(c => new { c.CurrencyID, c.CurrencyValue });
+            return new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", 3);
+
+        }
 
 
 

@@ -14,6 +14,7 @@
           <EntitySet Name="AgentProject" EntityType="DB_33736_rentalModel.Store.AgentProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedApplication" EntityType="DB_33736_rentalModel.Store.AgentRejectedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.AgentRejectedPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Currency" EntityType="DB_33736_rentalModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GeneratedRentalContract" EntityType="DB_33736_rentalModel.Store.GeneratedRentalContract" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.Store.MaintenanceExteriors" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceOrder" EntityType="DB_33736_rentalModel.Store.MaintenanceOrder" store:Type="Tables" Schema="dbo" />
@@ -512,6 +513,13 @@
           <Property Name="Currency" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrencyCode" Type="int" />
           <Property Name="Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyID" />
+          </Key>
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="CurrencyValue" Type="char" Nullable="false" MaxLength="3" />
         </EntityType>
         <EntityType Name="GeneratedRentalContract">
           <Key>
@@ -1789,6 +1797,7 @@
             <End Role="Unit" EntitySet="Units" />
             <End Role="UnitGallery" EntitySet="UnitGalleries" />
           </AssociationSet>
+          <EntitySet Name="Currencies" EntityType="DB_33736_rentalModel.Currency" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3377,6 +3386,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyID" />
+          </Key>
+          <Property Type="Int32" Name="CurrencyID" Nullable="false" />
+          <Property Type="String" Name="CurrencyValue" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4793,6 +4809,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="CurrencyValue" ColumnName="CurrencyValue" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4945,6 +4969,7 @@
           <ConnectorPoint PointX="26.875" PointY="34.211293945312491" />
           <ConnectorPoint PointX="27.625" PointY="34.211293945312491" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.Currency" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583246" />
         </Diagram>
     </Diagrams>
   </Designer>

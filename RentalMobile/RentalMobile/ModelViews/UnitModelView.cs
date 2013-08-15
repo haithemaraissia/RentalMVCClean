@@ -20,5 +20,7 @@ namespace RentalMobile.ModelViews
 
         public UnitGallery UnitGallery { get; set; }
 
+        public Currency Currency { get; set; }
+
     }
 }

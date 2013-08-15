@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
@@ -42,6 +43,7 @@ namespace RentalMobile.Controllers
             // ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
 
             //var newunit = new UnitModelView();
+           // SetCurrencyViewBag();
             return View();
         }
 
@@ -73,6 +75,15 @@ namespace RentalMobile.Controllers
                     db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
                     //Think if tyou need or not because of the upload control
                     //db.UnitGalleries.Add(u.UnitGallery);
+
+
+
+                    var t = u.Currency.CurrencyID;
+
+                   // SetCurrencyViewBag(u.Unit.CurrencyCode);
+
+
+
                     db.SaveChanges();
                     SavePictures(u.Unit);
                     return RedirectToAction("Index");
@@ -138,9 +149,10 @@ namespace RentalMobile.Controllers
                     UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
                     UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
                     UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+
                 };
 
-
+            TempData["UnitID"] = id;
             return View(u);
         }
 
@@ -154,14 +166,15 @@ namespace RentalMobile.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Units.Add(u.Unit);
-                    db.UnitPricings.Add(u.UnitPricing);
-                    db.UnitFeatures.Add(u.UnitFeature);
-                    db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-                    db.UnitAppliances.Add(u.UnitAppliance);
-                    db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
-                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
-                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+
+                    db.Entry(u.Unit).State = EntityState.Modified;
+                    db.Entry(u.UnitPricing).State = EntityState.Modified;
+                    db.Entry(u.UnitFeature).State = EntityState.Modified;
+                    db.Entry(u.UnitCommunityAmenity).State = EntityState.Modified;
+                    db.Entry(u.UnitAppliance).State = EntityState.Modified;
+                    db.Entry(u.UnitInteriorAmenity).State = EntityState.Modified;
+                    db.Entry(u.UnitExteriorAmenity).State = EntityState.Modified;
+                    db.Entry(u.UnitLuxuryAmenity).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -218,6 +231,22 @@ namespace RentalMobile.Controllers
 
 
 
+
+        private void SetCurrencyViewBag(int? currencyId = null)
+        {
+            ViewData["currency"] = currencyId == null ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue") : 
+                new SelectList(db.Currencies.ToArray(), "CurrencyID", "CurrencyValue", currencyId);
+        }
+
+        public SelectList GetCurrencySelectList()
+        {
+
+            var currencies = db.Currencies;
+            return new SelectList(currencies.ToArray(),
+                                "CurrencyID",
+                                "CurrencyValue");
+
+        }
 
 
 
@@ -371,6 +400,19 @@ namespace RentalMobile.Controllers
                     System.IO.File.Delete(f.Name);
             }
             UploadHelper.DeleteDirectoryIfExist(path);
+            DefaultPhoto(unit, files, newdirectory, virtualdestinationdirectoryvirtualmapping, directory);
+        }
+
+        public void DefaultPhoto(Unit unit, FileInfo[] files, string newdirectory,
+                                 string virtualdestinationdirectoryvirtualmapping, string directory)
+        {
+            if (!files.Any()) return;
+            var defaultpropertyphoto = Server.MapPath("~/UploadedImages/Default/Property/coming_soon.png");
+            var defaultpropertyphotodestination = newdirectory + @"\" + "coming_soon.png";
+            var defaultvirtualpropertyphotodestination = virtualdestinationdirectoryvirtualmapping + @"\Owner\Property" +
+                                                         directory + "coming_soon.png";
+            System.IO.File.Copy(defaultpropertyphoto, defaultpropertyphotodestination);
+            AddPicture(unit, Convert.ToInt32(TempData["UserID"]), defaultvirtualpropertyphotodestination, 0);
         }
 
         public void AddPicture(Unit unit, int uploaderid, string photoPath, int rank)
@@ -391,6 +433,120 @@ namespace RentalMobile.Controllers
         }
 
 
+
+
+
+
+
+
+
+
+        public ActionResult EditPictures()
+        {
+
+            var role = GetCurrentRole();
+            if (role == "Tenant")
+            {
+                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "Property";
+                TempData["UserID"] = UserHelper.GetTenantID();
+            }
+
+            if (role == "Owner")
+            {
+                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "Property";
+                TempData["UserID"] = UserHelper.GetOwnerID();
+            }
+
+            if (role == "Agent")
+            {
+                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "Property";
+                TempData["UserID"] = UserHelper.GetAgentID();
+            }
+
+            if (role == "Specialist")
+            {
+                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "Property";
+                TempData["UserID"] = UserHelper.GetSpecialistID();
+            }
+            if (role == "Provider")
+            {
+                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                ViewBag.Type = "Property";
+                TempData["UserID"] = UserHelper.GetProviderID();
+            }
+
+            var unitGallery = db.UnitGalleries.Find(TempData["UnitID"]);
+            return PartialView("_EditPictures", unitGallery);
+
+        }
+
+        [HttpPost]
+        public ActionResult EditPictures(UnitModelView unitModelView)
+        {
+            EditPicture(unitModelView.Unit);
+            return PartialView("_EditPictures", unitModelView.UnitGallery);
+        }
+
+        public void EditPicture(Unit unit)
+        {
+            var imageStoragePath = Server.MapPath("~/UploadedImages");
+            var directory = @"\" + Username + @"\" + "Property" + @"\" + TempData["UserID"] + @"\";
+            var path = imageStoragePath + directory;
+            var uploadDirectory = new DirectoryInfo(path);
+
+
+            if (!Directory.Exists(path))
+            {
+                UploadHelper.CreateDirectoryIfNotExist(path);
+            }
+
+
+            var files = uploadDirectory.GetFiles();
+
+            directory = @"\" + Username + @"\" + TempData["UserID"] + @"\";
+            var newdirectory = photoPath + directory;
+            if (!Directory.Exists(path))
+            {
+                UploadHelper.CreateDirectoryIfNotExist(newdirectory);
+            }
+            int counter = 0;
+            var virtualdestinationdirectoryvirtualmapping = Server.MapPath("~/Photo");
+            virtualdestinationdirectoryvirtualmapping += @"\Owner\Property" + directory;
+            //var virtualdestinationFile =  @"~\Photo\Owner\Property" + directory;
+            if (!Directory.Exists(virtualdestinationdirectoryvirtualmapping))
+            {
+                UploadHelper.CreateDirectoryIfNotExist(virtualdestinationdirectoryvirtualmapping);
+            }
+
+            foreach (var f in files)
+            {
+                var destinationFile = newdirectory + @"\" + f.Name;
+
+                //TO COMPLETE
+                virtualdestinationdirectoryvirtualmapping += f.Name;
+                //TO COMPLETE
+                if (!System.IO.File.Exists(destinationFile))
+                {
+                    System.IO.File.Move(f.FullName, destinationFile);
+                    AddPicture(unit, Convert.ToInt32(TempData["UserID"]), virtualdestinationdirectoryvirtualmapping,
+                               counter);
+                    counter++;
+                }
+                if (System.IO.File.Exists(f.Name))
+                    System.IO.File.Delete(f.Name);
+            }
+            UploadHelper.DeleteDirectoryIfExist(path);
+            DefaultPhoto(unit, files, newdirectory, virtualdestinationdirectoryvirtualmapping, directory);
+        }
 
 
 
