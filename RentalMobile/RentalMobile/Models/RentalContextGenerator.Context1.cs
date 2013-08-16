@@ -63,7 +63,6 @@ namespace RentalMobile.Models
         public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
         public DbSet<GeneratedRentalContract> GeneratedRentalContracts { get; set; }
         public DbSet<UploadedContract> UploadedContracts { get; set; }
-        public DbSet<Unit> Units { get; set; }
         public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
         public DbSet<UnitFeature> UnitFeatures { get; set; }
         public DbSet<UnitInteriorAmenity> UnitInteriorAmenities { get; set; }
@@ -73,5 +72,15 @@ namespace RentalMobile.Models
         public DbSet<UnitAppliance> UnitAppliances { get; set; }
         public DbSet<UnitGallery> UnitGalleries { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Basement> Basements { get; set; }
+        public DbSet<Cooling> Coolings { get; set; }
+        public DbSet<Floor> Floors { get; set; }
+        public DbSet<FloorCovering> FloorCoverings { get; set; }
+        public DbSet<Foundation> Foundations { get; set; }
+        public DbSet<Garage> Garages { get; set; }
+        public DbSet<Heating> Heatings { get; set; }
+        public DbSet<ParkingSpace> ParkingSpaces { get; set; }
+        public DbSet<UnitType> UnitTypes { get; set; }
     }
 }

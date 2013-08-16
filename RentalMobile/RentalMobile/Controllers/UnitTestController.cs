@@ -76,9 +76,10 @@ namespace RentalMobile.Controllers
                     //Think if tyou need or not because of the upload control
                     //db.UnitGalleries.Add(u.UnitGallery);
 
+                    ViewBag.CurrencyCode = u.Unit.CurrencyCode;
+                    var k = u.Unit.CurrencyCode;
 
-
-                    var t = u.Currency.CurrencyID;
+                    //var t = u.Currency.CurrencyID;
 
                    // SetCurrencyViewBag(u.Unit.CurrencyCode);
 
@@ -151,6 +152,7 @@ namespace RentalMobile.Controllers
                     UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
 
                 };
+            ViewBag.CurrencyCode = u.Unit.CurrencyCode;
 
             TempData["UnitID"] = id;
             return View(u);
@@ -232,6 +234,20 @@ namespace RentalMobile.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void SetCurrencyViewBag(int? currencyId = null)
         {
             ViewData["currency"] = currencyId == null ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue") : 
@@ -247,6 +263,18 @@ namespace RentalMobile.Controllers
                                 "CurrencyValue");
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

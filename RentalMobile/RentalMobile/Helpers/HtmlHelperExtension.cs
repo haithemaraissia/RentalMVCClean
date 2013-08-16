@@ -34,11 +34,65 @@ namespace RentalMobile.Helpers
 
 
 
-        public static IEnumerable<SelectListItem> GetCurrency(this HtmlHelper helper)
+        public static IEnumerable<SelectListItem> Currency(this HtmlHelper helper, int? selectedvalue)
         {
             var query = db.Currencies.Select(c => new { c.CurrencyID, c.CurrencyValue });
-            return new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", 3);
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", 0) : new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", selectedvalue);
+        }
 
+        public static IEnumerable<SelectListItem> Cooling(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Coolings.Select(c => new { c.CoolingID, c.CoolingValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "CoolingID", "CoolingValue", 0) : new SelectList(query.AsEnumerable(), "CoolingID", "CoolingValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> Basement(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Basements.Select(c => new { c.BasementID, c.BasementValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BasementID", "BasementValue", 0) : new SelectList(query.AsEnumerable(), "BasementID", "BasementValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> Garage(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Garages.Select(c => new { c.GarageID, c.GarageValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", 0) : new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", selectedvalue);
+        }
+
+
+        public static IEnumerable<SelectListItem> Heating(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Heatings.Select(c => new { c.HeatingID, c.HeatingValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "HeatingID", "HeatingValue", 0) : new SelectList(query.AsEnumerable(), "HeatingID", "HeatingValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> UnitType(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.UnitTypes.Select(c => new { c.TypeID, c.TypeValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "TypeID", "TypeValue", 0) : new SelectList(query.AsEnumerable(), "TypeID", "TypeValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> ParkingSpace(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.ParkingSpaces.Select(c => new { c.ParkingID, c.ParkingValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "ParkingID", "ParkingValue", 0) : new SelectList(query.AsEnumerable(), "ParkingID", "ParkingValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> Floor(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Floors.Select(c => new { c.FloorID, c.FloorValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", 0) : new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> FloorCovering(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.FloorCoverings.Select(c => new { c.FloorID, c.FloorValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", 0) : new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", selectedvalue);
+        }
+
+        public static IEnumerable<SelectListItem> Foundation(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Foundations.Select(c => new { c.FoundationID, c.FoundationValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", 0) : new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", selectedvalue);
         }
 
 
@@ -105,6 +159,7 @@ namespace RentalMobile.Helpers
             }
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
+
     }
 }
 

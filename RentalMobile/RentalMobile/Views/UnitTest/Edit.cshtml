@@ -180,8 +180,8 @@
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.UnitPricing.Rent, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
                     </li>
-                    <li class="five columns">
-                        @Html.TextBoxFor(m => m.UnitPricing.CurrencyId, new { id = "CurrencyID", required = "required", @class = "full-width", placeholder = "CurrencyID" })
+                     <li class="five columns">
+                         @Html.DropDownListFor(m => m.Unit.CurrencyCode, Html.GetCurrency((int?)ViewBag.CurrencyCode))
                     </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "AvailableDate", required = "required", @class = "full-width", placeholder = "Available Date" })

@@ -102,13 +102,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#birthday").datepicker();
-        $("#workstartdate").datepicker();
-        $("#workenddate").datepicker();
-        $("#currentrentstartdate").datepicker();
-        $("#currentrentenddate").datepicker();
-        $("#previousrentstartdate").datepicker();
-        $("#previousrentenddate").datepicker();
+        $("#availabledate").datepicker();
     });
 </script>
 @using (Html.BeginForm())
@@ -163,11 +157,45 @@
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.Unit.SquareFoot, new { id = "squarefoot", required = "required", @class = "full-width", placeholder = "SquareFoot" })
                     </li>
+                  
+                    
+                    
+                    <!--INCLUDED IN EDIT-->
+                    <li class="five columns" style="text-align: left">
+                        <label id="Type">
+                            Type
+                        </label>
+                        @Html.DropDownListFor(m => m.Unit.CurrencyCode, Html.UnitType((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="ParkingSpace">
+                            Parking Space
+                        </label>
+                        @Html.DropDownListFor(m => m.Unit.ParkingSpaceId, Html.ParkingSpace((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="GarageSize">
+                            Garage
+                        </label>
+                        @Html.DropDownListFor(m => m.Unit.GarageSizeId, Html.Garage((int?)ViewBag.CurrencyCode))
+                    </li>
+                         
+                    
+
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
-                    <li class="nine columns">
-                        @Html.TextAreaFor(m => m.Unit.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description" })
                     </li>
+                    <li class="nine columns">
+                        @Html.TextAreaFor(m => m.Unit.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description" , @maxlength = 500, autocomplete = "off" })
+                    </li>
+                      <!--INCLUDED IN EDIT-->
+                    
+                    
+                    
+                    
+
+                    
+
                 </ul>
             </section>
             <h2 class="StepTitle">
@@ -178,20 +206,22 @@
                         @Html.TextBoxFor(m => m.UnitPricing.Rent, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
                     </li>
                     <li class="five columns">
-                         @Html.DropDownListFor(m => m.Currency, Html.GetCurrency())
+                         @Html.DropDownListFor(m => m.Unit.CurrencyCode, Html.Currency((int?)ViewBag.CurrencyCode))
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "AvailableDate", required = "required", @class = "full-width", placeholder = "Available Date" })
+                        @Html.TextBoxFor(m => m.UnitPricing.AvailableDate, new { id = "availabledate", required = "required", @class = "full-width", placeholder = "Available Date" })
                     </li>
                     <li class="five columns">
+                        <label>&nbsp;</label>
                         @Html.TextBoxFor(m => m.UnitPricing.Deposit, new { id = "Deposit", required = "required", @class = "full-width", placeholder = "Deposit" })
                     </li>
                     <li class="five columns">
+                        <label>&nbsp;</label>
                         @Html.TextBoxFor(m => m.UnitPricing.ApplicationFee, new { id = "ApplicationFee", required = "required", @class = "full-width", placeholder = "Application Fee" })
                     </li>
-                    <li class="five columns" style="text-align: center">
+                    <li class="five columns" style="text-align: left">
                         <label id="Section 8">
-                            Section_8
+                            Section 8
                         </label>
                         @Html.EditorFor(m => m.UnitPricing.Section_8_Eligible, new { id = "Section8Eligible", required = "required", @class = "full-width", placeholder = "Section 8 Eligible?" })
                     </li>
@@ -402,19 +432,8 @@
             <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
                 margin-bottom: 10px; text-align: center">
                 <ul>
-                    <li class="five columns ">
-                        <label id="CoolingTypeIdLabel">
-                            Cooling Type
-                        </label>
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.CoolingTypeId, new { id = "CoolingTypeId", required = "required", @class = "full-width", placeholder = "Cooling Type " })
-                    </li>
-                    <li class="five columns">
-                        <label id="HeatingTypeIdLabel">
-                            Heating Type
-                        </label>
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.HeatingTypeId, new { id = "HeatingTypeId", required = "required", @class = "full-width", placeholder = "Heating Type" })
-                    </li>
-                    <li class="five columns">
+                    
+                       <li class="five columns">
                         <label id="FireplaceLabel">
                             Fireplace</label>
                         @Html.EditorFor(m => m.UnitInteriorAmenity.Fireplace, new { id = "Fireplace", required = "required", @class = "full-width", placeholder = "Fireplace" })
@@ -434,27 +453,13 @@
                             Attic</label>
                         @Html.EditorFor(m => m.UnitInteriorAmenity.Attic, new { id = "Attic", required = "required", @class = "full-width", placeholder = "Attic" })
                     </li>
-                    <li class="five columns">
-                        <label id="BasementTypeLabel">
-                            Basement Type</label>
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.BasementTypeId, new { id = "BasementTypeId", required = "required", @class = "full-width", placeholder = "Basement Type" })
-                    </li>
+                  
                     <li class="five columns">
                         <label id="Double_Pane_Storm_WindowsLabel">
                             Double Pane Storm Windows</label>
                         @Html.EditorFor(m => m.UnitInteriorAmenity.Double_Pane_Storm_Windows, new { id = "Double_Pane_Storm_Windows", required = "required", @class = "full-width", placeholder = "Double Pane Storm Windows" })
                     </li>
-                    <li class="five columns">
-                        <label id="FloorCoveringIdLabel">
-                            Floor Covering
-                        </label>
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.FloorCoveringId, new { id = "FloorCoveringId", required = "required", @class = "full-width", placeholder = "Floor Covering" })
-                    </li>
-                    <li class="five columns">
-                        <label id="FoundationTypeLabel">
-                            Foundation Type</label>
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.FoundationTypeId, new { id = "FoundationTypeId", required = "required", @class = "full-width", placeholder = "Foundation Type" })
-                    </li>
+
                     <li class="five columns">
                         <label id="Kitchen_IslandLabel">
                             Kitchen Island</label>
@@ -475,6 +480,52 @@
                             Jetted Tub</label>
                         @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
                     </li>
+                    
+                    
+
+                    
+                    <!--INCLUDED IN EDIT-->
+                    <li class="five columns" style="text-align: left">
+                        <label id="CoolingTypeIdLabel">
+                            Cooling
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.CoolingTypeId, Html.Cooling((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="HeatingTypeIdLabel">
+                            Heating
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.HeatingTypeId, Html.Heating((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="BasementTypeLabel">
+                            Basement
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.BasementTypeId, Html.Basement((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="FloorCoveringIdLabel">
+                            Floor Covering
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.FloorCoveringId, Html.FloorCovering((int?)ViewBag.CurrencyCode))
+                    </li>
+                    <li class="five columns" style="text-align: left">
+                        <label id="FoundationIdLabel">
+                            Foundation
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.FoundationTypeId, Html.Foundation((int?)ViewBag.CurrencyCode))
+                    </li>
+                       <li class="five columns" style="text-align: left">
+                        <label id="FloorIdLabel">
+                            Floor
+                        </label>
+                        @Html.DropDownListFor(m => m.UnitInteriorAmenity, Html.Floor((int?)ViewBag.CurrencyCode))
+                    </li>
+
+
+
+                    <!--INCLUDED IN EDIT-->
+                 
                 </ul>
             </section>
             <h2 class="StepTitle">
