@@ -82,5 +82,7 @@ namespace RentalMobile.Models
         public DbSet<Heating> Heatings { get; set; }
         public DbSet<ParkingSpace> ParkingSpaces { get; set; }
         public DbSet<UnitType> UnitTypes { get; set; }
+        public DbSet<Bathroom> Bathrooms { get; set; }
+        public DbSet<Bed> Beds { get; set; }
     }
 }

@@ -70,10 +70,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\bin\Debug\plUploadHandler.dll</HintPath>
     </Reference>
+    <Reference Include="Postal">
+      <HintPath>..\packages\postal.0.8.2\lib\net40\Postal.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -97,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="BackUp\Controllers\UnitController.cs" />
     <Compile Include="Contracts\Reports\PDFReport.aspx.cs">
       <DependentUpon>PDFReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -122,11 +133,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
+    <Compile Include="Controllers\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\ProviderProfileController.cs" />
     <Compile Include="Controllers\SpecialistProfileController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
-    <Compile Include="Controllers\UnitTestController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
@@ -159,6 +171,12 @@
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Basement.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bathroom.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bed.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cooling.cs">
@@ -352,7 +370,6 @@
     <Compile Include="Controllers\TenantRentalApplicationController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\TenantShowingController.cs" />
-    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UnitFeatureTestController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UploadMaintenancePhotoController.cs" />
@@ -802,6 +819,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="BackUp\View\Unit\Create.cshtml" />
+    <Content Include="BackUp\View\Unit\Delete.cshtml" />
+    <Content Include="BackUp\View\Unit\Details.cshtml" />
+    <Content Include="BackUp\View\Unit\Edit.cshtml" />
+    <Content Include="BackUp\View\Unit\Index.cshtml" />
+    <Content Include="BackUp\View\UnitDetail\Index.cshtml" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />
     <None Include="css\dotcss\entypo\entypo.ttf" />
@@ -992,11 +1015,6 @@
     <Content Include="Views\UnitFeatureTest\Details.cshtml" />
     <Content Include="Views\UnitFeatureTest\Edit.cshtml" />
     <Content Include="Views\UnitFeatureTest\Index.cshtml" />
-    <Content Include="Views\Unit\Create.cshtml" />
-    <Content Include="Views\Unit\Delete.cshtml" />
-    <Content Include="Views\Unit\Details.cshtml" />
-    <Content Include="Views\Unit\Edit.cshtml" />
-    <Content Include="Views\Unit\Index.cshtml" />
     <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -1066,28 +1084,28 @@
     <Content Include="Views\Owner\UploadedAgreement.cshtml" />
     <Content Include="Views\UploadAgreement\Index.cshtml" />
     <None Include="Views\Ad\Sitemap.docx" />
-    <Content Include="Views\UnitTest\Index.cshtml" />
-    <Content Include="Views\UnitTest\Details.cshtml" />
-    <Content Include="Views\UnitTest\Create.cshtml" />
-    <Content Include="Views\UnitTest\Edit.cshtml" />
-    <Content Include="Views\UnitTest\Delete.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Unit\Details.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\Edit.cshtml" />
+    <Content Include="Views\Unit\Delete.cshtml" />
     <Content Include="Views\Shared\Menu\_ProviderBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\_ProviderMiniTabMenu.cshtml" />
     <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\SpecialistProfile\Index.cshtml" />
-    <Content Include="Views\UnitTest\ToDelete\_PropertyPhoto.cshtml" />
-    <Content Include="Views\UnitTest\ToDelete\_Test.cshtml" />
-    <Content Include="Views\UnitTest\ToDelete\ViewUserControl2.cshtml" />
+    <Content Include="Views\Unit\ToDelete\_PropertyPhoto.cshtml" />
+    <Content Include="Views\Unit\ToDelete\_Test.cshtml" />
+    <Content Include="Views\Unit\ToDelete\ViewUserControl2.cshtml" />
     <Content Include="Views\UploadProperty\_Test.cshtml" />
     <Content Include="Views\UploadProperty\GetPhoto.cshtml" />
     <Content Include="Views\UploadProperty\Index.cshtml" />
-    <Content Include="Views\UnitTest\_Partial2.cshtml" />
+    <Content Include="Views\Unit\_Partial2.cshtml" />
     <Content Include="Views\Test2\Create.cshtml" />
     <Content Include="Views\Test2\Delete.cshtml" />
     <Content Include="Views\Test2\Details.cshtml" />
     <Content Include="Views\Test2\Edit.cshtml" />
     <Content Include="Views\Test2\Index.cshtml" />
-    <Content Include="Views\UnitTest\Preview.cshtml" />
+    <Content Include="Views\Unit\Preview.cshtml" />
     <Content Include="Views\Provider\CompleteProfile.cshtml" />
     <Content Include="Views\Provider\_Partial2.cshtml" />
     <Content Include="Views\Specialist\CompleteProfile.cshtml" />
@@ -1099,7 +1117,17 @@
     <Content Include="Views\ReportMailer\ReportProduced.cshtml" />
     <Content Include="Views\ReportMailer\ReportSent.cshtml" />
     <Content Include="Views\ReportMailer\ReportLoading.cshtml" />
-    <Content Include="Views\UnitTest\_EditPictures.cshtml" />
+    <Content Include="Views\Unit\_EditPictures.cshtml" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\EmailTest\Index.cshtml" />
+    <Content Include="Views\EmailTest\About.cshtml" />
+    <Content Include="Views\EmailTest\Sent.cshtml" />
+    <Content Include="Views\Emails\Example.cshtml" />
+    <Content Include="Views\Emails\HtmlOnly.cshtml" />
+    <Content Include="Views\Emails\Important.cshtml" />
+    <Content Include="Views\Emails\Multipart.cshtml" />
+    <Content Include="Views\Emails\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\Multipart.Text.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

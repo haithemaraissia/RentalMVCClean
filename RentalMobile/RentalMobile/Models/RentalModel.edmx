@@ -15,6 +15,8 @@
           <EntitySet Name="AgentRejectedApplication" EntityType="DB_33736_rentalModel.Store.AgentRejectedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AgentRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.AgentRejectedPostedProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Basement" EntityType="DB_33736_rentalModel.Store.Basement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Bathroom" EntityType="DB_33736_rentalModel.Store.Bathroom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Beds" EntityType="DB_33736_rentalModel.Store.Beds" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Cooling" EntityType="DB_33736_rentalModel.Store.Cooling" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Currency" EntityType="DB_33736_rentalModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Floor" EntityType="DB_33736_rentalModel.Store.Floor" store:Type="Tables" Schema="dbo" />
@@ -534,6 +536,20 @@
           </Key>
           <Property Name="BasementID" Type="int" Nullable="false" />
           <Property Name="BasementValue" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Bathroom">
+          <Key>
+            <PropertyRef Name="BathroomID" />
+          </Key>
+          <Property Name="BathroomID" Type="int" Nullable="false" />
+          <Property Name="BathroomValue" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Beds">
+          <Key>
+            <PropertyRef Name="BedID" />
+          </Key>
+          <Property Name="BedID" Type="int" Nullable="false" />
+          <Property Name="BedValue" Type="char" Nullable="false" MaxLength="10" />
         </EntityType>
         <EntityType Name="Cooling">
           <Key>
@@ -1889,6 +1905,8 @@
           <EntitySet Name="Heatings" EntityType="DB_33736_rentalModel.Heating" />
           <EntitySet Name="ParkingSpaces" EntityType="DB_33736_rentalModel.ParkingSpace" />
           <EntitySet Name="UnitTypes" EntityType="DB_33736_rentalModel.UnitType" />
+          <EntitySet Name="Bathrooms" EntityType="DB_33736_rentalModel.Bathroom" />
+          <EntitySet Name="Beds" EntityType="DB_33736_rentalModel.Bed" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3549,6 +3567,20 @@
           <Property Type="Int32" Name="TypeID" Nullable="false" />
           <Property Type="String" Name="TypeValue" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Bathroom">
+          <Key>
+            <PropertyRef Name="BathroomID" />
+          </Key>
+          <Property Type="Int32" Name="BathroomID" Nullable="false" />
+          <Property Type="String" Name="BathroomValue" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Bed">
+          <Key>
+            <PropertyRef Name="BedID" />
+          </Key>
+          <Property Type="Int32" Name="BedID" Nullable="false" />
+          <Property Type="String" Name="BedValue" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5046,6 +5078,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Bathrooms">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.Bathroom">
+              <MappingFragment StoreEntitySet="Bathroom">
+                <ScalarProperty Name="BathroomValue" ColumnName="BathroomValue" />
+                <ScalarProperty Name="BathroomID" ColumnName="BathroomID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Beds">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.Bed">
+              <MappingFragment StoreEntitySet="Beds">
+                <ScalarProperty Name="BedValue" ColumnName="BedValue" />
+                <ScalarProperty Name="BedID" ColumnName="BedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5204,6 +5252,8 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Heating" Width="1.5" PointX="0.75" PointY="22.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.ParkingSpace" Width="1.5" PointX="2.75" PointY="22.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitType" Width="1.5" PointX="0.75" PointY="25.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.Bathroom" Width="1.5" PointX="25.375" PointY="13.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.Bed" Width="1.5" PointX="25.375" PointY="16.75" Height="1.4033821614583246" />
         </Diagram>
     </Diagrams>
   </Designer>

@@ -1,4 +1,4 @@
-﻿@model RentalMobile.Models.Unit
+﻿@model RentalMobile.Models.UnitAppliance
 
 @{
     ViewBag.Title = "Details";
@@ -7,54 +7,69 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>Unit</legend>
+    <legend>UnitAppliance</legend>
 
-    <div class="display-label">Address</div>
+    <div class="display-label">Unit</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Address)
+        @Html.DisplayFor(model => model.Unit.Description)
     </div>
 
-    <div class="display-label">City</div>
+    <div class="display-label">Range_Oven</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.City)
+        @Html.DisplayFor(model => model.Range_Oven)
     </div>
 
-    <div class="display-label">State</div>
+    <div class="display-label">Full_Refrigerator</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.State)
+        @Html.DisplayFor(model => model.Full_Refrigerator)
     </div>
 
-    <div class="display-label">Bed</div>
+    <div class="display-label">Dishwasher</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Bed)
+        @Html.DisplayFor(model => model.Dishwasher)
     </div>
 
-    <div class="display-label">Bathroom</div>
+    <div class="display-label">Sink_Disposal</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Bathroom)
+        @Html.DisplayFor(model => model.Sink_Disposal)
     </div>
 
-    <div class="display-label">SquareFoot</div>
+    <div class="display-label">Microwave</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.SquareFoot)
+        @Html.DisplayFor(model => model.Microwave)
     </div>
 
-    <div class="display-label">YearBuilt</div>
+    <div class="display-label">Central_Vacuum</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.YearBuilt)
+        @Html.DisplayFor(model => model.Central_Vacuum)
     </div>
 
-    <div class="display-label">Description</div>
+    <div class="display-label">Surround_Sound</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
+        @Html.DisplayFor(model => model.Surround_Sound)
     </div>
 
-    <div class="display-label">PrimaryPhoto</div>
+    <div class="display-label">Wine_Fridge</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.PrimaryPhoto)
+        @Html.DisplayFor(model => model.Wine_Fridge)
+    </div>
+
+    <div class="display-label">Washer___Dryer_in_Unit</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Washer___Dryer_in_Unit)
+    </div>
+
+    <div class="display-label">Washer_Dryer_Connections</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Washer_Dryer_Connections)
+    </div>
+
+    <div class="display-label">Shared_Laundry_Facility</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Shared_Laundry_Facility)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.UnitId }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

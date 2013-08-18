@@ -95,7 +95,32 @@ namespace RentalMobile.Helpers
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", 0) : new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", selectedvalue);
         }
 
+        public static IEnumerable<SelectListItem> Bed(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Beds.Select(c => new { c.BedID, c.BedValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BedID", "BedValue", 0) : new SelectList(query.AsEnumerable(), "BedID", "BedValue", selectedvalue);
+        }
 
+        public static IEnumerable<SelectListItem> Bathroom(this HtmlHelper helper, int? selectedvalue)
+        {
+            var query = db.Bathrooms.Select(c => new { c.BathroomID, c.BathroomValue });
+            return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BathroomID", "BathroomValue", 0) : new SelectList(query.AsEnumerable(), "BathroomID", "BathroomValue", selectedvalue);
+        }
+
+        public static string GetBooleanValue(this bool? b, string ifTrue, string ifFalse, string ifNull)
+        {
+            if (!b.HasValue) return ifNull;
+            return b.Value ? ifTrue : ifFalse;
+        }
+
+
+        public static string GetCurrencyValue(this HtmlHelper helper, int ? currencyID)
+        {
+            var currency = db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyID);
+            if (currency != null)
+                return currency.CurrencyValue;
+            return  db.Currencies.First().CurrencyValue;
+        }
 
 
         /// <summary>

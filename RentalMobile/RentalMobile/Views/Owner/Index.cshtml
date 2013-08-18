@@ -46,6 +46,30 @@
         </section>
     </div>
 }
+@section property
+{
+   <div id="property" class="panel">
+        <section class="row double-bottom">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Add Property" onclick="location.href='/Unit/Create'"/>
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="View Property" onclick="location.href='/Unit/Index'" />
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Edit Property" onclick="location.href='/Unit/Index'" />
+                </div>
+                <div class="six columns push by-two">
+                    <input type="submit" class="full-width tall" value="Delete Property" onclick="location.href='/Unit/Index'"/>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+
 @section favorite
 {
     <div id="favorite">
@@ -419,36 +443,36 @@
             </ul>
             <!-- /.List -->
             <style>
-                #container
-                {
-                    width: 100%;
-                    text-align: center;
-                }
+            	#container
+            	{
+            		width: 100%;
+            		text-align: center;
+            	}
                 
-                #left
-                {
-                    float: left;
-                    width: 50px;
-                    height: 20px;
-                    background: #ff0000;
-                }
+            	#left
+            	{
+            		float: left;
+            		width: 50px;
+            		height: 20px;
+            		background: #ff0000;
+            	}
                 
-                #center
-                {
-                    display: inline-block;
-                    margin: 0 auto;
-                    width: 50px;
-                    height: 20px;
-                    background: #00ff00;
-                }
+            	#center
+            	{
+            		display: inline-block;
+            		margin: 0 auto;
+            		width: 50px;
+            		height: 20px;
+            		background: #00ff00;
+            	}
                 
-                #right
-                {
-                    float: right;
-                    width: 50px;
-                    height: 20px;
-                    background: #0000ff;
-                }
+            	#right
+            	{
+            		float: right;
+            		width: 50px;
+            		height: 20px;
+            		background: #0000ff;
+            	}
             </style>
             <!--Pagination-->
             <div id="container">
@@ -547,13 +571,13 @@
         <style>
             
             
-            .article-grid
-            {
-                background-color: #FFFFFF;
-                border-color: #3A6B93;
-                border-radius: 2px 2px 2px 2px;
-                border: 1px solid #EDEDED;
-            }
+        	.article-grid
+        	{
+        		background-color: #FFFFFF;
+        		border-color: #3A6B93;
+        		border-radius: 2px 2px 2px 2px;
+        		border: 1px solid #EDEDED;
+        	}
         </style>
         <section class="row double-bottom">
              <div class="article-grid" style="background-color: #396991; color: white">

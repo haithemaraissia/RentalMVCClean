@@ -1,0 +1,1244 @@
+﻿@using System.Globalization
+@model RentalMobile.ModelViews.UnitModelView
+@using RentalMobile.Helpers;
+@{
+    ViewBag.Title = "Unit Description";
+    Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
+    //var jsonUrl = "/property/jsonfun/";
+    var jsonUrl = "http://localhost:56224//property/jsonfun/";
+
+    if (String.IsNullOrEmpty(Model.Unit.UnitId.ToString(CultureInfo.InvariantCulture)))
+    {
+        Response.Redirect(Url.Action("LogOn", "Account", "Log in"));
+    }
+    else
+    {
+        jsonUrl += Model.Unit.UnitId;
+
+    }
+}
+
+@section MiniTabMenu
+{
+    <ul class="etabs">
+        <li><a href="#photos"><i class="icon-camera"></i>Photos</a></li>
+        <li><a href="#video"><i class="icon-video"></i>Video</a></li>
+        <li><a href="#map"><i class="icon-map"></i>Map</a></li>
+        <li><a href="#agent"><i class="icon-user"></i>@ViewBag.Poster</a></li>
+    </ul>
+}
+<section class="row">
+    @section photo
+        {
+        <div id="photos" class="panel">
+            <a id="fancybox-manual-c" href="javascript:;">
+                <img src="../../images/dotimages/single-property/gallery-480x350.png" class="img-preview scale-with-grid"
+                    alt="image">
+            </a>
+        </div>
+    }
+    @section video
+        {
+        <div id="video" class="panel">
+            <iframe src="http://player.vimeo.com/video/12158329" width="500" height="281" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    }
+    @section map
+        {
+        <div id="map" class="panel">
+            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.UnitGoogleMap&amp;z=13&amp;output=embed">
+            </iframe>
+            <br />
+        </div>
+    }
+    @section poster
+    {
+        <div id="agent" class="panel">
+            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="Agent" class="scale-with-grid">
+        </div>
+    }
+    @section unitrequestshowing
+    {
+        <style>
+            .ui-timepicker-div .ui-widget-header
+            {
+                margin-bottom: 8px;
+            }
+            .ui-timepicker-div dl
+            {
+                text-align: left;
+            }
+            .ui-timepicker-div dl dt
+            {
+                height: 25px;
+                margin-bottom: -25px;
+            }
+            .ui-timepicker-div dl dd
+            {
+                margin: 0 10px 10px 65px;
+            }
+            .ui-timepicker-div td
+            {
+                font-size: 90%;
+            }
+            .ui-tpicker-grid-label
+            {
+                background: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .ui-timepicker-rtl
+            {
+                direction: rtl;
+            }
+            .ui-timepicker-rtl dl
+            {
+                text-align: right;
+            }
+            .ui-timepicker-rtl dl dd
+            {
+                margin: 0 65px 10px 10px;
+            }
+        </style>
+        <h4>
+            Request showing</h4>
+        <p>
+            Please complete the form below to request a showing for this property.
+        </p>
+        <form action="#">
+        <ul class="grid-form">
+            <li class="four columns alpha">
+                <label for="your-name" class="screen-reader-text">
+                    Your name</label>
+                <input id="your-name" placeholder="Your name" type="text" required>
+            </li>
+            <li class="four columns omega">
+                <label for="your-email" class="screen-reader-text">
+                    E-mail</label>
+                <input id="your-email" placeholder="email" type="email" required>
+            </li>
+            <li class="four columns alpha">
+                <label for="your-telephone" class="screen-reader-text">
+                    Your telephone</label>
+                <input id="your-telephone" placeholder="telephone" type="text" required>
+            </li>
+            <li class="four columns omega">
+                <label for="showing-date" class="screen-reader-text">
+                    Showing date</label>
+                <input id="datepicker2" placeholder="showing date" type="text" required>
+            </li>
+        </ul>
+        <input type="submit" class="full-width tall" value="Request a showing">
+        </form>
+    }
+</section>
+<section class="row double-bottom">
+    @section description{
+        <div id="description" class="panel">
+            <div class="seven columns">
+                <h4>
+                    General Description</h4>
+                <div style="word-wrap: break-word;overflow: auto;">
+                   @Model.Unit.Description 
+                </div>
+            </div>
+            <div class="six columns push by-two">
+                <h4>
+                    About</h4>
+                <ul class="arrow">
+                    <li>Rent</li>
+                    <li>@Model.UnitPricing.Rent <span style="color: #346993">@Html.GetCurrencyValue(Model.UnitPricing.CurrencyId)</span></li>
+                    <li>Deposit</li>
+                    <li>@Model.UnitPricing.Deposit <span style="color: #346993">@Html.GetCurrencyValue(Model.UnitPricing.CurrencyId)</span></li>
+                    <li>Available Date</li>
+                    <li>
+                        @if (Model.UnitPricing.AvailableDate != null)
+                        {
+                            @Model.UnitPricing.AvailableDate.Value.Date.ToShortDateString()
+                        }
+                    </li>
+                    <li>Section 8</li>
+                    <li>@Model.UnitPricing.Section_8_Eligible.GetBooleanValue("Yes","No","Not Set")</li>
+                </ul>
+            </div>
+        </div>
+    }
+    @section amenities
+    {
+        <section id="amenities">
+            <div id="Feature">
+                <h4 class="section-titling">
+                    Feature</h4>
+                <br />
+                <div class="three columns push by-one " id="firstcolumn">
+                    <ul class="arrow">
+                        @if (Model.UnitFeature.High_Speed_Internet_Access)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.High_Speed_Internet_Access)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.Internet_Included)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Internet_Included)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.Wireless_Internet_Access)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Wireless_Internet_Access)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one " id="secondcolumn">
+                    <ul class="arrow">
+                        @if (Model.UnitFeature.Short_Term_Lease_Available)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Short_Term_Lease_Available)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.RV_Parking)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.RV_Parking)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.Boat_Storage)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Boat_Storage)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one " id="thirdcolumn">
+                    <ul class="arrow">
+                        @if (Model.UnitFeature.Large_Dogs)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Large_Dogs)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.Alarm_system)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Alarm_system)
+                            </li>
+                        }
+                        @if (Model.UnitFeature.Near_Transportation)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Near_Transportation)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one " id="fourthcolumn">
+                    <ul class="arrow">
+                        @if (Model.UnitFeature.Covered_Parking)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Covered_Parking)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one " id="fifthcolumn">
+                    <ul class="arrow">
+                        @if (Model.UnitFeature.Some_Paid_Utilities)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Some_Paid_Utilities)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitFeature.Pets_allowed)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Pets_allowed)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitFeature.Small_Dogs)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitFeature.Small_Dogs)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div id="CommunityAmenity">
+                <h4 class="section-titling">
+                    Community Amenity</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Neighborhood_Name))
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Neighborhood_Name)
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Elementary_School))
+                        {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.Elementary_School) </li>
+
+
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.High_School))
+                        {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.High_School) </li>
+
+
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.School_District))
+                        {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.School_District) </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.Middle_School))
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Middle_School)
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.UnitCommunityAmenity.County_Name))
+                        {
+                            <li>@Html.LabelFor(m => m.UnitCommunityAmenity.County_Name) </li>
+
+
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitCommunityAmenity.Assisted_Living_Community)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Assisted_Living_Community)
+                            </li>
+                        }
+                        @if (Model.UnitCommunityAmenity.Over_55_Active_Community)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Over_55_Active_Community)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitCommunityAmenity.Controlled_Access)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Controlled_Access)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitCommunityAmenity.Community_Pool)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Community_Pool)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitCommunityAmenity.Disability_Access)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitCommunityAmenity.Disability_Access)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            @*<div id="UnitAppliance">
+                <h4 class="section-titling">
+                    Appliance</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit) </li>
+                        } @if (Model.UnitAppliance.Shared_Laundry_Facility) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility) </li>
+                        } @if (Model.UnitAppliance.Wine_Fridge) {
+                        <li>@Html.LabelFor(m => m.UnitAppliance.Wine_Fridge) </li>
+                        }
+                    </ul>
+                </div>
+                <br />
+                <br />
+            </div>*@
+            <div id="UnitAppliance">
+                <h4 class="section-titling">
+                    Appliance</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Range_Oven)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Range_Oven)
+                            </li>
+                        }
+                        @if (Model.UnitAppliance.Sink_Disposal)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Sink_Disposal)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Surround_Sound)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Surround_Sound)
+                            </li>
+                        }
+                        @if (Model.UnitAppliance.Washer_Dryer_Connections)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Washer_Dryer_Connections)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Full_Refrigerator)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Full_Refrigerator)</li>
+                        }
+                        @if (Model.UnitAppliance.Microwave)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Microwave)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Wine_Fridge)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Wine_Fridge)
+                            </li>
+                        }
+                        @if (Model.UnitAppliance.Shared_Laundry_Facility)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Shared_Laundry_Facility)
+                            </li>
+                        }
+                        <br />
+                        <br />
+                    </ul>
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitAppliance.Dishwasher)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Dishwasher)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitAppliance.Central_Vacuum)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Central_Vacuum)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitAppliance.Washer___Dryer_in_Unit)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitAppliance.Washer___Dryer_in_Unit)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </ul>
+                </div>
+            </div>
+            <div id="InteriorAmenity">
+                <h4 class="section-titling">
+                    Interior</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        <li>
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.CoolingTypeId)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.HeatingTypeId)
+                        </li>
+                        @if (Model.UnitInteriorAmenity.Fireplace)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Fireplace)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitInteriorAmenity.Hot_Tub_Spa)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Hot_Tub_Spa)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Cable_Ready)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Cable_Ready)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Jetted_Tub)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Jetted_Tub)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitInteriorAmenity.Attic)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Attic)
+                            </li>
+                        }
+                        <li>
+                            @Html.LabelFor(m => m.UnitInteriorAmenity.BasementTypeId)
+                        </li>
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitInteriorAmenity.Double_Pane_Storm_Windows)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Double_Pane_Storm_Windows)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.FloorCoveringId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.FloorCoveringId)
+                            </li>
+                        }
+                        @if (Model.UnitInteriorAmenity.FoundationTypeId != null)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.FoundationTypeId)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitInteriorAmenity.Kitchen_Island)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Kitchen_Island)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Vaulted_Ceiling)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Vaulted_Ceiling)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitInteriorAmenity.Ceiling_Fan)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitInteriorAmenity.Ceiling_Fan)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div id="ExteriorAmenity">
+                <h4 class="section-titling">
+                    Exterior</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitExteriorAmenity.Pool)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Pool)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Garden)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Garden)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitExteriorAmenity.Gated_Entry)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Gated_Entry)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Greenhouse)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Greenhouse)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitExteriorAmenity.Lawn)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Lawn)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Deck)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Deck)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitExteriorAmenity.Dock)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Dock)
+                            </li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Fenced_Yard)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Fenced_Yard)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitExteriorAmenity.Sprinkler_System)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Sprinkler_System)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Patio)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Patio)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitExteriorAmenity.Pond)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitExteriorAmenity.Pond)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div id="LuxuryAmenity">
+                <h4 class="section-titling">
+                    Luxury</h4>
+                <br />
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Tennis_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Tennis_Court)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Security_System)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Security_System)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Sports_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Sports_Court)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Basketball_Court)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Basketball_Court)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Barbecue)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Barbecue)
+                            </li>
+                        }@if (Model.UnitLuxuryAmenity.Elevator)
+                         {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Elevator)
+                            </li>
+                         }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Porch)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Porch)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Sauna)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Sauna)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Skylight)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Skylight)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Intercom)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Intercom)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Waterfront)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Waterfront)
+                            </li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Wet_Bar)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Wet_Bar)
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                </div>
+                <div class="three columns push by-one ">
+                    <ul class="arrow">
+                        @if (Model.UnitLuxuryAmenity.Doorman)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Doorman)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Heat)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Heat)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Plumbing)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Plumbing)
+                            </li>
+
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                        @if (Model.UnitLuxuryAmenity.Solar_Screens)
+                        {
+                            <li>
+                                @Html.LabelFor(m => m.UnitLuxuryAmenity.Solar_Screens)
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li style="background: none; border-bottom: 0"></li>
+                        }
+                    </ul>
+                    <br />
+                </div>
+            </div>
+        </section>
+    }
+    @section shareonfb
+    {
+        <div id="share-on-fb" class="panel">
+            <ul class="grid-form row double-bottom " style="margin: 20px">
+                <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.Twitter)">Share it with your Twitter</a> </li>
+                <li class="six columns push by-two"><a target="_blank" class="facebook-registration"
+                    style="text-align: center" href="@Html.Raw(ViewBag.FaceBook)"
+                    onclick="jSuccess();">Share it with your Facebook</a> </li>
+            </ul>
+            <ul class="grid-form row remove-bottom" style="margin: 20px">
+                <li class="six columns push by-one"><a class="google-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.GooglePlusShare)">Share it with your Google</a> </li>
+                <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.LinkedIn)">Share it with your Linked In</a> </li>
+            </ul>
+        </div>
+    }
+    @section sendtofriend
+    {
+        <div id="send-to-friend" class="panel">
+            <form action="#">
+            <h4 class="section-titling">
+                Send this property to a friend</h4>
+            <ul class="grid-form row remove-bottom eight columns">
+                <li class="four columns alpha">
+                    <label for="friend-name-field" class="screen-reader-text">
+                        Name of your friend</label>
+                    <input id="friend-name-field" type="text" placeholder="Name of your friend" class="full-width" />
+                </li>
+                <li class="four columns omega">
+                    <label for="friend-email-field" class="screen-reader-text">
+                        Email of your friend</label>
+                    <input id="friend-email-field" type="email" placeholder="Email of your friend" class="full-width" />
+                </li>
+                <li class="eight columns alpha omega">
+                    <label for="recomendation-message-field" class="screen-reader-text">
+                        Recomendation</label>
+                    <textarea id="recomendation-message-field" placeholder="Recomendation" class="full-width"></textarea>
+                </li>
+                <li class="two columns alpha">
+                    <input type="submit" value="Send it" />
+                </li>
+                <li class="two columns omega">
+                    <input type="submit" value="Clear" />
+                </li>
+            </ul>
+            </form>
+        </div>
+    }
+    @section comments
+    {
+        <div id="comments" class="panel">
+            <h4 class="section-titling">
+                Comments</h4>
+            <ul class="comments-list fourteen columns row">
+                <li class="comment clearfix">
+                    <figure class="avatar">
+                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
+                    <div class="com-text">
+                        <h5>
+                            Sarah said:</h5>
+                        <p>
+                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
+                        <a href="#" class="reply-btn">- Reply</a>
+                    </div>
+                    <ul>
+                        <li class="comment clearfix">
+                            <figure class="avatar">
+                                <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
+                            <div class="com-text">
+                                <h5>
+                                    Sarah said:</h5>
+                                <p>
+                                    I agree with <a href="#">John Doe...</a> This is a great property.</p>
+                                <a href="#" class="reply-btn">- Reply</a>
+                            </div>
+                            <ul>
+                                <li class="comment clearfix">
+                                    <figure class="avatar">
+                                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
+                                    <div class="com-text">
+                                        <h5>
+                                            Sarah said:</h5>
+                                        <p>
+                                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
+                                        <a href="#" class="reply-btn">- Reply</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="comment clearfix">
+                    <figure class="avatar">
+                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
+                    <div class="com-text">
+                        <h5>
+                            Sarah said:</h5>
+                        <p>
+                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
+                        <a href="#" class="reply-btn">- Reply</a>
+                    </div>
+                </li>
+            </ul>
+            <form action="#" class="comment-form fourteen columns row">
+            <h4 class="divider-title">
+                Leave your comment</h4>
+            <ul class="grid-form row remove-bottom fourteen columns alpha omega">
+                <li class="five columns alpha">
+                    <label for="name-field" class="screen-reader-text">
+                        Your name</label>
+                    <input id="name-field" type="text" placeholder="Your name" class="full-width" />
+                </li>
+                <li class="nine columns omega">
+                    <label for="email-field" class="screen-reader-text">
+                        Your email</label>
+                    <input id="email-field" type="email" placeholder="Your email" class="full-width" />
+                </li>
+                <li class="fourteen columns alpha omega">
+                    <label for="message-field" class="screen-reader-text">
+                        Comment</label>
+                    <textarea id="message-field" placeholder="Comment" class="full-width"></textarea>
+                </li>
+                <li class="two columns alpha">
+                    <input type="submit" value="Send it" />
+                </li>
+                <li class="two columns omega">
+                    <input type="submit" value="Clear" />
+                </li>
+            </ul>
+            </form>
+        </div>
+    }
+    @section scripts
+{
+        <ul id="jsonRequestFun">
+        </ul>
+        <a href="#" id="requestFun">Json is fun</a>
+        <!-- /section: carousel -->
+        <!-- Scripts & Plugins
+  	================================================== -->
+        <!-- BX Slider -->
+        <script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
+        <!--Fancybox Ligbox-->
+        <script src="../../Scripts/js/jquery.fancybox.js" type="text/javascript"></script>
+        <!--Fancybox Ligbox Thumbnails-->
+        <script src="../../Scripts/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+        <!-- Tabs -->
+        <script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
+        <!-- jQuery dropdown -->
+        <script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+        <!-- Tipsy -->
+        <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
+        <!-- FitVids -->
+        <script src="../../Scripts/js/fitvids.min.js" type="text/javascript"></script>
+        <!-- jQuery dropdown -->
+        <script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+        <!-- Tipsy -->
+        <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
+        <!-- Custom Scripts -->
+        <script src="../../Scripts/js/scripts2.js" type="text/javascript"></script>
+        <!-- Custom Scripts -->
+        <script>
+            $(document).ready(function() { //scroll to top link
+                $('.scroll-top').click(function() {
+                    $("html, body").animate({ scrollTop: 0 }, 600);
+                    return false;
+                });         
+                
+                
+            //Lightbox Fancybox
+                $("#fancybox-manual-c").click(function () {
+                    
+                    @Html.Raw(ViewBag.Sript)
+                });
+
+
+        //responsive menu
+        $('<select />').appendTo('header nav');
+
+        $('<option />', {
+            'selected': 'selected',
+            'value': '',
+            'text': 'Select a Page...'
+        }).appendTo('header nav select');
+
+        $('.menu-bar .menu a').each(function () {
+            var el = $(this);
+            if (el.parents('.menu-bar .menu ul').length) {
+                $('<option />', {
+                    'value': el.attr('href'),
+                    'text': '... ' + el.text()
+                }).appendTo('nav select');
+            } else {
+                $('<option />', {
+                    'value': el.attr('href'),
+                    'text': el.text()
+                }).appendTo('nav select');
+            }
+        });
+
+        $('header nav select').change(function () {
+            window.location = $(this).find('option:selected').val();
+        });
+
+        //tipsy
+        $('ul.social a, .home-btn').tipsy({
+            gravity: 's',
+            fade: true
+        });
+
+        //filters on home and rent
+        var newSelection = "";
+
+        $(".filter-list a").click(function () {
+
+            $("#property-list").fadeTo(200, 0.10);
+
+            $(".filter-list a").removeClass("current");
+            $(this).addClass("current");
+
+            newSelection = $(this).attr("data-rel");
+
+            $(".prop-type").not("." + newSelection).slideUp();
+            $("." + newSelection).slideDown();
+
+            $("#property-list").fadeTo(600, 1);
+
+        });
+
+    });
+        </script>
+        <script type="text/javascript">
+
+            $(document).ready(function ($) {
+
+                // Init Carousel	
+                $('.bx-carousel').bxSlider({
+                    auto: true,
+                    minSlides: 1,
+                    maxSlides: 3,
+                    slideWidth: 300,
+                    slideMargin: 20,
+                    nextSelector: '#carousel-next',
+                    prevSelector: '#carousel-prev',
+                    pager: false
+                });
+
+                //Easy tabs
+                $('.tab-container').easytabs();
+
+                //FitVids
+                $('#video').fitVids();
+
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("#requestFun").click(function () {
+                    $.getJSON("../../property/jsonfun/24", null, function (data) {
+                        $("<li>" + data.href + "</li>").appendTo("#jsonRequestFun");
+                        $("<li>" + data.title + "</li>").appendTo("#jsonRequestFun");
+                    });
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src="../../Scripts/timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+                //                $("#datepicker2").datepicker();
+                $("#datepicker2").datetimepicker({
+                    timeFormat: "hh:mm tt"
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script type="text/javascript" src="../../Scripts/dattimepicker/jquery.simple-dtpicker.js"></script>
+        <link type="text/css" href="../../css/datetimepicker/jquery.simple-dtpicker.css"
+            rel="stylesheet" />
+        <script type="text/javascript">
+            $(function () {
+                $("#datepicker").appendDtpicker();
+            });
+        </script>
+        <script type="text/javascript" src="../../Scripts/helper/AmenitiesAlignment.js"></script>
+        <!-- jNotify -->
+        <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+            media="screen" />
+        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
+    }
+    }
+</section>
