@@ -87,6 +87,24 @@
         return isValid;
     }
 
+
+    function validateStep4() {
+        var isValid = true;
+        //validate email  email
+        var email = $('#email').val();
+        if (email && email.length > 0) {
+            if (!isValidEmailAddress(email)) {
+                isValid = false;
+                $('#msg_email').html('Email is invalid').show();
+            } else {
+                $('#msg_email').html('').hide();
+            }
+        } else {
+            isValid = false;
+            $('#msg_email').html('Please enter email').show();
+        }
+        return isValid;
+    }
     // Email Validation
     function isValidEmailAddress(emailAddress) {
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -97,7 +115,6 @@
 </script>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
     rel="stylesheet" type="text/css" />
-@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>*@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -110,11 +127,110 @@
     });
 
 </script>
-@using (Html.BeginForm())
+<script>
+
+    function EnterKeyFilter() {
+        if (window.event.keyCode == 13) {
+            event.returnValue = false;
+            event.cancel = true;
+        }
+    }
+
+    function is_int(value) {
+        if ((parseFloat(value) == parseInt(value)) && !isNaN(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $(function () {
+
+        // Set up
+        $(".fancy-form div > div").hide();
+        var firstReveal = true;
+
+        $("#zip").keyup(function () {
+
+            // Cache 
+            var el = $(this);
+
+            // Did they type five integers?
+            if ((el.val().length == 5) && (is_int(el.val()))) {
+
+                // Call Ziptastic for information
+                $.ajax({
+                    url: "http://zip.elevenbasetwo.com",
+                    cache: false,
+                    dataType: "json",
+                    type: "GET",
+                    data: "zip=" + el.val(),
+                    success: function (result, success) {
+
+                        $(".zip-error, .instructions").slideUp(200);
+
+                        $("#city").val(result.city);
+
+                        $("#state").val(result.state);
+
+                        $("#country").val(result.country);
+
+                        $(".fancy-form div > div").slideDown();
+
+                        if (firstReveal) {
+                            // Ghetto but without this timeout the field doesn't
+                            // take focus for some reason.
+                            setTimeout(function () { $("#address-line-1").focus(); },
+                                400);
+                        };
+
+                        firstReveal = false;
+
+                    },
+                    error: function (result, success) {
+
+                        $(".zip-error").slideDown(300);
+
+                    }
+
+                });
+
+            } else if (el.val().length < 5) {
+
+                $(".zip-error").slideUp(200);
+
+            };
+
+        });
+
+    }); // END DOM Ready
+</script>
+<style>
+	.zip-error
+	{
+		color: #d70000;
+		font: 12px "Lucida Sans Unicode" , "Lucida Grande" , sans-serif;
+		border-top: 2px dotted #ec9696;
+		border-bottom: 2px dotted #ec9696;
+		text-align: center;
+		padding: 5px 10px;
+		margin-top: 10px;
+		display: none;
+	}
+	#Description
+	{
+		height: 150px;
+		min-height: 150px;
+	}
+</style>
+
+
+
+
+
+@using (Html.BeginForm("Create", "Unit", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
-@*<input type='hidden' name="issubmit" value="1">*@
-    <!-- Tabs -->
     <style>
         form li small
         {
@@ -122,22 +238,79 @@
         }
     </style>
     
-    
+            <div class=" instructions editor-label">
+                <label for="city">
+                    Zipcode</label>
+            </div>
+            <div>
+                <div class="editor-label">
+                    <label for="address-line-1">
+                        Street #1</label>
+                </div>
+                <div class="editor-label">
+                      @Html.TextBoxFor(m => m.Unit.Address, new { id = "address-line-1", name = "address-line-1",required = "required", @class = "full-width", placeholder = "Address" })
+
+                       </div>
+            </div>
+            <div>
+                <div class="editor-label">
+                    <label for="city">
+                        City</label>
+                </div>
+                <div class="editor-label">
+                    
+                       @Html.TextBoxFor(m => m.Unit.City, new { id = "city", name = "city", required = "required", @class = "full-width", placeholder = "City" })
+
+                </div>
+                <div class="editor-label">
+                    <label for="state">
+                        State</label>
+                </div>
+                <div class="editor-label">
+                        @Html.TextBoxFor(m => m.Unit.State, new { id = "state", name = "state", required = "required", @class = "full-width", placeholder = "State" })
+                </div>
+                <div class="editor-label">
+                    <label for="city">
+                        Country</label>
+                </div>
+@*                <div class="editor-label">
+                    @Html.TextBoxFor(model => model.CountryCode, new { id = "country", name = "country" })
+                </div>*@
+                <div class="zip-wrap">
+                    <div class="editor-label">
+                        <label for="zip">
+                            Zip</label></div>
+                    <input type="text" pattern="[0-9]*" maxlength="5" required name="zip" id="zip" />
+                    <p class="zip-error">
+                        Not a real zip code.</p>
+                </div>
+            </div>
+      
+
+      
+      
+      
+      
+      
+      
 
     <div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
         <ul class="sixteen columns">
-            <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
-                class="stepDesc">Property<br />
-                @* <small>Applicant Information</small>*@ </span></a></li>
-            <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
-                class="stepDesc">Feature<br />
-                @* <small>Employment</small>*@ </span></a></li>
-            <li><a href="#step-3" class="four columns"><span class="stepNumber">3</span> <span
-                class="stepDesc">Amenity<br />
-                @* <small>Step 3 description</small> *@</span></a></li>
-            <li><a href="#step-4" class="four columns"><span class="stepNumber">4</span> <span
-                class="stepDesc">Photo<br />
-                @*  <small>Additional Information</small>*@ </span></a></li>
+            <li><a href="#step-1" class="three columns push by-one"><span class="stepNumber">1</span>
+                <span class="stepDesc">Property<br />
+                </span></a></li>
+            <li><a href="#step-2" class="three columns push by-one"><span class="stepNumber">2</span>
+                <span class="stepDesc">Feature<br />
+                </span></a></li>
+            <li><a href="#step-3" class="three columns push by-one"><span class="stepNumber">3</span>
+                <span class="stepDesc">Amenity<br />
+                </span></a></li>
+            <li><a href="#step-4" class="three columns push by-one"><span class="stepNumber">4</span>
+                <span class="stepDesc">Photo<br />
+                </span></a></li>
+            <li><a href="#step-5" class="three columns push by-one"><span class="stepNumber">5</span>
+                <span class="stepDesc">Video<br />
+                </span></a></li>
         </ul>
         <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
             <h2 class="StepTitle">
@@ -519,90 +692,8 @@
                         </label>
                         @Html.DropDownListFor(m => m.UnitInteriorAmenity.Floor, Html.Floor(1))
                     </li>
-                    @*                        <li class="five columns ">
-                            <label id="CoolingTypeIdLabel">
-                                Cooling Type
-                            </label>
-                            @Html.EditorFor(m => m.UnitInteriorAmenity.CoolingTypeId, new { id = "CoolingTypeId", required = "required", @class = "full-width", placeholder = "Cooling Type " })
-                        </li>
-                        <li class="five columns">
-                            <label id="HeatingTypeIdLabel">
-                                Heating Type
-                            </label>
-                            @Html.EditorFor(m => m.UnitInteriorAmenity.HeatingTypeId, new { id = "HeatingTypeId", required = "required", @class = "full-width", placeholder = "Heating Type" })
-                        </li>
-                        <li class="five columns">
-                            <label id="BasementTypeLabel">
-                                Basement Type</label>
-                            @Html.EditorFor(m => m.UnitInteriorAmenity.BasementTypeId, new { id = "BasementTypeId", required = "required", @class = "full-width", placeholder = "Basement Type" })
-                        </li>
-                       
-                        <li class="five columns">
-                            <label id="FloorCoveringIdLabel">
-                                Floor Covering
-                            </label>
-                            @Html.EditorFor(m => m.UnitInteriorAmenity.FloorCoveringId, new { id = "FloorCoveringId", required = "required", @class = "full-width", placeholder = "Floor Covering" })
-                        </li>
-                        <li class="five columns">
-                            <label id="FoundationTypeLabel">
-                                Foundation Type</label>
-                            @Html.EditorFor(m => m.UnitInteriorAmenity.FoundationTypeId, new { id = "FoundationTypeId", required = "required", @class = "full-width", placeholder = "Foundation Type" })
-                        </li>*@
                 </ul>
             </section>
-            @*<section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
-                <ul>
-                    
-                      
-                    
-                    
-
-                    
-                    <!--INCLUDED IN EDIT-->
-                    <li class="five columns" style="text-align: left">
-                        <label id="CoolingTypeIdLabel">
-                            Cooling
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.CoolingTypeId, Html.Cooling((int?)ViewBag.CurrencyCode))
-                    </li>
-                    <li class="five columns" style="text-align: left">
-                        <label id="HeatingTypeIdLabel">
-                            Heating
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.HeatingTypeId, Html.Heating((int?)ViewBag.CurrencyCode))
-                    </li>
-                    <li class="five columns" style="text-align: left">
-                        <label id="BasementTypeLabel">
-                            Basement
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.BasementTypeId, Html.Basement((int?)ViewBag.CurrencyCode))
-                    </li>
-                    <li class="five columns" style="text-align: left">
-                        <label id="FloorCoveringIdLabel">
-                            Floor Covering
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.FloorCoveringId, Html.FloorCovering((int?)ViewBag.CurrencyCode))
-                    </li>
-                    <li class="five columns" style="text-align: left">
-                        <label id="FoundationIdLabel">
-                            Foundation
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity.FoundationTypeId, Html.Foundation((int?)ViewBag.CurrencyCode))
-                    </li>
-                       <li class="five columns" style="text-align: left">
-                        <label id="FloorIdLabel">
-                            Floor
-                        </label>
-                        @Html.DropDownListFor(m => m.UnitInteriorAmenity, Html.Floor((int?)ViewBag.CurrencyCode))
-                    </li>
-
-
-
-                    <!--INCLUDED IN EDIT-->
-                 
-                </ul>
-            </section>*@
             <h2 class="StepTitle">
                 Exterior Amenity</h2>
             <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
@@ -765,64 +856,33 @@
                 @Html.Action("Partial2", Model);
             </section>
         </div>
+        <div id="step-5" class="sixteen columns" style="height: auto; padding: 0">
+            <h2 class="StepTitle">
+                Video</h2>
+            <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+                margin-bottom: 10px; text-align: center">
+                <ul>
+                    <li class="seven columns">
+                        <img src="../../images/YouTubeLogo.jpg" alt="agent" class="scale-with-grid" style="width: 250px;
+                            height: 250px" />
+                        @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
+                    </li>
+                    <li class="seven columns">
+                        <img src="../../images/Vimeo_logo.png" alt="agent" class="scale-with-grid" style="width: 250px;
+                            height: 250px" />
+                        @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
+                        @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
+                    </li>
+                </ul>
+            </section>
+        </div>
     </div>
     <!-- End SmartWizard Content -->
 }
-@*@Html.HiddenFor(m => m.UnitInteriorAmenity.UnitId)*@;
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-@*@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Unit</legend>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.Description)
-            @Html.ValidationMessageFor(model => model.Unit.Description)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Unit.PrimaryPhoto)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Unit.PrimaryPhoto)
-            @Html.ValidationMessageFor(model => model.Unit.PrimaryPhoto)
-        </div>
-
-        @*   <legend>UnitGallery</legend>
-        
-         <div class="editor-label">
-            @Html.LabelFor(model => model.UnitGallery.Path)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitGallery.Path)
-            @Html.ValidationMessageFor(model => model.UnitGallery.Path)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitGallery.Caption)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitGallery.Caption)
-            @Html.ValidationMessageFor(model => model.UnitGallery.Caption)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitGallery.Rank)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UnitGallery.Rank)
-            @Html.ValidationMessageFor(model => model.UnitGallery.Rank)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
 <table class="model-state">
     @foreach (var item in ViewContext.ViewData.ModelState)
     {

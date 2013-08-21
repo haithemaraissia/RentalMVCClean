@@ -17,7 +17,6 @@
 
     }
 }
-
 @section MiniTabMenu
 {
     <ul class="etabs">
@@ -55,7 +54,11 @@
     @section poster
     {
         <div id="agent" class="panel">
-            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="Agent" class="scale-with-grid">
+            <a href="dfgd">
+                <img src="../../images/dotimages/single-property/agent-480x350.png" alt="Agent" class="scale-with-grid">
+                <h6 class="h6custom" style="text-align: center">
+                    carrie tysdysy</h6>
+            </a>
         </div>
     }
     @section unitrequestshowing
@@ -141,8 +144,8 @@
             <div class="seven columns">
                 <h4>
                     General Description</h4>
-                <div style="word-wrap: break-word;overflow: auto;">
-                   @Model.Unit.Description 
+                <div style="word-wrap: break-word; overflow: auto;">
+                    @Model.Unit.Description
                 </div>
             </div>
             <div class="six columns push by-two">
@@ -161,7 +164,7 @@
                         }
                     </li>
                     <li>Section 8</li>
-                    <li>@Model.UnitPricing.Section_8_Eligible.GetBooleanValue("Yes","No","Not Set")</li>
+                    <li>@Model.UnitPricing.Section_8_Eligible.GetBooleanValue("Yes", "No", "Not Set")</li>
                 </ul>
             </div>
         </div>
@@ -997,90 +1000,7 @@
             </form>
         </div>
     }
-    @section comments
-    {
-        <div id="comments" class="panel">
-            <h4 class="section-titling">
-                Comments</h4>
-            <ul class="comments-list fourteen columns row">
-                <li class="comment clearfix">
-                    <figure class="avatar">
-                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
-                    <div class="com-text">
-                        <h5>
-                            Sarah said:</h5>
-                        <p>
-                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
-                        <a href="#" class="reply-btn">- Reply</a>
-                    </div>
-                    <ul>
-                        <li class="comment clearfix">
-                            <figure class="avatar">
-                                <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
-                            <div class="com-text">
-                                <h5>
-                                    Sarah said:</h5>
-                                <p>
-                                    I agree with <a href="#">John Doe...</a> This is a great property.</p>
-                                <a href="#" class="reply-btn">- Reply</a>
-                            </div>
-                            <ul>
-                                <li class="comment clearfix">
-                                    <figure class="avatar">
-                                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
-                                    <div class="com-text">
-                                        <h5>
-                                            Sarah said:</h5>
-                                        <p>
-                                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
-                                        <a href="#" class="reply-btn">- Reply</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="comment clearfix">
-                    <figure class="avatar">
-                        <img src="../../images/dotimages/small-avatar-placeholder.png" alt="//"></figure>
-                    <div class="com-text">
-                        <h5>
-                            Sarah said:</h5>
-                        <p>
-                            I agree with <a href="#">John Doe...</a> This is a great property.</p>
-                        <a href="#" class="reply-btn">- Reply</a>
-                    </div>
-                </li>
-            </ul>
-            <form action="#" class="comment-form fourteen columns row">
-            <h4 class="divider-title">
-                Leave your comment</h4>
-            <ul class="grid-form row remove-bottom fourteen columns alpha omega">
-                <li class="five columns alpha">
-                    <label for="name-field" class="screen-reader-text">
-                        Your name</label>
-                    <input id="name-field" type="text" placeholder="Your name" class="full-width" />
-                </li>
-                <li class="nine columns omega">
-                    <label for="email-field" class="screen-reader-text">
-                        Your email</label>
-                    <input id="email-field" type="email" placeholder="Your email" class="full-width" />
-                </li>
-                <li class="fourteen columns alpha omega">
-                    <label for="message-field" class="screen-reader-text">
-                        Comment</label>
-                    <textarea id="message-field" placeholder="Comment" class="full-width"></textarea>
-                </li>
-                <li class="two columns alpha">
-                    <input type="submit" value="Send it" />
-                </li>
-                <li class="two columns omega">
-                    <input type="submit" value="Clear" />
-                </li>
-            </ul>
-            </form>
-        </div>
-    }
+  
     @section scripts
 {
         <ul id="jsonRequestFun">
@@ -1122,6 +1042,8 @@
                 $("#fancybox-manual-c").click(function () {
                     
                     @Html.Raw(ViewBag.Sript)
+
+                    var t = "test";
                 });
 
 
@@ -1202,16 +1124,6 @@
                 //FitVids
                 $('#video').fitVids();
 
-            });
-        </script>
-        <script type="text/javascript">
-            $(function () {
-                $("#requestFun").click(function () {
-                    $.getJSON("../../property/jsonfun/24", null, function (data) {
-                        $("<li>" + data.href + "</li>").appendTo("#jsonRequestFun");
-                        $("<li>" + data.title + "</li>").appendTo("#jsonRequestFun");
-                    });
-                });
             });
         </script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />

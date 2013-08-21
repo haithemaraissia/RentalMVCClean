@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -123,6 +124,35 @@ namespace RentalMobile.Helpers
         }
 
 
+
+
+
+
+
+
+        public static string GetBedValue(this HtmlHelper helper, int? selectedvalue)
+        {
+            if (selectedvalue == null) return  "1";
+            var bed = db.Beds.FirstOrDefault(x => x.BedID == selectedvalue);
+            return bed != null ? bed.BedValue : "1";
+        }
+
+
+        public static string GetBathroomValue(this HtmlHelper helper,int? selectedvalue)
+        {
+            if (selectedvalue == null) return "1";
+            var bathroom = db.Bathrooms.FirstOrDefault(x => x.BathroomID == selectedvalue);
+            return bathroom != null ? bathroom.BathroomValue : "1";
+        }
+
+
+
+        public static string CountPhoto(this HtmlHelper helper, int? unitid)
+        {
+            return unitid == null ? "1" : db.UnitGalleries.Count(x => x.UnitId == unitid).ToString(CultureInfo.InvariantCulture);
+        }
+
+
         /// <summary>
         /// Custom Label for the purpose of :
         /// new { @class= "SmallInput" })
@@ -184,6 +214,32 @@ namespace RentalMobile.Helpers
             }
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static string TruncateLongString(this HtmlHelper helper,string str, int maxLength)
+        {
+            if (String.IsNullOrEmpty(str))return "";
+            return str.Substring(0, Math.Min(str.Length, maxLength));
+        }
+
 
     }
 }

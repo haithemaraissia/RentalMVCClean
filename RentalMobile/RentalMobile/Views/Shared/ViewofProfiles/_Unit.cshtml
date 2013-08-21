@@ -2,7 +2,7 @@
 @Html.Partial("LayoutFrame/_IEHandler")
 <html lang="en">
 @RenderSection("head", false)
-@Html.Partial("LayoutFrame/_Head")
+@Html.Partial("LayoutFrame/_HeadProperty")
 <body>
     <div class="main" role="main">
         @RenderBody()
@@ -20,7 +20,6 @@
                 <h2 class="section-titling">
                     Central Park West, $390.000</h2>
                 <div class="tab-container mini-tabs eight columns">
-@*                    @Html.Partial("Menu/_PhotoGalleryMiniTabMenu")*@
                     @RenderSection("MiniTabMenu", false)
                     @RenderSection("photo", false)
                     @RenderSection("video", false)

@@ -1620,3 +1620,24 @@ ul.lang li a img{
 		.ask-form .avatar { float: none; margin: 0 auto 20px; width: 89px; }
 		#ask { width: 100%; margin-bottom: 0!important; }
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* Additional */
+	.camera {
+    background: url("../../images/dotimages/icons/camera-count-ico.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    height: 28px;
+    left: 0;
+    line-height: 28px;
+    padding-left: 33px;
+    position: absolute;
+    top: 0;
+    width: 50px;
+}

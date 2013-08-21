@@ -1,81 +1,228 @@
-﻿@model IEnumerable<RentalMobile.Models.Unit>
-
+﻿@using System.Globalization
+@using RentalMobile.Helpers
+@model IEnumerable<RentalMobile.Models.Unit>
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
-
-<h2>Index</h2>
-
+<h2>
+    Index</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table>
-    <tr>
-        <th>
-            Address
-        </th>
-        <th>
-            City
-        </th>
-        <th>
-            State
-        </th>
-        <th>
-            Bed
-        </th>
-        <th>
-            Bathroom
-        </th>
-        <th>
-            SquareFoot
-        </th>
-        <th>
-            YearBuilt
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            PrimaryPhoto
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bathroom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SquareFoot)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YearBuilt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrimaryPhoto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UnitId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UnitId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UnitId })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UnitId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UnitId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UnitId })
+            </td>
+        </tr>
+    }
 </table>
+<section class="sixteen columns">
+    <h2 class="remove-top">
+        Rent</h2>
+    <!-- filters -->
+    <form action="#" class="row">
+    <!-- tag filters -->
+    <ul class="filter-list nine alpha columns row">
+        <li><a data-rel="all" class="current">All</a></li>
+        <li><a data-rel="house">House</a></li>
+        <li><a data-rel="appartment">Apartment</a></li>
+        <li><a data-rel="loft">Loft</a></li>
+        <li><a data-rel="offices">Offices</a></li>
+        <li><a data-rel="condos">Condos</a></li>
+    </ul>
+    <div class="switcher fr">
+        <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+            id="listview" class="switcher active"><i class="icon-menu"></i></a>
+    </div>
+    </form>
+    <div id="showing" class="panel">
+        <section class="fifteen columns">
+            <!-- List/Grid gallery -->
+            <ul id="property-list" class="list-grid-gallery list">
+                @foreach (var item in Model)
+                {
+                    <li class="prop-type all @item.TypeId">
+                        <article>
+                            
+
+                            <figure class="five columns alpha">
+                                @Html.ActionLink(Html.CountPhoto(item.UnitId), "Edit", new { id = item.UnitId }, new { @class = "camera" })      
+                                <img src="@item.PrimaryPhoto" class="scale-with-grid" width="280" height="185"
+                                     alt="gallery" />
+                            </figure>
+                            <div class="nine columns omega">
+                                <h4>
+                                    @item.Address, @item.City, @item.State, @item.CountryCode</h4>
+                                <ul class="prop-data">
+                                    <li class="price">@Html.DisplayFor(modelItem => item.Price)</li>
+                                    @if (item.UnitPricing != null)
+                                    {
+                                        if (item.UnitPricing.Rent != null)
+                                        {
+                                            <li class="new">@item.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture)
+                                                <span style="color: #346993">@Html.GetCurrencyValue(item.UnitPricing.CurrencyId)</span></li>
+                                        }
+                                    }
+                                </ul>
+                                <p class="prop-webid">
+                                    Unit ID #@Html.DisplayFor(modelItem => item.UnitId)</p>
+                                <p class="propr-details">
+                                    @Html.GetBedValue(item.Bed) bedroom / @Html.GetBathroomValue(item.Bed) bathrom /
+                                    @item.SquareFoot sqft
+                                </p>
+                                <p class="prop-extract">@Html.TruncateLongString(item.Description, 500)
+                                </p>
+                                
+
+                                <ul class="toolbar">
+                                    <li>@Html.ActionLink("Select", "Edit", new { id = item.UnitId })</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
+                <li class="prop-type all house">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="nine columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">1/1/2001 </li>
+                                <li class="new">9134060298</li>
+                            </ul>
+                            <p class="prop-webid">
+                                SHowing ID #1</p>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.a est quis nunc bibendum consequat. Cras ornare sodales
+                                venenatis. a est quis nunc bibendum consequat. Cras ornare sodales venenatis.
+                            </p>
+                            <ul class="toolbar">
+                                <li>@Html.ActionLink("Select", "Index", "Contact")</li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+            <!-- /.List -->
+            <style>
+                #container
+                {
+                    width: 100%;
+                    text-align: center;
+                }
+                
+                #left
+                {
+                    float: left;
+                    width: 50px;
+                    height: 20px;
+                    background: #ff0000;
+                }
+                
+                #center
+                {
+                    display: inline-block;
+                    margin: 0 auto;
+                    width: 50px;
+                    height: 20px;
+                    background: #00ff00;
+                }
+                
+                #right
+                {
+                    float: right;
+                    width: 50px;
+                    height: 20px;
+                    background: #0000ff;
+                }
+            </style>
+        </section>
+        <section class="fifteen columns">
+            <!--Pagination-->
+            <div id="container">
+                <div id="left">
+                    Previous</div>
+                <div id="center">
+                    Page 1 of 10</div>
+                <div id="right">
+                    Next</div>
+            </div>
+            <!--Pagination-->
+        </section>
+    </div>
+</section>
+<!-- Scripts & Plugins
+        ================================================== -->
+<!-- BX Slider -->
+<script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
+<!--Fancybox Ligbox-->
+<script src="../../Scripts/js/jquery.fancybox.js" type="text/javascript"></script>
+<!--Fancybox Ligbox Thumbnails-->
+<script src="../../Scripts/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<!-- Tabs -->
+<script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
+<!-- jQuery dropdown -->
+<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+<!-- Tipsy -->
+<script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
+<!-- FitVids -->
+<script src="../../Scripts/js/fitvids.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(document).ready(function ($) {
+
+        // Init Carousel	
+        $('.bx-carousel').bxSlider({
+            auto: true,
+            minSlides: 1,
+            maxSlides: 3,
+            slideWidth: 300,
+            slideMargin: 20,
+            nextSelector: '#carousel-next',
+            prevSelector: '#carousel-prev',
+            pager: false
+        });
+
+        //Easy tabs
+        $('.tab-container').easytabs();
+
+        //FitVids
+        $('#video').fitVids();
+
+    });
+</script>
+<!-- Gallery switcher -->
+<script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
+<!-- jQuery dropdown -->
+<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+<!-- Tipsy -->
+<script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
+<!-- Custom Scripts -->
+<script src="../../Scripts/js/scripts.js" type="text/javascript"></script>

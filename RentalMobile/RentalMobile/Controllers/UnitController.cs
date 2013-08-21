@@ -22,7 +22,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Units.ToList());
+            return View(db.Units.Include("UnitPricing").ToList());
         }
 
         //
@@ -73,18 +73,7 @@ namespace RentalMobile.Controllers
                     db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
                     db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
                     db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-                    //Think if tyou need or not because of the upload control
-                    //db.UnitGalleries.Add(u.UnitGallery);
-
                     ViewBag.CurrencyCode = u.Unit.CurrencyCode;
-                    var k = u.Unit.CurrencyCode;
-
-                    //var t = u.Currency.CurrencyID;
-
-                   // SetCurrencyViewBag(u.Unit.CurrencyCode);
-
-
-
                     db.SaveChanges();
                     SavePictures(u.Unit);
                     return RedirectToAction("Index");
@@ -640,6 +629,9 @@ namespace RentalMobile.Controllers
             ViewBag.Twitter = SocialHelper.TwitterShare();
             ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare();
             ViewBag.LinkedIn = SocialHelper.LinkedInShare();
+
+            ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
+
 
 
             ViewBag.Poster = "Owner";

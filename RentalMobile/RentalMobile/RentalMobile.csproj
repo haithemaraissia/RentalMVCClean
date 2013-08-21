@@ -510,10 +510,9 @@
     <Content Include="css\smartwizard\smart_wizard_vertical.css" />
     <Content Include="Design\General.aspx" />
     <Content Include="Design\SmartWizard.htm" />
-    <Content Include="Documentation\BrainStorming+MaintenanceData\BrainStorming.txt" />
-    <Content Include="Documentation\Process\ProcessAction2.txt" />
-    <Content Include="Documentation\UnitProperty\P3.txt" />
-    <Content Include="Documentation\UnitProperty\P4.txt" />
+    <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
+    <Content Include="Documentation\Done\UnitProperty\P3.txt" />
+    <Content Include="Documentation\Done\UnitProperty\P4.txt" />
     <Content Include="Global.asax" />
     <Content Include="images\arrowsub.png" />
     <Content Include="images\bg.jpg" />
@@ -596,6 +595,8 @@
     <Content Include="images\dotimages\wip\registration-linkedin.gif" />
     <Content Include="images\hsep.png" />
     <Content Include="images\mainbk.png" />
+    <Content Include="images\Vimeo_logo.png" />
+    <Content Include="images\YouTubeLogo.jpg" />
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
     <Content Include="obj\Debug\TempPE\Models.RentalModel1.Designer.cs.dll" />
     <Content Include="Photo\Owner\Profile\carrie\0\img_apple-touch-icon-72x72.png" />
@@ -861,23 +862,20 @@
     <None Include="css\dotcss\lato\Lato-Lig-webfont.eot%40" />
     <None Include="css\dotcss\lato\Lato-Lig-webfont.ttf" />
     <Content Include="Design\Tenant\Index.cshtml" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListOfContractorAnglieListEdited.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor2010.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ZillowDataSource - Partioned.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\Functions and tools.docx" />
-    <None Include="Documentation\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListOfContractorAnglieListEdited.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor2010.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource - Partioned.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Functions and tools.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
     <None Include="Documentation\Process\Bugs.docx" />
-    <None Include="Documentation\Process\Current WIP.docx" />
-    <None Include="Documentation\Process\Functions.docx" />
-    <None Include="Documentation\Process\ToDo.docx" />
-    <None Include="Documentation\Structure\Sitemap.docx" />
-    <None Include="Documentation\UnitProperty\AllProperties.docx" />
-    <None Include="Documentation\UnitProperty\P1.docx" />
-    <None Include="Documentation\UnitProperty\P2.docx" />
+    <None Include="Documentation\Done\Structure\Sitemap.docx" />
+    <None Include="Documentation\Done\UnitProperty\AllProperties.docx" />
+    <None Include="Documentation\Done\UnitProperty\P1.docx" />
+    <None Include="Documentation\Done\UnitProperty\P2.docx" />
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
     <Content Include="Handler\AdHandler.ashx" />
@@ -1128,6 +1126,7 @@
     <Content Include="Views\Emails\Multipart.cshtml" />
     <Content Include="Views\Emails\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\Multipart.Text.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_HeadProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
