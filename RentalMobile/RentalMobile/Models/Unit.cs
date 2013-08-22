@@ -48,6 +48,10 @@ namespace RentalMobile.Models
         public Nullable<System.DateTime> AvailableDate { get; set; }
         public string PosterRole { get; set; }
         public Nullable<int> PosterID { get; set; }
+        public Nullable<bool> YouTubeVideo { get; set; }
+        public string YouTubeVideoURL { get; set; }
+        public Nullable<bool> VimeoVideo { get; set; }
+        public string VimeoVideoURL { get; set; }
     
         public virtual UnitAppliance UnitAppliance { get; set; }
         public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }

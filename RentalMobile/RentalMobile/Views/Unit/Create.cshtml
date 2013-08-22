@@ -206,28 +206,23 @@
     }); // END DOM Ready
 </script>
 <style>
-	.zip-error
-	{
-		color: #d70000;
-		font: 12px "Lucida Sans Unicode" , "Lucida Grande" , sans-serif;
-		border-top: 2px dotted #ec9696;
-		border-bottom: 2px dotted #ec9696;
-		text-align: center;
-		padding: 5px 10px;
-		margin-top: 10px;
-		display: none;
-	}
-	#Description
-	{
-		height: 150px;
-		min-height: 150px;
-	}
+    .zip-error
+    {
+        color: #d70000;
+        font: 12px "Lucida Sans Unicode" , "Lucida Grande" , sans-serif;
+        border-top: 2px dotted #ec9696;
+        border-bottom: 2px dotted #ec9696;
+        text-align: center;
+        padding: 5px 10px;
+        margin-top: 10px;
+        display: none;
+    }
+    #Description
+    {
+        height: 150px;
+        min-height: 150px;
+    }
 </style>
-
-
-
-
-
 @using (Html.BeginForm("Create", "Unit", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
@@ -238,53 +233,50 @@
         }
     </style>
     
-            <div class=" instructions editor-label">
-                <label for="city">
-                    Zipcode</label>
-            </div>
-            <div>
-                <div class="editor-label">
-                    <label for="address-line-1">
-                        Street #1</label>
-                </div>
-                <div class="editor-label">
-                      @Html.TextBoxFor(m => m.Unit.Address, new { id = "address-line-1", name = "address-line-1",required = "required", @class = "full-width", placeholder = "Address" })
-
-                       </div>
-            </div>
-            <div>
-                <div class="editor-label">
-                    <label for="city">
-                        City</label>
-                </div>
-                <div class="editor-label">
-                    
-                       @Html.TextBoxFor(m => m.Unit.City, new { id = "city", name = "city", required = "required", @class = "full-width", placeholder = "City" })
-
-                </div>
-                <div class="editor-label">
-                    <label for="state">
-                        State</label>
-                </div>
-                <div class="editor-label">
-                        @Html.TextBoxFor(m => m.Unit.State, new { id = "state", name = "state", required = "required", @class = "full-width", placeholder = "State" })
-                </div>
-                <div class="editor-label">
-                    <label for="city">
-                        Country</label>
-                </div>
-@*                <div class="editor-label">
+    <div class=" instructions editor-label">
+        <label for="city">
+            Zipcode</label>
+    </div>
+    <div>
+        <div class="editor-label">
+            <label for="address-line-1">
+                Street #1</label>
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Unit.Address, new { id = "address-line-1", name = "address-line-1", required = "required", @class = "full-width", placeholder = "Address" })
+        </div>
+    </div>
+    <div>
+        <div class="editor-label">
+            <label for="city">
+                City</label>
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Unit.City, new { id = "city", name = "city", required = "required", @class = "full-width", placeholder = "City" })
+        </div>
+        <div class="editor-label">
+            <label for="state">
+                State</label>
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Unit.State, new { id = "state", name = "state", required = "required", @class = "full-width", placeholder = "State" })
+        </div>
+        <div class="editor-label">
+            <label for="city">
+                Country</label>
+        </div>
+        @*                <div class="editor-label">
                     @Html.TextBoxFor(model => model.CountryCode, new { id = "country", name = "country" })
                 </div>*@
-                <div class="zip-wrap">
-                    <div class="editor-label">
-                        <label for="zip">
-                            Zip</label></div>
-                    <input type="text" pattern="[0-9]*" maxlength="5" required name="zip" id="zip" />
-                    <p class="zip-error">
-                        Not a real zip code.</p>
-                </div>
-            </div>
+        <div class="zip-wrap">
+            <div class="editor-label">
+                <label for="zip">
+                    Zip</label></div>
+            <input type="text" pattern="[0-9]*" maxlength="5" required name="zip" id="zip" />
+            <p class="zip-error">
+                Not a real zip code.</p>
+        </div>
+    </div>
       
 
       
@@ -859,20 +851,32 @@
         <div id="step-5" class="sixteen columns" style="height: auto; padding: 0">
             <h2 class="StepTitle">
                 Video</h2>
-            <section class="sixteen columns relative" style="margin-top: 10px; margin-left: 50px;
+            <section class="sixteen columns relative" style="margin-top: 30px; margin-left: 50px;
                 margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="seven columns">
                         <img src="../../images/YouTubeLogo.jpg" alt="agent" class="scale-with-grid" style="width: 250px;
                             height: 250px" />
-                        @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
                     </li>
                     <li class="seven columns">
                         <img src="../../images/Vimeo_logo.png" alt="agent" class="scale-with-grid" style="width: 250px;
                             height: 250px" />
-                        @Html.TextBoxFor(m => m.Unit.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
-                        @Html.EditorFor(m => m.UnitInteriorAmenity.Jetted_Tub, new { id = "Jetted_Tub", required = "required", @class = "full-width", placeholder = "Jetted Tub" })
+                    </li>
+                    <li class="seven columns">
+                        @Html.CheckBoxFor(m => m.Unit.YouTubeVideo.Value, new { @checked = "checked" })
+                    </li>
+                    <li class="seven columns">
+                        @Html.CheckBoxFor(m => m.Unit.VimeoVideo.Value)
+                    </li>
+                    <li class="seven columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.Unit.YouTubeVideoURL, new { id = "YouTubeVideoURL", required = "required", @class = "full-width", placeholder = "You Tube Video URL" })
+                        </div>
+                    </li>
+                    <li class="seven columns">
+                        <div align="center">
+                            @Html.TextBoxFor(m => m.Unit.VimeoVideoURL, new { id = "VimeoVideoURL", required = "required", @class = "full-width", placeholder = "Vimeo Video URL" })
+                        </div>
                     </li>
                 </ul>
             </section>

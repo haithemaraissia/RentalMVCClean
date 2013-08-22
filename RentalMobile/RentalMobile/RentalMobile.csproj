@@ -107,7 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
-    <Compile Include="BackUp\Controllers\UnitController.cs" />
     <Compile Include="Contracts\Reports\PDFReport.aspx.cs">
       <DependentUpon>PDFReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1127,6 +1126,7 @@
     <Content Include="Views\Emails\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\Multipart.Text.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadProperty.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_HeadOwner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

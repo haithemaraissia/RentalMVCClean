@@ -1425,6 +1425,10 @@
           <Property Name="AvailableDate" Type="smalldatetime" />
           <Property Name="PosterRole" Type="char" MaxLength="10" />
           <Property Name="PosterID" Type="int" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="UnitAppliance">
           <Key>
@@ -3406,6 +3410,10 @@
           <NavigationProperty Name="UnitInteriorAmenity" Relationship="DB_33736_rentalModel.FK_UnitInteriorAmenities_Unit" FromRole="Unit" ToRole="UnitInteriorAmenity" />
           <NavigationProperty Name="UnitLuxuryAmenity" Relationship="DB_33736_rentalModel.FK_UnitLuxuryAmenities_Unit" FromRole="Unit" ToRole="UnitLuxuryAmenity" />
           <NavigationProperty Name="UnitPricing" Relationship="DB_33736_rentalModel.FK_UnitPricing_Unit" FromRole="Unit" ToRole="UnitPricing" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_UnitAppliance_Unit">
           <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
@@ -4974,6 +4982,10 @@
           <EntitySetMapping Name="Units">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Unit">
               <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="PosterID" ColumnName="PosterID" />
                 <ScalarProperty Name="PosterRole" ColumnName="PosterRole" />
                 <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />

@@ -5,41 +5,26 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
-<h2>
-    Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.UnitId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.UnitId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.UnitId })
-            </td>
-        </tr>
-    }
-</table>
 <section class="sixteen columns">
     <h2 class="remove-top">
-        Rent</h2>
+        PROPERTY</h2>
     <!-- filters -->
     <form action="#" class="row">
-    <!-- tag filters -->
-    <ul class="filter-list nine alpha columns row">
-        <li><a data-rel="all" class="current">All</a></li>
-        <li><a data-rel="house">House</a></li>
-        <li><a data-rel="appartment">Apartment</a></li>
-        <li><a data-rel="loft">Loft</a></li>
-        <li><a data-rel="offices">Offices</a></li>
-        <li><a data-rel="condos">Condos</a></li>
-    </ul>
-    <div class="switcher fr">
-        <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
-            id="listview" class="switcher active"><i class="icon-menu"></i></a>
-    </div>
+        <!-- tag filters -->
+        <ul class="filter-list ten alpha columns row">
+            <li><a data-rel="all" class="current">All</a></li>
+            <li><a data-rel="house">House</a></li>
+            <li><a data-rel="duplex">Duplex</a></li>
+            <li><a data-rel="townhouse">Townhouse</a></li>
+            <li><a data-rel="apartment">Apartment</a></li>
+            <li><a data-rel="loft">Loft</a></li>
+            <li><a data-rel="office">Office</a></li>
+            <li><a data-rel="condo">Condo</a></li>
+        </ul>
+        <div class="switcher fr">
+            <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+                                                                                         id="listview" class="switcher active"><i class="icon-menu"></i></a>
+        </div>
     </form>
     <div id="showing" class="panel">
         <section class="fifteen columns">
@@ -47,12 +32,10 @@
             <ul id="property-list" class="list-grid-gallery list">
                 @foreach (var item in Model)
                 {
-                    <li class="prop-type all @item.TypeId">
+                    <li class="prop-type all @Html.GetUnitType(item.TypeId)">
                         <article>
-                            
-
                             <figure class="five columns alpha">
-                                @Html.ActionLink(Html.CountPhoto(item.UnitId), "Edit", new { id = item.UnitId }, new { @class = "camera" })      
+                                @Html.ActionLink(Html.CountPhoto(item.UnitId), "Edit", new { id = item.UnitId }, new { @class = "camera" })
                                 <img src="@item.PrimaryPhoto" class="scale-with-grid" width="280" height="185"
                                      alt="gallery" />
                             </figure>
@@ -78,8 +61,6 @@
                                 </p>
                                 <p class="prop-extract">@Html.TruncateLongString(item.Description, 500)
                                 </p>
-                                
-
                                 <ul class="toolbar">
                                     <li>@Html.ActionLink("Select", "Edit", new { id = item.UnitId })</li>
                                 </ul>
@@ -87,48 +68,6 @@
                         </article>
                     </li>
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                <li class="prop-type all house">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="nine columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">1/1/2001 </li>
-                                <li class="new">9134060298</li>
-                            </ul>
-                            <p class="prop-webid">
-                                SHowing ID #1</p>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.a est quis nunc bibendum consequat. Cras ornare sodales
-                                venenatis. a est quis nunc bibendum consequat. Cras ornare sodales venenatis.
-                            </p>
-                            <ul class="toolbar">
-                                <li>@Html.ActionLink("Select", "Index", "Contact")</li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
             </ul>
             <!-- /.List -->
             <style>
@@ -177,6 +116,28 @@
             <!--Pagination-->
         </section>
     </div>
+</section>
+
+
+
+<section class="sixteen columns" id="DesignDecision">
+    <h2>
+        Property</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UnitId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.UnitId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UnitId })
+                </td>
+            </tr>
+        }
+    </table>
 </section>
 <!-- Scripts & Plugins
         ================================================== -->

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -124,12 +125,6 @@ namespace RentalMobile.Helpers
         }
 
 
-
-
-
-
-
-
         public static string GetBedValue(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return  "1";
@@ -152,6 +147,13 @@ namespace RentalMobile.Helpers
             return unitid == null ? "1" : db.UnitGalleries.Count(x => x.UnitId == unitid).ToString(CultureInfo.InvariantCulture);
         }
 
+
+        public static string GetUnitType(this HtmlHelper helper, int? selectedvalue)
+        {
+            if (selectedvalue == null) return "house";
+            var Unit = db.UnitTypes.FirstOrDefault(x => x.TypeID == selectedvalue);
+            return Unit != null ? Unit.TypeValue : "house";
+        }
 
         /// <summary>
         /// Custom Label for the purpose of :
@@ -184,19 +186,14 @@ namespace RentalMobile.Helpers
             tag.SetInnerText(labelText);
             return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
         }
-
         public static HtmlString Label(this HtmlHelper helper, string target = "", string text = "", string id = "")
         {
             return new HtmlString(string.Format("<label id='{0}' for='{1}'>{2}</label>", id, target, text));
         }
-
-
-
         public static MvcHtmlString CustomHyperlink(this HtmlHelper helper, string linkText)
         {
             return MvcHtmlString.Create(String.Format("<a href='/{0}'>{1}</a>", GetCurrentRole(), linkText));
         }
-
         public static string GetCurrentRole()
         {
             var user = System.Web.HttpContext.Current.User;
@@ -231,7 +228,31 @@ namespace RentalMobile.Helpers
 
 
 
+        public static string GetVideoEmbeddedUrl(this HtmlHelper helper, int? unitid)
+                {
+                    if (unitid == null) return "";
 
+                    var unit = db.Units.FirstOrDefault(x => x.UnitId == unitid);
+            if (unit == null) return "";
+
+            if (unit.YouTubeVideo != null && unit.YouTubeVideo.Value)
+            {
+                var items = HttpUtility.ParseQueryString(unit.VimeoVideoURL);
+
+                var youTubeQueryValue = items["v"];
+
+                return "http://www.youtube.com/embed/" + youTubeQueryValue;
+
+            }
+
+
+            if (unit.VimeoVideo != null && unit.VimeoVideo.Value)
+            {
+                var vimeoUrl = unit.VimeoVideoURL.ToLower().Replace("http://", string.Empty);
+            }
+            return "";
+
+                }
 
 
         public static string TruncateLongString(this HtmlHelper helper,string str, int maxLength)
