@@ -4,18 +4,6 @@
 @{
     ViewBag.Title = "Unit Description";
     Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
-    //var jsonUrl = "/property/jsonfun/";
-    var jsonUrl = "http://localhost:56224//property/jsonfun/";
-
-    if (String.IsNullOrEmpty(Model.Unit.UnitId.ToString(CultureInfo.InvariantCulture)))
-    {
-        Response.Redirect(Url.Action("LogOn", "Account", "Log in"));
-    }
-    else
-    {
-        jsonUrl += Model.Unit.UnitId;
-
-    }
 }
 @section MiniTabMenu
 {
@@ -32,15 +20,17 @@
         <div id="photos" class="panel">
             <a id="fancybox-manual-c" href="javascript:;">
                 <img src="../../images/dotimages/single-property/gallery-480x350.png" class="img-preview scale-with-grid"
-                    alt="image">
+                     alt="image" />
             </a>
         </div>
     }
     @section video
-        {
+    {
         <div id="video" class="panel">
-            <iframe src="http://player.vimeo.com/video/12158329" width="500" height="281" frameborder="0"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            @Model.Unit.YouTubeVideo You Tube
+            @Model.Unit.VimeoVideo Vimeo
+            <iframe src="@Html.GetVideoEmbeddedUrl(Model.Unit.UnitId)" width="500" height="281" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
     }
     @section map

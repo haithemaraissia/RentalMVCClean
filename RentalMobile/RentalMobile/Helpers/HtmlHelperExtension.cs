@@ -229,30 +229,27 @@ namespace RentalMobile.Helpers
 
 
         public static string GetVideoEmbeddedUrl(this HtmlHelper helper, int? unitid)
-                {
-                    if (unitid == null) return "";
+        {
+            var uri = HttpContext.Current.Request.Url;
+            var defaulturlreturn = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
 
-                    var unit = db.Units.FirstOrDefault(x => x.UnitId == unitid);
-            if (unit == null) return "";
-
-            if (unit.YouTubeVideo != null && unit.YouTubeVideo.Value)
+            if (unitid == null) return defaulturlreturn;
+            var unit = db.Units.FirstOrDefault(x => x.UnitId == unitid);
+            if (unit == null) return defaulturlreturn;
+            if (unit.YouTubeVideo != null && unit.YouTubeVideo.Value == true)
             {
-                var items = HttpUtility.ParseQueryString(unit.VimeoVideoURL);
-
-                var youTubeQueryValue = items["v"];
-
+                var youTubeUri = new Uri(unit.YouTubeVideoURL);
+                var query = HttpUtility.ParseQueryString(youTubeUri.Query);
+                var youTubeQueryValue = query.Get("v");
                 return "http://www.youtube.com/embed/" + youTubeQueryValue;
-
             }
-
-
-            if (unit.VimeoVideo != null && unit.VimeoVideo.Value)
+            if (unit.VimeoVideo != null && unit.VimeoVideo.Value == true)
             {
-                var vimeoUrl = unit.VimeoVideoURL.ToLower().Replace("http://", string.Empty);
-            }
-            return "";
 
-                }
+                return unit.VimeoVideoURL.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
+            }
+            return defaulturlreturn;
+        }
 
 
         public static string TruncateLongString(this HtmlHelper helper,string str, int maxLength)

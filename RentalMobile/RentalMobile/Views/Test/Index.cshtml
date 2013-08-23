@@ -1,0 +1,32 @@
+﻿@using RentalMobile.Helpers
+@model RentalMobile.Models.Unit
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
+}
+
+<h2>title</h2>
+
+
+<section class="row double-bottom">
+    @section description{
+        <div id="description" class="panel">
+        
+
+            @Model.YouTubeVideo
+
+            @Model.YouTubeVideoURL
+            
+            <br/>
+
+            @Model.VimeoVideo
+
+            @Model.VimeoVideoURL
+            
+            <br/>
+             <iframe src="@Html.GetVideoEmbeddedUrl(Model.UnitId)" width="500" height="281" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    }
+    </section>    

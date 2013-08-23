@@ -137,6 +137,7 @@
     <Compile Include="Controllers\ProviderProfileController.cs" />
     <Compile Include="Controllers\SpecialistProfileController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
@@ -513,6 +514,7 @@
     <Content Include="Documentation\Done\UnitProperty\P3.txt" />
     <Content Include="Documentation\Done\UnitProperty\P4.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Html\NoVideo.htm" />
     <Content Include="images\arrowsub.png" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\blue-gradient.png" />
@@ -1127,6 +1129,7 @@
     <Content Include="Views\Emails\Multipart.Text.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadProperty.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadOwner.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
