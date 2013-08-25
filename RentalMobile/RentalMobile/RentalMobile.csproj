@@ -596,6 +596,23 @@
     <Content Include="images\dotimages\wip\registration-linkedin.gif" />
     <Content Include="images\hsep.png" />
     <Content Include="images\mainbk.png" />
+    <Content Include="images\property\bg.jpg" />
+    <Content Include="images\property\blue-gradient.png" />
+    <Content Include="images\property\home.jpg" />
+    <Content Include="images\property\home10.jpg" />
+    <Content Include="images\property\home11.jpg" />
+    <Content Include="images\property\home12.jpg" />
+    <Content Include="images\property\home13.jpg" />
+    <Content Include="images\property\home14.jpg" />
+    <Content Include="images\property\home15.jpg" />
+    <Content Include="images\property\home2.jpg" />
+    <Content Include="images\property\home3.jpg" />
+    <Content Include="images\property\home4.jpg" />
+    <Content Include="images\property\home5.jpg" />
+    <Content Include="images\property\home6.jpg" />
+    <Content Include="images\property\home7.jpg" />
+    <Content Include="images\property\home8.jpg" />
+    <Content Include="images\property\home9.jpg" />
     <Content Include="images\Vimeo_logo.png" />
     <Content Include="images\YouTubeLogo.jpg" />
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
@@ -820,6 +837,7 @@
     <Content Include="WIP\Used\rent.html" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Helper.cshtml" />
     <None Include="App_Data\GeoLiteCity.dat" />
     <Content Include="BackUp\View\Unit\Create.cshtml" />
     <Content Include="BackUp\View\Unit\Delete.cshtml" />

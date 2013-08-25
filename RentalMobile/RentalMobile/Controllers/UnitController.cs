@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
@@ -15,7 +13,7 @@ namespace RentalMobile.Controllers
 {
     public class UnitController : Controller
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private readonly DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
         //
         // GET: /Test/
@@ -43,7 +41,7 @@ namespace RentalMobile.Controllers
             // ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
 
             //var newunit = new UnitModelView();
-           // SetCurrencyViewBag();
+            // SetCurrencyViewBag();
             return View();
         }
 
@@ -239,7 +237,7 @@ namespace RentalMobile.Controllers
 
         private void SetCurrencyViewBag(int? currencyId = null)
         {
-            ViewData["currency"] = currencyId == null ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue") : 
+            ViewData["currency"] = currencyId == null ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue") :
                 new SelectList(db.Currencies.ToArray(), "CurrencyID", "CurrencyValue", currencyId);
         }
 
@@ -336,7 +334,7 @@ namespace RentalMobile.Controllers
             //ViewBag.Type = "Requests";
             //TempData["Id"] = "5";
 
-           // SavePictures(unitModelView.Unit);
+            // SavePictures(unitModelView.Unit);
             //ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
             return PartialView("_Partial2", unitModelView.UnitGallery);
         }
@@ -632,9 +630,12 @@ namespace RentalMobile.Controllers
 
             ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
 
+            var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
 
-
-            ViewBag.Poster = "Owner";
+            ViewBag.PosterFirstName = poster.FirstName;
+            ViewBag.PosterLastName = poster.LastName;
+            ViewBag.PosterPictureProfile = poster.ProfilePicturePath;
+            ViewBag.PosterProfileLink = poster.ProfileLink;
             return View(u);
         }
 

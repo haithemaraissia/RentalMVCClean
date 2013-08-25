@@ -116,24 +116,24 @@ namespace RentalMobile.Helpers
         }
 
 
-        public static string GetCurrencyValue(this HtmlHelper helper, int ? currencyID)
+        public static string GetCurrencyValue(this HtmlHelper helper, int? currencyID)
         {
             var currency = db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyID);
             if (currency != null)
                 return currency.CurrencyValue;
-            return  db.Currencies.First().CurrencyValue;
+            return db.Currencies.First().CurrencyValue;
         }
 
 
         public static string GetBedValue(this HtmlHelper helper, int? selectedvalue)
         {
-            if (selectedvalue == null) return  "1";
+            if (selectedvalue == null) return "1";
             var bed = db.Beds.FirstOrDefault(x => x.BedID == selectedvalue);
             return bed != null ? bed.BedValue : "1";
         }
 
 
-        public static string GetBathroomValue(this HtmlHelper helper,int? selectedvalue)
+        public static string GetBathroomValue(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "1";
             var bathroom = db.Bathrooms.FirstOrDefault(x => x.BathroomID == selectedvalue);
@@ -216,45 +216,52 @@ namespace RentalMobile.Helpers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        public static string GetVideoEmbeddedUrl(this HtmlHelper helper, int? unitid)
+        public static string GeVimeoVideoEmbeddedUrl(string vimeoVideoURL)
         {
-            var uri = HttpContext.Current.Request.Url;
-            var defaulturlreturn = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+            return vimeoVideoURL.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
+        }
 
-            if (unitid == null) return defaulturlreturn;
-            var unit = db.Units.FirstOrDefault(x => x.UnitId == unitid);
-            if (unit == null) return defaulturlreturn;
-            if (unit.YouTubeVideo != null && unit.YouTubeVideo.Value == true)
-            {
-                var youTubeUri = new Uri(unit.YouTubeVideoURL);
-                var query = HttpUtility.ParseQueryString(youTubeUri.Query);
-                var youTubeQueryValue = query.Get("v");
-                return "http://www.youtube.com/embed/" + youTubeQueryValue;
-            }
-            if (unit.VimeoVideo != null && unit.VimeoVideo.Value == true)
-            {
-
-                return unit.VimeoVideoURL.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
-            }
-            return defaulturlreturn;
+        public static string GetYouTubeVideoEmbeddedUrl(string youTubeVideoURL)
+        {
+            var youTubeUri = new Uri(youTubeVideoURL);
+            var query = HttpUtility.ParseQueryString(youTubeUri.Query);
+            var youTubeQueryValue = query.Get("v");
+            return "http://www.youtube.com/embed/" + youTubeQueryValue;
         }
 
 
-        public static string TruncateLongString(this HtmlHelper helper,string str, int maxLength)
+
+
+
+
+
+        //public static string GetVideoEmbeddedUrl(this HtmlHelper helper, int? unitid)
+        //{
+        //    var uri = HttpContext.Current.Request.Url;
+        //    var defaulturlreturn = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+
+        //    if (unitid == null) return defaulturlreturn;
+        //    var unit = db.Units.FirstOrDefault(x => x.UnitId == unitid);
+        //    if (unit == null) return defaulturlreturn;
+        //    if (unit.YouTubeVideo != null && unit.YouTubeVideo.Value == true)
+        //    {
+        //        var youTubeUri = new Uri(unit.YouTubeVideoURL);
+        //        var query = HttpUtility.ParseQueryString(youTubeUri.Query);
+        //        var youTubeQueryValue = query.Get("v");
+        //        return "http://www.youtube.com/embed/" + youTubeQueryValue;
+        //    }
+        //    if (unit.VimeoVideo != null && unit.VimeoVideo.Value == true)
+        //    {
+
+        //        return unit.VimeoVideoURL.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
+        //    }
+        //    return defaulturlreturn;
+        //}
+
+
+        public static string TruncateLongString(this HtmlHelper helper, string str, int maxLength)
         {
-            if (String.IsNullOrEmpty(str))return "";
+            if (String.IsNullOrEmpty(str)) return "";
             return str.Substring(0, Math.Min(str.Length, maxLength));
         }
 

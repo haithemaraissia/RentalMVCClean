@@ -1,0 +1,37 @@
+﻿@using System.Globalization
+@using RentalMobile.Helpers
+@functions {
+
+    public static string GetVideo()
+    {
+        var uri = HttpContext.Current.Request.Url;
+        var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        try
+        {
+            if ((Model.Unit.YouTubeVideo != null && (bool)Model.Unit.YouTubeVideo))
+            {
+                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.Unit.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+            else if ((Model.Unit.VimeoVideo != null && (bool)Model.Unit.VimeoVideo))
+            {
+                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.Unit.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+        }
+        catch (Exception)
+        {
+            videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        }
+        return videourl;
+    }
+    public static string GetPoserRole()
+    {
+        return Model.Unit.PosterRole != null ? Model.Unit.PosterRole.ToUpper() : "OWNER";
+
+    }
+    public static string GetPrimaryPhoto()
+    {
+
+        return String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.png" : Model.Unit.PrimaryPhoto;
+
+    }
+}

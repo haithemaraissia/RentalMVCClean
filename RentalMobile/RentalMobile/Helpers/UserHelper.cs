@@ -12,6 +12,8 @@ namespace RentalMobile.Helpers
     {
         private static readonly DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
 
+        public static PosterAttributes DefaultPoster = new PosterAttributes("Unkown", "Unknow", "#", "../../images/dotimages/single-property/agent-480x350.png");
+
         public static string Login()
         {
             return "~/NotAuthenticated/SignIn.aspx?ReturnUrl={0}" + HttpContext.Current.Request.Url.AbsoluteUri;
@@ -166,7 +168,61 @@ namespace RentalMobile.Helpers
             return GetFormattedAdress(ValidateLocation(address) ? address : "USA");
         }
 
+
+
+
+        public static PosterAttributes GetPoster(int uniId)
+        {
+            var uri = HttpContext.Current.Request.Url;
+            var currenturl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+
+            var unit = DB.Units.FirstOrDefault(x => x.UnitId == uniId);
+            if (unit != null)
+            {
+                switch (unit.PosterRole)
+                {
+                    case "Owner":
+                        var owner = DB.Owners.Find(unit.PosterID);
+                        if (owner != null)
+                        {
+                            return  new PosterAttributes(owner.FirstName,owner.LastName,currenturl + "/Owner/Index/" + unit.PosterID, owner.Photo);
+                        }
+                        break;
+                         case "agent":
+                        var agent = DB.Agents.Find(unit.PosterID);
+                        if (agent != null)
+                        {
+                            return  new PosterAttributes(agent.FirstName,agent.LastName,currenturl + "/Agent/Index/" + unit.PosterID, agent.Photo);
+                        }
+                        break;
+                    default:
+                        {
+                            return DefaultPoster;
+                        }
+                }
+            }
+            return DefaultPoster;
+        }
+
     }
+
+
+    public class PosterAttributes
+
+{
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ProfileLink { get; set; }
+        public string ProfilePicturePath { get; set; }
+
+        public PosterAttributes(string f, string l, string pl, string pp)
+        {
+            FirstName = f;
+            LastName = l;
+            ProfileLink = pl;
+            ProfilePicturePath = pp;
+        }
+}
 }
 
 

@@ -29,13 +29,16 @@
 
 /* #Site Styles
 ================================================== */
+/*body {font-family: LatoRegular, sans-serif;/* background: url(../../images/dotimages/bg-body.jpg); background: url(../../images/dotimages/DowntownSkyline006.jpg);} */
+
 
 body {
 	font-family: LatoRegular, sans-serif;
 	
-/* background: url(../../images/dotimages/bg-body.jpg);*/
-	background: url(../../images/dotimages/DowntownSkyline006.jpg);
+ background: url(../../images/dotimages/bg-body.jpg)
+	/* background: url(../../images/dotimages/DowntownSkyline006.jpg);*/
 }
+
 
 .entypo, .entypo-social { font-size: 18px; }
 .entypo { font-family: 'Entypo'; }
@@ -151,7 +154,6 @@ ul.address {
 
 /* Language selector */
 .lang	{ 	text-align: right; 
-			background: url(../../images/dotimages/divisor-line.png) no-repeat center right; 
 			float: right;
 			margin-top:10px;
 }
