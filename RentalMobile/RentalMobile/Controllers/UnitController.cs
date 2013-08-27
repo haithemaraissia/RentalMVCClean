@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Data.Entity.Validation;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
@@ -606,6 +609,7 @@ namespace RentalMobile.Controllers
 
 
 
+       
 
         public ActionResult Preview(int id)
         {
@@ -622,16 +626,44 @@ namespace RentalMobile.Controllers
                 };
 
 
-            ViewBag.Sript = FancyBox.Fancy(id);
-            ViewBag.FaceBook = SocialHelper.FacebookShare();
-            ViewBag.Twitter = SocialHelper.TwitterShare();
-            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare();
-            ViewBag.LinkedIn = SocialHelper.LinkedInShare();
+            ///******************************************///////////////
+
+            //Complete these fields//
+            var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+
+
+           // var primaryimagethumbnail =  "primaryimagethumbnail";
+            var primaryimagethumbnail = UserHelper.ResolveUrl(u.Unit.PrimaryPhoto);
+
+
+            //ADd title field to Unit Databae
+            //IF no title filed, than grab the address
+
+            var title = "title";
+
+
+            //For number of character count
+            var summary = "summary";
+
+            var tweet = "tweet";
+            var sitename = "http://www.haithem-araissia.com";
+            //Complete these fields//
+
+
+            ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+            ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
+
+            ///******************************************///////////////
+
+
+
+
+
 
             ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
-
             var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
-
             ViewBag.PosterFirstName = poster.FirstName;
             ViewBag.PosterLastName = poster.LastName;
             ViewBag.PosterPictureProfile = poster.ProfilePicturePath;

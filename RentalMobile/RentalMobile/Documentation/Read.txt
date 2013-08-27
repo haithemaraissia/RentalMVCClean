@@ -1,9 +1,0 @@
-Agent/Owner Link
-Primary Image
-Poster section
-Facebook Linq Sharing ( image)
-Send to friend email
-Keep JQueryNotify or not
-
-Sperate Unit Control for each role
-Think about save, favorite menu

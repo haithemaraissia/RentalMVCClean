@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Web.WebPages;
 using Newtonsoft.Json;
 using RentalMobile.Models;
 
@@ -171,28 +172,49 @@ namespace RentalMobile.Helpers
 
 
 
+
+
+
+        public static string ResolveUrl(string relativeUrl)
+        {
+            if (VirtualPathUtility.IsAppRelative(relativeUrl))
+            {
+                return VirtualPathUtility.ToAbsolute(relativeUrl);
+            }
+            else
+            {
+                var curPath = WebPageContext.Current.Page.TemplateInfo.VirtualPath;
+                var curDir = VirtualPathUtility.GetDirectory(curPath);
+                return VirtualPathUtility.ToAbsolute(VirtualPathUtility.Combine(curDir, relativeUrl));
+
+            }
+
+
+        }
+
+
         public static PosterAttributes GetPoster(int uniId)
         {
             var uri = HttpContext.Current.Request.Url;
             var currenturl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
 
             var unit = DB.Units.FirstOrDefault(x => x.UnitId == uniId);
-            if (unit != null)
+            if (unit != null && unit.PosterRole != null)
             {
-                switch (unit.PosterRole)
+                switch (unit.PosterRole.Trim().ToLower())
                 {
-                    case "Owner":
+                    case "owner":
                         var owner = DB.Owners.Find(unit.PosterID);
                         if (owner != null)
                         {
-                            return  new PosterAttributes(owner.FirstName,owner.LastName,currenturl + "/Owner/Index/" + unit.PosterID, owner.Photo);
+                            return new PosterAttributes(owner.FirstName, owner.LastName, currenturl + "/ownerprofile/index/" + unit.PosterID, owner.Photo);
                         }
                         break;
                          case "agent":
                         var agent = DB.Agents.Find(unit.PosterID);
                         if (agent != null)
                         {
-                            return  new PosterAttributes(agent.FirstName,agent.LastName,currenturl + "/Agent/Index/" + unit.PosterID, agent.Photo);
+                            return new PosterAttributes(agent.FirstName, agent.LastName, currenturl + "/agentprofile/index/" + unit.PosterID, agent.Photo);
                         }
                         break;
                     default:
@@ -203,6 +225,9 @@ namespace RentalMobile.Helpers
             }
             return DefaultPoster;
         }
+
+
+
 
     }
 

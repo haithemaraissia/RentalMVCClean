@@ -22,10 +22,24 @@ namespace RentalMobile.Controllers
             ViewBag.UnitGoogleMap = unit.GoogleMap;
             ViewBag.Sript = FancyBox.Fancy(id);
 
-            ViewBag.FaceBook = SocialHelper.FacebookShare();
-            ViewBag.Twitter = SocialHelper.TwitterShare();
-            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare();
-            ViewBag.LinkedIn = SocialHelper.LinkedInShare();
+
+
+            //Complete these fields//
+            var url = "url";
+            var primaryimagethumbnail = "primaryimagethumbnail";
+            var title = "title";
+            var summary = "summary";
+
+            var tweet = "tweet";
+            var sitename = "noDescidedyet";
+            //Complete these fields//
+
+
+
+            ViewBag.FaceBook = SocialHelper.FacebookShare(url,primaryimagethumbnail,title,summary);
+            ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
             return View(unit);
         }
 

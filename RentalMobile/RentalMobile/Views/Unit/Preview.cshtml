@@ -57,14 +57,14 @@
         <div id="photos" class="panel">
             <a id="fancybox-manual-c" href="javascript:;">
                 <img src="@GetPrimaryPhoto()" class="img-preview scale-with-grid"
-                     alt="image" style="width:100% ; min-height: 225px" />
+                     alt="image" style="width:100% ; min-height: 300px ; max-height: 300px;" />
             </a>
         </div>
     }
     @section video
     {
         <div id="video" class="panel">
-            <iframe src="@GetVideo()" width="500" height="281" frameborder="0"
+            <iframe src="@GetVideo()" width="500" height="330" frameborder="0"
                     webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
     }
@@ -80,7 +80,7 @@
     {
         <div id="agent" class="panel">
             <a href="@ViewBag.PosterProfileLink">
-                <img src="@ViewBag.PosterPictureProfile" alt="Agent" class="scale-with-grid">
+                <img src="@ViewBag.PosterPictureProfile" alt="Agent" class="scale-with-grid" style="min-height: 300px; max-height: 300px; width:100%">
                 <h6 class="h6custom" style="text-align: center">
                     @ViewBag.PosterFirstName @ViewBag.PosterLastName
                 </h6>
@@ -160,7 +160,7 @@
                 <input id="datepicker" placeholder="showing date" type="text" required>
             </li>
         </ul>
-        <input type="submit" class="full-width tall" value="Request a showing">
+            <input type="submit" class="full-width tall" value="Request a showing" />
         </form>
     }
 </section>
