@@ -52,6 +52,7 @@ namespace RentalMobile.Models
         public string YouTubeVideoURL { get; set; }
         public Nullable<bool> VimeoVideo { get; set; }
         public string VimeoVideoURL { get; set; }
+        public string Title { get; set; }
     
         public virtual UnitAppliance UnitAppliance { get; set; }
         public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }

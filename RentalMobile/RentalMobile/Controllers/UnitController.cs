@@ -281,8 +281,8 @@ namespace RentalMobile.Controllers
         public string AgentPhotoPath = "~/Photo/Agent/Property";
         public string ProviderPhotoPath = "~/Photo/Provider/Property";
         public string SpecialistPhotoPath = "~/Photo/Specialist/Property";
-        public string RequestID;
-        public string photoPath;
+        public string RequestId;
+        public string PhotoPath;
 
 
         public ActionResult Partial2(UnitModelView unitModelView)
@@ -347,25 +347,25 @@ namespace RentalMobile.Controllers
             var user = System.Web.HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
-                photoPath = Server.MapPath(TenantPhotoPath);
+                PhotoPath = Server.MapPath(TenantPhotoPath);
                 return "Tenant";
             }
             if (user.IsInRole("Owner"))
             {
-                photoPath = Server.MapPath(OwnerPhotoPath);
+                PhotoPath = Server.MapPath(OwnerPhotoPath);
                 return "Owner";
             }
             if (user.IsInRole("Agent"))
             {
-                photoPath = Server.MapPath(AgentPhotoPath);
+                PhotoPath = Server.MapPath(AgentPhotoPath);
             }
             if (user.IsInRole("Provider"))
             {
-                photoPath = Server.MapPath(ProviderPhotoPath);
+                PhotoPath = Server.MapPath(ProviderPhotoPath);
                 return "Provider";
             }
 
-            photoPath = Server.MapPath(SpecialistPhotoPath);
+            PhotoPath = Server.MapPath(SpecialistPhotoPath);
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
 
@@ -386,7 +386,7 @@ namespace RentalMobile.Controllers
             var files = uploadDirectory.GetFiles();
 
             directory = @"\" + Username + @"\" + TempData["UserID"] + @"\";
-            var newdirectory = photoPath + directory;
+            var newdirectory = PhotoPath + directory;
             if (!Directory.Exists(path))
             {
                 UploadHelper.CreateDirectoryIfNotExist(newdirectory);
@@ -402,8 +402,6 @@ namespace RentalMobile.Controllers
 
             foreach (var f in files)
             {
-                var destinationFile = newdirectory + @"\" + f.Name;
-
                 //TO COMPLETE
                 virtualdestinationdirectoryvirtualmapping += f.Name;
                 //TO COMPLETE
@@ -532,7 +530,7 @@ namespace RentalMobile.Controllers
             var files = uploadDirectory.GetFiles();
 
             directory = @"\" + Username + @"\" + TempData["UserID"] + @"\";
-            var newdirectory = photoPath + directory;
+            var newdirectory = PhotoPath + directory;
             if (!Directory.Exists(path))
             {
                 UploadHelper.CreateDirectoryIfNotExist(newdirectory);
@@ -609,7 +607,7 @@ namespace RentalMobile.Controllers
 
 
 
-       
+
 
         public ActionResult Preview(int id)
         {
@@ -625,42 +623,50 @@ namespace RentalMobile.Controllers
                     UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
                 };
 
+            if (Request.Url != null)
+            {
+                var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+                var primaryimagethumbnail = UserHelper.ResolveImageUrl(u.Unit.PrimaryPhoto);
 
-            ///******************************************///////////////
+                string title;
+                if (String.IsNullOrEmpty(u.Unit.Title))
+                {
+                    title = (u.Unit.Address + " , " + u.Unit.State + " , " + u.Unit.City);
+                    if (title.Length >= 50)
+                    {
+                        title = title.Substring(0, 50);
+                    }
 
-            //Complete these fields//
-            var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    title = u.Unit.Title;
+                    if (u.Unit.Title.Length >= 50)
+                    {
+                        title = u.Unit.Title.Substring(0, 50);
+                    }
 
+                }
 
-           // var primaryimagethumbnail =  "primaryimagethumbnail";
-            var primaryimagethumbnail = UserHelper.ResolveUrl(u.Unit.PrimaryPhoto);
+                var summary = u.Unit.Description;
+                if (!String.IsNullOrEmpty(summary))
+                {
+                    if (summary.Length >= 140) { summary = summary.Substring(0, 140); }
+                }
 
+                var tweet = u.Unit.Description;
+                if (!String.IsNullOrEmpty(tweet))
+                {
+                    if (tweet.Length >= 140) { tweet = tweet.Substring(0, 140); }
+                }
+                
+                const string sitename = "http://www.haithem-araissia.com";
 
-            //ADd title field to Unit Databae
-            //IF no title filed, than grab the address
-
-            var title = "title";
-
-
-            //For number of character count
-            var summary = "summary";
-
-            var tweet = "tweet";
-            var sitename = "http://www.haithem-araissia.com";
-            //Complete these fields//
-
-
-            ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
-            ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
-            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
-            ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
-
-            ///******************************************///////////////
-
-
-
-
-
+                ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+                ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+                ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+                ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
+            }
 
             ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
             var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;

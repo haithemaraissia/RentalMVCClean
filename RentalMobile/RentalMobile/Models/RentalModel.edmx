@@ -1429,6 +1429,7 @@
           <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
           <Property Name="VimeoVideo" Type="bit" />
           <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UnitAppliance">
           <Key>
@@ -3414,6 +3415,7 @@
           <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="VimeoVideo" />
           <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_UnitAppliance_Unit">
           <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
@@ -4982,6 +4984,7 @@
           <EntitySetMapping Name="Units">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Unit">
               <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
                 <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
                 <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />

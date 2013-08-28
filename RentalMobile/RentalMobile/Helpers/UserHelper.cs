@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.WebPages;
 using Newtonsoft.Json;
@@ -171,23 +172,42 @@ namespace RentalMobile.Helpers
 
 
 
-
-
-
-
-        public static string ResolveUrl(string relativeUrl)
+        public static class UrlHelperExtension
         {
-            if (VirtualPathUtility.IsAppRelative(relativeUrl))
+            public static string ContentFullPath(UrlHelper url, string virtualPath)
             {
-                return VirtualPathUtility.ToAbsolute(relativeUrl);
-            }
-            else
-            {
-                var curPath = WebPageContext.Current.Page.TemplateInfo.VirtualPath;
-                var curDir = VirtualPathUtility.GetDirectory(curPath);
-                return VirtualPathUtility.ToAbsolute(VirtualPathUtility.Combine(curDir, relativeUrl));
+                var requestUrl = url.RequestContext.HttpContext.Request.Url;
 
+                var result = string.Format("{0}://{1}{2}",
+                                              requestUrl.Scheme,
+                                              requestUrl.Authority,
+                                              VirtualPathUtility.ToAbsolute(virtualPath));
+                return result;
             }
+        }
+
+
+
+        public static string ResolveImageUrl(string relativeUrl)
+        {
+
+            return new Uri(HttpContext.Current.Request.Url, relativeUrl).AbsoluteUri;
+
+
+            //if (VirtualPathUtility.IsAppRelative(relativeUrl))
+            //{
+            //    return VirtualPathUtility.ToAbsolute(relativeUrl);
+            //}
+            //else
+            //{
+
+ 
+
+            //    var curPath = WebPageContext.Current.Page.TemplateInfo.VirtualPath;
+            //    var curDir = VirtualPathUtility.GetDirectory(curPath);
+            //    return VirtualPathUtility.ToAbsolute(VirtualPathUtility.Combine(curDir, relativeUrl));
+
+          
 
 
         }
