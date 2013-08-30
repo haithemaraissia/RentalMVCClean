@@ -1148,6 +1148,9 @@
     <Content Include="Views\Shared\LayoutFrame\_HeadProperty.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadOwner.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Emails\SendtoFriend\Multipart.cshtml" />
+    <Content Include="Views\Emails\SendtoFriend\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\SendtoFriend\Multipart.Text.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

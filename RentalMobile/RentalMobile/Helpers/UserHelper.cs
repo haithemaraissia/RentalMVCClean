@@ -247,6 +247,15 @@ namespace RentalMobile.Helpers
         }
 
 
+        public static string GetCurrencyValue( int? currencyId)
+        {
+            var currency = DB.Currencies.FirstOrDefault(x => x.CurrencyID == currencyId);
+            if (currency != null)
+                return currency.CurrencyValue;
+            return DB.Currencies.First().CurrencyValue;
+        }
+
+
 
 
     }

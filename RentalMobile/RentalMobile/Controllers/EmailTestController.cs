@@ -20,17 +20,22 @@ namespace RentalMobile.Controllers
         }
 
 
-        public ActionResult Send(string to, string subject, string message, HttpPostedFileBase file)
+        public ActionResult Send(string From, string to, string subject, string message, HttpPostedFileBase file)
         {
+
+           
             // This will look for a view in "~/Views/Emails/Example.cshtml".
-            dynamic email = new Email("Multipart");
+            dynamic email = new Email("SendtoFriend/Multipart");
             // Assign any view data to pass to the view.
             // It's dynamic, so you can put whatever you want here.
             email.To = to;
+            email.From = From;
+            email.Title = "Custom Title";
             email.Subject = subject;
             email.Message = message;
             email.Date = DateTime.UtcNow;
 
+ ViewBag.Poster = "sdfgsdg@yhaoo.com";
             if (file != null)
             {
                 email.Attach(new Attachment(file.InputStream, file.FileName));
@@ -43,7 +48,7 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                     //Write To Database Error
                 //Output Message

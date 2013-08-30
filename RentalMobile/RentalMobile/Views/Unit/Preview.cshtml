@@ -31,7 +31,7 @@
     public string GetPrimaryPhoto()
     {
 
-        return  @Url.Content(String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.jpg" : Model.Unit.PrimaryPhoto);
+        return @Url.Content(String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.jpg" : Model.Unit.PrimaryPhoto);
 
     }
 }
@@ -41,6 +41,10 @@
     Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
 
    
+}
+@section UnitTitle
+{
+    @Model.Unit.Title
 }
 @section MiniTabMenu
 {
@@ -160,7 +164,7 @@
                 <input id="datepicker" placeholder="showing date" type="text" required>
             </li>
         </ul>
-            <input type="submit" class="full-width tall" value="Request a showing" />
+        <input type="submit" class="full-width tall" value="Request a showing" />
         </form>
     }
 </section>
@@ -958,13 +962,6 @@
             </div>
         </section>
     }
-    
-
-
-
-
-        <!--CLEAN AND COMPLETE CODE FROM HERE!-->
-
     @section shareonfb
     {
         <div id="share-on-fb" class="panel">
@@ -982,7 +979,12 @@
                     href="@Html.Raw(ViewBag.LinkedIn)">Share it with your Linked In</a> </li>
             </ul>
         </div>
-    }
+    }  
+    
+    
+    
+    
+    <!--CLEAN AND COMPLETE CODE FROM HERE!-->
     @section sendtofriend
     {
         <div id="send-to-friend" class="panel">

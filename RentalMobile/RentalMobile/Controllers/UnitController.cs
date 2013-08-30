@@ -627,7 +627,6 @@ namespace RentalMobile.Controllers
             {
                 var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
                 var primaryimagethumbnail = UserHelper.ResolveImageUrl(u.Unit.PrimaryPhoto);
-
                 string title;
                 if (String.IsNullOrEmpty(u.Unit.Title))
                 {
@@ -636,7 +635,6 @@ namespace RentalMobile.Controllers
                     {
                         title = title.Substring(0, 50);
                     }
-
                 }
                 else
                 {
@@ -645,7 +643,6 @@ namespace RentalMobile.Controllers
                     {
                         title = u.Unit.Title.Substring(0, 50);
                     }
-
                 }
 
                 var summary = u.Unit.Description;
@@ -654,14 +651,15 @@ namespace RentalMobile.Controllers
                     if (summary.Length >= 140) { summary = summary.Substring(0, 140); }
                 }
 
-                var tweet = u.Unit.Description;
+                var unitrentprice = u.UnitPricing.Rent == null ? "" : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) +" ";
+                unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);                
+                var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url ;
                 if (!String.IsNullOrEmpty(tweet))
                 {
                     if (tweet.Length >= 140) { tweet = tweet.Substring(0, 140); }
-                }
-                
+                } 
+               
                 const string sitename = "http://www.haithem-araissia.com";
-
                 ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
                 ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
                 ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
