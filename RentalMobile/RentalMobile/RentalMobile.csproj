@@ -143,8 +143,10 @@
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
     <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Helpers\Email.cs" />
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
+    <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
@@ -422,6 +424,13 @@
     </Compile>
     <Compile Include="WebForms\Ads\AdTest.aspx.designer.cs">
       <DependentUpon>AdTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Emails\SendToFriend\SendToFriend.aspx.cs">
+      <DependentUpon>SendToFriend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Emails\SendToFriend\SendToFriend.aspx.designer.cs">
+      <DependentUpon>SendToFriend.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -816,6 +825,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="WIP\Design\advices.html" />
+    <Content Include="Emails\SendToFriend\SendToFriend.aspx" />
     <Content Include="WIP\Pool\building.html" />
     <Content Include="WIP\Pool\buy.html" />
     <Content Include="WIP\Pool\home-nivoslider.html" />

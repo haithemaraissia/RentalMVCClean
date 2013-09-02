@@ -988,24 +988,28 @@
     @section sendtofriend
     {
         <div id="send-to-friend" class="panel">
-            <form action="#">
+            @using (Html.BeginForm("ForwardtoFriend", "Unit", new { id = 26, enctype = "multipart/form-data" }, FormMethod.Post))
+            {
             <h4 class="section-titling">
                 Send this property to a friend</h4>
             <ul class="grid-form row remove-bottom eight columns">
                 <li class="four columns alpha">
                     <label for="friend-name-field" class="screen-reader-text">
                         Name of your friend</label>
-                    <input id="friend-name-field" type="text" placeholder="Name of your friend" class="full-width" />
+                    <input id="friendname" type="text" name="friendname" placeholder="Name of your friend"
+                        class="full-width" />
                 </li>
                 <li class="four columns omega">
                     <label for="friend-email-field" class="screen-reader-text">
                         Email of your friend</label>
-                    <input id="friend-email-field" type="email" placeholder="Email of your friend" class="full-width" />
+                    <input id="friend-email-field" type="email" name="friendemailaddress" placeholder="Email of your friend"
+                        class="full-width" />
                 </li>
                 <li class="eight columns alpha omega">
                     <label for="recomendation-message-field" class="screen-reader-text">
                         Recomendation</label>
-                    <textarea id="recomendation-message-field" placeholder="Recomendation" class="full-width"></textarea>
+                    <textarea id="recomendation-message-field" placeholder="Recomendation" name="message"
+                        class="full-width"></textarea>
                 </li>
                 <li class="two columns alpha">
                     <input type="submit" value="Send it" />
@@ -1014,7 +1018,7 @@
                     <input type="submit" value="Clear" />
                 </li>
             </ul>
-            </form>
+            }
         </div>
     }
   

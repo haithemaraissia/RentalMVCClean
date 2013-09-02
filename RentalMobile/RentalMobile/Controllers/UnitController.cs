@@ -5,12 +5,15 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 {
@@ -580,7 +583,7 @@ namespace RentalMobile.Controllers
         {
 
             var jNotifyConfirmationScript = string.Format(@"jSuccess('Your post to {0} has been succesfully.", "socialnetwork")
-            + @"{
+            + @"',{
 	                        autoHide : true, // added in v2.0
 	  	                        clickOverlay : false, // added in v2.0
 	  	                        MinWidth : 300,
@@ -651,14 +654,14 @@ namespace RentalMobile.Controllers
                     if (summary.Length >= 140) { summary = summary.Substring(0, 140); }
                 }
 
-                var unitrentprice = u.UnitPricing.Rent == null ? "" : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) +" ";
-                unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);                
-                var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url ;
+                var unitrentprice = u.UnitPricing.Rent == null ? "" : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
+                unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);
+                var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url;
                 if (!String.IsNullOrEmpty(tweet))
                 {
                     if (tweet.Length >= 140) { tweet = tweet.Substring(0, 140); }
-                } 
-               
+                }
+
                 const string sitename = "http://www.haithem-araissia.com";
                 ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
                 ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
@@ -675,6 +678,77 @@ namespace RentalMobile.Controllers
             return View(u);
         }
 
+
+        public ContentResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
+        {
+            dynamic email = new Email("SendtoFriend/Multipart");
+            var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            var currentunit = db.Units.Find(id);
+            const string previewPathWithHost = @"\Unit\Preview";
+            var unitPicture = currentunit.PrimaryPhoto;
+            unitPicture = unitPicture.Replace("../../", "");
+
+
+            //../../Photo/Owner/Property/carrie/2/img_walle - Copy.jpg
+
+            // Assign any view data to pass to the view.
+            // It's dynamic, so you can put whatever you want here.
+
+            email.To = friendemailaddress;
+            email.FriendName = friendname;
+            email.From = "postmaster@haithem-araissia.com";
+            email.SenderFirstName = poster.FirstName;
+            email.Title = string.Format("Request From {0}", poster.FirstName);
+            email.Message = message;
+            var uri = Request.Url;
+            if (uri != null)
+            {
+                var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+                var unitUrl = host + previewPathWithHost + id;
+                email.UnitUrl = unitUrl;
+
+                string title;
+                if (String.IsNullOrEmpty(currentunit.Title))
+                {
+                    title = (currentunit.Address + " , " + currentunit.State + " , " + currentunit.City);
+                    if (title.Length >= 50)
+                    {
+                        title = title.Substring(0, 50);
+                    }
+                }
+                else
+                {
+                    title = currentunit.Title;
+                    if (currentunit.Title.Length >= 50)
+                    {
+                        title = currentunit.Title.Substring(0, 50);
+                    }
+                }
+
+                email.UnitTitle = title;
+                // email.UnitPath = "http://www.haithem-araissia.com/images/property/home12.jpg";
+                email.UnitPath = host +"/" + unitPicture;
+            }
+
+            try
+            {
+                email.SendAsync();
+
+            }
+            catch (Exception e)
+            {
+                //Write To Database Error
+
+                //Output Message
+                throw;
+            }
+
+      //     return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", JNotifyConfirmation("Sharing Property")));
+
+
+            return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
+
+        }
 
     }
 
