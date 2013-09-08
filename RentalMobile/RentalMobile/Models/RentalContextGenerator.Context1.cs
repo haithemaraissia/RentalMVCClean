@@ -84,5 +84,6 @@ namespace RentalMobile.Models
         public DbSet<UnitType> UnitTypes { get; set; }
         public DbSet<Bathroom> Bathrooms { get; set; }
         public DbSet<Bed> Beds { get; set; }
+        public DbSet<OwnerShowingCalendar> OwnerShowingCalendars { get; set; }
     }
 }

@@ -464,6 +464,65 @@ namespace RentalMobile.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult ShowingSchedule()
+        {
+            return View();
+        }
+
+
+
+
+        public ActionResult NewShowingRequest()
+        {
+            return View();
+        }
+
+
+        public ActionResult Schedule()
+        {
+            return View();
+        }
+
+
+
+        //public JsonResult GetOwnerCalendar()
+        //{
+        //    string format = "y, m, d, hh, mm";
+        //    var eventList = from e in db.OwnerShowingCalendars
+        //                    where (e.OwnerId == 2)
+        //                    select e;
+
+        //   foreach (var k in eventList)
+        //   {
+        //       k.StartDate = string.Format(k.StartDate.Value,format);
+        //   }
+        //                    select new
+        //                    {
+        //                        id = e.EventID,
+        //                        title = e.EventTitle,
+        //                        start = e.StartDate.Value.ToString(format).ToString(),
+        //                        end = e.EndDate.Value.ToString(format).ToString(),
+        //                        allDay = e.IsAllDay
+        //                    };
+                            
+        //    var rows = eventList.ToArray();
+        //    return Json(rows, JsonRequestBehavior.AllowGet);
+        //} 
     }
 
 

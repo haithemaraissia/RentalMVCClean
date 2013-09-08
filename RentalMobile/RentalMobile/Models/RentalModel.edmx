@@ -41,6 +41,7 @@
           <EntitySet Name="OwnerProject" EntityType="DB_33736_rentalModel.Store.OwnerProject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerRejectedApplication" EntityType="DB_33736_rentalModel.Store.OwnerRejectedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerRejectedPostedProject" EntityType="DB_33736_rentalModel.Store.OwnerRejectedPostedProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OwnerShowingCalendar" EntityType="DB_33736_rentalModel.Store.OwnerShowingCalendar" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ParkingSpace" EntityType="DB_33736_rentalModel.Store.ParkingSpace" store:Type="Tables" store:Schema="dbo" store:Name="ParkingSpace">
             <DefiningQuery>SELECT 
       [ParkingSpace].[ParkingID] AS [ParkingID], 
@@ -1142,6 +1143,17 @@
           <Property Name="CurrencyCode" Type="int" />
           <Property Name="Date" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="OwnerShowingCalendar">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsAllDay" Type="bit" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'DB_33736_rental.dbo.ParkingSpace' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
@@ -1912,6 +1924,7 @@
           <EntitySet Name="UnitTypes" EntityType="DB_33736_rentalModel.UnitType" />
           <EntitySet Name="Bathrooms" EntityType="DB_33736_rentalModel.Bathroom" />
           <EntitySet Name="Beds" EntityType="DB_33736_rentalModel.Bed" />
+          <EntitySet Name="OwnerShowingCalendars" EntityType="DB_33736_rentalModel.OwnerShowingCalendar" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3591,6 +3604,17 @@
           <Property Type="Int32" Name="BedID" Nullable="false" />
           <Property Type="String" Name="BedValue" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="OwnerShowingCalendar">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Type="Int32" Name="EventID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="EventTitle" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+          <Property Type="Boolean" Name="IsAllDay" />
+          <Property Type="Int32" Name="OwnerId" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5109,6 +5133,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="OwnerShowingCalendars">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerShowingCalendar">
+              <MappingFragment StoreEntitySet="OwnerShowingCalendar">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="IsAllDay" ColumnName="IsAllDay" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5269,6 +5305,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitType" Width="1.5" PointX="0.75" PointY="25.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Bathroom" Width="1.5" PointX="25.375" PointY="13.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Bed" Width="1.5" PointX="25.375" PointY="16.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerShowingCalendar" Width="1.5" PointX="16.375" PointY="26.75" Height="2.1725878906249818" />
         </Diagram>
     </Diagrams>
   </Designer>

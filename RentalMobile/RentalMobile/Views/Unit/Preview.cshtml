@@ -40,7 +40,21 @@
     ViewBag.Title = "Unit Description";
     Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
 
-   
+    if (ViewBag.EmailSharedwithFriend != null && ViewBag.EmailSharedwithFriend == true)
+    {
+        ViewBag.EmailSharedwithFriend = false;
+    <!-- jNotify -->
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+        media="screen" />
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+    <script language='javascript' type='text/javascript'>
+        @Html.Raw(ViewBag.EmailSucessSharedwithFriend)
+
+
+    </script>
+    }
+
 }
 @section UnitTitle
 {
@@ -141,31 +155,24 @@
         <p>
             Please complete the form below to request a showing for this property.
         </p>
-        <form action="#">
-        <ul class="grid-form">
-            <li class="four columns alpha">
-                <label for="your-name" class="screen-reader-text">
-                    Your name</label>
-                <input id="your-name" placeholder="Your name" type="text" required>
-            </li>
-            <li class="four columns omega">
-                <label for="your-email" class="screen-reader-text">
-                    E-mail</label>
-                <input id="your-email" placeholder="email" type="email" required>
-            </li>
-            <li class="four columns alpha">
-                <label for="your-telephone" class="screen-reader-text">
-                    Your telephone</label>
-                <input id="your-telephone" placeholder="telephone" type="text" required>
-            </li>
-            <li class="four columns omega">
-                <label for="showing-date" class="screen-reader-text">
-                    Showing date</label>
-                <input id="datepicker" placeholder="showing date" type="text" required>
-            </li>
-        </ul>
+        @using (Html.BeginForm("RequestShowing", "Unit", new { id = @Model.Unit.UnitId }, FormMethod.Post))
+        {
+
+            <ul class="grid-form">
+                 <li class="four columns alpha"> <label for="your-name" class="screen-reader-text">
+                                                     Your name</label> <input id="yourname" name="yourname" placeholder="Your name" type="text" required/>
+                       </li> <li class="four columns omega"> <label for="your-email" class="screen-reader-text">
+                                                                 E-mail</label> <input id="youremail" name="youremail" placeholder="email" type="email" required/>
+                             </li> <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
+                                                                       Your telephone</label> <input id="yourtelephone" name="yourtelephone" placeholder="telephone" type="text"
+                                                                                                     required> </li> <li class="four columns omega"> <label for="showing-date" class="screen-reader-text">
+                                                                                                                                                         Showing date</label> <input id="datepicker" name="datepicker" placeholder="showing date" type="text"
+                                                                                                                                                                                     required> </li> 
+            </ul>
         <input type="submit" class="full-width tall" value="Request a showing" />
-        </form>
+
+
+        }
     }
 </section>
 <section class="row double-bottom">
@@ -984,46 +991,46 @@
     
     
     
-    <!--CLEAN AND COMPLETE CODE FROM HERE!-->
+
     @section sendtofriend
     {
         <div id="send-to-friend" class="panel">
-            @using (Html.BeginForm("ForwardtoFriend", "Unit", new { id = 26, enctype = "multipart/form-data" }, FormMethod.Post))
+            @using (Html.BeginForm("ForwardtoFriend", "Unit", new { id = @Model.Unit.UnitId, enctype = "multipart/form-data" }, FormMethod.Post))
             {
-            <h4 class="section-titling">
-                Send this property to a friend</h4>
-            <ul class="grid-form row remove-bottom eight columns">
-                <li class="four columns alpha">
-                    <label for="friend-name-field" class="screen-reader-text">
-                        Name of your friend</label>
-                    <input id="friendname" type="text" name="friendname" placeholder="Name of your friend"
-                        class="full-width" />
-                </li>
-                <li class="four columns omega">
-                    <label for="friend-email-field" class="screen-reader-text">
-                        Email of your friend</label>
-                    <input id="friend-email-field" type="email" name="friendemailaddress" placeholder="Email of your friend"
-                        class="full-width" />
-                </li>
-                <li class="eight columns alpha omega">
-                    <label for="recomendation-message-field" class="screen-reader-text">
-                        Recomendation</label>
-                    <textarea id="recomendation-message-field" placeholder="Recomendation" name="message"
-                        class="full-width"></textarea>
-                </li>
-                <li class="two columns alpha">
-                    <input type="submit" value="Send it" />
-                </li>
-                <li class="two columns omega">
-                    <input type="submit" value="Clear" />
-                </li>
-            </ul>
+                <h4 class="section-titling">
+                    Send this property to a friend</h4>
+                <ul class="grid-form row remove-bottom eight columns">
+                    <li class="four columns alpha">
+                        <label for="friend-name-field" class="screen-reader-text">
+                            Name of your friend</label>
+                        <input id="friendname" type="text" name="friendname" placeholder="Name of your friend"
+                            class="full-width" />
+                    </li>
+                    <li class="four columns omega">
+                        <label for="friend-email-field" class="screen-reader-text">
+                            Email of your friend</label>
+                        <input id="friend-email-field" type="email" name="friendemailaddress" placeholder="Email of your friend"
+                            class="full-width" required />
+                    </li>
+                    <li class="eight columns alpha omega">
+                        <label for="recomendation-message-field" class="screen-reader-text">
+                            Recomendation</label>
+                        <textarea id="recomendation-message-field" placeholder="Recomendation" name="message"
+                            class="full-width"></textarea>
+                    </li>
+                    <li class="two columns alpha">
+                        <input type="submit" value="Send it" />
+                    </li>
+                    <li class="two columns omega">
+                        <input type="button" value="Clear" onclick="ClearEmailToFriendForm();" />
+                    </li>
+                </ul>
             }
         </div>
     }
   
   
-  
+      <!--CLEAN AND COMPLETE CODE FROM HERE!-->
 
     @section scripts
 {
@@ -1058,66 +1065,66 @@
                     return false;
                 });         
                 
-            //Lightbox Fancybox
+                //Lightbox Fancybox
                 $("#fancybox-manual-c").click(function () {
                     @Html.Raw(ViewBag.Sript)
                 });
 
 
-        //responsive menu
-        $('<select />').appendTo('header nav');
+                //responsive menu
+                $('<select />').appendTo('header nav');
 
-        $('<option />', {
-            'selected': 'selected',
-            'value': '',
-            'text': 'Select a Page...'
-        }).appendTo('header nav select');
-
-        $('.menu-bar .menu a').each(function () {
-            var el = $(this);
-            if (el.parents('.menu-bar .menu ul').length) {
                 $('<option />', {
-                    'value': el.attr('href'),
-                    'text': '... ' + el.text()
-                }).appendTo('nav select');
-            } else {
-                $('<option />', {
-                    'value': el.attr('href'),
-                    'text': el.text()
-                }).appendTo('nav select');
-            }
-        });
+                    'selected': 'selected',
+                    'value': '',
+                    'text': 'Select a Page...'
+                }).appendTo('header nav select');
 
-        $('header nav select').change(function () {
-            window.location = $(this).find('option:selected').val();
-        });
+                $('.menu-bar .menu a').each(function () {
+                    var el = $(this);
+                    if (el.parents('.menu-bar .menu ul').length) {
+                        $('<option />', {
+                            'value': el.attr('href'),
+                            'text': '... ' + el.text()
+                        }).appendTo('nav select');
+                    } else {
+                        $('<option />', {
+                            'value': el.attr('href'),
+                            'text': el.text()
+                        }).appendTo('nav select');
+                    }
+                });
 
-        //tipsy
-        $('ul.social a, .home-btn').tipsy({
-            gravity: 's',
-            fade: true
-        });
+                $('header nav select').change(function () {
+                    window.location = $(this).find('option:selected').val();
+                });
 
-        //filters on home and rent
-        var newSelection = "";
+                //tipsy
+                $('ul.social a, .home-btn').tipsy({
+                    gravity: 's',
+                    fade: true
+                });
 
-        $(".filter-list a").click(function () {
+                //filters on home and rent
+                var newSelection = "";
 
-            $("#property-list").fadeTo(200, 0.10);
+                $(".filter-list a").click(function () {
 
-            $(".filter-list a").removeClass("current");
-            $(this).addClass("current");
+                    $("#property-list").fadeTo(200, 0.10);
 
-            newSelection = $(this).attr("data-rel");
+                    $(".filter-list a").removeClass("current");
+                    $(this).addClass("current");
 
-            $(".prop-type").not("." + newSelection).slideUp();
-            $("." + newSelection).slideDown();
+                    newSelection = $(this).attr("data-rel");
 
-            $("#property-list").fadeTo(600, 1);
+                    $(".prop-type").not("." + newSelection).slideUp();
+                    $("." + newSelection).slideDown();
 
-        });
+                    $("#property-list").fadeTo(600, 1);
 
-    });
+                });
+
+            });
         </script>
         <script type="text/javascript">
 
@@ -1155,10 +1162,14 @@
         </script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
         <script type="text/javascript" src="../../Scripts/helper/AmenitiesAlignment.js"></script>
-        <!-- jNotify -->
-        <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
-            media="screen" />
-        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
+        <script type="text/javascript">
+            function ClearEmailToFriendForm() {
+                document.getElementById('friendname').value = "";
+                document.getElementById('friend-email-field').value = "";
+                document.getElementById('recomendation-message-field').value = "";
+                return false;
+            }
+        </script>
     }
 }
 </section>

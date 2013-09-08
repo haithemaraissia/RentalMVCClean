@@ -50,10 +50,6 @@
       <HintPath>bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Mvc.Mailer.dll</HintPath>
-    </Reference>
     <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MvcJqGrid.dll</HintPath>
@@ -253,6 +249,9 @@
     <Compile Include="Models\OwnerRejectedPostedProject.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OwnerShowingCalendar.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ParkingSpace.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -439,6 +438,70 @@
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
     <Content Include="bin\Mvc.Mailer.dll" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Contracts\Reports\PDFReport.aspx" />
     <Content Include="Contracts\Reports\RentalAgreement.aspx" />
     <Content Include="Contracts\Reports\Test.aspx" />
@@ -475,6 +538,24 @@
     <Content Include="css\dotcss\tipsy.css" />
     <Content Include="css\dotcss\ui\jquery-ui.css" />
     <Content Include="css\dotcss\UserMenu.css" />
+    <Content Include="css\fullcalendar\cupertino\images\animated-overlay.gif" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="css\fullcalendar\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\fullcalendar\cupertino\jquery-ui.min.css" />
+    <Content Include="css\fullcalendar\fullcalendar.css" />
+    <Content Include="css\fullcalendar\fullcalendar.print.css" />
     <Content Include="css\Html5Reset.css" />
     <Content Include="css\Mobile.css" />
     <Content Include="css\pupload\Css\Images\Calendar.png" />
@@ -522,6 +603,39 @@
     <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
     <Content Include="Documentation\Done\UnitProperty\P3.txt" />
     <Content Include="Documentation\Done\UnitProperty\P4.txt" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\changelog.txt" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\agenda-views.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\basic-views.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\animated-overlay.gif" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\jquery-ui.min.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\default.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\external-dragging.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\gcal.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\selectable.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\theme.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.print.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\gcal.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery-ui.custom.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\license.txt" />
     <Content Include="Global.asax" />
     <Content Include="Html\NoVideo.htm" />
     <Content Include="images\arrowsub.png" />
@@ -654,6 +768,9 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\gcal.js" />
     <Content Include="Scripts\helper\AmenitiesAlignment.js" />
     <Content Include="Scripts\jNotify-master\error.png" />
     <Content Include="Scripts\jNotify-master\info.png" />
@@ -662,6 +779,13 @@
     <Content Include="Scripts\jNotify-master\jquery\jNotify.jquery.min.js" />
     <Content Include="Scripts\jNotify-master\jquery\jquery.js" />
     <Content Include="Scripts\jNotify-master\success.png" />
+    <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\lib\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
@@ -908,6 +1032,7 @@
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
     <Content Include="Handler\AdHandler.ashx" />
+    <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
     <None Include="images\dotimages\wip\linkedin_icon_black.psd" />
     <None Include="Models\RentalContextGenerator.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1047,6 +1172,7 @@
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="packages.config" />
     <None Include="Scripts\jNotify-master\index.php" />
+    <None Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />
@@ -1161,6 +1287,15 @@
     <Content Include="Views\Emails\SendtoFriend\Multipart.cshtml" />
     <Content Include="Views\Emails\SendtoFriend\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\SendtoFriend\Multipart.Text.cshtml" />
+    <Content Include="Views\Owner\NewShowingRequest.cshtml" />
+    <Content Include="Views\Owner\ShowingSchedule.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Sender\Multipart.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Sender\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Sender\Multipart.Text.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Text.cshtml" />
+    <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Html.cshtml" />
+    <Content Include="Views\Owner\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

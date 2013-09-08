@@ -134,17 +134,17 @@ namespace RentalMobile.Controllers
         public ActionResult Edit(int id)
         {
             var u = new UnitModelView
-                {
-                    Unit = db.Units.Find(id),
-                    UnitFeature = db.UnitFeatures.Find(id),
-                    UnitAppliance = db.UnitAppliances.Find(id),
-                    UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
-                    UnitPricing = db.UnitPricings.Find(id),
-                    UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
-                    UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
-                    UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+                        {
+                            Unit = db.Units.Find(id),
+                            UnitFeature = db.UnitFeatures.Find(id),
+                            UnitAppliance = db.UnitAppliances.Find(id),
+                            UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                            UnitPricing = db.UnitPricings.Find(id),
+                            UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                            UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                            UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
 
-                };
+                        };
             ViewBag.CurrencyCode = u.Unit.CurrencyCode;
 
             TempData["UnitID"] = id;
@@ -243,8 +243,10 @@ namespace RentalMobile.Controllers
 
         private void SetCurrencyViewBag(int? currencyId = null)
         {
-            ViewData["currency"] = currencyId == null ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue") :
-                new SelectList(db.Currencies.ToArray(), "CurrencyID", "CurrencyValue", currencyId);
+            ViewData["currency"] = currencyId == null
+                                       ? new SelectList(db.Currencies, "CurrencyID", "CurrencyValue")
+                                       : new SelectList(db.Currencies.ToArray(), "CurrencyID", "CurrencyValue",
+                                                        currencyId);
         }
 
         public SelectList GetCurrencySelectList()
@@ -252,8 +254,8 @@ namespace RentalMobile.Controllers
 
             var currencies = db.Currencies;
             return new SelectList(currencies.ToArray(),
-                                "CurrencyID",
-                                "CurrencyValue");
+                                  "CurrencyID",
+                                  "CurrencyValue");
 
         }
 
@@ -439,12 +441,12 @@ namespace RentalMobile.Controllers
         {
 
             var unitgallery = new UnitGallery
-                {
-                    Path = photoPath,
-                    Caption = "",
-                    Rank = rank,
-                    Unit = unit
-                };
+                                  {
+                                      Path = photoPath,
+                                      Caption = "",
+                                      Rank = rank,
+                                      Unit = unit
+                                  };
 
             if (!ModelState.IsValid) return;
             _db.UnitGalleries.Add(unitgallery);
@@ -582,8 +584,10 @@ namespace RentalMobile.Controllers
         public string JNotifyConfirmation(string socialnetwork)
         {
 
-            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your post to {0} has been succesfully.", "socialnetwork")
-            + @"',{
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your post to {0} has been succesfully.",
+                                                          "socialnetwork")
+                                            +
+                                            @"',{
 	                        autoHide : true, // added in v2.0
 	  	                        clickOverlay : false, // added in v2.0
 	  	                        MinWidth : 300,
@@ -608,23 +612,53 @@ namespace RentalMobile.Controllers
 
 
 
+        public string JNotifyConfirmationSharingEmail()
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your email has been sent successfully.")
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
 
 
 
-
-        public ActionResult Preview(int id)
+        public ActionResult Preview(int id, bool? shareproperty)
         {
             var u = new UnitModelView
-                {
-                    Unit = db.Units.Find(id),
-                    UnitFeature = db.UnitFeatures.Find(id),
-                    UnitAppliance = db.UnitAppliances.Find(id),
-                    UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
-                    UnitPricing = db.UnitPricings.Find(id),
-                    UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
-                    UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
-                    UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
-                };
+                        {
+                            Unit = db.Units.Find(id),
+                            UnitFeature = db.UnitFeatures.Find(id),
+                            UnitAppliance = db.UnitAppliances.Find(id),
+                            UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                            UnitPricing = db.UnitPricings.Find(id),
+                            UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                            UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                            UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+                        };
 
             if (Request.Url != null)
             {
@@ -651,15 +685,23 @@ namespace RentalMobile.Controllers
                 var summary = u.Unit.Description;
                 if (!String.IsNullOrEmpty(summary))
                 {
-                    if (summary.Length >= 140) { summary = summary.Substring(0, 140); }
+                    if (summary.Length >= 140)
+                    {
+                        summary = summary.Substring(0, 140);
+                    }
                 }
 
-                var unitrentprice = u.UnitPricing.Rent == null ? "" : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
+                var unitrentprice = u.UnitPricing.Rent == null
+                                        ? ""
+                                        : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
                 unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);
                 var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url;
                 if (!String.IsNullOrEmpty(tweet))
                 {
-                    if (tweet.Length >= 140) { tweet = tweet.Substring(0, 140); }
+                    if (tweet.Length >= 140)
+                    {
+                        tweet = tweet.Substring(0, 140);
+                    }
                 }
 
                 const string sitename = "http://www.haithem-araissia.com";
@@ -669,22 +711,36 @@ namespace RentalMobile.Controllers
                 ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
             }
 
-            ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
+            ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address)
+                                        ? UserHelper.GetFormattedLocation("", "", "USA")
+                                        : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
             var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
             ViewBag.PosterFirstName = poster.FirstName;
             ViewBag.PosterLastName = poster.LastName;
             ViewBag.PosterPictureProfile = poster.ProfilePicturePath;
             ViewBag.PosterProfileLink = poster.ProfileLink;
+
+
+            if (shareproperty != null && shareproperty == true)
+            {
+                //var successmessage = string.Format("<script language='javascript' type='text/javascript'>{0}; window.location.hash = 'sendtofriend';</script>",
+                //                   JNotifyConfirmation("Sharing Property"));
+
+
+
+                ViewBag.EmailSharedwithFriend = true;
+                ViewBag.EmailSucessSharedwithFriend = JNotifyConfirmationSharingEmail();
+            }
             return View(u);
         }
 
 
-        public ContentResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
+        public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
         {
             dynamic email = new Email("SendtoFriend/Multipart");
             var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
             var currentunit = db.Units.Find(id);
-            const string previewPathWithHost = @"\Unit\Preview";
+            const string previewPathWithHost = @"/Unit/Preview";
             var unitPicture = currentunit.PrimaryPhoto;
             unitPicture = unitPicture.Replace("../../", "");
 
@@ -727,7 +783,7 @@ namespace RentalMobile.Controllers
 
                 email.UnitTitle = title;
                 // email.UnitPath = "http://www.haithem-araissia.com/images/property/home12.jpg";
-                email.UnitPath = host +"/" + unitPicture;
+                email.UnitPath = host + "/" + unitPicture;
             }
 
             try
@@ -743,15 +799,123 @@ namespace RentalMobile.Controllers
                 throw;
             }
 
-      //     return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", JNotifyConfirmation("Sharing Property")));
+            //     return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", JNotifyConfirmation("Sharing Property")));
 
 
-            return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
+
+            // return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
+
+
+            return RedirectToAction("Preview", new {id, shareproperty = true});
+
 
         }
 
-    }
 
+        public ActionResult RequestShowing(string yourname, string youremail, string yourtelephone, string datepicker,
+                                           int id)
+        {
+
+
+
+
+
+
+
+
+
+
+            //dynamic email = new Email("RequestShowing/Multipart");
+            //var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            //var currentunit = db.Units.Find(id);
+            //const string previewPathWithHost = @"/Unit/Preview";
+            //var unitPicture = currentunit.PrimaryPhoto;
+            //unitPicture = unitPicture.Replace("../../", "");
+            //email.To = friendemailaddress;
+            //email.FriendName = friendname;
+            //email.From = "postmaster@haithem-araissia.com";
+            //email.SenderFirstName = poster.FirstName;
+            //email.Title = string.Format("Request From {0}", poster.FirstName);
+            //email.Message = message;
+            //var uri = Request.Url;
+            //if (uri != null)
+            //{
+            //    var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+            //    var unitUrl = host + previewPathWithHost + id;
+            //    email.UnitUrl = unitUrl;
+
+            //    string title;
+            //    if (String.IsNullOrEmpty(currentunit.Title))
+            //    {
+            //        title = (currentunit.Address + " , " + currentunit.State + " , " + currentunit.City);
+            //        if (title.Length >= 50)
+            //        {
+            //            title = title.Substring(0, 50);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        title = currentunit.Title;
+            //        if (currentunit.Title.Length >= 50)
+            //        {
+            //            title = currentunit.Title.Substring(0, 50);
+            //        }
+            //    }
+            //    email.UnitTitle = title;
+            //    email.UnitPath = host +"/" + unitPicture;
+            //}
+
+            //try
+            //{
+            //    email.SendAsync();
+
+            //}
+            //catch (Exception e)
+            //{
+            //    //Write To Database Error
+
+            //    //Output Message
+            //    throw;
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //Send Request to Requester
+
+
+
+            //Send Request to Owner
+
+
+            //Insert into Confirmation of showing somehwo
+
+            return RedirectToAction("Preview", new {id, shareproperty = true});
+
+        }
+
+
+
+
+
+    }
 
     public class UnitPhoto
     {
