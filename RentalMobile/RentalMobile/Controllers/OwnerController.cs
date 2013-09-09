@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -502,29 +504,127 @@ namespace RentalMobile.Controllers
 
         //public JsonResult GetOwnerCalendar()
         //{
-        //    string format = "y, m, d, hh, mm";
-        //    var eventList = from e in db.OwnerShowingCalendars
+        //    const string format = "yyyy, M, d, hh, mm";
+        //    var calendar = from e in db.OwnerShowingCalendars
         //                    where (e.OwnerId == 2)
         //                    select e;
-
-        //   foreach (var k in eventList)
-        //   {
-        //       k.StartDate = string.Format(k.StartDate.Value,format);
-        //   }
+        //    var calendarList = calendar.ToArray();
+        //    var eventList = from e in calendarList
+        //                    let startDate = e.StartDate
+        //                    where startDate != null
+        //                    let endDate = e.EndDate
+        //                    where endDate != null
         //                    select new
-        //                    {
-        //                        id = e.EventID,
-        //                        title = e.EventTitle,
-        //                        start = e.StartDate.Value.ToString(format).ToString(),
-        //                        end = e.EndDate.Value.ToString(format).ToString(),
-        //                        allDay = e.IsAllDay
-        //                    };
-                            
+        //            {
+        //                id = e.EventID,
+        //                title = e.EventTitle,
+        //                start = new DateTime(Convert.ToInt64(startDate.Value.ToString(format))),
+        //                end = new DateTime(Convert.ToInt64(endDate.Value.ToString(format))),
+        //                allDay = e.IsAllDay,
+        //            };
+
         //    var rows = eventList.ToArray();
-        //    return Json(rows, JsonRequestBehavior.AllowGet);
-        //} 
+
+
+        //    return Json(rows, JsonRequestBehavior.AllowGet);  
+        //}
+
+
+
+
+        public JsonResult GetOwnerCalendar()
+        {
+            const string format = "yyyy, M, d, hh, mm";
+            var calendar = from e in db.OwnerShowingCalendars
+                           where (e.OwnerId == 2)
+                           select e;
+            var calendarList = calendar.ToArray();
+            var eventList = from e in calendarList
+                            let startDate = e.StartDate
+                            where startDate != null
+                            let endDate = e.EndDate
+                            where endDate != null
+                            select new
+                            {
+                                id = e.EventID,
+                                title = e.EventTitle,
+                                start = startDate.Value.ToUnixTimestamp(),
+                                end = endDate.Value.ToUnixTimestamp(),
+                                allDay = e.IsAllDay,
+                            };
+
+            var rows = eventList.ToArray();
+
+
+            return Json(rows, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
+
+        public ActionResult Syndicate(string format)
+        {
+
+            var feed = new SyndicationFeed("Compiled Experience", "Silverlight Development",
+                                           new Uri("http://compiledexperience.com"));
+
+            var calendar = from e in db.OwnerShowingCalendars
+                           where (e.OwnerId == 2)
+                           select e;
+            var calendarList = calendar.ToArray();
+            var eventList = from e in calendarList
+                            let startDate = e.StartDate
+                            where startDate != null
+                            let endDate = e.EndDate
+                            where endDate != null
+                            select new SyndicationItem(e.EventID.ToString(CultureInfo.InvariantCulture), e.EventTitle, new Uri(String.Format("/blog/posts/{0}", e.EventTitle), UriKind.Relative));
+
+            if (format.Equals("rss", StringComparison.InvariantCultureIgnoreCase))
+
+                return new RssResult(feed);
+
+
+
+            //You need to return Atom Syndicator
+            return null;
+
+            //   return new Rss20FeedFormater(feed);
+
+
+
+
+       //    http://localhost:56224/Owner/Syndicate/?format=rss
+        }
+
+
+
     }
 
 
 
+
+    public static class DateExtension
+    {
+        public static long ToUnixTimestamp(this DateTime target)
+        {
+            var date = new DateTime(1970, 1, 1, 0, 0, 0, target.Kind);
+            var unixTimestamp = System.Convert.ToInt64((target - date).TotalSeconds);
+
+            return unixTimestamp;
+        }
+
+        public static DateTime ToDateTime(this DateTime target, long timestamp)
+        {
+            var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, target.Kind);
+
+            return dateTime.AddSeconds(timestamp);
+        }
+    }
+
 }
+
+

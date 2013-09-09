@@ -75,6 +75,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -143,6 +144,7 @@
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
+    <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
