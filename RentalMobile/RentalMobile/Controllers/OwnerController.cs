@@ -501,40 +501,8 @@ namespace RentalMobile.Controllers
         }
 
 
-
-        //public JsonResult GetOwnerCalendar()
-        //{
-        //    const string format = "yyyy, M, d, hh, mm";
-        //    var calendar = from e in db.OwnerShowingCalendars
-        //                    where (e.OwnerId == 2)
-        //                    select e;
-        //    var calendarList = calendar.ToArray();
-        //    var eventList = from e in calendarList
-        //                    let startDate = e.StartDate
-        //                    where startDate != null
-        //                    let endDate = e.EndDate
-        //                    where endDate != null
-        //                    select new
-        //            {
-        //                id = e.EventID,
-        //                title = e.EventTitle,
-        //                start = new DateTime(Convert.ToInt64(startDate.Value.ToString(format))),
-        //                end = new DateTime(Convert.ToInt64(endDate.Value.ToString(format))),
-        //                allDay = e.IsAllDay,
-        //            };
-
-        //    var rows = eventList.ToArray();
-
-
-        //    return Json(rows, JsonRequestBehavior.AllowGet);  
-        //}
-
-
-
-
         public JsonResult GetOwnerCalendar()
         {
-            const string format = "yyyy, M, d, hh, mm";
             var calendar = from e in db.OwnerShowingCalendars
                            where (e.OwnerId == 2)
                            select e;
@@ -554,8 +522,6 @@ namespace RentalMobile.Controllers
                             };
 
             var rows = eventList.ToArray();
-
-
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
 
@@ -566,7 +532,16 @@ namespace RentalMobile.Controllers
 
 
 
-        public ActionResult Syndicate(string format)
+       
+
+
+
+        /// <summary>
+        /// RSS FEED WITH RSS AND ATOM CONFIGURED
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public FileResult Syndicate(string format)
         {
 
             var feed = new SyndicationFeed("Compiled Experience", "Silverlight Development",
@@ -583,23 +558,33 @@ namespace RentalMobile.Controllers
                             where endDate != null
                             select new SyndicationItem(e.EventID.ToString(CultureInfo.InvariantCulture), e.EventTitle, new Uri(String.Format("/blog/posts/{0}", e.EventTitle), UriKind.Relative));
 
+
+            feed.Items = eventList.ToList();
+            
+            
+            
+            
             if (format.Equals("rss", StringComparison.InvariantCultureIgnoreCase))
 
-                return new RssResult(feed);
+                return new FeedResult(feed, FeedResult.FeedType.Rss);
 
 
 
             //You need to return Atom Syndicator
-            return null;
+            return new FeedResult(feed, FeedResult.FeedType.Atom); 
 
             //   return new Rss20FeedFormater(feed);
 
 
 
 
-       //    http://localhost:56224/Owner/Syndicate/?format=rss
+            //    http://localhost:56224/Owner/Syndicate/?format=rss
         }
 
+
+
+
+        
 
 
     }

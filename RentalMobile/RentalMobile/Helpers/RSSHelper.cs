@@ -64,4 +64,78 @@ namespace RentalMobile.Helpers
 
 
 
+
+    public class FeedResult : FileResult
+    {
+        public enum FeedType
+        {
+            Rss,
+            Atom
+        }
+
+        private readonly SyndicationFeed _feed;
+        private FeedType type;
+
+        public FeedResult(SyndicationFeed feed, FeedType type)
+            : base("application/rss+xml")
+        {
+            this._feed = feed;
+            this.type = type;
+        }
+
+
+
+        //private static void WriteToAtomFormatter(ControllerContext context, SyndicationFeed feed)
+        //{
+        //    var atomFormatter = new Atom10FeedFormatter(feed);
+        //    using (var writer = XmlWriter.Create(context.HttpContext.Response.Output))
+        //    {
+        //        atomFormatter.WriteTo(writer);
+        //    }
+        //}
+
+        //private static void WriteToRssFormatter(ControllerContext context, SyndicationFeed feed)
+        //{
+        //    var rssFormatter = new Rss20FeedFormatter(feed);
+        //    using (var writer = XmlWriter.Create(context.HttpContext.Response.Output))
+        //    {
+        //        rssFormatter.WriteTo(writer);
+        //    }
+        //}
+
+        //public override void ExecuteResult(ControllerContext context)
+        //{
+
+        //    using (XmlWriter writer = XmlWriter.Create(context.HttpContext.Response.OutputStream))
+        //    {
+        //        switch (this.type)
+        //        {
+        //            case FeedType.Rss:
+        //                this._feed.GetRss20Formatter().WriteTo(writer);
+        //                break;
+        //            case FeedType.Atom:
+        //                this._feed.GetAtom10Formatter().WriteTo(writer);
+        //                break;
+        //        }
+        //    }
+
+        //}
+
+        protected override void WriteFile(HttpResponseBase response)
+        {
+            using (XmlWriter writer = XmlWriter.Create(response.OutputStream))
+            {
+                switch (this.type)
+                {
+                    case FeedType.Rss:
+                        this._feed.GetRss20Formatter().WriteTo(writer);
+                        break;
+                    case FeedType.Atom:
+                        this._feed.GetAtom10Formatter().WriteTo(writer);
+                        break;
+                }
+            }
+        }
+    }
+
 }

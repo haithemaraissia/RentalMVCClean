@@ -806,10 +806,26 @@ namespace RentalMobile.Controllers
             // return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
 
 
-            return RedirectToAction("Preview", new {id, shareproperty = true});
+            return RedirectToAction("Preview", new { id, shareproperty = true });
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public ActionResult RequestShowing(string yourname, string youremail, string yourtelephone, string datepicker,
@@ -817,102 +833,160 @@ namespace RentalMobile.Controllers
         {
 
 
-
-
-
-
-
-
-
-
-            //dynamic email = new Email("RequestShowing/Multipart");
-            //var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
-            //var currentunit = db.Units.Find(id);
-            //const string previewPathWithHost = @"/Unit/Preview";
-            //var unitPicture = currentunit.PrimaryPhoto;
-            //unitPicture = unitPicture.Replace("../../", "");
-            //email.To = friendemailaddress;
-            //email.FriendName = friendname;
-            //email.From = "postmaster@haithem-araissia.com";
-            //email.SenderFirstName = poster.FirstName;
-            //email.Title = string.Format("Request From {0}", poster.FirstName);
-            //email.Message = message;
-            //var uri = Request.Url;
-            //if (uri != null)
-            //{
-            //    var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
-            //    var unitUrl = host + previewPathWithHost + id;
-            //    email.UnitUrl = unitUrl;
-
-            //    string title;
-            //    if (String.IsNullOrEmpty(currentunit.Title))
-            //    {
-            //        title = (currentunit.Address + " , " + currentunit.State + " , " + currentunit.City);
-            //        if (title.Length >= 50)
-            //        {
-            //            title = title.Substring(0, 50);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        title = currentunit.Title;
-            //        if (currentunit.Title.Length >= 50)
-            //        {
-            //            title = currentunit.Title.Substring(0, 50);
-            //        }
-            //    }
-            //    email.UnitTitle = title;
-            //    email.UnitPath = host +"/" + unitPicture;
-            //}
-
-            //try
-            //{
-            //    email.SendAsync();
-
-            //}
-            //catch (Exception e)
-            //{
-            //    //Write To Database Error
-
-            //    //Output Message
-            //    throw;
-            //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //COMPLETE THIS 
 
             //Send Request to Requester
+            SendRequestToRequester(yourname, youremail,datepicker, id);
+
+
+            //Send Request to Receiver
+            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            if (unitposter.Role != null)
+            {
+                    SendRequestToReceiver(yourname, youremail, yourtelephone, datepicker, id);
+
+            }
+
+
+            //Insert into Confirmation of showing pending
+            InsertPendingShowingRequest();
 
 
 
-            //Send Request to Owner
-
-
-            //Insert into Confirmation of showing somehwo
-
-            return RedirectToAction("Preview", new {id, shareproperty = true});
+            //Alert Confimration with JSucess
+            return RedirectToAction("Preview", new { id, shareproperty = true });
 
         }
 
 
 
+
+
+       
+        public void UnitProperty(int id, string previewPathWithHost, dynamic email, Unit currentunit, string unitPicture)
+        {
+            var uri = Request.Url;
+            if (uri == null) return;
+            var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+            var unitUrl = host + previewPathWithHost + id;
+            email.UnitUrl = unitUrl;
+
+            string title;
+            if (String.IsNullOrEmpty(currentunit.Title))
+            {
+                title = (currentunit.Address + " , " + currentunit.State + " , " + currentunit.City);
+                if (title.Length >= 50)
+                {
+                    title = title.Substring(0, 50);
+                }
+            }
+            else
+            {
+                title = currentunit.Title;
+                if (currentunit.Title.Length >= 50)
+                {
+                    title = currentunit.Title.Substring(0, 50);
+                }
+            }
+            email.UnitTitle = title;
+            email.UnitPath = host + "/" + unitPicture;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ public void SendRequestToRequester(string requestername, 
+            string requesteremailaddress,  
+            string datepicker, int id)
+        {
+            dynamic email = new Email("RequestShowing/Receiver/Multipart");
+           var currentunit = db.Units.Find(id);
+            const string previewPathWithHost = @"/Unit/Preview";
+            var unitPicture = currentunit.PrimaryPhoto;
+            unitPicture = unitPicture.Replace("../../", "");
+
+            email.To = requesteremailaddress;
+            email.RequesterName = requestername;
+            email.From = "postmaster@haithem-araissia.com";
+
+            email.Title = string.Format("Confirmation of Request From {0}", requestername);
+
+            email.ScheduleDate = datepicker;
+            email.LinkConfirmation = "Confirmation to Poster Schedule Pending";
+            UnitProperty(id, previewPathWithHost, email, currentunit, unitPicture);
+
+            try
+            {
+                email.SendAsync();
+
+            }
+            catch (Exception e)
+            {
+                //Write To Database Error
+
+                //Output Message
+                throw;
+            }
+
+        }
+
+
+
+
+ public void SendRequestToReceiver(string requestername,
+     string requesteremailaddress, string requestertelephone,
+     string datepicker, int id)
+        {
+
+            dynamic email = new Email("RequestShowing/Receiver/Multipart");
+            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            var currentunit = db.Units.Find(id);
+            const string previewPathWithHost = @"/Unit/Preview";
+            var unitPicture = currentunit.PrimaryPhoto;
+            unitPicture = unitPicture.Replace("../../", "");
+
+            email.To = unitposter.EmailAddress;
+            email.ReceiverName = unitposter.FirstName;
+            email.From = "postmaster@haithem-araissia.com";
+
+            email.RequesterName = requestername;
+            email.RequesterEmailAddress = requesteremailaddress;
+            email.Title = string.Format("Request From {0}", requestername);
+
+            email.ScheduleDate = datepicker;
+            email.RequesterTelephone = requestertelephone;
+            email.LinkConfirmation = "Confirmation to Poster Schedule Pending";
+            UnitProperty(id, previewPathWithHost, email, currentunit, unitPicture);
+
+            try
+            {
+                email.SendAsync();
+
+            }
+            catch (Exception e)
+            {
+                //Write To Database Error
+
+                //Output Message
+                throw;
+            }
+        }
+
+
+        public void InsertPendingShowingRequest()
+        {
+            //Depending on the Poster role
+            //Insert into PendingRequestWShowing.
+        }
 
 
     }
