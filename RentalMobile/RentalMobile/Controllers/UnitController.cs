@@ -610,8 +610,6 @@ namespace RentalMobile.Controllers
             return jNotifyConfirmationScript;
         }
 
-
-
         public string JNotifyConfirmationSharingEmail()
         {
 
@@ -645,8 +643,73 @@ namespace RentalMobile.Controllers
         }
 
 
+        //        public string JNotifyRequestShowingSucess()
+        //        {
 
-        public ActionResult Preview(int id, bool? shareproperty)
+        //            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your request has been sent successfully.")
+        //                                            +
+        //                                            @"',{
+        //	                        autoHide : true, // added in v2.0
+        //	  	                        clickOverlay : false, // added in v2.0
+        //	  	                        MinWidth : 300,
+        //	  	                        TimeShown : 3000,
+        //	  	                        ShowTimeEffect : 200,
+        //	  	                        HideTimeEffect : 200,
+        //	  	                        LongTrip :10,
+        //	  	                        HorizontalPosition : 'center',
+        //	  	                        VerticalPosition : 'center',
+        //	  	                        ShowOverlay : true,
+        //  		  	                        ColorOverlay : '#000',
+        //	  	                        OpacityOverlay : 0.3,
+        //	  	                        onClosed : function(){ // added in v2.0
+        //	   
+        //	  	                        },
+        //	  	                         onCompleted : function(){ // added in v2.0
+        //	  	                        
+        //	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+        //	   
+        //	  	                }
+        //		             });
+        //
+        //";
+        //            return jNotifyConfirmationScript;
+        //        }
+
+
+        //        public string JNotifyRequestShowingFailure()
+        //        {
+
+        //            var jNotifyConfirmationScript = string.Format(@"jError('Your request has not been sent successfully. PLease try again.")
+        //                                            +
+        //                                            @"',{
+        //	                        autoHide : true, // added in v2.0
+        //	  	                        clickOverlay : false, // added in v2.0
+        //	  	                        MinWidth : 300,
+        //	  	                        TimeShown : 3000,
+        //	  	                        ShowTimeEffect : 200,
+        //	  	                        HideTimeEffect : 200,
+        //	  	                        LongTrip :10,
+        //	  	                        HorizontalPosition : 'center',
+        //	  	                        VerticalPosition : 'center',
+        //	  	                        ShowOverlay : true,
+        //  		  	                        ColorOverlay : '#000',
+        //	  	                        OpacityOverlay : 0.3,
+        //	  	                        onClosed : function(){ // added in v2.0
+        //	   
+        //	  	                        },
+        //	  	                         onCompleted : function(){ // added in v2.0
+        //	  	                        
+        //	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+        //	   
+        //	  	                }
+        //		             });
+        //
+        //";
+        //            return jNotifyConfirmationScript;
+        //        }
+
+
+        public ActionResult Preview(int id, bool? shareproperty, bool? requestshowing)
         {
             var u = new UnitModelView
                         {
@@ -723,14 +786,10 @@ namespace RentalMobile.Controllers
 
             if (shareproperty != null && shareproperty == true)
             {
-                //var successmessage = string.Format("<script language='javascript' type='text/javascript'>{0}; window.location.hash = 'sendtofriend';</script>",
-                //                   JNotifyConfirmation("Sharing Property"));
-
-
-
                 ViewBag.EmailSharedwithFriend = true;
                 ViewBag.EmailSucessSharedwithFriend = JNotifyConfirmationSharingEmail();
             }
+
             return View(u);
         }
 
@@ -806,7 +865,7 @@ namespace RentalMobile.Controllers
             // return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
 
 
-            return RedirectToAction("Preview", new { id, shareproperty = true });
+            return RedirectToAction("Preview", new { id });
 
 
         }
@@ -835,26 +894,43 @@ namespace RentalMobile.Controllers
 
             //COMPLETE THIS 
 
-            //Send Request to Requester
-            SendRequestToRequester(yourname, youremail,datepicker, id);
 
-
-            //Send Request to Receiver
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
-            if (unitposter.Role != null)
+            try
             {
+
+
+                //Send Request to Requester
+                SendRequestToRequester(yourname, youremail, datepicker, id);
+
+
+                //Send Request to Receiver
+                var unitposter = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+                if (unitposter.Role != null)
+                {
                     SendRequestToReceiver(yourname, youremail, yourtelephone, datepicker, id);
 
+                }
+
+
+                //Insert into Confirmation of showing pending
+                InsertPendingShowingRequest(id);
+
+                //Jsucess
+                //ViewBag.RequestShowing = true;
+                //ViewBag.RequestShowingSucess = JNotifyRequestShowingSucess();
+            }
+            catch (Exception e)
+            {
+
+                //Jfailure;
+                //Try Again
+                //ViewBag.RequestShowing = false;
+                //ViewBag.RequestShowingFailure = JNotifyRequestShowingFailure();
+                return RedirectToAction("Preview", new { id, requestshowing = false });
             }
 
-
-            //Insert into Confirmation of showing pending
-            InsertPendingShowingRequest();
-
-
-
             //Alert Confimration with JSucess
-            return RedirectToAction("Preview", new { id, shareproperty = true });
+            return RedirectToAction("Preview", new { id, requestshowing = true });
 
         }
 
@@ -862,7 +938,7 @@ namespace RentalMobile.Controllers
 
 
 
-       
+
         public void UnitProperty(int id, string previewPathWithHost, dynamic email, Unit currentunit, string unitPicture)
         {
             var uri = Request.Url;
@@ -904,12 +980,12 @@ namespace RentalMobile.Controllers
 
 
 
- public void SendRequestToRequester(string requestername, 
-            string requesteremailaddress,  
-            string datepicker, int id)
+        public void SendRequestToRequester(string requestername,
+                   string requesteremailaddress,
+                   string datepicker, int id)
         {
-            dynamic email = new Email("RequestShowing/Receiver/Multipart");
-           var currentunit = db.Units.Find(id);
+            dynamic email = new Email("RequestShowing/Sender/Multipart");
+            var currentunit = db.Units.Find(id);
             const string previewPathWithHost = @"/Unit/Preview";
             var unitPicture = currentunit.PrimaryPhoto;
             unitPicture = unitPicture.Replace("../../", "");
@@ -942,9 +1018,9 @@ namespace RentalMobile.Controllers
 
 
 
- public void SendRequestToReceiver(string requestername,
-     string requesteremailaddress, string requestertelephone,
-     string datepicker, int id)
+        public void SendRequestToReceiver(string requestername,
+            string requesteremailaddress, string requestertelephone,
+            string datepicker, int id)
         {
 
             dynamic email = new Email("RequestShowing/Receiver/Multipart");
@@ -982,10 +1058,35 @@ namespace RentalMobile.Controllers
         }
 
 
-        public void InsertPendingShowingRequest()
+        public void InsertPendingShowingRequest(int id)
         {
             //Depending on the Poster role
             //Insert into PendingRequestWShowing.
+
+
+            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+
+            if (unitposter.Role == "owner")
+            {
+                //Pending OWner
+                var pendingshowing = new OwnerPendingShowingCalendar
+                    {
+                        EventTitle = "Pending Showing Request From ",
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now,
+                        IsAllDay = false,
+                        OwnerId = id
+                    };
+                db.OwnerPendingShowingCalendars.Add(pendingshowing);
+                db.SaveChanges();
+            }
+
+
+            if (unitposter.Role == "agent")
+            {
+                //Pending Agent
+            }
+
         }
 
 
