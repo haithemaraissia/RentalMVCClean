@@ -491,14 +491,49 @@ namespace RentalMobile.Controllers
 
         public ActionResult NewShowingRequest()
         {
-            return View();
+
+
+            var t = db.OwnerPendingShowingCalendars.Where(x=>x.OwnerId == 3);
+            OwnerPendingPostedProject e = new OwnerPendingPostedProject
+                                              {
+                                                  Budget = 22.33,
+                                                  Currency = "US",
+                                                  CurrencyCode = 2,
+                                                  Date = DateTime.Today,
+                                                  OwnerId = 2,
+                                                  ProjectID = 1,
+                                                  ServiceTypeID = 1,
+                                                  SpecialistId = 2
+                                              };
+
+
+
+
+
+//            TypeId
+//UnitId
+//PrimaryPhoto
+//@item.Address, @item.City, @item.State, @item.CountryCode
+//UnitPricing
+//Price
+//UnitPricing.Rent
+//UnitPricing.CurrencyId
+//item.Bed
+
+
+            
+
+    return View(db.Units.Include("UnitPricing").ToList());
+
         }
 
 
-        public ActionResult Schedule()
-        {
-            return View();
-        }
+        
+        
+
+
+
+
 
 
         public JsonResult GetOwnerCalendar()

@@ -1300,7 +1300,6 @@
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.cshtml" />
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Text.cshtml" />
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Html.cshtml" />
-    <Content Include="Views\Owner\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
