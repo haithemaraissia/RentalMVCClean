@@ -494,6 +494,47 @@ namespace RentalMobile.Controllers
         {
 
 
+
+
+            var t = db.OwnerPendingShowingCalendars.Find(3);
+
+
+
+            //        public int EventID { get; set; }
+      //  public string EventTitle { get; set; }
+       // public Nullable<System.DateTime> StartDate { get; set; }
+       // public Nullable<System.DateTime> EndDate { get; set; }
+     //   public Nullable<bool> IsAllDay { get; set; }
+    //    public int OwnerId { get; set; }
+
+
+
+
+
+
+
+//            var t = db.OwnerPendingShowingCalendars.Join(x => x.OwnerId == 3);
+
+
+//            var query =
+//from order in db.OwnerPendingShowingCalendars
+//join unit in db.Units
+//on order.
+//equals detail.SalesOrderID into orderGroup
+//select new
+//{
+//    CustomerID = order.SalesOrderID,
+//    OrderCount = orderGroup.Count()
+//};
+
+//            db.OwnerPendingShowingCalendars
+
+
+
+
+
+
+
          //   var t = db.OwnerPendingShowingCalendars.Where(x=>x.OwnerId == 3);
             //OwnerPendingPostedProject e = new OwnerPendingPostedProject
             //                                  {
