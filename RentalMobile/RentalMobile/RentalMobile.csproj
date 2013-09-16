@@ -334,6 +334,7 @@
     <Compile Include="Models\UrgencyType.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelViews\OwnerPendingShowingCalendarModelView.cs" />
     <Compile Include="ModelViews\Test.cs" />
     <Compile Include="ModelViews\UnitModelView.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />

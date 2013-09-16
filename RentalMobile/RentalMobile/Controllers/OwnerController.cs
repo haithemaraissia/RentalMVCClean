@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
+using RentalMobile.ModelViews;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
@@ -493,19 +494,28 @@ namespace RentalMobile.Controllers
         {
 
 
-            var t = db.OwnerPendingShowingCalendars.Where(x=>x.OwnerId == 3);
-            OwnerPendingPostedProject e = new OwnerPendingPostedProject
-                                              {
-                                                  Budget = 22.33,
-                                                  Currency = "US",
-                                                  CurrencyCode = 2,
-                                                  Date = DateTime.Today,
-                                                  OwnerId = 2,
-                                                  ProjectID = 1,
-                                                  ServiceTypeID = 1,
-                                                  SpecialistId = 2
-                                              };
+         //   var t = db.OwnerPendingShowingCalendars.Where(x=>x.OwnerId == 3);
+            //OwnerPendingPostedProject e = new OwnerPendingPostedProject
+            //                                  {
+            //                                      Budget = 22.33,
+            //                                      Currency = "US",
+            //                                      CurrencyCode = 2,
+            //                                      Date = DateTime.Today,
+            //                                      OwnerId = 2,
+            //                                      ProjectID = 1,
+            //                                      ServiceTypeID = 1,
+            //                                      SpecialistId = 2
+            //                                  };
 
+
+
+ //           var t = db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 3).Include("Units").
+ //.Select(p => new OwnerPendingShowingCalendarModelView
+ //               {
+ //                   OwnerPendingShowingCalendar = ,
+ //                   Unit = p.Unit
+                    
+ //               });
 
 
 
@@ -521,9 +531,28 @@ namespace RentalMobile.Controllers
 //item.Bed
 
 
+
+
+
+            //What you need in the View
+
+//            Image Unit
+//Unit NumberofPhoto
+//Unit ID
+
+//Sender Name and Last Name
+//Schedule Appointment
+//Schedule Note
+
+//BUtton
+
+            //What you need in the View
+
+
+
             
 
-    return View(db.Units.Include("UnitPricing").ToList());
+    return View((IEnumerable<OwnerPendingShowingCalendarModelView>) db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 3).Include("Units"));
 
         }
 

@@ -1,99 +1,93 @@
 ﻿@using System.Globalization
 @using RentalMobile.Helpers
-@model IEnumerable<RentalMobile.Models.Unit>
+@model IEnumerable<RentalMobile.ModelViews.OwnerPendingShowingCalendarModelView>
 @{
     ViewBag.Title = "NewShowingRequest";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
-
-<h2>NewShowingRequest</h2>
+<h2>
+    NewShowingRequest</h2>
 <div id="showing" class="panel">
-        <section class="fifteen columns">
-            <!-- List/Grid gallery -->
-            <ul id="property-list" class="list-grid-gallery list">
-                @foreach (var item in Model)
-                {
-                    <li class="prop-type all @Html.GetUnitType(item.TypeId)">
-                        <article>
-                            <figure class="five columns alpha">
-                                @Html.ActionLink(Html.CountPhoto(item.UnitId), "Edit", new { id = item.UnitId }, new { @class = "camera" })
-                                <img src="@item.PrimaryPhoto" class="scale-with-grid" width="280" height="185"
+    <section class="fifteen columns">
+        <!-- List/Grid gallery -->
+        <ul id="property-list" class="list-grid-gallery list">
+            @foreach (var item in Model)
+            {
+                <li class="prop-type all ">
+                    <article>
+                        <figure class="five columns alpha">
+                            @Html.ActionLink(Html.CountPhoto(item.Unit.UnitId), "Edit", new { id = item.Unit.UnitId }, new { @class = "camera" })
+                            <img src="@item.Unit.PrimaryPhoto" class="scale-with-grid" width="280" height="185"
                                      alt="gallery" />
-                            </figure>
-                            <div class="nine columns omega">
-                                <h4>
-                                    @item.Address, @item.City, @item.State, @item.CountryCode</h4>
-                                <ul class="prop-data">
-                                    <li class="price">@Html.DisplayFor(modelItem => item.Price)</li>
-                                    @if (item.UnitPricing != null)
-                                    {
-                                        if (item.UnitPricing.Rent != null)
-                                        {
-                                            <li class="new">@item.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture)
-                                                <span style="color: #346993">@Html.GetCurrencyValue(item.UnitPricing.CurrencyId)</span></li>
-                                        }
-                                    }
-                                </ul>
-                                <p class="prop-webid">
-                                    Unit ID #@Html.DisplayFor(modelItem => item.UnitId)</p>
-                                <p class="propr-details">
-                                    @Html.GetBedValue(item.Bed) bedroom / @Html.GetBathroomValue(item.Bed) bathrom /
-                                    @item.SquareFoot sqft
-                                </p>
-                                <p class="prop-extract">@Html.TruncateLongString(item.Description, 500)
-                                </p>
-                                <ul class="toolbar">
-                                    <li>@Html.ActionLink("Select", "Preview", new { id = item.UnitId })</li>
-                                </ul>
+                        </figure>
+                        <div class="nine columns omega">
+                            <h6>
+                                <span class="emphasis">Mike Douglas</span> would like to see this propoety at:</h6>
+                            <h3 class="emphasis">
+                                Tuesday 2,Feburary, 2013 at : 5:00pm</h3>
+                            <br />
+                            <p>
+                                <textarea readonly style="width: 98%; min-height: 60px">@item.Unit.Description</textarea>
+                            </p>
+                            <div class="four columns" style="float: right; padding-right: 16px">
+                                <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
                             </div>
-                        </article>
-                    </li>
-                }
-            </ul>
-            <!-- /.List -->
-            <style>
-                #container
-                {
-                    width: 100%;
-                    text-align: center;
-                }
-                
-                #left
-                {
-                    float: left;
-                    width: 50px;
-                    height: 20px;
-                    background: #ff0000;
-                }
-                
-                #center
-                {
-                    display: inline-block;
-                    margin: 0 auto;
-                    width: 50px;
-                    height: 20px;
-                    background: #00ff00;
-                }
-                
-                #right
-                {
-                    float: right;
-                    width: 50px;
-                    height: 20px;
-                    background: #0000ff;
-                }
-            </style>
-        </section>
-        <section class="fifteen columns">
-            <!--Pagination-->
-            <div id="container">
-                <div id="left">
-                    Previous</div>
-                <div id="center">
-                    Page 1 of 10</div>
-                <div id="right">
-                    Next</div>
-            </div>
-            <!--Pagination-->
-        </section>
-    </div>
+                            <div class="four columns" style="float: left;">
+                                <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+            }
+        </ul>
+        <!-- /.List -->
+        <style>
+            .emphasis
+            {
+                color: #254F71;
+            }
+            #container
+            {
+                width: 100%;
+                text-align: center;
+            }
+            
+            #left
+            {
+                float: left;
+                width: 50px;
+                height: 20px;
+                background: #ff0000;
+            }
+            
+            #center
+            {
+                display: inline-block;
+                margin: 0 auto;
+                width: 50px;
+                height: 20px;
+                background: #00ff00;
+            }
+            
+            #right
+            {
+                float: right;
+                width: 50px;
+                height: 20px;
+                background: #0000ff;
+            }
+        </style>
+    </section>
+    <section class="fifteen columns">
+        <!--Pagination-->
+        <div id="container">
+            <div id="left">
+                Previous</div>
+            <div id="center">
+                Page 1 of 10</div>
+            <div id="right">
+                Next</div>
+        </div>
+        <!--Pagination-->
+    </section>
+</div>
