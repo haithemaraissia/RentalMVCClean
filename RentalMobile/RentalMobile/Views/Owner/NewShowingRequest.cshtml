@@ -9,7 +9,6 @@
     NewShowingRequest</h2>
 <div id="showing" class="panel">
     <section class="fifteen columns">
-        <!-- List/Grid gallery -->
         <ul id="property-list" class="list-grid-gallery list">
             @foreach (var item in Model)
             {
@@ -22,25 +21,28 @@
                         </figure>
                         <div class="nine columns omega">
                             <h6>
-                                <span class="emphasis">Mike Douglas</span> would like to see this propoety at:</h6>
-                            <h3 class="emphasis">
-                                Tuesday 2,Feburary, 2013 at : 5:00pm</h3>
-                            <br />
-                            <p>
+                                <span class="emphasis">@item.OwnerPendingShowingCalendar.RequesterName  </span> @item.OwnerPendingShowingCalendar.EventTitle at:</h6>
+                             <h3 class="emphasis">  
+                                 @if (item.OwnerPendingShowingCalendar.StartDate != null)
+                                 {
+                                     @item.OwnerPendingShowingCalendar.StartDate.Value.ToString("dddd dd MMMM yyyy hh:mm:ss tt")
+                                 }
+                                 ;   Tuesday 2,Feburary, 2013 at : 5:00pm</h3>
+                         <br />
+                            @*<p>
                                 <textarea readonly style="width: 98%; min-height: 60px">@item.Unit.Description</textarea>
-                            </p>
+                            </p>*@
                             <div class="four columns" style="float: right; padding-right: 16px">
-                                <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
+                                <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Owner/ShowingRequestConfirm/@item.OwnerPendingShowingCalendar.EventID'"/>
                             </div>
                             <div class="four columns" style="float: left;">
-                                <input type="submit" class="full-width tall" value="Delete Account" onclick="location.href='/Owner/Delete/@ViewBag.OwnerId'"/>
+                                <input type="submit" class="full-width tall" value="Deny" onclick="location.href='/Owner/ShowingRequestDeny/@item.OwnerPendingShowingCalendar.EventID'"/>
                             </div>
                         </div>
                     </article>
                 </li>
             }
         </ul>
-        <!-- /.List -->
         <style>
             .emphasis
             {

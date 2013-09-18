@@ -20,5 +20,9 @@ namespace RentalMobile.Models
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<bool> IsAllDay { get; set; }
         public int OwnerId { get; set; }
+        public int UnitId { get; set; }
+        public string RequesterName { get; set; }
+        public string RequesterEmail { get; set; }
+        public string RequesterTelephone { get; set; }
     }
 }

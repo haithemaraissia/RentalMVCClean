@@ -1026,6 +1026,10 @@
           <Property Name="EndDate" Type="datetime" />
           <Property Name="IsAllDay" Type="bit" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="RequesterName" Type="nvarchar" MaxLength="256" />
+          <Property Name="RequesterEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="RequesterTelephone" Type="nvarchar" MaxLength="22" />
         </EntityType>
         <EntityType Name="OwnerProject">
           <Key>
@@ -1165,6 +1169,10 @@
           <Property Name="EndDate" Type="datetime" />
           <Property Name="IsAllDay" Type="bit" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="RequesterName" Type="nvarchar" MaxLength="256" />
+          <Property Name="RequesterEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="RequesterTelephone" Type="nvarchar" MaxLength="22" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'DB_33736_rental.dbo.ParkingSpace' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3627,6 +3635,10 @@
           <Property Type="DateTime" Name="EndDate" />
           <Property Type="Boolean" Name="IsAllDay" />
           <Property Type="Int32" Name="OwnerId" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="String" Name="RequesterName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequesterEmail" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequesterTelephone" MaxLength="22" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OwnerPendingShowingCalendar">
           <Key>
@@ -3638,6 +3650,10 @@
           <Property Type="DateTime" Name="EndDate" />
           <Property Type="Boolean" Name="IsAllDay" />
           <Property Type="Int32" Name="OwnerId" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="String" Name="RequesterName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequesterEmail" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequesterTelephone" MaxLength="22" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -5160,6 +5176,10 @@
           <EntitySetMapping Name="OwnerShowingCalendars">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerShowingCalendar">
               <MappingFragment StoreEntitySet="OwnerShowingCalendar">
+                <ScalarProperty Name="RequesterTelephone" ColumnName="RequesterTelephone" />
+                <ScalarProperty Name="RequesterEmail" ColumnName="RequesterEmail" />
+                <ScalarProperty Name="RequesterName" ColumnName="RequesterName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="IsAllDay" ColumnName="IsAllDay" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
@@ -5172,6 +5192,10 @@
           <EntitySetMapping Name="OwnerPendingShowingCalendars">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.OwnerPendingShowingCalendar">
               <MappingFragment StoreEntitySet="OwnerPendingShowingCalendar">
+                <ScalarProperty Name="RequesterTelephone" ColumnName="RequesterTelephone" />
+                <ScalarProperty Name="RequesterEmail" ColumnName="RequesterEmail" />
+                <ScalarProperty Name="RequesterName" ColumnName="RequesterName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="IsAllDay" ColumnName="IsAllDay" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />

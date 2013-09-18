@@ -493,113 +493,31 @@ namespace RentalMobile.Controllers
         public ActionResult NewShowingRequest()
         {
 
+            var showingrequest = (from opsc in db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 2)
+                                 join unit in db.Units
+                                     on opsc.UnitId equals unit.UnitId
+                                 select new OwnerPendingShowingCalendarModelView 
+                                     {
+                                         Unit = unit,
+                                         OwnerPendingShowingCalendar = opsc
+                                     }).AsQueryable();
 
-
-
-            var t = db.OwnerPendingShowingCalendars.Find(3);
-
-
-
-            //        public int EventID { get; set; }
-      //  public string EventTitle { get; set; }
-       // public Nullable<System.DateTime> StartDate { get; set; }
-       // public Nullable<System.DateTime> EndDate { get; set; }
-     //   public Nullable<bool> IsAllDay { get; set; }
-    //    public int OwnerId { get; set; }
-
-
-
-
-
-
-
-//            var t = db.OwnerPendingShowingCalendars.Join(x => x.OwnerId == 3);
-
-
-//            var query =
-//from order in db.OwnerPendingShowingCalendars
-//join unit in db.Units
-//on order.
-//equals detail.SalesOrderID into orderGroup
-//select new
-//{
-//    CustomerID = order.SalesOrderID,
-//    OrderCount = orderGroup.Count()
-//};
-
-//            db.OwnerPendingShowingCalendars
-
-
-
-
-
-
-
-         //   var t = db.OwnerPendingShowingCalendars.Where(x=>x.OwnerId == 3);
-            //OwnerPendingPostedProject e = new OwnerPendingPostedProject
-            //                                  {
-            //                                      Budget = 22.33,
-            //                                      Currency = "US",
-            //                                      CurrencyCode = 2,
-            //                                      Date = DateTime.Today,
-            //                                      OwnerId = 2,
-            //                                      ProjectID = 1,
-            //                                      ServiceTypeID = 1,
-            //                                      SpecialistId = 2
-            //                                  };
-
-
-
- //           var t = db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 3).Include("Units").
- //.Select(p => new OwnerPendingShowingCalendarModelView
- //               {
- //                   OwnerPendingShowingCalendar = ,
- //                   Unit = p.Unit
-                    
- //               });
-
-
-
-
-//            TypeId
-//UnitId
-//PrimaryPhoto
-//@item.Address, @item.City, @item.State, @item.CountryCode
-//UnitPricing
-//Price
-//UnitPricing.Rent
-//UnitPricing.CurrencyId
-//item.Bed
-
-
-
-
-
-            //What you need in the View
-
-//            Image Unit
-//Unit NumberofPhoto
-//Unit ID
-
-//Sender Name and Last Name
-//Schedule Appointment
-//Schedule Note
-
-//BUtton
-
-            //What you need in the View
-
-
-
-            
-
-    return View((IEnumerable<OwnerPendingShowingCalendarModelView>) db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 3).Include("Units"));
+            return View(showingrequest);
 
         }
 
 
-        
-        
+        public string ShowingRequestDeny()
+        {
+            return "";
+        }
+
+        public string ShowingRequestConfirm()
+        {
+            return "";
+        }
+
+
 
 
 
@@ -637,7 +555,7 @@ namespace RentalMobile.Controllers
 
 
 
-       
+
 
 
 
@@ -665,10 +583,10 @@ namespace RentalMobile.Controllers
 
 
             feed.Items = eventList.ToList();
-            
-            
-            
-            
+
+
+
+
             if (format.Equals("rss", StringComparison.InvariantCultureIgnoreCase))
 
                 return new FeedResult(feed, FeedResult.FeedType.Rss);
@@ -676,7 +594,7 @@ namespace RentalMobile.Controllers
 
 
             //You need to return Atom Syndicator
-            return new FeedResult(feed, FeedResult.FeedType.Atom); 
+            return new FeedResult(feed, FeedResult.FeedType.Atom);
 
             //   return new Rss20FeedFormater(feed);
 
@@ -689,7 +607,7 @@ namespace RentalMobile.Controllers
 
 
 
-        
+
 
 
     }
