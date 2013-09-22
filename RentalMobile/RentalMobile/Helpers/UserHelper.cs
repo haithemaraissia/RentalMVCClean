@@ -14,7 +14,7 @@ namespace RentalMobile.Helpers
     {
         private static readonly DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
 
-        public static PosterAttributes DefaultPoster = new PosterAttributes("Unkown", "Unknow", "#", "../../images/dotimages/single-property/agent-480x350.png","none@yahoo.com",null);
+        public static PosterAttributes DefaultPoster = new PosterAttributes("Unkown", "Unknow", "#", "../../images/dotimages/single-property/agent-480x350.png","none@yahoo.com",null,0);
 
         public static string Login()
         {
@@ -227,14 +227,14 @@ namespace RentalMobile.Helpers
                         var owner = DB.Owners.Find(unit.PosterID);
                         if (owner != null)
                         {
-                            return new PosterAttributes(owner.FirstName, owner.LastName, currenturl + "/ownerprofile/index/" + unit.PosterID, owner.Photo, owner.EmailAddress,"owner");
+                            return new PosterAttributes(owner.FirstName, owner.LastName, currenturl + "/ownerprofile/index/" + unit.PosterID, owner.Photo, owner.EmailAddress,"owner", owner.OwnerId);
                         }
                         break;
                          case "agent":
                         var agent = DB.Agents.Find(unit.PosterID);
                         if (agent != null)
                         {
-                            return new PosterAttributes(agent.FirstName, agent.LastName, currenturl + "/agentprofile/index/" + unit.PosterID, agent.Photo, agent.EmailAddress,"agent");
+                            return new PosterAttributes(agent.FirstName, agent.LastName, currenturl + "/agentprofile/index/" + unit.PosterID, agent.Photo, agent.EmailAddress,"agent", agent.AgentId);
                         }
                         break;
                     default:
@@ -270,8 +270,9 @@ namespace RentalMobile.Helpers
         public string ProfilePicturePath { get; set; }
         public string EmailAddress { get; set; }
         public string Role { get; set; }
+        public int PosterID { get; set; }
 
-        public PosterAttributes(string f, string l, string pl, string pp, string e, string r)
+        public PosterAttributes(string f, string l, string pl, string pp, string e, string r, int pid)
         {
             FirstName = f;
             LastName = l;
@@ -279,6 +280,7 @@ namespace RentalMobile.Helpers
             ProfilePicturePath = pp;
             EmailAddress = e;
             Role = r;
+            PosterID = pid;
         }
 }
 }

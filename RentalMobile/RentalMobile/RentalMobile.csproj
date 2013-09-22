@@ -224,6 +224,9 @@
     <Compile Include="Models\MaintenanceProviderRejectedJob.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MaintenanceTeamAssociation.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Owner.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -1301,6 +1304,9 @@
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.cshtml" />
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Text.cshtml" />
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Html.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_HeadProvider.cshtml" />
+    <Content Include="Views\Shared\LayoutFrame\_HeadSpecialist.cshtml" />
+    <Content Include="Views\Provider\_MaintenanceTeamAssociation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

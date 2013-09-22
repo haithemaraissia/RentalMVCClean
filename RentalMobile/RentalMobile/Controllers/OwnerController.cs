@@ -17,6 +17,7 @@ namespace RentalMobile.Controllers
     public class OwnerController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private static bool _confirmationRequest;
 
         // GET: /Owner/
 
@@ -490,34 +491,117 @@ namespace RentalMobile.Controllers
 
 
 
-        public ActionResult NewShowingRequest()
+        public ActionResult NewShowingRequest( bool? requestshowing)
         {
 
-            var showingrequest = (from opsc in db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == 2)
-                                 join unit in db.Units
-                                     on opsc.UnitId equals unit.UnitId
-                                 select new OwnerPendingShowingCalendarModelView 
-                                     {
-                                         Unit = unit,
-                                         OwnerPendingShowingCalendar = opsc
-                                     }).AsQueryable();
+            if (requestshowing == true)
+            {
+                ViewBag.ConfirmationRequest = true;
+                ViewBag.ConfirmationScript = JNotifyConfirmationSharingEmail();
+            }
+            var owner = UserHelper.GetOwnerID();
+            if (owner != null)
+            {
+                var ownerId = (int)owner;
+                var showingrequest = (from opsc in db.OwnerPendingShowingCalendars.Where(x => x.OwnerId == ownerId)
+                                      join unit in db.Units
+                                          on opsc.UnitId equals unit.UnitId
+                                      select new OwnerPendingShowingCalendarModelView
+                                          {
+                                              Unit = unit,
+                                              OwnerPendingShowingCalendar = opsc
+                                          }).AsQueryable();
 
-            return View(showingrequest);
+                return View(showingrequest);
+            }
 
+            return null;
         }
 
 
-        public string ShowingRequestDeny()
+        public ActionResult ShowingRequestDeny(int id)
         {
-            return "";
+            var pendingrequest = db.OwnerPendingShowingCalendars.FirstOrDefault(x => x.EventID == id);
+            if (pendingrequest != null)
+            {
+                db.OwnerPendingShowingCalendars.Remove(pendingrequest);
+                db.SaveChanges();
+            }
+
+
+
+            return RedirectToAction("NewShowingRequest");
         }
 
-        public string ShowingRequestConfirm()
+
+
+
+        public ActionResult ShowingRequestConfirm(int id)
         {
-            return "";
+
+            
+//            Insert into OwnerShowingCalendars
+
+            var pendingrequest = db.OwnerPendingShowingCalendars.FirstOrDefault(x => x.EventID == id) ;
+            if (pendingrequest != null)
+            {
+                var newownershowingcalender = new OwnerShowingCalendar
+                                                  {
+                                                      EventTitle = "Owner X has confirmed the scheduling",
+                                                      StartDate = pendingrequest.StartDate,
+                                                      EndDate = pendingrequest.EndDate,
+                                                      IsAllDay = pendingrequest.IsAllDay,
+                                                      OwnerId = pendingrequest.OwnerId,
+                                                      UnitId = pendingrequest.UnitId,
+                                                      RequesterEmail = pendingrequest.RequesterEmail,
+                                                      RequesterName = pendingrequest.RequesterName,
+                                                      RequesterTelephone = pendingrequest.RequesterTelephone
+
+                                                  };
+                db.OwnerShowingCalendars.Add(newownershowingcalender);
+                db.OwnerPendingShowingCalendars.Remove(pendingrequest);
+                db.SaveChanges();
+            }
+
+
+            //Send Email Confirmation to both parties
+
+            return RedirectToAction("NewShowingRequest", new { id, requestshowing = true });
         }
 
 
+
+        public string JNotifyConfirmationSharingEmail()
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your appointement confirmation was successful.")
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
 
 
 
@@ -526,26 +610,34 @@ namespace RentalMobile.Controllers
 
         public JsonResult GetOwnerCalendar()
         {
-            var calendar = from e in db.OwnerShowingCalendars
-                           where (e.OwnerId == 2)
-                           select e;
-            var calendarList = calendar.ToArray();
-            var eventList = from e in calendarList
-                            let startDate = e.StartDate
-                            where startDate != null
-                            let endDate = e.EndDate
-                            where endDate != null
-                            select new
-                            {
-                                id = e.EventID,
-                                title = e.EventTitle,
-                                start = startDate.Value.ToUnixTimestamp(),
-                                end = endDate.Value.ToUnixTimestamp(),
-                                allDay = e.IsAllDay,
-                            };
+            var owner = UserHelper.GetOwnerID();
+            if (owner != null)
+            {
+                var ownerId = (int) owner;
 
-            var rows = eventList.ToArray();
-            return Json(rows, JsonRequestBehavior.AllowGet);
+                var calendar = from e in db.OwnerShowingCalendars
+                               where (e.OwnerId == ownerId)
+                               select e;
+                var calendarList = calendar.ToArray();
+                var eventList = from e in calendarList
+                                let startDate = e.StartDate
+                                where startDate != null
+                                let endDate = e.EndDate
+                                where endDate != null
+                                select new
+                                           {
+                                               id = e.EventID,
+                                               title = e.EventTitle,
+                                               start = startDate.Value.ToUnixTimestamp(),
+                                               end = endDate.Value.ToUnixTimestamp(),
+                                               allDay = e.IsAllDay,
+                                           };
+
+                var rows = eventList.ToArray();
+                return Json(rows, JsonRequestBehavior.AllowGet);
+                
+            }
+            return null;
         }
 
 

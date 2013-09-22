@@ -1,10 +1,40 @@
 ﻿@using System.Globalization
 @using RentalMobile.Helpers
 @model IEnumerable<RentalMobile.ModelViews.OwnerPendingShowingCalendarModelView>
+
+@helper JScriptConfirmation()
+{
+    if (ViewBag.ConfirmationScript != null &&
+        ViewBag.ConfirmationRequest == true)
+    {
+        ViewBag.ConfirmationRequest = false;
+        @:<!-- jNotify -->
+                  <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+            media="screen" />
+        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+
+        <script language='javascript' type='text/javascript'>
+
+            @Html.Raw(ViewBag.ConfirmationScript)
+          
+        </script>
+    
+            <script language='javascript' type='text/javascript'>
+
+                window.location.href = "./Owner/NewShowingRequest";
+          
+        </script>
+    }
+}
+
+
+
 @{
     ViewBag.Title = "NewShowingRequest";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
-}
+    @JScriptConfirmation();
+    
+    }
 <h2>
     NewShowingRequest</h2>
 <div id="showing" class="panel">
@@ -26,12 +56,8 @@
                                  @if (item.OwnerPendingShowingCalendar.StartDate != null)
                                  {
                                      @item.OwnerPendingShowingCalendar.StartDate.Value.ToString("dddd dd MMMM yyyy hh:mm:ss tt")
-                                 }
-                                 ;   Tuesday 2,Feburary, 2013 at : 5:00pm</h3>
+                                 }</h3>
                          <br />
-                            @*<p>
-                                <textarea readonly style="width: 98%; min-height: 60px">@item.Unit.Description</textarea>
-                            </p>*@
                             <div class="four columns" style="float: right; padding-right: 16px">
                                 <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Owner/ShowingRequestConfirm/@item.OwnerPendingShowingCalendar.EventID'"/>
                             </div>
@@ -92,4 +118,4 @@
         </div>
         <!--Pagination-->
     </section>
-</div>
+          </div>

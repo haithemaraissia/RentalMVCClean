@@ -23,11 +23,38 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            var Provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
-            ViewBag.ProviderProfile = Provider;
-            ViewBag.ProviderId = Provider.MaintenanceProviderId;
-            ViewBag.ProviderGoogleMap = Provider.GoogleMap;
-            return View(Provider);
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+
+            var team = db.MaintenanceTeamAssociations.
+                Where(x => x.MaintenanceProviderId == 2).ToList();
+
+            //foreach (var t in team)
+            //{
+
+            //}
+
+
+
+            //Need To work on THis
+            //Need To work on THis
+            //Need To work on THis
+            //Need To work on THis
+            //Need To work on THis
+            //Need To work on THis
+            //var team = from p in db.MaintenanceTeamAssociations
+            //               .Select(new Teammate
+            //                           {
+            //                               SpecialistId = p.SpecialistID,
+            //                               SpecialistImageProfile = p.
+            //                           })
+            //Need To work on THis
+
+
+            ViewBag.ProviderProfile = provider;
+            ViewBag.ProviderId = provider.MaintenanceProviderId;
+            ViewBag.ProviderGoogleMap = provider.GoogleMap;
+            ViewBag.Team = team;
+            return View(provider);
         }
 
 
@@ -336,5 +363,22 @@ namespace RentalMobile.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+
+
+
+
+
+
+
+    }
+
+    public class Teammate
+    {
+        public int SpecialistId { get; set; }
+        public string SpecialistName { get; set; }
+        public int YearofExperience { get; set; }
+        public string SpecialistImageProfile { get; set; }
     }
 }

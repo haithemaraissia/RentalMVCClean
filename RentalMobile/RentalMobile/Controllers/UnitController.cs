@@ -1075,7 +1075,7 @@ namespace RentalMobile.Controllers
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now,
                         IsAllDay = false,
-                        OwnerId = id
+                        OwnerId = unitposter.PosterID
                     };
                 db.OwnerPendingShowingCalendars.Add(pendingshowing);
                 db.SaveChanges();

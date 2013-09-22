@@ -32,6 +32,7 @@
           <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderAcceptedJobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderNewJobOffers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderRejectedJobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceTeamAssociation" EntityType="DB_33736_rentalModel.Store.MaintenanceTeamAssociation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Owner" EntityType="DB_33736_rentalModel.Store.Owner" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerAcceptedApplication" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerAcceptedPostedProject" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedPostedProject" store:Type="Tables" Schema="dbo" />
@@ -742,6 +743,15 @@
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceTeamAssociation">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="SpecialistId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -1946,6 +1956,7 @@
           <EntitySet Name="Beds" EntityType="DB_33736_rentalModel.Bed" />
           <EntitySet Name="OwnerShowingCalendars" EntityType="DB_33736_rentalModel.OwnerShowingCalendar" />
           <EntitySet Name="OwnerPendingShowingCalendars" EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" />
+          <EntitySet Name="MaintenanceTeamAssociations" EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3655,6 +3666,15 @@
           <Property Type="String" Name="RequesterEmail" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="RequesterTelephone" MaxLength="22" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="MaintenanceTeamAssociation">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Type="Int32" Name="TeamId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TeamName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="SpecialistId" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5205,6 +5225,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceTeamAssociations">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceTeamAssociation">
+              <MappingFragment StoreEntitySet="MaintenanceTeamAssociation">
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5367,6 +5397,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Bed" Width="1.5" PointX="25.375" PointY="16.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerShowingCalendar" Width="1.5" PointX="16.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" Width="1.5" PointX="18.375" PointY="26.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.5" PointX="20.375" PointY="26.75" Height="1.7879850260416674" />
         </Diagram>
     </Diagrams>
   </Designer>
