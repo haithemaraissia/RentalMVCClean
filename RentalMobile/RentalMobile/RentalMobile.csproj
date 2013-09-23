@@ -129,9 +129,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
+    <Compile Include="Controllers\AddTeamMemberController.cs" />
     <Compile Include="Controllers\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\ProviderProfileController.cs" />
+    <Compile Include="Controllers\RemoveTeamMemberController.cs" />
     <Compile Include="Controllers\SpecialistProfileController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -1245,6 +1247,8 @@
     <Content Include="Views\Owner\GeneratedContract.cshtml" />
     <Content Include="Views\Owner\UploadedAgreement.cshtml" />
     <Content Include="Views\UploadAgreement\Index.cshtml" />
+    <Content Include="Views\AddTeamMember\Index.cshtml" />
+    <Content Include="Views\AddTeamMember\Submit.cshtml" />
     <None Include="Views\Ad\Sitemap.docx" />
     <Content Include="Views\Unit\Index.cshtml" />
     <Content Include="Views\Unit\Details.cshtml" />
@@ -1307,6 +1311,8 @@
     <Content Include="Views\Shared\LayoutFrame\_HeadProvider.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadSpecialist.cshtml" />
     <Content Include="Views\Provider\_MaintenanceTeamAssociation.cshtml" />
+    <Content Include="Views\RemoveTeamMember\Index.cshtml" />
+    <Content Include="Views\RemoveTeamMember\Submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

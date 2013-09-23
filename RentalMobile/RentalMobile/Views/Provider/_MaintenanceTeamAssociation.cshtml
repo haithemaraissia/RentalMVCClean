@@ -1,52 +1,5 @@
 ﻿@model IEnumerable<RentalMobile.Controllers.Teammate>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            TeamId
-        </th>
-        <th>
-            TeamName
-        </th>
-        <th>
-            MaintenanceProviderId
-        </th>
-        <th>
-            SpecialistId
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialistId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialistName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearofExperience)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialistImageProfile)
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)"/>
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-</table>
+
 <div id="team">
     <style>
         .container .one-third.column
@@ -220,10 +173,10 @@
     <section class="row double-bottom">
         <div class="sixteen columns prop-details">
             <div class="six columns push by-one">
-                <input type="submit" class="full-width tall" value="Add Team Member" />
+                <input type="submit" class="full-width tall" value="Add Team Member" onclick="location.href='./AddTeamMember';" />
             </div>
             <div class="six columns push by-two">
-                <input type="submit" class="full-width tall" value="Remove Team Member" onclick="location.href='./SpecialistMaintenance/Create';" />
+                <input type="submit" class="full-width tall" value="Remove Team Member" onclick="location.href='./RemoveTeamMember';" />
             </div>
         </div>
     </section>
