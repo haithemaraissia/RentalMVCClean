@@ -148,6 +148,16 @@ namespace RentalMobile.Helpers
         }
 
 
+
+        public static string GetMaintenanceProviderPrimaryPhoto(this HtmlHelper helper, int? id)
+        {
+            var maintenanceProvider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            if (maintenanceProvider != null)
+                return id == null ? " " : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
+            return "";
+        }
+
+
         public static string GetUnitType(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "house";

@@ -13,24 +13,19 @@ namespace RentalMobile.Controllers
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
-        //
-        // GET: /AddTeamMember/
+
 
         public ViewResult Index()
         {
             return View(db.Specialists.ToList());
         }
 
-        //
-        // GET: /AddTeamMember/Create
 
         public ActionResult Submit()
         {
             return View();
         } 
 
-        //
-        // POST: /AddTeamMember/Create
 
         [HttpPost]
         public ActionResult Submit(Specialist specialist)
@@ -42,11 +37,17 @@ namespace RentalMobile.Controllers
                 return RedirectToAction("Index");  
             }
 
+
+
+            //Send Email to the Specialist
+            //Insert into Specialist Pending Team Invitation
+            //Jquery Confirmation
+
+
+
             return View(specialist);
         }
         
-        //
-        // GET: /AddTeamMember/Edit/5
 
         protected override void Dispose(bool disposing)
         {

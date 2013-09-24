@@ -55,6 +55,7 @@
           <EntitySet Name="RentalApplication" EntityType="DB_33736_rentalModel.Store.RentalApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialist" EntityType="DB_33736_rentalModel.Store.Specialist" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpecialistPendingTeamInvitation" EntityType="DB_33736_rentalModel.Store.SpecialistPendingTeamInvitation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="DB_33736_rentalModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tenant" EntityType="DB_33736_rentalModel.Store.Tenant" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TenantFavorite" EntityType="DB_33736_rentalModel.Store.TenantFavorite" store:Type="Tables" Schema="dbo" />
@@ -1366,6 +1367,16 @@
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
         </EntityType>
+        <EntityType Name="SpecialistPendingTeamInvitation">
+          <Key>
+            <PropertyRef Name="PendingTeamInvitationID" />
+          </Key>
+          <Property Name="PendingTeamInvitationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="SpecialistID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -1957,6 +1968,7 @@
           <EntitySet Name="OwnerShowingCalendars" EntityType="DB_33736_rentalModel.OwnerShowingCalendar" />
           <EntitySet Name="OwnerPendingShowingCalendars" EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" />
           <EntitySet Name="MaintenanceTeamAssociations" EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" />
+          <EntitySet Name="SpecialistPendingTeamInvitations" EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3675,6 +3687,16 @@
           <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
           <Property Type="Int32" Name="SpecialistId" Nullable="false" />
         </EntityType>
+        <EntityType Name="SpecialistPendingTeamInvitation">
+          <Key>
+            <PropertyRef Name="PendingTeamInvitationID" />
+          </Key>
+          <Property Type="Int32" Name="PendingTeamInvitationID" Nullable="false" />
+          <Property Type="Int32" Name="TeamId" Nullable="false" />
+          <Property Type="String" Name="TeamName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="Int32" Name="SpecialistID" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5235,6 +5257,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SpecialistPendingTeamInvitations">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.SpecialistPendingTeamInvitation">
+              <MappingFragment StoreEntitySet="SpecialistPendingTeamInvitation">
+                <ScalarProperty Name="SpecialistID" ColumnName="SpecialistID" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="PendingTeamInvitationID" ColumnName="PendingTeamInvitationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5398,6 +5431,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerShowingCalendar" Width="1.5" PointX="16.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" Width="1.5" PointX="18.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.5" PointX="20.375" PointY="26.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" Width="1.5" PointX="27.375" PointY="0.75" Height="1.9802864583333246" />
         </Diagram>
     </Diagrams>
   </Designer>

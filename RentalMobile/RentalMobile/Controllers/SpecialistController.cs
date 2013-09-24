@@ -305,6 +305,78 @@ namespace RentalMobile.Controllers
         }
 
 
+
+
+
+
+
+
+
+
+
+
+        //Provider Pending Invitation
+
+        public ActionResult ProviderInvitation()
+        {
+
+           return View(db.SpecialistPendingTeamInvitations.ToList());
+
+        }
+
+        public ActionResult AcceptInvitation(int id)
+        {
+            return View();
+
+        }
+
+
+        public ActionResult DenyInvitation(int id)
+        {
+            return View();
+
+        }
+
+
+
+
+
+
+
+
+        //Current Provider
+
+        public ActionResult CurrentProvider()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+        // Manage Provider
+
+        public ActionResult ManageProvider()
+        {
+            return View();
+        }
+
+
+        public ActionResult RemoveTeamAssociation()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
