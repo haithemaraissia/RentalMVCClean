@@ -1,8 +1,34 @@
-﻿@model dynamic
-
+﻿@model RentalMobile.Models.MaintenanceTeamAssociation
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+
+    if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
+    {
+        ViewBag.Confirmation = false;
+    @:<!-- jNotify -->
+    <script language='javascript' type='text/javascript'>
+            @Html.Raw(ViewBag.ConfirmationSuccess)
+
+    </script>
+    }
 }
 
-<h2>Confirmation + JQuery</h2>
+
+
+
+
+
+
+
+
+
+<h2>
+    Confirmation of Association Approval</h2>
+<p>
+    By Clicking confirm, you approve your association with Team @Model.TeamName</p>
+<p>
+    <h2>
+        JQuery Confirmation</h2>
+</p>
+<input type="submit" class="full-width tall" value="Confirm" />

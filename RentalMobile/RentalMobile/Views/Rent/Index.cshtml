@@ -1,7 +1,10 @@
-﻿@{
+﻿@using System.Globalization
+@using RentalMobile.Helpers
+@model IEnumerable<RentalMobile.Models.Unit>
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
-                            //Layout = "~/Views/Shared/_DotLayoutPage.cshtml";
+              //Layout = "~/Views/Shared/_DotLayoutPage.cshtml";
     	
 }
 @*<link rel="stylesheet" href="css/jquery.bxslider.css">*@
@@ -26,37 +29,50 @@
     </div>
     </form>
     <!-- List/Grid gallery -->
-    <ul id="property-list" class="list-grid-gallery list">
-        <li class="prop-type all house">
-            <article>
-                <figure class="five columns alpha">
-                    <a href="#" class="camera">3</a>
-                    <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                        alt="gallery" />
-                </figure>
-                <div class="five columns omega">
-                    <h4>
-                        House 79th St #8C, New York NY, USA</h4>
-                    <ul class="prop-data">
-                        <li class="price">$1,875,000</li>
-                        <li class="new">New construction</li>
-                    </ul>
-                    <p class="propr-details">
-                        1 bedroom / 2 bathrom / 1,300 sqft
-                    </p>
-                    <p class="prop-webid">
-                        Web ID #1</p>
-                    <ul class="toolbar">
-                        <li class="dollar"><a href="#">Compare</a></li>
-                        <li class="map"><a href="#">Map</a></li>
-                        <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                        <li class="next-arr">@Html.RouteLink("Property", new { id = 0 }, null)></li>
-                        @*  @Html.RouteLink("Description", "Property",new { id = 0 } )*@ @*			<li class="next-arr">@Html.ActionLink("Description", "Index", "Property", new { id = 0 }, null)></li>
-*@
-                    </ul>
-                </div>
-            </article>
-        </li>
+      <ul id="property-list" class="list-grid-gallery list">
+          @foreach (var item in Model)
+          {
+              <li class="prop-type all @Html.GetUnitType(item.TypeId)">
+                  <article>
+                      <figure class="five columns alpha">
+                          @Html.ActionLink(Html.CountPhoto(item.UnitId), "Index", "Property", new { id = item.UnitId }, new { @class = "camera" })
+                          <img src="@item.PrimaryPhoto" class="scale-with-grid" width="280" height="185"
+                               alt="gallery" />
+                      </figure>
+                      <div class="five columns omega">
+                          <h4>
+                              @item.Address, @item.City, @item.State, @item.CountryCode</h4>
+                          <ul class="prop-data">
+                              <li class="price">@Html.DisplayFor(modelItem => item.Price)
+                                  @if (item.UnitPricing != null)
+                                  {
+                                      if (item.UnitPricing.Rent != null)
+                                      {
+                                          @item.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture)
+                                          @Html.GetCurrencyValue(item.UnitPricing.CurrencyId)
+                                      }
+                                  }</li>
+                          </ul>
+                          <br/>
+                          <p class="propr-details">
+                              @Html.GetBedValue(item.Bed) bedroom / @Html.GetBathroomValue(item.Bed) bathrom /
+                              @item.SquareFoot sqft
+                          </p>
+                          <br/>
+                          <p class="prop-webid">
+                              Unit ID #@Html.DisplayFor(modelItem => item.UnitId)</p>
+                          <ul class="toolbar">
+                              <li>@Html.ActionLink("Map", "Index", "Property", new { id = item.UnitId }, new { @class = "map" })</li>
+                              <li>@Html.ActionLink("Description", "Index", "Property", new { id = item.UnitId }, new { @class = "next-arr" })</li>
+                          </ul>
+                      </div>
+
+                  </article>
+              </li>
+          }
+      </ul>
+               
+      <ul id="property-list" class="list-grid-gallery list">
         <li class="prop-type all house">
             <article>
                 <figure class="five columns alpha">
@@ -300,8 +316,8 @@
                     alt="//" />
                 <h6>
                     Other description<h6>
-                <p class="price">
-                    <span>$2.135.000</span></p>
+                        <p class="price">
+                            <span>$2.135.000</span></p>
             </li>
         </ul>
     </div>

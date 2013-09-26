@@ -326,17 +326,92 @@ namespace RentalMobile.Controllers
 
         public ActionResult AcceptInvitation(int id)
         {
+            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
+            var currentinvitation =
+                    db.MaintenanceTeamAssociations.FirstOrDefault(x => x.MaintenanceProviderId == invitation.MaintenanceProviderId &&
+                                                                       x.SpecialistId == invitation.SpecialistID);
+
+            return View(currentinvitation);
+
+        }
+
+
+
+
+        public ActionResult AcceptInvitation(MaintenanceTeamAssociation mta)
+        {
+            var invitation =
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.SpecialistID == mta.SpecialistId && x.MaintenanceProviderId == mta.MaintenanceProviderId);
+
+            db.MaintenanceTeamAssociations.Add(mta);
+            db.SpecialistPendingTeamInvitations.Remove(invitation);
+            db.SaveChanges();
+
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
+     
+            //JQuery Success
             return View();
 
         }
+
+
+        public string JNotifyConfirmationSharingEmail()
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your email has been sent successfully.")
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
+
+
 
 
         public ActionResult DenyInvitation(int id)
         {
-            return View();
+            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
+            var currentinvitation =
+                    db.MaintenanceTeamAssociations.FirstOrDefault(x => x.MaintenanceProviderId == invitation.MaintenanceProviderId &&
+                                                                       x.SpecialistId == invitation.SpecialistID);
+            return View(currentinvitation);
 
         }
 
+        public ActionResult DenyInvitation(MaintenanceTeamAssociation mta)
+        {
+            var invitation =
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.SpecialistID == mta.SpecialistId && x.MaintenanceProviderId == mta.MaintenanceProviderId);
+            db.SpecialistPendingTeamInvitations.Remove(invitation);
+            db.SaveChanges();
+
+            //JQuery Success
+            return View();
+
+        }
 
 
 
@@ -348,7 +423,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult CurrentProvider()
         {
-            return View();
+            return View(db.SpecialistPendingTeamInvitations.ToList());
         }
 
 
@@ -361,7 +436,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ManageProvider()
         {
-            return View();
+            return View(db.SpecialistPendingTeamInvitations.ToList());
         }
 
 

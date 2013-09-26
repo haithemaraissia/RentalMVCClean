@@ -35,8 +35,6 @@
                         @Html.ActionLink(" ", "Index", "Professionals", new { id = item.SpecialistId }, new { @class = "camera" })
                         <img src="@item.Photo" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                     </figure>
-                    
-
                     <div class="five columns omega">
                         <h4>
                             <span style="color: #396991">@item.FirstName @item.LastName</span>
@@ -50,13 +48,12 @@
                         <p class="prop-webid">
                             <span style="color: #396991">Agent ID <b>#@Html.DisplayFor(modelItem => item.SpecialistId)</b>
                             </span>
-                            </p>
+                        </p>
                         <ul class="toolbar">
                             <li class="next-arr">@Html.ActionLink("Select", "Index", "Professionals", new { id = item.SpecialistId }, null)</li>
                         </ul>
                     </div>
                 </article>
-                
             </li>
         }
     </ul>

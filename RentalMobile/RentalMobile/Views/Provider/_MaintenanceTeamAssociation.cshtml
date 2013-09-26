@@ -91,7 +91,7 @@
                }
        
                 <div class="one-third column thumbnail @customclass">
-                    <a href="./Specialist/@Html.DisplayFor(modelItem => item.SpecialistId)">
+                    <a href="./Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)">
                         <img alt="Fishbone" src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)" height="520" width="450">
                         <div class="details">
                             <h3>
@@ -111,10 +111,10 @@
     <section class="row double-bottom">
         <div class="sixteen columns prop-details">
             <div class="six columns push by-one">
-                <input type="submit" class="full-width tall" value="Add Team Member" />
+                <input type="submit" class="full-width tall" value="Add Team Member" onclick="location.href='./AddTeamMember';" />
             </div>
             <div class="six columns push by-two">
-                <input type="submit" class="full-width tall" value="Remove Team Member" onclick="location.href='./SpecialistMaintenance/Create';" />
+                <input type="submit" class="full-width tall" value="Remove Team Member" onclick="location.href='./RemoveTeamMember';" />
             </div>
         </div>
     </section>
