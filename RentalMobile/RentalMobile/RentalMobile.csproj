@@ -1322,6 +1322,13 @@
     <Content Include="Views\Specialist\CurrentProvider.cshtml" />
     <Content Include="Views\Specialist\ManageProvider.cshtml" />
     <Content Include="Views\Specialist\RemoveTeamAssociation.cshtml" />
+    <Content Include="Views\Owner\ActiveProject.cshtml" />
+    <Content Include="Views\Owner\NewProject.cshtml" />
+    <Content Include="Views\Owner\SavedProject.cshtml" />
+    <Content Include="Views\Owner\ArchivedProject.cshtml" />
+    <Content Include="Views\Owner\CreateNewProject.cshtml" />
+    <Content Include="Views\Owner\ViewArchivedProject.cshtml" />
+    <Content Include="Views\Owner\DeleteArchivedProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

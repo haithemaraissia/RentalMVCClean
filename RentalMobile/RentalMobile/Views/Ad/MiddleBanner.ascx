@@ -26,9 +26,9 @@
 
 
 <div>
-MiddleBannerKeywordFilter<%= ViewBag.MiddleBannerKeywordFilter%>
+MiddleBannerKeywordFilter<% Response.Write(ViewBag.MiddleBannerKeywordFilter);%>
 <br/>
-providerGoogleMap<%= ViewBag.providerGoogleMap%>
+providerGoogleMap<% Response.Write(ViewBag.providerGoogleMap); %>
 </div>
 
 

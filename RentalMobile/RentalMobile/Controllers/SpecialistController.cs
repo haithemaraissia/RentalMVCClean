@@ -337,7 +337,7 @@ namespace RentalMobile.Controllers
 
 
 
-
+        [HttpPost]
         public ActionResult AcceptInvitation(MaintenanceTeamAssociation mta)
         {
             var invitation =
@@ -401,6 +401,7 @@ namespace RentalMobile.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult DenyInvitation(MaintenanceTeamAssociation mta)
         {
             var invitation =

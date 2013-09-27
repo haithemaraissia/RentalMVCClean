@@ -702,6 +702,134 @@ namespace RentalMobile.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+        //Project
+        public ActionResult ActiveProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult NewProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
+
+        public ActionResult CreateNewProject()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult SavedProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult ArchivedProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
+
+        public ActionResult ViewArchivedProject()
+        {
+            return View();
+        }
+        public ActionResult ViewArchivedProject(int id)
+        {
+            return View();
+        }
+
+        public ActionResult DeleteArchivedProject()
+        {
+            return View();
+        }
+        //public ActionResult DeleteArchivedProject(int id)
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult DeleteArchivedProject(int id)
+        //{
+        //    return View();
+        //}
+
     }
 
 
