@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Linq;
 using System.ServiceModel.Syndication;
@@ -11,6 +12,7 @@ using System.Web.Security;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 {
@@ -725,7 +727,14 @@ namespace RentalMobile.Controllers
         }
 
 
-
+        public ActionResult ViewActiveProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
 
 
 
@@ -785,6 +794,23 @@ namespace RentalMobile.Controllers
 
 
 
+        public ActionResult EditSavedProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
+
+               public ActionResult DeleteSavedProject()
+        {
+            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            ViewBag.OwnerProfile = owner;
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
+        }
 
 
 
@@ -829,6 +855,229 @@ namespace RentalMobile.Controllers
         //{
         //    return View();
         //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        public ActionResult NewProject(UnitModelView u)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Units.Add(u.Unit);
+                    db.UnitPricings.Add(u.UnitPricing);
+                    db.UnitFeatures.Add(u.UnitFeature);
+                    db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
+                    db.UnitAppliances.Add(u.UnitAppliance);
+                    db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
+                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
+                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+                    ViewBag.CurrencyCode = u.Unit.CurrencyCode;
+                    db.SaveChanges();
+                  //  SavePictures(u.Unit);
+                    return RedirectToAction("Index");
+                }
+                return View(u);
+            }
+
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                          ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+
+
+        }
+
+
+        public ActionResult ProjectPreview(int id, bool? shareproperty, bool? requestshowing)
+        {
+            var u = new UnitModelView
+            {
+                Unit = db.Units.Find(id),
+                UnitFeature = db.UnitFeatures.Find(id),
+                UnitAppliance = db.UnitAppliances.Find(id),
+                UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+                UnitPricing = db.UnitPricings.Find(id),
+                UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+                UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+                UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+            };
+
+            if (Request.Url != null)
+            {
+                var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+                var primaryimagethumbnail = UserHelper.ResolveImageUrl(u.Unit.PrimaryPhoto);
+                string title;
+                if (String.IsNullOrEmpty(u.Unit.Title))
+                {
+                    title = (u.Unit.Address + " , " + u.Unit.State + " , " + u.Unit.City);
+                    if (title.Length >= 50)
+                    {
+                        title = title.Substring(0, 50);
+                    }
+                }
+                else
+                {
+                    title = u.Unit.Title;
+                    if (u.Unit.Title.Length >= 50)
+                    {
+                        title = u.Unit.Title.Substring(0, 50);
+                    }
+                }
+
+                var summary = u.Unit.Description;
+                if (!String.IsNullOrEmpty(summary))
+                {
+                    if (summary.Length >= 140)
+                    {
+                        summary = summary.Substring(0, 140);
+                    }
+                }
+
+                var unitrentprice = u.UnitPricing.Rent == null
+                                        ? ""
+                                        : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
+                unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);
+                var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url;
+                if (!String.IsNullOrEmpty(tweet))
+                {
+                    if (tweet.Length >= 140)
+                    {
+                        tweet = tweet.Substring(0, 140);
+                    }
+                }
+
+                const string sitename = "http://www.haithem-araissia.com";
+                ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+                ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+                ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+                ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
+            }
+
+            ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address)
+                                        ? UserHelper.GetFormattedLocation("", "", "USA")
+                                        : UserHelper.GetFormattedLocation(u.Unit.Address, u.Unit.City, "US");
+            var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            ViewBag.PosterFirstName = poster.FirstName;
+            ViewBag.PosterLastName = poster.LastName;
+            ViewBag.PosterPictureProfile = poster.ProfilePicturePath;
+            ViewBag.PosterProfileLink = poster.ProfileLink;
+
+
+            if (shareproperty != null && shareproperty == true)
+            {
+                ViewBag.EmailSharedwithFriend = true;
+                ViewBag.EmailSucessSharedwithFriend = JNotifyConfirmationSharingEmail();
+            }
+
+            return View(u);
+        }
+
+
+        public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
+        {
+            dynamic email = new Email("SendtoFriend/Multipart");
+            var poster = UserHelper.GetPoster(id) ?? UserHelper.DefaultPoster;
+            var currentunit = db.Units.Find(id);
+            const string previewPathWithHost = @"/Unit/Preview";
+            var unitPicture = currentunit.PrimaryPhoto;
+            unitPicture = unitPicture.Replace("../../", "");
+
+
+            //../../Photo/Owner/Property/carrie/2/img_walle - Copy.jpg
+
+            // Assign any view data to pass to the view.
+            // It's dynamic, so you can put whatever you want here.
+
+            email.To = friendemailaddress;
+            email.FriendName = friendname;
+            email.From = "postmaster@haithem-araissia.com";
+            email.SenderFirstName = poster.FirstName;
+            email.Title = string.Format("Request From {0}", poster.FirstName);
+            email.Message = message;
+            var uri = Request.Url;
+            if (uri != null)
+            {
+                var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+                var unitUrl = host + previewPathWithHost + id;
+                email.UnitUrl = unitUrl;
+
+                string title;
+                if (String.IsNullOrEmpty(currentunit.Title))
+                {
+                    title = (currentunit.Address + " , " + currentunit.State + " , " + currentunit.City);
+                    if (title.Length >= 50)
+                    {
+                        title = title.Substring(0, 50);
+                    }
+                }
+                else
+                {
+                    title = currentunit.Title;
+                    if (currentunit.Title.Length >= 50)
+                    {
+                        title = currentunit.Title.Substring(0, 50);
+                    }
+                }
+
+                email.UnitTitle = title;
+                // email.UnitPath = "http://www.haithem-araissia.com/images/property/home12.jpg";
+                email.UnitPath = host + "/" + unitPicture;
+            }
+
+            try
+            {
+                email.SendAsync();
+
+            }
+            catch (Exception e)
+            {
+                //Write To Database Error
+
+                //Output Message
+                throw;
+            }
+
+            //     return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", JNotifyConfirmation("Sharing Property")));
+
+
+
+            // return Content(string.Format("<script language='javascript' type='text/javascript'>{0}</script>", "alert('dgdf'); return false;"));
+
+
+            return RedirectToAction("ProjectPreview", new { id });
+
+
+        }
+
+
 
     }
 

@@ -1329,6 +1329,10 @@
     <Content Include="Views\Owner\CreateNewProject.cshtml" />
     <Content Include="Views\Owner\ViewArchivedProject.cshtml" />
     <Content Include="Views\Owner\DeleteArchivedProject.cshtml" />
+    <Content Include="Views\Owner\ViewActiveProject.cshtml" />
+    <Content Include="Views\Owner\EditSavedProject.cshtml" />
+    <Content Include="Views\Owner\DeleteSavedProject.cshtml" />
+    <Content Include="Views\Owner\ProjectPreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
