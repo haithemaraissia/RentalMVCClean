@@ -1333,6 +1333,7 @@
     <Content Include="Views\Owner\EditSavedProject.cshtml" />
     <Content Include="Views\Owner\DeleteSavedProject.cshtml" />
     <Content Include="Views\Owner\ProjectPreview.cshtml" />
+    <Content Include="Views\Owner\_Partial2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

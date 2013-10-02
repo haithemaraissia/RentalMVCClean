@@ -144,19 +144,6 @@ namespace RentalMobile.Controllers
         //}
 
 
-
-
-
-
-
-
-
-
-
-
-
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
-
         //MAKE SURE THAT USER ARE AUTHENTICATED
         public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
         //MAKE SURE THAT USER ARE AUTHENTICATED
@@ -424,13 +411,10 @@ namespace RentalMobile.Controllers
 
         public ActionResult CurrentProvider()
         {
-            return View(db.SpecialistPendingTeamInvitations.ToList());
+            var ownerId = UserHelper.GetOwnerID();
+
+            return View(db.SpecialistPendingTeamInvitations.Where(x=>x.MaintenanceProviderId == ownerId).ToList());
         }
-
-
-
-
-
 
 
         // Manage Provider
