@@ -14,6 +14,7 @@ namespace RentalMobile.Models
     
     public partial class MaintenanceTeamAssociation
     {
+        public int TeamAssociationID { get; set; }
         public int TeamId { get; set; }
         public string TeamName { get; set; }
         public int MaintenanceProviderId { get; set; }

@@ -306,9 +306,8 @@ namespace RentalMobile.Controllers
 
         public ActionResult ProviderInvitation()
         {
-
-           return View(db.SpecialistPendingTeamInvitations.ToList());
-
+            var specialistId = Helpers.UserHelper.GetSpecialistID();
+            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x=>x.SpecialistID ==specialistId).ToList());
         }
 
         public ActionResult AcceptInvitation(int id)
