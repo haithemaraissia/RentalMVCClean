@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
 @using RentalMobile.Helpers
-@model List<RentalMobile.Models.SpecialistPendingTeamInvitation>
+@model List<RentalMobile.Models.MaintenanceTeamAssociation>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
@@ -35,7 +35,7 @@
                     <li class="prop-type all ">
                         <article>
                             <figure class="five columns alpha">
-                                @Html.ActionLink("1", "Edit", new { id = item.PendingTeamInvitationID }, new { @class = "camera" })
+                                @Html.ActionLink("1", "Edit", new { id = item.TeamAssociationID }, new { @class = "camera" })
                                 <img src="@Html.GetMaintenanceProviderPrimaryPhoto(item.MaintenanceProviderId)" class="scale-with-grid" width="280" height="185"
                                      alt="gallery" />
                             </figure>
@@ -64,7 +64,7 @@
                                 <p class="prop-extract">@*@Html.TruncateLongString(item.Description, 500)*@
                                 </p>
                                 <ul class="toolbar">
-                                    <li>@Html.ActionLink("Select", "Preview", new { id = item.PendingTeamInvitationID })</li>
+                                    <li>@Html.ActionLink("Select", "Preview", new { id = item.TeamAssociationID })</li>
                                 </ul>
                                 
                                
@@ -135,9 +135,9 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PendingTeamInvitationID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PendingTeamInvitationID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PendingTeamInvitationID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TeamAssociationID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TeamAssociationID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TeamAssociationID })
                 </td>
             </tr>
         }

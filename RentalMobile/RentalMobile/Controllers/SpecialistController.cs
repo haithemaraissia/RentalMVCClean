@@ -313,23 +313,29 @@ namespace RentalMobile.Controllers
         public ActionResult AcceptInvitation(int id)
         {
             var invitation = db.SpecialistPendingTeamInvitations.Find(id);
-            var currentinvitation =
-                    db.MaintenanceTeamAssociations.FirstOrDefault(x => x.MaintenanceProviderId == invitation.MaintenanceProviderId &&
-                                                                       x.SpecialistId == invitation.SpecialistID);
-
-            return View(currentinvitation);
+            return View(invitation);
 
         }
 
 
 
         [HttpPost]
-        public ActionResult AcceptInvitation(MaintenanceTeamAssociation mta)
+        public ActionResult AcceptInvitation(SpecialistPendingTeamInvitation sti)
         {
             var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.SpecialistID == mta.SpecialistId && x.MaintenanceProviderId == mta.MaintenanceProviderId);
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
 
-            db.MaintenanceTeamAssociations.Add(mta);
+
+            var mti = new MaintenanceTeamAssociation
+                                                 {
+                                                     TeamId = sti.TeamId,
+                                                     TeamName = sti.TeamName,
+                                                     MaintenanceProviderId = sti.MaintenanceProviderId,
+                                                     SpecialistId = sti.SpecialistID,
+
+                                                 };
+
+            db.MaintenanceTeamAssociations.Add(mti);
             db.SpecialistPendingTeamInvitations.Remove(invitation);
             db.SaveChanges();
 
@@ -337,7 +343,7 @@ namespace RentalMobile.Controllers
             ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
      
             //JQuery Success
-            return View();
+            return RedirectToAction("CurrentProvider");
 
         }
 
@@ -365,7 +371,7 @@ namespace RentalMobile.Controllers
 	  	                        },
 	  	                         onCompleted : function(){ // added in v2.0
 	  	                        
-	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+	  	                          window.location.href = '/Specialist/ProviderInvitation'); 
 	   
 	  	                }
 		             });
@@ -410,9 +416,9 @@ namespace RentalMobile.Controllers
 
         public ActionResult CurrentProvider()
         {
-            var ownerId = UserHelper.GetOwnerID();
+            var specialistId = UserHelper.GetSpecialistID();
 
-            return View(db.SpecialistPendingTeamInvitations.Where(x=>x.MaintenanceProviderId == ownerId).ToList());
+            return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
 
@@ -420,10 +426,13 @@ namespace RentalMobile.Controllers
 
         public ActionResult ManageProvider()
         {
-            return View(db.SpecialistPendingTeamInvitations.ToList());
+            var specialistId = UserHelper.GetSpecialistID();
+            return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
 
+
+        //Need to do 
         public ActionResult RemoveTeamAssociation()
         {
             return View();

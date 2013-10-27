@@ -1,4 +1,4 @@
-﻿@model RentalMobile.Models.MaintenanceTeamAssociation
+﻿@model RentalMobile.Models.SpecialistPendingTeamInvitation
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
@@ -6,6 +6,11 @@
     if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
     {
         ViewBag.Confirmation = false;
+        
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+        media="screen" />
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+
     @:<!-- jNotify -->
     <script language='javascript' type='text/javascript'>
             @Html.Raw(ViewBag.ConfirmationSuccess)
@@ -13,14 +18,32 @@
     </script>
     }
 }
-<h2>
-    Confirmation of Association Approval</h2>
-<p>
-    By Clicking confirm, you approve your association with Team @Model.TeamName</p>
-<p>
+@{
+    if (@Model != null)
+    {
     <h2>
-        JQuery Confirmation</h2>
-</p>
- <form id="form1" name="form1" method="post" action="">
-<input type="submit" class="full-width tall" value="Confirm" />
-</form>
+        Confirmation of Association Approval</h2>
+    <p>
+        By Clicking confirm, you approve your association with Team @Model.TeamName</p>
+    <p>
+        <h2>
+            JQuery Confirmation</h2>
+    </p>
+
+
+    <p>
+        FOR TESTING: SpecialistId = @Model.SpecialistID<br />
+        MaintenanceProviderID = @Model.MaintenanceProviderId<br />
+    </p>
+    }
+}
+@using (Html.BeginForm("AcceptInvitation", "Specialist", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.PendingTeamInvitationID);
+    @Html.HiddenFor(m => m.TeamId);
+    @Html.HiddenFor(m => m.TeamName);
+    @Html.HiddenFor(m => m.MaintenanceProviderId);
+    @Html.HiddenFor(m => m.SpecialistID);
+
+    <input type="submit" class="full-width tall" value="Confirm" />
+}
