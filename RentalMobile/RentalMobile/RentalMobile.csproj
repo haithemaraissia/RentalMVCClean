@@ -617,6 +617,7 @@
     <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
     <Content Include="Documentation\Done\UnitProperty\P3.txt" />
     <Content Include="Documentation\Done\UnitProperty\P4.txt" />
+    <Content Include="Documentation\Process\Documentation\ProcessAction2.txt" />
     <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\changelog.txt" />
     <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\agenda-views.html" />
     <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\basic-views.html" />
@@ -1038,6 +1039,7 @@
     <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
     <None Include="Documentation\Done\BrainStorming+MaintenanceData\Functions and tools.docx" />
     <None Include="Documentation\Done\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
+    <None Include="Documentation\JQueryCalendar.docx" />
     <None Include="Documentation\Process\Bugs.docx" />
     <None Include="Documentation\Done\Structure\Sitemap.docx" />
     <None Include="Documentation\Done\UnitProperty\AllProperties.docx" />
@@ -1046,6 +1048,12 @@
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
     <Content Include="Handler\AdHandler.ashx" />
+    <None Include="Documentation\Process\CoverLetterTunisaPassport.docx" />
+    <None Include="Documentation\Process\Documentation\Functions.docx" />
+    <None Include="Documentation\Process\Documentation\ToDo.docx" />
+    <None Include="Documentation\Process\GamePlan.docx" />
+    <None Include="Documentation\TEMP TO DO PERSONEL.docx" />
+    <None Include="Documentation\What I %27m doing.docx" />
     <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
     <None Include="images\dotimages\wip\linkedin_icon_black.psd" />
     <None Include="Models\RentalContextGenerator.Context.tt">

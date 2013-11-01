@@ -386,23 +386,22 @@ namespace RentalMobile.Controllers
         public ActionResult DenyInvitation(int id)
         {
             var invitation = db.SpecialistPendingTeamInvitations.Find(id);
-            var currentinvitation =
-                    db.MaintenanceTeamAssociations.FirstOrDefault(x => x.MaintenanceProviderId == invitation.MaintenanceProviderId &&
-                                                                       x.SpecialistId == invitation.SpecialistID);
-            return View(currentinvitation);
+                       return View(invitation);
 
         }
 
         [HttpPost]
-        public ActionResult DenyInvitation(MaintenanceTeamAssociation mta)
+        public ActionResult DenyInvitation(SpecialistPendingTeamInvitation sti)
         {
             var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.SpecialistID == mta.SpecialistId && x.MaintenanceProviderId == mta.MaintenanceProviderId);
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);   
             db.SpecialistPendingTeamInvitations.Remove(invitation);
             db.SaveChanges();
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
 
             //JQuery Success
-            return View();
+            return RedirectToAction("CurrentProvider");
 
         }
 
@@ -433,11 +432,26 @@ namespace RentalMobile.Controllers
 
 
         //Need to do 
-        public ActionResult RemoveTeamAssociation()
+        public ActionResult RemoveTeamAssociation(int id)
         {
-            return View();
+            var maintenanceteamassociation = db.MaintenanceTeamAssociations.Find(id);
+            return View(maintenanceteamassociation);
         }
 
+
+        [HttpPost]
+        public ActionResult RemoveTeamAssociation(MaintenanceTeamAssociation mta)
+        {
+            var maintenanceteamassociation = db.MaintenanceTeamAssociations.FirstOrDefault(x => x.TeamAssociationID == mta.TeamAssociationID);
+            db.MaintenanceTeamAssociations.Remove(maintenanceteamassociation);
+            db.SaveChanges();
+
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
+
+            //JQuery Success
+            return RedirectToAction("CurrentProvider");
+        }
 
 
 

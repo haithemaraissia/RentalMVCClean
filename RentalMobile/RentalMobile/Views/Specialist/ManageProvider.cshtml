@@ -63,12 +63,12 @@
                                 </p>
                                 <p class="prop-extract">@*@Html.TruncateLongString(item.Description, 500)*@
                                 </p>
-                                <ul class="toolbar">
+             @*                   <ul class="toolbar">
                                     <li>@Html.ActionLink("Select", "Preview", new { id = item.TeamAssociationID })</li>
-                                </ul>
+                                </ul>*@
                                 
                                   <div class="four columns" style="float: right; padding-right: 16px">
-                                <input type="submit" class="full-width tall" value="Remove" onclick="location.href='/Specialist/AcceptInvitation/@item.MaintenanceProviderId'"/>
+                                <input type="submit" class="full-width tall" value="Remove" onclick="location.href='/Specialist/RemoveTeamAssociation/@item.MaintenanceProviderId'"/>
                             </div>
                             
                             </div>
