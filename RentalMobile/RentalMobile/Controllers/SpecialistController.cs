@@ -307,7 +307,7 @@ namespace RentalMobile.Controllers
         public ActionResult ProviderInvitation()
         {
             var specialistId = Helpers.UserHelper.GetSpecialistID();
-            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x=>x.SpecialistID ==specialistId).ToList());
+            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
         }
 
         public ActionResult AcceptInvitation(int id)
@@ -341,7 +341,7 @@ namespace RentalMobile.Controllers
 
             ViewBag.Confirmation = true;
             ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
-     
+
             //JQuery Success
             return RedirectToAction("CurrentProvider");
 
@@ -383,10 +383,59 @@ namespace RentalMobile.Controllers
 
 
 
+
+
+
+
+
+        //NEed to do it one for all to make it useful
+
+        public ActionResult Confirmation()
+        {
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotifyConfirmationMessage("message","http://www.yahoo.com");
+            return View();
+        }
+
+        public string JNotifyConfirmationMessage(string successmessage ,string navigateturlwhencompleted)
+        {
+
+            var jNotifyConfirmationScript = @"jSuccess('Your email has been sent successfully.')"
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+
+window.location.href = '" + navigateturlwhencompleted + @"
+	  	                          /Specialist/ProviderInvitation " + @"'); 
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
+
+
         public ActionResult DenyInvitation(int id)
         {
             var invitation = db.SpecialistPendingTeamInvitations.Find(id);
-                       return View(invitation);
+            return View(invitation);
 
         }
 
@@ -394,7 +443,7 @@ namespace RentalMobile.Controllers
         public ActionResult DenyInvitation(SpecialistPendingTeamInvitation sti)
         {
             var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);   
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
             db.SpecialistPendingTeamInvitations.Remove(invitation);
             db.SaveChanges();
             ViewBag.Confirmation = true;

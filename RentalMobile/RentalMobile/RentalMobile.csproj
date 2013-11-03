@@ -1342,6 +1342,7 @@
     <Content Include="Views\Owner\DeleteSavedProject.cshtml" />
     <Content Include="Views\Owner\ProjectPreview.cshtml" />
     <Content Include="Views\Owner\_Partial2.cshtml" />
+    <Content Include="Views\Specialist\Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

@@ -1,0 +1,21 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+
+    if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
+    {
+        ViewBag.Confirmation = false;
+        
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+        media="screen" />
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+
+    @:<!-- jNotify -->
+    <script language='javascript' type='text/javascript'>
+            @Html.Raw(ViewBag.ConfirmationSuccess)
+
+    </script>
+    }
+}
+
