@@ -28,21 +28,25 @@ namespace RentalMobile.Controllers
             var team = db.MaintenanceTeamAssociations.
                 Where(x => x.MaintenanceProviderId == 2).ToList();
 
+            ViewBag.ProviderProfile = provider;
+            ViewBag.ProviderId = provider.MaintenanceProviderId;
+            ViewBag.ProviderGoogleMap = provider.GoogleMap;
+            ViewBag.Team = GetProviderTeam(team);
+            return View(provider);
+        }
+
+        private List<Teammate> GetProviderTeam(IEnumerable<MaintenanceTeamAssociation> team)
+        {
             var myTeam = (from i in team
                           let currentspecialist = db.Specialists.Find(i.SpecialistId)
                           select new Teammate
                               {
-                                  SpecialistId = i.SpecialistId, 
-                                  SpecialistName = currentspecialist.FirstName + currentspecialist.LastName, 
-                                  YearofExperience = 3, 
+                                  SpecialistId = i.SpecialistId,
+                                  SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
+                                  YearofExperience = 3,
                                   SpecialistImageProfile = currentspecialist.Photo
                               }).ToList();
-
-            ViewBag.ProviderProfile = provider;
-            ViewBag.ProviderId = provider.MaintenanceProviderId;
-            ViewBag.ProviderGoogleMap = provider.GoogleMap;
-            ViewBag.Team = myTeam;
-            return View(provider);
+            return myTeam;
         }
 
 

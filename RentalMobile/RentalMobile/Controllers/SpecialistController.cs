@@ -18,9 +18,6 @@ namespace RentalMobile.Controllers
 
         public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
-        //
-        // GET: /Specialist/
-        //GET: CurrentSpecialist
 
         public ViewResult Index()
         {
@@ -31,17 +28,11 @@ namespace RentalMobile.Controllers
             return View(specialist);
         }
 
-
-        // GET: /Specialist/Edit/5
-
         public ActionResult Edit(int id)
         {
             Specialist Specialist = db.Specialists.Find(id);
             return View(Specialist);
         }
-
-        //
-        // POST: /Specialist/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Specialist Specialist)
@@ -302,51 +293,15 @@ namespace RentalMobile.Controllers
 
 
 
-        //Provider Pending Invitation
-
-        public ActionResult ProviderInvitation()
-        {
-            var specialistId = Helpers.UserHelper.GetSpecialistID();
-            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
-        }
-
-        public ActionResult AcceptInvitation(int id)
-        {
-            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
-            return View(invitation);
-
-        }
 
 
 
-        [HttpPost]
-        public ActionResult AcceptInvitation(SpecialistPendingTeamInvitation sti)
-        {
-            var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
 
-
-            var mti = new MaintenanceTeamAssociation
-                                                 {
-                                                     TeamId = sti.TeamId,
-                                                     TeamName = sti.TeamName,
-                                                     MaintenanceProviderId = sti.MaintenanceProviderId,
-                                                     SpecialistId = sti.SpecialistID,
-
-                                                 };
-
-            db.MaintenanceTeamAssociations.Add(mti);
-            db.SpecialistPendingTeamInvitations.Remove(invitation);
-            db.SaveChanges();
-
-            ViewBag.Confirmation = true;
-            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
-
-            //JQuery Success
-            return RedirectToAction("CurrentProvider");
-
-        }
-
+        ///////////////////////////TO DO///////////////////////////////////////////////
+        /// <summary>
+        /// Need to replace the call to this function with the call to the paramterized function
+        /// </summary>
+        /// <returns></returns>
 
         public string JNotifyConfirmationSharingEmail()
         {
@@ -381,56 +336,68 @@ namespace RentalMobile.Controllers
         }
 
 
-
-
-
-
-
-
-
-        //NEed to do it one for all to make it useful
-
+        /// <summary>
+        /// Used for Testing;
+        /// Delete when no needed
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Confirmation()
         {
-            ViewBag.Confirmation = true;
-            ViewBag.ConfirmationSuccess = JNotifyConfirmationMessage("message","http://www.yahoo.com");
+            JNotify("Your request has been completed.", "/Specialist/CurrentProvider");
             return View();
         }
 
-        public string JNotifyConfirmationMessage(string successmessage ,string navigateturlwhencompleted)
+        ///////////////////////////TO DO///////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+        //********************************************PROVIDER Tab Function****************************************************
+        //*********************************************************************************************************************
+
+        public ActionResult ProviderInvitation()
         {
-
-            var jNotifyConfirmationScript = @"jSuccess('Your email has been sent successfully.')"
-                                            +
-                                            @"',{
-	                        autoHide : true, // added in v2.0
-	  	                        clickOverlay : false, // added in v2.0
-	  	                        MinWidth : 300,
-	  	                        TimeShown : 3000,
-	  	                        ShowTimeEffect : 200,
-	  	                        HideTimeEffect : 200,
-	  	                        LongTrip :10,
-	  	                        HorizontalPosition : 'center',
-	  	                        VerticalPosition : 'center',
-	  	                        ShowOverlay : true,
-  		  	                        ColorOverlay : '#000',
-	  	                        OpacityOverlay : 0.3,
-	  	                        onClosed : function(){ // added in v2.0
-	   
-	  	                        },
-	  	                         onCompleted : function(){ // added in v2.0
-	  	                        
-
-window.location.href = '" + navigateturlwhencompleted + @"
-	  	                          /Specialist/ProviderInvitation " + @"'); 
-	   
-	  	                }
-		             });
-
-";
-            return jNotifyConfirmationScript;
+            var specialistId = Helpers.UserHelper.GetSpecialistID();
+            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
         }
 
+        public ActionResult AcceptInvitation(int id)
+        {
+            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
+            return View(invitation);
+
+        }
+
+        [HttpPost]
+        public ActionResult AcceptInvitation(SpecialistPendingTeamInvitation sti)
+        {
+            var invitation =
+                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
+
+            var mti = new MaintenanceTeamAssociation
+                                                 {
+                                                     TeamId = sti.TeamId,
+                                                     TeamName = sti.TeamName,
+                                                     MaintenanceProviderId = sti.MaintenanceProviderId,
+                                                     SpecialistId = sti.SpecialistID,
+
+                                                 };
+
+            db.MaintenanceTeamAssociations.Add(mti);
+            db.SpecialistPendingTeamInvitations.Remove(invitation);
+            db.SaveChanges();
+
+            JNotify("Your request has been completed.", "/Specialist/CurrentProvider");
+
+            //JQuery Success
+            return RedirectToAction("CurrentProvider");
+
+        }
 
         public ActionResult DenyInvitation(int id)
         {
@@ -446,21 +413,12 @@ window.location.href = '" + navigateturlwhencompleted + @"
                 db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
             db.SpecialistPendingTeamInvitations.Remove(invitation);
             db.SaveChanges();
-            ViewBag.Confirmation = true;
-            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
+            JNotify("Your request has been completed.", "~/Specialist/ProviderInvitation");
 
             //JQuery Success
             return RedirectToAction("CurrentProvider");
 
         }
-
-
-
-
-
-
-
-        //Current Provider
 
         public ActionResult CurrentProvider()
         {
@@ -469,24 +427,17 @@ window.location.href = '" + navigateturlwhencompleted + @"
             return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
-
-        // Manage Provider
-
         public ActionResult ManageProvider()
         {
             var specialistId = UserHelper.GetSpecialistID();
             return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
-
-
-        //Need to do 
         public ActionResult RemoveTeamAssociation(int id)
         {
             var maintenanceteamassociation = db.MaintenanceTeamAssociations.Find(id);
             return View(maintenanceteamassociation);
         }
-
 
         [HttpPost]
         public ActionResult RemoveTeamAssociation(MaintenanceTeamAssociation mta)
@@ -495,19 +446,57 @@ window.location.href = '" + navigateturlwhencompleted + @"
             db.MaintenanceTeamAssociations.Remove(maintenanceteamassociation);
             db.SaveChanges();
 
-            ViewBag.Confirmation = true;
-            ViewBag.ConfirmationSuccess = JNotifyConfirmationSharingEmail();
+            JNotify("Your request has been completed.", "~/Specialist/CurrentProvider");
 
             //JQuery Success
             return RedirectToAction("CurrentProvider");
         }
 
+        //********************************************PROVIDER Tab Function****************************************************
+        //*********************************************************************************************************************
 
+        //***********************************************JQuery HELPER*********************************************************
+        //*********************************************************************************************************************
+        /// <summary>
+        /// Parameterized JNotify Function
+        /// </summary>
+        /// <param name="successmessage"></param>
+        /// <param name="navigateturlwhencompleted"></param>
+        /// <returns></returns>
 
+        public string JNotifyConfirmationMessage(string successmessage, string navigateturlwhencompleted)
+        {
 
+            var jNotifyConfirmationScript = @"jSuccess('" + successmessage
+                                            +
+                                            @"',{
+	                            autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                    ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+                                window.location.href = '" + navigateturlwhencompleted + @"' }});";
+            return jNotifyConfirmationScript;
+        }
 
-
-
+        public void JNotify(string message = "", string url = "")
+        {
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotifyConfirmationMessage(message, url);
+        }
+        //***********************************************JQuery HELPER*********************************************************
+        //*********************************************************************************************************************
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
