@@ -8,20 +8,13 @@ using System.Web.Mvc;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
-{ 
+{
 
     //THIS IS ONLY FOR TESTING
     //IT SHOULD BE A FUCTION INSIDE PROVIDER CONTROL
     public class AddTeamMemberController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
-
-
-
-
-           //var specialistId = Helpers.UserHelper.GetSpecialistID();
-           // return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
-        //var maintenanceteamassociation = db.MaintenanceTeamAssociations.FirstOrDefault(x => x.TeamAssociationID == mta.TeamAssociationID);
 
 
         //For Testing//
@@ -49,48 +42,73 @@ namespace RentalMobile.Controllers
         public ActionResult Submit()
         {
             return View();
-        } 
+        }
 
 
         [HttpPost]
         public ActionResult Submit(Specialist specialist)
         {
-
-            //Get the value of the team for the maintenanceprovider
-            var Team = 
-            if (ModelState.IsValid)
+            var teamlist = db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == MaintenanceProviderId).ToList();
+            var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == MaintenanceProviderId);
+            switch (teamcount)
             {
+                //if Provider has no team
+                case 0: 
+                    //UI for Creating Team and renaming and deleting Team
+                    //Redirect to create team
 
-                var npti = new SpecialistPendingTeamInvitation
+                    RedirectToAction("Create", "Team");
+                    break;
+
+
+
+                //If Provider has only 1 team then proceed
+                case 1:
+                    if (ModelState.IsValid)
                     {
-                        MaintenanceProviderId = MaintenanceProviderId,
-                        PendingTeamInvitationID = 3,
-                        SpecialistID = SpecialistId,
-                        TeamId = 2,
-                        TeamName = "df"
+                        var currentteam = teamlist.First();
+                        var npti = new SpecialistPendingTeamInvitation
+                            {
+                                MaintenanceProviderId = MaintenanceProviderId,
+                                SpecialistID = SpecialistId,
+                                TeamId = currentteam.TeamId,
+                                TeamName = currentteam.TeamName
+                            };
+                        db.SpecialistPendingTeamInvitations.Add(npti);
+                        db.SaveChanges();
+                    }
+                    break;
 
 
-                    };
+                    // Else if Provider has more than 1
+                default:
+                    if (teamcount > 1)
+                    {
+                        RedirectToAction("SelectTeam", "Team");
+                        RedirectToAction("SelectTeam", "Team", new { id = SpecialistId });
+                   }
+                    break;
+            }
+
+
+            
+
+
+
+          
 
                 //var specialistId = Helpers.UserHelper.GetSpecialistID();
                 // return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
 
-                db.SpecialistPendingTeamInvitations.Add(npti);
-                db.SaveChanges();
+                
                 return RedirectToAction("Index");  
             }
-
-
-
             //Send Email to the Specialist
             //Insert into Specialist Pending Team Invitation
             //Jquery Confirmation
 
 
 
-            return View(specialist);
-        }
-        
 
         protected override void Dispose(bool disposing)
         {

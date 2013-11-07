@@ -88,5 +88,7 @@ namespace RentalMobile.Models
         public DbSet<OwnerPendingShowingCalendar> OwnerPendingShowingCalendars { get; set; }
         public DbSet<SpecialistPendingTeamInvitation> SpecialistPendingTeamInvitations { get; set; }
         public DbSet<MaintenanceTeamAssociation> MaintenanceTeamAssociations { get; set; }
+        public DbSet<MaintenanceCompany> MaintenanceCompanies { get; set; }
+        public DbSet<MaintenanceTeam> MaintenanceTeams { get; set; }
     }
 }

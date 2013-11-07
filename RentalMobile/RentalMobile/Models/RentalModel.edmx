@@ -25,6 +25,7 @@
           <EntitySet Name="Garage" EntityType="DB_33736_rentalModel.Store.Garage" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GeneratedRentalContract" EntityType="DB_33736_rentalModel.Store.GeneratedRentalContract" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Heating" EntityType="DB_33736_rentalModel.Store.Heating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceCompany" EntityType="DB_33736_rentalModel.Store.MaintenanceCompany" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.Store.MaintenanceExteriors" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceOrder" EntityType="DB_33736_rentalModel.Store.MaintenanceOrder" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenancePhoto" EntityType="DB_33736_rentalModel.Store.MaintenancePhoto" store:Type="Tables" Schema="dbo" />
@@ -32,6 +33,7 @@
           <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderAcceptedJobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderNewJobOffers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderRejectedJobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceTeam" EntityType="DB_33736_rentalModel.Store.MaintenanceTeam" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceTeamAssociation" EntityType="DB_33736_rentalModel.Store.MaintenanceTeamAssociation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Owner" EntityType="DB_33736_rentalModel.Store.Owner" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OwnerAcceptedApplication" EntityType="DB_33736_rentalModel.Store.OwnerAcceptedApplication" store:Type="Tables" Schema="dbo" />
@@ -636,6 +638,30 @@
           <Property Name="HeatingID" Type="int" Nullable="false" />
           <Property Name="HeatingValue" Type="varchar" Nullable="false" MaxLength="30" />
         </EntityType>
+        <EntityType Name="MaintenanceCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VCard" Type="nvarchar" MaxLength="100" />
+          <Property Name="Skype" Type="nvarchar" MaxLength="100" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="100" />
+          <Property Name="LinkedIn" Type="nvarchar" MaxLength="100" />
+          <Property Name="GooglePlus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="GoogleMap" Type="nvarchar(max)" />
+          <Property Name="Country" Type="varchar" MaxLength="128" />
+          <Property Name="Region" Type="varchar" MaxLength="128" />
+          <Property Name="City" Type="varchar" MaxLength="128" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+        </EntityType>
         <EntityType Name="MaintenanceExteriors">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -744,6 +770,14 @@
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceTeam">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceTeamAssociation">
           <Key>
@@ -1970,6 +2004,8 @@
           <EntitySet Name="OwnerPendingShowingCalendars" EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" />
           <EntitySet Name="SpecialistPendingTeamInvitations" EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" />
           <EntitySet Name="MaintenanceTeamAssociations" EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" />
+          <EntitySet Name="MaintenanceCompanies" EntityType="DB_33736_rentalModel.MaintenanceCompany" />
+          <EntitySet Name="MaintenanceTeams" EntityType="DB_33736_rentalModel.MaintenanceTeam" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -3699,6 +3735,38 @@
           <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
           <Property Type="Int32" Name="SpecialistId" Nullable="false" />
         </EntityType>
+        <EntityType Name="MaintenanceCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Website" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GUID" Nullable="false" />
+          <Property Type="String" Name="VCard" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Skype" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Twitter" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LinkedIn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GooglePlus" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Photo" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GoogleMap" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Region" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MaintenanceTeam">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Type="Int32" Name="TeamId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TeamName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5271,6 +5339,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceCompanies">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCompany">
+              <MappingFragment StoreEntitySet="MaintenanceCompany">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="GooglePlus" ColumnName="GooglePlus" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="VCard" ColumnName="VCard" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceTeams">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceTeam">
+              <MappingFragment StoreEntitySet="MaintenanceTeam">
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5435,6 +5537,8 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" Width="1.5" PointX="18.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" Width="1.5" PointX="27.375" PointY="0.75" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.5" PointX="20.375" PointY="26.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompany" Width="1.5" PointX="27.375" PointY="3.75" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeam" Width="1.5" PointX="27.375" PointY="9.75" Height="1.5956835937499818" />
         </Diagram>
     </Diagrams>
   </Designer>

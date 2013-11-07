@@ -1,0 +1,30 @@
+﻿@model RentalMobile.Models.MaintenanceTeam
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MaintenanceTeam</legend>
+
+    <div class="display-label">TeamId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeamId)
+    </div>
+
+    <div class="display-label">TeamName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeamName)
+    </div>
+
+    <div class="display-label">MaintenanceProviderId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaintenanceProviderId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
