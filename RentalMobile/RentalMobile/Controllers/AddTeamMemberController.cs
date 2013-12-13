@@ -17,43 +17,58 @@ namespace RentalMobile.Controllers
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
-
-        //For Testing//
-        public const int SpecialistId = 3;
-        public const int MaintenanceProviderId = 2;
-
-        public ViewResult Index()
+        public ViewResult Index(int specialistId, int maintenanceProviderId)
         {
 
             //Get all specialist that don't have pending association or all already associated with the Team
 
             var existingTeamAssociation = db.MaintenanceTeamAssociations.Where(
-                x => x.SpecialistId == SpecialistId && x.MaintenanceProviderId == MaintenanceProviderId)
+                x => x.SpecialistId == specialistId && x.MaintenanceProviderId == maintenanceProviderId)
                                             .Select(x => x.SpecialistId).ToList();
 
-            var test1 = existingTeamAssociation.Count();
-            //should be 2
-
-           var pendingTeamAssociation = db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == SpecialistId && x.MaintenanceProviderId == MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
-           var test2 = pendingTeamAssociation.Count();
-            //should be 3
-            
+            var pendingTeamAssociation = db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId && x.MaintenanceProviderId == maintenanceProviderId).Select(x => x.SpecialistID).ToList();
             var mergedExistingandPendingTeamAssociation = new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
-
-            var test3 = mergedExistingandPendingTeamAssociation.Count();
-            //should be 5
-
             var excludedSpecialistList = db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
-            var test4 = excludedSpecialistList.Count();
-            //should be 6
-
-
-            var filterSpecialistList = db.Specialists.Where(x => x.SpecialistId == SpecialistId).Except(excludedSpecialistList).ToList();
-            var test7 = filterSpecialistList.Count();
-            //should be 7
+            var filterSpecialistList = db.Specialists.Where(x => x.SpecialistId == specialistId).Except(excludedSpecialistList).ToList();
 
             return View(filterSpecialistList);
         }
+
+
+
+
+        //public ViewResult Index(int SpecialistId, int MaintenanceProviderId)
+        //{
+
+        //    //Get all specialist that don't have pending association or all already associated with the Team
+
+        //    var existingTeamAssociation = db.MaintenanceTeamAssociations.Where(
+        //        x => x.SpecialistId == SpecialistId && x.MaintenanceProviderId == MaintenanceProviderId)
+        //                                    .Select(x => x.SpecialistId).ToList();
+
+        //    var test1 = existingTeamAssociation.Count();
+        //    //should be 2
+
+        //    var pendingTeamAssociation = db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == SpecialistId && x.MaintenanceProviderId == MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
+        //    var test2 = pendingTeamAssociation.Count();
+        //    //should be 3
+
+        //    var mergedExistingandPendingTeamAssociation = new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
+
+        //    var test3 = mergedExistingandPendingTeamAssociation.Count();
+        //    //should be 5
+
+        //    var excludedSpecialistList = db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
+        //    var test4 = excludedSpecialistList.Count();
+        //    //should be 6
+
+
+        //    var filterSpecialistList = db.Specialists.Where(x => x.SpecialistId == SpecialistId).Except(excludedSpecialistList).ToList();
+        //    var test7 = filterSpecialistList.Count();
+        //    //should be 7
+
+        //    return View(filterSpecialistList);
+        //}
 
 
         public ActionResult Submit()
@@ -63,10 +78,10 @@ namespace RentalMobile.Controllers
 
 
         [HttpPost]
-        public ActionResult Submit(Specialist specialist)
+        public ActionResult Submit(Specialist specialist, int specialistId, int maintenanceProviderId)
         {
-            var teamlist = db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == MaintenanceProviderId).ToList();
-            var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == MaintenanceProviderId);
+            var teamlist = db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
+            var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == maintenanceProviderId);
             switch (teamcount)
             {
                 //if Provider has no team
@@ -86,8 +101,8 @@ namespace RentalMobile.Controllers
                         var currentteam = teamlist.First();
                         var npti = new SpecialistPendingTeamInvitation
                             {
-                                MaintenanceProviderId = MaintenanceProviderId,
-                                SpecialistID = SpecialistId,
+                                MaintenanceProviderId = maintenanceProviderId,
+                                SpecialistID = specialistId,
                                 TeamId = currentteam.TeamId,
                                 TeamName = currentteam.TeamName
                             };
@@ -102,7 +117,7 @@ namespace RentalMobile.Controllers
                     if (teamcount > 1)
                     {
                         RedirectToAction("SelectTeam", "Team");
-                        RedirectToAction("SelectTeam", "Team", new { id = SpecialistId });
+                        RedirectToAction("SelectTeam", "Team", new { id = specialistId });
                     }
                     break;
             }

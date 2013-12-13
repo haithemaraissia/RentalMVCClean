@@ -187,6 +187,150 @@ namespace RentalMobile.Controllers
 
 
 
+       /// <summary>
+       /// ADDITION OF ADDMEMBER THE NEW WAY
+       /// </summary>
+       /// <returns></returns>
+
+
+        public ActionResult AddTeamMember()
+        {
+            //Get all specialist that don't have pending association or all already associated with the Team
+
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var existingTeamAssociation = db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistId).ToList();
+            var pendingTeamAssociation = db.SpecialistPendingTeamInvitations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
+            var mergedExistingandPendingTeamAssociation = new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
+            var excludedSpecialistList = db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
+            var filterSpecialistList = db.Specialists.Except(excludedSpecialistList).ToList();
+
+            return View(filterSpecialistList);
+            
+        }
+
+
+
+        public ActionResult SelectedTeamMember(int id)
+        {
+            //Get all specialist that don't have pending association or all already associated with the Team
+
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+            if (teamcount == 0)
+            {
+                return RedirectToAction("Create", "Team");
+            }
+            else
+            {
+                return RedirectToAction("SelectTeam", "Provider", new {id });
+            }
+
+            
+        }
+
+
+
+
+
+       //[HttpPost]
+       // public ActionResult AddTeamMember(Specialist specialist)
+       // {
+       //     //Get all specialist that don't have pending association or all already associated with the Team
+
+       //     var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+       //     var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+       //     if (teamcount == 0)
+       //     {
+       //         return RedirectToAction("Create", "Team");
+       //     }
+       //     else
+       //     {
+       //         return RedirectToAction("SelectTeam", "Provider", new {id =  specialist.SpecialistId });
+       //     }
+
+
+
+       // }
+
+
+
+       public ActionResult SelectTeam(int id)
+       {
+           TempData["SpecialistId"] = id;
+           
+           var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+           var currentTeam =
+               db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
+           return View(currentTeam);
+       }
+
+
+
+
+
+
+        public ActionResult ChosenTeam(int id)
+        {
+            var spd = TempData["SpecialistId"];
+            TempData["SpecialistId"] = spd;
+            TempData["TeamId"] = id;
+
+            return RedirectToAction("InviteTeamMember");
+        }
+
+
+
+       public ActionResult InviteTeamMember()
+       {
+           var spd = TempData["SpecialistId"];
+           TempData["SpecialistId"] = spd;
+           var proid = TempData["MaintenanceProviderId"];
+           TempData["MaintenanceProviderId"] = proid;
+           var teamid = (int)TempData["TeamId"];
+           return View(db.MaintenanceTeams.Where(x => x.TeamId == teamid));
+       }
+
+
+
+        [HttpPost]
+       public ActionResult InviteTeamMember(MaintenanceTeam team)
+       {
+           var spd = TempData["SpecialistId"];
+           var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+
+           var proid = provider.MaintenanceProviderId;
+
+           var npti = new SpecialistPendingTeamInvitation
+           {
+
+               MaintenanceProviderId = (int) proid,
+               SpecialistID = (int) spd,
+               TeamId = team.TeamId,
+               TeamName = team.TeamName
+           };
+           db.SpecialistPendingTeamInvitations.Add(npti);
+           db.SaveChanges();
+
+
+            //Send Confirmation to the Specialist 
+            //JQuery Helper for Success
+           JNotify("Your request has been completed.", "/Specialist/CurrentProvider");
+           return View();
+       }
+
+        /// <summary>
+        /// JQuery PUBLIC  HELPER
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="url"></param>
+        public void JNotify(string message = "", string url = "")
+        {
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = JNotfiyScriptQueryHelper.JNotifyConfirmationMessage(message, url);
+        }
+
+
+
 
 
 
@@ -355,10 +499,6 @@ namespace RentalMobile.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-
-
-
-
 
 
 
