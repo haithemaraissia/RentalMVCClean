@@ -124,11 +124,13 @@
     </style>
     
     
+    
+    
 
     <div id="wizard" class="swMain sixteen columns shadded wide-on-small-screen">
         <ul class="sixteen columns">
             <li><a href="#step-1" class="four columns"><span class="stepNumber">1</span> <span
-                class="stepDesc">Property<br />
+                class="stepDesc">Profile<br />
                 @* <small>Applicant Information</small>*@ </span></a></li>
             <li><a href="#step-2" class="four columns"><span class="stepNumber">2</span> <span
                 class="stepDesc">Feature<br />
@@ -142,7 +144,7 @@
         </ul>
         <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
             <h2 class="StepTitle">
-                Unit Detail</h2>
+                Profile</h2>
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
                 <ul>
                     <li class="five columns">
@@ -164,9 +166,121 @@
                         @Html.TextBoxFor(m => m.Unit.SquareFoot, new { id = "squarefoot", required = "required", @class = "full-width", placeholder = "SquareFoot" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
-                        <li class="five columns">Missing 2 properties: Description Primary Photo </li>
+                    @Html.TextBoxFor(m => m.Unit.YearBuilt, new { id = "yearbuilt", required = "required", @class = "full-width", placeholder = "Year Built" })
+                    <li class="five columns">Missing 2 properties: Description Primary Photo </li>
                 </ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                <section class="sixteen columns add-bottom relative">
+    @using (Html.BeginForm("Edit", "Specialist", FormMethod.Post, new { @class = "fancy-form" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>EDIT PROFILE</legend>
+            <ul class="grid-form sixteen columns push by-one remove-bottom">
+                <li class="six columns alpha  pull by-one">
+                    @Html.HiddenFor(model => model.MaintenanceProviderId)
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FirstName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FirstName)
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  push by-two">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.LastName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.LastName)
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  pull by-one">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.VCard)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.VCard)
+                        @Html.ValidationMessageFor(model => model.VCard)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  push by-two">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Skype)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Skype)
+                        @Html.ValidationMessageFor(model => model.Skype)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  pull by-one">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Twitter)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Twitter)
+                        @Html.ValidationMessageFor(model => model.Twitter)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  push by-two">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.LinkedIn)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.LinkedIn)
+                        @Html.ValidationMessageFor(model => model.LinkedIn)
+                    </div>
+                    <br />
+                </li>
+                <li class="six columns alpha  pull by-one">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.GooglePlus)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.GooglePlus)
+                        @Html.ValidationMessageFor(model => model.GooglePlus)
+                    </div>
+                    <br />
+                </li>
+                <li class="fourteen columns pull by-one alpha">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div>
+                        @Html.TextAreaFor(model => model.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description" })
+                    </div>
+                    <br />
+                </li>
+            </ul>
+            <div>
+                @Html.HiddenFor(model => model.Address)
+                @Html.HiddenFor(model => model.EmailAddress)
+                @Html.HiddenFor(model => model.GUID)
+                @Html.HiddenFor(model => model.Photo)
+                @Html.HiddenFor(model => model.Country)
+                @Html.HiddenFor(model => model.Region)
+                @Html.HiddenFor(model => model.City)
+                @Html.HiddenFor(model => model.Zip)
+            </div>
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+</section>
             </section>
             <h2 class="StepTitle">
                 Pricing</h2>

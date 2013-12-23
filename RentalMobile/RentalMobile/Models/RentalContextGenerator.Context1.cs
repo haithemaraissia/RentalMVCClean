@@ -63,7 +63,6 @@ namespace RentalMobile.Models
         public DbSet<ProjectPhoto> ProjectPhotoes { get; set; }
         public DbSet<GeneratedRentalContract> GeneratedRentalContracts { get; set; }
         public DbSet<UploadedContract> UploadedContracts { get; set; }
-        public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
         public DbSet<UnitFeature> UnitFeatures { get; set; }
         public DbSet<UnitInteriorAmenity> UnitInteriorAmenities { get; set; }
         public DbSet<UnitLuxuryAmenity> UnitLuxuryAmenities { get; set; }
@@ -90,5 +89,14 @@ namespace RentalMobile.Models
         public DbSet<MaintenanceTeamAssociation> MaintenanceTeamAssociations { get; set; }
         public DbSet<MaintenanceCompany> MaintenanceCompanies { get; set; }
         public DbSet<MaintenanceTeam> MaintenanceTeams { get; set; }
+        public DbSet<MaintenanceCompanyLookUp> MaintenanceCompanyLookUps { get; set; }
+        public DbSet<MaintenanceCompanySpecialization> MaintenanceCompanySpecializations { get; set; }
+        public DbSet<MaintenanceCrew> MaintenanceCrews { get; set; }
+        public DbSet<MaintenanceCustomService> MaintenanceCustomServices { get; set; }
+        public DbSet<MaintenanceInterior> MaintenanceInteriors { get; set; }
+        public DbSet<MaintenanceRepair> MaintenanceRepairs { get; set; }
+        public DbSet<MaintenanceUtility> MaintenanceUtilities { get; set; }
+        public DbSet<MaintenanceNewConstruction> MaintenanceNewConstructions { get; set; }
+        public DbSet<UnitExteriorAmenity> UnitExteriorAmenities { get; set; }
     }
 }

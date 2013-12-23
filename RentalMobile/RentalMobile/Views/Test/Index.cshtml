@@ -1,6 +1,6 @@
-﻿@using RentalMobile.Helpers
-@model RentalMobile.Models.Unit
-
+﻿@using System.Globalization
+@using RentalMobile.Helpers
+@model dynamic
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/ViewofProfiles/_Unit.cshtml";
@@ -9,8 +9,9 @@
 <h2>title</h2>
 
 
+@* 
 <section class="row double-bottom">
-    @section description{
+  @section description{
         <div id="description" class="panel">
         
 
@@ -25,8 +26,11 @@
             @Model.VimeoVideoURL
             
             <br/>
-             <iframe src="@Html.GetVideoEmbeddedUrl(Model.UnitId)" width="500" height="281" frameborder="0"
+             <iframe src="@GetVideo()" width="500" height="281" frameborder="0"
                     webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
     }
-    </section>    
+</section>   
+     *@
+     
+     

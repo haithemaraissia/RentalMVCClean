@@ -35,9 +35,25 @@ namespace RentalMobile.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    else
+                    if (Roles.IsUserInRole(model.UserName, "Tenant"))
                     {
-                        return RedirectToAction("Index", model.Role);
+                        return RedirectToAction("Index", "Tenant");
+                    }
+                    if (Roles.IsUserInRole(model.UserName, "Owner"))
+                    {
+                        return RedirectToAction("Index", "Owner");
+                    }
+                    if (Roles.IsUserInRole(model.UserName, "Agent"))
+                    {
+                        return RedirectToAction("Index", "Agent");
+                    }
+                    if (Roles.IsUserInRole(model.UserName, "Specialist"))
+                    {
+                        return RedirectToAction("Index", "Specialist");
+                    }
+                    if (Roles.IsUserInRole(model.UserName, "Provider"))
+                    {
+                        return RedirectToAction("Index", "Provider");
                     }
                 }
                 else
@@ -465,6 +481,7 @@ namespace RentalMobile.Controllers
                 newspecialist.FirstName = model.UserName;
                 newspecialist.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newspecialist.GoogleMap = "USA";
+
             }
 
             _db.Specialists.Add(newspecialist);

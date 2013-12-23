@@ -132,7 +132,7 @@ ul#UserMenu span
 	overflow: visible;
 	background-position: right center;
 	background-repeat: no-repeat;
-	padding-right: 0px;
+	padding-right: 5px;
 }
 ul#UserMenu ul li:hover > a, ul#UserMenu ul li a.pressed
 {
@@ -149,3 +149,7 @@ ul#UserMenu li.toplast > a
 	-webkit-border-bottom-right-radius: 0px;
 }
 
+ul#UserSubMenu ul , ul#UserSubMenu ul li
+{
+    width: 100%;
+}

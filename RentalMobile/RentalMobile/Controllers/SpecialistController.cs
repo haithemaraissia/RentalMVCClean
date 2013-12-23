@@ -234,28 +234,48 @@ namespace RentalMobile.Controllers
 
         public ActionResult CompleteProfile()
         {
+            var specialistId = UserHelper.GetSpecialistID();
+            if (specialistId != null)
+            {
+                var mp = new SpecialistMaintenanceProfile(1, (int) specialistId);
+                return View(mp);
+            }
+            return null;
+            //var mp = new SpecialistMaintenanceProfile
+            //    {
+            //        MaintenanceCompanyLookUp = NotFiniteNumberException.
+            //    }
+
+
+            //                var u = new UnitModelView
+            //            {
+            //                Unit = db.Units.Find(id),
+            //                UnitFeature = db.UnitFeatures.Find(id),
+            //                UnitAppliance = db.UnitAppliances.Find(id),
+            //                UnitCommunityAmenity = db.UnitCommunityAmenities.Find(id),
+            //                UnitPricing = db.UnitPricings.Find(id),
+            //                UnitInteriorAmenity = db.UnitInteriorAmenities.Find(id),
+            //                UnitExteriorAmenity = db.UnitExteriorAmenities.Find(id),
+            //                UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
+
+            //            };
+            //ViewBag.CurrencyCode = u.Unit.CurrencyCode;
+
+            //TempData["UnitID"] = id;
+            //return View(u);
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult CompleteProfile(UnitModelView u)
+        public ActionResult CompleteProfile(SpecialistMaintenanceProfile u)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Units.Add(u.Unit);
-                    db.UnitPricings.Add(u.UnitPricing);
-                    db.UnitFeatures.Add(u.UnitFeature);
-                    db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-                    db.UnitAppliances.Add(u.UnitAppliance);
-                    db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
-                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
-                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-                    //Think if tyou need or not because of the upload control
-                    //db.UnitGalleries.Add(u.UnitGallery);
-                    db.SaveChanges();
+                   u.Save();
+                   db.SaveChanges();
                     // SavePictures(u.Unit);
                     return RedirectToAction("Index");
                 }

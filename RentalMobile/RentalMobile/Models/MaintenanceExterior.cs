@@ -37,5 +37,7 @@ namespace RentalMobile.Models
         public string Tree_Service { get; set; }
         public string Waterproofing { get; set; }
         public string Windows___Exterior_Doors { get; set; }
+    
+        public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }
 }

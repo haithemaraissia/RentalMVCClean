@@ -33,5 +33,7 @@ namespace RentalMobile.Models
         public string City { get; set; }
         public string Zip { get; set; }
         public string CountryCode { get; set; }
+    
+        public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }
 }

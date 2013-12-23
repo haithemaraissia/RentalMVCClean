@@ -18,6 +18,7 @@ namespace RentalMobile.Models
         {
             this.MaintenancePhotoes = new HashSet<MaintenancePhoto>();
             this.OwnerMaintenances = new HashSet<OwnerMaintenance>();
+            this.MaintenanceCrews = new HashSet<MaintenanceCrew>();
         }
     
         public int MaintenanceID { get; set; }
@@ -34,5 +35,6 @@ namespace RentalMobile.Models
         public virtual ICollection<MaintenancePhoto> MaintenancePhotoes { get; set; }
         public virtual ICollection<OwnerMaintenance> OwnerMaintenances { get; set; }
         public virtual TenantMaintenance TenantMaintenance { get; set; }
+        public virtual ICollection<MaintenanceCrew> MaintenanceCrews { get; set; }
     }
 }
