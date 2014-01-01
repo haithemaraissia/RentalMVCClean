@@ -1,0 +1,193 @@
+﻿@model RentalMobile.Models.MaintenanceCustomService
+
+@{
+    ViewBag.Title = "Deletethis";
+}
+
+<h2>Deletethis</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>MaintenanceCustomService</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyId)
+            @Html.ValidationMessageFor(model => model.CompanyId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Demolition_Services)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Demolition_Services)
+            @Html.ValidationMessageFor(model => model.Demolition_Services)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Disability_Accessibility)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Disability_Accessibility)
+            @Html.ValidationMessageFor(model => model.Disability_Accessibility)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Childproofing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Childproofing)
+            @Html.ValidationMessageFor(model => model.Childproofing)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Energy_Efficiency_Inspection)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Energy_Efficiency_Inspection)
+            @Html.ValidationMessageFor(model => model.Energy_Efficiency_Inspection)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Excavation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Excavation)
+            @Html.ValidationMessageFor(model => model.Excavation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Biohazard_Cleanup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Biohazard_Cleanup)
+            @Html.ValidationMessageFor(model => model.Biohazard_Cleanup)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mold_Removal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mold_Removal)
+            @Html.ValidationMessageFor(model => model.Mold_Removal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Home_Staging)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Home_Staging)
+            @Html.ValidationMessageFor(model => model.Home_Staging)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Inspection_Services)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Inspection_Services)
+            @Html.ValidationMessageFor(model => model.Inspection_Services)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Moving_Services)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Moving_Services)
+            @Html.ValidationMessageFor(model => model.Moving_Services)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Restoration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Restoration)
+            @Html.ValidationMessageFor(model => model.Restoration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Metal_Restoration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Metal_Restoration)
+            @Html.ValidationMessageFor(model => model.Metal_Restoration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Earthquake_Retrofitting)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Earthquake_Retrofitting)
+            @Html.ValidationMessageFor(model => model.Earthquake_Retrofitting)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Epoxy_Flooring_Excavators)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Epoxy_Flooring_Excavators)
+            @Html.ValidationMessageFor(model => model.Epoxy_Flooring_Excavators)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Structural_Engineering)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Structural_Engineering)
+            @Html.ValidationMessageFor(model => model.Structural_Engineering)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Trash_Removal___Hauling)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Trash_Removal___Hauling)
+            @Html.ValidationMessageFor(model => model.Trash_Removal___Hauling)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Welding)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Welding)
+            @Html.ValidationMessageFor(model => model.Welding)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mudjacking)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mudjacking)
+            @Html.ValidationMessageFor(model => model.Mudjacking)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Picture_Framing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Picture_Framing)
+            @Html.ValidationMessageFor(model => model.Picture_Framing)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Woodworking_Services)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Woodworking_Services)
+            @Html.ValidationMessageFor(model => model.Woodworking_Services)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

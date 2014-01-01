@@ -1384,6 +1384,7 @@
     <Content Include="Views\Provider\AddTeamMember.cshtml" />
     <Content Include="Views\Provider\SelectTeam.cshtml" />
     <Content Include="Views\Provider\InviteTeamMember.cshtml" />
+    <Content Include="Views\Deletethis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

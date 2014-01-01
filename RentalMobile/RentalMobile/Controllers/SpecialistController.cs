@@ -241,6 +241,31 @@ namespace RentalMobile.Controllers
                 return View(mp);
             }
             return null;
+
+
+
+
+
+
+
+//            About
+//MaintenanceCompany
+//MaintenanceCompanySpecialization
+
+//Coverage
+//Exteriors
+//Interiors
+
+//Services
+//Maintenance and Repairs
+//Constructions
+
+//Feature
+//Custom Services
+//Utilities
+
+
+
             //var mp = new SpecialistMaintenanceProfile
             //    {
             //        MaintenanceCompanyLookUp = NotFiniteNumberException.
