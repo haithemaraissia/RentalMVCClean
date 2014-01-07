@@ -19,12 +19,12 @@ namespace RentalMobile.Models
         public int Role { get; set; }
     
         public virtual MaintenanceCompany MaintenanceCompany { get; set; }
-        public virtual MaintenanceCompanySpecialization MaintenanceCompanySpecialization { get; set; }
-        public virtual MaintenanceCustomService MaintenanceCustomService { get; set; }
+        public virtual MaintenanceRepair MaintenanceRepair { get; set; }
         public virtual MaintenanceExterior MaintenanceExterior { get; set; }
         public virtual MaintenanceInterior MaintenanceInterior { get; set; }
-        public virtual MaintenanceRepair MaintenanceRepair { get; set; }
-        public virtual MaintenanceUtility MaintenanceUtility { get; set; }
         public virtual MaintenanceNewConstruction MaintenanceNewConstruction { get; set; }
+        public virtual MaintenanceUtility MaintenanceUtility { get; set; }
+        public virtual MaintenanceCustomService MaintenanceCustomService { get; set; }
+        public virtual MaintenanceCompanySpecialization MaintenanceCompanySpecialization { get; set; }
     }
 }

@@ -25,7 +25,19 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Westwind.plUploadHandler", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobileBaseLine", "RentalMobileBaseLine\RentalMobileBaseLine.csproj", "{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E7AE230-4290-4D46-96D1-6171AE70F05B}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		RentalMobile.vsmdi = RentalMobile.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = RentalMobile.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -43,6 +55,10 @@ Global
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

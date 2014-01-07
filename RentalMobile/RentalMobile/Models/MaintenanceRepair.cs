@@ -15,28 +15,28 @@ namespace RentalMobile.Models
     public partial class MaintenanceRepair
     {
         public int CompanyId { get; set; }
-        public string Appliances_Service_and_Repair { get; set; }
-        public string Bathtub___Sink_Repair_Refinishing { get; set; }
-        public string Black_Mold_Removal { get; set; }
-        public string Carpet___Rug_Cleaning { get; set; }
-        public string Caulking { get; set; }
-        public string Chimney_Services { get; set; }
-        public string Cleaning_Services { get; set; }
-        public string Computers_Service_and_Repair { get; set; }
-        public string Duct_Cleaning { get; set; }
-        public string Foundation_Repair { get; set; }
-        public string Furniture_Repair___Restoration { get; set; }
-        public string Garage_Door_Install___Repair { get; set; }
-        public string Handyman_Services { get; set; }
-        public string Drain_Pipe { get; set; }
-        public string Doors { get; set; }
-        public string Locksmithing { get; set; }
-        public string Pest_Control { get; set; }
-        public string Property_Management { get; set; }
-        public string Snow_Removal { get; set; }
-        public string Window_Cleaning { get; set; }
-        public string Glass___Window_Services { get; set; }
-        public string Mailbox_Repair { get; set; }
+        public bool Appliances_Service_and_Repair { get; set; }
+        public bool Bathtub___Sink_Repair_Refinishing { get; set; }
+        public bool Black_Mold_Removal { get; set; }
+        public bool Carpet___Rug_Cleaning { get; set; }
+        public bool Caulking { get; set; }
+        public bool Chimney_Services { get; set; }
+        public bool Cleaning_Services { get; set; }
+        public bool Computers_Service_and_Repair { get; set; }
+        public bool Duct_Cleaning { get; set; }
+        public bool Foundation_Repair { get; set; }
+        public bool Furniture_Repair___Restoration { get; set; }
+        public bool Garage_Door_Install___Repair { get; set; }
+        public bool Handyman_Services { get; set; }
+        public bool Drain_Pipe { get; set; }
+        public bool Doors { get; set; }
+        public bool Locksmithing { get; set; }
+        public bool Pest_Control { get; set; }
+        public bool Property_Management { get; set; }
+        public bool Snow_Removal { get; set; }
+        public bool Window_Cleaning { get; set; }
+        public bool Glass___Window_Services { get; set; }
+        public bool Mailbox_Repair { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }

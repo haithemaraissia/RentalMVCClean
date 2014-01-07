@@ -15,33 +15,33 @@ namespace RentalMobile.Models
     public partial class MaintenanceCompanySpecialization
     {
         public int CompanyId { get; set; }
-        public Nullable<int> NumberofEmployee { get; set; }
-        public Nullable<int> NumberofCertifitedEmplyee { get; set; }
-        public Nullable<bool> Air_Conditioning { get; set; }
-        public Nullable<bool> Electrical { get; set; }
-        public Nullable<bool> Kitchen_Remodeling { get; set; }
-        public Nullable<bool> Architects { get; set; }
-        public Nullable<bool> Flooring { get; set; }
-        public Nullable<bool> Landscaping { get; set; }
-        public Nullable<bool> Asphalt_Paving { get; set; }
-        public Nullable<bool> General_Contracting { get; set; }
-        public Nullable<bool> Painting { get; set; }
-        public Nullable<bool> Basement_Finishing { get; set; }
-        public Nullable<bool> Handyman_Services { get; set; }
-        public Nullable<bool> Plumbing { get; set; }
-        public Nullable<bool> Bathroom_Remodeling { get; set; }
-        public Nullable<bool> Heating { get; set; }
-        public Nullable<bool> Roofing { get; set; }
-        public Nullable<bool> Concrete { get; set; }
-        public Nullable<bool> Home_Addition_Construction { get; set; }
-        public Nullable<bool> Siding { get; set; }
-        public Nullable<bool> Deck_Construction { get; set; }
-        public Nullable<bool> Home_Construction { get; set; }
-        public Nullable<bool> Tiling { get; set; }
-        public Nullable<bool> IsInsured { get; set; }
-        public Nullable<double> Rate { get; set; }
+        public int NumberofEmployee { get; set; }
+        public int NumberofCertifitedEmplyee { get; set; }
+        public bool Air_Conditioning { get; set; }
+        public bool Electrical { get; set; }
+        public bool Kitchen_Remodeling { get; set; }
+        public bool Architects { get; set; }
+        public bool Flooring { get; set; }
+        public bool Landscaping { get; set; }
+        public bool Asphalt_Paving { get; set; }
+        public bool General_Contracting { get; set; }
+        public bool Painting { get; set; }
+        public bool Basement_Finishing { get; set; }
+        public bool Handyman_Services { get; set; }
+        public bool Plumbing { get; set; }
+        public bool Bathroom_Remodeling { get; set; }
+        public bool Heating { get; set; }
+        public bool Roofing { get; set; }
+        public bool Concrete { get; set; }
+        public bool Home_Addition_Construction { get; set; }
+        public bool Siding { get; set; }
+        public bool Deck_Construction { get; set; }
+        public bool Home_Construction { get; set; }
+        public bool Tiling { get; set; }
+        public bool IsInsured { get; set; }
+        public double Rate { get; set; }
         public string Currency { get; set; }
-        public Nullable<int> CurrencyID { get; set; }
+        public int CurrencyID { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }

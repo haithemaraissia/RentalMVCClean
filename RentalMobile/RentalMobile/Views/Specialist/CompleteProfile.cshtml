@@ -137,7 +137,7 @@
                 class="stepDesc">Feature<br />
                 @* <small>Step 3 description</small> *@</span></a></li>
             <li><a href="#step-4" class="four columns"><span class="stepNumber">4</span> <span
-                class="stepDesc">Photo<br />
+                class="stepDesc">ForgotName<br />
                 @*  <small>Additional Information</small>*@ </span></a></li>
         </ul>
         <div id="step-1" class="sixteen columns" style="height: auto; padding: 0">
@@ -146,13 +146,13 @@
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 5%">
                 <ul>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Name, new { id = "name", required = "required", @class = "full-width", placeholder = "Name" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Name, new { id = "maintenancecompanyname", required = "required", @class = "full-width", placeholder = "Company Name" })
                     </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.MaintenanceCompany.Website, new { id = "website", required = "required", @class = "full-width", placeholder = "Website" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.EmailAddress, new { id = "emailaddress", required = "required", @class = "full-width", placeholder = "EmailAddress" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.EmailAddress, new { id = "emailaddress", required = "required", @class = "full-width", placeholder = "Email Address" })
                     </li>
                     <li class="five columns">
                         @Html.TextAreaFor(m => m.MaintenanceCompany.Description, new { row = "20", required = "required", @class = "full-width", placeholder = "Description" })
@@ -161,34 +161,34 @@
                         @Html.TextBoxFor(m => m.MaintenanceCompany.VCard, new { id = "vcard", required = "required", @class = "full-width", placeholder = "VCard" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Skype, new { id = "Skype", required = "required", @class = "full-width", placeholder = "Address" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Skype, new { id = "skype", required = "required", @class = "full-width", placeholder = "Skype" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Twitter, new { id = "Twitter", required = "required", @class = "full-width", placeholder = "City" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Twitter, new { id = "twitter", required = "required", @class = "full-width", placeholder = "Twitter" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.LinkedIn, new { id = "LinkedIn", required = "required", @class = "full-width", placeholder = "State" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.LinkedIn, new { id = "linkedin", required = "required", @class = "full-width", placeholder = "LinkedIn" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.GooglePlus, new { id = "GooglePlus", required = "required", @class = "full-width", placeholder = "Address" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.GooglePlus, new { id = "googleplus", required = "required", @class = "full-width", placeholder = "GooglePlus" })
                     </li>
                     @*                Should be done in code behind    <li class="five columns">
                         @Html.TextBoxFor(m => m.MaintenanceCompany.GoogleMap, new { id = "GoogleMap", required = "required", @class = "full-width", placeholder = "City" })
                     </li>*@
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "address" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Address, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Country, new { id = "addressstate", required = "required", @class = "full-width", placeholder = "State" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Country, new { id = "country", required = "required", @class = "full-width", placeholder = "Country" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Region, new { id = "address", required = "required", @class = "full-width", placeholder = "Address" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Region, new { id = "region", required = "required", @class = "full-width", placeholder = "Region" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.City, new { id = "addresscity", required = "required", @class = "full-width", placeholder = "City" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.City, new { id = "city", required = "required", @class = "full-width", placeholder = "City" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompany.Zip, new { id = "addressstate", required = "required", @class = "full-width", placeholder = "State" })
+                        @Html.TextBoxFor(m => m.MaintenanceCompany.Zip, new { id = "zip", required = "required", @class = "full-width", placeholder = "Zip" })
                     </li>
                 </ul>
             </section>
@@ -196,12 +196,12 @@
                 Specialization</h2>
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
                 <ul>
-                    @*                    <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.NumberofEmployee, new { id = "Rent", required = "required", @class = "full-width", placeholder = "Rent Amount" })
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.NumberofEmployee, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
                     </li>
                     <li class="five columns">
-                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee, new { id = "CurrencyID", required = "required", @class = "full-width", placeholder = "CurrencyID" })
-                    </li>*@
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee, new { id = "NumberofCertifitedEmplyee", required = "required", @class = "full-width", placeholder = "NumberofCertifitedEmplyee" })
+                    </li>
                     <li class="five columns">
                         @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Air_Conditioning, new { id = "airconditioning", required = "required", @class = "full-width", placeholder = "Air Conditioning" })
                     </li>
@@ -214,77 +214,559 @@
                     <li class="five columns" style="text-align: center">
                         @Html.EditorFor(m => m.MaintenanceCompanySpecialization.Architects, new { id = "architects", required = "required", @class = "full-width", placeholder = "Architects" })
                     </li>
+                    
+                    
+                    
+                    
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Flooring, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Landscaping, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Asphalt_Paving, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.General_Contracting, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Painting, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Basement_Finishing, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Handyman_Services, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Plumbing, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Bathroom_Remodeling, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Heating, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Roofing, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Concrete, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Home_Addition_Construction, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Siding, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Deck_Construction, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Home_Construction, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Tiling, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.IsInsured, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Rate, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Currency, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
+                    <li class="five columns">
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.CurrencyID, new { id = "numberofemployee", required = "required", @class = "full-width", placeholder = "Number of Employee" })
+                    </li>
                 </ul>
             </section>
         </div>
+        
+        
+        
+        
+
         <div id="step-2" class="sixteen columns" style="height: auto; padding: 0">
             <h2 class="StepTitle">
                 Exteriors</h2>
             <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="HighSpeedInternetAccessLabel">
-                            High Demolition_Services Internet Access</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                            High Speed Internet Access</label>
+                        @Html.TextBoxFor(m => m.MaintenanceExterior.Asphalt_Paving, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High_Speed_Internet_Access" })
+                        @Html.CheckBoxFor(m => m.MaintenanceExterior.Asphalt_Paving, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High_Speed_Internet_Access" })
                     </li>
-                    <li class="five columns">
-                        <label id="InternetIncludedLabel">
-                            Disability_Accessibility</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                    
+                    
+                    
+                    
+
+                    <li class="five columns ">
+                        <label id="Asphalt_PavingLabel">
+                            Asphalt_Paving</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Asphalt_Paving, new { id = "Asphalt_Paving", required = "required", @class = "full-width", placeholder = "Asphalt Paving" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="AwningsLabel">
+                            Awnings</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Awnings, new { id = "Awnings", required = "required", @class = "full-width", placeholder = "Awnings" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Decks__Patios___EnclosuresLabel">
+                            Decks__Patios___Enclosures</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Decks__Patios___Enclosures, new { id = "Decks__Patios___Enclosures", required = "required", @class = "full-width", placeholder = "Decks__Patios___Enclosures" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Fence_Install_and_RepairLabel">
+                            Fence_Install_and_Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Fence_Install_and_Repair, new { id = "Fence_Install_and_Repair", required = "required", @class = "full-width", placeholder = "Fence Install and Repair" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Gutter_ServicesLabel">
+                            Gutter_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Gutter_Services, new { id = "Gutter_Services", required = "required", @class = "full-width", placeholder = "Gutter Services" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Hurricane_Shutter_SystemsLabel">
+                            Hurricane_Shutter_Systems</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Hurricane_Shutter_Systems, new { id = "Hurricane_Shutter_Systems", required = "required", @class = "full-width", placeholder = "Hurricane Shutter Systems" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Interlocking___StoneworkLabel">
+                            Interlocking___Stonework</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Interlocking___Stonework, new { id = "Interlocking___Stonework", required = "required", @class = "full-width", placeholder = "Interlocking Stonework" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Ironwork___Wrought_IronLabel">
+                            Ironwork___Wrought_Irons</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Ironwork___Wrought_Iron, new { id = "Ironwork___Wrought_Iron", required = "required", @class = "full-width", placeholder = "Ironwork Wrought Iron" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Landscaping_InstallationLabel">
+                            Landscaping_Installation</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Landscaping_Installation, new { id = "Landscaping_Installation", required = "required", @class = "full-width", placeholder = "Landscaping Installation" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Lawn_CareLabel">
+                            Lawn_Care</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Lawn_Care, new { id = "Lawn_Care", required = "required", @class = "full-width", placeholder = "Lawn_Care" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Masonry_and_Brick_WorkLabel">
+                            Masonry_and_Brick_Work</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Masonry_and_Brick_Work, new { id = "Masonry_and_Brick_Work", required = "required", @class = "full-width", placeholder = "Masonry and Brick Work" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Power_WashingLabel">
+                            Power_Washing</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Power_Washing, new { id = "Power_Washing", required = "required", @class = "full-width", placeholder = "Power Washing" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Roofing_ServicesLabel">
+                           Roofing_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Roofing_Services, new { id = "Roofing_Services", required = "required", @class = "full-width", placeholder = "Roofing Services" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="SidingLabel">
+                            Siding</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Siding, new { id = "Siding", required = "required", @class = "full-width", placeholder = "Siding" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="SkylightsLabel">
+                            Skylights</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Skylights, new { id = "Skylights", required = "required", @class = "full-width", placeholder = "Skylights" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Sprinkler_Systems_and_IrrigationLabel">
+                            Sprinkler_Systems_and_Irrigation</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Sprinkler_Systems_and_Irrigation, new { id = "Sprinkler_Systems_and_Irrigation", required = "required", @class = "full-width", placeholder = "Sprinkler Systems_and Irrigation" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Stucco___PlasterLabel">
+                            Stucco___Plaster</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Stucco___Plaster, new { id = "Stucco___Plaster", required = "required", @class = "full-width", placeholder = "Stucco Plaster Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Swimming_Pool_InstallLabel">
+                            Swimming_Pool_Install</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Swimming_Pool_Install, new { id = "Swimming_Pool_Install", required = "required", @class = "full-width", placeholder = "Swimming Pool Install" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Tree_ServiceLabel">
+                            Tree_Service</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Tree_Service, new { id = "Tree_Service", required = "required", @class = "full-width", placeholder = "Tree Service" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="WaterproofingLabel">
+                            Waterproofing</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Waterproofing, new { id = "Waterproofing", required = "required", @class = "full-width", placeholder = "Waterproofing" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Windows___Exterior_DoorsLabel">
+                            Windows___Exterior_Doors</label>
+                        @Html.EditorFor(m => m.MaintenanceExterior.Windows___Exterior_Doors, new { id = "Windows___Exterior_Doors", required = "required", @class = "full-width", placeholder = "Windows Exterior Doors" })
                     </li>
                 </ul>
             </section>
             <h2 class="StepTitle">
                 Interiors</h2>
             <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="HighSpeedInternetAccessLabel">
                             High Demolition_Services Internet Access</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                        @Html.EditorFor(m => m.MaintenanceInterior.Basement_Lowering, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
                     </li>
-                    <li class="five columns">
-                        <label id="InternetIncludedLabel">
-                            Disability_Accessibility</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Basement_Remodeling, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
                     </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Bathroom_Remodeling, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Cabinetry_and_Built_ins, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Carpenters, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Carpet_and_Vinyl_Floors, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Ceiling_Install_and_Repair, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Closets_Designing_Organizing, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Counter_Tops, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Remodeling, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    
+                    
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Buffing___Polishing, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Drywall, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Carpet_Installation, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Fireplaces___Firewood, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Floor_Heating, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Framing, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Hardwood_Floor_Refinishing, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Home_Theaters, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Hot_Tubs__Spas___Jacuzzis, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Insulation, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Decorating___Design, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Kitchen_Remodeling, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Non_Slip_Treatments, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Painting_Services, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Solariums_and_Sunrooms, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Tile___Tiling, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Asbestos_Removal, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="HighSpeedInternetAccessLabel">
+                            High Demolition_Services Internet Access</label>
+                        @Html.EditorFor(m => m.MaintenanceInterior.Wallpaper___Wall_Coverings___Removal, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                    </li>
+                   
+
                 </ul>
             </section>
         </div>
+        
+        
+        
+
+        
+        
+
+
         <div id="step-3" class="sixteen columns" style="height: auto; padding: 0">
             <h2 class="StepTitle">
                 Maintenance and Repairs</h2>
-            <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
+            <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
-                        <label id="HighSpeedInternetAccessLabel">
-                            High Demolition_Services Internet Access</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                        <label id="Appliances_Service_and_RepairLabel">
+                            Appliances_Service_and_Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Appliances_Service_and_Repair, new { id = "Appliances_Service_and_Repair", required = "required", @class = "full-width", placeholder = "Appliances Service and Repair" })
                     </li>
                     <li class="five columns">
-                        <label id="InternetIncludedLabel">
-                            Disability_Accessibility</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                        <label id="Bathtub___Sink_Repair_RefinishingLabel">
+                            Bathtub___Sink_Repair_Refinishing</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Bathtub___Sink_Repair_Refinishing, new { id = "Bathtub___Sink_Repair_Refinishing", required = "required", @class = "full-width", placeholder = "Bathtub Sink Repair Refinishing" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Black_Mold_RemovalLabel">
+                            Black_Mold_Removal</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Black_Mold_Removal, new { id = "Black_Mold_Removal", required = "required", @class = "full-width", placeholder = "Black Mold Removal" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Carpet___Rug_CleaningLabel">
+                            Carpet___Rug_Cleaning</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Carpet___Rug_Cleaning, new { id = "Carpet___Rug_Cleaning", required = "required", @class = "full-width", placeholder = "Carpet Rug Cleaning" })
+                    </li>
+                    <li class="five columns">
+                        <label id="CaulkingLabel">
+                            Caulking</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Caulking, new { id = "Caulking", required = "required", @class = "full-width", placeholder = "Caulking" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Chimney_ServicesLabel">
+                            Chimney_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Chimney_Services, new { id = "Chimney_Services", required = "required", @class = "full-width", placeholder = "Chimney Services" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Cleaning_ServicesLabel">
+                            Cleaning_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Cleaning_Services, new { id = "Cleaning_Services", required = "required", @class = "full-width", placeholder = "Cleaning Services" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Computers_Service_and_RepairLabel">
+                            Computers_Service_and_Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Computers_Service_and_Repair, new { id = "Computers_Service_and_Repair", required = "required", @class = "full-width", placeholder = "Computers Service and Repair" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Duct_CleaningLabel">
+                            Duct_Cleaning</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Duct_Cleaning, new { id = "Duct_Cleaning", required = "required", @class = "full-width", placeholder = "Duct Cleaning" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Foundation_RepairLabel">
+                            Foundation_Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Foundation_Repair, new { id = "Foundation_Repair", required = "required", @class = "full-width", placeholder = "Foundation Repair" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Furniture_Repair___RestorationLabel">
+                            Furniture_Repair___Restoration</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Furniture_Repair___Restoration, new { id = "Furniture_Repair___Restoration", required = "required", @class = "full-width", placeholder = "Furniture Repair Restoration" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Garage_Door_Install___RepairLabel">
+                            Garage_Door_Install___Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Garage_Door_Install___Repair, new { id = "Garage_Door_Install___Repair", required = "required", @class = "full-width", placeholder = "Garage Door Install Repair" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Handyman_ServicesLabel">
+                            Handyman_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Handyman_Services, new { id = "Handyman_Services", required = "required", @class = "full-width", placeholder = "Handyman Services" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Drain_PipeLabel">
+                            Drain_Pipe</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Drain_Pipe, new { id = "Drain_Pipe", required = "required", @class = "full-width", placeholder = "Drain Pipe" })
+                    </li>
+                    <li class="five columns">
+                        <label id="DoorsLabel">
+                            Doors</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Doors, new { id = "Doors", required = "required", @class = "full-width", placeholder = "Doors" })
+                    </li>
+                    <li class="five columns">
+                        <label id="LocksmithingLabel">
+                            Locksmithing</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Locksmithing, new { id = "Locksmithing", required = "required", @class = "full-width", placeholder = "Lock smithing" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Pest_ControlLabel">
+                            Pest_Control</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Pest_Control, new { id = "Pest_Control", required = "required", @class = "full-width", placeholder = "Pest Control" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Property_ManagementLabel">
+                            Property_Management</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Property_Management, new { id = "Property_Management", required = "required", @class = "full-width", placeholder = "Property Management" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Snow_RemovalLabel">
+                            Snow_Removal</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Snow_Removal, new { id = "Snow_Removal", required = "required", @class = "full-width", placeholder = "Snow Removal" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Window_CleaningLabel">
+                            Window_Cleaning</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Window_Cleaning, new { id = "Window_Cleaning", required = "required", @class = "full-width", placeholder = "Window Cleaning" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Glass___Window_ServicesLabel">
+                            Glass___Window_Services</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Glass___Window_Services, new { id = "Glass___Window_Services", required = "required", @class = "full-width", placeholder = "Glass Window Services" })
+                    </li>
+                    <li class="five columns">
+                        <label id="Mailbox_RepairLabel">
+                            Mailbox_Repair</label>
+                        @Html.EditorFor(m => m.MaintenanceRepair.Mailbox_Repair, new { id = "Mailbox_Repair", required = "required", @class = "full-width", placeholder = "Mailbox Repair" })
                     </li>
                 </ul>
             </section>
             <h2 class="StepTitle">
                 Construction</h2>
             <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
-                        <label id="HighSpeedInternetAccessLabel">
-                            High Demolition_Services Internet Access</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "High_Speed_Internet_Access", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                        <label id="ArchitectsLabel">
+                            Architects</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Architects, new { id = "Architects", required = "required", @class = "full-width", placeholder = "Architects" })
                     </li>
-                    <li class="five columns">
-                        <label id="InternetIncludedLabel">
-                            Disability_Accessibility</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Internet_Included", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                    <li class="five columns ">
+                        <label id="Barns__Gazebos_and_ShedsLabel">
+                            Barns__Gazebos_and_Sheds</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Barns__Gazebos_and_Sheds, new { id = "Barns__Gazebos_and_Sheds", required = "required", @class = "full-width", placeholder = "Barns Gazebos and Sheds" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Commercial_ConstructionLabel">
+                            Commercial_Construction</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Commercial_Construction, new { id = "Commercial_Construction", required = "required", @class = "full-width", placeholder = "Commercial Construction" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Design_BuildLabel">
+                            Design_Build</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Design_Build, new { id = "Design_Build", required = "required", @class = "full-width", placeholder = "Design Build" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Custom_Cabinets___FurnitureLabel">
+                            Custom_Cabinets___Furniture</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Custom_Cabinets___Furniture, new { id = "Custom_Cabinets___Furniture", required = "required", @class = "full-width", placeholder = "Custom Cabinets Furniture" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="FoundationLabel">
+                            Foundation</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Foundation, new { id = "Foundation", required = "required", @class = "full-width", placeholder = "Foundation" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Garage___Carport_ConstructionLabel">
+                            Garage___Carport_Construction</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Garage___Carport_Construction, new { id = "Garage___Carport_Construction", required = "required", @class = "full-width", placeholder = "Garage Carport Construction" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Home_AdditionsLabel">
+                            Home_Additions</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Home_Additions, new { id = "Home_Additions", required = "required", @class = "full-width", placeholder = "Home Additions" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Bathtub_RefinishingLabel">
+                            Bathtub_Refinishing</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Bathtub_Refinishing, new { id = "Bathtub_Refinishing", required = "required", @class = "full-width", placeholder = "Bathtub Refinishing" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Home___Garage_BuildersLabel">
+                            Home___Garage_Builders</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Home___Garage_Builders, new { id = "Home___Garage_Builders", required = "required", @class = "full-width", placeholder = "Home Garage Builders" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Land_Clearing___Site_PreparationLabel">
+                            Land_Clearing___Site_Preparation</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Land_Clearing___Site_Preparation, new { id = "Land_Clearing___Site_Preparation", required = "required", @class = "full-width", placeholder = "Land Clearing Site Preparation" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="New_Home_ConstructionLabel">
+                            New_Home_Construction</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.New_Home_Construction, new { id = "New_Home_Construction", required = "required", @class = "full-width", placeholder = "New Home Construction" })
+                    </li>
+                    <li class="five columns ">
+                        <label id="Surveyors___LandLabel">
+                            Surveyors___Land</label>
+                        @Html.EditorFor(m => m.MaintenanceNewConstruction.Surveyors___Land, new { id = "Surveyors___Land", required = "required", @class = "full-width", placeholder = "Surveyors Land" })
                     </li>
                 </ul>
             </section>
@@ -293,27 +775,27 @@
             <h2 class="StepTitle">
                 Services</h2>
             <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
-                margin-bottom: 10px; text-align: center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               margin-bottom: 10px; text-align: center">
                 <ul>
                     <li class="five columns ">
                         <label id="DemolitionServicesLabel">
                             Demolition_Services</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "Demolition_Services", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                        @Html.EditorFor(m => m.MaintenanceCustomService.Demolition_Services, new { id = "Demolition_Services", required = "required", @class = "full-width", placeholder = "Demolition Services" })
                     </li>
                     <li class="five columns">
                         <label id="DisabilityAccessibilityLabel">
                             Disability_Accessibility</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Disability_Accessibility", required = "required", @class = "full-width", placeholder = "Internet Included" })
+                        @Html.EditorFor(m => m.MaintenanceCustomService.Disability_Accessibility, new { id = "Disability_Accessibility", required = "required", @class = "full-width", placeholder = "Disability Accessibility" })
                     </li>
                     <li class="five columns ">
                         <label id="ChildproofingLabel">
                             Childproofing</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Childproofing, new { id = "Childproofing", required = "required", @class = "full-width", placeholder = "High Speed Internet Access" })
+                        @Html.EditorFor(m => m.MaintenanceCustomService.Childproofing, new { id = "Childproofing", required = "required", @class = "full-width", placeholder = "Child proofing" })
                     </li>
                     <li class="five columns ">
                         <label id="EnergyEfficiencyInspectionLabel">
                             Energy_Efficiency_Inspection</label>
-                        @Html.EditorFor(m => m.MaintenanceCustomService.Excavation, new { id = "EnergyEfficiencyInspection", required = "required", @class = "full-width", placeholder = "Energy Efficiency Inspection" })
+                        @Html.EditorFor(m => m.MaintenanceCustomService.Energy_Efficiency_Inspection, new { id = "EnergyEfficiencyInspection", required = "required", @class = "full-width", placeholder = "Energy Efficiency Inspection" })
                     </li>
                     <li class="five columns ">
                         <label id="ExcavationLabel">
@@ -397,7 +879,6 @@
                     </li>
                 </ul>
             </section>
-            <!-- Delete This !-->
             <h2 class="StepTitle">
                 Utilities</h2>
             <section class="sixteen columns  relative" style="margin-top: 10px; margin-left: 50px;
@@ -451,7 +932,7 @@
                     <li class="five columns ">
                         <label id="SewerSepticServicesLabel">
                             Sewer Septic Services</label>
-                        @Html.EditorFor(m => m.MaintenanceUtility.Sewer___Septic_Services, new { id = "SewerSepticServices", required = "required", @class = "full-width", placeholder = "Security Systems Automation" })
+                        @Html.EditorFor(m => m.MaintenanceUtility.Sewer___Septic_Services, new { id = "SewerSepticServices", required = "required", @class = "full-width", placeholder = "Sewer Septic Services" })
                     </li>
                     <li class="five columns ">
                         <label id="SolarPanelsEnergyLabel">
@@ -466,21 +947,26 @@
                     <li class="five columns ">
                         <label id="Radon_TestingLabel">
                             Radon_Testings</label>
-                        @Html.EditorFor(m => m.MaintenanceUtility.Radon_Testing, new { id = "Radon_Testing", required = "required", @class = "full-width", placeholder = "Radon Testing" })
+                        @Html.EditorFor(m => m.MaintenanceUtility.Radon_Testing, new { id = "RadonTesting", required = "required", @class = "full-width", placeholder = "Radon Testing" })
                     </li>
                     <li class="five columns ">
                         <label id="Water_Heaters___PumpsLabel">
                             Water_Heaters___Pumps</label>
-                        @Html.EditorFor(m => m.MaintenanceUtility.Water_Heaters___Pumps, new { id = "Water_Heaters___Pumps", required = "required", @class = "full-width", placeholder = "Water Heaters Pumps" })
+                        @Html.EditorFor(m => m.MaintenanceUtility.Water_Heaters___Pumps, new { id = "WaterHeatersPumps", required = "required", @class = "full-width", placeholder = "Water Heaters Pumps" })
                     </li>
                     <li class="five columns ">
                         <label id="Water_Purification___SofteningLabel">
                             Water Purification Softening</label>
-                        @Html.EditorFor(m => m.MaintenanceUtility.Water_Purification___Softening, new { id = "Water_Purification___Softening", required = "required", @class = "full-width", placeholder = "Water Purification Softenings" })
+                        @Html.EditorFor(m => m.MaintenanceUtility.Water_Purification___Softening, new { id = "WaterPurificationSoftening", required = "required", @class = "full-width", placeholder = "Water Purification Softenings" })
                     </li>
                 </ul>
             </section>
         </div>
+        
+        
+        
+        
+
     </div>
     <!-- End SmartWizard Content -->
 }

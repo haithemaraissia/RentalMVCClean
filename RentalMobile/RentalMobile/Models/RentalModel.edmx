@@ -92,14 +92,6 @@
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUp" />
             <End Role="MaintenanceCompany" EntitySet="MaintenanceCompany" />
           </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.Store.FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp">
-            <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUp" />
-            <End Role="MaintenanceCompanySpecialization" EntitySet="MaintenanceCompanySpecialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceCustomServices_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.Store.FK_MaintenanceCustomServices_MaintenanceCompanyLookUp">
-            <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUp" />
-            <End Role="MaintenanceCustomServices" EntitySet="MaintenanceCustomServices" />
-          </AssociationSet>
           <AssociationSet Name="FK_MaintenanceExteriors_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.Store.FK_MaintenanceExteriors_MaintenanceCompanyLookUp">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUp" />
             <End Role="MaintenanceExteriors" EntitySet="MaintenanceExteriors" />
@@ -719,33 +711,33 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="NumberofEmployee" Type="int" />
-          <Property Name="NumberofCertifitedEmplyee" Type="int" />
-          <Property Name="Air Conditioning" Type="bit" />
-          <Property Name="Electrical" Type="bit" />
-          <Property Name="Kitchen Remodeling" Type="bit" />
-          <Property Name="Architects" Type="bit" />
-          <Property Name="Flooring" Type="bit" />
-          <Property Name="Landscaping" Type="bit" />
-          <Property Name="Asphalt Paving" Type="bit" />
-          <Property Name="General Contracting" Type="bit" />
-          <Property Name="Painting" Type="bit" />
-          <Property Name="Basement Finishing" Type="bit" />
-          <Property Name="Handyman Services" Type="bit" />
-          <Property Name="Plumbing" Type="bit" />
-          <Property Name="Bathroom Remodeling" Type="bit" />
-          <Property Name="Heating" Type="bit" />
-          <Property Name="Roofing" Type="bit" />
-          <Property Name="Concrete" Type="bit" />
-          <Property Name="Home Addition Construction" Type="bit" />
-          <Property Name="Siding" Type="bit" />
-          <Property Name="Deck Construction" Type="bit" />
-          <Property Name="Home Construction" Type="bit" />
-          <Property Name="Tiling" Type="bit" />
-          <Property Name="IsInsured" Type="bit" />
-          <Property Name="Rate" Type="float" />
-          <Property Name="Currency" Type="nvarchar" MaxLength="10" />
-          <Property Name="CurrencyID" Type="int" />
+          <Property Name="NumberofEmployee" Type="int" Nullable="false" />
+          <Property Name="NumberofCertifitedEmplyee" Type="int" Nullable="false" />
+          <Property Name="Air Conditioning" Type="bit" Nullable="false" />
+          <Property Name="Electrical" Type="bit" Nullable="false" />
+          <Property Name="Kitchen Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Architects" Type="bit" Nullable="false" />
+          <Property Name="Flooring" Type="bit" Nullable="false" />
+          <Property Name="Landscaping" Type="bit" Nullable="false" />
+          <Property Name="Asphalt Paving" Type="bit" Nullable="false" />
+          <Property Name="General Contracting" Type="bit" Nullable="false" />
+          <Property Name="Painting" Type="bit" Nullable="false" />
+          <Property Name="Basement Finishing" Type="bit" Nullable="false" />
+          <Property Name="Handyman Services" Type="bit" Nullable="false" />
+          <Property Name="Plumbing" Type="bit" Nullable="false" />
+          <Property Name="Bathroom Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Heating" Type="bit" Nullable="false" />
+          <Property Name="Roofing" Type="bit" Nullable="false" />
+          <Property Name="Concrete" Type="bit" Nullable="false" />
+          <Property Name="Home Addition Construction" Type="bit" Nullable="false" />
+          <Property Name="Siding" Type="bit" Nullable="false" />
+          <Property Name="Deck Construction" Type="bit" Nullable="false" />
+          <Property Name="Home Construction" Type="bit" Nullable="false" />
+          <Property Name="Tiling" Type="bit" Nullable="false" />
+          <Property Name="IsInsured" Type="bit" Nullable="false" />
+          <Property Name="Rate" Type="float" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceCrew">
           <Key>
@@ -759,108 +751,108 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Demolition Services" Type="nchar" MaxLength="10" />
-          <Property Name="Disability Accessibility" Type="nchar" MaxLength="10" />
-          <Property Name="Childproofing" Type="nchar" MaxLength="10" />
-          <Property Name="Energy Efficiency Inspection" Type="nchar" MaxLength="10" />
-          <Property Name="Excavation" Type="nchar" MaxLength="10" />
-          <Property Name="Biohazard Cleanup" Type="nchar" MaxLength="10" />
-          <Property Name="Mold Removal" Type="nchar" MaxLength="10" />
-          <Property Name="Home Staging" Type="nchar" MaxLength="10" />
-          <Property Name="Inspection Services" Type="nchar" MaxLength="10" />
-          <Property Name="Moving Services" Type="nchar" MaxLength="10" />
-          <Property Name="Restoration" Type="nchar" MaxLength="10" />
-          <Property Name="Metal Restoration" Type="nchar" MaxLength="10" />
-          <Property Name="Earthquake Retrofitting" Type="nchar" MaxLength="10" />
-          <Property Name="Epoxy Flooring Excavators" Type="nchar" MaxLength="10" />
-          <Property Name="Structural Engineering" Type="nchar" MaxLength="10" />
-          <Property Name="Trash Removal &amp; Hauling" Type="nchar" MaxLength="10" />
-          <Property Name="Welding" Type="nchar" MaxLength="10" />
-          <Property Name="Mudjacking" Type="nchar" MaxLength="10" />
-          <Property Name="Picture Framing" Type="nchar" MaxLength="10" />
-          <Property Name="Woodworking Services" Type="nchar" MaxLength="10" />
+          <Property Name="Demolition Services" Type="bit" Nullable="false" />
+          <Property Name="Disability Accessibility" Type="bit" Nullable="false" />
+          <Property Name="Childproofing" Type="bit" Nullable="false" />
+          <Property Name="Energy Efficiency Inspection" Type="bit" Nullable="false" />
+          <Property Name="Excavation" Type="bit" Nullable="false" />
+          <Property Name="Biohazard Cleanup" Type="bit" Nullable="false" />
+          <Property Name="Mold Removal" Type="bit" Nullable="false" />
+          <Property Name="Home Staging" Type="bit" Nullable="false" />
+          <Property Name="Inspection Services" Type="bit" Nullable="false" />
+          <Property Name="Moving Services" Type="bit" Nullable="false" />
+          <Property Name="Restoration" Type="bit" Nullable="false" />
+          <Property Name="Metal Restoration" Type="bit" Nullable="false" />
+          <Property Name="Earthquake Retrofitting" Type="bit" Nullable="false" />
+          <Property Name="Epoxy Flooring Excavators" Type="bit" Nullable="false" />
+          <Property Name="Structural Engineering" Type="bit" Nullable="false" />
+          <Property Name="Trash Removal &amp; Hauling" Type="bit" Nullable="false" />
+          <Property Name="Welding" Type="bit" Nullable="false" />
+          <Property Name="Mudjacking" Type="bit" Nullable="false" />
+          <Property Name="Picture Framing" Type="bit" Nullable="false" />
+          <Property Name="Woodworking Services" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceExteriors">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Asphalt Paving" Type="nchar" MaxLength="10" />
-          <Property Name="Awnings" Type="nchar" MaxLength="10" />
-          <Property Name="Concrete Installation &amp; Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Decks, Patios &amp; Enclosures" Type="nchar" MaxLength="10" />
-          <Property Name="Fence Install and Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Gutter Services" Type="nchar" MaxLength="10" />
-          <Property Name="Hurricane Shutter Systems" Type="nchar" MaxLength="10" />
-          <Property Name="Interlocking / Stonework" Type="nchar" MaxLength="10" />
-          <Property Name="Ironwork - Wrought Iron" Type="nchar" MaxLength="10" />
-          <Property Name="Landscaping Installation" Type="nchar" MaxLength="10" />
-          <Property Name="Lawn Care" Type="nchar" MaxLength="10" />
-          <Property Name="Masonry and Brick Work" Type="nchar" MaxLength="10" />
-          <Property Name="Power Washing" Type="nchar" MaxLength="10" />
-          <Property Name="Roofing Services" Type="nchar" MaxLength="10" />
-          <Property Name="Siding" Type="nchar" MaxLength="10" />
-          <Property Name="Skylights" Type="nchar" MaxLength="10" />
-          <Property Name="Sprinkler Systems and Irrigation" Type="nchar" MaxLength="10" />
-          <Property Name="Stucco &amp; Plaster" Type="nchar" MaxLength="10" />
-          <Property Name="Swimming Pool Install" Type="nchar" MaxLength="10" />
-          <Property Name="Tree Service" Type="nchar" MaxLength="10" />
-          <Property Name="Waterproofing" Type="nchar" MaxLength="10" />
-          <Property Name="Windows &amp; Exterior Doors" Type="nchar" MaxLength="10" />
+          <Property Name="Asphalt Paving" Type="bit" Nullable="false" />
+          <Property Name="Awnings" Type="bit" Nullable="false" />
+          <Property Name="Concrete Installation &amp; Repair" Type="bit" Nullable="false" />
+          <Property Name="Decks, Patios &amp; Enclosures" Type="bit" Nullable="false" />
+          <Property Name="Fence Install and Repair" Type="bit" Nullable="false" />
+          <Property Name="Gutter Services" Type="bit" Nullable="false" />
+          <Property Name="Hurricane Shutter Systems" Type="bit" Nullable="false" />
+          <Property Name="Interlocking / Stonework" Type="bit" Nullable="false" />
+          <Property Name="Ironwork - Wrought Iron" Type="bit" Nullable="false" />
+          <Property Name="Landscaping Installation" Type="bit" Nullable="false" />
+          <Property Name="Lawn Care" Type="bit" Nullable="false" />
+          <Property Name="Masonry and Brick Work" Type="bit" Nullable="false" />
+          <Property Name="Power Washing" Type="bit" Nullable="false" />
+          <Property Name="Roofing Services" Type="bit" Nullable="false" />
+          <Property Name="Siding" Type="bit" Nullable="false" />
+          <Property Name="Skylights" Type="bit" Nullable="false" />
+          <Property Name="Sprinkler Systems and Irrigation" Type="bit" Nullable="false" />
+          <Property Name="Stucco &amp; Plaster" Type="bit" Nullable="false" />
+          <Property Name="Swimming Pool Install" Type="bit" Nullable="false" />
+          <Property Name="Tree Service" Type="bit" Nullable="false" />
+          <Property Name="Waterproofing" Type="bit" Nullable="false" />
+          <Property Name="Windows &amp; Exterior Doors" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceInteriors">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Basement Lowering" Type="nchar" MaxLength="10" />
-          <Property Name="Basement Remodeling" Type="nchar" MaxLength="10" />
-          <Property Name="Bathroom Remodeling" Type="nchar" MaxLength="10" />
-          <Property Name="Cabinetry and Built-ins" Type="nchar" MaxLength="10" />
-          <Property Name="Carpenters" Type="nchar" MaxLength="10" />
-          <Property Name="Carpet and Vinyl Floors" Type="nchar" MaxLength="10" />
-          <Property Name="Ceiling Install and Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Closets Designing/Organizing" Type="nchar" MaxLength="10" />
-          <Property Name="Counter Tops" Type="nchar" MaxLength="10" />
-          <Property Name="Remodeling" Type="nchar" MaxLength="10" />
-          <Property Name="Buffing &amp; Polishing" Type="nchar" MaxLength="10" />
-          <Property Name="Drywall" Type="nchar" MaxLength="10" />
-          <Property Name="Carpet Installation" Type="nchar" MaxLength="10" />
-          <Property Name="Fireplaces &amp; Firewood" Type="nchar" MaxLength="10" />
-          <Property Name="Floor Heating" Type="nchar" MaxLength="10" />
-          <Property Name="Framing" Type="nchar" MaxLength="10" />
-          <Property Name="Hardwood and Laminate Flooring" Type="nchar" MaxLength="10" />
-          <Property Name="Hardwood Floor Refinishing" Type="nchar" MaxLength="10" />
-          <Property Name="Home Theaters" Type="nchar" MaxLength="10" />
-          <Property Name="Hot Tubs, Spas &amp; Jacuzzis" Type="nchar" MaxLength="10" />
-          <Property Name="Insulation" Type="nchar" MaxLength="10" />
-          <Property Name="Decorating &amp; Design" Type="nchar" MaxLength="10" />
-          <Property Name="Kitchen Remodeling" Type="nchar" MaxLength="10" />
-          <Property Name="Non-Slip Treatments" Type="nchar" MaxLength="10" />
-          <Property Name="Painting Services" Type="nchar" MaxLength="10" />
-          <Property Name="Solariums and Sunrooms" Type="nchar" MaxLength="10" />
-          <Property Name="Tile / Tiling" Type="nchar" MaxLength="10" />
-          <Property Name="Asbestos Removal" Type="nchar" MaxLength="10" />
-          <Property Name="Wallpaper &amp; Wall Coverings &amp; Removal" Type="nchar" MaxLength="10" />
+          <Property Name="Basement Lowering" Type="bit" Nullable="false" />
+          <Property Name="Basement Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Bathroom Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Cabinetry and Built-ins" Type="bit" Nullable="false" />
+          <Property Name="Carpenters" Type="bit" Nullable="false" />
+          <Property Name="Carpet and Vinyl Floors" Type="bit" Nullable="false" />
+          <Property Name="Ceiling Install and Repair" Type="bit" Nullable="false" />
+          <Property Name="Closets Designing/Organizing" Type="bit" Nullable="false" />
+          <Property Name="Counter Tops" Type="bit" Nullable="false" />
+          <Property Name="Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Buffing &amp; Polishing" Type="bit" Nullable="false" />
+          <Property Name="Drywall" Type="bit" Nullable="false" />
+          <Property Name="Carpet Installation" Type="bit" Nullable="false" />
+          <Property Name="Fireplaces &amp; Firewood" Type="bit" Nullable="false" />
+          <Property Name="Floor Heating" Type="bit" Nullable="false" />
+          <Property Name="Framing" Type="bit" Nullable="false" />
+          <Property Name="Hardwood and Laminate Flooring" Type="bit" Nullable="false" />
+          <Property Name="Hardwood Floor Refinishing" Type="bit" Nullable="false" />
+          <Property Name="Home Theaters" Type="bit" Nullable="false" />
+          <Property Name="Hot Tubs, Spas &amp; Jacuzzis" Type="bit" Nullable="false" />
+          <Property Name="Insulation" Type="bit" Nullable="false" />
+          <Property Name="Decorating &amp; Design" Type="bit" Nullable="false" />
+          <Property Name="Kitchen Remodeling" Type="bit" Nullable="false" />
+          <Property Name="Non-Slip Treatments" Type="bit" Nullable="false" />
+          <Property Name="Painting Services" Type="bit" Nullable="false" />
+          <Property Name="Solariums and Sunrooms" Type="bit" Nullable="false" />
+          <Property Name="Tile / Tiling" Type="bit" Nullable="false" />
+          <Property Name="Asbestos Removal" Type="bit" Nullable="false" />
+          <Property Name="Wallpaper &amp; Wall Coverings &amp; Removal" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceNewConstruction">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Architects" Type="nchar" MaxLength="10" />
-          <Property Name="Barns, Gazebos and Sheds" Type="nchar" MaxLength="10" />
-          <Property Name="Commercial Construction" Type="nchar" MaxLength="10" />
-          <Property Name="Design-Build" Type="nchar" MaxLength="10" />
-          <Property Name="Custom Cabinets &amp; Furniture" Type="nchar" MaxLength="10" />
-          <Property Name="Foundation" Type="nchar" MaxLength="10" />
-          <Property Name="Garage / Carport Construction" Type="nchar" MaxLength="10" />
-          <Property Name="Home Additions" Type="nchar" MaxLength="10" />
-          <Property Name="Bathtub Refinishing" Type="nchar" MaxLength="10" />
-          <Property Name="Home &amp; Garage Builders" Type="nchar" MaxLength="10" />
-          <Property Name="Land Clearing / Site Preparation" Type="nchar" MaxLength="10" />
-          <Property Name="New Home Construction" Type="nchar" MaxLength="10" />
-          <Property Name="Surveyors - Land" Type="nchar" MaxLength="10" />
+          <Property Name="Architects" Type="bit" Nullable="false" />
+          <Property Name="Barns, Gazebos and Sheds" Type="bit" Nullable="false" />
+          <Property Name="Commercial Construction" Type="bit" Nullable="false" />
+          <Property Name="Design-Build" Type="bit" Nullable="false" />
+          <Property Name="Custom Cabinets &amp; Furniture" Type="bit" Nullable="false" />
+          <Property Name="Foundation" Type="bit" Nullable="false" />
+          <Property Name="Garage / Carport Construction" Type="bit" Nullable="false" />
+          <Property Name="Home Additions" Type="bit" Nullable="false" />
+          <Property Name="Bathtub Refinishing" Type="bit" Nullable="false" />
+          <Property Name="Home &amp; Garage Builders" Type="bit" Nullable="false" />
+          <Property Name="Land Clearing / Site Preparation" Type="bit" Nullable="false" />
+          <Property Name="New Home Construction" Type="bit" Nullable="false" />
+          <Property Name="Surveyors - Land" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceOrder">
           <Key>
@@ -948,28 +940,28 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Appliances Service and Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Bathtub &amp; Sink Repair/Refinishing" Type="nchar" MaxLength="10" />
-          <Property Name="Black Mold Removal" Type="nchar" MaxLength="10" />
-          <Property Name="Carpet &amp; Rug Cleaning" Type="nchar" MaxLength="10" />
-          <Property Name="Caulking" Type="nchar" MaxLength="10" />
-          <Property Name="Chimney Services" Type="nchar" MaxLength="10" />
-          <Property Name="Cleaning Services" Type="nchar" MaxLength="10" />
-          <Property Name="Computers Service and Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Duct Cleaning" Type="nchar" MaxLength="10" />
-          <Property Name="Foundation Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Furniture Repair &amp; Restoration" Type="nchar" MaxLength="10" />
-          <Property Name="Garage Door Install &amp; Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Handyman Services" Type="nchar" MaxLength="10" />
-          <Property Name="Drain Pipe" Type="nchar" MaxLength="10" />
-          <Property Name="Doors" Type="nchar" MaxLength="10" />
-          <Property Name="Locksmithing" Type="nchar" MaxLength="10" />
-          <Property Name="Pest Control" Type="nchar" MaxLength="10" />
-          <Property Name="Property Management" Type="nchar" MaxLength="10" />
-          <Property Name="Snow Removal" Type="nchar" MaxLength="10" />
-          <Property Name="Window Cleaning" Type="nchar" MaxLength="10" />
-          <Property Name="Glass &amp; Window Services" Type="nchar" MaxLength="10" />
-          <Property Name="Mailbox Repair" Type="nchar" MaxLength="10" />
+          <Property Name="Appliances Service and Repair" Type="bit" Nullable="false" />
+          <Property Name="Bathtub &amp; Sink Repair/Refinishing" Type="bit" Nullable="false" />
+          <Property Name="Black Mold Removal" Type="bit" Nullable="false" />
+          <Property Name="Carpet &amp; Rug Cleaning" Type="bit" Nullable="false" />
+          <Property Name="Caulking" Type="bit" Nullable="false" />
+          <Property Name="Chimney Services" Type="bit" Nullable="false" />
+          <Property Name="Cleaning Services" Type="bit" Nullable="false" />
+          <Property Name="Computers Service and Repair" Type="bit" Nullable="false" />
+          <Property Name="Duct Cleaning" Type="bit" Nullable="false" />
+          <Property Name="Foundation Repair" Type="bit" Nullable="false" />
+          <Property Name="Furniture Repair &amp; Restoration" Type="bit" Nullable="false" />
+          <Property Name="Garage Door Install &amp; Repair" Type="bit" Nullable="false" />
+          <Property Name="Handyman Services" Type="bit" Nullable="false" />
+          <Property Name="Drain Pipe" Type="bit" Nullable="false" />
+          <Property Name="Doors" Type="bit" Nullable="false" />
+          <Property Name="Locksmithing" Type="bit" Nullable="false" />
+          <Property Name="Pest Control" Type="bit" Nullable="false" />
+          <Property Name="Property Management" Type="bit" Nullable="false" />
+          <Property Name="Snow Removal" Type="bit" Nullable="false" />
+          <Property Name="Window Cleaning" Type="bit" Nullable="false" />
+          <Property Name="Glass &amp; Window Services" Type="bit" Nullable="false" />
+          <Property Name="Mailbox Repair" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceTeam">
           <Key>
@@ -994,21 +986,21 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Security Systems &amp; Automation" Type="nchar" MaxLength="10" />
-          <Property Name="Central Vacuum" Type="nchar" MaxLength="10" />
-          <Property Name="Electrical" Type="nchar" MaxLength="10" />
-          <Property Name="Energy Audit" Type="nchar" MaxLength="10" />
-          <Property Name="Gas &amp; Propane Services" Type="nchar" MaxLength="10" />
-          <Property Name="Heating &amp; Air Conditioning" Type="nchar" MaxLength="10" />
-          <Property Name="Lighting Services" Type="nchar" MaxLength="10" />
-          <Property Name="Plumbing" Type="nchar" MaxLength="10" />
-          <Property Name="Satellite Dish Systems" Type="nchar" MaxLength="10" />
-          <Property Name="Sewer &amp; Septic Services" Type="nchar" MaxLength="10" />
-          <Property Name="Solar Panels &amp; Energy" Type="nchar" MaxLength="10" />
-          <Property Name="Voice &amp; Data Wiring Install &amp; Repair" Type="nchar" MaxLength="10" />
-          <Property Name="Radon Testing" Type="nchar" MaxLength="10" />
-          <Property Name="Water Heaters &amp; Pumps" Type="nchar" MaxLength="10" />
-          <Property Name="Water Purification &amp; Softening" Type="nchar" MaxLength="10" />
+          <Property Name="Security Systems &amp; Automation" Type="bit" Nullable="false" />
+          <Property Name="Central Vacuum" Type="bit" Nullable="false" />
+          <Property Name="Electrical" Type="bit" Nullable="false" />
+          <Property Name="Energy Audit" Type="bit" Nullable="false" />
+          <Property Name="Gas &amp; Propane Services" Type="bit" Nullable="false" />
+          <Property Name="Heating &amp; Air Conditioning" Type="bit" Nullable="false" />
+          <Property Name="Lighting Services" Type="bit" Nullable="false" />
+          <Property Name="Plumbing" Type="bit" Nullable="false" />
+          <Property Name="Satellite Dish Systems" Type="bit" Nullable="false" />
+          <Property Name="Sewer &amp; Septic Services" Type="bit" Nullable="false" />
+          <Property Name="Solar Panels &amp; Energy" Type="bit" Nullable="false" />
+          <Property Name="Voice &amp; Data Wiring Install &amp; Repair" Type="bit" Nullable="false" />
+          <Property Name="Radon Testing" Type="bit" Nullable="false" />
+          <Property Name="Water Heaters &amp; Pumps" Type="bit" Nullable="false" />
+          <Property Name="Water Purification &amp; Softening" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -1925,30 +1917,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp">
-          <End Role="MaintenanceCompanyLookUp" Type="DB_33736_rentalModel.Store.MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Role="MaintenanceCompanySpecialization" Type="DB_33736_rentalModel.Store.MaintenanceCompanySpecialization" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceCompanyLookUp">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="MaintenanceCompanySpecialization">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MaintenanceCustomServices_MaintenanceCompanyLookUp">
-          <End Role="MaintenanceCompanyLookUp" Type="DB_33736_rentalModel.Store.MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Role="MaintenanceCustomServices" Type="DB_33736_rentalModel.Store.MaintenanceCustomServices" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceCompanyLookUp">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="MaintenanceCustomServices">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MaintenanceExteriors_MaintenanceCompanyLookUp">
           <End Role="MaintenanceCompanyLookUp" Type="DB_33736_rentalModel.Store.MaintenanceCompanyLookUp" Multiplicity="1" />
           <End Role="MaintenanceExteriors" Type="DB_33736_rentalModel.Store.MaintenanceExteriors" Multiplicity="0..1" />
@@ -2253,7 +2221,6 @@
           <EntitySet Name="Owners" EntityType="DB_33736_rentalModel.Owner" />
           <EntitySet Name="Specialists" EntityType="DB_33736_rentalModel.Specialist" />
           <EntitySet Name="MaintenanceProviders" EntityType="DB_33736_rentalModel.MaintenanceProvider" />
-          <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.MaintenanceExterior" />
           <EntitySet Name="RentalApplications" EntityType="DB_33736_rentalModel.RentalApplication" />
           <EntitySet Name="OwnerPendingApplications" EntityType="DB_33736_rentalModel.OwnerPendingApplication" />
           <EntitySet Name="AgentAcceptedApplications" EntityType="DB_33736_rentalModel.AgentAcceptedApplication" />
@@ -2331,12 +2298,7 @@
           <EntitySet Name="MaintenanceCompanies" EntityType="DB_33736_rentalModel.MaintenanceCompany" />
           <EntitySet Name="MaintenanceTeams" EntityType="DB_33736_rentalModel.MaintenanceTeam" />
           <EntitySet Name="MaintenanceCompanyLookUps" EntityType="DB_33736_rentalModel.MaintenanceCompanyLookUp" />
-          <EntitySet Name="MaintenanceCompanySpecializations" EntityType="DB_33736_rentalModel.MaintenanceCompanySpecialization" />
           <EntitySet Name="MaintenanceCrews" EntityType="DB_33736_rentalModel.MaintenanceCrew" />
-          <EntitySet Name="MaintenanceCustomServices" EntityType="DB_33736_rentalModel.MaintenanceCustomService" />
-          <EntitySet Name="MaintenanceInteriors" EntityType="DB_33736_rentalModel.MaintenanceInterior" />
-          <EntitySet Name="MaintenanceRepairs" EntityType="DB_33736_rentalModel.MaintenanceRepair" />
-          <EntitySet Name="MaintenanceUtilities" EntityType="DB_33736_rentalModel.MaintenanceUtility" />
           <AssociationSet Name="FK_CrewMaintenance_MaintenanceOrder" Association="DB_33736_rentalModel.FK_CrewMaintenance_MaintenanceOrder">
             <End Role="MaintenanceOrder" EntitySet="MaintenanceOrders" />
             <End Role="MaintenanceCrew" EntitySet="MaintenanceCrews" />
@@ -2345,14 +2307,22 @@
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
             <End Role="MaintenanceCompany" EntitySet="MaintenanceCompanies" />
           </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp">
-            <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
-            <End Role="MaintenanceCompanySpecialization" EntitySet="MaintenanceCompanySpecializations" />
+          <EntitySet Name="UnitExteriorAmenities" EntityType="DB_33736_rentalModel.UnitExteriorAmenity" />
+          <AssociationSet Name="FK_UnitExteriorAmenities_Unit" Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="UnitExteriorAmenity" EntitySet="UnitExteriorAmenities" />
           </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceCustomServices_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceCustomServices_MaintenanceCompanyLookUp">
+          <EntitySet Name="MaintenanceRepairs" EntityType="DB_33736_rentalModel.MaintenanceRepair" />
+          <AssociationSet Name="FK_MaintenanceRepairs_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
-            <End Role="MaintenanceCustomService" EntitySet="MaintenanceCustomServices" />
+            <End Role="MaintenanceRepair" EntitySet="MaintenanceRepairs" />
           </AssociationSet>
+          <EntitySet Name="MaintenanceCompanySpecializations" EntityType="DB_33736_rentalModel.MaintenanceCompanySpecialization" />
+          <EntitySet Name="MaintenanceCustomServices" EntityType="DB_33736_rentalModel.MaintenanceCustomService" />
+          <EntitySet Name="MaintenanceExteriors" EntityType="DB_33736_rentalModel.MaintenanceExterior" />
+          <EntitySet Name="MaintenanceInteriors" EntityType="DB_33736_rentalModel.MaintenanceInterior" />
+          <EntitySet Name="MaintenanceNewConstructions" EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" />
+          <EntitySet Name="MaintenanceUtilities" EntityType="DB_33736_rentalModel.MaintenanceUtility" />
           <AssociationSet Name="FK_MaintenanceExteriors_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
             <End Role="MaintenanceExterior" EntitySet="MaintenanceExteriors" />
@@ -2361,23 +2331,21 @@
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
             <End Role="MaintenanceInterior" EntitySet="MaintenanceInteriors" />
           </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceRepairs_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp">
+          <AssociationSet Name="FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
-            <End Role="MaintenanceRepair" EntitySet="MaintenanceRepairs" />
+            <End Role="MaintenanceNewConstruction" EntitySet="MaintenanceNewConstructions" />
           </AssociationSet>
           <AssociationSet Name="FK_MaintenanceUtilities_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
             <End Role="MaintenanceUtility" EntitySet="MaintenanceUtilities" />
           </AssociationSet>
-          <EntitySet Name="MaintenanceNewConstructions" EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" />
-          <EntitySet Name="UnitExteriorAmenities" EntityType="DB_33736_rentalModel.UnitExteriorAmenity" />
-          <AssociationSet Name="FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" Association="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp">
+          <AssociationSet Name="MaintenanceCompanyLookUpMaintenanceCustomService" Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCustomService">
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
-            <End Role="MaintenanceNewConstruction" EntitySet="MaintenanceNewConstructions" />
+            <End Role="MaintenanceCustomService" EntitySet="MaintenanceCustomServices" />
           </AssociationSet>
-          <AssociationSet Name="FK_UnitExteriorAmenities_Unit" Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="UnitExteriorAmenity" EntitySet="UnitExteriorAmenities" />
+          <AssociationSet Name="MaintenanceCompanyLookUpMaintenanceCompanySpecialization" Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization">
+            <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
+            <End Role="MaintenanceCompanySpecialization" EntitySet="MaintenanceCompanySpecializations" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="TenantShowing">
@@ -2701,35 +2669,6 @@
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="MaintenanceExterior">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Asphalt_Paving" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Awnings" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Concrete_Installation___Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Decks__Patios___Enclosures" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Fence_Install_and_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Gutter_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Hurricane_Shutter_Systems" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Interlocking___Stonework" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Ironwork___Wrought_Iron" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Landscaping_Installation" Nullable="true" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Lawn_Care" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Masonry_and_Brick_Work" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Power_Washing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Roofing_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Siding" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Skylights" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Sprinkler_Systems_and_Irrigation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Stucco___Plaster" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Swimming_Pool_Install" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Tree_Service" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Waterproofing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Windows___Exterior_Doors" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceExterior" ToRole="MaintenanceCompanyLookUp" />
         </EntityType>
         <EntityType Name="RentalApplication">
           <Key>
@@ -4121,47 +4060,13 @@
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="Role" Nullable="false" />
           <NavigationProperty Name="MaintenanceCompany" Relationship="DB_33736_rentalModel.FK_MaintenanceCompany_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceCompany" />
-          <NavigationProperty Name="MaintenanceCompanySpecialization" Relationship="DB_33736_rentalModel.FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceCompanySpecialization" />
-          <NavigationProperty Name="MaintenanceCustomService" Relationship="DB_33736_rentalModel.FK_MaintenanceCustomServices_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceCustomService" />
+          <NavigationProperty Name="MaintenanceRepair" Relationship="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceRepair" />
           <NavigationProperty Name="MaintenanceExterior" Relationship="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceExterior" />
           <NavigationProperty Name="MaintenanceInterior" Relationship="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceInterior" />
-          <NavigationProperty Name="MaintenanceRepair" Relationship="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceRepair" />
-          <NavigationProperty Name="MaintenanceUtility" Relationship="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceUtility" />
           <NavigationProperty Name="MaintenanceNewConstruction" Relationship="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceNewConstruction" />
-        </EntityType>
-        <EntityType Name="MaintenanceCompanySpecialization">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="Int32" Name="NumberofEmployee" />
-          <Property Type="Int32" Name="NumberofCertifitedEmplyee" />
-          <Property Type="Boolean" Name="Air_Conditioning" />
-          <Property Type="Boolean" Name="Electrical" />
-          <Property Type="Boolean" Name="Kitchen_Remodeling" />
-          <Property Type="Boolean" Name="Architects" />
-          <Property Type="Boolean" Name="Flooring" />
-          <Property Type="Boolean" Name="Landscaping" />
-          <Property Type="Boolean" Name="Asphalt_Paving" />
-          <Property Type="Boolean" Name="General_Contracting" />
-          <Property Type="Boolean" Name="Painting" />
-          <Property Type="Boolean" Name="Basement_Finishing" />
-          <Property Type="Boolean" Name="Handyman_Services" />
-          <Property Type="Boolean" Name="Plumbing" />
-          <Property Type="Boolean" Name="Bathroom_Remodeling" />
-          <Property Type="Boolean" Name="Heating" />
-          <Property Type="Boolean" Name="Roofing" />
-          <Property Type="Boolean" Name="Concrete" />
-          <Property Type="Boolean" Name="Home_Addition_Construction" />
-          <Property Type="Boolean" Name="Siding" />
-          <Property Type="Boolean" Name="Deck_Construction" />
-          <Property Type="Boolean" Name="Home_Construction" />
-          <Property Type="Boolean" Name="Tiling" />
-          <Property Type="Boolean" Name="IsInsured" />
-          <Property Type="Double" Name="Rate" />
-          <Property Type="String" Name="Currency" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CurrencyID" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanySpecialization" ToRole="MaintenanceCompanyLookUp" />
+          <NavigationProperty Name="MaintenanceUtility" Relationship="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceUtility" />
+          <NavigationProperty Name="MaintenanceCustomService" Relationship="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCustomService" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceCustomService" />
+          <NavigationProperty Name="MaintenanceCompanySpecialization" Relationship="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization" FromRole="MaintenanceCompanyLookUp" ToRole="MaintenanceCompanySpecialization" />
         </EntityType>
         <EntityType Name="MaintenanceCrew">
           <Key>
@@ -4170,120 +4075,6 @@
           <Property Type="Int32" Name="CrewID" Nullable="false" />
           <Property Type="Int32" Name="CompanyId" Nullable="false" />
           <NavigationProperty Name="MaintenanceOrder" Relationship="DB_33736_rentalModel.FK_CrewMaintenance_MaintenanceOrder" FromRole="MaintenanceCrew" ToRole="MaintenanceOrder" />
-        </EntityType>
-        <EntityType Name="MaintenanceCustomService">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Demolition_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Disability_Accessibility" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Childproofing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Energy_Efficiency_Inspection" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Excavation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Biohazard_Cleanup" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Mold_Removal" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Home_Staging" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Inspection_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Moving_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Restoration" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Metal_Restoration" Nullable="true" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Earthquake_Retrofitting" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Epoxy_Flooring_Excavators" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Structural_Engineering" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Trash_Removal___Hauling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Welding" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Mudjacking" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Picture_Framing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Woodworking_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceCustomServices_MaintenanceCompanyLookUp" FromRole="MaintenanceCustomService" ToRole="MaintenanceCompanyLookUp" />
-        </EntityType>
-        <EntityType Name="MaintenanceInterior">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Basement_Lowering" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Basement_Remodeling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Bathroom_Remodeling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Cabinetry_and_Built_ins" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Carpenters" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Carpet_and_Vinyl_Floors" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Ceiling_Install_and_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Closets_Designing_Organizing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Counter_Tops" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Remodeling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Buffing___Polishing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Drywall" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Carpet_Installation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Fireplaces___Firewood" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Floor_Heating" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Framing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Hardwood_and_Laminate_Flooring" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Hardwood_Floor_Refinishing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Home_Theaters" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Hot_Tubs__Spas___Jacuzzis" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Insulation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Decorating___Design" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Kitchen_Remodeling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Non_Slip_Treatments" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Painting_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Solariums_and_Sunrooms" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Tile___Tiling" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Asbestos_Removal" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Wallpaper___Wall_Coverings___Removal" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceInterior" ToRole="MaintenanceCompanyLookUp" />
-        </EntityType>
-        <EntityType Name="MaintenanceRepair">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Appliances_Service_and_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Bathtub___Sink_Repair_Refinishing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Black_Mold_Removal" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Carpet___Rug_Cleaning" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Caulking" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Chimney_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Cleaning_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Computers_Service_and_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Duct_Cleaning" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Foundation_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Furniture_Repair___Restoration" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Garage_Door_Install___Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Handyman_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Drain_Pipe" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Doors" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Locksmithing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Pest_Control" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Property_Management" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Snow_Removal" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Window_Cleaning" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Glass___Window_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Mailbox_Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" FromRole="MaintenanceRepair" ToRole="MaintenanceCompanyLookUp" />
-        </EntityType>
-        <EntityType Name="MaintenanceUtility">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Security_Systems___Automation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Central_Vacuum" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Electrical" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Energy_Audit" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Gas___Propane_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Heating___Air_Conditioning" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Lighting_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Plumbing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Satellite_Dish_Systems" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Sewer___Septic_Services" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Solar_Panels___Energy" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Voice___Data_Wiring_Install___Repair" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Radon_Testing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Water_Heaters___Pumps" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Water_Purification___Softening" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" FromRole="MaintenanceUtility" ToRole="MaintenanceCompanyLookUp" />
         </EntityType>
         <Association Name="FK_CrewMaintenance_MaintenanceOrder">
           <End Type="DB_33736_rentalModel.MaintenanceOrder" Role="MaintenanceOrder" Multiplicity="1" />
@@ -4309,30 +4100,245 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp">
+        <EntityType Name="UnitExteriorAmenity">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="Boolean" Name="Pool" Nullable="false" />
+          <Property Type="Boolean" Name="Garden" Nullable="false" />
+          <Property Type="Boolean" Name="Gated_Entry" Nullable="false" />
+          <Property Type="Boolean" Name="Greenhouse" Nullable="false" />
+          <Property Type="Boolean" Name="Lawn" Nullable="false" />
+          <Property Type="Boolean" Name="Deck" Nullable="false" />
+          <Property Type="Boolean" Name="Dock" Nullable="false" />
+          <Property Type="Boolean" Name="Fenced_Yard" Nullable="false" />
+          <Property Type="Boolean" Name="Sprinkler_System" Nullable="false" />
+          <Property Type="Boolean" Name="Patio" Nullable="false" />
+          <Property Type="Boolean" Name="Pond" Nullable="false" />
+          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" FromRole="UnitExteriorAmenity" ToRole="Unit" />
+        </EntityType>
+        <Association Name="FK_UnitExteriorAmenities_Unit">
+          <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="DB_33736_rentalModel.UnitExteriorAmenity" Role="UnitExteriorAmenity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="UnitExteriorAmenity">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaintenanceRepair">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Appliances_Service_and_Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Bathtub___Sink_Repair_Refinishing" Nullable="false" />
+          <Property Type="Boolean" Name="Black_Mold_Removal" Nullable="false" />
+          <Property Type="Boolean" Name="Carpet___Rug_Cleaning" Nullable="false" />
+          <Property Type="Boolean" Name="Caulking" Nullable="false" />
+          <Property Type="Boolean" Name="Chimney_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Cleaning_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Computers_Service_and_Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Duct_Cleaning" Nullable="false" />
+          <Property Type="Boolean" Name="Foundation_Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Furniture_Repair___Restoration" Nullable="false" />
+          <Property Type="Boolean" Name="Garage_Door_Install___Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Handyman_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Drain_Pipe" Nullable="false" />
+          <Property Type="Boolean" Name="Doors" Nullable="false" />
+          <Property Type="Boolean" Name="Locksmithing" Nullable="false" />
+          <Property Type="Boolean" Name="Pest_Control" Nullable="false" />
+          <Property Type="Boolean" Name="Property_Management" Nullable="false" />
+          <Property Type="Boolean" Name="Snow_Removal" Nullable="false" />
+          <Property Type="Boolean" Name="Window_Cleaning" Nullable="false" />
+          <Property Type="Boolean" Name="Glass___Window_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Mailbox_Repair" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" FromRole="MaintenanceRepair" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <Association Name="FK_MaintenanceRepairs_MaintenanceCompanyLookUp">
           <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.MaintenanceCompanySpecialization" Role="MaintenanceCompanySpecialization" Multiplicity="0..1" />
+          <End Type="DB_33736_rentalModel.MaintenanceRepair" Role="MaintenanceRepair" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="MaintenanceCompanyLookUp">
               <PropertyRef Name="CompanyId" />
             </Principal>
-            <Dependent Role="MaintenanceCompanySpecialization">
+            <Dependent Role="MaintenanceRepair">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MaintenanceCustomServices_MaintenanceCompanyLookUp">
-          <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.MaintenanceCustomService" Role="MaintenanceCustomService" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceCompanyLookUp">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="MaintenanceCustomService">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="MaintenanceCompanySpecialization">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Int32" Name="NumberofEmployee" Nullable="false" />
+          <Property Type="Int32" Name="NumberofCertifitedEmplyee" Nullable="false" />
+          <Property Type="Boolean" Name="Air_Conditioning" Nullable="false" />
+          <Property Type="Boolean" Name="Electrical" Nullable="false" />
+          <Property Type="Boolean" Name="Kitchen_Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Architects" Nullable="false" />
+          <Property Type="Boolean" Name="Flooring" Nullable="false" />
+          <Property Type="Boolean" Name="Landscaping" Nullable="false" />
+          <Property Type="Boolean" Name="Asphalt_Paving" Nullable="false" />
+          <Property Type="Boolean" Name="General_Contracting" Nullable="false" />
+          <Property Type="Boolean" Name="Painting" Nullable="false" />
+          <Property Type="Boolean" Name="Basement_Finishing" Nullable="false" />
+          <Property Type="Boolean" Name="Handyman_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Plumbing" Nullable="false" />
+          <Property Type="Boolean" Name="Bathroom_Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Heating" Nullable="false" />
+          <Property Type="Boolean" Name="Roofing" Nullable="false" />
+          <Property Type="Boolean" Name="Concrete" Nullable="false" />
+          <Property Type="Boolean" Name="Home_Addition_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Siding" Nullable="false" />
+          <Property Type="Boolean" Name="Deck_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Home_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Tiling" Nullable="false" />
+          <Property Type="Boolean" Name="IsInsured" Nullable="false" />
+          <Property Type="Double" Name="Rate" Nullable="false" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrencyID" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization" FromRole="MaintenanceCompanySpecialization" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <EntityType Name="MaintenanceCustomService">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Demolition_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Disability_Accessibility" Nullable="false" />
+          <Property Type="Boolean" Name="Childproofing" Nullable="false" />
+          <Property Type="Boolean" Name="Energy_Efficiency_Inspection" Nullable="false" />
+          <Property Type="Boolean" Name="Excavation" Nullable="false" />
+          <Property Type="Boolean" Name="Biohazard_Cleanup" Nullable="false" />
+          <Property Type="Boolean" Name="Mold_Removal" Nullable="false" />
+          <Property Type="Boolean" Name="Home_Staging" Nullable="false" />
+          <Property Type="Boolean" Name="Inspection_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Moving_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Restoration" Nullable="false" />
+          <Property Type="Boolean" Name="Metal_Restoration" Nullable="false" />
+          <Property Type="Boolean" Name="Earthquake_Retrofitting" Nullable="false" />
+          <Property Type="Boolean" Name="Epoxy_Flooring_Excavators" Nullable="false" />
+          <Property Type="Boolean" Name="Structural_Engineering" Nullable="false" />
+          <Property Type="Boolean" Name="Trash_Removal___Hauling" Nullable="false" />
+          <Property Type="Boolean" Name="Welding" Nullable="false" />
+          <Property Type="Boolean" Name="Mudjacking" Nullable="false" />
+          <Property Type="Boolean" Name="Picture_Framing" Nullable="false" />
+          <Property Type="Boolean" Name="Woodworking_Services" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCustomService" FromRole="MaintenanceCustomService" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <EntityType Name="MaintenanceExterior">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Asphalt_Paving" Nullable="false" />
+          <Property Type="Boolean" Name="Awnings" Nullable="false" />
+          <Property Type="Boolean" Name="Concrete_Installation___Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Decks__Patios___Enclosures" Nullable="false" />
+          <Property Type="Boolean" Name="Fence_Install_and_Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Gutter_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Hurricane_Shutter_Systems" Nullable="false" />
+          <Property Type="Boolean" Name="Interlocking___Stonework" Nullable="false" />
+          <Property Type="Boolean" Name="Ironwork___Wrought_Iron" Nullable="false" />
+          <Property Type="Boolean" Name="Landscaping_Installation" Nullable="false" />
+          <Property Type="Boolean" Name="Lawn_Care" Nullable="false" />
+          <Property Type="Boolean" Name="Masonry_and_Brick_Work" Nullable="false" />
+          <Property Type="Boolean" Name="Power_Washing" Nullable="false" />
+          <Property Type="Boolean" Name="Roofing_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Siding" Nullable="false" />
+          <Property Type="Boolean" Name="Skylights" Nullable="false" />
+          <Property Type="Boolean" Name="Sprinkler_Systems_and_Irrigation" Nullable="false" />
+          <Property Type="Boolean" Name="Stucco___Plaster" Nullable="false" />
+          <Property Type="Boolean" Name="Swimming_Pool_Install" Nullable="false" />
+          <Property Type="Boolean" Name="Tree_Service" Nullable="false" />
+          <Property Type="Boolean" Name="Waterproofing" Nullable="false" />
+          <Property Type="Boolean" Name="Windows___Exterior_Doors" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceExterior" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <EntityType Name="MaintenanceInterior">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Basement_Lowering" Nullable="false" />
+          <Property Type="Boolean" Name="Basement_Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Bathroom_Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Cabinetry_and_Built_ins" Nullable="false" />
+          <Property Type="Boolean" Name="Carpenters" Nullable="false" />
+          <Property Type="Boolean" Name="Carpet_and_Vinyl_Floors" Nullable="false" />
+          <Property Type="Boolean" Name="Ceiling_Install_and_Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Closets_Designing_Organizing" Nullable="false" />
+          <Property Type="Boolean" Name="Counter_Tops" Nullable="false" />
+          <Property Type="Boolean" Name="Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Buffing___Polishing" Nullable="false" />
+          <Property Type="Boolean" Name="Drywall" Nullable="false" />
+          <Property Type="Boolean" Name="Carpet_Installation" Nullable="false" />
+          <Property Type="Boolean" Name="Fireplaces___Firewood" Nullable="false" />
+          <Property Type="Boolean" Name="Floor_Heating" Nullable="false" />
+          <Property Type="Boolean" Name="Framing" Nullable="false" />
+          <Property Type="Boolean" Name="Hardwood_and_Laminate_Flooring" Nullable="false" />
+          <Property Type="Boolean" Name="Hardwood_Floor_Refinishing" Nullable="false" />
+          <Property Type="Boolean" Name="Home_Theaters" Nullable="false" />
+          <Property Type="Boolean" Name="Hot_Tubs__Spas___Jacuzzis" Nullable="false" />
+          <Property Type="Boolean" Name="Insulation" Nullable="false" />
+          <Property Type="Boolean" Name="Decorating___Design" Nullable="false" />
+          <Property Type="Boolean" Name="Kitchen_Remodeling" Nullable="false" />
+          <Property Type="Boolean" Name="Non_Slip_Treatments" Nullable="false" />
+          <Property Type="Boolean" Name="Painting_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Solariums_and_Sunrooms" Nullable="false" />
+          <Property Type="Boolean" Name="Tile___Tiling" Nullable="false" />
+          <Property Type="Boolean" Name="Asbestos_Removal" Nullable="false" />
+          <Property Type="Boolean" Name="Wallpaper___Wall_Coverings___Removal" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" FromRole="MaintenanceInterior" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <EntityType Name="MaintenanceNewConstruction">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Architects" Nullable="false" />
+          <Property Type="Boolean" Name="Barns__Gazebos_and_Sheds" Nullable="false" />
+          <Property Type="Boolean" Name="Commercial_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Design_Build" Nullable="false" />
+          <Property Type="Boolean" Name="Custom_Cabinets___Furniture" Nullable="false" />
+          <Property Type="Boolean" Name="Foundation" Nullable="false" />
+          <Property Type="Boolean" Name="Garage___Carport_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Home_Additions" Nullable="false" />
+          <Property Type="Boolean" Name="Bathtub_Refinishing" Nullable="false" />
+          <Property Type="Boolean" Name="Home___Garage_Builders" Nullable="false" />
+          <Property Type="Boolean" Name="Land_Clearing___Site_Preparation" Nullable="false" />
+          <Property Type="Boolean" Name="New_Home_Construction" Nullable="false" />
+          <Property Type="Boolean" Name="Surveyors___Land" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" FromRole="MaintenanceNewConstruction" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
+        <EntityType Name="MaintenanceUtility">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="Boolean" Name="Security_Systems___Automation" Nullable="false" />
+          <Property Type="Boolean" Name="Central_Vacuum" Nullable="false" />
+          <Property Type="Boolean" Name="Electrical" Nullable="false" />
+          <Property Type="Boolean" Name="Energy_Audit" Nullable="false" />
+          <Property Type="Boolean" Name="Gas___Propane_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Heating___Air_Conditioning" Nullable="false" />
+          <Property Type="Boolean" Name="Lighting_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Plumbing" Nullable="false" />
+          <Property Type="Boolean" Name="Satellite_Dish_Systems" Nullable="false" />
+          <Property Type="Boolean" Name="Sewer___Septic_Services" Nullable="false" />
+          <Property Type="Boolean" Name="Solar_Panels___Energy" Nullable="false" />
+          <Property Type="Boolean" Name="Voice___Data_Wiring_Install___Repair" Nullable="false" />
+          <Property Type="Boolean" Name="Radon_Testing" Nullable="false" />
+          <Property Type="Boolean" Name="Water_Heaters___Pumps" Nullable="false" />
+          <Property Type="Boolean" Name="Water_Purification___Softening" Nullable="false" />
+          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" FromRole="MaintenanceUtility" ToRole="MaintenanceCompanyLookUp" />
+        </EntityType>
         <Association Name="FK_MaintenanceExteriors_MaintenanceCompanyLookUp">
           <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
           <End Type="DB_33736_rentalModel.MaintenanceExterior" Role="MaintenanceExterior" Multiplicity="0..1" />
@@ -4357,14 +4363,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MaintenanceRepairs_MaintenanceCompanyLookUp">
+        <Association Name="FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp">
           <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.MaintenanceRepair" Role="MaintenanceRepair" Multiplicity="0..1" />
+          <End Type="DB_33736_rentalModel.MaintenanceNewConstruction" Role="MaintenanceNewConstruction" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="MaintenanceCompanyLookUp">
               <PropertyRef Name="CompanyId" />
             </Principal>
-            <Dependent Role="MaintenanceRepair">
+            <Dependent Role="MaintenanceNewConstruction">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4381,65 +4387,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MaintenanceNewConstruction">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <Property Type="String" Name="Architects" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Barns__Gazebos_and_Sheds" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Commercial_Construction" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Design_Build" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Custom_Cabinets___Furniture" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Foundation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Garage___Carport_Construction" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Home_Additions" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Bathtub_Refinishing" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Home___Garage_Builders" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Land_Clearing___Site_Preparation" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="New_Home_Construction" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Surveyors___Land" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" FromRole="MaintenanceNewConstruction" ToRole="MaintenanceCompanyLookUp" />
-        </EntityType>
-        <EntityType Name="UnitExteriorAmenity">
-          <Key>
-            <PropertyRef Name="UnitId" />
-          </Key>
-          <Property Type="Int32" Name="UnitId" Nullable="false" />
-          <Property Type="Boolean" Name="Pool" Nullable="false" />
-          <Property Type="Boolean" Name="Garden" Nullable="false" />
-          <Property Type="Boolean" Name="Gated_Entry" Nullable="false" />
-          <Property Type="Boolean" Name="Greenhouse" Nullable="false" />
-          <Property Type="Boolean" Name="Lawn" Nullable="false" />
-          <Property Type="Boolean" Name="Deck" Nullable="false" />
-          <Property Type="Boolean" Name="Dock" Nullable="false" />
-          <Property Type="Boolean" Name="Fenced_Yard" Nullable="false" />
-          <Property Type="Boolean" Name="Sprinkler_System" Nullable="false" />
-          <Property Type="Boolean" Name="Patio" Nullable="false" />
-          <Property Type="Boolean" Name="Pond" Nullable="false" />
-          <NavigationProperty Name="Unit" Relationship="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" FromRole="UnitExteriorAmenity" ToRole="Unit" />
-        </EntityType>
-        <Association Name="FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp">
+        <Association Name="MaintenanceCompanyLookUpMaintenanceCustomService">
           <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.MaintenanceNewConstruction" Role="MaintenanceNewConstruction" Multiplicity="0..1" />
+          <End Type="DB_33736_rentalModel.MaintenanceCustomService" Role="MaintenanceCustomService" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="MaintenanceCompanyLookUp">
               <PropertyRef Name="CompanyId" />
             </Principal>
-            <Dependent Role="MaintenanceNewConstruction">
+            <Dependent Role="MaintenanceCustomService">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UnitExteriorAmenities_Unit">
-          <End Type="DB_33736_rentalModel.Unit" Role="Unit" Multiplicity="1" />
-          <End Type="DB_33736_rentalModel.UnitExteriorAmenity" Role="UnitExteriorAmenity" Multiplicity="0..1" />
+        <Association Name="MaintenanceCompanyLookUpMaintenanceCompanySpecialization">
+          <End Type="DB_33736_rentalModel.MaintenanceCompanyLookUp" Role="MaintenanceCompanyLookUp" Multiplicity="1" />
+          <End Type="DB_33736_rentalModel.MaintenanceCompanySpecialization" Role="MaintenanceCompanySpecialization" Multiplicity="1" />
           <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="UnitId" />
+            <Principal Role="MaintenanceCompanyLookUp">
+              <PropertyRef Name="CompanyId" />
             </Principal>
-            <Dependent Role="UnitExteriorAmenity">
-              <PropertyRef Name="UnitId" />
+            <Dependent Role="MaintenanceCompanySpecialization">
+              <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4670,35 +4638,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceExteriors">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceExterior">
-              <MappingFragment StoreEntitySet="MaintenanceExteriors">
-                <ScalarProperty Name="Windows___Exterior_Doors" ColumnName="Windows &amp; Exterior Doors" />
-                <ScalarProperty Name="Waterproofing" ColumnName="Waterproofing" />
-                <ScalarProperty Name="Tree_Service" ColumnName="Tree Service" />
-                <ScalarProperty Name="Swimming_Pool_Install" ColumnName="Swimming Pool Install" />
-                <ScalarProperty Name="Stucco___Plaster" ColumnName="Stucco &amp; Plaster" />
-                <ScalarProperty Name="Sprinkler_Systems_and_Irrigation" ColumnName="Sprinkler Systems and Irrigation" />
-                <ScalarProperty Name="Skylights" ColumnName="Skylights" />
-                <ScalarProperty Name="Siding" ColumnName="Siding" />
-                <ScalarProperty Name="Roofing_Services" ColumnName="Roofing Services" />
-                <ScalarProperty Name="Power_Washing" ColumnName="Power Washing" />
-                <ScalarProperty Name="Masonry_and_Brick_Work" ColumnName="Masonry and Brick Work" />
-                <ScalarProperty Name="Lawn_Care" ColumnName="Lawn Care" />
-                <ScalarProperty Name="Landscaping_Installation" ColumnName="Landscaping Installation" />
-                <ScalarProperty Name="Ironwork___Wrought_Iron" ColumnName="Ironwork - Wrought Iron" />
-                <ScalarProperty Name="Interlocking___Stonework" ColumnName="Interlocking / Stonework" />
-                <ScalarProperty Name="Hurricane_Shutter_Systems" ColumnName="Hurricane Shutter Systems" />
-                <ScalarProperty Name="Gutter_Services" ColumnName="Gutter Services" />
-                <ScalarProperty Name="Fence_Install_and_Repair" ColumnName="Fence Install and Repair" />
-                <ScalarProperty Name="Decks__Patios___Enclosures" ColumnName="Decks, Patios &amp; Enclosures" />
-                <ScalarProperty Name="Concrete_Installation___Repair" ColumnName="Concrete Installation &amp; Repair" />
-                <ScalarProperty Name="Awnings" ColumnName="Awnings" />
-                <ScalarProperty Name="Asphalt_Paving" ColumnName="Asphalt Paving" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6040,6 +5979,61 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceCrews">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCrew">
+              <MappingFragment StoreEntitySet="MaintenanceCrew">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CrewID" ColumnName="CrewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitExteriorAmenities">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitExteriorAmenity">
+              <MappingFragment StoreEntitySet="UnitExteriorAmenities">
+                <ScalarProperty Name="Pond" ColumnName="Pond" />
+                <ScalarProperty Name="Patio" ColumnName="Patio" />
+                <ScalarProperty Name="Sprinkler_System" ColumnName="Sprinkler System" />
+                <ScalarProperty Name="Fenced_Yard" ColumnName="Fenced Yard" />
+                <ScalarProperty Name="Dock" ColumnName="Dock" />
+                <ScalarProperty Name="Deck" ColumnName="Deck" />
+                <ScalarProperty Name="Lawn" ColumnName="Lawn" />
+                <ScalarProperty Name="Greenhouse" ColumnName="Greenhouse" />
+                <ScalarProperty Name="Gated_Entry" ColumnName="Gated Entry" />
+                <ScalarProperty Name="Garden" ColumnName="Garden" />
+                <ScalarProperty Name="Pool" ColumnName="Pool" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceRepairs">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceRepair">
+              <MappingFragment StoreEntitySet="MaintenanceRepairs">
+                <ScalarProperty Name="Mailbox_Repair" ColumnName="Mailbox Repair" />
+                <ScalarProperty Name="Glass___Window_Services" ColumnName="Glass &amp; Window Services" />
+                <ScalarProperty Name="Window_Cleaning" ColumnName="Window Cleaning" />
+                <ScalarProperty Name="Snow_Removal" ColumnName="Snow Removal" />
+                <ScalarProperty Name="Property_Management" ColumnName="Property Management" />
+                <ScalarProperty Name="Pest_Control" ColumnName="Pest Control" />
+                <ScalarProperty Name="Locksmithing" ColumnName="Locksmithing" />
+                <ScalarProperty Name="Doors" ColumnName="Doors" />
+                <ScalarProperty Name="Drain_Pipe" ColumnName="Drain Pipe" />
+                <ScalarProperty Name="Handyman_Services" ColumnName="Handyman Services" />
+                <ScalarProperty Name="Garage_Door_Install___Repair" ColumnName="Garage Door Install &amp; Repair" />
+                <ScalarProperty Name="Furniture_Repair___Restoration" ColumnName="Furniture Repair &amp; Restoration" />
+                <ScalarProperty Name="Foundation_Repair" ColumnName="Foundation Repair" />
+                <ScalarProperty Name="Duct_Cleaning" ColumnName="Duct Cleaning" />
+                <ScalarProperty Name="Computers_Service_and_Repair" ColumnName="Computers Service and Repair" />
+                <ScalarProperty Name="Cleaning_Services" ColumnName="Cleaning Services" />
+                <ScalarProperty Name="Chimney_Services" ColumnName="Chimney Services" />
+                <ScalarProperty Name="Caulking" ColumnName="Caulking" />
+                <ScalarProperty Name="Carpet___Rug_Cleaning" ColumnName="Carpet &amp; Rug Cleaning" />
+                <ScalarProperty Name="Black_Mold_Removal" ColumnName="Black Mold Removal" />
+                <ScalarProperty Name="Bathtub___Sink_Repair_Refinishing" ColumnName="Bathtub &amp; Sink Repair/Refinishing" />
+                <ScalarProperty Name="Appliances_Service_and_Repair" ColumnName="Appliances Service and Repair" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MaintenanceCompanySpecializations">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCompanySpecialization">
               <MappingFragment StoreEntitySet="MaintenanceCompanySpecialization">
@@ -6074,14 +6068,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceCrews">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCrew">
-              <MappingFragment StoreEntitySet="MaintenanceCrew">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="CrewID" ColumnName="CrewID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MaintenanceCustomServices">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCustomService">
               <MappingFragment StoreEntitySet="MaintenanceCustomServices">
@@ -6105,6 +6091,35 @@
                 <ScalarProperty Name="Childproofing" ColumnName="Childproofing" />
                 <ScalarProperty Name="Disability_Accessibility" ColumnName="Disability Accessibility" />
                 <ScalarProperty Name="Demolition_Services" ColumnName="Demolition Services" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceExteriors">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceExterior">
+              <MappingFragment StoreEntitySet="MaintenanceExteriors">
+                <ScalarProperty Name="Windows___Exterior_Doors" ColumnName="Windows &amp; Exterior Doors" />
+                <ScalarProperty Name="Waterproofing" ColumnName="Waterproofing" />
+                <ScalarProperty Name="Tree_Service" ColumnName="Tree Service" />
+                <ScalarProperty Name="Swimming_Pool_Install" ColumnName="Swimming Pool Install" />
+                <ScalarProperty Name="Stucco___Plaster" ColumnName="Stucco &amp; Plaster" />
+                <ScalarProperty Name="Sprinkler_Systems_and_Irrigation" ColumnName="Sprinkler Systems and Irrigation" />
+                <ScalarProperty Name="Skylights" ColumnName="Skylights" />
+                <ScalarProperty Name="Siding" ColumnName="Siding" />
+                <ScalarProperty Name="Roofing_Services" ColumnName="Roofing Services" />
+                <ScalarProperty Name="Power_Washing" ColumnName="Power Washing" />
+                <ScalarProperty Name="Masonry_and_Brick_Work" ColumnName="Masonry and Brick Work" />
+                <ScalarProperty Name="Lawn_Care" ColumnName="Lawn Care" />
+                <ScalarProperty Name="Landscaping_Installation" ColumnName="Landscaping Installation" />
+                <ScalarProperty Name="Ironwork___Wrought_Iron" ColumnName="Ironwork - Wrought Iron" />
+                <ScalarProperty Name="Interlocking___Stonework" ColumnName="Interlocking / Stonework" />
+                <ScalarProperty Name="Hurricane_Shutter_Systems" ColumnName="Hurricane Shutter Systems" />
+                <ScalarProperty Name="Gutter_Services" ColumnName="Gutter Services" />
+                <ScalarProperty Name="Fence_Install_and_Repair" ColumnName="Fence Install and Repair" />
+                <ScalarProperty Name="Decks__Patios___Enclosures" ColumnName="Decks, Patios &amp; Enclosures" />
+                <ScalarProperty Name="Concrete_Installation___Repair" ColumnName="Concrete Installation &amp; Repair" />
+                <ScalarProperty Name="Awnings" ColumnName="Awnings" />
+                <ScalarProperty Name="Asphalt_Paving" ColumnName="Asphalt Paving" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -6145,31 +6160,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceRepairs">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceRepair">
-              <MappingFragment StoreEntitySet="MaintenanceRepairs">
-                <ScalarProperty Name="Mailbox_Repair" ColumnName="Mailbox Repair" />
-                <ScalarProperty Name="Glass___Window_Services" ColumnName="Glass &amp; Window Services" />
-                <ScalarProperty Name="Window_Cleaning" ColumnName="Window Cleaning" />
-                <ScalarProperty Name="Snow_Removal" ColumnName="Snow Removal" />
-                <ScalarProperty Name="Property_Management" ColumnName="Property Management" />
-                <ScalarProperty Name="Pest_Control" ColumnName="Pest Control" />
-                <ScalarProperty Name="Locksmithing" ColumnName="Locksmithing" />
-                <ScalarProperty Name="Doors" ColumnName="Doors" />
-                <ScalarProperty Name="Drain_Pipe" ColumnName="Drain Pipe" />
-                <ScalarProperty Name="Handyman_Services" ColumnName="Handyman Services" />
-                <ScalarProperty Name="Garage_Door_Install___Repair" ColumnName="Garage Door Install &amp; Repair" />
-                <ScalarProperty Name="Furniture_Repair___Restoration" ColumnName="Furniture Repair &amp; Restoration" />
-                <ScalarProperty Name="Foundation_Repair" ColumnName="Foundation Repair" />
-                <ScalarProperty Name="Duct_Cleaning" ColumnName="Duct Cleaning" />
-                <ScalarProperty Name="Computers_Service_and_Repair" ColumnName="Computers Service and Repair" />
-                <ScalarProperty Name="Cleaning_Services" ColumnName="Cleaning Services" />
-                <ScalarProperty Name="Chimney_Services" ColumnName="Chimney Services" />
-                <ScalarProperty Name="Caulking" ColumnName="Caulking" />
-                <ScalarProperty Name="Carpet___Rug_Cleaning" ColumnName="Carpet &amp; Rug Cleaning" />
-                <ScalarProperty Name="Black_Mold_Removal" ColumnName="Black Mold Removal" />
-                <ScalarProperty Name="Bathtub___Sink_Repair_Refinishing" ColumnName="Bathtub &amp; Sink Repair/Refinishing" />
-                <ScalarProperty Name="Appliances_Service_and_Repair" ColumnName="Appliances Service and Repair" />
+          <EntitySetMapping Name="MaintenanceNewConstructions">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceNewConstruction">
+              <MappingFragment StoreEntitySet="MaintenanceNewConstruction">
+                <ScalarProperty Name="Surveyors___Land" ColumnName="Surveyors - Land" />
+                <ScalarProperty Name="New_Home_Construction" ColumnName="New Home Construction" />
+                <ScalarProperty Name="Land_Clearing___Site_Preparation" ColumnName="Land Clearing / Site Preparation" />
+                <ScalarProperty Name="Home___Garage_Builders" ColumnName="Home &amp; Garage Builders" />
+                <ScalarProperty Name="Bathtub_Refinishing" ColumnName="Bathtub Refinishing" />
+                <ScalarProperty Name="Home_Additions" ColumnName="Home Additions" />
+                <ScalarProperty Name="Garage___Carport_Construction" ColumnName="Garage / Carport Construction" />
+                <ScalarProperty Name="Foundation" ColumnName="Foundation" />
+                <ScalarProperty Name="Custom_Cabinets___Furniture" ColumnName="Custom Cabinets &amp; Furniture" />
+                <ScalarProperty Name="Design_Build" ColumnName="Design-Build" />
+                <ScalarProperty Name="Commercial_Construction" ColumnName="Commercial Construction" />
+                <ScalarProperty Name="Barns__Gazebos_and_Sheds" ColumnName="Barns, Gazebos and Sheds" />
+                <ScalarProperty Name="Architects" ColumnName="Architects" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -6196,44 +6202,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceNewConstructions">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceNewConstruction">
-              <MappingFragment StoreEntitySet="MaintenanceNewConstruction">
-                <ScalarProperty Name="Surveyors___Land" ColumnName="Surveyors - Land" />
-                <ScalarProperty Name="New_Home_Construction" ColumnName="New Home Construction" />
-                <ScalarProperty Name="Land_Clearing___Site_Preparation" ColumnName="Land Clearing / Site Preparation" />
-                <ScalarProperty Name="Home___Garage_Builders" ColumnName="Home &amp; Garage Builders" />
-                <ScalarProperty Name="Bathtub_Refinishing" ColumnName="Bathtub Refinishing" />
-                <ScalarProperty Name="Home_Additions" ColumnName="Home Additions" />
-                <ScalarProperty Name="Garage___Carport_Construction" ColumnName="Garage / Carport Construction" />
-                <ScalarProperty Name="Foundation" ColumnName="Foundation" />
-                <ScalarProperty Name="Custom_Cabinets___Furniture" ColumnName="Custom Cabinets &amp; Furniture" />
-                <ScalarProperty Name="Design_Build" ColumnName="Design-Build" />
-                <ScalarProperty Name="Commercial_Construction" ColumnName="Commercial Construction" />
-                <ScalarProperty Name="Barns__Gazebos_and_Sheds" ColumnName="Barns, Gazebos and Sheds" />
-                <ScalarProperty Name="Architects" ColumnName="Architects" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UnitExteriorAmenities">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.UnitExteriorAmenity">
-              <MappingFragment StoreEntitySet="UnitExteriorAmenities">
-                <ScalarProperty Name="Pond" ColumnName="Pond" />
-                <ScalarProperty Name="Patio" ColumnName="Patio" />
-                <ScalarProperty Name="Sprinkler_System" ColumnName="Sprinkler System" />
-                <ScalarProperty Name="Fenced_Yard" ColumnName="Fenced Yard" />
-                <ScalarProperty Name="Dock" ColumnName="Dock" />
-                <ScalarProperty Name="Deck" ColumnName="Deck" />
-                <ScalarProperty Name="Lawn" ColumnName="Lawn" />
-                <ScalarProperty Name="Greenhouse" ColumnName="Greenhouse" />
-                <ScalarProperty Name="Gated_Entry" ColumnName="Gated Entry" />
-                <ScalarProperty Name="Garden" ColumnName="Garden" />
-                <ScalarProperty Name="Pool" ColumnName="Pool" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6255,7 +6223,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RentalModel" ZoomLevel="80">
+      <Diagram Name="RentalModel" ZoomLevel="93">
         <EntityTypeShape EntityType="DB_33736_rentalModel.TenantShowing" Width="1.5" PointX="9.5" PointY="1.25" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Tenant" Width="1.5" PointX="7.125" PointY="1.25" Height="4.2879036458333326" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_TenantShowing_Tenant" >
@@ -6306,7 +6274,6 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Owner" Width="1.5" PointX="9.375" PointY="8.75" Height="4.6725065104166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Specialist" Width="1.5" PointX="11.25" PointY="8.75" Height="4.6725065104166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProvider" Width="1.875" PointX="13.375" PointY="8.75" Height="4.6725065104166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceExterior" Width="1.5" PointX="7.375" PointY="14.75" Height="5.4417122395833246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.RentalApplication" Width="3" PointX="9.375" PointY="14.75" Height="20.05662109375001" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingApplication" Width="2.25" PointX="13.375" PointY="14.75" Height="20.63352539062501" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.AgentAcceptedApplication" Width="1.5" PointX="15.375" PointY="0.75" Height="20.63352539062501" />
@@ -6330,7 +6297,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.GeneratedRentalContract" Width="1.5" PointX="25.375" PointY="3.75" Height="6.2109179687499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UploadedContract" Width="1.5" PointX="25.375" PointY="10.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitFeature" Width="1.5" PointX="27.625" PointY="28.25" Height="4.0956022135416674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitInteriorAmenity" Width="1.5" PointX="27.625" PointY="36.125" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.UnitInteriorAmenity" Width="2.5" PointX="27.625" PointY="36.125" Height="4.2879036458333317" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitLuxuryAmenity" Width="1.5" PointX="27.625" PointY="40.875" Height="4.6725065104166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitPricing" Width="1.5" PointX="27.625" PointY="46.875" Height="2.557190755208353" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitCommunityAmenity" Width="1.5" PointX="27.625" PointY="50.375" Height="3.5186979166666674" />
@@ -6339,10 +6306,8 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Currency" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Unit" Width="1.5" PointX="25.375" PointY="32.625" Height="8.1339322916666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitAppliance_Unit" >
-          <ConnectorPoint PointX="26.389649921875" PointY="32.625" />
-          <ConnectorPoint PointX="26.389649921875" PointY="21.134348958333334" />
-          <ConnectorPoint PointX="27.291666666666668" PointY="21.134348958333334" />
-          <ConnectorPoint PointX="27.458333333333332" PointY="21.134348958333334" />
+          <ConnectorPoint PointX="26.395448432617187" PointY="32.625" />
+          <ConnectorPoint PointX="26.395448432617187" PointY="21.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="21.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitCommunityAmenities_Unit" >
@@ -6351,10 +6316,10 @@
           <ConnectorPoint PointX="27.625" PointY="52.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitFeature_Unit" >
-          <ConnectorPoint PointX="25.8510724609375" PointY="32.625" />
-          <ConnectorPoint PointX="25.8510724609375" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="26.306316588541669" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="26.472983255208334" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="25.853391865234375" PointY="32.625" />
+          <ConnectorPoint PointX="25.853391865234375" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="26.31095539713542" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="26.477622063802084" PointY="30.297801106770834" />
           <ConnectorPoint PointX="27.625" PointY="30.297801106770834" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitGallery_Unit" >
@@ -6388,97 +6353,75 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerShowingCalendar" Width="1.5" PointX="16.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" Width="1.5" PointX="18.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" Width="1.5" PointX="27.375" PointY="0.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.5" PointX="20.375" PointY="26.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.875" PointX="20.375" PointY="26.75" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompany" Width="2.125" PointX="27.375" PointY="3.75" Height="4.8648079427083335" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeam" Width="1.5" PointX="27.375" PointY="9.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanyLookUp" Width="1.625" PointX="27.75" PointY="12.75" Height="3.1340950520833335" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanySpecialization" Width="1.5" PointX="0.75" PointY="28.75" Height="6.4032194010416674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeam" Width="2.125" PointX="27.375" PointY="9.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanyLookUp" Width="2.125" PointX="28.375" PointY="13.375" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCrew" Width="1.5" PointX="5.625" PointY="43.875" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCustomService" Width="1.5" PointX="2.75" PointY="28.75" Height="5.0571093749999818" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceInterior" Width="2" PointX="29.75" PointY="0.75" Height="6.9801236979166665" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceRepair" Width="1.5" PointX="20.75" PointY="29.75" Height="5.4417122395833246" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceUtility" Width="2.375" PointX="29.75" PointY="13.75" Height="4.2879036458333353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_CrewMaintenance_MaintenanceOrder" >
-          <ConnectorPoint PointX="4.4375025" PointY="15.585999348958332" />
-          <ConnectorPoint PointX="4.4375025" PointY="44.672841796874991" />
-          <ConnectorPoint PointX="5.625" PointY="44.672841796874991" />
+          <ConnectorPoint PointX="4.5" PointY="13.768992513020834" />
+          <ConnectorPoint PointX="7.03125" PointY="13.768992513020834" />
+          <ConnectorPoint PointX="7.03125" PointY="43.875" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceCompany_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.15625" PointY="12.75" />
-          <ConnectorPoint PointX="29.15625" PointY="8.6148079427083335" />
+          <ConnectorPoint PointX="30.0000005" PointY="13.375" />
+          <ConnectorPoint PointX="30.0000005" PointY="6.1824039713541659" />
+          <ConnectorPoint PointX="29.5" PointY="6.1824039713541659" />
         </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceCompanySpecialization_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="28.697996718749998" PointY="15.884095052083334" />
-          <ConnectorPoint PointX="28.697996718749998" PointY="19.125" />
-          <ConnectorPoint PointX="27.375" PointY="19.125" />
-          <ConnectorPoint PointX="27.375" PointY="29.5" />
-          <ConnectorPoint PointX="26.472983255208334" PointY="29.5" />
-          <ConnectorPoint PointX="26.306316588541669" PointY="29.5" />
-          <ConnectorPoint PointX="20.458333333333332" PointY="29.5" />
-          <ConnectorPoint PointX="20.291666666666668" PointY="29.5" />
-          <ConnectorPoint PointX="20.125" PointY="29.5" />
-          <ConnectorPoint PointX="20.125" PointY="35.63352539062501" />
-          <ConnectorPoint PointX="7.458333333333333" PointY="35.63352539062501" />
-          <ConnectorPoint PointX="7.291666666666667" PointY="35.63352539062501" />
-          <ConnectorPoint PointX="7.125" PointY="35.63352539062501" />
-          <ConnectorPoint PointX="7.125" PointY="21.5" />
-          <ConnectorPoint PointX="4.708333333333333" PointY="21.5" />
-          <ConnectorPoint PointX="4.541666666666667" PointY="21.5" />
-          <ConnectorPoint PointX="4.5208358333333329" PointY="21.5" />
-          <ConnectorPoint PointX="4.3541691666666669" PointY="21.5" />
-          <ConnectorPoint PointX="2.625" PointY="21.5" />
-          <ConnectorPoint PointX="2.625" PointY="32.047760416666662" />
-          <ConnectorPoint PointX="2.25" PointY="32.047760416666662" />
-        </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceCustomServices_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="28.192746359375" PointY="15.884095052083334" />
-          <ConnectorPoint PointX="28.192746359375" PointY="18.875" />
-          <ConnectorPoint PointX="27.375" PointY="18.875" />
-          <ConnectorPoint PointX="27.375" PointY="29.25" />
-          <ConnectorPoint PointX="26.472983255208334" PointY="29.25" />
-          <ConnectorPoint PointX="26.306316588541669" PointY="29.25" />
-          <ConnectorPoint PointX="20.375" PointY="29.25" />
-          <ConnectorPoint PointX="20.375" PointY="35.88352539062501" />
-          <ConnectorPoint PointX="7.375" PointY="35.88352539062501" />
-          <ConnectorPoint PointX="7.375" PointY="21.25" />
-          <ConnectorPoint PointX="4.625" PointY="21.25" />
-          <ConnectorPoint PointX="4.625" PointY="31.374705403645834" />
-          <ConnectorPoint PointX="4.5208358333333329" PointY="31.374705403645834" />
-          <ConnectorPoint PointX="4.3541691666666669" PointY="31.374705403645834" />
-          <ConnectorPoint PointX="4.25" PointY="31.374705403645834" />
-        </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" />
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.375" PointY="13.823155328776041" />
-          <ConnectorPoint PointX="29.6875" PointY="13.823155328776041" />
-          <ConnectorPoint PointX="29.6875" PointY="13.6875" />
-          <ConnectorPoint PointX="30.75" PointY="13.6875" />
-          <ConnectorPoint PointX="30.75" PointY="7.7301236979166665" />
-        </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.292157447916665" PointY="15.884095052083334" />
-          <ConnectorPoint PointX="29.292157447916665" PointY="32.485301106770834" />
-          <ConnectorPoint PointX="26.472983255208334" PointY="32.485301106770834" />
-          <ConnectorPoint PointX="26.306316588541669" PointY="32.485301106770834" />
-          <ConnectorPoint PointX="25.934405794270834" PointY="32.485301106770834" />
-          <ConnectorPoint PointX="25.76773912760417" PointY="32.485301106770834" />
-          <ConnectorPoint PointX="22.25" PointY="32.485301106770834" />
-        </AssociationConnector>
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.375" PointY="14.916125190429685" />
-          <ConnectorPoint PointX="29.75" PointY="14.916125190429685" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" Width="1.5" PointX="30" PointY="19.375" Height="3.9033007812499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitExteriorAmenity" Width="1.5" PointX="27.625" PointY="55.375" Height="3.5186979166666674" />
-        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.323409947916666" PointY="15.884095052083334" />
-          <ConnectorPoint PointX="29.323409947916666" PointY="23.117249348958325" />
-          <ConnectorPoint PointX="30" PointY="23.117249348958325" />
-        </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" >
           <ConnectorPoint PointX="25.60741984375" PointY="41.720439453125" />
           <ConnectorPoint PointX="25.60741984375" PointY="57.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="57.134348958333334" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceRepair" Width="1.5" PointX="30.625" PointY="21.375" Height="5.6340136718749818" />
+        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" >
+          <ConnectorPoint PointX="29.713181018356323" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="29.713181018356323" PointY="24.982605794270825" />
+          <ConnectorPoint PointX="30.05450967584483" PointY="24.982605794270825" />
+          <ConnectorPoint PointX="30.221176342511495" PointY="24.982605794270825" />
+          <ConnectorPoint PointX="30.625" PointY="24.982605794270825" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanySpecialization" Width="2.25" PointX="33.375" PointY="18.875" Height="6.4032194010416674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCustomService" Width="2" PointX="35.5" PointY="12.875" Height="5.249410807291671" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceExterior" Width="1.5" PointX="31" PointY="2.625" Height="5.6340136718749818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceInterior" Width="1.5" PointX="31" PointY="13.625" Height="6.9801236979166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" Width="1.5" PointX="31" PointY="9" Height="3.9033007812499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceUtility" Width="1.5" PointX="31" PointY="28.375" Height="4.287903645833353" />
+        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" >
+          <ConnectorPoint PointX="30.28125275" PointY="13.375" />
+          <ConnectorPoint PointX="30.28125275" PointY="3.2401432291666605" />
+          <ConnectorPoint PointX="31" PointY="3.2401432291666605" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" >
+          <ConnectorPoint PointX="30.5" PointY="15.283333333333333" />
+          <ConnectorPoint PointX="30.666666666666668" PointY="15.283333333333333" />
+          <ConnectorPoint PointX="30.833333333333332" PointY="15.283333333333333" />
+          <ConnectorPoint PointX="31" PointY="15.283333333333333" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceNewConstruction_MaintenanceCompanyLookUp" >
+          <ConnectorPoint PointX="30.5" PointY="13.375" />
+          <ConnectorPoint PointX="31" PointY="12.903300781249982" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" >
+          <ConnectorPoint PointX="30.137843009178162" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="30.137843009178162" PointY="32.53550292968751" />
+          <ConnectorPoint PointX="31" PointY="32.53550292968751" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCustomService">
+          <ConnectorPoint PointX="30.5" PointY="13.500002499999994" />
+          <ConnectorPoint PointX="35.5" PointY="13.500002499999994" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization">
+          <ConnectorPoint PointX="29.387839009178162" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="29.387839009178162" PointY="21.125" />
+          <ConnectorPoint PointX="29.629847685022991" PointY="21.125" />
+          <ConnectorPoint PointX="29.796514351689655" PointY="21.125" />
+          <ConnectorPoint PointX="30.05450967584483" PointY="21.125" />
+          <ConnectorPoint PointX="30.221176342511495" PointY="21.125" />
+          <ConnectorPoint PointX="33" PointY="21.125" />
+          <ConnectorPoint PointX="33" PointY="22.172760416666669" />
+          <ConnectorPoint PointX="33.375" PointY="22.172760416666669" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

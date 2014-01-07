@@ -15,19 +15,19 @@ namespace RentalMobile.Models
     public partial class MaintenanceNewConstruction
     {
         public int CompanyId { get; set; }
-        public string Architects { get; set; }
-        public string Barns__Gazebos_and_Sheds { get; set; }
-        public string Commercial_Construction { get; set; }
-        public string Design_Build { get; set; }
-        public string Custom_Cabinets___Furniture { get; set; }
-        public string Foundation { get; set; }
-        public string Garage___Carport_Construction { get; set; }
-        public string Home_Additions { get; set; }
-        public string Bathtub_Refinishing { get; set; }
-        public string Home___Garage_Builders { get; set; }
-        public string Land_Clearing___Site_Preparation { get; set; }
-        public string New_Home_Construction { get; set; }
-        public string Surveyors___Land { get; set; }
+        public bool Architects { get; set; }
+        public bool Barns__Gazebos_and_Sheds { get; set; }
+        public bool Commercial_Construction { get; set; }
+        public bool Design_Build { get; set; }
+        public bool Custom_Cabinets___Furniture { get; set; }
+        public bool Foundation { get; set; }
+        public bool Garage___Carport_Construction { get; set; }
+        public bool Home_Additions { get; set; }
+        public bool Bathtub_Refinishing { get; set; }
+        public bool Home___Garage_Builders { get; set; }
+        public bool Land_Clearing___Site_Preparation { get; set; }
+        public bool New_Home_Construction { get; set; }
+        public bool Surveyors___Land { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }

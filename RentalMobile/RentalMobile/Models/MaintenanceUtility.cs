@@ -15,21 +15,21 @@ namespace RentalMobile.Models
     public partial class MaintenanceUtility
     {
         public int CompanyId { get; set; }
-        public string Security_Systems___Automation { get; set; }
-        public string Central_Vacuum { get; set; }
-        public string Electrical { get; set; }
-        public string Energy_Audit { get; set; }
-        public string Gas___Propane_Services { get; set; }
-        public string Heating___Air_Conditioning { get; set; }
-        public string Lighting_Services { get; set; }
-        public string Plumbing { get; set; }
-        public string Satellite_Dish_Systems { get; set; }
-        public string Sewer___Septic_Services { get; set; }
-        public string Solar_Panels___Energy { get; set; }
-        public string Voice___Data_Wiring_Install___Repair { get; set; }
-        public string Radon_Testing { get; set; }
-        public string Water_Heaters___Pumps { get; set; }
-        public string Water_Purification___Softening { get; set; }
+        public bool Security_Systems___Automation { get; set; }
+        public bool Central_Vacuum { get; set; }
+        public bool Electrical { get; set; }
+        public bool Energy_Audit { get; set; }
+        public bool Gas___Propane_Services { get; set; }
+        public bool Heating___Air_Conditioning { get; set; }
+        public bool Lighting_Services { get; set; }
+        public bool Plumbing { get; set; }
+        public bool Satellite_Dish_Systems { get; set; }
+        public bool Sewer___Septic_Services { get; set; }
+        public bool Solar_Panels___Energy { get; set; }
+        public bool Voice___Data_Wiring_Install___Repair { get; set; }
+        public bool Radon_Testing { get; set; }
+        public bool Water_Heaters___Pumps { get; set; }
+        public bool Water_Purification___Softening { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }

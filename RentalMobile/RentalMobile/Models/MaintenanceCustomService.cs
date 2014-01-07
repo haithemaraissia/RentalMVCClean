@@ -15,26 +15,26 @@ namespace RentalMobile.Models
     public partial class MaintenanceCustomService
     {
         public int CompanyId { get; set; }
-        public string Demolition_Services { get; set; }
-        public string Disability_Accessibility { get; set; }
-        public string Childproofing { get; set; }
-        public string Energy_Efficiency_Inspection { get; set; }
-        public string Excavation { get; set; }
-        public string Biohazard_Cleanup { get; set; }
-        public string Mold_Removal { get; set; }
-        public string Home_Staging { get; set; }
-        public string Inspection_Services { get; set; }
-        public string Moving_Services { get; set; }
-        public string Restoration { get; set; }
-        public string Metal_Restoration { get; set; }
-        public string Earthquake_Retrofitting { get; set; }
-        public string Epoxy_Flooring_Excavators { get; set; }
-        public string Structural_Engineering { get; set; }
-        public string Trash_Removal___Hauling { get; set; }
-        public string Welding { get; set; }
-        public string Mudjacking { get; set; }
-        public string Picture_Framing { get; set; }
-        public string Woodworking_Services { get; set; }
+        public bool Demolition_Services { get; set; }
+        public bool Disability_Accessibility { get; set; }
+        public bool Childproofing { get; set; }
+        public bool Energy_Efficiency_Inspection { get; set; }
+        public bool Excavation { get; set; }
+        public bool Biohazard_Cleanup { get; set; }
+        public bool Mold_Removal { get; set; }
+        public bool Home_Staging { get; set; }
+        public bool Inspection_Services { get; set; }
+        public bool Moving_Services { get; set; }
+        public bool Restoration { get; set; }
+        public bool Metal_Restoration { get; set; }
+        public bool Earthquake_Retrofitting { get; set; }
+        public bool Epoxy_Flooring_Excavators { get; set; }
+        public bool Structural_Engineering { get; set; }
+        public bool Trash_Removal___Hauling { get; set; }
+        public bool Welding { get; set; }
+        public bool Mudjacking { get; set; }
+        public bool Picture_Framing { get; set; }
+        public bool Woodworking_Services { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }

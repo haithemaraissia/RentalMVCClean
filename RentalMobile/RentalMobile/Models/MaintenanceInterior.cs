@@ -15,35 +15,35 @@ namespace RentalMobile.Models
     public partial class MaintenanceInterior
     {
         public int CompanyId { get; set; }
-        public string Basement_Lowering { get; set; }
-        public string Basement_Remodeling { get; set; }
-        public string Bathroom_Remodeling { get; set; }
-        public string Cabinetry_and_Built_ins { get; set; }
-        public string Carpenters { get; set; }
-        public string Carpet_and_Vinyl_Floors { get; set; }
-        public string Ceiling_Install_and_Repair { get; set; }
-        public string Closets_Designing_Organizing { get; set; }
-        public string Counter_Tops { get; set; }
-        public string Remodeling { get; set; }
-        public string Buffing___Polishing { get; set; }
-        public string Drywall { get; set; }
-        public string Carpet_Installation { get; set; }
-        public string Fireplaces___Firewood { get; set; }
-        public string Floor_Heating { get; set; }
-        public string Framing { get; set; }
-        public string Hardwood_and_Laminate_Flooring { get; set; }
-        public string Hardwood_Floor_Refinishing { get; set; }
-        public string Home_Theaters { get; set; }
-        public string Hot_Tubs__Spas___Jacuzzis { get; set; }
-        public string Insulation { get; set; }
-        public string Decorating___Design { get; set; }
-        public string Kitchen_Remodeling { get; set; }
-        public string Non_Slip_Treatments { get; set; }
-        public string Painting_Services { get; set; }
-        public string Solariums_and_Sunrooms { get; set; }
-        public string Tile___Tiling { get; set; }
-        public string Asbestos_Removal { get; set; }
-        public string Wallpaper___Wall_Coverings___Removal { get; set; }
+        public bool Basement_Lowering { get; set; }
+        public bool Basement_Remodeling { get; set; }
+        public bool Bathroom_Remodeling { get; set; }
+        public bool Cabinetry_and_Built_ins { get; set; }
+        public bool Carpenters { get; set; }
+        public bool Carpet_and_Vinyl_Floors { get; set; }
+        public bool Ceiling_Install_and_Repair { get; set; }
+        public bool Closets_Designing_Organizing { get; set; }
+        public bool Counter_Tops { get; set; }
+        public bool Remodeling { get; set; }
+        public bool Buffing___Polishing { get; set; }
+        public bool Drywall { get; set; }
+        public bool Carpet_Installation { get; set; }
+        public bool Fireplaces___Firewood { get; set; }
+        public bool Floor_Heating { get; set; }
+        public bool Framing { get; set; }
+        public bool Hardwood_and_Laminate_Flooring { get; set; }
+        public bool Hardwood_Floor_Refinishing { get; set; }
+        public bool Home_Theaters { get; set; }
+        public bool Hot_Tubs__Spas___Jacuzzis { get; set; }
+        public bool Insulation { get; set; }
+        public bool Decorating___Design { get; set; }
+        public bool Kitchen_Remodeling { get; set; }
+        public bool Non_Slip_Treatments { get; set; }
+        public bool Painting_Services { get; set; }
+        public bool Solariums_and_Sunrooms { get; set; }
+        public bool Tile___Tiling { get; set; }
+        public bool Asbestos_Removal { get; set; }
+        public bool Wallpaper___Wall_Coverings___Removal { get; set; }
     
         public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }
