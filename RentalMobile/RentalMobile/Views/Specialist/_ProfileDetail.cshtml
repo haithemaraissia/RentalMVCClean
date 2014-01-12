@@ -23,57 +23,71 @@
         </p>
         <h6 class="h6custom">
             Rate</h6>
+
+            @{
+                if (ViewBag.Rate != null)
+                {
+                    <p>
+                        @ViewBag.Rate per hour
+                    </p>
+                }
+                else
+                {
+  
+                    <p>
+                      No Rate
+                    </p>
+                }
+            }
+        
         <p>
-            55 per hour or similar
-        </p>
-        <p>
-            <a href="">
+            <a href="/SpecialistProfile/Index/@Model.SpecialistId">
                 <h6>
                     View Public Profile</h6>
             </a>
         </p>
         <p>
             <h6 style="color: green">
-                Profile Completed
+                Profile Progress
             </h6>
         </p>
-        <p>
-            <span style="text-align: center"><h6 style="color: red; text-align: center">20% Profile Completed</h6></span>
-            <progress value="10" max="100"></progress>
-             <meter value="10" max="100"></meter>
-            <style type="text/css">
-                progress
-                {
-                    border: 1px solid #0063A6;
-                    font-size: 0.6em;
-                    height: 1.8em;
-                    line-height: 1.5em;
-                    margin: 2px;
-                    text-indent: 0.5em;
-                    text-align: center;
-                    width: 98%;
-                    margin-right: 1px;
-                    margin-left: 1px 
-                }
-                
-                   meter
-                {
-                    border: 1px solid #0063A6;
-                    font-size: 0.6em;
-                    height: 1.8em;
-                    line-height: 1.5em;
-                    margin: 2px;
-                    text-indent: 0.5em;
-                    text-align: center;
-                    width: 98%;
-                    margin-right: 1px;
-                    margin-left: 1px 
-                }
-            </style>
-            
-        </p>
-        <p style="text-align: right">
-            <input type="submit" class="full-width tall" value="Complete Profile if you didn't complete it" onclick="location.href='/Specialist/CompleteProfile'"/>
-        </p>
+        @{
+            if (Model.PercentageofCompletion <= 90 || Model.PercentageofCompletion.HasValue == false)
+            {
+            <p>
+                <span style="text-align: center">
+                    <h6 style="color: red; text-align: center">
+                        @Model.PercentageofCompletion% Profile Completed</h6>
+                </span>
+                <meter value="@Model.PercentageofCompletion" max="100">
+                </meter>
+                <style type="text/css">
+                    meter
+                    {
+                        border: 1px solid #0063A6;
+                        font-size: 0.6em;
+                        height: 1.8em;
+                        line-height: 1.5em;
+                        margin: 2px;
+                        text-indent: 0.5em;
+                        text-align: center;
+                        width: 98%;
+                        margin-right: 1px;
+                        margin-left: 1px;
+                    }
+                </style>
+            </p>
+            <p style="text-align: right">
+                <input type="submit" class="full-width tall" value="Complete Profile"
+                    onclick="location.href='/Specialist/CompleteProfile'" />
+            </p>
+            }
+            else
+            {
+            <p style="text-align: right">
+                <input type="submit" class="full-width tall" value="Edit Profile" onclick="location.href='/Specialist/CompleteProfile'" />
+            </p>
+            }
+        }
     </div>
 </div>

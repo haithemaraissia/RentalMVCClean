@@ -33,5 +33,6 @@ namespace RentalMobile.Models
         public string City { get; set; }
         public string Zip { get; set; }
         public string CountryCode { get; set; }
+        public Nullable<int> PercentageofCompletion { get; set; }
     }
 }

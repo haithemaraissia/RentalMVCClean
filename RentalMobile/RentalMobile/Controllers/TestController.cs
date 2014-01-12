@@ -43,7 +43,7 @@ namespace RentalMobile.Controllers
 
             if (specialist != null)
             {
-                var smp = new SpecialistMaintenanceProfile
+                var smp = new SpecialistMaintenanceProfile()
                     {
                         MaintenanceCompanyLookUp = { Role = 1, UserId = 10 },
                         MaintenanceCompany =
@@ -54,19 +54,19 @@ namespace RentalMobile.Controllers
                             }
                     };
 
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        smp.Save();
-                    }
-                    catch (Exception e)
-                    {
+                //if (ModelState.IsValid)
+                //{
+                //    try
+                //    {
+                //        smp.Save(smp);
+                //    }
+                //    catch (Exception e)
+                //    {
 
-                        throw new Exception(e.InnerException.Message);
-                    }
+                //        throw new Exception(e.InnerException.Message);
+                //    }
 
-                }
+                //}
             }
 
 

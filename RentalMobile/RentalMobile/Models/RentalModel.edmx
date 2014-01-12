@@ -1614,6 +1614,7 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="PercentageofCompletion" Type="int" />
         </EntityType>
         <EntityType Name="SpecialistPendingTeamInvitation">
           <Key>
@@ -2645,6 +2646,7 @@
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PercentageofCompletion" />
         </EntityType>
         <EntityType Name="MaintenanceProvider">
           <Key>
@@ -4594,6 +4596,7 @@
           <EntitySetMapping Name="Specialists">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Specialist">
               <MappingFragment StoreEntitySet="Specialist">
+                <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="City" ColumnName="City" />

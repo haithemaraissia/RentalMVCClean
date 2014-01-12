@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[MaintenanceExteriors] (
+    [CompanyId]                        INT NOT NULL,
+    [Asphalt Paving]                   BIT NOT NULL,
+    [Awnings]                          BIT NOT NULL,
+    [Concrete Installation & Repair]   BIT NOT NULL,
+    [Decks, Patios & Enclosures]       BIT NOT NULL,
+    [Fence Install and Repair]         BIT NOT NULL,
+    [Gutter Services]                  BIT NOT NULL,
+    [Hurricane Shutter Systems]        BIT NOT NULL,
+    [Interlocking / Stonework]         BIT NOT NULL,
+    [Ironwork - Wrought Iron]          BIT NOT NULL,
+    [Landscaping Installation]         BIT NOT NULL,
+    [Lawn Care]                        BIT NOT NULL,
+    [Masonry and Brick Work]           BIT NOT NULL,
+    [Power Washing]                    BIT NOT NULL,
+    [Roofing Services]                 BIT NOT NULL,
+    [Siding]                           BIT NOT NULL,
+    [Skylights]                        BIT NOT NULL,
+    [Sprinkler Systems and Irrigation] BIT NOT NULL,
+    [Stucco & Plaster]                 BIT NOT NULL,
+    [Swimming Pool Install]            BIT NOT NULL,
+    [Tree Service]                     BIT NOT NULL,
+    [Waterproofing]                    BIT NOT NULL,
+    [Windows & Exterior Doors]         BIT NOT NULL
+);
+

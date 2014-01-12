@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[MaintenanceRepairs] (
+    [CompanyId]                         INT NOT NULL,
+    [Appliances Service and Repair]     BIT NOT NULL,
+    [Bathtub & Sink Repair/Refinishing] BIT NOT NULL,
+    [Black Mold Removal]                BIT NOT NULL,
+    [Carpet & Rug Cleaning]             BIT NOT NULL,
+    [Caulking]                          BIT NOT NULL,
+    [Chimney Services]                  BIT NOT NULL,
+    [Cleaning Services]                 BIT NOT NULL,
+    [Computers Service and Repair]      BIT NOT NULL,
+    [Duct Cleaning]                     BIT NOT NULL,
+    [Foundation Repair]                 BIT NOT NULL,
+    [Furniture Repair & Restoration]    BIT NOT NULL,
+    [Garage Door Install & Repair]      BIT NOT NULL,
+    [Handyman Services]                 BIT NOT NULL,
+    [Drain Pipe]                        BIT NOT NULL,
+    [Doors]                             BIT NOT NULL,
+    [Locksmithing]                      BIT NOT NULL,
+    [Pest Control]                      BIT NOT NULL,
+    [Property Management]               BIT NOT NULL,
+    [Snow Removal]                      BIT NOT NULL,
+    [Window Cleaning]                   BIT NOT NULL,
+    [Glass & Window Services]           BIT NOT NULL,
+    [Mailbox Repair]                    BIT NOT NULL
+);
+

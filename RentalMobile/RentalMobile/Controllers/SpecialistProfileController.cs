@@ -11,8 +11,10 @@ namespace RentalMobile.Controllers
         //
         // GET: /SpecialistProfile/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+
+            //Complete the view of the specialist Profile
             return View();
         }
 

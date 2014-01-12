@@ -25,6 +25,9 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
+            ViewBag.Rate = GetProfessionalRate(specialist.SpecialistId);
+            
+            
             return View(specialist);
         }
 
@@ -237,32 +240,56 @@ namespace RentalMobile.Controllers
             var specialistId = UserHelper.GetSpecialistID();
             if (specialistId != null)
             {
-                var mp = new SpecialistMaintenanceProfile(1, (int) specialistId);
+                const int specialistrole = 1;
+                var lookUp = db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+                if (lookUp != null)
+                {
+                    int companyId = lookUp.CompanyId;
+                
+                var mp = new SpecialistMaintenanceProfile
+                             {
+                                 MaintenanceCompanyLookUp = db.MaintenanceCompanyLookUps.Find(companyId),
+                                 MaintenanceCompany = db.MaintenanceCompanies.Find(companyId),
+                                 MaintenanceCompanySpecialization = db.MaintenanceCompanySpecializations.Find(companyId),
+                                 MaintenanceCustomService = db.MaintenanceCustomServices.Find(companyId),
+                                 MaintenanceExterior = db.MaintenanceExteriors.Find(companyId),
+                                 MaintenanceInterior = db.MaintenanceInteriors.Find(companyId),
+                                 MaintenanceNewConstruction = db.MaintenanceNewConstructions.Find(companyId),
+                                 MaintenanceRepair = db.MaintenanceRepairs.Find(companyId),
+                                 MaintenanceUtility = db.MaintenanceUtilities.Find(companyId),
+                             };
+
                 return View(mp);
+        }   
+            
             }
             return null;
 
 
 
 
+            //When CREATING NEW SPECIALIST
+            //CREATE THE RECORDS
+
+            //TO COMPLETE PROFILE
+            //UPDATE RECORDS
 
 
+            //            About
+            //MaintenanceCompany
+            //MaintenanceCompanySpecialization
 
-//            About
-//MaintenanceCompany
-//MaintenanceCompanySpecialization
+            //Coverage
+            //Exteriors
+            //Interiors
 
-//Coverage
-//Exteriors
-//Interiors
+            //Services
+            //Maintenance and Repairs
+            //Constructions
 
-//Services
-//Maintenance and Repairs
-//Constructions
-
-//Feature
-//Custom Services
-//Utilities
+            //Feature
+            //Custom Services
+            //Utilities
 
 
 
@@ -293,18 +320,35 @@ namespace RentalMobile.Controllers
 
 
         [HttpPost]
-        public ActionResult CompleteProfile(SpecialistMaintenanceProfile u)
+        public ActionResult CompleteProfile(SpecialistMaintenanceProfile s)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                   u.Save();
-                   db.SaveChanges();
-                    // SavePictures(u.Unit);
-                    return RedirectToAction("Index");
+                    var specialistId = UserHelper.GetSpecialistID();
+                    if (specialistId != null)
+                    {
+
+                        //u.Save(u(u.MaintenanceCompany.CompanyId));
+
+                        db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceExterior).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceInterior).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceRepair).State = EntityState.Modified;
+                        db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
+                        db.SaveChanges();
+                       
+                        return RedirectToAction("Index");
+
+                    }
                 }
-                return View(u);
+                return View(s);
             }
 
 
@@ -328,18 +372,86 @@ namespace RentalMobile.Controllers
         }
 
 
+        public int CalculateNewProfileCompletionPercentage ( MaintenanceCompany m)
+        {
+            //Calucation of Completion
+            //description = 20 ; Other = 10
+            
+            //Members of formula 
+            //Name 
+            //Address 
+            //EmailAddress 
+            //Description 
+            //Country 
+            //Region 
+            //City 
+            //Zip 
+            //CountryCode
+
+            var initialValue = 0;
+
+            if (string.IsNullOrEmpty(m.Name))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.Address))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.EmailAddress))
+            {
+                initialValue += 20;
+            }
+            if (string.IsNullOrEmpty(m.Description))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.Region))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.City))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.Zip))
+            {
+                initialValue += 10;
+            }
+            if (string.IsNullOrEmpty(m.CountryCode))
+            {
+                initialValue += 10;
+            }
+            return initialValue >=50? initialValue : 50;
+        }
 
 
+        public void UpdateProfileCompletion(int newprofilecompletionpercentage)
+        {
+            var specialistId = UserHelper.GetSpecialistID();
+            if (specialistId == null) return;
+            var currentspecialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+            if (currentspecialist != null)
+                currentspecialist.PercentageofCompletion = newprofilecompletionpercentage;
+        }
 
+        public decimal? GetProfessionalRate(int specialistId)
+        {
+            var specialistMaintenanceCompany = db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId);
+            if (specialistMaintenanceCompany != null)
+            {
+                var specialistcompanyid = specialistMaintenanceCompany.CompanyId;
+                var specialistcompany = db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == specialistcompanyid);
 
-
-
-
-
-
-
-
-
+                if (specialistcompany != null)
+                {
+                   
+                    return (decimal) specialistcompany.Rate;
+                } 
+                return null;
+            }
+            return null;
+        }
 
 
         ///////////////////////////TO DO///////////////////////////////////////////////
