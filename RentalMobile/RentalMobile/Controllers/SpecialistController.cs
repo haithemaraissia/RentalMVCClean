@@ -25,7 +25,7 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
-            ViewBag.Rate = GetProfessionalRate(specialist.SpecialistId);
+        //    ViewBag.Rate = GetProfessionalRate(specialist.SpecialistId);
             
             
             return View(specialist);
@@ -49,18 +49,11 @@ namespace RentalMobile.Controllers
             return View(Specialist);
         }
 
-
-        //
-        // GET: /Specialist/Edit/5
-
         public ActionResult ChangeAddress(int id)
         {
             Specialist Specialist = db.Specialists.Find(id);
             return View(Specialist);
         }
-
-        //
-        // POST: /Specialist/Edit/5
 
         [HttpPost]
         public ActionResult ChangeAddress(Specialist Specialist)
@@ -75,17 +68,11 @@ namespace RentalMobile.Controllers
             return View(Specialist);
         }
 
-        //
-        // GET: /Specialist/Delete/5
-
         public ActionResult Delete(int id)
         {
             Specialist Specialist = db.Specialists.Find(id);
             return View(Specialist);
         }
-
-        //
-        // POST: /Specialist/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
@@ -119,7 +106,6 @@ namespace RentalMobile.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
 
         public ActionResult UpdateProfilePicture(int id)
         {
@@ -330,7 +316,9 @@ namespace RentalMobile.Controllers
                     if (specialistId != null)
                     {
 
-                        //u.Save(u(u.MaintenanceCompany.CompanyId));
+                        s.MaintenanceCompanySpecialization.Currency =
+                            UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
+
 
                         db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
                         db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;

@@ -481,12 +481,14 @@ namespace RentalMobile.Controllers
                 newspecialist.FirstName = model.UserName;
                 newspecialist.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newspecialist.GoogleMap = "USA";
+                newspecialist.PercentageofCompletion = 50;
 
             }
 
             _db.Specialists.Add(newspecialist);
             _db.SaveChanges();
 
+            SpecialistInitialProfileValues(model, newspecialist.SpecialistId);
         }
 
         [Authorize]
@@ -725,6 +727,80 @@ namespace RentalMobile.Controllers
         public string CleanUpPhotoPath(string photoPath)
         {
             return photoPath.Replace(@"~\Photo", @"../../Photo").Replace("\\", "/");
+        }
+
+
+
+
+        public void SpecialistInitialProfileValues(RegisterModel model, int specialistId)
+        {
+
+            if (specialistId != null)
+            {
+                var newMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp
+                    {
+                        UserId = specialistId,
+                        Role = 1
+                    };
+                _db.MaintenanceCompanyLookUps.Add(newMaintenanceCompanyLookUp);
+                _db.SaveChanges();
+
+                var specialistCompanyId = newMaintenanceCompanyLookUp.CompanyId;
+                var newMaintenanceCompany = new MaintenanceCompany
+                    {
+                        CompanyId =  specialistCompanyId,
+                        Name = model.UserName,
+                        EmailAddress= model.Email,
+                        GoogleMap = "USA",
+                        Country = "US",
+                        CountryCode = "US"
+                    };
+                var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
+                    {
+                        CompanyId = specialistCompanyId,
+                        NumberofEmployee = 1,
+                        NumberofCertifitedEmplyee = 1,
+                        IsInsured = true,
+                        Rate = 50,
+                        CurrencyID = 1,
+                        Currency = "USD"
+                    };
+                var newMaintenanceCustomService = new MaintenanceCustomService
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+
+                var newMaintenanceExterior = new MaintenanceExterior
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+                var newMaintenanceInterior = new MaintenanceInterior
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+                var newMaintenanceNewConstruction = new MaintenanceNewConstruction
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+                var newMaintenanceRepair = new MaintenanceRepair
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+                var newMaintenanceUtility = new MaintenanceUtility
+                    {
+                        CompanyId = specialistCompanyId
+                    };
+                _db.MaintenanceCompanies.Add(newMaintenanceCompany);
+                _db.MaintenanceCompanySpecializations.Add(newMaintenanceCompanySpecialization);
+                _db.MaintenanceCustomServices.Add(newMaintenanceCustomService);
+                _db.MaintenanceExteriors.Add(newMaintenanceExterior);
+                _db.MaintenanceInteriors.Add(newMaintenanceInterior);
+                _db.MaintenanceNewConstructions.Add(newMaintenanceNewConstruction);
+                _db.MaintenanceRepairs.Add(newMaintenanceRepair);
+                _db.MaintenanceUtilities.Add(newMaintenanceUtility);
+                _db.SaveChanges();
+
+            }
         }
 
     }
