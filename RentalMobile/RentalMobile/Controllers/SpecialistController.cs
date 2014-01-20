@@ -16,42 +16,46 @@ namespace RentalMobile.Controllers
     public class SpecialistController : Controller
     {
 
-        public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
-
+        public DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
+        public string Username = UserHelper.GetUserName();
+        public string TenantPhotoPath = "~/Photo/Tenant/Property";
+        public string OwnerPhotoPath = "~/Photo/Owner/Property";
+        public string AgentPhotoPath = "~/Photo/Agent/Property";
+        public string ProviderPhotoPath = "~/Photo/Provider/Property";
+        public string SpecialistPhotoPath = "~/Photo/Specialist/Property";
+        public string RequestID;
+        public string PhotoPath;
 
         public ViewResult Index()
         {
-            var specialist = db.Specialists.Find(UserHelper.GetSpecialistID());
+            var specialist = DB.Specialists.Find(UserHelper.GetSpecialistID());
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
-        //    ViewBag.Rate = GetProfessionalRate(specialist.SpecialistId);
-            
-            
             return View(specialist);
         }
 
         public ActionResult Edit(int id)
         {
-            Specialist Specialist = db.Specialists.Find(id);
-            return View(Specialist);
+            Specialist specialist = DB.Specialists.Find(id);
+            return View(specialist);
         }
 
         [HttpPost]
-        public ActionResult Edit(Specialist Specialist)
+        public ActionResult Edit(Specialist specialist)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Specialist).State = EntityState.Modified;
-                db.SaveChanges();
+                DB.Entry(specialist).State = EntityState.Modified;
+                DB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(Specialist);
+            return View(specialist);
         }
 
         public ActionResult ChangeAddress(int id)
         {
-            Specialist Specialist = db.Specialists.Find(id);
+            Specialist Specialist = DB.Specialists.Find(id);
             return View(Specialist);
         }
 
@@ -60,9 +64,9 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Specialist).State = EntityState.Modified;
+                DB.Entry(Specialist).State = EntityState.Modified;
                 Specialist.GoogleMap = string.IsNullOrEmpty(Specialist.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(Specialist.Address, Specialist.City, Specialist.CountryCode);
-                db.SaveChanges();
+                DB.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(Specialist);
@@ -70,16 +74,16 @@ namespace RentalMobile.Controllers
 
         public ActionResult Delete(int id)
         {
-            Specialist Specialist = db.Specialists.Find(id);
+            Specialist Specialist = DB.Specialists.Find(id);
             return View(Specialist);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Specialist Specialist = db.Specialists.Find(id);
-            db.Specialists.Remove(Specialist);
-            db.SaveChanges();
+            Specialist Specialist = DB.Specialists.Find(id);
+            DB.Specialists.Remove(Specialist);
+            DB.SaveChanges();
 
 
 
@@ -125,16 +129,7 @@ namespace RentalMobile.Controllers
 
 
         //MAKE SURE THAT USER ARE AUTHENTICATED
-        public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
-        //MAKE SURE THAT USER ARE AUTHENTICATED
 
-        public string TenantPhotoPath = "~/Photo/Tenant/Property";
-        public string OwnerPhotoPath = "~/Photo/Owner/Property";
-        public string AgentPhotoPath = "~/Photo/Agent/Property";
-        public string ProviderPhotoPath = "~/Photo/Provider/Property";
-        public string SpecialistPhotoPath = "~/Photo/Specialist/Property";
-        public string RequestID;
-        public string photoPath;
 
         public ActionResult Partial2(UnitModelView unitModelView)
         {
@@ -198,25 +193,25 @@ namespace RentalMobile.Controllers
             var user = System.Web.HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
-                photoPath = Server.MapPath(TenantPhotoPath);
+                PhotoPath = Server.MapPath(TenantPhotoPath);
                 return "Tenant";
             }
             if (user.IsInRole("Owner"))
             {
-                photoPath = Server.MapPath(OwnerPhotoPath);
+                PhotoPath = Server.MapPath(OwnerPhotoPath);
                 return "Owner";
             }
             if (user.IsInRole("Agent"))
             {
-                photoPath = Server.MapPath(AgentPhotoPath);
+                PhotoPath = Server.MapPath(AgentPhotoPath);
             }
             if (user.IsInRole("Provider"))
             {
-                photoPath = Server.MapPath(ProviderPhotoPath);
+                PhotoPath = Server.MapPath(ProviderPhotoPath);
                 return "Provider";
             }
 
-            photoPath = Server.MapPath(SpecialistPhotoPath);
+            PhotoPath = Server.MapPath(SpecialistPhotoPath);
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
 
@@ -227,27 +222,27 @@ namespace RentalMobile.Controllers
             if (specialistId != null)
             {
                 const int specialistrole = 1;
-                var lookUp = db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+                var lookUp = DB.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
                 if (lookUp != null)
                 {
                     int companyId = lookUp.CompanyId;
-                
-                var mp = new SpecialistMaintenanceProfile
-                             {
-                                 MaintenanceCompanyLookUp = db.MaintenanceCompanyLookUps.Find(companyId),
-                                 MaintenanceCompany = db.MaintenanceCompanies.Find(companyId),
-                                 MaintenanceCompanySpecialization = db.MaintenanceCompanySpecializations.Find(companyId),
-                                 MaintenanceCustomService = db.MaintenanceCustomServices.Find(companyId),
-                                 MaintenanceExterior = db.MaintenanceExteriors.Find(companyId),
-                                 MaintenanceInterior = db.MaintenanceInteriors.Find(companyId),
-                                 MaintenanceNewConstruction = db.MaintenanceNewConstructions.Find(companyId),
-                                 MaintenanceRepair = db.MaintenanceRepairs.Find(companyId),
-                                 MaintenanceUtility = db.MaintenanceUtilities.Find(companyId),
-                             };
 
-                return View(mp);
-        }   
-            
+                    var mp = new SpecialistMaintenanceProfile
+                                 {
+                                     MaintenanceCompanyLookUp = DB.MaintenanceCompanyLookUps.Find(companyId),
+                                     MaintenanceCompany = DB.MaintenanceCompanies.Find(companyId),
+                                     MaintenanceCompanySpecialization = DB.MaintenanceCompanySpecializations.Find(companyId),
+                                     MaintenanceCustomService = DB.MaintenanceCustomServices.Find(companyId),
+                                     MaintenanceExterior = DB.MaintenanceExteriors.Find(companyId),
+                                     MaintenanceInterior = DB.MaintenanceInteriors.Find(companyId),
+                                     MaintenanceNewConstruction = DB.MaintenanceNewConstructions.Find(companyId),
+                                     MaintenanceRepair = DB.MaintenanceRepairs.Find(companyId),
+                                     MaintenanceUtility = DB.MaintenanceUtilities.Find(companyId),
+                                 };
+
+                    return View(mp);
+                }
+
             }
             return null;
 
@@ -320,18 +315,21 @@ namespace RentalMobile.Controllers
                             UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
 
 
-                        db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceExterior).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceInterior).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceRepair).State = EntityState.Modified;
-                        db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceCompany).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceExterior).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceInterior).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceRepair).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        DB.Entry(s.MaintenanceUtility).State = EntityState.Modified;
                         UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
-                        db.SaveChanges();
-                       
+                        UpdateSpecialistProfile((int)specialistId, s.MaintenanceCompany);
+                        ;
+                        DB.SaveChanges();
+
                         return RedirectToAction("Index");
 
                     }
@@ -359,12 +357,62 @@ namespace RentalMobile.Controllers
 
         }
 
+        private void UpdateSpecialistProfile(int specialistId, MaintenanceCompany m)
+        {
+            var specialist = DB.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
 
-        public int CalculateNewProfileCompletionPercentage ( MaintenanceCompany m)
+            if (specialist != null)
+            {
+
+
+                if (!string.IsNullOrEmpty(m.Address))
+                {
+                    specialist.Address = m.Address;
+                }
+                if (!string.IsNullOrEmpty(m.City))
+                {
+                    specialist.City = m.City;
+                }
+                if (!string.IsNullOrEmpty(m.Country))
+                {
+                    specialist.Country = m.Country;
+                }
+                if (!string.IsNullOrEmpty(m.Description))
+                {
+                    specialist.Description = m.Description;
+                }
+                if (!string.IsNullOrEmpty(m.Address))
+                {
+                    specialist.Address = m.Address;
+                }
+                if (!string.IsNullOrEmpty(m.Address))
+                {
+                    specialist.Address = m.Address;
+                }
+                if (!string.IsNullOrEmpty(m.Address))
+                {
+                    specialist.Address = m.Address;
+                }
+                if (!string.IsNullOrEmpty(m.Address))
+                {
+                    specialist.Address = m.Address;
+                }
+
+
+
+
+                specialist.GoogleMap = m.GoogleMap = string.IsNullOrEmpty(m.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
+
+
+            }
+        }
+
+
+        public int CalculateNewProfileCompletionPercentage(MaintenanceCompany m)
         {
             //Calucation of Completion
             //description = 20 ; Other = 10
-            
+
             //Members of formula 
             //Name 
             //Address 
@@ -378,39 +426,40 @@ namespace RentalMobile.Controllers
 
             var initialValue = 0;
 
-            if (string.IsNullOrEmpty(m.Name))
+            if (!string.IsNullOrEmpty(m.Name))
             {
                 initialValue += 10;
             }
-            if (string.IsNullOrEmpty(m.Address))
+            if (!string.IsNullOrEmpty(m.Address))
             {
                 initialValue += 10;
             }
-            if (string.IsNullOrEmpty(m.EmailAddress))
+            if (!string.IsNullOrEmpty(m.EmailAddress))
             {
-                initialValue += 20;
+                initialValue += 30;
             }
-            if (string.IsNullOrEmpty(m.Description))
-            {
-                initialValue += 10;
-            }
-            if (string.IsNullOrEmpty(m.Region))
+            if (!string.IsNullOrEmpty(m.Description))
             {
                 initialValue += 10;
             }
-            if (string.IsNullOrEmpty(m.City))
+            if (!string.IsNullOrEmpty(m.Region))
             {
                 initialValue += 10;
             }
-            if (string.IsNullOrEmpty(m.Zip))
+            if (!string.IsNullOrEmpty(m.City))
             {
                 initialValue += 10;
             }
-            if (string.IsNullOrEmpty(m.CountryCode))
+            if (!string.IsNullOrEmpty(m.Zip))
             {
                 initialValue += 10;
             }
-            return initialValue >=50? initialValue : 50;
+            if (!string.IsNullOrEmpty(m.Country))
+            {
+                initialValue += 10;
+            }
+            m.GoogleMap = string.IsNullOrEmpty(m.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
+            return initialValue >= 50 ? initialValue : 50;
         }
 
 
@@ -418,24 +467,24 @@ namespace RentalMobile.Controllers
         {
             var specialistId = UserHelper.GetSpecialistID();
             if (specialistId == null) return;
-            var currentspecialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+            var currentspecialist = DB.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
             if (currentspecialist != null)
                 currentspecialist.PercentageofCompletion = newprofilecompletionpercentage;
         }
 
         public decimal? GetProfessionalRate(int specialistId)
         {
-            var specialistMaintenanceCompany = db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId);
+            var specialistMaintenanceCompany = DB.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId);
             if (specialistMaintenanceCompany != null)
             {
                 var specialistcompanyid = specialistMaintenanceCompany.CompanyId;
-                var specialistcompany = db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == specialistcompanyid);
+                var specialistcompany = DB.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == specialistcompanyid);
 
                 if (specialistcompany != null)
                 {
-                   
-                    return (decimal) specialistcompany.Rate;
-                } 
+
+                    return (decimal)specialistcompany.Rate;
+                }
                 return null;
             }
             return null;
@@ -508,12 +557,12 @@ namespace RentalMobile.Controllers
         public ActionResult ProviderInvitation()
         {
             var specialistId = Helpers.UserHelper.GetSpecialistID();
-            return specialistId == null ? null : View(db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
+            return specialistId == null ? null : View(DB.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
         }
 
         public ActionResult AcceptInvitation(int id)
         {
-            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
+            var invitation = DB.SpecialistPendingTeamInvitations.Find(id);
             return View(invitation);
 
         }
@@ -522,7 +571,7 @@ namespace RentalMobile.Controllers
         public ActionResult AcceptInvitation(SpecialistPendingTeamInvitation sti)
         {
             var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
+                DB.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
 
             var mti = new MaintenanceTeamAssociation
                                                  {
@@ -533,9 +582,9 @@ namespace RentalMobile.Controllers
 
                                                  };
 
-            db.MaintenanceTeamAssociations.Add(mti);
-            db.SpecialistPendingTeamInvitations.Remove(invitation);
-            db.SaveChanges();
+            DB.MaintenanceTeamAssociations.Add(mti);
+            DB.SpecialistPendingTeamInvitations.Remove(invitation);
+            DB.SaveChanges();
 
             JNotify("Your request has been completed.", "/Specialist/CurrentProvider");
 
@@ -546,7 +595,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult DenyInvitation(int id)
         {
-            var invitation = db.SpecialistPendingTeamInvitations.Find(id);
+            var invitation = DB.SpecialistPendingTeamInvitations.Find(id);
             return View(invitation);
 
         }
@@ -555,9 +604,9 @@ namespace RentalMobile.Controllers
         public ActionResult DenyInvitation(SpecialistPendingTeamInvitation sti)
         {
             var invitation =
-                db.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
-            db.SpecialistPendingTeamInvitations.Remove(invitation);
-            db.SaveChanges();
+                DB.SpecialistPendingTeamInvitations.FirstOrDefault(x => x.PendingTeamInvitationID == sti.PendingTeamInvitationID);
+            DB.SpecialistPendingTeamInvitations.Remove(invitation);
+            DB.SaveChanges();
             JNotify("Your request has been completed.", "~/Specialist/ProviderInvitation");
 
             //JQuery Success
@@ -569,27 +618,27 @@ namespace RentalMobile.Controllers
         {
             var specialistId = UserHelper.GetSpecialistID();
 
-            return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
+            return View(DB.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
         public ActionResult ManageProvider()
         {
             var specialistId = UserHelper.GetSpecialistID();
-            return View(db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
+            return View(DB.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
         }
 
         public ActionResult RemoveTeamAssociation(int id)
         {
-            var maintenanceteamassociation = db.MaintenanceTeamAssociations.Find(id);
+            var maintenanceteamassociation = DB.MaintenanceTeamAssociations.Find(id);
             return View(maintenanceteamassociation);
         }
 
         [HttpPost]
         public ActionResult RemoveTeamAssociation(MaintenanceTeamAssociation mta)
         {
-            var maintenanceteamassociation = db.MaintenanceTeamAssociations.FirstOrDefault(x => x.TeamAssociationID == mta.TeamAssociationID);
-            db.MaintenanceTeamAssociations.Remove(maintenanceteamassociation);
-            db.SaveChanges();
+            var maintenanceteamassociation = DB.MaintenanceTeamAssociations.FirstOrDefault(x => x.TeamAssociationID == mta.TeamAssociationID);
+            DB.MaintenanceTeamAssociations.Remove(maintenanceteamassociation);
+            DB.SaveChanges();
 
             JNotify("Your request has been completed.", "~/Specialist/CurrentProvider");
 
@@ -614,7 +663,7 @@ namespace RentalMobile.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            DB.Dispose();
             base.Dispose(disposing);
         }
 

@@ -6,7 +6,7 @@
             <input type="submit" class="full-width tall" value="View Public Profile" onclick="location.href='/Professionals/@Model.SpecialistId'" />
         </p>
     </div>
-    <div class="eight columns prop-details">
+    <div class="eight columns prop-details" style = "min-height:320px"  />
         <h6 class="h6custom">
             @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h6>
         <p class="profile-meta">
@@ -61,7 +61,7 @@
             else
             {
             <p style="text-align: right">
-                <input type="submit" class="full-width green" value="Edit Profile" onclick="location.href='/Specialist/CompleteProfile'" />
+                <input type="submit" class="full-width tall button green" value="Edit Profile" onclick="location.href='/Specialist/CompleteProfile'" />
             </p>
             }
         }

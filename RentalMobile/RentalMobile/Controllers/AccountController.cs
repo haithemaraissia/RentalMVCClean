@@ -753,7 +753,7 @@ namespace RentalMobile.Controllers
                         EmailAddress= model.Email,
                         GoogleMap = "USA",
                         Country = "US",
-                        CountryCode = "US"
+                     //   CountryCode = "US"
                     };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
                     {

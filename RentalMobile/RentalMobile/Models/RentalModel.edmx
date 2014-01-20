@@ -692,11 +692,10 @@
           <Property Name="GooglePlus" Type="nvarchar" MaxLength="100" />
           <Property Name="Photo" Type="nvarchar(max)" />
           <Property Name="GoogleMap" Type="nvarchar(max)" />
-          <Property Name="Country" Type="varchar" MaxLength="128" />
+          <Property Name="Country" Type="varchar" MaxLength="3" />
           <Property Name="Region" Type="varchar" MaxLength="128" />
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
-          <Property Name="CountryCode" Type="varchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="MaintenanceCompanyLookUp">
           <Key>
@@ -4043,7 +4042,6 @@
           <Property Type="String" Name="Region" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.FK_MaintenanceCompany_MaintenanceCompanyLookUp" FromRole="MaintenanceCompany" ToRole="MaintenanceCompanyLookUp" />
         </EntityType>
         <EntityType Name="MaintenanceTeam">
@@ -5942,7 +5940,6 @@
           <EntitySetMapping Name="MaintenanceCompanies">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCompany">
               <MappingFragment StoreEntitySet="MaintenanceCompany">
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
@@ -6357,7 +6354,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingShowingCalendar" Width="1.5" PointX="18.375" PointY="26.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistPendingTeamInvitation" Width="1.5" PointX="27.375" PointY="0.75" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeamAssociation" Width="1.875" PointX="20.375" PointY="26.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompany" Width="2.125" PointX="27.375" PointY="3.75" Height="4.8648079427083335" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompany" Width="2.125" PointX="27.375" PointY="3.75" Height="4.6725065104166656" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceTeam" Width="2.125" PointX="27.375" PointY="9.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanyLookUp" Width="2.125" PointX="28.375" PointY="13.375" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCrew" Width="1.5" PointX="5.625" PointY="43.875" Height="1.5956835937499818" />
@@ -6367,9 +6364,9 @@
           <ConnectorPoint PointX="7.03125" PointY="43.875" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceCompany_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="30.0000005" PointY="13.375" />
-          <ConnectorPoint PointX="30.0000005" PointY="6.1824039713541659" />
-          <ConnectorPoint PointX="29.5" PointY="6.1824039713541659" />
+          <ConnectorPoint PointX="29.968747999999998" PointY="13.375" />
+          <ConnectorPoint PointX="29.968747999999998" PointY="6.0862532552083319" />
+          <ConnectorPoint PointX="29.5" PointY="6.0862532552083319" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.UnitExteriorAmenity" Width="1.5" PointX="27.625" PointY="55.375" Height="3.5186979166666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitExteriorAmenities_Unit" >
@@ -6392,9 +6389,9 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" Width="1.5" PointX="31" PointY="9" Height="3.9033007812499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceUtility" Width="1.5" PointX="31" PointY="28.375" Height="4.287903645833353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="30.28125275" PointY="13.375" />
-          <ConnectorPoint PointX="30.28125275" PointY="3.2401432291666605" />
-          <ConnectorPoint PointX="31" PointY="3.2401432291666605" />
+          <ConnectorPoint PointX="30.234374" PointY="13.375" />
+          <ConnectorPoint PointX="30.234374" PointY="3.2401432291666623" />
+          <ConnectorPoint PointX="31" PointY="3.2401432291666623" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" >
           <ConnectorPoint PointX="30.5" PointY="15.283333333333333" />

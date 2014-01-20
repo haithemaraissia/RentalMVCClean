@@ -22,6 +22,11 @@ namespace RentalMobile.Helpers
 
         }
 
+        public static string GetUserName()
+        {
+            var currentuser = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name);
+            return currentuser != null ? currentuser.ToString() : Login();
+        }
         public static Guid? GetUserGUID()
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
