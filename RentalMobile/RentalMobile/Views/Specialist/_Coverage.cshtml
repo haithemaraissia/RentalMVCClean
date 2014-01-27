@@ -1,0 +1,357 @@
+﻿@using RentalMobile.Helpers
+@model RentalMobile.ModelViews.SpecialistMaintenanceProfile
+{
+<div id="Specialization">
+    <h4 class="section-titling" style="position: relative; width: 200px; padding: 0;
+        right: 0">
+        Specialization</h4>
+    <br />
+    <div class="seven columns push by-one " id="specialization">
+        <ul class="arrow">
+            @if (Model.MaintenanceCompanySpecialization.NumberofEmployee != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.NumberofEmployee)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Air_Conditioning)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Air_Conditioning)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Electrical)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Electrical)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Kitchen_Remodeling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Kitchen_Remodeling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Architects)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Architects)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Flooring)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Flooring)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Landscaping)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Landscaping)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Asphalt_Paving)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Asphalt_Paving)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.General_Contracting)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.General_Contracting)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Painting)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Painting)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Basement_Finishing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Basement_Finishing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Handyman_Services)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Handyman_Services)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Plumbing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Plumbing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Bathroom_Remodeling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Bathroom_Remodeling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Heating)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Heating)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Roofing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Roofing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Concrete)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Concrete)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Addition_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Addition_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Siding)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Siding)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Deck_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Deck_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Tiling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Tiling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.IsInsured)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.IsInsured)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Rate < 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate)
+                    @if (Model.MaintenanceCompanySpecialization.CurrencyID != 0)
+                    {
+                        Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID);
+                    }
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.CurrencyID != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.CurrencyID)
+                </li>
+            }
+        </ul>
+    </div>
+
+
+    
+    
+    
+    
+    
+    <div class="seven columns push by-one " id="specialization">
+        <ul class="arrow">
+            @if (Model.MaintenanceCompanySpecialization.NumberofEmployee != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.NumberofEmployee)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Air_Conditioning)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Air_Conditioning)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Electrical)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Electrical)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Kitchen_Remodeling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Kitchen_Remodeling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Architects)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Architects)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Flooring)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Flooring)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Landscaping)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Landscaping)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Asphalt_Paving)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Asphalt_Paving)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.General_Contracting)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.General_Contracting)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Painting)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Painting)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Basement_Finishing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Basement_Finishing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Handyman_Services)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Handyman_Services)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Plumbing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Plumbing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Bathroom_Remodeling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Bathroom_Remodeling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Heating)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Heating)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Roofing)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Roofing)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Concrete)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Concrete)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Addition_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Addition_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Siding)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Siding)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Deck_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Deck_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Tiling)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Tiling)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.IsInsured)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.IsInsured)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Rate < 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate)
+                    @if (Model.MaintenanceCompanySpecialization.CurrencyID != 0)
+                    {
+                        Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID);
+                    }
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.Home_Construction)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction)
+                </li>
+            }
+            @if (Model.MaintenanceCompanySpecialization.CurrencyID != 0)
+            {
+                <li>
+                    @Html.LabelFor(m => m.MaintenanceCompanySpecialization.CurrencyID)
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+} 

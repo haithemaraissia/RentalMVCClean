@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Models;
 
@@ -10,12 +6,12 @@ namespace RentalMobile.Controllers
 {
     public class AgentProfileController : Controller
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
 
         public ViewResult Index(int id)
         {
-            var agent = db.Agents.Find(UserHelper.GetAgentID(id));
+            var agent = _db.Agents.Find(UserHelper.GetAgentID(id));
             ViewBag.agentProfile = agent;
             ViewBag.agentId = agent.AgentId;
             ViewBag.agentGoogleMap = agent.GoogleMap;
@@ -24,7 +20,7 @@ namespace RentalMobile.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

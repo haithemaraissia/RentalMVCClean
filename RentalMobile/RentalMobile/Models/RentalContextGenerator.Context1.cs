@@ -22,6 +22,8 @@ namespace RentalMobile.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+           // modelBuilder.Entity<DB_33736_rentalEntities>();
+
             throw new UnintentionalCodeFirstException();
         }
     

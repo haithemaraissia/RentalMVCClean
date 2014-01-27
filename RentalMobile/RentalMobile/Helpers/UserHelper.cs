@@ -7,7 +7,6 @@ using System.Web.WebPages;
 using Newtonsoft.Json;
 using RentalMobile.Models;
 
-
 namespace RentalMobile.Helpers
 {
     public static class UserHelper
@@ -175,6 +174,37 @@ namespace RentalMobile.Helpers
             return GetFormattedAdress(ValidateLocation(address) ? address : "USA");
         }
 
+        public static string TenantPhotoPath = "~/Photo/Tenant/Property";
+        public static string OwnerPhotoPath = "~/Photo/Owner/Property";
+        public static string AgentPhotoPath = "~/Photo/Agent/Property";
+        public static string ProviderPhotoPath = "~/Photo/Provider/Property";
+        public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
+        public static string GetCurrentRole(out string photoPath)
+        {
+            var user = System.Web.HttpContext.Current.User;
+            if (user.IsInRole("Tenant"))
+            {
+                photoPath = HttpContext.Current.Server.MapPath(TenantPhotoPath);
+                return "Tenant";
+            }
+            if (user.IsInRole("Owner"))
+            {
+                photoPath = HttpContext.Current.Server.MapPath(OwnerPhotoPath);
+                return "Owner";
+            }
+            if (user.IsInRole("Agent"))
+            {
+                photoPath = HttpContext.Current.Server.MapPath(AgentPhotoPath);
+            }
+            if (user.IsInRole("Provider"))
+            {
+                photoPath = HttpContext.Current.Server.MapPath(ProviderPhotoPath);
+                return "Provider";
+            }
+
+            photoPath = HttpContext.Current.Server.MapPath(SpecialistPhotoPath);
+            return user.IsInRole("Specialist") ? "Specialist" : null;
+        }
 
 
         public static class UrlHelperExtension

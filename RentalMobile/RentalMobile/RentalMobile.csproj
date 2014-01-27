@@ -132,9 +132,7 @@
     <Compile Include="Controllers\AddTeamMemberController.cs" />
     <Compile Include="Controllers\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
-    <Compile Include="Controllers\ProviderProfileController.cs" />
     <Compile Include="Controllers\RemoveTeamMemberController.cs" />
-    <Compile Include="Controllers\SpecialistProfileController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -390,7 +388,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LandlordController.cs" />
     <Compile Include="Controllers\MaintainController.cs" />
     <Compile Include="Controllers\MaintenanceOrderController.cs" />
     <Compile Include="Controllers\MaintenancePhotoGalleryController.cs" />
@@ -406,13 +403,13 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
-    <Compile Include="Controllers\RATestController.cs" />
+    <Compile Include="BackUp\Controllers\RATestController.cs" />
     <Compile Include="Controllers\RentalApplicationController.cs" />
     <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Controllers\SpecialistController.cs" />
     <Compile Include="Controllers\SpecialistsController.cs" />
     <Compile Include="Controllers\TenantController.cs" />
-    <Compile Include="Controllers\TenantFavoriteController.cs" />
+    <Compile Include="BackUp\Controllers\TenantFavoriteController.cs" />
     <Compile Include="Controllers\TenantMaintenanceController.cs" />
     <Compile Include="Controllers\TenantProfileController.cs" />
     <Compile Include="Controllers\TenantRentalApplicationController.cs" />
@@ -990,7 +987,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
@@ -1195,7 +1191,6 @@
     <Content Include="Views\Specialist\Edit.cshtml" />
     <Content Include="Views\Specialist\Index.cshtml" />
     <Content Include="Views\Specialist\_ProfileDetail.cshtml" />
-    <Content Include="Views\TenantFavorite\Delete.cshtml" />
     <Content Include="Views\TenantMaintenance\Create.cshtml" />
     <Content Include="Views\TenantMaintenance\Delete.cshtml" />
     <Content Include="Views\TenantMaintenance\Details.cshtml" />
@@ -1238,11 +1233,11 @@
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantMiniTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_TenantBigTabMenu.cshtml" />
     <Content Include="Views\RentalApplication\Index.cshtml" />
-    <Content Include="Views\RATest\Index.cshtml" />
-    <Content Include="Views\RATest\Details.cshtml" />
-    <Content Include="Views\RATest\Create.cshtml" />
-    <Content Include="Views\RATest\Edit.cshtml" />
-    <Content Include="Views\RATest\Delete.cshtml" />
+    <Content Include="BackUp\View\RATest\Index.cshtml" />
+    <Content Include="BackUp\View\RATest\Details.cshtml" />
+    <Content Include="BackUp\View\RATest\Create.cshtml" />
+    <Content Include="BackUp\View\RATest\Edit.cshtml" />
+    <Content Include="BackUp\View\RATest\Delete.cshtml" />
     <Content Include="Views\RentalApplication\Details.cshtml" />
     <Content Include="Views\RentalApplication\Create.cshtml" />
     <Content Include="Views\RentalApplication\Delete.cshtml" />
@@ -1301,8 +1296,6 @@
     <Content Include="Views\Unit\Delete.cshtml" />
     <Content Include="Views\Shared\Menu\_ProviderBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\_ProviderMiniTabMenu.cshtml" />
-    <Content Include="Views\ProviderProfile\Index.cshtml" />
-    <Content Include="Views\SpecialistProfile\Index.cshtml" />
     <Content Include="Views\Unit\ToDelete\_PropertyPhoto.cshtml" />
     <Content Include="Views\Unit\ToDelete\_Test.cshtml" />
     <Content Include="Views\Unit\ToDelete\ViewUserControl2.cshtml" />
@@ -1319,7 +1312,7 @@
     <Content Include="Views\Provider\CompleteProfile.cshtml" />
     <Content Include="Views\Provider\_Partial2.cshtml" />
     <Content Include="Views\Specialist\CompleteProfile.cshtml" />
-    <Content Include="Views\Specialist\_Partial2.cshtml" />
+    <Content Include="Views\Specialist\_UploadPhoto.cshtml" />
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\UserMailer\PasswordReset.cshtml" />
@@ -1385,6 +1378,13 @@
     <Content Include="Views\Provider\SelectTeam.cshtml" />
     <Content Include="Views\Provider\InviteTeamMember.cshtml" />
     <Content Include="Views\Deletethis.cshtml" />
+    <Content Include="Views\Test\Delete5.cshtml" />
+    <Content Include="Views\Specialist\_Coverage.cshtml" />
+    <Content Include="Views\TenantFavorite\Index.cshtml" />
+    <Content Include="Views\TenantFavorite\Details.cshtml" />
+    <Content Include="Views\TenantFavorite\Create.cshtml" />
+    <Content Include="Views\TenantFavorite\Edit.cshtml" />
+    <Content Include="Views\TenantFavorite\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -1397,9 +1397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_LogOnPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\M\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\M\Register.cshtml" />
