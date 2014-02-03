@@ -481,7 +481,24 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
+    <Content Include="bin\AdControl.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\Facebook.dll" />
+    <Content Include="bin\Facebook.xml" />
+    <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\itextsharp.dll" />
     <Content Include="bin\Mvc.Mailer.dll" />
+    <Content Include="bin\MvcJqGrid.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\PagedList.dll" />
+    <Content Include="bin\plUploadHandler.dll" />
+    <Content Include="bin\plUploadHandler.pdb" />
+    <Content Include="bin\Postal.dll" />
+    <Content Include="bin\RazorEngine.dll" />
+    <Content Include="bin\RazorEngine.pdb" />
+    <Content Include="bin\RazorEngine.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -1023,6 +1040,9 @@
     <Content Include="BackUp\View\Unit\Edit.cshtml" />
     <Content Include="BackUp\View\Unit\Index.cshtml" />
     <Content Include="BackUp\View\UnitDetail\Index.cshtml" />
+    <None Include="bin\AdControl.dll.refresh" />
+    <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
+    <None Include="bin\itextsharp.dll.refresh" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />
     <None Include="css\dotcss\entypo\entypo.ttf" />

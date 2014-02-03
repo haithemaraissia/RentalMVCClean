@@ -2,7 +2,11 @@
 @using RentalMobile.Models
 @model RentalMobile.ModelViews.SpecialistMaintenanceProfile
 
-@functions {private bool CheckifAtLeastOnePropertyisTrue(Type t)
+@functions {
+
+
+
+private bool CheckifAtLeastOnePropertyisTrue2(Type t)
             
 {
                 var atleastoneAttribute = false;
@@ -18,12 +22,47 @@
                     
                     
                     
-                     t .GetProperties()
-                                      .Select(prop => prop.GetValue(Model.MaintenanceExterior, null))
-                                      .Where(value => value is bool && value.Equals(true)))
+                     //t .GetProperties()
+                     //                 .Select(prop => prop.GetValue(Model.MaintenanceExterior, null))
+                     //                 .Where(value => value is bool && value.Equals(true)))
                 }
                 return atleastoneAttribute;
             }
+
+
+
+
+
+
+private bool CheckifAtLeastOnePropertyisTrue(object t)
+{
+   // var atleastoneAttribute = false;
+
+
+    return t.GetType().GetProperties()
+        .Select(prop => prop.GetValue(t, null))
+        .Any(value => value is bool && value.Equals(true));
+
+        
+        
+        
+    //foreach (var value in t.GetType().GetProperties()
+    //                      .Select(prop => prop.GetValue(t, null))
+    //                      .Where(value => value is bool && value.Equals(true)))
+    //{
+    //    atleastoneAttribute = true;
+
+
+
+    //    //t .GetProperties()
+    //    //                 .Select(prop => prop.GetValue(Model.MaintenanceExterior, null))
+    //    //                 .Where(value => value is bool && value.Equals(true)))
+    //}
+    //return atleastoneAttribute;
+}        
+            
+            
+            
             
 }
 {
@@ -154,8 +193,8 @@
        
              
             @{
-                MaintenanceExterior ModelAttribute;
-                var atleastoneAttribute = CheckifAtLeastOnePropertyisTrue(out ModelAttribute);
+                MaintenanceExterior modelAttribute;
+                var atleastoneAttribute = CheckifAtLeastOnePropertyisTrue(Model.MaintenanceExterior);
             } 
             <p>Printing Value  = @atleastoneAttribute</p>
         </ul>
