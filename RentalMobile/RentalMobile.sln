@@ -3,26 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile", "RentalMobile\RentalMobile.csproj", "{7E67FC65-FF32-43FA-875C-401948AAA097}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Westwind.plUploadHandler", "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\", "{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/Westwind.plUploadHandler"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Westwind.plUploadHandler\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Westwind.plUploadHandler"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Rental\RentalMVC2010\Westwind.plUploadHandler\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Westwind.plUploadHandler\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "56185"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobileBaseLine", "RentalMobileBaseLine\RentalMobileBaseLine.csproj", "{A6C30E1A-56CD-4978-A7AC-DC8250E4173C}"
@@ -49,10 +29,6 @@ Global
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E67FC65-FF32-43FA-875C-401948AAA097}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AB69D0F-D19D-4A5E-91BB-F15907930AFD}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}.Release|Any CPU.ActiveCfg = Release|Any CPU
