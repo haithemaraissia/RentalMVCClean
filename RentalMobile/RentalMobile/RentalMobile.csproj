@@ -484,7 +484,9 @@
     <Content Include="bin\AdControl.dll" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\Facebook.dll" />
-    <Content Include="bin\Facebook.xml" />
+    <Content Include="bin\Facebook.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
     <Content Include="bin\itextsharp.dll" />
     <Content Include="bin\Mvc.Mailer.dll" />
@@ -496,7 +498,9 @@
     <Content Include="bin\Postal.dll" />
     <Content Include="bin\RazorEngine.dll" />
     <Content Include="bin\RazorEngine.pdb" />
-    <Content Include="bin\RazorEngine.xml" />
+    <Content Include="bin\RazorEngine.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\System.Web.Razor.dll" />
     <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="Content\fullcalendar.css" />

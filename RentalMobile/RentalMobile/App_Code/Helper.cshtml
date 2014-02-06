@@ -1,5 +1,10 @@
 ﻿@using System.Globalization
 @using RentalMobile.Helpers
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+
+
+
 @functions {
 
     public static string GetVideo()
@@ -23,15 +28,87 @@
         }
         return videourl;
     }
+
     public static string GetPoserRole()
     {
         return Model.Unit.PosterRole != null ? Model.Unit.PosterRole.ToUpper() : "OWNER";
 
     }
+
     public static string GetPrimaryPhoto()
     {
 
         return String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.png" : Model.Unit.PrimaryPhoto;
 
     }
+
+
+
+    /// <summary>
+    /// Functions for Specialist Coverage
+    /// </summary>
+
+    public static int Itemcount;
+
+    public static bool CheckifAtLeastOnePropertyisTrue2(Type t)
+    {
+        var atleastoneAttribute = false;
+        foreach (var value in t.GetProperties()
+                               .Select(prop => prop.GetValue(Model.MaintenanceExterior, null))
+                               .Where(value => value is bool && value.Equals(true)))
+        {
+            atleastoneAttribute = true;
+        }
+        return atleastoneAttribute;
+    }
+
+
+    public static bool CheckifAtLeastOnePropertyisTrue(object t)
+    {
+        return t.GetType().GetProperties()
+                .Select(prop => prop.GetValue(t, null))
+                .Any(value => value is bool && value.Equals(true));
+    }
+
+    private static new HtmlHelper<object> Html
+    {
+        get { return ((WebViewPage)CurrentPage).Html; }
+    }
+
+    private static UrlHelper Url
+    {
+        get { return ((WebViewPage)CurrentPage).Url; }
+    }
 }
+@*    /// <summary>
+      /// Begining Helper for Specialist Coverage
+      /// </summary>
+*@
+@helper EmptyAttributesHtml()
+    {
+    
+    @SplitList()<li>No Coverage</li>
+}
+@helper SplitingAttributesListHtml(int itemcount)
+    {
+        if (itemcount != 5)
+        {
+            return;
+        }
+        const string newslisthtmlraw = @"<ul/></div><div class='six columns push by-one '><ul class='arrow'>";
+    @Html.Raw(newslisthtmlraw)
+    @ResetItemCount()
+}
+@helper SplitList()
+    {
+    Itemcount++;
+    @SplitingAttributesListHtml(Itemcount)
+}
+@helper  ResetItemCount()
+    {
+    Itemcount = 0;
+}
+@*    /// <summary>
+      /// End Helper for Specialist Coverage
+      /// </summary>
+*@ 
