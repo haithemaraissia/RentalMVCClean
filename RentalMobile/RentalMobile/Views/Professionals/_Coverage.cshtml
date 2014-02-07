@@ -1,8 +1,8 @@
 ﻿@using RentalMobile.Helpers
 @model RentalMobile.ModelViews.SpecialistMaintenanceProfile
 <div id="Exteriors">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Exteriors</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        Exteriors</h4>
     <div class="six columns push by-one " id="exterior">
         <ul class="arrow">
             @{
@@ -68,7 +68,8 @@
                 if (Model.MaintenanceExterior.Lawn_Care)
                 {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Lawn_Care, "Lawn Care") </li>
+                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Lawn_Care, "Lawn Care")
+                </li>
                 }
                 if (Model.MaintenanceExterior.Masonry_and_Brick_Work)
                 {
@@ -119,7 +120,8 @@
                 if (Model.MaintenanceExterior.Tree_Service)
                 {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Tree_Service, "Tree Service") </li>
+                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Tree_Service, "Tree Service")
+                </li>
                 }
                 if (Model.MaintenanceExterior.Waterproofing)
                 {
@@ -148,8 +150,9 @@
 <div class="clear">
 </div>
 <div id="Interiors">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Interiors</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        Interiors</h4>
+   
     <div class="seven columns push by-one " id="interior">
         <ul class="arrow">
             @Helper.ResetItemCount()
@@ -203,7 +206,8 @@
             @if (Model.MaintenanceInterior.Counter_Tops)
             {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Counter_Tops, "Counter Tops") </li>
+                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Counter_Tops, "Counter Tops")
+                </li>
             }
             @if (Model.MaintenanceInterior.Remodeling)
             {
@@ -334,22 +338,23 @@
 <div class="clear">
 </div>
 <div id="Specialization">
-    <h3 class="section-titling" style="position: relative; color: #346993; width: 200px;
+    <h4 class="section-titling" style="position: relative; color: #346993; width: 200px;
         padding: 0; right: 0">
-        Specialization</h3><br/>
+        Specialization</h4>
+   
     <div class="seven columns push by-one " id="specialization">
         <ul class="arrow">
             @Helper.ResetItemCount()
             @if (Model.MaintenanceCompanySpecialization.NumberofEmployee != 0)
             {
-                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofEmployee Employee</span>
-                </li>
+                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofEmployee
+                    Employee</span> </li>
             }
             @if (Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee != 0)
             {
 
-                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee Certifited Employee</span>
-                </li>
+                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee
+                    Certifited Employee</span> </li>
             }
             @if (Model.MaintenanceCompanySpecialization.Air_Conditioning)
             {
@@ -483,10 +488,10 @@
                 @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.IsInsured, "Insured")
                 </li>
             }
-            
             @if (Model.MaintenanceCompanySpecialization.Rate < 0 && Model.MaintenanceCompanySpecialization.CurrencyID != 0)
             {
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate) @Model.MaintenanceCompanySpecialization.Rate @Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID)</li>
+                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate)
+                    @Model.MaintenanceCompanySpecialization.Rate @Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID)</li>
             }
             @Helper.ResetItemCount()
             @{
@@ -501,8 +506,9 @@
 <div class="clear">
 </div>
 <div id="MaintenanceandRepairs">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Maintenance and Repairs</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        Maintenance and Repairs</h4>
+   
     <div class="seven columns push by-one " id="MaintenanceandRepair">
         <ul class="arrow">
             @Helper.ResetItemCount()
@@ -651,8 +657,9 @@
 <div class="clear">
 </div>
 <div id="NewConstruction">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        New Construction</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        New Construction</h4>
+   
     <div class="seven columns push by-one " id="newconstructions">
         <ul class="arrow">
             @Helper.ResetItemCount()
@@ -747,8 +754,9 @@
 <div class="clear">
 </div>
 <div id="Utilities">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Utilities</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        Utilities</h4>
+   
     <div class="seven columns push by-one " id="utilities">
         <ul class="arrow">
             @Helper.ResetItemCount()
@@ -855,8 +863,9 @@
 <div class="clear">
 </div>
 <div id="CustomService">
-    <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Custom Service</h3><br/>
+    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+        Custom Service</h4>
+   
     <div class="seven columns push by-one " id="customservice">
         <ul class="arrow">
             @Helper.ResetItemCount()

@@ -1,0 +1,25 @@
+﻿@model RentalMobile.Models.Specialist
+
+<div class="seven columns">
+                <h4 style="color: #346993;">
+                    General Description</h4>
+                    <span>@Model.Description</span>
+            </div>
+ <div class="six columns push by-two">
+                <h4 style="color: #346993;">
+                    Recommendation</h4>
+                <ul class="arrow">
+                    <li>50% Approval</li>
+                </ul>
+                <h4 style="color: #346993;">
+                    Rate</h4>
+                <ul class="arrow">
+                    <li>@ViewBag.Rate  @ViewBag.Currency</li>
+                </ul>
+                <h4 style="color: #346993;">
+                    Zone</h4>
+                <ul class="arrow">
+                    <li>Overland Park - 66202</li>
+                    <li>Olathe - 66203</li>
+                </ul>
+            </div>

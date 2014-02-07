@@ -1403,6 +1403,8 @@
     <Content Include="Views\TenantFavorite\Create.cshtml" />
     <Content Include="Views\TenantFavorite\Edit.cshtml" />
     <Content Include="Views\TenantFavorite\Delete.cshtml" />
+    <Content Include="Views\Professionals\_Coverage.cshtml" />
+    <Content Include="Views\Professionals\_Description.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
