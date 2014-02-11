@@ -9,6 +9,7 @@ using System.Web.Security;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using PagedList;
 
 namespace RentalMobile.Controllers
 {
@@ -376,10 +377,12 @@ namespace RentalMobile.Controllers
         //********************************************PROVIDER Tab Function****************************************************
         //*********************************************************************************************************************
 
-        public ActionResult ProviderInvitation()
+        public ActionResult ProviderInvitation(int page = 1)
         {
             var specialistId = UserHelper.GetSpecialistID();
-            return specialistId == null ? null : View(Db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).ToList());
+            return specialistId == null ? null : View(
+                Db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).OrderBy(x=>x.SpecialistID).
+                ToPagedList(page, 10 ));
         }
 
         public ActionResult AcceptInvitation(int id)

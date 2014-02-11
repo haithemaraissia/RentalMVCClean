@@ -1,30 +1,19 @@
-﻿@using System.Globalization
+﻿@*@using PagedList.Mvc*@
+@using PagedList.Mvc
 @using RentalMobile.Helpers
-@model List<RentalMobile.Models.SpecialistPendingTeamInvitation>
+@model PagedList.IPagedList<RentalMobile.Models.SpecialistPendingTeamInvitation>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
 <section class="sixteen columns">
     <h2 class="remove-top">
-        PROPERTY</h2>
-    <!-- filters -->
+        List of Providers</h2>
     <form action="#" class="row">
-        <!-- tag filters -->
-        <ul class="filter-list ten alpha columns row">
-            <li><a data-rel="all" class="current">All</a></li>
-            <li><a data-rel="house">House</a></li>
-            <li><a data-rel="duplex">Duplex</a></li>
-            <li><a data-rel="townhouse">Townhouse</a></li>
-            <li><a data-rel="apartment">Apartment</a></li>
-            <li><a data-rel="loft">Loft</a></li>
-            <li><a data-rel="office">Office</a></li>
-            <li><a data-rel="condo">Condo</a></li>
-        </ul>
-        <div class="switcher fr">
-            <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
-                                                                                         id="listview" class="switcher active"><i class="icon-menu"></i></a>
-        </div>
+    <div class="switcher fr">
+        <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+            id="listview" class="switcher active"><i class="icon-menu"></i></a>
+    </div>
     </form>
     <div id="showing" class="panel">
         <section class="fifteen columns">
@@ -32,6 +21,7 @@
             <ul id="property-list" class="list-grid-gallery list">
                 @foreach (var item in Model)
                 {
+
                     <li class="prop-type all ">
                         <article>
                             <figure class="five columns alpha">
@@ -41,38 +31,22 @@
                             </figure>
                             <div class="nine columns omega">
                                 <h4>
-                                   @* @item., @item.City, @item.State, @item.CountryCode*@</h4>
+                                </h4>
                                 <ul class="prop-data">
-                                    <li class="price">@*@Html.DisplayFor(modelItem => item.Price)*@</li>
-                                    @*@if (item.UnitPricing != null)
-                                    {
-                                        if (item.UnitPricing.Rent != null)
-                                        {
-                                            <li class="new">
-                                                @item.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture)
-                                                <span style="color: #346993">@Html.GetCurrencyValue(item.UnitPricing.CurrencyId)</span>
-                                            </li>
-                                        }
-                                    }*@
+                                    <li class="price"></li>
                                 </ul>
                                 <p class="prop-webid">
-                                   @* Unit ID #@Html.DisplayFor(modelItem => item.UnitId)*@</p>
+                                </p>
                                 <p class="propr-details">
-                                   @* @Html.GetBedValue(item.Bed) bedroom / @Html.GetBathroomValue(item.Bed) bathrom /
-                                    @item.SquareFoot sqft*@
                                 </p>
-                                <p class="prop-extract">@*@Html.TruncateLongString(item.Description, 500)*@
+                                <p class="prop-extract">
                                 </p>
-                               @* <ul class="toolbar">
-                                    <li>@Html.ActionLink("Select", "Preview", new { id = item.PendingTeamInvitationID })</li>
-                                </ul>
-                                *@
-                                  <div class="four columns" style="float: right; padding-right: 16px">
-                                <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Specialist/AcceptInvitation/@item.PendingTeamInvitationID'"/>
-                            </div>
-                            <div class="four columns" style="float: left;">
-                                <input type="submit" class="full-width tall" value="Deny" onclick="location.href='/Specialist/DenyInvitation/@item.PendingTeamInvitationID'"/>
-                            </div>
+                                <div class="four columns" style="float: right; padding-right: 16px">
+                                    <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Specialist/AcceptInvitation/@item.PendingTeamInvitationID'"/>
+                                </div>
+                                <div class="four columns" style="float: left;">
+                                    <input type="submit" class="full-width tall" value="Deny" onclick="location.href='/Specialist/DenyInvitation/@item.PendingTeamInvitationID'"/>
+                                </div>
                             </div>
                         </article>
                     </li>
@@ -85,7 +59,6 @@
                     width: 100%;
                     text-align: center;
                 }
-                
                 #left
                 {
                     float: left;
@@ -93,7 +66,6 @@
                     height: 20px;
                     background: #ff0000;
                 }
-                
                 #center
                 {
                     display: inline-block;
@@ -102,8 +74,8 @@
                     height: 20px;
                     background: #00ff00;
                 }
-                
                 #right
+                
                 {
                     float: right;
                     width: 50px;
@@ -112,7 +84,12 @@
                 }
             </style>
         </section>
-        <section class="fifteen columns">
+   <section class="fifteen columns">
+                 <div class="pagedList" data-otf-target="#restaurantList">
+       @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }),
+       PagedListRenderOptions.MinimalWithItemCountText)
+   </div>
+
             <!--Pagination-->
             <div id="container">
                 <div id="left">
@@ -126,22 +103,17 @@
         </section>
     </div>
 </section>
-
-
-
 <section class="sixteen columns" id="DesignDecision">
     <h2>
         Property</h2>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table>
         @foreach (var item in Model)
         {
+
             <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PendingTeamInvitationID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PendingTeamInvitationID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PendingTeamInvitationID }) | @*        @Html.ActionLink("Details", "Details", new { id = item.PendingTeamInvitationID }) |
+*@
                     @Html.ActionLink("Delete", "Delete", new { id = item.PendingTeamInvitationID })
                 </td>
             </tr>
@@ -196,3 +168,68 @@
 <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
 <!-- Custom Scripts -->
 <script src="../../Scripts/js/scripts.js" type="text/javascript"></script>
+
+<script>
+
+//    var ajaxFormSubmit = function () {
+//        var $form = $(this);
+
+//        var options = {
+//            url: $form.attr("action"),
+//            type: $form.attr("method"),
+//            data: $form.serialize()
+//        };
+
+//        $.ajax(options).done(function (data) {
+//            var $target = $($form.attr("data-otf-target"));
+//            var $newHtml = $(data);
+//            $target.replaceWith($newHtml);
+//            $newHtml.effect("highlight");
+//        });
+
+//        return false;
+//    };
+
+//    var submitAutocompleteForm = function (event, ui) {
+
+//        var $input = $(this);
+//        $input.val(ui.item.label);
+
+//        var $form = $input.parents("form:first");
+//        $form.submit();
+//    };
+
+//    var createAutocomplete = function () {
+//        var $input = $(this);
+
+//        var options = {
+//            source: $input.attr("data-otf-autocomplete"),
+//            select: submitAutocompleteForm
+//        };
+
+//        $input.autocomplete(options);
+//    };
+
+    var getPage = function () {
+        var $a = $(this);
+
+        var options = {
+            url: $a.attr("href"),
+            data: $("form").serialize(),
+            type: "get"
+        };
+
+        $.ajax(options).done(function (data) {
+            var target = $a.parents("div.pagedList").attr("data-otf-target");
+            $(target).replaceWith(data);
+        });
+        return false;
+
+    };
+
+//    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
+//    $("input[data-otf-autocomplete]").each(createAutocomplete);
+
+    $(".main-content").on("click", ".pagedList a", getPage);
+    $("#container").on("click", ".pagedList a", getPage);
+</script>

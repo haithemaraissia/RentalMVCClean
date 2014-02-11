@@ -58,9 +58,12 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PagedList, Version=1.15.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\PagedList.dll</HintPath>
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\Helper\bin\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="plUploadHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -492,7 +495,12 @@
     <Content Include="bin\Mvc.Mailer.dll" />
     <Content Include="bin\MvcJqGrid.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\PagedList.dll" />
+    <Content Include="bin\PagedList.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\PagedList.Mvc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="bin\plUploadHandler.dll" />
     <Content Include="bin\plUploadHandler.pdb" />
     <Content Include="bin\Postal.dll" />
