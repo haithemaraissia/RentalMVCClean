@@ -75,7 +75,6 @@
                     background: #00ff00;
                 }
                 #right
-                
                 {
                     float: right;
                     width: 50px;
@@ -84,12 +83,28 @@
                 }
             </style>
         </section>
-   <section class="fifteen columns">
-                 <div class="pagedList" data-otf-target="#restaurantList">
-       @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }),
-       PagedListRenderOptions.MinimalWithItemCountText)
-   </div>
+        <section class="fifteen columns">
+            <div class="pagedList" data-otf-target="#restaurantList">
+                @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }),  new PagedListRenderOptions
+                                             {
+                                                 DisplayLinkToFirstPage = false,
+                                                 DisplayLinkToLastPage = false,
+                                                 DisplayLinkToPreviousPage = true,
+                                                 DisplayLinkToNextPage = true,
+                                                 DisplayLinkToIndividualPages = false,
+                                                 ContainerDivClasses = null,
+                                                 UlElementClasses = new[] { "pager" },
+                                                 ClassToApplyToFirstListItemInPager = "previous",
+                                                 ClassToApplyToLastListItemInPager = "next",
+                                                 LinkToPreviousPageFormat = "&larr; Older",
+                                                 LinkToNextPageFormat = "Newer &rarr;",
+                                                 DisplayPageCountAndCurrentLocation = true
+                                                 
+                                             })
 
+
+               
+            </div>
             <!--Pagination-->
             <div id="container">
                 <div id="left">
@@ -168,47 +183,46 @@
 <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
 <!-- Custom Scripts -->
 <script src="../../Scripts/js/scripts.js" type="text/javascript"></script>
-
 <script>
 
-//    var ajaxFormSubmit = function () {
-//        var $form = $(this);
+    //    var ajaxFormSubmit = function () {
+    //        var $form = $(this);
 
-//        var options = {
-//            url: $form.attr("action"),
-//            type: $form.attr("method"),
-//            data: $form.serialize()
-//        };
+    //        var options = {
+    //            url: $form.attr("action"),
+    //            type: $form.attr("method"),
+    //            data: $form.serialize()
+    //        };
 
-//        $.ajax(options).done(function (data) {
-//            var $target = $($form.attr("data-otf-target"));
-//            var $newHtml = $(data);
-//            $target.replaceWith($newHtml);
-//            $newHtml.effect("highlight");
-//        });
+    //        $.ajax(options).done(function (data) {
+    //            var $target = $($form.attr("data-otf-target"));
+    //            var $newHtml = $(data);
+    //            $target.replaceWith($newHtml);
+    //            $newHtml.effect("highlight");
+    //        });
 
-//        return false;
-//    };
+    //        return false;
+    //    };
 
-//    var submitAutocompleteForm = function (event, ui) {
+    //    var submitAutocompleteForm = function (event, ui) {
 
-//        var $input = $(this);
-//        $input.val(ui.item.label);
+    //        var $input = $(this);
+    //        $input.val(ui.item.label);
 
-//        var $form = $input.parents("form:first");
-//        $form.submit();
-//    };
+    //        var $form = $input.parents("form:first");
+    //        $form.submit();
+    //    };
 
-//    var createAutocomplete = function () {
-//        var $input = $(this);
+    //    var createAutocomplete = function () {
+    //        var $input = $(this);
 
-//        var options = {
-//            source: $input.attr("data-otf-autocomplete"),
-//            select: submitAutocompleteForm
-//        };
+    //        var options = {
+    //            source: $input.attr("data-otf-autocomplete"),
+    //            select: submitAutocompleteForm
+    //        };
 
-//        $input.autocomplete(options);
-//    };
+    //        $input.autocomplete(options);
+    //    };
 
     var getPage = function () {
         var $a = $(this);
@@ -227,8 +241,8 @@
 
     };
 
-//    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
-//    $("input[data-otf-autocomplete]").each(createAutocomplete);
+    //    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
+    //    $("input[data-otf-autocomplete]").each(createAutocomplete);
 
     $(".main-content").on("click", ".pagedList a", getPage);
     $("#container").on("click", ".pagedList a", getPage);

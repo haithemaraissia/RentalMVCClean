@@ -148,6 +148,8 @@
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
+    <Compile Include="Helpers\PagedListRenderOptions.cs" />
+    <Compile Include="Helpers\PageListDisplayMode.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
@@ -598,6 +600,7 @@
     <Content Include="css\dotcss\lato\Lato-Lig-webfont.svg" />
     <Content Include="css\dotcss\layout.css" />
     <Content Include="css\dotcss\nivo-slider.css" />
+    <Content Include="css\dotcss\PagedList.css" />
     <Content Include="css\dotcss\skeleton.css" />
     <Content Include="css\dotcss\tipsy.css" />
     <Content Include="css\dotcss\ui\jquery-ui.css" />
