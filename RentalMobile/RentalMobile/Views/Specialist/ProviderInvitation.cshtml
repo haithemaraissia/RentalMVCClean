@@ -1,5 +1,4 @@
-﻿@*@using PagedList.Mvc*@
-@using PagedList.Mvc
+﻿@using PagedList.Mvc
 @using RentalMobile.Helpers
 @model PagedList.IPagedList<RentalMobile.Models.SpecialistPendingTeamInvitation>
 @{
@@ -15,7 +14,39 @@
             id="listview" class="switcher active"><i class="icon-menu"></i></a>
     </div>
     </form>
-    <div id="showing" class="panel">
+    <div id="showing" class="panel" data-otf-target="#restaurantList">
+        
+                <section class="fifteen columns">
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }),  new PagedListRenderOptions
+                    {
+                        DisplayLinkToFirstPage = false,
+                        DisplayLinkToLastPage = false,
+                        DisplayLinkToPreviousPage = true,
+                        DisplayLinkToNextPage = true,
+                        DisplayLinkToIndividualPages = false,
+                        ContainerDivClasses = null,
+                        UlElementClasses = new[] { "pager" },
+                        ClassToApplyToFirstListItemInPager = "previous",
+                        ClassToApplyToLastListItemInPager = "next",
+                        LinkToPreviousPageFormat = "&larr; Older",
+                        LinkToNextPageFormat = "Newer &rarr;",
+                        DisplayPageCountAndCurrentLocation = true
+                                                 
+                    })
+            </div>
+            <!--Pagination-->
+            <div id="container">
+                <div id="left">
+                    Previous</div>
+                <div id="center">
+                    Page 1 of 10</div>
+                <div id="right">
+                    Next</div>
+            </div>
+            <!--Pagination-->
+        </section>
+
         <section class="fifteen columns">
             <!-- List/Grid gallery -->
             <ul id="property-list" class="list-grid-gallery list">
@@ -84,26 +115,23 @@
             </style>
         </section>
         <section class="fifteen columns">
-            <div class="pagedList" data-otf-target="#restaurantList">
+            <div>
                 @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }),  new PagedListRenderOptions
-                                             {
-                                                 DisplayLinkToFirstPage = false,
-                                                 DisplayLinkToLastPage = false,
-                                                 DisplayLinkToPreviousPage = true,
-                                                 DisplayLinkToNextPage = true,
-                                                 DisplayLinkToIndividualPages = false,
-                                                 ContainerDivClasses = null,
-                                                 UlElementClasses = new[] { "pager" },
-                                                 ClassToApplyToFirstListItemInPager = "previous",
-                                                 ClassToApplyToLastListItemInPager = "next",
-                                                 LinkToPreviousPageFormat = "&larr; Older",
-                                                 LinkToNextPageFormat = "Newer &rarr;",
-                                                 DisplayPageCountAndCurrentLocation = true
+                    {
+                        DisplayLinkToFirstPage = false,
+                        DisplayLinkToLastPage = false,
+                        DisplayLinkToPreviousPage = true,
+                        DisplayLinkToNextPage = true,
+                        DisplayLinkToIndividualPages = false,
+                        ContainerDivClasses = null,
+                        UlElementClasses = new[] { "pager" },
+                        ClassToApplyToFirstListItemInPager = "previous",
+                        ClassToApplyToLastListItemInPager = "next",
+                        LinkToPreviousPageFormat = "&larr; Older",
+                        LinkToNextPageFormat = "Newer &rarr;",
+                        DisplayPageCountAndCurrentLocation = true
                                                  
-                                             })
-
-
-               
+                    })
             </div>
             <!--Pagination-->
             <div id="container">
@@ -117,6 +145,9 @@
             <!--Pagination-->
         </section>
     </div>
+    
+    
+    <div id="result"></div>
 </section>
 <section class="sixteen columns" id="DesignDecision">
     <h2>
@@ -234,8 +265,16 @@
         };
 
         $.ajax(options).done(function (data) {
-            var target = $a.parents("div.pagedList").attr("data-otf-target");
-            $(target).replaceWith(data);
+            //var target = $a.parents("div.pagedList").attr("data-otf-target");
+            //var target = $("div .panel").attr("data-otf-target");
+
+            var target = $("#showing");
+
+            //var target = $(".main");
+
+
+            $(target).empty().append($(data).find('#showing'));
+            //$(target).replaceWith(data);
         });
         return false;
 
@@ -246,4 +285,6 @@
 
     $(".main-content").on("click", ".pagedList a", getPage);
     $("#container").on("click", ".pagedList a", getPage);
+    // $(".main").on("click", ".pagedList a", getPage);
+    $(".main").on("click", ".pager li a", getPage);
 </script>
