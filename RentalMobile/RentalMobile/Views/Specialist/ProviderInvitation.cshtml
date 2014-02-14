@@ -2,22 +2,29 @@
 @using RentalMobile.Helpers
 @model PagedList.IPagedList<RentalMobile.Models.SpecialistPendingTeamInvitation>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Provider Invitation";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
 <section class="sixteen columns">
-    <h2 class="remove-top">
+    <h2 class="remove-top BlueHeadingNoMargin">
         List of Providers</h2>
-    <form action="#" class="row">
+    @if (Model.Count > 0)
+    {
+             
+         
+        <form action="#" class="row" style="margin: 0">
         <div class="switcher fr">
-            <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a>
-            <a href="#" id="listview" class="switcher active"><i class="icon-menu"></i></a>
+            <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+                id="listview" class="switcher active"><i class="icon-menu"></i></a>
         </div>
-    </form>
+        </form>
+    }
     <div id="showing" class="panel">
-        <section class="fifteen columns">
-            <div>
-                @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }), new PagedListRenderOptions
+        @if (Model.Count > 0)
+        {
+            <section class="fifteen columns">
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }), new PagedListRenderOptions
                     {
                         DisplayLinkToFirstPage = false,
                         DisplayLinkToLastPage = false,
@@ -33,34 +40,34 @@
                         DisplayPageCountAndCurrentLocation = true
 
                     })
-            </div>
-        </section>
-        <section class="fifteen columns">
-            <ul id="property-list" class="list-grid-gallery list">
-                @foreach (var item in Model)
-                {
-                    <li>
-                        <article>
-                            <figure class="five columns alpha">
-                                @Html.ActionLink("1", "Edit", new { id = item.PendingTeamInvitationID }, new { @class = "camera" })
-                                <img src="@Html.GetMaintenanceProviderPrimaryPhoto(item.MaintenanceProviderId)" class="scale-with-grid" width="280" height="185" alt="gallery" />
-                            </figure>
-                            <div class="nine columns omega">
-                                <div class="four columns" style="float: right; padding-right: 16px">
-                                    <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Specialist/AcceptInvitation/@item.PendingTeamInvitationID'"/>
+                </div>
+            </section>
+            <section class="fifteen columns">
+                <ul id="property-list" class="list-grid-gallery list">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <article>
+                                <figure class="five columns alpha">
+                                    <a href="../Providers/@item.MaintenanceProviderId" class="camera">1</a>
+                                    <img src="@Html.GetMaintenanceProviderPrimaryPhoto(item.MaintenanceProviderId)" class="scale-with-grid" width="280" height="185" alt="gallery" />
+                                </figure>
+                                <div class="nine columns omega">
+                                    <div class="four columns" style="float: right; padding-right: 16px">
+                                        <input type="submit" class="full-width tall" value="Confirm" onclick="location.href='/Specialist/AcceptInvitation/@item.PendingTeamInvitationID'"/>
+                                    </div>
+                                    <div class="four columns" style="float: left;">
+                                        <input type="submit" class="full-width tall" value="Deny" onclick="location.href='/Specialist/DenyInvitation/@item.PendingTeamInvitationID'"/>
+                                    </div>
                                 </div>
-                                <div class="four columns" style="float: left;">
-                                    <input type="submit" class="full-width tall" value="Deny" onclick="location.href='/Specialist/DenyInvitation/@item.PendingTeamInvitationID'"/>
-                                </div>
-                            </div>
-                        </article>
-                    </li>
-                }
-            </ul>
-        </section>
-        <section class="fifteen columns">
-            <div>
-                @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }), new PagedListRenderOptions
+                            </article>
+                        </li>
+                    }
+                </ul>
+            </section>
+            <section class="fifteen columns">
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("ProviderInvitation", new { page }), new PagedListRenderOptions
                     {
                         DisplayLinkToFirstPage = false,
                         DisplayLinkToLastPage = false,
@@ -76,15 +83,24 @@
                         DisplayPageCountAndCurrentLocation = true
 
                     })
-            </div>
-        </section>
+                </div>
+            </section>
+        }
+        else
+        {
+            <br/>
+            <p>
+                You have no invitations at this moment.</p>
+            <section class="row">
+                <div class="sixteen columns">
+                    <div class="five columns" style="float: right">
+                        <input type="submit" class="full-width tall" value="Ok" onclick="location.href='/Specialist'" />
+                    </div>
+                </div>
+            </section>
+        }
     </div>
 </section>
-
-
-
-
-
 @section scripts
 {
     <!-- Gallery switcher -->
@@ -94,6 +110,7 @@
 
         var getPage = function () {
             var $a = $(this);
+            var nexttarget = $a.parents().eq(5).attr("id");
 
             var options = {
                 url: $a.attr("href"),
@@ -102,22 +119,12 @@
             };
 
             $.ajax(options).done(function (data) {
-                var target = $("#showing");
-                $(target).empty().append($(data).find('#showing'));
+                var target = $a.parents().eq(5);
+                $(target).empty().append($(data).find('#' + nexttarget));
             });
             return false;
-
         };
+        //Enable/Disable Ajax onPaging
         $(".main").on("click", ".pager li a", getPage);
     </script>
 }
-
-
-
-
-
-
-<!-- TWO Issues left --!>
-@*-1-  @Html.ActionLink("1", "Edit", new { id = item.PendingTeamInvitationID } ; MachineKey it link to the provider
--2-Enable/ disable Ajax paging option.
-*@

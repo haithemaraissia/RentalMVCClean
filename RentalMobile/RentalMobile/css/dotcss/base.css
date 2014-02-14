@@ -138,6 +138,13 @@ h6
 {
     font-size: 13px;
 }
+.BlueHeadingNoMargin {
+   color: #346993;
+    margin: 0;
+}
+.BlueHeading {
+   color: #346993;
+}
 .subheader
 {
     color: #777;
@@ -524,4 +531,7 @@ label span, legend span
     margin-bottom: 40px !important;
 }
 
-
+.half-width {
+    width: 50%;
+    text-align: center;
+}

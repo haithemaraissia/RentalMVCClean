@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
@@ -434,16 +432,18 @@ namespace RentalMobile.Controllers
 
         }
 
-        public ActionResult CurrentProvider()
+        public ActionResult CurrentProvider(int page = 1)
         {
             var specialistId = UserHelper.GetSpecialistID();
-            return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
+            return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).OrderBy(x => x.SpecialistId).
+                ToPagedList(page, 10));
         }
 
-        public ActionResult ManageProvider()
+        public ActionResult ManageProvider(int page = 1)
         {
             var specialistId = UserHelper.GetSpecialistID();
-            return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).ToList());
+            return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).OrderBy(x => x.SpecialistId).
+                ToPagedList(page, 10));
         }
 
         public ActionResult RemoveTeamAssociation(int id)

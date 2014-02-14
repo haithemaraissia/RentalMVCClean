@@ -2,48 +2,43 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
-
     if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
     {
         ViewBag.Confirmation = false;
-        
     <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
         media="screen" />
-    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
-
-    @:<!-- jNotify -->
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
     <script language='javascript' type='text/javascript'>
             @Html.Raw(ViewBag.ConfirmationSuccess)
-
     </script>
-    }
-}
-@{
-    if (@Model != null)
-    {
+        if (@Model != null)
+        {
     <h2>
-        Confirmation of Association Approval</h2>
+        Confirmation of Association Acceptance</h2>
     <p>
-        By Clicking confirm, you approve your association with Team @Model.TeamName</p>
-    <p>
-        <h2>
-            JQuery Confirmation</h2>
-    </p>
+        By clicking confirm, you approve your association with Team @Model.TeamName</p>
+  
+        }
+
+        using (Html.BeginForm("AcceptInvitation", "Specialist", FormMethod.Post))
+        {
+    @Html.HiddenFor(m => m.PendingTeamInvitationID)
+    @Html.HiddenFor(m => m.TeamId)
+    @Html.HiddenFor(m => m.TeamName)
+    @Html.HiddenFor(m => m.MaintenanceProviderId)
+    @Html.HiddenFor(m => m.SpecialistID)
+
+    <section class="row">
+        <div class="sixteen columns">
+            <div class="seven columns" style="float: right">
+                <input type="submit" class="full-width tall" value="Confirm" />
+            </div>
+        </div>
+    </section>
+        }
 
 
-    <p>
-        FOR TESTING: SpecialistId = @Model.SpecialistID<br />
-        MaintenanceProviderID = @Model.MaintenanceProviderId<br />
-    </p>
     }
-}
-@using (Html.BeginForm("AcceptInvitation", "Specialist", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.PendingTeamInvitationID);
-    @Html.HiddenFor(m => m.TeamId);
-    @Html.HiddenFor(m => m.TeamName);
-    @Html.HiddenFor(m => m.MaintenanceProviderId);
-    @Html.HiddenFor(m => m.SpecialistID);
 
-    <input type="submit" class="full-width tall" value="Confirm" />
+
 }

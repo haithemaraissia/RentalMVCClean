@@ -1,45 +1,37 @@
 ﻿@model RentalMobile.Models.SpecialistPendingTeamInvitation
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Deny Invitation Comfirmation";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 
     if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
     {
         ViewBag.Confirmation = false;
-        
     <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
         media="screen" />
     <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
-
-    @:<!-- jNotify -->
     <script language='javascript' type='text/javascript'>
             @Html.Raw(ViewBag.ConfirmationSuccess)
-
     </script>
     }
-}
-@{
+
     if (@Model != null)
     {
-    <h2>
+    <h2 class="remove-top BlueHeading">
         Confirmation of Association Denial</h2>
     <p>
-        By Clicking confirm, you approve your denial with Team @Model.TeamName</p>
-    <p>
-        <h2>
-            JQuery Confirmation</h2>
+        By Clicking confirm, you approve your denial with Team @Model.TeamName.
     </p>
 
-
-    <p>
-        FOR TESTING: SpecialistId = @Model.SpecialistID<br />
-        MaintenanceProviderID = @Model.MaintenanceProviderId<br />
-    </p>
+        using (Html.BeginForm("DenyInvitation", "Specialist", FormMethod.Post))
+        {
+    @Html.HiddenFor(m => m.PendingTeamInvitationID)
+    <section class="row">
+        <div class="sixteen columns">
+            <div class="seven columns" style="float: right">
+                <input type="submit" class="full-width tall" value="Confirm" />
+            </div>
+        </div>
+    </section>
+        }
     }
-}
-@using (Html.BeginForm("DenyInvitation", "Specialist", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.PendingTeamInvitationID);
-
-    <input type="submit" class="full-width tall" value="Confirm" />
 }

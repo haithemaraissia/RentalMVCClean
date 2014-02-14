@@ -1,196 +1,122 @@
-﻿@using System.Web.Mvc.Html
+﻿@using PagedList.Mvc
 @using RentalMobile.Helpers
-@model List<RentalMobile.Models.MaintenanceTeamAssociation>
+@model PagedList.IPagedList<RentalMobile.Models.MaintenanceTeamAssociation>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Manage Provider";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 }
 <section class="sixteen columns">
-    <h2 class="remove-top">
-        PROPERTY</h2>
-    <!-- filters -->
-    <form action="#" class="row">
-        <!-- tag filters -->
-        <ul class="filter-list ten alpha columns row">
-            <li><a data-rel="all" class="current">All</a></li>
-            <li><a data-rel="house">House</a></li>
-            <li><a data-rel="duplex">Duplex</a></li>
-            <li><a data-rel="townhouse">Townhouse</a></li>
-            <li><a data-rel="apartment">Apartment</a></li>
-            <li><a data-rel="loft">Loft</a></li>
-            <li><a data-rel="office">Office</a></li>
-            <li><a data-rel="condo">Condo</a></li>
-        </ul>
+    <h2 class="remove-top BlueHeadingNoMargin">
+        List of Providers</h2>
+    @if (Model.Count > 0)
+    {
+        <form action="#" class="row" style="margin: 0">
         <div class="switcher fr">
             <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
-                                                                                         id="listview" class="switcher active"><i class="icon-menu"></i></a>
+                id="listview" class="switcher active"><i class="icon-menu"></i></a>
         </div>
-    </form>
+        </form>
+    }
     <div id="showing" class="panel">
-        <section class="fifteen columns">
-            <!-- List/Grid gallery -->
-            <ul id="property-list" class="list-grid-gallery list">
-                @foreach (var item in Model)
-                {
-                    <li class="prop-type all ">
-                        <article>
-                            <figure class="five columns alpha">
-                                @Html.ActionLink("1", "Edit", new { id = item.TeamAssociationID }, new { @class = "camera" })
-                                <img src="@Html.GetMaintenanceProviderPrimaryPhoto(item.MaintenanceProviderId)" class="scale-with-grid" width="280" height="185"
-                                     alt="gallery" />
-                            </figure>
-                            <div class="nine columns omega">
-                                <h4>
-                                   @* @item., @item.City, @item.State, @item.CountryCode*@</h4>
-                                <ul class="prop-data">
-                                    <li class="price">@*@Html.DisplayFor(modelItem => item.Price)*@</li>
-                                    @*@if (item.UnitPricing != null)
-                                    {
-                                        if (item.UnitPricing.Rent != null)
-                                        {
-                                            <li class="new">
-                                                @item.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture)
-                                                <span style="color: #346993">@Html.GetCurrencyValue(item.UnitPricing.CurrencyId)</span>
-                                            </li>
-                                        }
-                                    }*@
-                                </ul>
-                                <p class="prop-webid">
-                                   @* Unit ID #@Html.DisplayFor(modelItem => item.UnitId)*@</p>
-                                <p class="propr-details">
-                                   @* @Html.GetBedValue(item.Bed) bedroom / @Html.GetBathroomValue(item.Bed) bathrom /
-                                    @item.SquareFoot sqft*@
-                                </p>
-                                <p class="prop-extract">@*@Html.TruncateLongString(item.Description, 500)*@
-                                </p>
-             @*                   <ul class="toolbar">
-                                    <li>@Html.ActionLink("Select", "Preview", new { id = item.TeamAssociationID })</li>
-                                </ul>*@
-                                
-                                  <div class="four columns" style="float: right; padding-right: 16px">
-                                <input type="submit" class="full-width tall" value="Remove" onclick="location.href='/Specialist/RemoveTeamAssociation/@item.TeamAssociationID'"/>
-                            </div>
-                            
-                            </div>
-                        </article>
-                    </li>
-                }
-            </ul>
-            <!-- /.List -->
-            <style>
-                #container
-                {
-                    width: 100%;
-                    text-align: center;
-                }
-                
-                #left
-                {
-                    float: left;
-                    width: 50px;
-                    height: 20px;
-                    background: #ff0000;
-                }
-                
-                #center
-                {
-                    display: inline-block;
-                    margin: 0 auto;
-                    width: 50px;
-                    height: 20px;
-                    background: #00ff00;
-                }
-                
-                #right
-                {
-                    float: right;
-                    width: 50px;
-                    height: 20px;
-                    background: #0000ff;
-                }
-            </style>
-        </section>
-        <section class="fifteen columns">
-            <!--Pagination-->
-            <div id="container">
-                <div id="left">
-                    Previous</div>
-                <div id="center">
-                    Page 1 of 10</div>
-                <div id="right">
-                    Next</div>
+        @if (Model.Count > 0)
+        {
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("ManageProvider", new { page }), new PagedListRenderOptions
+                            {
+                                DisplayLinkToFirstPage = false,
+                                DisplayLinkToLastPage = false,
+                                DisplayLinkToPreviousPage = true,
+                                DisplayLinkToNextPage = true,
+                                DisplayLinkToIndividualPages = false,
+                                ContainerDivClasses = null,
+                                UlElementClasses = new[] { "pager" },
+                                ClassToApplyToFirstListItemInPager = "previous",
+                                ClassToApplyToLastListItemInPager = "next",
+                                LinkToPreviousPageFormat = "&larr; Older",
+                                LinkToNextPageFormat = "Newer &rarr;",
+                                DisplayPageCountAndCurrentLocation = true
+
+                            })
             </div>
-            <!--Pagination-->
-        </section>
+            <section class="fifteen columns">
+                <ul id="property-list" class="list-grid-gallery list">
+                    @foreach (var item in Model)
+                    {
+
+                        <li>
+                            <article>
+                                <figure class="five columns alpha">
+                                    <a href="../Providers/@item.MaintenanceProviderId" class="camera">1</a>
+                                    <img src="@Html.GetMaintenanceProviderPrimaryPhoto(item.MaintenanceProviderId)" class="scale-with-grid" width="280" height="185" alt="gallery" />
+                                </figure>
+                                <div class="nine columns omega">
+                                    <div class="four columns" style="float: right; padding-right: 16px">
+                                        <input type="submit" class="full-width tall" value="Remove" onclick=" location.href = '/Specialist/RemoveTeamAssociation/@item.TeamAssociationID' "/>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    }
+                </ul>
+            </section>
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("ManageProvider", new { page }), new PagedListRenderOptions
+                            {
+                                DisplayLinkToFirstPage = false,
+                                DisplayLinkToLastPage = false,
+                                DisplayLinkToPreviousPage = true,
+                                DisplayLinkToNextPage = true,
+                                DisplayLinkToIndividualPages = false,
+                                ContainerDivClasses = null,
+                                UlElementClasses = new[] { "pager" },
+                                ClassToApplyToFirstListItemInPager = "previous",
+                                ClassToApplyToLastListItemInPager = "next",
+                                LinkToPreviousPageFormat = "&larr; Older",
+                                LinkToNextPageFormat = "Newer &rarr;",
+                                DisplayPageCountAndCurrentLocation = true
+
+                            })
+            </div>
+        }
+        else
+        { <br />
+            <p>
+                You have no provider at this moment.</p>
+            <section class="row">
+                <div class="sixteen columns">
+                    <div class="five columns" style="float: right">
+                        <input type="submit" class="full-width tall" value="Ok" onclick="location.href='/Specialist'" />
+                    </div>
+                </div>
+            </section>
+                    
+        }
     </div>
 </section>
+@section scripts
+{
+    <!-- Gallery switcher -->
+    <script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
+    <!-- Ajax Paging -->
+    <script type="text/javascript">
 
+        var getPage = function () {
+            var $a = $(this);
+            var nexttarget = $a.parents().eq(5).attr("id");
 
+            var options = {
+                url: $a.attr("href"),
+                data: $("form").serialize(),
+                type: "get"
+            };
 
-<section class="sixteen columns" id="DesignDecision">
-    <h2>
-        Property</h2>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TeamAssociationID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TeamAssociationID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TeamAssociationID })
-                </td>
-            </tr>
-        }
-    </table>
-</section>
-<!-- Scripts & Plugins
-        ================================================== -->
-<!-- BX Slider -->
-<script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
-<!--Fancybox Ligbox-->
-<script src="../../Scripts/js/jquery.fancybox.js" type="text/javascript"></script>
-<!--Fancybox Ligbox Thumbnails-->
-<script src="../../Scripts/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
-<!-- Tabs -->
-<script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
-<!-- jQuery dropdown -->
-<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
-<!-- Tipsy -->
-<script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
-<!-- FitVids -->
-<script src="../../Scripts/js/fitvids.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-
-    $(document).ready(function ($) {
-
-        // Init Carousel	
-        $('.bx-carousel').bxSlider({
-            auto: true,
-            minSlides: 1,
-            maxSlides: 3,
-            slideWidth: 300,
-            slideMargin: 20,
-            nextSelector: '#carousel-next',
-            prevSelector: '#carousel-prev',
-            pager: false
-        });
-
-        //Easy tabs
-        $('.tab-container').easytabs();
-
-        //FitVids
-        $('#video').fitVids();
-
-    });
-</script>
-<!-- Gallery switcher -->
-<script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
-<!-- jQuery dropdown -->
-<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
-<!-- Tipsy -->
-<script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
-<!-- Custom Scripts -->
-<script src="../../Scripts/js/scripts.js" type="text/javascript"></script>
+            $.ajax(options).done(function (data) {
+                var target = $a.parents().eq(5);
+                $(target).empty().append($(data).find('#' + nexttarget));
+            });
+            return false;
+        };
+        //Enable/Disable Ajax onPaging
+        //  $(".main").on("click", ".pager li a", getPage);
+    </script>
+}

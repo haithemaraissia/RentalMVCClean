@@ -31,6 +31,13 @@ namespace RentalMobile
                 new { controller = "Professionals", action = "Index",  id = UrlParameter.Optional }
             );
 
+            //Providers/{Id} 
+            routes.MapRoute(
+                "ProvidersView",
+                "Providers/{id}",
+                new { controller = "Providers", action = "Index", id = UrlParameter.Optional }
+            );
+
 
             routes.MapRoute(
                 "Default", // Route name
