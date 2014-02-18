@@ -148,8 +148,6 @@
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
-    <Compile Include="Helpers\PagedListRenderOptions.cs" />
-    <Compile Include="Helpers\PageListDisplayMode.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
@@ -1407,6 +1405,7 @@
     <Content Include="Views\TenantFavorite\Delete.cshtml" />
     <Content Include="Views\Professionals\_Coverage.cshtml" />
     <Content Include="Views\Professionals\_Description.cshtml" />
+    <Content Include="Views\Shared\Script\_Paging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

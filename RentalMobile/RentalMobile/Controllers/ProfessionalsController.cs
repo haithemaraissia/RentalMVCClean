@@ -10,15 +10,18 @@ namespace RentalMobile.Controllers
     {
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
-        public ViewResult Index(int id)
+        public ActionResult Index(int? id)
         {
-            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID(id));
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Specialists");
+            }
+            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID((int) id));
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
             return View(specialist);
         }
-
 
 
         public PartialViewResult _Coverage(int id)

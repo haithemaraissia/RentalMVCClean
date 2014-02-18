@@ -14,33 +14,45 @@
         jsonUrl += Model.SpecialistId;
     }
 }
+
+
 <section class="row">
+    <!--Specialist Done !-->
     @section specialist
     {
         <div id="agent" class="panel">
-            <img src="../../images/dotimages/single-property/agent-480x350.png" alt="Agent" class="scale-with-grid">
+            <img src="@Model.Photo" alt=" @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)" 
+            class="scale-with-grid" style = "width:100%; height:auto;  max-height: 320px"  />
         </div>
     }
+    
+    
+    
+    <!--NOT NOT DONE !-->
     @section work
     {
         <div id="photos" class="panel">
             <a id="fancybox-manual-c" href="javascript:;">
                 <img src="../../images/dotimages/single-property/gallery-480x350.png" class="img-preview scale-with-grid"
-                    alt="image">
+                     alt="image">
             </a>
         </div>
     }
-    @section video
+    
+    <!--FOR FUTURE RELEASE!-->
+     <!--UPDATE DOCUMENATION-->
+    @*    @section video
     {
         <div id="video" class="panel">
             <iframe src="http://player.vimeo.com/video/12158329" width="500" height="281" frameborder="0"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
-    }
+    }*@
+     <!--Map Done !-->
     @section map
     {
         <div id="map" class="panel">
-            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.UnitGoogleMap&amp;z=13&amp;output=embed">
+            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.SpecialistGoogleMap&amp;z=13&amp;output=embed">
             </iframe>
             <br />
         </div>
@@ -48,39 +60,42 @@
     @section unitrequestshowing
     {
         <h4>
-            Request Mike</h4>
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
         <p>
-            Please complete the form below to request a showing for this property. Quisque non
-            mi magna, eget aliquet urna. Curabitur ut justo est. Quisque iaculis risus et tortor
-            congue porta. Suspendisse eleifend tempor dapibus.
+            Please complete the form below to hire @Html.DisplayFor(model => model.FirstName) for your property.
         </p>
+        <p> </p>
         <form action="#">
-        <ul class="grid-form">
-            <li class="three columns alpha">
-                <label for="your-name" class="screen-reader-text">
-                    Your name</label>
-                <input id="your-name" placeholder="Your name" type="text" required>
-            </li>
-            <li class="three columns omega">
-                <label for="your-email" class="screen-reader-text">
-                    E-mail</label>
-                <input id="your-email" placeholder="email" type="email" required>
-            </li>
-            <li class="three columns alpha">
-                <label for="your-telephone" class="screen-reader-text">
-                    Your telephone</label>
-                <input id="your-telephone" placeholder="telephone" type="text" required>
-            </li>
-            <li class="three columns omega">
-                <label for="showing-date" class="screen-reader-text">
-                    Showing date</label>
-                <input id="showing-date" placeholder="showing date" type="text" required>
-            </li>
-        </ul>
-        <input type="submit" class="full-width tall" value="Hire Mike">
+            <ul class="grid-form">
+                <li class="three columns alpha">
+                    <label for="your-name" class="screen-reader-text">
+                        Your name</label>
+                    //IF user log in ; then update them;
+                    //Maybe think about facebook sharing..
+                    <input id="your-name" placeholder="Your name" type="text" required>
+                </li>
+                <li class="three columns omega">
+                    <label for="your-email" class="screen-reader-text">
+                        E-mail</label>
+                    <input id="your-email" placeholder="email" type="email" required>
+                </li>
+                <li class="three columns alpha">
+                    <label for="your-telephone" class="screen-reader-text">
+                        Your telephone</label>
+                    <input id="your-telephone" placeholder="telephone" type="text" required>
+                </li>
+                <li class="three columns omega">
+                    <label for="showing-date" class="screen-reader-text">
+                        Service date</label>
+                    <input id="datepicker" placeholder="service date" type="text" required>
+                </li>
+            </ul>
+            <input type="submit" class="full-width tall" value="Hire @Html.DisplayFor(model => model.FirstName)">
         </form>
     }
 </section>
+
+
 <section class="row double-bottom">
     @section description{
         <div id="description" class="panel">
@@ -88,16 +103,16 @@
         </div>
     }
     @section coverage
-{
+    {
         <div id="coverage" class="panel">
-            @{ Html.RenderAction("_Coverage", "Professionals", new {id = Model.SpecialistId}); }
+            @{ Html.RenderAction("_Coverage", "Professionals", new { id = Model.SpecialistId }); }
         </div>
     }
     @section comments
     {
         <div id="comments" class="panel">
             <h4 class="section-titling" style="color: #346993;">
-                Comments</h4>
+             //Use DISQUE API   Comments</h4>
             <ul class="comments-list fourteen columns row">
                 <li class="comment clearfix">
                     <figure class="avatar">
@@ -149,35 +164,38 @@
                 </li>
             </ul>
             <form action="#" class="comment-form fourteen columns row">
-            <h4 class="divider-title">
-                Leave your comment</h4>
-            <ul class="grid-form row remove-bottom fourteen columns alpha omega">
-                <li class="five columns alpha">
-                    <label for="name-field" class="screen-reader-text">
-                        Your name</label>
-                    <input id="name-field" type="text" placeholder="Your name" class="full-width" />
-                </li>
-                <li class="nine columns omega">
-                    <label for="email-field" class="screen-reader-text">
-                        Your email</label>
-                    <input id="email-field" type="email" placeholder="Your email" class="full-width" />
-                </li>
-                <li class="fourteen columns alpha omega">
-                    <label for="message-field" class="screen-reader-text">
-                        Comment</label>
-                    <textarea id="message-field" placeholder="Comment" class="full-width"></textarea>
-                </li>
-                <li class="two columns alpha">
-                    <input type="submit" value="Send it" />
-                </li>
-                <li class="two columns omega">
-                    <input type="submit" value="Clear" />
-                </li>
-            </ul>
+                <h4 class="divider-title">
+                    Leave your comment</h4>
+                <ul class="grid-form row remove-bottom fourteen columns alpha omega">
+                    <li class="five columns alpha">
+                        <label for="name-field" class="screen-reader-text">
+                            Your name</label>
+                        <input id="name-field" type="text" placeholder="Your name" class="full-width" />
+                    </li>
+                    <li class="nine columns omega">
+                        <label for="email-field" class="screen-reader-text">
+                            Your email</label>
+                        <input id="email-field" type="email" placeholder="Your email" class="full-width" />
+                    </li>
+                    <li class="fourteen columns alpha omega">
+                        <label for="message-field" class="screen-reader-text">
+                            Comment</label>
+                        <textarea id="message-field" placeholder="Comment" class="full-width"></textarea>
+                    </li>
+                    <li class="two columns alpha">
+                        <input type="submit" value="Send it" />
+                    </li>
+                    <li class="two columns omega">
+                        <input type="submit" value="Clear" />
+                    </li>
+                </ul>
             </form>
         </div>
     }
 </section>
+
+
+
 <section>
     @section scripts
 {
@@ -318,5 +336,13 @@
                 });
             });
         </script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+         <script type="text/javascript">
+            $(function () {
+                         $("#datepicker").datepicker();
+
+            });
+             </script>
     }
 </section>
