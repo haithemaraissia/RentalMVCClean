@@ -20,6 +20,8 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
+            ViewBag.Sript = FancyBox.FancySpecialist((int) id);
+            ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryPhoto((int)id);
             return View(specialist);
         }
 
@@ -93,5 +95,12 @@ namespace RentalMobile.Controllers
             _db.Dispose();
             base.Dispose(disposing);
         }
+
+        public string GetSpecialistPrimaryPhoto(int id)
+        {
+            var specialistwork = _db.SpecialistWorks.FirstOrDefault(x => x.SpecialistId == id);
+            return specialistwork == null ? "" : specialistwork.PhotoPath;
+        }
+
     }
 }

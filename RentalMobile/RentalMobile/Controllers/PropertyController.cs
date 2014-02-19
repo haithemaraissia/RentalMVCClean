@@ -20,7 +20,7 @@ namespace RentalMobile.Controllers
             Unit unit = db.Units.Find(id) ?? db.Units.Find(1);
             ViewBag.UnitId = unit.UnitId;
             ViewBag.UnitGoogleMap = unit.GoogleMap;
-            ViewBag.Sript = FancyBox.Fancy(id);
+            ViewBag.Sript = FancyBox.FancyUnit(id);
 
 
 

@@ -5,15 +5,16 @@
     if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
     {
         ViewBag.Confirmation = false;
-    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
-        media="screen" />
-    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
-    <script language='javascript' type='text/javascript'>
+        <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+              media="screen" />
+        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"></script>
+        <script language='javascript' type='text/javascript'>
             @Html.Raw(ViewBag.ConfirmationSuccess)
-    </script>
-        if (@Model != null)
+        </script>
+    }
+    if (@Model != null)
         {
-    <h2>
+   <h2 class="remove-top BlueHeading">
         Confirmation of Association Acceptance</h2>
     <p>
         By clicking confirm, you will approve your association with Team @Model.TeamName</p>
@@ -41,4 +42,3 @@
     }
 
 
-}

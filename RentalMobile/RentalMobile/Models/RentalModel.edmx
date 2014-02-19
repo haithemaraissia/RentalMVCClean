@@ -66,6 +66,7 @@
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialist" EntityType="DB_33736_rentalModel.Store.Specialist" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SpecialistPendingTeamInvitation" EntityType="DB_33736_rentalModel.Store.SpecialistPendingTeamInvitation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpecialistWork" EntityType="DB_33736_rentalModel.Store.SpecialistWork" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="DB_33736_rentalModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tenant" EntityType="DB_33736_rentalModel.Store.Tenant" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TenantFavorite" EntityType="DB_33736_rentalModel.Store.TenantFavorite" store:Type="Tables" Schema="dbo" />
@@ -1614,6 +1615,7 @@
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
           <Property Name="PercentageofCompletion" Type="int" />
+          <Property Name="Rating" Type="int" />
         </EntityType>
         <EntityType Name="SpecialistPendingTeamInvitation">
           <Key>
@@ -1624,6 +1626,14 @@
           <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
           <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
           <Property Name="SpecialistID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialistWork">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="SpecialistId" Type="int" Nullable="false" />
+          <Property Name="PhotoID" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -2347,6 +2357,7 @@
             <End Role="MaintenanceCompanyLookUp" EntitySet="MaintenanceCompanyLookUps" />
             <End Role="MaintenanceCompanySpecialization" EntitySet="MaintenanceCompanySpecializations" />
           </AssociationSet>
+          <EntitySet Name="SpecialistWorks" EntityType="DB_33736_rentalModel.SpecialistWork" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -2646,6 +2657,7 @@
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="PercentageofCompletion" />
+          <Property Type="Int32" Name="Rating" />
         </EntityType>
         <EntityType Name="MaintenanceProvider">
           <Key>
@@ -4411,6 +4423,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SpecialistWork">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Type="Int32" Name="SpecialistId" Nullable="false" />
+          <Property Type="Int32" Name="PhotoID" Nullable="false" />
+          <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4594,6 +4614,7 @@
           <EntitySetMapping Name="Specialists">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Specialist">
               <MappingFragment StoreEntitySet="Specialist">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
@@ -6202,6 +6223,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SpecialistWorks">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.SpecialistWork">
+              <MappingFragment StoreEntitySet="SpecialistWork">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6306,8 +6336,9 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Currency" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Unit" Width="1.5" PointX="25.375" PointY="32.625" Height="8.1339322916666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitAppliance_Unit" >
-          <ConnectorPoint PointX="26.395448432617187" PointY="32.625" />
-          <ConnectorPoint PointX="26.395448432617187" PointY="21.134348958333334" />
+          <ConnectorPoint PointX="26.875" PointY="32.625" />
+          <ConnectorPoint PointX="27.25" PointY="32.25" />
+          <ConnectorPoint PointX="27.25" PointY="21.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="21.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitCommunityAmenities_Unit" >
@@ -6316,10 +6347,10 @@
           <ConnectorPoint PointX="27.625" PointY="52.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitFeature_Unit" >
-          <ConnectorPoint PointX="25.853391865234375" PointY="32.625" />
-          <ConnectorPoint PointX="25.853391865234375" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="26.31095539713542" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="26.477622063802084" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="25.853971716308592" PointY="32.625" />
+          <ConnectorPoint PointX="25.853971716308592" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="27.166666666666668" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="27.333333333333332" PointY="30.297801106770834" />
           <ConnectorPoint PointX="27.625" PointY="30.297801106770834" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitGallery_Unit" >
@@ -6423,6 +6454,7 @@
           <ConnectorPoint PointX="33" PointY="22.172760416666669" />
           <ConnectorPoint PointX="33.375" PointY="22.172760416666669" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistWork" Width="1.5" PointX="25.375" PointY="23.75" Height="1.5956835937499818" />
         </Diagram>
     </Diagrams>
   </Designer>

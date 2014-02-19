@@ -135,7 +135,6 @@
     <Compile Include="Controllers\AddTeamMemberController.cs" />
     <Compile Include="Controllers\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
-    <Compile Include="Controllers\RemoveTeamMemberController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -319,6 +318,9 @@
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpecialistPendingTeamInvitation.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpecialistWork.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -1366,8 +1368,6 @@
     <Content Include="Views\Shared\LayoutFrame\_HeadProvider.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadSpecialist.cshtml" />
     <Content Include="Views\Provider\_MaintenanceTeamAssociation.cshtml" />
-    <Content Include="Views\RemoveTeamMember\Index.cshtml" />
-    <Content Include="Views\RemoveTeamMember\Submit.cshtml" />
     <Content Include="Views\Specialist\ProviderInvitation.cshtml" />
     <Content Include="Views\Specialist\AcceptInvitation.cshtml" />
     <Content Include="Views\Specialist\DenyInvitation.cshtml" />

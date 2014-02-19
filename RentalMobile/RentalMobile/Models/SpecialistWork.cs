@@ -15,18 +15,14 @@ namespace RentalMobile.Models
 using System;
     using System.Collections.Generic;
     
-public partial class MaintenanceTeamAssociation
+public partial class SpecialistWork
 {
 
-    public int TeamAssociationID { get; set; }
-
-    public int TeamId { get; set; }
-
-    public string TeamName { get; set; }
-
-    public int MaintenanceProviderId { get; set; }
-
     public int SpecialistId { get; set; }
+
+    public int PhotoID { get; set; }
+
+    public string PhotoPath { get; set; }
 
 }
 
