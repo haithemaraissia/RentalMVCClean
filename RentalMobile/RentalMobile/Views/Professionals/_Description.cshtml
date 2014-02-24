@@ -1,4 +1,5 @@
 ﻿@model RentalMobile.Models.Specialist
+@using RentalMobile.Helpers
 
 <div class="seven columns">
                 <h4 style="color: #346993;">
@@ -26,8 +27,11 @@
                 </ul>
                 <h4 style="color: #346993;">
                     Zone</h4>
-                <ul class="arrow">
-                    <li>Overland Park - 66202</li>
-                    <li>Olathe - 66203</li>
-                </ul>
-            </div>
+     <ul class="arrow">
+         @Html.GetSpecialistZone(Model.SpecialistId)
+     </ul>
+     @Html.ListBox("df",Html.GetSpecialistZone(Model.SpecialistId), new { @class = "custom-select" })
+ 
+ @Html.GetSpecialistZone2(Model.SpecialistId)
+ 
+ </div>

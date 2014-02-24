@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI.WebControls;
 using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
@@ -273,6 +274,102 @@ namespace RentalMobile.Helpers
         {
             if (String.IsNullOrEmpty(str)) return "";
             return str.Substring(0, Math.Min(str.Length, maxLength));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static string GetSpecialistZone2(this HtmlHelper html, int? specialistId)
+        {
+            var htmlOutput = string.Empty;
+
+              if (specialistId != null)
+            {
+                var specialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+                if (specialist != null)
+                {
+                    if (specialist.City != null)
+                    {
+                        htmlOutput += "<li>";
+                        htmlOutput += specialist.City;
+                        htmlOutput += "</li>";
+                  } 
+                }
+                var companyLookUp =
+                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId != specialistId && x.Role == 1);
+                    if (companyLookUp != null)
+                    {
+                           var specialistcompany =
+                    db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
+                        if (specialistcompany != null)
+                        {
+                            if (specialistcompany.City != null)
+                            {
+                                htmlOutput += "<li>";
+                                htmlOutput += specialistcompany.City;
+                                htmlOutput += "</li>";
+                            }
+                        }
+                    }
+            }
+            return htmlOutput;
+        }
+
+
+
+
+        public static IEnumerable<SelectListItem> GetSpecialistZone(this HtmlHelper helper, int? specialistId)
+        {
+            var zone = new List<SelectListItem>();
+
+            if (specialistId != null)
+            {
+                var specialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+                if (specialist != null)
+                {
+                    if (specialist.City != null)
+                    {
+                        zone.Add(new SelectListItem { Text = specialist.City, Value = specialist.City });
+                } }
+                var companyLookUp =
+                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId != specialistId && x.Role == 1);
+                    if (companyLookUp != null)
+                    {
+                           var specialistcompany =
+                    db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
+                        if (specialistcompany != null)
+                        {
+                            if (specialistcompany.Region != null)
+                            {
+                                zone.Add(new SelectListItem { Text = specialistcompany.City, Value = specialistcompany.City });
+                         }}
+                    }
+
+                    return zone;
+            }
+
+            return null;
         }
 
 
