@@ -723,56 +723,7 @@ namespace RentalMobile.Controllers
                             UnitLuxuryAmenity = db.UnitLuxuryAmenities.Find(id)
                         };
 
-            if (Request.Url != null)
-            {
-                var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
-                var primaryimagethumbnail = UserHelper.ResolveImageUrl(u.Unit.PrimaryPhoto);
-                string title;
-                if (String.IsNullOrEmpty(u.Unit.Title))
-                {
-                    title = (u.Unit.Address + " , " + u.Unit.State + " , " + u.Unit.City);
-                    if (title.Length >= 50)
-                    {
-                        title = title.Substring(0, 50);
-                    }
-                }
-                else
-                {
-                    title = u.Unit.Title;
-                    if (u.Unit.Title.Length >= 50)
-                    {
-                        title = u.Unit.Title.Substring(0, 50);
-                    }
-                }
-
-                var summary = u.Unit.Description;
-                if (!String.IsNullOrEmpty(summary))
-                {
-                    if (summary.Length >= 140)
-                    {
-                        summary = summary.Substring(0, 140);
-                    }
-                }
-
-                var unitrentprice = u.UnitPricing.Rent == null
-                                        ? ""
-                                        : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
-                unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);
-                var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url;
-                if (!String.IsNullOrEmpty(tweet))
-                {
-                    if (tweet.Length >= 140)
-                    {
-                        tweet = tweet.Substring(0, 140);
-                    }
-                }
-
-                const string sitename = "http://www.haithem-araissia.com";
-                ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
-                ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
-                ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
-                ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
-            }
+            ShareProperty(u);
 
             ViewBag.UnitGoogleMap = string.IsNullOrEmpty(u.Unit.Address)
                                         ? UserHelper.GetFormattedLocation("", "", "USA")
@@ -791,6 +742,58 @@ namespace RentalMobile.Controllers
             }
 
             return View(u);
+        }
+
+        public void ShareProperty(UnitModelView u)
+        {
+            if (Request.Url == null) return;
+            var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+            var primaryimagethumbnail = UserHelper.ResolveImageUrl(u.Unit.PrimaryPhoto);
+            string title;
+            if (String.IsNullOrEmpty(u.Unit.Title))
+            {
+                title = (u.Unit.Address + " , " + u.Unit.State + " , " + u.Unit.City);
+                if (title.Length >= 50)
+                {
+                    title = title.Substring(0, 50);
+                }
+            }
+            else
+            {
+                title = u.Unit.Title;
+                if (u.Unit.Title.Length >= 50)
+                {
+                    title = u.Unit.Title.Substring(0, 50);
+                }
+            }
+
+            var summary = u.Unit.Description;
+            if (!String.IsNullOrEmpty(summary))
+            {
+                if (summary.Length >= 140)
+                {
+                    summary = summary.Substring(0, 140);
+                }
+            }
+
+            var unitrentprice = u.UnitPricing.Rent == null
+                                    ? ""
+                                    : u.UnitPricing.Rent.Value.ToString(CultureInfo.InvariantCulture) + " ";
+            unitrentprice += UserHelper.GetCurrencyValue(u.Unit.CurrencyCode);
+            var tweet = u.Unit.Title + ": " + unitrentprice + "--" + url;
+            if (!String.IsNullOrEmpty(tweet))
+            {
+                if (tweet.Length >= 140)
+                {
+                    tweet = tweet.Substring(0, 140);
+                }
+            }
+
+            const string sitename = "http://www.haithem-araissia.com";
+            ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+            ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
         }
 
 

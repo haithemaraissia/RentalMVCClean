@@ -484,7 +484,6 @@ namespace RentalMobile.Controllers
                 newspecialist.PercentageofCompletion = 50;
 
             }
-
             _db.Specialists.Add(newspecialist);
             _db.SaveChanges();
 
@@ -790,6 +789,12 @@ namespace RentalMobile.Controllers
                     {
                         CompanyId = specialistCompanyId
                     };
+                var specialistwork = new SpecialistWork
+                {
+                    PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
+                    SpecialistId = specialistCompanyId
+                };
+
                 _db.MaintenanceCompanies.Add(newMaintenanceCompany);
                 _db.MaintenanceCompanySpecializations.Add(newMaintenanceCompanySpecialization);
                 _db.MaintenanceCustomServices.Add(newMaintenanceCustomService);
@@ -798,6 +803,7 @@ namespace RentalMobile.Controllers
                 _db.MaintenanceNewConstructions.Add(newMaintenanceNewConstruction);
                 _db.MaintenanceRepairs.Add(newMaintenanceRepair);
                 _db.MaintenanceUtilities.Add(newMaintenanceUtility);
+                _db.SpecialistWorks.Add(specialistwork);
                 _db.SaveChanges();
 
             }

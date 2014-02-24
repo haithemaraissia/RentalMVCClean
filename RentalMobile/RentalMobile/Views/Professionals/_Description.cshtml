@@ -9,7 +9,15 @@
                 <h4 style="color: #346993;">
                     Recommendation</h4>
                 <ul class="arrow">
-                    <li>50% Approval</li>
+                    <li>@if(Model.Rating == null)
+                        {
+                            <span>100 % Approval</span>
+                        }
+                        else
+                        {
+                            <span>@Model.Rating % Approval</span>
+                        }
+                        </li>
                 </ul>
                 <h4 style="color: #346993;">
                     Rate</h4>

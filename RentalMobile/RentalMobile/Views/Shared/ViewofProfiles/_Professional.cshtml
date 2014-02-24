@@ -18,7 +18,7 @@
             </div>
             <section class="row">
                 <h2 class="section-titling">
-                    Central Park West, $390.000</h2>
+                    @RenderSection("name", false)</h2>
                 <div class="tab-container mini-tabs eight columns">
                     @Html.Partial("Menu/ViewsofProfile/_SpecialistMiniTabMenu")
                     @RenderSection("specialist", false)
@@ -27,7 +27,7 @@
                     @RenderSection("map", false)
                 </div>
                 <div class="eight columns prop-details">
-                    @RenderSection("unitrequestshowing", false)
+                    @RenderSection("specialistrequestform", false)
                 </div>
             </section>
             <section class="row double-bottom">
@@ -35,6 +35,7 @@
                     @Html.Partial("Menu/ViewsofProfile/_SpecialistBigTabMenu")
                     @RenderSection("description", false)
                     @RenderSection("coverage", false)
+                    @RenderSection("share", false)
                     @RenderSection("comments", false)
                 </div>
             </section>

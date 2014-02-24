@@ -1,40 +1,50 @@
 ﻿@using System.Globalization
 @model RentalMobile.Models.Specialist
 @{
-    ViewBag.Title = "Specialist Profile";
     Layout = "~/Views/Shared/ViewofProfiles/_Professional.cshtml";
-    var jsonUrl = "/property/jsonfun/";
 
     if (String.IsNullOrEmpty(Model.SpecialistId.ToString(CultureInfo.InvariantCulture)))
     {
         Response.Redirect("/Account/Logon");
     }
-    else
+    
+    if (ViewBag.EmailSharedwithFriend != null && ViewBag.EmailSharedwithFriend == true)
     {
-        jsonUrl += Model.SpecialistId;
+        ViewBag.EmailSharedwithFriend = false;
+    @:<!-- jNotify -->
+    <script language='javascript' type='text/javascript'>
+            @Html.Raw(ViewBag.EmailSucessSharedwithFriend)
+
+    </script>
     }
 }
 <section class="row">
-    <!--Specialist Done !-->
+    <!--DONE-->
+    
+    @section name
+    {
+        @Model.FirstName @Model.LastName
+    }
+
     @section specialist
     {
         <div id="agent" class="panel" style="width: 100%;">
             <img src="@Model.Photo" alt=" @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)" 
-                 class="scale-with-grid"  style = "height:auto; width:100%; max-height: 350px" >
+                 class="scale-with-grid"
+                 alt="image" style="width:100% ; min-height: 300px ; max-height: 300px;" />
         </div>
     }
-    <!--NOT NOT DONE !-->
+
     @section work
     {
         <div id="photos" class="panel">
             <a id="fancybox-manual-c" href="javascript:;">
-                <img src="@ViewBag.SpecialistPrimaryPhoto" class="img-preview scale-with-grid"
+                <img src="@ViewBag.SpecialistPrimaryPhoto" class="scale-with-grid"
                      alt="image" style="width:100% ; min-height: 300px ; max-height: 300px;" />
             </a>
         </div>
     }
 
-    <!--Map Done !-->
     @section map
     {
         <div id="map" class="panel">
@@ -43,12 +53,10 @@
             <br />
         </div>
     }
-    
-    
-    
+     <!--DONE-->
     
 
-    @section unitrequestshowing
+    @section specialistrequestform
     {
         <h4 class="remove-top BlueHeading">
             Hire @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
@@ -56,60 +64,58 @@
             Please complete the form below to hire @Html.DisplayFor(model => model.FirstName)
             for your property.
         </p>
-        <p>
-        </p>
+        <p> </p>
         <form action="#">
             <ul class="grid-form">
                 @if (Request.IsAuthenticated)
                 {
-                    <li class="three columns alpha">
+                    <li class="four columns alpha">
                         <label for="your-name" class="screen-reader-text">
                             Your name</label>
-                        //Maybe think about facebook sharing..
-                        <input id="your-name" placeholder="@User.Identity.Name" type="text" required>
+                        <input id="your-name" placeholder="@User.Identity.Name" type="text" required />
                     </li>
-                    <li class="three columns omega">
+                    <li class="four columns omega">
                         <label for="your-email" class="screen-reader-text">
                             E-mail</label>
                         <input id="your-email" placeholder=" @{var user = Membership.GetUser(User.Identity.Name); }
                                                          @if (user != null)
                                                          {
                                                              @user.Email
-                                                         }" type="email" required>
+                                                         }" type="email" required />
                     </li>
-                    <li class="three columns alpha">
+                    <li class="four columns alpha">
                         <label for="your-telephone" class="screen-reader-text">
                             Your telephone</label>
-                        <input id="your-telephone" placeholder="telephone" type="text" required>
+                        <input id="your-telephone" placeholder="telephone" type="text" required />
                     </li>
-                    <li class="three columns omega">
+                    <li class="four columns omega">
                         <label for="showing-date" class="screen-reader-text">
                             Service date</label>
-                        <input id="datepicker" placeholder="service date" type="text" required>
+                        <input id="datepicker" placeholder="service date" type="text" required />
                     </li>
 
                 }
                 else
                 {
-                    <li class="three columns alpha">
+                    <li class="four columns alpha">
                         <label for="your-name" class="screen-reader-text">
                             Your name</label>
-                        <input id="your-name" placeholder="Your name" type="text" required>
+                        <input id="your-name-unknown" placeholder="Your name" type="text" required />
                     </li>
-                    <li class="three columns omega">
+                    <li class="four columns omega">
                         <label for="your-email" class="screen-reader-text">
                             E-mail</label>
-                        <input id="your-email" placeholder="email" type="email" required>
+                        <input id="your-email-unknown" placeholder="email" type="email" required />
                     </li>
-                    <li class="three columns alpha">
+                    <li class="four columns alpha">
                         <label for="your-telephone" class="screen-reader-text">
                             Your telephone</label>
-                        <input id="your-telephone" placeholder="telephone" type="text" required>
+                        <input id="your-telephone-unknown" placeholder="telephone" type="text" required />
                     </li>
-                    <li class="three columns omega">
-                        <label for="showing-date" class="screen-reader-text">
+                    <li class="four columns omega">
+                        <label for="showing-date-unknown" class="screen-reader-text">
                             Service date</label>
-                        <input id="datepicker" placeholder="service date" type="text" required>
+                        <input id="datepicker-unknown" placeholder="service date" type="text" required />
                     </li>
                 }
             </ul>
@@ -124,16 +130,46 @@
 
 
 
+
+
+
+
+
+
+
+
 <section class="row double-bottom">
     @section description{
         <div id="description" class="panel">
             @{ Html.RenderAction("_Description", "Professionals", new { id = Model.SpecialistId }); }
         </div>
     }
+     <!--DONE-->
     @section coverage
     {
         <div id="coverage" class="panel">
             @{ Html.RenderAction("_Coverage", "Professionals", new { id = Model.SpecialistId }); }
+        </div>
+    }
+    <!--DONE-->
+    
+
+    @section share
+    {
+                <div id="share-on-fb" class="panel">
+            <ul class="grid-form row double-bottom " style="margin: 20px">
+                <li class="six columns push by-one"><a class="twitter-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.Twitter)">Share it with your Twitter</a> </li>
+                <li class="six columns push by-two"><a target="_blank" class="facebook-registration"
+                    style="text-align: center" href="@Html.Raw(ViewBag.FaceBook)"
+                    onclick="jSuccess();">Share it with your Facebook</a> </li>
+            </ul>
+            <ul class="grid-form row remove-bottom" style="margin: 20px">
+                <li class="six columns push by-one"><a class="google-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.GooglePlusShare)">Share it with your Google</a> </li>
+                <li class="six columns push by-two"><a class="linkedin-registration" style="text-align: center"
+                    href="@Html.Raw(ViewBag.LinkedIn)">Share it with your Linked In</a> </li>
+            </ul>
         </div>
     }
     @section comments
@@ -241,6 +277,11 @@
         <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
         <!-- FitVids -->
         <script src="../../Scripts/js/fitvids.min.js" type="text/javascript"></script>
+                <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+            media="screen" />
+        <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+
+        
         <!-- Custom Scripts -->
         @*<script src="../../Scripts/js/scripts.js" type="text/javascript"></script>*@
         <!-- Custom Scripts -->

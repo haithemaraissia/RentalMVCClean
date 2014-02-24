@@ -1632,7 +1632,7 @@
             <PropertyRef Name="PhotoID" />
           </Key>
           <Property Name="SpecialistId" Type="int" Nullable="false" />
-          <Property Name="PhotoID" Type="int" Nullable="false" />
+          <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -6253,7 +6253,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RentalModel" ZoomLevel="93">
+      <Diagram Name="RentalModel" ZoomLevel="10">
         <EntityTypeShape EntityType="DB_33736_rentalModel.TenantShowing" Width="1.5" PointX="9.5" PointY="1.25" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Tenant" Width="1.5" PointX="7.125" PointY="1.25" Height="4.2879036458333326" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_TenantShowing_Tenant" >

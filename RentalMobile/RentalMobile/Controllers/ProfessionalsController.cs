@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
@@ -10,7 +12,7 @@ namespace RentalMobile.Controllers
     {
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, bool? sharespecialist)
         {
             if (id == null)
             {
@@ -20,8 +22,19 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
+            ViewBag.Title = specialist.FirstName + " " + specialist.LastName + " Profile";
             ViewBag.Sript = FancyBox.FancySpecialist((int) id);
             ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryPhoto((int)id);
+            ShareSpecialist(specialist);
+
+
+
+
+            if (sharespecialist != null && sharespecialist == true)
+            {
+                ViewBag.EmailSharedwithFriend = true;
+                ViewBag.EmailSucessSharedwithFriend = JNotifyConfirmationSharingEmail();
+            }
             return View(specialist);
         }
 
@@ -88,7 +101,72 @@ namespace RentalMobile.Controllers
             return null;
         }
 
+        public void ShareSpecialist(Specialist s)
+        {
+            if (Request.Url == null) return;
+            var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+            var primaryimagethumbnail = UserHelper.ResolveImageUrl(GetSpecialistPrimaryPhoto(s.SpecialistId));
+            var title = (s.FirstName+ " , " + s.LastName  + " , " + s.Address + " , " + s.Region + " , " + s.City);
+                if (title.Length >= 50)
+                {
+                    title = title.Substring(0, 50);
+                }
+            var summary = s.Description;
+            if (!String.IsNullOrEmpty(summary))
+            {
+                if (summary.Length >= 140)
+                {
+                    summary = summary.Substring(0, 140);
+                }
+            }
+            var tweet = title + "--" + url;
+            if (!String.IsNullOrEmpty(tweet))
+            {
+                if (tweet.Length >= 140)
+                {
+                    tweet = tweet.Substring(0, 140);
+                }
+            }
 
+
+            const string sitename = "http://www.haithem-araissia.com";
+            ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+            ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
+            ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
+            ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
+        }
+
+        public string JNotifyConfirmationSharingEmail()
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your email has been sent successfully.")
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+	  	                          window.location.href = location.href.replace('?shareproperty=True','#send-to-friend'); 
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -99,7 +177,7 @@ namespace RentalMobile.Controllers
         public string GetSpecialistPrimaryPhoto(int id)
         {
             var specialistwork = _db.SpecialistWorks.FirstOrDefault(x => x.SpecialistId == id);
-            return specialistwork == null ? "" : specialistwork.PhotoPath;
+            return specialistwork == null ? "./../images/dotimages/home-handyman-projects.jpg" : specialistwork.PhotoPath;
         }
 
     }
