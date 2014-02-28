@@ -14,6 +14,13 @@ namespace RentalMobile.Helpers
             return String.Format(@"http://www.facebook.com/sharer/sharer.php?s=100&p[url]={0}&p[images][0]={1}&p[title]={2}&p[summary]={3}", url, primaryimagethumbnail, title, summary);
 
         }
+        
+        public static string FacebookShareOnlyUrl(string url)
+        {
+
+            return String.Format(@"http://www.facebook.com/sharer/sharer.php?s=100&p[url]={0}", url);
+
+        }
 
         public static string TwitterShare(string tweet)
         {
@@ -30,7 +37,7 @@ namespace RentalMobile.Helpers
 
         public static string LinkedInShare(string url, string title, string summary, string sitename)
         {
-            return String.Format(@"http://www.linkedin.com/shareArticle?mini=true&url={0}&title={1}&summary={2}&source={3}' rel='nofollow' onclick='NewWindow(this.href,'template_window','550','400','yes','center');return false' onfocus='this.blur()'> <img src='LinkedInShareButton.jpg' title='Share on LinkedIn' alt='Share on LinkedIn' width='100' height='100' border='0'", url, title, summary, sitename);
+            return String.Format(@"http://www.linkedin.com/shareArticle?mini=true&url={0}&title={1}&summary={2}&source={3}", url, title, summary, sitename);
 
         }
     }

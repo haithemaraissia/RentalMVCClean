@@ -299,50 +299,9 @@ namespace RentalMobile.Helpers
 
 
 
-
-        public static string GetSpecialistZone2(this HtmlHelper html, int? specialistId)
+        public static MvcHtmlString GetSpecialistZone(this HtmlHelper html, int? specialistId)
         {
-            var htmlOutput = string.Empty;
-
-              if (specialistId != null)
-            {
-                var specialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
-                if (specialist != null)
-                {
-                    if (specialist.City != null)
-                    {
-                        htmlOutput += "<li>";
-                        htmlOutput += specialist.City;
-                        htmlOutput += "</li>";
-                  } 
-                }
-                var companyLookUp =
-                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId != specialistId && x.Role == 1);
-                    if (companyLookUp != null)
-                    {
-                           var specialistcompany =
-                    db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
-                        if (specialistcompany != null)
-                        {
-                            if (specialistcompany.City != null)
-                            {
-                                htmlOutput += "<li>";
-                                htmlOutput += specialistcompany.City;
-                                htmlOutput += "</li>";
-                            }
-                        }
-                    }
-            }
-            return htmlOutput;
-        }
-
-
-
-
-        public static IEnumerable<SelectListItem> GetSpecialistZone(this HtmlHelper helper, int? specialistId)
-        {
-            var zone = new List<SelectListItem>();
-
+            var renderedResult = @"<ul class='arrow'>";
             if (specialistId != null)
             {
                 var specialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
@@ -350,29 +309,52 @@ namespace RentalMobile.Helpers
                 {
                     if (specialist.City != null)
                     {
-                        zone.Add(new SelectListItem { Text = specialist.City, Value = specialist.City });
-                } }
+                        renderedResult += "<li>";
+                        renderedResult += specialist.City;
+                        renderedResult += "</li>";
+                    }
+                }
                 var companyLookUp =
                     db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId != specialistId && x.Role == 1);
-                    if (companyLookUp != null)
+                if (companyLookUp != null)
+                {
+                    var specialistcompany =
+             db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
+                    if (specialistcompany != null)
                     {
-                           var specialistcompany =
-                    db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
-                        if (specialistcompany != null)
+                        if (specialist != null && (specialistcompany.City != null && specialist.City != specialistcompany.City))
                         {
-                            if (specialistcompany.Region != null)
-                            {
-                                zone.Add(new SelectListItem { Text = specialistcompany.City, Value = specialistcompany.City });
-                         }}
+                            renderedResult += "<li>";
+                            renderedResult += specialistcompany.City;
+                            renderedResult += "</li>";
+                        }
                     }
-
-                    return zone;
+                }
             }
-
-            return null;
+            var resultString = new MvcHtmlString(renderedResult);
+            return resultString;
         }
+   
+    
+    
+    
+    
 
 
+
+        
+        /// <summary>
+        /// Used to return any html for Razor View
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        
+        public static MvcHtmlString ReturnHtmlRaw(this HtmlHelper html)
+        {
+            var renderedResult = @"<html> Whatver </html>";
+            renderedResult += "<Anything/>";
+            return new MvcHtmlString(renderedResult);
+        }
     }
 }
 

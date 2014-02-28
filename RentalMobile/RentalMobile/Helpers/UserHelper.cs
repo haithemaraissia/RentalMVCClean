@@ -13,7 +13,7 @@ namespace RentalMobile.Helpers
     {
         private static readonly DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
 
-        public static PosterAttributes DefaultPoster = new PosterAttributes("Unkown", "Unknow", "#", "../../images/dotimages/single-property/agent-480x350.png","none@yahoo.com",null,0);
+        public static PosterAttributes DefaultPoster = new PosterAttributes("Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
 
         public static string Login()
         {
@@ -291,6 +291,77 @@ namespace RentalMobile.Helpers
         }
 
 
+
+
+        //This is used to send To Friend for Profiles
+        public static PosterAttributes GetSendtoFriendPoster()
+        {
+            var uri = HttpContext.Current.Request.Url;
+            var currenturl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                //Not Authenticated
+                return DefaultPoster;
+            }
+            string photoPath;
+            var role = GetCurrentRole(out photoPath);
+            if (role == "Tenant")
+            {
+                var tenant = DB.Tenants.Find(GetTenantID());
+                if (tenant != null)
+                {
+                    return new PosterAttributes(tenant.FirstName, tenant.LastName,
+                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, photoPath,
+                                                tenant.EmailAddress, "tenant", tenant.TenantId);
+                }
+            }
+            if (role == "Owner")
+            {
+                var owner = DB.Owners.Find(GetOwnerID());
+                if (owner != null)
+                {
+                    return new PosterAttributes(owner.FirstName, owner.LastName,
+                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, photoPath,
+                                                owner.EmailAddress, "owner", owner.OwnerId);
+                }
+            }
+            if (role == "Agent")
+            {
+                var agent = DB.Agents.Find(GetAgentID());
+                if (agent != null)
+                {
+                    return new PosterAttributes(agent.FirstName, agent.LastName,
+                                                currenturl + "/agentprofile/index/" + agent.AgentId, photoPath,
+                                                agent.EmailAddress, "tenant", agent.AgentId);
+                }
+            }
+
+            if (role == "Specialist")
+            {
+                var specialist = DB.Specialists.Find(GetSpecialistID());
+                if (specialist != null)
+                {
+                    return new PosterAttributes(specialist.FirstName, specialist.LastName,
+                                                currenturl + "/professionals/" + specialist.SpecialistId, photoPath,
+                                                specialist.EmailAddress, "specialist", specialist.SpecialistId);
+                }
+            }
+
+
+            if (role == "Provider")
+            {
+                var provider = DB.MaintenanceProviders.Find(GetProviderID());
+                if (provider != null)
+                {
+                    return new PosterAttributes(provider.FirstName, provider.LastName,
+                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, photoPath,
+                                                provider.EmailAddress, "provider", provider.MaintenanceProviderId);
+                }
+            }
+
+            return DefaultPoster;
+        }
 
 
     }

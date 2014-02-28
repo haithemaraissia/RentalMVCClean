@@ -855,6 +855,7 @@
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\lib\jquery-ui.custom.min.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
+    <Content Include="Scripts\MaskedInputPlugin\jquery.maskedinput.js" />
     <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
@@ -1407,6 +1408,9 @@
     <Content Include="Views\Professionals\_Coverage.cshtml" />
     <Content Include="Views\Professionals\_Description.cshtml" />
     <Content Include="Views\Shared\Script\_Paging.cshtml" />
+    <Content Include="Views\Emails\ForwardtoFriend\Multipart.cshtml" />
+    <Content Include="Views\Emails\ForwardtoFriend\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\ForwardtoFriend\Multipart.Text.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

@@ -1,0 +1,28 @@
+﻿Content-Type: text/html; charset=utf-8
+<div style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; padding: 5px 50px 15px; color: #444444;">
+    <div style="text-align: center">
+        <span style="text-align: center">@Model.SubTitle</span><span style="color: #800000;"><strong>@Model.SenderFirstName</strong></span><br />
+    </div>
+    <div>
+        <p>
+            Hi <span style="color: #800000;"><strong>@Model.FriendName ,</strong></span>
+        </p>
+        <br />
+        <span style="color: #800000;"><strong>@Model.SenderFirstName</strong></span>@Model.InvitationNote.<br />
+        <p>
+            @Model.Message
+        </p>
+        <br />
+        <p>
+            <span style="color: #800000;"><strong>@Model.CustomTitle</strong></span>
+            <br />
+            <a href="@Model.ProfileUrl">
+                <img runat="server" src="@Model.PhotoPath" style=" border-width: 0" alt="@Model.CustomTitle" width="250" height="150"></img>
+            </a>
+        </p>
+        <br/>
+        <p>
+            <a href="@Model.ProfileUrl">@Model.FooterNote</a>
+        </p>
+    </div>
+</div>

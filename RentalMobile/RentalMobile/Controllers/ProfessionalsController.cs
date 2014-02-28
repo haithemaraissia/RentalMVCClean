@@ -5,15 +5,13 @@ using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 { 
     public class ProfessionalsController : Controller
     {
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
-
-
-
 
         public ActionResult Index(int? id, bool? sharespecialist)
         {
@@ -29,10 +27,6 @@ namespace RentalMobile.Controllers
             ViewBag.Sript = FancyBox.FancySpecialist((int) id);
             ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryPhoto((int)id);
             ShareSpecialist(specialist);
-
-
-
-
             if (sharespecialist != null && sharespecialist == true)
             {
                 ViewBag.EmailSharedwithFriend = true;
@@ -41,10 +35,8 @@ namespace RentalMobile.Controllers
             return View(specialist);
         }
 
-
         public PartialViewResult _Coverage(int id)
         {
-
             if (id != 0)
             {
                 const int specialistrole = 1;
@@ -67,13 +59,11 @@ namespace RentalMobile.Controllers
                         MaintenanceRepair = _db.MaintenanceRepairs.Find(companyId),
                         MaintenanceUtility = _db.MaintenanceUtilities.Find(companyId),
                     };
-
                     return PartialView(mp);
                 }
             }
             return null;
         }
-
 
         public PartialViewResult _Description(int id)
         {
@@ -87,7 +77,6 @@ namespace RentalMobile.Controllers
                 if (lookUp != null)
                 {
                     int companyId = lookUp.CompanyId;
-
                     var mcs = _db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == companyId);
                     if (mcs != null)
                     {
@@ -108,7 +97,6 @@ namespace RentalMobile.Controllers
         {
             if (Request.Url == null) return;
             var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
-            var primaryimagethumbnail = UserHelper.ResolveImageUrl(GetSpecialistPrimaryPhoto(s.SpecialistId));
             var title = (s.FirstName+ " , " + s.LastName  + " , " + s.Address + " , " + s.Region + " , " + s.City);
                 if (title.Length >= 50)
                 {
@@ -130,17 +118,65 @@ namespace RentalMobile.Controllers
                     tweet = tweet.Substring(0, 140);
                 }
             }
+
+            //TO UPDATE BEFORE RELEASE
             const string sitename = "http://www.haithem-araissia.com";
-            ViewBag.FaceBook = SocialHelper.FacebookShare(url, primaryimagethumbnail, title, summary);
+            //This is the correct one for production
+            //ViewBag.FaceBook = SocialHelper.FacebookShareOnlyUrl(url);
+            //TO UPDATE BEFORE RELEASE
+            ViewBag.FaceBook = SocialHelper.FacebookShareOnlyUrl(sitename);
+
             ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
             ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
             ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
         }
 
+        public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
+        {
+            dynamic email = new Email("ForwardtoFriend/Multipart");
+            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;       
+            email.To = friendemailaddress;
+            email.FriendName = friendname;
+            email.From = "postmaster@haithem-araissia.com";
+            email.SenderFirstName = poster.FirstName;
+            email.Title = string.Format("Request From {0}", poster.FirstName);
+            email.SubTitle = "Request from ";
+            email.Message = message;
+            email.InvitationNote = " invite you to see this skilled professional.";
+            email.FooterNote = "Check out this Professional";
+            var uri = Request.Url;
+            if (uri != null)
+            {
+                var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+                email.ProfileUrl = host + uri.AbsolutePath.Replace("ForwardtoFriend", "");
+                var currentSpecialist = _db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+                if (currentSpecialist != null)
+                {
+                    var specialistTitle = currentSpecialist.FirstName + " , " + currentSpecialist.LastName;
+                    if (specialistTitle.Length >= 50)
+                    {
+                        specialistTitle = specialistTitle.Substring(0, 50);
+                    }
+                    email.CustomTitle = specialistTitle;
+                }
+                if (currentSpecialist != null)
+                {
+                    email.PhotoPath = host + "/" + GetSpecialistPrimaryPhoto(id).Replace("../../", "");
 
+                }
+            }
+            try
+            {
+                email.SendAsync();
 
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", new { id, sharespecialist = false });
+            }
+            return RedirectToAction("Index", new { id, sharespecialist = true });
 
-
+        }
 
         public string JNotifyConfirmationSharingEmail()
         {
@@ -174,23 +210,11 @@ namespace RentalMobile.Controllers
             return jNotifyConfirmationScript;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public string GetSpecialistPrimaryPhoto(int id)
+        {
+            var specialistwork = _db.SpecialistWorks.FirstOrDefault(x => x.SpecialistId == id);
+            return specialistwork == null ? "./../images/dotimages/home-handyman-projects.jpg" : specialistwork.PhotoPath;
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -198,10 +222,24 @@ namespace RentalMobile.Controllers
             base.Dispose(disposing);
         }
 
-        public string GetSpecialistPrimaryPhoto(int id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //* TODO Complete it */
+        //Actually hiring for Professional which should map to new job
+        public ActionResult HireProfessional(int id, string enctype)
         {
-            var specialistwork = _db.SpecialistWorks.FirstOrDefault(x => x.SpecialistId == id);
-            return specialistwork == null ? "./../images/dotimages/home-handyman-projects.jpg" : specialistwork.PhotoPath;
+            return JavaScript("This should be the hiring procedure");
         }
 
     }
