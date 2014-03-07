@@ -364,12 +364,102 @@ namespace RentalMobile.Helpers
         }
 
 
+
+        public static PosterAttributes GetCommentPoster()
+        {
+            var uri = HttpContext.Current.Request.Url;
+            var currenturl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                //Not Authenticated
+                return DefaultPoster;
+            }
+            string photoPath;
+            var role = GetCurrentRole(out photoPath);
+            if (role == "Tenant")
+            {
+                var tenant = DB.Tenants.Find(GetTenantID());
+                if (tenant != null)
+                {
+                    return new PosterAttributes(tenant.FirstName, tenant.LastName,
+                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, photoPath,
+                                                tenant.EmailAddress, "tenant", tenant.TenantId);
+                }
+            }
+            if (role == "Owner")
+            {
+                var owner = DB.Owners.Find(GetOwnerID());
+                if (owner != null)
+                {
+                    return new PosterAttributes(owner.FirstName, owner.LastName,
+                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, photoPath,
+                                                owner.EmailAddress, "owner", owner.OwnerId);
+                }
+            }
+            if (role == "Agent")
+            {
+                var agent = DB.Agents.Find(GetAgentID());
+                if (agent != null)
+                {
+                    return new PosterAttributes(agent.FirstName, agent.LastName,
+                                                currenturl + "/agentprofile/index/" + agent.AgentId, photoPath,
+                                                agent.EmailAddress, "tenant", agent.AgentId);
+                }
+            }
+
+            if (role == "Specialist")
+            {
+                var specialist = DB.Specialists.Find(GetSpecialistID());
+                if (specialist != null)
+                {
+                    return new PosterAttributes(specialist.FirstName, specialist.LastName,
+                                                currenturl + "/professionals/" + specialist.SpecialistId, photoPath,
+                                                specialist.EmailAddress, "specialist", specialist.SpecialistId);
+                }
+            }
+
+
+            if (role == "Provider")
+            {
+                var provider = DB.MaintenanceProviders.Find(GetProviderID());
+                if (provider != null)
+                {
+                    return new PosterAttributes(provider.FirstName, provider.LastName,
+                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, photoPath,
+                                                provider.EmailAddress, "provider", provider.MaintenanceProviderId);
+                }
+            }
+
+            return DefaultPoster;
+        }
+
+        public static int GetRoleId(string chosenRole)
+        {
+           switch (chosenRole.ToLower())
+           {
+               case "tenant":
+                   return 1;
+               case "owner":
+                   return 2;
+               case "agent":
+                   return 3;
+               case "specialist":
+                   return 4;
+               case "provider":
+                   return 5;
+               default:
+                   return 6;
+           }
+        }
     }
 
 
     public class PosterAttributes
 
 {
+
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ProfileLink { get; set; }

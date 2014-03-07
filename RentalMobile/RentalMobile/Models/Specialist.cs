@@ -60,6 +60,14 @@ public partial class Specialist
 
     public Nullable<int> Rating { get; set; }
 
+    public Nullable<bool> YouTubeVideo { get; set; }
+
+    public string YouTubeVideoURL { get; set; }
+
+    public Nullable<bool> VimeoVideo { get; set; }
+
+    public string VimeoVideoURL { get; set; }
+
 }
 
 }

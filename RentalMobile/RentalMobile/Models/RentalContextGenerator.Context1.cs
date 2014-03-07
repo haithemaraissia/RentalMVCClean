@@ -180,6 +180,8 @@ public partial class DB_33736_rentalEntities : DbContext
 
     public DbSet<SpecialistWork> SpecialistWorks { get; set; }
 
+    public DbSet<SpecialistProfileComment> SpecialistProfileComments { get; set; }
+
 }
 
 }

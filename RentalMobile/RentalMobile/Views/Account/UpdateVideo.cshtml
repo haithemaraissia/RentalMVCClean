@@ -1,0 +1,56 @@
+﻿@model RentalMobile.Models.PrimaryVideo
+           @{
+    ViewBag.Title = "Update Video";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+           }
+                <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+        media="screen" />
+    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+<style>
+    .VideoContent
+    {
+        background-color: #F8F8F8;
+        border: 1px solid #CCCCCC;
+        clear: both;
+        color: #5A5655;
+        display: block;
+        float: left;
+        font: 12px Verdana,Arial,Helvetica,sans-serif;
+        z-index: 88;
+    }
+</style>
+<section class="sixteen columns add-bottom relative  VideoContent" style="margin-left: 10px;
+    margin-bottom: 10px; text-align: center">
+    <h2 class="StepTitle">
+        Update your Video</h2>
+    @using (Html.BeginForm())
+    {  
+        <ul>
+            <li class="eight columns">
+                <img src="../../images/YouTubeLogo.jpg" alt="agent" class="scale-with-grid" style="width: 250px;
+                    height: 250px" />
+                <br />
+                @Html.CheckBoxFor(m => m.YouTubeVideo.Value, new { @checked = "checked" })
+                <br />
+                <div align="center">
+                    @Html.TextBoxFor(m => m.YouTubeVideoUrl, new { id = "YouTubeVideoURL", @class = "full-width", placeholder = "You Tube Video URL" })
+                </div>
+            </li>
+            <li class="seven columns">
+                <img src="../../images/Vimeo_logo.png" alt="agent" class="scale-with-grid" style="width: 250px;
+                    height: 250px" />
+                <br />
+                @Html.CheckBoxFor(m => m.VimeoVideo.Value)
+                <br />
+                <div align="center">
+                    @Html.TextBoxFor(m => m.VimeoVideoUrl, new { id = "VimeoVideoURL", @class = "full-width", placeholder = "Vimeo Video URL" })
+                </div>
+            </li>
+        </ul>
+        <div style="float: right; margin-right: 10px; margin-top: 30px">
+            <p>
+                <input type="submit" value="Update" />
+            </p>
+        </div> 
+    }
+</section>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
@@ -356,13 +357,13 @@ namespace RentalMobile.Controllers
         {
             return View();
         }
-        
+
         public void SendResetEmail(MembershipUser user)
         {
             //The URL to login
             if (HttpContext.Request.Url == null) return;
             var domain = HttpContext.Request.Url.GetLeftPart(UriPartial.Authority) +
-                            HttpRuntime.AppDomainAppVirtualPath;
+                         HttpRuntime.AppDomainAppVirtualPath;
 
             //link to send
             var link = domain + "/Account/Logon";
@@ -411,13 +412,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterTenant(RegisterModel model)
         {
-            var newtenant = new Tenant { EmailAddress = model.Email };
+            var newtenant = new Tenant {EmailAddress = model.Email};
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newtenant.GUID = (Guid)providerUserKey;
+                    newtenant.GUID = (Guid) providerUserKey;
                 newtenant.FirstName = model.UserName;
                 newtenant.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newtenant.GoogleMap = "USA";
@@ -431,13 +432,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterOwner(RegisterModel model)
         {
-            var newowner = new  Owner { EmailAddress = model.Email };
+            var newowner = new Owner {EmailAddress = model.Email};
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newowner.GUID = (Guid)providerUserKey;
+                    newowner.GUID = (Guid) providerUserKey;
                 newowner.FirstName = model.UserName;
                 newowner.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newowner.GoogleMap = "USA";
@@ -451,13 +452,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterAgent(RegisterModel model)
         {
-            var newagent = new Agent { EmailAddress = model.Email };
+            var newagent = new Agent {EmailAddress = model.Email};
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newagent.GUID = (Guid)providerUserKey;
+                    newagent.GUID = (Guid) providerUserKey;
                 newagent.FirstName = model.UserName;
                 newagent.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newagent.GoogleMap = "USA";
@@ -471,13 +472,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterSpecialist(RegisterModel model)
         {
-            var newspecialist = new Specialist { EmailAddress = model.Email };
+            var newspecialist = new Specialist {EmailAddress = model.Email};
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newspecialist.GUID = (Guid)providerUserKey;
+                    newspecialist.GUID = (Guid) providerUserKey;
                 newspecialist.FirstName = model.UserName;
                 newspecialist.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newspecialist.GoogleMap = "USA";
@@ -493,13 +494,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterProvider(RegisterModel model)
         {
-            var newprovider = new MaintenanceProvider { EmailAddress = model.Email };
+            var newprovider = new MaintenanceProvider {EmailAddress = model.Email};
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newprovider.GUID = (Guid)providerUserKey;
+                    newprovider.GUID = (Guid) providerUserKey;
                 newprovider.FirstName = model.UserName;
                 newprovider.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newprovider.GoogleMap = "USA";
@@ -604,10 +605,22 @@ namespace RentalMobile.Controllers
         {
             SavePictures(id);
             var user = System.Web.HttpContext.Current.User;
-            if (user.IsInRole("Agent")) { return RedirectToAction("Index", "Tenant"); }
-            if (user.IsInRole("Owner")) { return RedirectToAction("Index", "Owner"); }
-            if (user.IsInRole("Agent")) { return RedirectToAction("Index", "Agent"); }
-            if (user.IsInRole("Agent")) { return RedirectToAction("Index", "Provider"); }
+            if (user.IsInRole("Agent"))
+            {
+                return RedirectToAction("Index", "Tenant");
+            }
+            if (user.IsInRole("Owner"))
+            {
+                return RedirectToAction("Index", "Owner");
+            }
+            if (user.IsInRole("Agent"))
+            {
+                return RedirectToAction("Index", "Agent");
+            }
+            if (user.IsInRole("Agent"))
+            {
+                return RedirectToAction("Index", "Provider");
+            }
             return user.IsInRole("Specialist") ? RedirectToAction("Index", "Specialist") : null;
         }
 
@@ -615,7 +628,8 @@ namespace RentalMobile.Controllers
         {
             var imageStoragePath = Server.MapPath("~/UploadedImages");
             var photoPath = Server.MapPath(GetUserPhotoPath());
-            var directory = @"\" + System.Web.HttpContext.Current.User.Identity.Name + @"\" + "Profile" + @"\" + id + @"\";
+            var directory = @"\" + System.Web.HttpContext.Current.User.Identity.Name + @"\" + "Profile" + @"\" + id +
+                            @"\";
             var desinationdirectory = @"\" + System.Web.HttpContext.Current.User.Identity.Name + @"\" + id + @"\";
             var path = imageStoragePath + directory;
             var uploadDirectory = new DirectoryInfo(path);
@@ -631,7 +645,9 @@ namespace RentalMobile.Controllers
                 try
                 {
                     var destinationFile = newdirectory + @"\" + latestFile.Name;
-                    var virtualdestinationFile = GetVirtualUserPhotoPath() + @"\" + "Profile" + @"\" + System.Web.HttpContext.Current.User.Identity.Name + @"\" + id + @"\" + latestFile.Name;
+                    var virtualdestinationFile = GetVirtualUserPhotoPath() + @"\" + "Profile" + @"\" +
+                                                 System.Web.HttpContext.Current.User.Identity.Name + @"\" + id + @"\" +
+                                                 latestFile.Name;
                     if (!System.IO.File.Exists(destinationFile))
                     {
                         var desintationDirectoryFolder = new DirectoryInfo(newdirectory);
@@ -747,12 +763,12 @@ namespace RentalMobile.Controllers
                 var specialistCompanyId = newMaintenanceCompanyLookUp.CompanyId;
                 var newMaintenanceCompany = new MaintenanceCompany
                     {
-                        CompanyId =  specialistCompanyId,
+                        CompanyId = specialistCompanyId,
                         Name = model.UserName,
-                        EmailAddress= model.Email,
+                        EmailAddress = model.Email,
                         GoogleMap = "USA",
                         Country = "US",
-                     //   CountryCode = "US"
+                        //   CountryCode = "US"
                     };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
                     {
@@ -790,10 +806,10 @@ namespace RentalMobile.Controllers
                         CompanyId = specialistCompanyId
                     };
                 var specialistwork = new SpecialistWork
-                {
-                    PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
-                    SpecialistId = specialistCompanyId
-                };
+                    {
+                        PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
+                        SpecialistId = specialistCompanyId
+                    };
 
                 _db.MaintenanceCompanies.Add(newMaintenanceCompany);
                 _db.MaintenanceCompanySpecializations.Add(newMaintenanceCompanySpecialization);
@@ -808,6 +824,234 @@ namespace RentalMobile.Controllers
 
             }
         }
+
+
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateVideo(PrimaryVideo primaryVideo)
+        {
+            if (ModelState.IsValid)
+            {
+
+                // Change will throw an exception rather
+                // than return false in certain failure scenarios.
+                var updateVideoSucceeded = true;
+                try
+                {
+                    //Membership
+                    if (User.IsInRole("Tenant"))
+                    {
+                        //Tenant
+                        var tenant = _db.Tenants.Find(UserHelper.GetTenantID());
+                        {
+                            //tenant.VimeoVideo = primaryVideo.VimeoVideo;
+                            //tenant.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
+                            //tenant.YouTubeVideo = primaryVideo.YouTubeVideo;
+                            //tenant.YouTubeVideoURL = primaryVideo.YouTubeVideoUrl;
+                        }
+                        _db.SaveChanges();
+                    }
+
+                    if (User.IsInRole("Owner"))
+                    {
+                        //Owner
+                        var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+                        {
+                            //owner.VimeoVideo = primaryVideo.VimeoVideo;
+                            //owner.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
+                            //owner.YouTubeVideo = primaryVideo.YouTubeVideo;
+                            //owner.YouTubeVideoURL = primaryVideo.YouTubeVideoUrl;
+                        }
+                        _db.SaveChanges();
+                    }
+
+                    if (User.IsInRole("Agent"))
+                    {
+                        //Agent
+                        var agent = _db.Agents.Find(UserHelper.GetAgentID());
+                        {
+                            //agent.VimeoVideo = primaryVideo.VimeoVideo;
+                            //agent.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
+                            //agent.YouTubeVideo = primaryVideo.YouTubeVideo;
+                            //agent.YouTubeVideoURL = primaryVideo.YouTubeVideoUrl;
+                        }
+                        _db.SaveChanges();
+                    }
+
+                    if (User.IsInRole("Specialist"))
+                    {
+                        //Specialist
+                        var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+                        {
+                            specialist.VimeoVideo = primaryVideo.VimeoVideo;
+                            specialist.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
+                            specialist.YouTubeVideo = primaryVideo.YouTubeVideo;
+                            specialist.YouTubeVideoURL = primaryVideo.YouTubeVideoUrl;
+                        }
+                        _db.SaveChanges();
+                    }
+                    if (User.IsInRole("Provider"))
+                    {
+                        //Provider
+                        var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+                        {
+                            //Provider.VimeoVideo = primaryVideo.VimeoVideo;
+                            //Provider.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
+                            //Provider.YouTubeVideo = primaryVideo.YouTubeVideo;
+                            //Provider.YouTubeVideoURL = primaryVideo.YouTubeVideoUrl;
+                        }
+                        _db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    updateVideoSucceeded = false;
+                }
+
+                if (updateVideoSucceeded)
+                {
+                    return View();
+
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The video url is incorrect.");
+                    return RedirectToAction("UpdateVideo");
+                }
+
+
+            }
+            ModelState.AddModelError("", "The video url is incorrect.");
+            return JavaScript(JNotifyConfirmationSharingEmail()) ;
+        }
+
+        [Authorize]
+        public ActionResult UpdateVideo()
+        {
+
+            var model = new PrimaryVideo()
+                 {
+                     VimeoVideo = false,
+                     VimeoVideoUrl = "",
+                     YouTubeVideo = false,
+                     YouTubeVideoUrl = ""
+                 };
+            var user = System.Web.HttpContext.Current.User;
+            if (user.IsInRole("Tenant"))
+            {
+                // Tenant
+                var tenant = _db.Tenants.Find(UserHelper.GetTenantID());
+                {
+                    //model.VimeoVideo = tenant.VimeoVideo ?? false;
+                    //model.VimeoVideoUrl = tenant.VimeoVideoURL ?? "";
+                    //model.YouTubeVideo = tenant.YouTubeVideo ?? false;
+                    //model.YouTubeVideoUrl = tenant.YouTubeVideoURL ?? "";
+
+                }
+            }
+
+            if (user.IsInRole("Owner"))
+            {
+                //Owner
+                var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+                {
+                    //model.VimeoVideo = specialist.VimeoVideo ?? false;
+                    //model.VimeoVideoUrl = specialist.VimeoVideoURL ?? "";
+                    //model.YouTubeVideo = specialist.YouTubeVideo ?? false;
+                    //model.YouTubeVideoUrl = specialist.YouTubeVideoURL ?? "";
+                }
+            }
+
+            if (user.IsInRole("Agent"))
+            {
+                // Agent
+                var agent = _db.Agents.Find(UserHelper.GetAgentID());
+                {
+                    //model.VimeoVideo = specialist.VimeoVideo ?? false;
+                    //model.VimeoVideoUrl = specialist.VimeoVideoURL ?? "";
+                    //model.YouTubeVideo = specialist.YouTubeVideo ?? false;
+                    //model.YouTubeVideoUrl = specialist.YouTubeVideoURL ?? "";
+                }
+            }
+
+            if (user.IsInRole("Specialist"))
+            {
+                // Specialist
+                var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+                {
+                    model.VimeoVideo = specialist.VimeoVideo ?? false;
+                    model.VimeoVideoUrl = specialist.VimeoVideoURL ?? "";
+                    model.YouTubeVideo = specialist.YouTubeVideo ?? false;
+                    model.YouTubeVideoUrl = specialist.YouTubeVideoURL ?? "";
+                }
+            }
+            if (user.IsInRole("Provider"))
+            {
+                //Provider
+                var Provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+                {
+                    //model.VimeoVideo = Provider.VimeoVideo ?? false;
+                    //model.VimeoVideoUrl = Provider.VimeoVideoURL  ?? "";
+                    //model.YouTubeVideo = Provider.YouTubeVideo ?? false;
+                    //model.YouTubeVideoUrl = Provider.YouTubeVideoURL  ?? "";
+                }
+            }
+
+            return View(model);
+        }
+
+
+
+
+
+
+
+
+        public string JNotifyConfirmationSharingEmail()
+        {
+
+            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your sharing has been sent successfully.")
+                                            +
+                                            @"',{
+	                        autoHide : true, // added in v2.0
+	  	                        clickOverlay : false, // added in v2.0
+	  	                        MinWidth : 300,
+	  	                        TimeShown : 3000,
+	  	                        ShowTimeEffect : 200,
+	  	                        HideTimeEffect : 200,
+	  	                        LongTrip :10,
+	  	                        HorizontalPosition : 'center',
+	  	                        VerticalPosition : 'center',
+	  	                        ShowOverlay : true,
+  		  	                        ColorOverlay : '#000',
+	  	                        OpacityOverlay : 0.3,
+	  	                        onClosed : function(){ // added in v2.0
+	   
+	  	                        },
+	  	                         onCompleted : function(){ // added in v2.0
+	  	                        
+	  	                          window.location.href = './Account'); 
+	   
+	  	                }
+		             });
+
+";
+            return jNotifyConfirmationScript;
+        }
+
+
+
+
+        //Maybe Delete this; not needed
+        [Authorize]
+        public ActionResult UpdateVideoSucess()
+        {
+            return JavaScript(JNotifyConfirmationSharingEmail());
+          
+        }
+
 
     }
 }

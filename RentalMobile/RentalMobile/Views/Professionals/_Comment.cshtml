@@ -1,0 +1,42 @@
+﻿@model List<RentalMobile.Models.SpecialistProfileComment>
+<h4 class="section-titling" style="color: #346993;">
+    Comments
+    Maybe Video
+</h4>
+<ul class="comments-list fourteen columns row">
+    @foreach (var item in Model)
+    {
+        <li class="clearfix" style="padding-bottom: 10px">
+            <figure class="avatar">
+                <img src="@item.PosterPhotoPath" alt="@item.PosterName" /></figure>
+            <div class="com-text">
+                <h5>
+                    @item.PosterName said:</h5>
+                <p>
+                    @item.Comment
+                </p>
+            </div>
+        </li>
+    }
+</ul>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("InsertComment", "Professionals", new { id = ViewBag.SpecialistId, @class = "comment-form fourteen columns row", enctype = "multipart/form-data" }, FormMethod.Post))
+    {
+    <h4 class="divider-title">
+        Leave your comment</h4>
+    <ul class="grid-form row remove-bottom fourteen columns alpha omega">
+        <li class="fourteen columns alpha omega">
+            <label for="message-field" class="screen-reader-text">Comment</label>
+            <textarea id="message-field" placeholder="Comment" name="comment" class="full-width" maxlength="300"></textarea>
+            <label for="message-character-left" class="Characterrightalign">Character Left <span id="NumberofCharacterLeft" class="CharacterLeftColor"></span></label>
+        </li>
+        <li class="two columns alpha">
+            <input type="submit" value="Send it" />
+        </li>
+        <li class="two columns omega">
+            <input type="button" value="Clear" id="ClearMessage"  onclick="ClearComment();" />
+        </li>
+    </ul>
+    }
+}

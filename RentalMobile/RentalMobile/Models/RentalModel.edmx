@@ -66,6 +66,7 @@
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialist" EntityType="DB_33736_rentalModel.Store.Specialist" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SpecialistPendingTeamInvitation" EntityType="DB_33736_rentalModel.Store.SpecialistPendingTeamInvitation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpecialistProfileComment" EntityType="DB_33736_rentalModel.Store.SpecialistProfileComment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SpecialistWork" EntityType="DB_33736_rentalModel.Store.SpecialistWork" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="DB_33736_rentalModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tenant" EntityType="DB_33736_rentalModel.Store.Tenant" store:Type="Tables" Schema="dbo" />
@@ -1616,6 +1617,10 @@
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
           <Property Name="PercentageofCompletion" Type="int" />
           <Property Name="Rating" Type="int" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="SpecialistPendingTeamInvitation">
           <Key>
@@ -1626,6 +1631,20 @@
           <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
           <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
           <Property Name="SpecialistID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialistProfileComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialistId" Type="int" />
+          <Property Name="PosterId" Type="int" />
+          <Property Name="PosterRole" Type="int" />
+          <Property Name="PosterName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PosterPhotoPath" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="300" />
+          <Property Name="CommentDate" Type="smalldatetime" />
+          <Property Name="PosterProfileLink" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="SpecialistWork">
           <Key>
@@ -2358,6 +2377,7 @@
             <End Role="MaintenanceCompanySpecialization" EntitySet="MaintenanceCompanySpecializations" />
           </AssociationSet>
           <EntitySet Name="SpecialistWorks" EntityType="DB_33736_rentalModel.SpecialistWork" />
+          <EntitySet Name="SpecialistProfileComments" EntityType="DB_33736_rentalModel.SpecialistProfileComment" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -2658,6 +2678,10 @@
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="PercentageofCompletion" />
           <Property Type="Int32" Name="Rating" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MaintenanceProvider">
           <Key>
@@ -4431,6 +4455,20 @@
           <Property Type="Int32" Name="PhotoID" Nullable="false" />
           <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SpecialistProfileComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Type="Int32" Name="CommentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SpecialistId" />
+          <Property Type="Int32" Name="PosterId" />
+          <Property Type="Int32" Name="PosterRole" />
+          <Property Type="String" Name="PosterPhotoPath" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CommentDate" />
+          <Property Type="String" Name="PosterName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PosterProfileLink" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4614,6 +4652,10 @@
           <EntitySetMapping Name="Specialists">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Specialist">
               <MappingFragment StoreEntitySet="Specialist">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
@@ -6232,6 +6274,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SpecialistProfileComments">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.SpecialistProfileComment">
+              <MappingFragment StoreEntitySet="SpecialistProfileComment">
+                <ScalarProperty Name="PosterProfileLink" ColumnName="PosterProfileLink" />
+                <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PosterPhotoPath" ColumnName="PosterPhotoPath" />
+                <ScalarProperty Name="PosterRole" ColumnName="PosterRole" />
+                <ScalarProperty Name="PosterId" ColumnName="PosterId" />
+                <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6336,9 +6393,10 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Currency" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583246" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Unit" Width="1.5" PointX="25.375" PointY="32.625" Height="8.1339322916666674" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitAppliance_Unit" >
-          <ConnectorPoint PointX="26.875" PointY="32.625" />
-          <ConnectorPoint PointX="27.25" PointY="32.25" />
-          <ConnectorPoint PointX="27.25" PointY="21.134348958333334" />
+          <ConnectorPoint PointX="26.515625749999998" PointY="32.625" />
+          <ConnectorPoint PointX="26.515625749999998" PointY="25.595683593749982" />
+          <ConnectorPoint PointX="27.125" PointY="25.595683593749982" />
+          <ConnectorPoint PointX="27.125" PointY="21.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="21.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitCommunityAmenities_Unit" >
@@ -6347,10 +6405,10 @@
           <ConnectorPoint PointX="27.625" PointY="52.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitFeature_Unit" >
-          <ConnectorPoint PointX="25.853971716308592" PointY="32.625" />
-          <ConnectorPoint PointX="25.853971716308592" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="27.166666666666668" PointY="30.297801106770834" />
-          <ConnectorPoint PointX="27.333333333333332" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="26.0937475" PointY="32.625" />
+          <ConnectorPoint PointX="26.0937475" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="26.432292416666666" PointY="30.297801106770834" />
+          <ConnectorPoint PointX="26.59895908333333" PointY="30.297801106770834" />
           <ConnectorPoint PointX="27.625" PointY="30.297801106770834" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_UnitGallery_Unit" >
@@ -6455,6 +6513,7 @@
           <ConnectorPoint PointX="33.375" PointY="22.172760416666669" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistWork" Width="1.5" PointX="25.375" PointY="23.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistProfileComment" Width="1.5" PointX="27.375" PointY="23.75" Height="2.3648893229166674" />
         </Diagram>
     </Diagrams>
   </Designer>
