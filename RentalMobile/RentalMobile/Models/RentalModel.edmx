@@ -203,6 +203,10 @@
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
           <Property Name="Video" Type="nvarchar(max)" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="AgentAcceptedApplication">
           <Key>
@@ -899,6 +903,10 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="MaintenanceProviderAcceptedJobs">
           <Key>
@@ -1026,6 +1034,10 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="OwnerAcceptedApplication">
           <Key>
@@ -1687,6 +1699,10 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
+          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="TenantFavorite">
           <Key>
@@ -2415,6 +2431,10 @@
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TenantShowing_Tenant">
           <End Type="DB_33736_rentalModel.Tenant" Role="Tenant" Multiplicity="1" />
@@ -2628,6 +2648,10 @@
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Video" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -2652,6 +2676,10 @@
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Specialist">
           <Key>
@@ -2706,6 +2734,10 @@
           <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="YouTubeVideo" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="RentalApplication">
           <Key>
@@ -4488,6 +4520,10 @@
           <EntitySetMapping Name="Tenants">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Tenant">
               <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="City" ColumnName="City" />
@@ -4601,6 +4637,10 @@
           <EntitySetMapping Name="Agents">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Agent">
               <MappingFragment StoreEntitySet="Agent">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="Video" ColumnName="Video" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
@@ -4627,6 +4667,10 @@
           <EntitySetMapping Name="Owners">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.Owner">
               <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="City" ColumnName="City" />
@@ -4683,6 +4727,10 @@
           <EntitySetMapping Name="MaintenanceProviders">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProvider">
               <MappingFragment StoreEntitySet="MaintenanceProvider">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="City" ColumnName="City" />

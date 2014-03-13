@@ -312,7 +312,7 @@ namespace RentalMobile.Helpers
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
-                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, photoPath,
+                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, tenant.Photo,
                                                 tenant.EmailAddress, "tenant", tenant.TenantId);
                 }
             }
@@ -322,7 +322,7 @@ namespace RentalMobile.Helpers
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
-                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, photoPath,
+                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, owner.Photo,
                                                 owner.EmailAddress, "owner", owner.OwnerId);
                 }
             }
@@ -332,7 +332,7 @@ namespace RentalMobile.Helpers
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
-                                                currenturl + "/agentprofile/index/" + agent.AgentId, photoPath,
+                                                currenturl + "/agentprofile/index/" + agent.AgentId, agent.Photo,
                                                 agent.EmailAddress, "tenant", agent.AgentId);
                 }
             }
@@ -343,7 +343,7 @@ namespace RentalMobile.Helpers
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
-                                                currenturl + "/professionals/" + specialist.SpecialistId, photoPath,
+                                                currenturl + "/professionals/" + specialist.SpecialistId, specialist.Photo,
                                                 specialist.EmailAddress, "specialist", specialist.SpecialistId);
                 }
             }
@@ -355,7 +355,7 @@ namespace RentalMobile.Helpers
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, photoPath,
+                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -383,7 +383,7 @@ namespace RentalMobile.Helpers
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
-                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, photoPath,
+                                                currenturl + "/tenantprofile/index/" + tenant.TenantId, tenant.Photo,
                                                 tenant.EmailAddress, "tenant", tenant.TenantId);
                 }
             }
@@ -393,7 +393,7 @@ namespace RentalMobile.Helpers
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
-                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, photoPath,
+                                                currenturl + "/ownerprofile/index/" + owner.OwnerId, owner.Photo,
                                                 owner.EmailAddress, "owner", owner.OwnerId);
                 }
             }
@@ -403,7 +403,7 @@ namespace RentalMobile.Helpers
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
-                                                currenturl + "/agentprofile/index/" + agent.AgentId, photoPath,
+                                                currenturl + "/agentprofile/index/" + agent.AgentId, agent.Photo,
                                                 agent.EmailAddress, "tenant", agent.AgentId);
                 }
             }
@@ -414,7 +414,7 @@ namespace RentalMobile.Helpers
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
-                                                currenturl + "/professionals/" + specialist.SpecialistId, photoPath,
+                                                currenturl + "/professionals/" + specialist.SpecialistId, specialist.Photo,
                                                 specialist.EmailAddress, "specialist", specialist.SpecialistId);
                 }
             }
@@ -426,7 +426,7 @@ namespace RentalMobile.Helpers
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, photoPath,
+                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }

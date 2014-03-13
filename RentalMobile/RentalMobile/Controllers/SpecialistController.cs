@@ -75,7 +75,8 @@ namespace RentalMobile.Controllers
 
 
 
-
+        /// TODO ///
+        //Not Completed
         ////////////////////////More Work Needed////////////////////////
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
@@ -105,11 +106,14 @@ namespace RentalMobile.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// TODO ///
+        /// NOT Complete, wrong
         public ActionResult UpdateProfilePicture(int id)
         {
             return RedirectToAction("Upload", "Account", new { id });
         }
-
+        /// TODO ///
+        /// NOT Complete, wrong
         public ActionResult UploadPhoto(UnitModelView unitModelView)
         {
 

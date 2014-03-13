@@ -1,11 +1,42 @@
-﻿@model RentalMobile.Models.Specialist
+﻿@using System.Globalization
+@using RentalMobile.Helpers
+@model RentalMobile.Models.Specialist
 @{
     ViewBag.Title = "Specialist Profile";
     Layout = "~/Views/Shared/Profiles/_Specialist.cshtml";
 }
+@functions {
+    public string GetVideo()
+    {
+        var uri = HttpContext.Current.Request.Url;
+        var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        try
+        {
+            if ((Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
+            {
+                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+            else if ((Model.VimeoVideo != null && (bool)Model.VimeoVideo))
+            {
+                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+        }
+        catch (Exception)
+        {
+            videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        }
+        return videourl;
+    }
+}
 @section profile
 {
     @Html.Partial("_ProfileDetail", (object)ViewBag.Specialist)
+}
+@section video
+    {
+    <div id="video" class="panel">
+        <iframe src="@GetVideo()" width="900" height="400"></iframe>
+    </div>
 }
 @section map
 {
@@ -41,6 +72,11 @@
                 </div>
                 <div class="six columns push by-two">
                     <input type="submit" class="full-width tall" value="Update Photo" onclick="location.href='/Specialist/UpdateProfilePicture/@ViewBag.SpecialistId'"/>
+                </div>
+            </div>
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Update Video" onclick="location.href='/Account/UpdateVideo'"/>
                 </div>
             </div>
         </section>

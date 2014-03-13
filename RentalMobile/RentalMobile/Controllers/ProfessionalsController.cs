@@ -14,7 +14,7 @@ namespace RentalMobile.Controllers
     {
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
-        public ActionResult Index(int? id, bool? sharespecialist , bool? insertingnewcomment)
+        public ActionResult Index(int? id, bool? sharespecialist, bool? insertingnewcomment)
         {
             if (id == null)
             {
@@ -25,6 +25,7 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
             ViewBag.Title = specialist.FirstName + " " + specialist.LastName + " Profile";
+            ViewBag.CommentCount = GetCommentCount((int)id);
             ViewBag.Sript = FancyBox.FancySpecialist((int)id);
             ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryPhoto((int)id);
             ShareSpecialist(specialist);
@@ -73,7 +74,6 @@ namespace RentalMobile.Controllers
 
         public PartialViewResult _Description(int id)
         {
-
             if (id != 0)
             {
                 const int specialistrole = 1;
@@ -191,9 +191,21 @@ namespace RentalMobile.Controllers
             {
                 var specialistPublicProfileComment =
                     _db.SpecialistProfileComments.Where(x => x.SpecialistId == id);
+                ViewBag.CommentCount = specialistPublicProfileComment.Any() ? "( " + specialistPublicProfileComment.Count() + " )" : "";
                 return PartialView(specialistPublicProfileComment.ToList());
             }
             return null;
+        }
+
+        public string GetCommentCount(int id)
+        {
+            if (id != 0)
+            {
+                var specialistPublicProfileComment =
+                    _db.SpecialistProfileComments.Where(x => x.SpecialistId == id);
+                return specialistPublicProfileComment.Any() ? "( " + specialistPublicProfileComment.Count() + " )" : "";
+            }
+            return "";
         }
 
         public string JNotifyConfirmationSharingEmail()

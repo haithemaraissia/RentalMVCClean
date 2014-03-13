@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using RentalMobile.Helpers
 @model RentalMobile.Models.Specialist
 @{
     Layout = "~/Views/Shared/ViewofProfiles/_Professional.cshtml";
@@ -12,35 +13,53 @@
     {
         enablejNotify = true;
     }
-      
+
     if (enablejNotify)
     {
-     <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
         media="screen" />
     <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
     }
 
     if (ViewBag.EmailSharedwithFriend != null && ViewBag.EmailSharedwithFriend == true)
     {
-        ViewBag.EmailSharedwithFriend = false;  
-
-        <script type="text/javascript">
+        ViewBag.EmailSharedwithFriend = false;
+    <script type="text/javascript">
             @Html.Raw(ViewBag.EmailSucessSharedwithFriend)
-        </script>
+    </script>
     }
-    
+
     if (ViewBag.InsertNewComment != null && ViewBag.InsertNewComment == true)
     {
         ViewBag.InsertNewComment = false;  
-    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
-        media="screen" />
-    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
-        <script type="text/javascript">
+    <script type="text/javascript">
             @Html.Raw(ViewBag.InsertNewCommentSuccess)
-        </script>
+    </script>
     }
- }
-
+}
+@functions {
+    public string GetVideo()
+    {
+        var uri = HttpContext.Current.Request.Url;
+        var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        try
+        {
+            if ((Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
+            {
+                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+            else if ((Model.VimeoVideo != null && (bool)Model.VimeoVideo))
+            {
+                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+        }
+        catch (Exception)
+        {
+            videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        }
+        return videourl;
+    }
+}
 <section class="row">
     @section name
     {
@@ -63,10 +82,16 @@
             </a>
         </div>
     }
+    @section video
+    {
+        <div id="video" class="panel">
+            <iframe src="@GetVideo()" width="500" height="330"></iframe>
+        </div>
+    }
     @section map
     {
         <div id="map" class="panel">
-            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.SpecialistGoogleMap&amp;z=13&amp;output=embed">
+            <iframe width="100%" height="300"  scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.SpecialistGoogleMap&amp;z=13&amp;output=embed">
             </iframe>
             <br />
         </div>
@@ -79,7 +104,8 @@
             Please complete the form below to hire @Html.DisplayFor(model => model.FirstName)
             for your property.
         </p>
-        <p></p>
+        <p>
+        </p>
         @using (Html.BeginForm("HireProfessional", "Professionals", new { id = @Model.SpecialistId, enctype = "multipart/form-data" }, FormMethod.Post))
         {
             <ul class="grid-form">
@@ -96,8 +122,8 @@
                     @user.Email
                 }" type="email" required /> </li>
                 <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
-                Your telephone</label> <input id="your-telephone" placeholder="telephone" type="text"
-                required /> </li>
+                Your telephone</label> <input id="your-telephone" placeholder="telephone" type="text"/>
+                </li>
                 <li class="four columns omega"> <label for="showing-date-label" class="screen-reader-text">
                 Service date</label> <input id="datepicker" placeholder="service date" type="text"
                 required /> </li>
@@ -112,7 +138,7 @@
                 /> </li>
                 <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
                 Your telephone</label> <input id="your-telephone-unknown" placeholder="telephone"
-                type="text" required /> </li>
+                type="text" /> </li>
             <li class="four columns omega"> <label for="showing-date" class="screen-reader-text">
             Service date</label> <input id="datepicker-unknown" placeholder="service date" type="text"
             required /> </li>
@@ -138,7 +164,7 @@
     @section share
     {
         <div id="share-on-fb" class="panel">
-            <ul class="grid-form row double-bottom " style="margin: 20px">
+            <ul class="grid-form row double-bottom" style="margin-top: 18px">
                 <li class="six columns push by-one"><a id="test" target="_blank" class="twitter-registration" style="text-align: center"
                                                        onclick="popup('@Html.Raw(ViewBag.Twitter)', 'TwitterPopup', 500, 400);" >
                     Share it with your Twitter</a> </li>
@@ -147,7 +173,7 @@
                                                        onclick="popup('@Html.Raw(ViewBag.FaceBook)', 'FacebookPopup', 500, 400);">
                     Share it with your Facebook</a> </li>
             </ul>
-            <ul class="grid-form row remove-bottom" style="margin: 20px">
+            <ul class="grid-form row remove-bottom">
                 <li class="six columns push by-one"><a target="_blank" class="google-registration" style="text-align: center"
                                                        onclick="popup('@Html.Raw(ViewBag.GooglePlusShare)', 'GooglePlusPopup', 500, 400);">
                     Share it with your Google </a></li>
@@ -165,7 +191,6 @@
 
                 <h4 class="section-titling" style="color: #346993;">
                     Send this property to a friend</h4>
-
                 <ul class="grid-form row remove-bottom eight columns">
                     <li class="four columns alpha">
                         <label for="friend-name-field" class="screen-reader-text">
@@ -228,6 +253,7 @@
         <!--Jquery UI For DateTimeCalendar-->
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <!--Custom Scripts-->
         <script type="text/javascript">
             $(document).ready(function() {
                 
@@ -330,7 +356,7 @@
         function popup(pageUrl, title, popupWidth, popupHeight) {
             var left = (screen.width / 2) - (popupWidth / 2);
             var top = (screen.height / 2) - (popupHeight / 2);
-            var targetPop = window.open(pageUrl, title, "toolbar=no, location=no,  directories=no, status=no, menubar=no, scrollbars=YES, resizable=YES,  copyhistory=no, width=" + popupWidth + ", height=" + popupHeight + ", top=" + top + ", left=" + left);
+            window.open(pageUrl, title, "toolbar=no, location=no,  directories=no, status=no, menubar=no, scrollbars=YES, resizable=YES,  copyhistory=no, width=" + popupWidth + ", height=" + popupHeight + ", top=" + top + ", left=" + left);
         }
     </script>
 </section>

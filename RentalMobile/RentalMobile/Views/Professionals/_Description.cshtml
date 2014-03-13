@@ -2,7 +2,14 @@
 @using RentalMobile.Helpers
 <div class="seven columns">
     <h4 style="color: #346993;">General Description</h4>
-    <span>@Model.Description</span>
+   @if (Model.Description == null)
+        { 
+       <span>No Description Available</span>
+        }
+    else
+    {
+        <span>@Model.Description</span>
+    }
 </div>
 <div class="six columns push by-two">
     <h4 style="color: #346993;">Recommendation</h4>

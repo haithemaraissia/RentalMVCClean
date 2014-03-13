@@ -315,7 +315,7 @@ namespace RentalMobile.Helpers
                     }
                 }
                 var companyLookUp =
-                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId != specialistId && x.Role == 1);
+                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId && x.Role == 1);
                 if (companyLookUp != null)
                 {
                     var specialistcompany =
@@ -329,7 +329,18 @@ namespace RentalMobile.Helpers
                             renderedResult += "</li>";
                         }
                     }
+                    renderedResult += "<li>";
+                    if (specialistcompany != null && (specialist != null && (specialist.City == null && specialistcompany.City == null)))
+                    {
+                        renderedResult += "No Zone Available";
+                    }
+                    else
+                    {
+                        if (specialistcompany != null) renderedResult += specialistcompany.City;
+                    }
+                    renderedResult += "</li>";
                 }
+
             }
             var resultString = new MvcHtmlString(renderedResult);
             return resultString;

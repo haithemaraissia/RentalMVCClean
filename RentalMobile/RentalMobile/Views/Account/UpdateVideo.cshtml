@@ -1,11 +1,20 @@
 ﻿@model RentalMobile.Models.PrimaryVideo
-           @{
+@{
     ViewBag.Title = "Update Video";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
-           }
-                <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
+
+    var enablejNotify = ViewBag.UpdateVideo != null && ViewBag.UpdateVideo == true;
+    if (enablejNotify)
+    {
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
         media="screen" />
     <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
+        ViewBag.UpdateVideo = false;  
+    <script type="text/javascript">
+            @Html.Raw(ViewBag.UpdateVideoSuccess)
+    </script>
+    }
+ }
 <style>
     .VideoContent
     {
@@ -30,7 +39,7 @@
                 <img src="../../images/YouTubeLogo.jpg" alt="agent" class="scale-with-grid" style="width: 250px;
                     height: 250px" />
                 <br />
-                @Html.CheckBoxFor(m => m.YouTubeVideo.Value, new { @checked = "checked" })
+                @Html.CheckBoxFor(m => m.YouTubeVideo, new { id = "YouTubeVideoCheckBox" })
                 <br />
                 <div align="center">
                     @Html.TextBoxFor(m => m.YouTubeVideoUrl, new { id = "YouTubeVideoURL", @class = "full-width", placeholder = "You Tube Video URL" })
@@ -40,7 +49,7 @@
                 <img src="../../images/Vimeo_logo.png" alt="agent" class="scale-with-grid" style="width: 250px;
                     height: 250px" />
                 <br />
-                @Html.CheckBoxFor(m => m.VimeoVideo.Value)
+                @Html.CheckBoxFor(m => m.VimeoVideo, new { id = "VimeoVideoBox" })
                 <br />
                 <div align="center">
                     @Html.TextBoxFor(m => m.VimeoVideoUrl, new { id = "VimeoVideoURL", @class = "full-width", placeholder = "Vimeo Video URL" })
@@ -54,3 +63,22 @@
         </div> 
     }
 </section>
+@section scripts{
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#YouTubeVideoCheckBox').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#VimeoVideoBox').prop('checked', false);
+                }
+            });
+
+            $('#VimeoVideoBox').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#YouTubeVideoCheckBox').prop('checked', false);
+                }
+            });
+            
+        });
+    </script>
+}
