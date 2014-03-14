@@ -282,6 +282,11 @@
                 Specialization</h2>
             <section class="sixteen columns add-bottom relative" style="margin-top: 10px; margin-left: 50px">
                 <ul>
+                        <li class="five columns">
+                        <label id="NumberofYearsofExperienceLabel">
+                            Years of Experience</label>
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Years_Experience, new { id = "numberofyearsofexperience", required = "required", @class = "number-width center center", placeholder = "1", @pattern = @"\d+", step = "1" })
+                    </li>
                     <li class="five columns">
                         <label id="NumberofEmployeeLabel">
                             Number of Employee</label>

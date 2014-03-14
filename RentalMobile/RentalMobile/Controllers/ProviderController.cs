@@ -13,34 +13,38 @@ using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {
+    [Authorize]
     public class ProviderController : Controller
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public string Username = UserHelper.GetUserName();
+        public string RequestId;
+        public string PhotoPath;
         public static int SelectedTeam = 0;
         public static int SelectedProfessionalId = 0;
 
-        //
-        // GET: /Provider/
-        //GET: CurrentProvider
-
         public ViewResult Index()
         {
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
-
-            var team = db.MaintenanceTeamAssociations.
-                Where(x => x.MaintenanceProviderId == 2).ToList();
-
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
             ViewBag.ProviderProfile = provider;
             ViewBag.ProviderId = provider.MaintenanceProviderId;
             ViewBag.ProviderGoogleMap = provider.GoogleMap;
+            var team = Db.MaintenanceTeamAssociations.
+                Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
             ViewBag.Team = GetProviderTeam(team);
             return View(provider);
         }
 
         private List<Teammate> GetProviderTeam(IEnumerable<MaintenanceTeamAssociation> team)
         {
+
+
+
+
+
+
             var myTeam = (from i in team
-                          let currentspecialist = db.Specialists.Find(i.SpecialistId)
+                          let currentspecialist = Db.Specialists.Find(i.SpecialistId)
                           select new Teammate
                               {
                                   SpecialistId = i.SpecialistId,
@@ -52,12 +56,81 @@ namespace RentalMobile.Controllers
         }
 
 
+        //public void ConstructTeamtest(int maintenanceProviderId)
+        //{
+        //    if (maintenanceProviderId != 0)
+        //    {
+
+
+        //        var Teams = Db.MaintenanceTeamAssociations.
+        //            Where(x => x.MaintenanceProviderId == maintenanceProviderId)
+        //            .GroupBy(x=>x.TeamId)
+                
+                
+                
+                
+                
+                
+                
+        //        //Get every Team that The Provider Manager
+        //        var allTeam =
+        //            Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
+
+        //        if (allTeam.Count != 0)
+        //        {
+        //            //for each team , get the name of the team and all specialist in it
+        //            foreach (var maintenanceTeamAssociation in allTeam)
+        //            {
+        //                var teamName = maintenanceTeamAssociation.TeamName;
+        //                var teamId = maintenanceTeamAssociation.TeamId;
+                       
+        //                //Get all Specialist for this team;
+        //                var teamMateList =
+        //                    Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId)
+        //                      .Select(x => x.SpecialistId)
+        //                      .ToList();
+
+        //                if (teamMateList.Count != 0)
+        //                {
+        //                    var TeamList = new List<Teammate>();
+        //                    foreach (var i in teamMateList)
+        //                    {
+        //                        //Get the property of Specialist
+
+        //                        TeamList.Add(new Teammate
+        //                      {
+        //                          SpecialistId = i,
+        //                          SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
+        //                          YearofExperience = 3,
+        //                          SpecialistImageProfile = currentspecialist.Photo
+        //                      }).ToList();
+        //                    }
+        //                }
+
+        //                //var myTeam = (from i in maintenanceTeamAssociation
+        //                //  let currentspecialist = Db.Specialists.Find(maintenanceTeamAssociation.SpecialistId) 
+        //                //  select new Teammate
+        //                //      {
+        //                //          SpecialistId = i.SpecialistId,
+        //                //          SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
+        //                //          YearofExperience = 3,
+        //                //          SpecialistImageProfile = currentspecialist.Photo
+        //                //      }).ToList();
+
+
+        //            }
+        //        }
+        //    }
+        //}
+
+
+
         // GET: /Provider/Edit/5
 
         public ActionResult Edit(int id)
         {
-            MaintenanceProvider Provider = db.MaintenanceProviders.Find(id);
-            return View(Provider);
+            var provider = Db.MaintenanceProviders.Find(id);
+            return View(provider);
         }
 
         //
@@ -68,8 +141,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Provider).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(Provider).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(Provider);
@@ -81,7 +154,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ChangeAddress(int id)
         {
-            MaintenanceProvider Provider = db.MaintenanceProviders.Find(id);
+            MaintenanceProvider Provider = Db.MaintenanceProviders.Find(id);
             return View(Provider);
         }
 
@@ -93,9 +166,9 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Provider).State = EntityState.Modified;
+                Db.Entry(Provider).State = EntityState.Modified;
                 Provider.GoogleMap = string.IsNullOrEmpty(Provider.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(Provider.Address, Provider.City, Provider.CountryCode);
-                db.SaveChanges();
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(Provider);
@@ -106,7 +179,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult Delete(int id)
         {
-            MaintenanceProvider Provider = db.MaintenanceProviders.Find(id);
+            MaintenanceProvider Provider = Db.MaintenanceProviders.Find(id);
             return View(Provider);
         }
 
@@ -116,20 +189,20 @@ namespace RentalMobile.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            MaintenanceProvider Provider = db.MaintenanceProviders.Find(id);
-            db.MaintenanceProviders.Remove(Provider);
-            db.SaveChanges();
+            MaintenanceProvider Provider = Db.MaintenanceProviders.Find(id);
+            Db.MaintenanceProviders.Remove(Provider);
+            Db.SaveChanges();
 
 
 
             //// Delete All associated records
 
-            //var Providershowing = db.ProviderShowings.Where(x => x.ProviderId == id).ToList();
+            //var Providershowing = Db.ProviderShowings.Where(x => x.ProviderId == id).ToList();
             //foreach (var x in Providershowing)
             //{
-            //    db.ProviderShowings.Remove(x);
+            //    Db.ProviderShowings.Remove(x);
             //}
-            //db.SaveChanges();
+            //Db.SaveChanges();
 
 
 
@@ -158,8 +231,8 @@ namespace RentalMobile.Controllers
         //public PartialViewResult FavoriteDetails(int id)
         //{
 
-        //    var Providerfavorite =  db.ProviderFavorites.Where(x => x.ProviderId == 2 && x.FavoriteId == id).FirstOrDefault();
-        //    //Provider Provider = db.ProviderFavorites.Where(Provider == 6 && )
+        //    var Providerfavorite =  Db.ProviderFavorites.Where(x => x.ProviderId == 2 && x.FavoriteId == id).FirstOrDefault();
+        //    //Provider Provider = Db.ProviderFavorites.Where(Provider == 6 && )
         //    return PartialView("_ProviderFavDetail",Providerfavorite);
         //}
 
@@ -170,9 +243,9 @@ namespace RentalMobile.Controllers
         //Continue from here like OWner for pendingm, accpeted and rejected
         public ActionResult NewJobOffer()
         {
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
 
-            return View(db.MaintenanceProviderAcceptedJobs.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList());
+            return View(Db.MaintenanceProviderAcceptedJobs.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList());
         }
 
 
@@ -199,12 +272,12 @@ namespace RentalMobile.Controllers
         {
             //Get all specialist that don't have pending association or all already associated with the Team
 
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
-            var existingTeamAssociation = db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistId).ToList();
-            var pendingTeamAssociation = db.SpecialistPendingTeamInvitations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var existingTeamAssociation = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistId).ToList();
+            var pendingTeamAssociation = Db.SpecialistPendingTeamInvitations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
             var mergedExistingandPendingTeamAssociation = new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
-            var excludedSpecialistList = db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
-            var filterSpecialistList = db.Specialists.Except(excludedSpecialistList).ToList();
+            var excludedSpecialistList = Db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
+            var filterSpecialistList = Db.Specialists.Except(excludedSpecialistList).ToList();
 
             return View(filterSpecialistList);
 
@@ -220,8 +293,8 @@ namespace RentalMobile.Controllers
 
             //Get all specialist that don't have pending association or all already associated with the Team
 
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
-            var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var teamcount = Db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
             if (teamcount == 0)
             {
                 return RedirectToAction("Create", "Team");
@@ -245,9 +318,9 @@ namespace RentalMobile.Controllers
         public ActionResult SelectTeam(int id)
         {
             SelectedProfessionalId = id;
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
             var currentTeam =
-                db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
+                Db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
             return View(currentTeam);
         }
 
@@ -263,7 +336,7 @@ namespace RentalMobile.Controllers
         {
             var test = SelectedProfessionalId;
             var test2 = SelectedTeam;
-            return View(db.MaintenanceTeams.Where(x => x.TeamId == SelectedTeam));
+            return View(Db.MaintenanceTeams.Where(x => x.TeamId == SelectedTeam));
         }
 
 
@@ -272,8 +345,8 @@ namespace RentalMobile.Controllers
         public ActionResult InviteTeamMember(MaintenanceTeam team)
         {
             var tid = SelectedTeam;
-            var selectedteam = db.MaintenanceTeams.FirstOrDefault(x => x.TeamId == tid);
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var selectedteam = Db.MaintenanceTeams.FirstOrDefault(x => x.TeamId == tid);
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
 
             var proid = provider.MaintenanceProviderId;
             if (selectedteam != null)
@@ -286,9 +359,9 @@ namespace RentalMobile.Controllers
                         TeamId = selectedteam.TeamId,
                         TeamName = selectedteam.TeamName
                     };
-                db.SpecialistPendingTeamInvitations.Add(npti);
+                Db.SpecialistPendingTeamInvitations.Add(npti);
             }
-            db.SaveChanges();
+            Db.SaveChanges();
 
 
             //Send Confirmation to the Specialist 
@@ -321,8 +394,8 @@ namespace RentalMobile.Controllers
         // {
         //     //Get all specialist that don't have pending association or all already associated with the Team
 
-        //     var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
-        //     var teamcount = db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+        //     var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+        //     var teamcount = Db.MaintenanceTeams.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
         //     if (teamcount == 0)
         //     {
         //         return RedirectToAction("Create", "Team");
@@ -345,7 +418,9 @@ namespace RentalMobile.Controllers
         private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
 
         //MAKE SURE THAT USER ARE AUTHENTICATED
-        public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
+      
+        
+     //   public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
         //MAKE SURE THAT USER ARE AUTHENTICATED
 
         public string TenantPhotoPath = "~/Photo/Tenant/Property";
@@ -454,17 +529,17 @@ namespace RentalMobile.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Units.Add(u.Unit);
-                    db.UnitPricings.Add(u.UnitPricing);
-                    db.UnitFeatures.Add(u.UnitFeature);
-                    db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-                    db.UnitAppliances.Add(u.UnitAppliance);
-                    db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
-                    db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
-                    db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+                    Db.Units.Add(u.Unit);
+                    Db.UnitPricings.Add(u.UnitPricing);
+                    Db.UnitFeatures.Add(u.UnitFeature);
+                    Db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
+                    Db.UnitAppliances.Add(u.UnitAppliance);
+                    Db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
+                    Db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
+                    Db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
                     //Think if tyou need or not because of the upload control
-                    //db.UnitGalleries.Add(u.UnitGallery);
-                    db.SaveChanges();
+                    //Db.UnitGalleries.Add(u.UnitGallery);
+                    Db.SaveChanges();
                     // SavePictures(u.Unit);
                     return RedirectToAction("Index");
                 }
@@ -500,7 +575,7 @@ namespace RentalMobile.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            Db.Dispose();
             base.Dispose(disposing);
         }
 

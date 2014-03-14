@@ -716,6 +716,7 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Years Experience" Type="int" Nullable="false" />
           <Property Name="NumberofEmployee" Type="int" Nullable="false" />
           <Property Name="NumberofCertifitedEmplyee" Type="int" Nullable="false" />
           <Property Name="Air Conditioning" Type="bit" Nullable="false" />
@@ -4272,6 +4273,7 @@
           <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="CurrencyID" Nullable="false" />
           <NavigationProperty Name="MaintenanceCompanyLookUp" Relationship="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization" FromRole="MaintenanceCompanySpecialization" ToRole="MaintenanceCompanyLookUp" />
+          <Property Type="Int32" Name="Years_Experience" Nullable="false" />
         </EntityType>
         <EntityType Name="MaintenanceCustomService">
           <Key>
@@ -6148,6 +6150,7 @@
           <EntitySetMapping Name="MaintenanceCompanySpecializations">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceCompanySpecialization">
               <MappingFragment StoreEntitySet="MaintenanceCompanySpecialization">
+                <ScalarProperty Name="Years_Experience" ColumnName="Years Experience" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="Currency" ColumnName="Currency" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />

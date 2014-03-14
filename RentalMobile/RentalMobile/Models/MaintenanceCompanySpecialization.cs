@@ -74,6 +74,8 @@ public partial class MaintenanceCompanySpecialization
 
     public int CurrencyID { get; set; }
 
+    public int Years_Experience { get; set; }
+
 
 
     public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }

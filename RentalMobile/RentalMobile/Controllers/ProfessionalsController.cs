@@ -87,6 +87,7 @@ namespace RentalMobile.Controllers
                     if (mcs != null)
                     {
                         ViewBag.Rate = mcs.Rate;
+                        ViewBag.YearsofExperience = mcs.Years_Experience;
                         var currency = _db.Currencies.FirstOrDefault(x => x.CurrencyID == mcs.CurrencyID);
                         if (currency != null)
                             ViewBag.Currency = currency.CurrencyValue;
