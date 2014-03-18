@@ -1381,7 +1381,7 @@
     <Content Include="Views\Emails\RequestShowing\Receiver\Multipart.Html.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadProvider.cshtml" />
     <Content Include="Views\Shared\LayoutFrame\_HeadSpecialist.cshtml" />
-    <Content Include="Views\Provider\_MaintenanceTeamAssociation.cshtml" />
+    <Content Include="Views\Provider\_Team.cshtml" />
     <Content Include="Views\Specialist\ProviderInvitation.cshtml" />
     <Content Include="Views\Specialist\AcceptInvitation.cshtml" />
     <Content Include="Views\Specialist\DenyInvitation.cshtml" />

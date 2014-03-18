@@ -29,103 +29,55 @@ namespace RentalMobile.Controllers
             ViewBag.ProviderProfile = provider;
             ViewBag.ProviderId = provider.MaintenanceProviderId;
             ViewBag.ProviderGoogleMap = provider.GoogleMap;
-            var team = Db.MaintenanceTeamAssociations.
-                Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
-            ViewBag.Team = GetProviderTeam(team);
             return View(provider);
         }
 
+
+/// <summary>
+/// Only 1 team can exist
+/// </summary>
+        public PartialViewResult _Team()
+        {
+            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var checkteamexistance =
+                Db.MaintenanceTeamAssociations.FirstOrDefault(
+                    x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+            var allTeamAssociations = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
+            if (checkteamexistance != null)
+            {
+                ViewBag.TeamName = checkteamexistance.TeamName;
+                var team = GetProviderTeam(allTeamAssociations);
+                                return PartialView(team);
+            }
+            return null;
+        }
+       
         private List<Teammate> GetProviderTeam(IEnumerable<MaintenanceTeamAssociation> team)
         {
-
-
-
-
-
-
             var myTeam = (from i in team
                           let currentspecialist = Db.Specialists.Find(i.SpecialistId)
-                          select new Teammate
+                           select new Teammate
                               {
                                   SpecialistId = i.SpecialistId,
                                   SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
-                                  YearofExperience = 3,
+                                  YearofExperience = GetSpecialistYearofExperience(i.SpecialistId),
                                   SpecialistImageProfile = currentspecialist.Photo
                               }).ToList();
             return myTeam;
         }
 
-
-        //public void ConstructTeamtest(int maintenanceProviderId)
-        //{
-        //    if (maintenanceProviderId != 0)
-        //    {
-
-
-        //        var Teams = Db.MaintenanceTeamAssociations.
-        //            Where(x => x.MaintenanceProviderId == maintenanceProviderId)
-        //            .GroupBy(x=>x.TeamId)
-                
-                
-                
-                
-                
-                
-                
-        //        //Get every Team that The Provider Manager
-        //        var allTeam =
-        //            Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
-
-        //        if (allTeam.Count != 0)
-        //        {
-        //            //for each team , get the name of the team and all specialist in it
-        //            foreach (var maintenanceTeamAssociation in allTeam)
-        //            {
-        //                var teamName = maintenanceTeamAssociation.TeamName;
-        //                var teamId = maintenanceTeamAssociation.TeamId;
-                       
-        //                //Get all Specialist for this team;
-        //                var teamMateList =
-        //                    Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId)
-        //                      .Select(x => x.SpecialistId)
-        //                      .ToList();
-
-        //                if (teamMateList.Count != 0)
-        //                {
-        //                    var TeamList = new List<Teammate>();
-        //                    foreach (var i in teamMateList)
-        //                    {
-        //                        //Get the property of Specialist
-
-        //                        TeamList.Add(new Teammate
-        //                      {
-        //                          SpecialistId = i,
-        //                          SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
-        //                          YearofExperience = 3,
-        //                          SpecialistImageProfile = currentspecialist.Photo
-        //                      }).ToList();
-        //                    }
-        //                }
-
-        //                //var myTeam = (from i in maintenanceTeamAssociation
-        //                //  let currentspecialist = Db.Specialists.Find(maintenanceTeamAssociation.SpecialistId) 
-        //                //  select new Teammate
-        //                //      {
-        //                //          SpecialistId = i.SpecialistId,
-        //                //          SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
-        //                //          YearofExperience = 3,
-        //                //          SpecialistImageProfile = currentspecialist.Photo
-        //                //      }).ToList();
-
-
-        //            }
-        //        }
-        //    }
-        //}
+        public int GetSpecialistYearofExperience(int specialistId)
+        {
+            const int specialistrole = 1;
+            var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+            return lookUp == null ? 0 : Db.MaintenanceCompanySpecializations.Find(lookUp.CompanyId).Years_Experience;
+        }
 
 
 
-        // GET: /Provider/Edit/5
+
+
+        
 
         public ActionResult Edit(int id)
         {

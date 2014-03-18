@@ -854,9 +854,11 @@
 }
 @section team
 {
-    @{
+@*    @{
         Html.RenderPartial("_MaintenanceTeamAssociation", (object)ViewBag.Team);
-    }
+    }*@
+    
+     @{ Html.RenderAction("_Team", "Provider"); }
 
 
   
