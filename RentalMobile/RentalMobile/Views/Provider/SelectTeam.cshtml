@@ -40,7 +40,7 @@
                      <article>
                          <figure class="five columns alpha">
                              @Html.ActionLink(" ", "Index", "Professionals", new {id = item.TeamId}, new {@class = "camera"})
-                             @* <img src="@item.Photo" class="scale-with-grid" style="min-height: 185px" alt="gallery" />*@
+                              <img src="@UserHelper.GetTeamPrimaryPhoto(@item.TeamId)" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                          </figure>
                          <div class="five columns omega">
                              <h4>

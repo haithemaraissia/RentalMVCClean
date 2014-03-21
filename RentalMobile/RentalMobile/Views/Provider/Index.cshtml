@@ -1,4 +1,5 @@
-﻿@model RentalMobile.Models.MaintenanceProvider
+﻿@using RentalMobile.Helpers
+@model RentalMobile.Models.MaintenanceProvider
 @{
     ViewBag.Title = "Provider Profile";
     Layout = "~/Views/Shared/Profiles/_Provider.cshtml";
@@ -854,11 +855,80 @@
 }
 @section team
 {
-@*    @{
-        Html.RenderPartial("_MaintenanceTeamAssociation", (object)ViewBag.Team);
-    }*@
-    
-     @{ Html.RenderAction("_Team", "Provider"); }
+
+
+
+    <div id="team" class="panel">
+        <div id="Teammenu" style="display:block">
+            @if (ViewBag.TeamId == null)
+            {
+                <section class="row double-bottom" id="NoTeamSection">
+                    <div class="sixteen columns prop-details">
+                        <div class="six columns push by-one">
+                            <input type="submit" class="full-width tall" value="Create Team" onclick="location.href='./Team/Create';" />
+                        </div>
+                    </div>
+                </section>
+                
+                
+                
+                
+                
+               
+                
+            }
+
+
+
+
+
+
+            else
+            {
+                <section class="row double-bottom">
+                    <div class="sixteen columns prop-details">
+                        <div class="six columns push by-one">
+                            <input type="submit" class="full-width tall" value="Edit Team" onclick="location.href='./Team/Edit/@ViewBag.TeamId';" />
+                        </div>
+                        <div class="six columns push by-two">
+                            <input type="submit" class="full-width tall" id="ViewCoverageButton" value="View Team" />
+                        </div>
+                    </div>
+                    <div class="sixteen columns prop-details">
+                        <div class="six columns push by-one">
+                            <input type="submit" class="full-width tall" value="Add Team Member" onclick=" location.href = 'Provider/AddTeamMember'; " />
+                        </div>
+                        <div class="six columns push by-two">
+                            <input type="submit" class="full-width tall" value="Remove Team Member" onclick=" location.href = './RemoveTeamMember'; " />
+                        </div>
+                    </div>
+                </section>    
+                
+            }
+        </div>
+        
+        
+        
+        
+        @if (ViewBag.TeamId != null)
+        {
+        <div id="TeamMemberSectionSection" style="display:none">
+             @{ Html.RenderAction("_Team", "Provider"); }
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="three columns push by-six">
+                        <input type="submit" class="full-width tall" id="BacktoTeamMenuButton" value="Back To Team"  onclick=" location.href= '/Provider#team';"/>
+                    </div>
+                </div>
+            </section>      
+        </div> 
+        }
+        
+        
+        
+
+    </div>  
+
 
 
   
@@ -920,4 +990,26 @@
             </div>*@
         </section>
     </div>
+}
+
+
+
+
+
+
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $("#ViewCoverageButton").click(function () {
+            $("#Teammenu").toggle('slow');
+            $("#TeamMemberSectionSection").toggle('slow');
+        });
+
+        $("#BacktoTeamMenuButton").click(function () {
+            $("#Teammenu").toggle('slow');
+            $("#TeamMemberSectionSection").toggle('slow');
+        });
+    </script>
 }

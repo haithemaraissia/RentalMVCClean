@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,8 @@ namespace RentalMobile.Helpers
     public static class UserHelper
     {
         private static readonly DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
+
+        public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
 
         public static PosterAttributes DefaultPoster = new PosterAttributes("Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
 
@@ -452,6 +455,14 @@ namespace RentalMobile.Helpers
                    return 6;
            }
         }
+
+        public static string GetTeamPrimaryPhoto(int id)
+        {
+            var maintenanceProvider = DB.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            return maintenanceProvider != null ? maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture) : DefaultAvatarPlaceholderImagePath;
+        }
+
+
     }
 
 

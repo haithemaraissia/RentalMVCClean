@@ -6361,7 +6361,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RentalModel" ZoomLevel="10">
+      <Diagram Name="RentalModel" ZoomLevel="16">
         <EntityTypeShape EntityType="DB_33736_rentalModel.TenantShowing" Width="1.5" PointX="9.5" PointY="1.25" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Tenant" Width="1.5" PointX="7.125" PointY="1.25" Height="4.2879036458333326" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_TenantShowing_Tenant" >

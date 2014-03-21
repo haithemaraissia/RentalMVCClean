@@ -28,6 +28,12 @@ namespace RentalMobile.Controllers
             var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
             ViewBag.ProviderProfile = provider;
             ViewBag.ProviderId = provider.MaintenanceProviderId;
+            var maintenanceTeamAssociation = Db.MaintenanceTeamAssociations.FirstOrDefault(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+            if (maintenanceTeamAssociation != null)
+            {
+                ViewBag.TeamId = maintenanceTeamAssociation.TeamId;
+                ViewBag.TeamName = maintenanceTeamAssociation.TeamName;
+            }
             ViewBag.ProviderGoogleMap = provider.GoogleMap;
             return View(provider);
         }
@@ -72,6 +78,12 @@ namespace RentalMobile.Controllers
             var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
             return lookUp == null ? 0 : Db.MaintenanceCompanySpecializations.Find(lookUp.CompanyId).Years_Experience;
         }
+
+
+
+
+
+
 
 
 

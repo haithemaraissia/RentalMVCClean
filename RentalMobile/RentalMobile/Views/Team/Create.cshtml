@@ -1,49 +1,30 @@
 ﻿@model RentalMobile.Models.MaintenanceTeam
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Your Team";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+    <section class="sixteen columns add-bottom relative">
+        <h2 style="color: #346993;">Create Your Team</h2>
+        <ul class="grid-form row remove-bottom">
+            <li class="four columns">&nbsp; </li>
+            <li class="eight columns">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true, "Team Name can not be empty. Please correct the errors and try again.")
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.TeamName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.TeamName) @Html.ValidationMessageFor(model => model.TeamName)
+                    </div>
+                    <p>
+                        <input type="submit" value="Create Team" />
+                    </p>
+                }
+            </li>
+            <li class="four columns">&nbsp; </li>
+        </ul>
+        <div>
+            <a href="./Provider#team">back</a>
+        </div>
+    </section>
 }
-
-<h2>Create</h2>
-
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>MaintenanceTeam</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TeamId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TeamId)
-            @Html.ValidationMessageFor(model => model.TeamId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TeamName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TeamName)
-            @Html.ValidationMessageFor(model => model.TeamName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.MaintenanceProviderId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MaintenanceProviderId)
-            @Html.ValidationMessageFor(model => model.MaintenanceProviderId)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

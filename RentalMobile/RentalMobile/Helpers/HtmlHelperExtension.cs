@@ -18,6 +18,9 @@ namespace RentalMobile.Helpers
 
         public static DB_33736_rentalEntities db = new DB_33736_rentalEntities();
 
+        public static string DefaultAvatarPlaceholderImagePath =
+            "../../images/dotimages/avatar-placeholder.png";
+
         //       public static string RelativePath(this HtmlHelper helper, string photopath)
         //       {
         //return server.Content(item.PhotoPath)
@@ -277,6 +280,13 @@ namespace RentalMobile.Helpers
         }
 
 
+        public static string GetTeamPrimaryPhoto(this HtmlHelper helper, int? id)
+        {
+            var maintenanceProvider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            if (maintenanceProvider != null)
+                return id == null ? DefaultAvatarPlaceholderImagePath : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
+            return DefaultAvatarPlaceholderImagePath;
+        }
 
 
 
