@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using PagedList;
 using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
@@ -232,7 +233,7 @@ namespace RentalMobile.Controllers
         /// <returns></returns>
 
 
-        public ActionResult AddTeamMember()
+        public ActionResult AddTeamMember(int page = 1)
         {
             //Get all specialist that don't have pending association or all already associated with the Team
 
@@ -241,7 +242,7 @@ namespace RentalMobile.Controllers
             var pendingTeamAssociation = Db.SpecialistPendingTeamInvitations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistID).ToList();
             var mergedExistingandPendingTeamAssociation = new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
             var excludedSpecialistList = Db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
-            var filterSpecialistList = Db.Specialists.Except(excludedSpecialistList).ToList();
+            var filterSpecialistList = Db.Specialists.Except(excludedSpecialistList).OrderBy(x=>x.SpecialistId).ToPagedList(page, 10);
 
             return View(filterSpecialistList);
 
@@ -279,12 +280,12 @@ namespace RentalMobile.Controllers
 
 
 
-        public ActionResult SelectTeam(int id)
+        public ActionResult SelectTeam(int id, int page = 1 )
         {
             SelectedProfessionalId = id;
             var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderID());
             var currentTeam =
-                Db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList();
+                Db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).OrderBy(x => x.TeamId).ToPagedList(page, 10);
             return View(currentTeam);
         }
 

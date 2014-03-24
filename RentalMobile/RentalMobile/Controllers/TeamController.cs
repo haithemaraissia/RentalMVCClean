@@ -96,7 +96,19 @@ namespace RentalMobile.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(maintenanceteam).State = EntityState.Modified;
-                db.SaveChanges();
+
+                //Save Change for Each Team association Team Name
+                var maintenanceTeamAssociation = db.MaintenanceTeamAssociations.
+                    Where(x=>x.TeamId == maintenanceteam.TeamId 
+                        && x.MaintenanceProviderId == Provider.MaintenanceProviderId).ToList();
+               if (maintenanceTeamAssociation.Count > 0)
+               {
+                   foreach (var mta in maintenanceTeamAssociation)
+                   {
+                       mta.TeamName = maintenanceteam.TeamName;
+                   }
+               }
+               db.SaveChanges();
                 return Redirect(ProviderTeamTabUrl());
             }
             return View(maintenanceteam);
