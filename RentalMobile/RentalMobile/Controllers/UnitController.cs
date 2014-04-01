@@ -297,41 +297,41 @@ namespace RentalMobile.Controllers
             var role = GetCurrentRole();
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
 
@@ -469,41 +469,41 @@ namespace RentalMobile.Controllers
             var role = GetCurrentRole();
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
             var unitGallery = db.UnitGalleries.Find(TempData["UnitID"]);
@@ -1078,7 +1078,7 @@ namespace RentalMobile.Controllers
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now,
                         IsAllDay = false,
-                        OwnerId = unitposter.PosterID
+                        OwnerId = unitposter.PosterId
                     };
                 db.OwnerPendingShowingCalendars.Add(pendingshowing);
                 db.SaveChanges();

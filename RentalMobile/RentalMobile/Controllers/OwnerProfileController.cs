@@ -11,7 +11,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index(int id)
         {
-            var Owner = db.Owners.Find(UserHelper.GetOwnerID(id));
+            var Owner = db.Owners.Find(UserHelper.GetOwnerId(id));
             ViewBag.OwnerProfile = Owner;
             ViewBag.OwnerId = Owner.OwnerId;
             ViewBag.OwnerGoogleMap = Owner.GoogleMap;

@@ -3,11 +3,11 @@
 @using RentalMobile.Helpers
 @model PagedList.IPagedList<RentalMobile.Models.Specialist>
 @{
-    ViewBag.Title = "Add Team Member ";
+    ViewBag.Title = "Remove Team Member ";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 
     <section class="sixteen columns">
-        <h3 class="tagline">Select Team Member</h3>
+        <h3 class="tagline">Removing Team Member</h3>
     </section>
     <section class="sixteen columns">
         <form action="#" class="row">
@@ -19,7 +19,7 @@
         @if (Model.Count > 0)
         {  
             <div>
-                @Html.PagedListPager(Model, page => Url.Action("AddTeamMember", new { page }), new PagedListRenderOptions
+                @Html.PagedListPager(Model, page => Url.Action("RemoveTeamMember", new { page }), new PagedListRenderOptions
                     {
                         DisplayLinkToFirstPage = false,
                         DisplayLinkToLastPage = false,
@@ -61,7 +61,7 @@
                                     </span>
                                 </p>
                                 <ul class="toolbar">
-                                    <li class="next-arr">@Html.ActionLink("Select Specialist", "SelectTeam", "Provider", new { pid = item.SpecialistId }, null)
+                                    <li class="next-arr">@Html.ActionLink("Select Specialist", "RemoveFromTeam", "Provider", new { pid = item.SpecialistId }, null)
                                     </li>
                                 </ul>
                             </div>
@@ -70,7 +70,7 @@
                 }
             </ul> 
             <div>
-                @Html.PagedListPager(Model, page => Url.Action("AddTeamMember", new { page }), new PagedListRenderOptions
+                @Html.PagedListPager(Model, page => Url.Action("RemoveTeamMember", new { page }), new PagedListRenderOptions
            {
                DisplayLinkToFirstPage = false,
                DisplayLinkToLastPage = false,

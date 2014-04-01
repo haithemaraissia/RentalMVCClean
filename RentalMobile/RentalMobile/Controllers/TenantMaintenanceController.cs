@@ -16,12 +16,12 @@ namespace RentalMobile.Controllers
         public ViewResult Index()
         {
             var maintenanceorders = _db.MaintenanceOrders.Include(m => m.ServiceType).Include(m => m.UrgencyType);
-             var userGUID = UserHelper.GetUserGUID();
+             var userGUID = UserHelper.GetUserGuid();
             if (userGUID == null)
             {
                 return View(maintenanceorders.ToList());
             }
-            var tenantID = UserHelper.GetTenantID((Guid) userGUID);
+            var tenantID = UserHelper.GetTenantId((Guid) userGUID);
             maintenanceorders = _db.MaintenanceOrders.Include(m => m.ServiceType).Include(m => m.UrgencyType).
                 Where(t => t.TenantMaintenance.TenantID == tenantID);
             return View(maintenanceorders.ToList());
@@ -47,10 +47,10 @@ namespace RentalMobile.Controllers
             {
                 _db.MaintenanceOrders.Add(maintenanceorder);
                 _db.SaveChanges();
-                var userGUID = UserHelper.GetUserGUID();
+                var userGUID = UserHelper.GetUserGuid();
                 if (userGUID != null)
                 {
-                    var tenantID = UserHelper.GetTenantID((Guid) userGUID);
+                    var tenantID = UserHelper.GetTenantId((Guid) userGUID);
                     if (tenantID != null)
                     {
                         var tenantMaintenance = new TenantMaintenance

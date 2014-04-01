@@ -22,7 +22,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            var specialist = Db.Specialists.Find(UserHelper.GetSpecialistID());
+            var specialist = Db.Specialists.Find(UserHelper.GetSpecialistId());
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
@@ -120,41 +120,41 @@ namespace RentalMobile.Controllers
             var role = UserHelper.GetCurrentRole(out PhotoPath);
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
 
@@ -179,7 +179,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult CompleteProfile()
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             if (specialistId != null)
             {
                 const int specialistrole = 1;
@@ -215,7 +215,7 @@ namespace RentalMobile.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var specialistId = UserHelper.GetSpecialistID();
+                    var specialistId = UserHelper.GetSpecialistId();
                     if (specialistId != null)
                     {
 
@@ -351,7 +351,7 @@ namespace RentalMobile.Controllers
 
         public void UpdateProfileCompletion(int newprofilecompletionpercentage)
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             if (specialistId == null) return;
             var currentspecialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
             if (currentspecialist != null)
@@ -381,7 +381,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ProviderInvitation(int page = 1)
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             return specialistId == null ? null : View(
                 Db.SpecialistPendingTeamInvitations.Where(x => x.SpecialistID == specialistId).OrderBy(x=>x.SpecialistID).
                 ToPagedList(page, 10 ));
@@ -438,14 +438,14 @@ namespace RentalMobile.Controllers
 
         public ActionResult CurrentProvider(int page = 1)
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).OrderBy(x => x.SpecialistId).
                 ToPagedList(page, 10));
         }
 
         public ActionResult ManageProvider(int page = 1)
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             return View(Db.MaintenanceTeamAssociations.Where(x => x.SpecialistId == specialistId).OrderBy(x => x.SpecialistId).
                 ToPagedList(page, 10));
         }
@@ -478,7 +478,7 @@ namespace RentalMobile.Controllers
 
         public PartialViewResult  _Coverage()
         {
-            var specialistId = UserHelper.GetSpecialistID();
+            var specialistId = UserHelper.GetSpecialistId();
             if (specialistId != null)
             {
                 const int specialistrole = 1;

@@ -23,7 +23,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+            var tenant = db.Tenants.Find(UserHelper.GetTenantId());
             ViewBag.TenantProfile = tenant;
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;
@@ -157,9 +157,9 @@ namespace RentalMobile.Controllers
 
         public ViewResult GeneratedRentalAgreement()
         {
-            if (UserHelper.GetTenantID() != null)
+            if (UserHelper.GetTenantId() != null)
             {
-                var id = UserHelper.GetTenantID();
+                var id = UserHelper.GetTenantId();
                 if (id != null)
                 {
                     var tenantId = (int)id;
@@ -167,7 +167,7 @@ namespace RentalMobile.Controllers
                     var result = db.GeneratedRentalContracts.Count(x => x.TenantID == tenantId);
                     if (result != 0)
                     {
-                        return View(db.GeneratedRentalContracts.Where(x => x.TenantID == UserHelper.GetTenantID()).ToList());
+                        return View(db.GeneratedRentalContracts.Where(x => x.TenantID == UserHelper.GetTenantId()).ToList());
                     }
                 }
             }

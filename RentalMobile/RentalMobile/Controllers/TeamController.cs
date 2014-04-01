@@ -21,7 +21,7 @@ namespace RentalMobile.Controllers
         //Constructir
         public TeamController()
         {
-            Provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            Provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId());
         }
 
         //

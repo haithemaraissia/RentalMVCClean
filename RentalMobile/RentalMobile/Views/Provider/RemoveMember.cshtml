@@ -2,7 +2,7 @@
 @using RentalMobile.Helpers
 @model IEnumerable<RentalMobile.Models.MaintenanceTeam>
 @{
-    ViewBag.Title = "Invite Team Member ";
+    ViewBag.Title = "Removing Specialist from Team";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
 
     if (ViewBag.ConfirmationSuccess != null && ViewBag.Confirmation == true)
@@ -16,19 +16,18 @@
     </script>
     }
     <section class="sixteen columns">
-        <h3 class="tagline">Sending the Invitation</h3>
+        <h3 class="tagline">Removing Specialist from Team</h3>
     </section>
     <section class="sixteen columns">
-        @using (Html.BeginForm("InviteTeamMember", "Provider", FormMethod.Post))
+        @using (Html.BeginForm("RemoveMember", "Provider", FormMethod.Post))
         {
            <input type="hidden" id="pid" name="pid" value="@ViewBag.SelectedSpecialistId" />
-           <input type="hidden" id="stid" name="stid" value="@ViewBag.SelectedTeamId" />
-               
+           <input type="hidden" id="stid" name="stid" value="@ViewBag.SelectedTeamId" />    
             @Html.ValidationSummary(true)
             if (Model != null && Model.Any())
             { 
                 <h2>Confirmation</h2>
-            <input hidden="@ViewBag.SelectedSpecialistId"/>
+           <input hidden="@ViewBag.SelectedSpecialistId"/>
            <input hidden="@ViewBag.SelectedTeamId"/>
             <ul id="property-list" class="list-grid-gallery list">
                 @foreach (var item in Model)
@@ -45,7 +44,7 @@
                                         <a href="../Professionals/@ViewBag.SelectedSpecialistId" target="_blank">@UserHelper.GetSpecialistName(ViewBag.SelectedSpecialistId)</a>
                                     </p>
                                     <p style="margin-bottom: 2em; text-align: center">
-                                        to Join</p>
+                                        to be Removed from</p>
                                     <p style="text-align: center">
                                         <a href="../Providers/@item.MaintenanceProviderId" target="_blank">@item.TeamName</a>
                                     </p>
@@ -56,7 +55,7 @@
                                 <img src="@UserHelper.GetTeamPrimaryPhoto(@item.TeamId)" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="three columns alpha">
-                                <input type="submit" value="Invite" class="full-width" />
+                                <input type="submit" value="Remove" class="full-width" />
                             </div>
                         </article>
                     </li>
@@ -68,7 +67,7 @@
                 
             <br /> <br />
             <h5>
-                You can not make an invitation at this moment.</h5>     
+                You can not remove specialist at this moment.</h5>     
             <section class="row">
                 <div class="sixteen columns">
                     <div class="sixteen columns">

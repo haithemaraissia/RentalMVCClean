@@ -855,9 +855,6 @@
 }
 @section team
 {
-
-
-
     <div id="team" class="panel">
         <div id="Teammenu" style="display:block">
             @if (ViewBag.TeamId == null)
@@ -868,21 +865,8 @@
                             <input type="submit" class="full-width tall" value="Create Team" onclick="location.href='./Team/Create';" />
                         </div>
                     </div>
-                </section>
-                
-                
-                
-                
-                
-               
-                
+                </section>   
             }
-
-
-
-
-
-
             else
             {
                 <section class="row double-bottom">
@@ -896,20 +880,15 @@
                     </div>
                     <div class="sixteen columns prop-details">
                         <div class="six columns push by-one">
-                            <input type="submit" class="full-width tall" value="Add Team Member" onclick=" location.href = 'Provider/AddTeamMember'; " />
+                            <input type="submit" class="full-width tall" value="Add Team Member" onclick=" location.href = '../Provider/AddTeamMember'; " />
                         </div>
                         <div class="six columns push by-two">
-                            <input type="submit" class="full-width tall" value="Remove Team Member" onclick=" location.href = './RemoveTeamMember'; " />
+                            <input type="submit" class="full-width tall" value="Remove Team Member" onclick=" location.href = '../Provider/RemoveTeamMember'; " />
                         </div>
                     </div>
-                </section>    
-                
+                </section>       
             }
         </div>
-        
-        
-        
-        
         @if (ViewBag.TeamId != null)
         {
         <div id="TeamMemberSectionSection" style="display:none">
@@ -923,15 +902,7 @@
             </section>      
         </div> 
         }
-        
-        
-        
-
     </div>  
-
-
-
-  
 }
 
 

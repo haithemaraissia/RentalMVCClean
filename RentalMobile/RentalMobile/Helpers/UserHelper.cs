@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.WebPages;
 using Newtonsoft.Json;
 using RentalMobile.Models;
 
@@ -12,9 +11,11 @@ namespace RentalMobile.Helpers
 {
     public static class UserHelper
     {
-        private static readonly DB_33736_rentalEntities DB = new DB_33736_rentalEntities();
+        private static readonly DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
 
         public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
+
+        public static string DefaultSpecialistName = "Specialist";
 
         public static PosterAttributes DefaultPoster = new PosterAttributes("Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
 
@@ -26,10 +27,10 @@ namespace RentalMobile.Helpers
 
         public static string GetUserName()
         {
-            var currentuser = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name);
+            var currentuser = Membership.GetUser(HttpContext.Current.User.Identity.Name);
             return currentuser != null ? currentuser.ToString() : Login();
         }
-        public static Guid? GetUserGUID()
+        public static Guid? GetUserGuid()
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
@@ -42,104 +43,104 @@ namespace RentalMobile.Helpers
             return null;
         }
 
-        public static int? GetTenantID(Guid userID)
+        public static int? GetTenantId(Guid userId)
         {
-            var tenant = DB.Tenants.FirstOrDefault(x => x.GUID == userID);
+            var tenant = Db.Tenants.FirstOrDefault(x => x.GUID == userId);
             if (tenant != null) return tenant.TenantId;
             return null;
         }
 
-        public  static int? GetTenantID()
+        public  static int? GetTenantId()
         {
-            var userID = GetUserGUID();
-            var tenant = DB.Tenants.FirstOrDefault(x => x.GUID == userID);
+            var userId = GetUserGuid();
+            var tenant = Db.Tenants.FirstOrDefault(x => x.GUID == userId);
             if (tenant != null) return tenant.TenantId;
             return null;
         }
 
-        public static int? GetTenantID(int id)
+        public static int? GetTenantId(int id)
         {
-            var userID = DB.Tenants.FirstOrDefault(x => x.TenantId == id);
-            if (userID != null)
+            var userId = Db.Tenants.FirstOrDefault(x => x.TenantId == id);
+            if (userId != null)
             {
-                var Tenant = DB.Tenants.FirstOrDefault(x => x.GUID == userID.GUID);
-                if (Tenant != null) return Tenant.TenantId;
+                var tenant = Db.Tenants.FirstOrDefault(x => x.GUID == userId.GUID);
+                if (tenant != null) return tenant.TenantId;
             }
             return null;
         }
 
-        public static int? GetAgentID()
+        public static int? GetAgentId()
         {
-            var userID = GetUserGUID();
-            var agent = DB.Agents.FirstOrDefault(x => x.GUID == userID);
+            var userId = GetUserGuid();
+            var agent = Db.Agents.FirstOrDefault(x => x.GUID == userId);
             if (agent != null) return agent.AgentId;
             return null;
         }
 
-        public static int? GetAgentID(int id)
+        public static int? GetAgentId(int id)
         {
-            var userID = DB.Agents.FirstOrDefault(x => x.AgentId == id);
-            if (userID != null)
+            var userId = Db.Agents.FirstOrDefault(x => x.AgentId == id);
+            if (userId != null)
             {
-                var Agent = DB.Agents.FirstOrDefault(x => x.GUID == userID.GUID);
-                if (Agent != null) return Agent.AgentId;
+                var agent = Db.Agents.FirstOrDefault(x => x.GUID == userId.GUID);
+                if (agent != null) return agent.AgentId;
             }
             return null;
         }
 
-        public static int? GetOwnerID()
+        public static int? GetOwnerId()
         {
-            var userID = GetUserGUID();
-            var owner = DB.Owners.FirstOrDefault(x => x.GUID == userID);
+            var userId = GetUserGuid();
+            var owner = Db.Owners.FirstOrDefault(x => x.GUID == userId);
             if (owner != null) return owner.OwnerId;
             return null;
         }
 
-        public static int? GetOwnerID(int id)
+        public static int? GetOwnerId(int id)
         {
-            var userID = DB.Owners.FirstOrDefault(x => x.OwnerId == id);
-            if (userID != null)
+            var userId = Db.Owners.FirstOrDefault(x => x.OwnerId == id);
+            if (userId != null)
             {
-                var owner = DB.Owners.FirstOrDefault(x => x.GUID == userID.GUID);
+                var owner = Db.Owners.FirstOrDefault(x => x.GUID == userId.GUID);
                 if (owner != null) return owner.OwnerId;
             }
             return null;
         }
 
-        public static int? GetSpecialistID()
+        public static int? GetSpecialistId()
         {
-            var userID = GetUserGUID();
-            var specialist = DB.Specialists.FirstOrDefault(x => x.GUID == userID);
+            var userId = GetUserGuid();
+            var specialist = Db.Specialists.FirstOrDefault(x => x.GUID == userId);
             if (specialist != null) return specialist.SpecialistId;
             return null;
         }
 
-        public static int? GetSpecialistID(int id)
+        public static int? GetSpecialistId(int id)
         {
-            var userID = DB.Specialists.FirstOrDefault(x => x.SpecialistId == id);
-            if (userID != null)
+            var userId = Db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+            if (userId != null)
             {
-            var specialist = DB.Specialists.FirstOrDefault(x => x.GUID == userID.GUID);
+            var specialist = Db.Specialists.FirstOrDefault(x => x.GUID == userId.GUID);
             if (specialist != null) return specialist.SpecialistId; 
             }
             return null;
         }
 
-        public static int? GetProviderID()
+        public static int? GetProviderId()
         {
-            var userID = GetUserGUID();
-            var Provider = DB.MaintenanceProviders.FirstOrDefault(x => x.GUID == userID);
-            if (Provider != null) return Provider.MaintenanceProviderId;
+            var userId = GetUserGuid();
+            var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId);
+            if (provider != null) return provider.MaintenanceProviderId;
             return null;
         }
 
-        public static int? GetProviderID(int id)
+        public static int? GetProviderId(int id)
         {
-            var userID = DB.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
-            if (userID != null)
+            var userId = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            if (userId != null)
             {
-                var Provider = DB.MaintenanceProviders.FirstOrDefault(x => x.GUID == userID.GUID);
-                if (Provider != null) return Provider.MaintenanceProviderId;
+                var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId.GUID);
+                if (provider != null) return provider.MaintenanceProviderId;
             }
             return null;
         }
@@ -184,7 +185,7 @@ namespace RentalMobile.Helpers
         public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
         public static string GetCurrentRole(out string photoPath)
         {
-            var user = System.Web.HttpContext.Current.User;
+            var user = HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
                 photoPath = HttpContext.Current.Server.MapPath(TenantPhotoPath);
@@ -197,7 +198,7 @@ namespace RentalMobile.Helpers
             }
             if (user.IsInRole("Agent"))
             {
-                photoPath = HttpContext.Current.Server.MapPath(AgentPhotoPath);
+                HttpContext.Current.Server.MapPath(AgentPhotoPath);
             }
             if (user.IsInRole("Provider"))
             {
@@ -216,11 +217,15 @@ namespace RentalMobile.Helpers
             {
                 var requestUrl = url.RequestContext.HttpContext.Request.Url;
 
-                var result = string.Format("{0}://{1}{2}",
-                                              requestUrl.Scheme,
-                                              requestUrl.Authority,
-                                              VirtualPathUtility.ToAbsolute(virtualPath));
-                return result;
+                if (requestUrl != null)
+                {
+                    var result = string.Format("{0}://{1}{2}",
+                                               requestUrl.Scheme,
+                                               requestUrl.Authority,
+                                               VirtualPathUtility.ToAbsolute(virtualPath));
+                    return result;
+                }
+                return null;
             }
         }
 
@@ -256,20 +261,20 @@ namespace RentalMobile.Helpers
             var uri = HttpContext.Current.Request.Url;
             var currenturl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
 
-            var unit = DB.Units.FirstOrDefault(x => x.UnitId == uniId);
+            var unit = Db.Units.FirstOrDefault(x => x.UnitId == uniId);
             if (unit != null && unit.PosterRole != null)
             {
                 switch (unit.PosterRole.Trim().ToLower())
                 {
                     case "owner":
-                        var owner = DB.Owners.Find(unit.PosterID);
+                        var owner = Db.Owners.Find(unit.PosterID);
                         if (owner != null)
                         {
                             return new PosterAttributes(owner.FirstName, owner.LastName, currenturl + "/ownerprofile/index/" + unit.PosterID, owner.Photo, owner.EmailAddress,"owner", owner.OwnerId);
                         }
                         break;
                          case "agent":
-                        var agent = DB.Agents.Find(unit.PosterID);
+                        var agent = Db.Agents.Find(unit.PosterID);
                         if (agent != null)
                         {
                             return new PosterAttributes(agent.FirstName, agent.LastName, currenturl + "/agentprofile/index/" + unit.PosterID, agent.Photo, agent.EmailAddress,"agent", agent.AgentId);
@@ -287,10 +292,10 @@ namespace RentalMobile.Helpers
 
         public static string GetCurrencyValue( int? currencyId)
         {
-            var currency = DB.Currencies.FirstOrDefault(x => x.CurrencyID == currencyId);
+            var currency = Db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyId);
             if (currency != null)
                 return currency.CurrencyValue;
-            return DB.Currencies.First().CurrencyValue;
+            return Db.Currencies.First().CurrencyValue;
         }
 
 
@@ -311,7 +316,7 @@ namespace RentalMobile.Helpers
             var role = GetCurrentRole(out photoPath);
             if (role == "Tenant")
             {
-                var tenant = DB.Tenants.Find(GetTenantID());
+                var tenant = Db.Tenants.Find(GetTenantId());
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
@@ -321,7 +326,7 @@ namespace RentalMobile.Helpers
             }
             if (role == "Owner")
             {
-                var owner = DB.Owners.Find(GetOwnerID());
+                var owner = Db.Owners.Find(GetOwnerId());
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
@@ -331,7 +336,7 @@ namespace RentalMobile.Helpers
             }
             if (role == "Agent")
             {
-                var agent = DB.Agents.Find(GetAgentID());
+                var agent = Db.Agents.Find(GetAgentId());
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
@@ -342,7 +347,7 @@ namespace RentalMobile.Helpers
 
             if (role == "Specialist")
             {
-                var specialist = DB.Specialists.Find(GetSpecialistID());
+                var specialist = Db.Specialists.Find(GetSpecialistId());
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
@@ -354,11 +359,11 @@ namespace RentalMobile.Helpers
 
             if (role == "Provider")
             {
-                var provider = DB.MaintenanceProviders.Find(GetProviderID());
+                var provider = Db.MaintenanceProviders.Find(GetProviderId());
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, provider.Photo,
+                                                currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -382,7 +387,7 @@ namespace RentalMobile.Helpers
             var role = GetCurrentRole(out photoPath);
             if (role == "Tenant")
             {
-                var tenant = DB.Tenants.Find(GetTenantID());
+                var tenant = Db.Tenants.Find(GetTenantId());
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
@@ -392,7 +397,7 @@ namespace RentalMobile.Helpers
             }
             if (role == "Owner")
             {
-                var owner = DB.Owners.Find(GetOwnerID());
+                var owner = Db.Owners.Find(GetOwnerId());
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
@@ -402,7 +407,7 @@ namespace RentalMobile.Helpers
             }
             if (role == "Agent")
             {
-                var agent = DB.Agents.Find(GetAgentID());
+                var agent = Db.Agents.Find(GetAgentId());
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
@@ -413,7 +418,7 @@ namespace RentalMobile.Helpers
 
             if (role == "Specialist")
             {
-                var specialist = DB.Specialists.Find(GetSpecialistID());
+                var specialist = Db.Specialists.Find(GetSpecialistId());
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
@@ -425,11 +430,11 @@ namespace RentalMobile.Helpers
 
             if (role == "Provider")
             {
-                var provider = DB.MaintenanceProviders.Find(GetProviderID());
+                var provider = Db.MaintenanceProviders.Find(GetProviderId());
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providerprofile/index/" + provider.MaintenanceProviderId, provider.Photo,
+                                                currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -458,10 +463,21 @@ namespace RentalMobile.Helpers
 
         public static string GetTeamPrimaryPhoto(int id)
         {
-            var maintenanceProvider = DB.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
             return maintenanceProvider != null ? maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture) : DefaultAvatarPlaceholderImagePath;
         }
 
+        public static string GetSpecialistPrimaryPhoto(int id)
+        {
+            var specialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+            return specialist != null ? specialist.Photo.ToString(CultureInfo.InvariantCulture) : DefaultAvatarPlaceholderImagePath;
+        }
+
+        public static string GetSpecialistName(int id)
+        {
+            var specialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+            return specialist != null ? specialist.FirstName + " " + specialist.LastName : DefaultSpecialistName;
+        }
 
     }
 
@@ -477,7 +493,7 @@ namespace RentalMobile.Helpers
         public string ProfilePicturePath { get; set; }
         public string EmailAddress { get; set; }
         public string Role { get; set; }
-        public int PosterID { get; set; }
+        public int PosterId { get; set; }
 
         public PosterAttributes(string f, string l, string pl, string pp, string e, string r, int pid)
         {
@@ -487,7 +503,7 @@ namespace RentalMobile.Helpers
             ProfilePicturePath = pp;
             EmailAddress = e;
             Role = r;
-            PosterID = pid;
+            PosterId = pid;
         }
 }
 }

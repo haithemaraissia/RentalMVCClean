@@ -26,7 +26,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -146,7 +146,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult PendingApplication()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
 
             return View(db.OwnerPendingApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
@@ -269,7 +269,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult AcceptedApplication()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
 
             return View(db.OwnerAcceptedApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
@@ -392,7 +392,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult RejectedApplication()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
 
             return View(db.OwnerRejectedApplications.Where(x => x.OwnerId == owner.OwnerId).ToList());
         }
@@ -412,7 +412,7 @@ namespace RentalMobile.Controllers
         //same as index to get the same look and fell
         public ViewResult GeneratedContract()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -422,9 +422,9 @@ namespace RentalMobile.Controllers
 
         public ViewResult GeneratedRentalAgreement()
         {
-            if (UserHelper.GetOwnerID() != null)
+            if (UserHelper.GetOwnerId() != null)
             {
-                var id = UserHelper.GetOwnerID();
+                var id = UserHelper.GetOwnerId();
                 if (id != null)
                 {
                     var ownerId = (int)id;
@@ -432,7 +432,7 @@ namespace RentalMobile.Controllers
                     var result = db.GeneratedRentalContracts.Count(x => x.LandLoradID == ownerId);
                     if (result != 0)
                     {
-                        return View(db.GeneratedRentalContracts.Where(x => x.LandLoradID == UserHelper.GetOwnerID()).ToList());
+                        return View(db.GeneratedRentalContracts.Where(x => x.LandLoradID == UserHelper.GetOwnerId()).ToList());
                     }
                 }
             }
@@ -445,9 +445,9 @@ namespace RentalMobile.Controllers
 
         public ViewResult UploadedAgreement()
         {
-            if (UserHelper.GetOwnerID() != null)
+            if (UserHelper.GetOwnerId() != null)
             {
-                var id = UserHelper.GetOwnerID();
+                var id = UserHelper.GetOwnerId();
                 if (id != null)
                 {
                     var ownerId = (int)id;
@@ -502,7 +502,7 @@ namespace RentalMobile.Controllers
                 ViewBag.ConfirmationRequest = true;
                 ViewBag.ConfirmationScript = JNotifyConfirmationSharingEmail();
             }
-            var owner = UserHelper.GetOwnerID();
+            var owner = UserHelper.GetOwnerId();
             if (owner != null)
             {
                 var ownerId = (int)owner;
@@ -613,7 +613,7 @@ namespace RentalMobile.Controllers
 
         public JsonResult GetOwnerCalendar()
         {
-            var owner = UserHelper.GetOwnerID();
+            var owner = UserHelper.GetOwnerId();
             if (owner != null)
             {
                 var ownerId = (int) owner;
@@ -720,7 +720,7 @@ namespace RentalMobile.Controllers
         //Project
         public ActionResult ActiveProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -730,7 +730,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ViewActiveProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -755,7 +755,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult NewProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -786,7 +786,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult SavedProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -797,7 +797,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult EditSavedProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -806,7 +806,7 @@ namespace RentalMobile.Controllers
 
                public ActionResult DeleteSavedProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -826,7 +826,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ArchivedProject()
         {
-            var owner = db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = db.Owners.Find(UserHelper.GetOwnerId());
             ViewBag.OwnerProfile = owner;
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;
@@ -1103,41 +1103,41 @@ namespace RentalMobile.Controllers
             var role = GetCurrentRole();
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Property";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
 

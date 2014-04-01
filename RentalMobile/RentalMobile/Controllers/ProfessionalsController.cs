@@ -20,7 +20,7 @@ namespace RentalMobile.Controllers
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID((int)id));
+            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId((int)id));
             ViewBag.SpecialistProfile = specialist;
             ViewBag.SpecialistId = specialist.SpecialistId;
             ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
@@ -294,7 +294,7 @@ namespace RentalMobile.Controllers
                     {
                         Comment = Sanitizer.GetSafeHtmlFragment(comment),
                         CommentDate = DateTime.UtcNow,
-                        PosterId = poster.PosterID,
+                        PosterId = poster.PosterId,
                         PosterName = poster.FirstName + " , " + poster.LastName,
                         PosterPhotoPath = poster.ProfilePicturePath,
                         PosterProfileLink = poster.ProfileLink,

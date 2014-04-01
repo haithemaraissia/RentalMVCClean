@@ -1,7 +1,7 @@
 ﻿@using System.Web.Mvc.Html
 @using PagedList.Mvc
 @using RentalMobile.Helpers
-@model PagedList.IPagedList<RentalMobile.Models.MaintenanceTeam>
+@model PagedList.IPagedList<RentalMobile.Models.MaintenanceTeamAssociation>
 @{
     ViewBag.Title = "Select Team ";
     Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
@@ -19,7 +19,7 @@
     @if (Model.Count > 0)
     {   
         <div>
-            @Html.PagedListPager(Model, page => Url.Action("SelectTeam", new { page }), new PagedListRenderOptions
+            @Html.PagedListPager(Model, page => Url.Action("RemoveFromTeam", new { page }), new PagedListRenderOptions
                 {
                     DisplayLinkToFirstPage = false,
                     DisplayLinkToLastPage = false,
@@ -50,11 +50,11 @@
                             </h4>
                             <p>
                                 <span style="color: #396991"><a href="../../Providers/@item.MaintenanceProviderId" target="_blank">
-                                    Team ID <b># @Html.DisplayFor(modelItem => item.MaintenanceProviderId)</b> </a>
+                                    Team ID <b># @Html.DisplayFor(modelItem => item.TeamId)</b> </a>
                                 </span>
                             </p>
                             <ul class="toolbar">
-                                  <li class="next-arr">@Html.ActionLink("Select Team", "InviteTeamMember", "Provider", new { stid = item.TeamId, pid = @ViewBag.SelectedSpecialistId }, null)
+                                  <li class="next-arr">@Html.ActionLink("Select Team", "RemoveMember", "Provider", new { stid = item.TeamId, pid = @ViewBag.SelectedSpecialistId }, null)
                                 </li>
                        
                             </ul>
@@ -64,7 +64,7 @@
             }
         </ul>
         <div>
-            @Html.PagedListPager(Model, page => Url.Action("SelectTeam", new { page }), new PagedListRenderOptions
+            @Html.PagedListPager(Model, page => Url.Action("RemoveFromTeam", new { page }), new PagedListRenderOptions
                 {
                     DisplayLinkToFirstPage = false,
                     DisplayLinkToLastPage = false,

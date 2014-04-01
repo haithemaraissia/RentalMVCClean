@@ -28,41 +28,41 @@ namespace RentalMobile.Controllers
             var role = GetCurrentRole();
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "UploadedContract";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "UploadedContract";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "UploadedContract";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "UploadedContract";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "UploadedContract";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
             return View();

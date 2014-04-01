@@ -1424,6 +1424,15 @@
     <Content Include="Views\Emails\ForwardtoFriend\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\ForwardtoFriend\Multipart.Text.cshtml" />
     <Content Include="Views\Professionals\_Comment.cshtml" />
+    <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.cshtml" />
+    <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.Text.cshtml" />
+    <Content Include="Views\Provider\RemoveTeamMember.cshtml" />
+    <Content Include="Views\Provider\RemoveFromTeam.cshtml" />
+    <Content Include="Views\Provider\RemoveMember.cshtml" />
+    <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.cshtml" />
+    <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Html.cshtml" />
+    <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Text.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

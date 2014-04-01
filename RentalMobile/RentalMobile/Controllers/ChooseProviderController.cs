@@ -17,7 +17,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index(int providerid)
         {
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId((Convert.ToInt32(providerid))));
             ViewBag.providerProfile = provider;
             ViewBag.providerId = provider.MaintenanceProviderId;
             ViewBag.providerGoogleMap = provider.GoogleMap;
@@ -25,7 +25,7 @@ namespace RentalMobile.Controllers
 
 
             //If Tenant is log on
-            var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+            var tenant = db.Tenants.Find(UserHelper.GetTenantId());
             ViewBag.TenantName = tenant.FirstName + " " + tenant.LastName;
             ViewBag.TenantEmail = tenant.EmailAddress;
 
@@ -99,8 +99,8 @@ namespace RentalMobile.Controllers
                 //Generate Contracts for all
 
 
-                var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
-                var tenant = db.Tenants.Find(UserHelper.GetTenantID());
+                var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId((Convert.ToInt32(providerid))));
+                var tenant = db.Tenants.Find(UserHelper.GetTenantId());
 
                 //Property
                 var propertyId = (Convert.ToInt32(propertyIdcustom));

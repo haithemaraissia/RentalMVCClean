@@ -18,7 +18,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index()
         {
-            var Agent = db.Agents.Find(UserHelper.GetAgentID());
+            var Agent = db.Agents.Find(UserHelper.GetAgentId());
             ViewBag.AgentProfile = Agent;
             ViewBag.AgentId = Agent.AgentId;
             ViewBag.AgentGoogleMap = Agent.GoogleMap;

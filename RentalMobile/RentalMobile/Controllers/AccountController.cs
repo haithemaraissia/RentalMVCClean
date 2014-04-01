@@ -244,7 +244,7 @@ namespace RentalMobile.Controllers
                     if (User.IsInRole("Tenant"))
                     {
                         //Tenant
-                        var tenant = _db.Tenants.Find(UserHelper.GetTenantID());
+                        var tenant = _db.Tenants.Find(UserHelper.GetTenantId());
                         {
                             tenant.EmailAddress = model.Email;
                         }
@@ -254,7 +254,7 @@ namespace RentalMobile.Controllers
                     if (User.IsInRole("Owner"))
                     {
                         //Owner
-                        var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+                        var owner = _db.Owners.Find(UserHelper.GetOwnerId());
                         {
                             owner.EmailAddress = model.Email;
                         }
@@ -264,7 +264,7 @@ namespace RentalMobile.Controllers
                     if (User.IsInRole("Agent"))
                     {
                         //Agent
-                        var agent = _db.Agents.Find(UserHelper.GetAgentID());
+                        var agent = _db.Agents.Find(UserHelper.GetAgentId());
                         {
                             agent.EmailAddress = model.Email;
                         }
@@ -274,7 +274,7 @@ namespace RentalMobile.Controllers
                     if (User.IsInRole("Specialist"))
                     {
                         //Specialist
-                        var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+                        var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId());
                         {
                             specialist.EmailAddress = model.Email;
                         }
@@ -283,7 +283,7 @@ namespace RentalMobile.Controllers
                     if (User.IsInRole("Provider"))
                     {
                         //Provider
-                        var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+                        var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId());
                         {
                             provider.EmailAddress = model.Email;
                         }
@@ -553,41 +553,41 @@ namespace RentalMobile.Controllers
             var role = GetCurrentRole();
             if (role == "Tenant")
             {
-                ViewBag.Id = UserHelper.GetTenantID();
+                ViewBag.Id = UserHelper.GetTenantId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Profile";
-                TempData["UserID"] = UserHelper.GetTenantID();
+                TempData["UserID"] = UserHelper.GetTenantId();
             }
 
             if (role == "Owner")
             {
-                ViewBag.Id = UserHelper.GetOwnerID();
+                ViewBag.Id = UserHelper.GetOwnerId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Profile";
-                TempData["UserID"] = UserHelper.GetOwnerID();
+                TempData["UserID"] = UserHelper.GetOwnerId();
             }
 
             if (role == "Agent")
             {
-                ViewBag.Id = UserHelper.GetAgentID();
+                ViewBag.Id = UserHelper.GetAgentId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Profile";
-                TempData["UserID"] = UserHelper.GetAgentID();
+                TempData["UserID"] = UserHelper.GetAgentId();
             }
 
             if (role == "Specialist")
             {
-                ViewBag.Id = UserHelper.GetSpecialistID();
+                ViewBag.Id = UserHelper.GetSpecialistId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Profile";
-                TempData["UserID"] = UserHelper.GetSpecialistID();
+                TempData["UserID"] = UserHelper.GetSpecialistId();
             }
             if (role == "Provider")
             {
-                ViewBag.Id = UserHelper.GetProviderID();
+                ViewBag.Id = UserHelper.GetProviderId();
                 ViewBag.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 ViewBag.Type = "Profile";
-                TempData["UserID"] = UserHelper.GetProviderID();
+                TempData["UserID"] = UserHelper.GetProviderId();
             }
 
             return View();
@@ -702,7 +702,7 @@ namespace RentalMobile.Controllers
 
         public void AddAgentPicture(string photoPath)
         {
-            var agent = _db.Agents.Find(UserHelper.GetAgentID());
+            var agent = _db.Agents.Find(UserHelper.GetAgentId());
             if (!ModelState.IsValid) return;
             agent.Photo = CleanUpPhotoPath(photoPath);
             _db.SaveChanges();
@@ -710,7 +710,7 @@ namespace RentalMobile.Controllers
 
         public void AddOwnerPicture(string photoPath)
         {
-            var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+            var owner = _db.Owners.Find(UserHelper.GetOwnerId());
             if (!ModelState.IsValid) return;
             owner.Photo = CleanUpPhotoPath(photoPath);
             _db.SaveChanges();
@@ -718,7 +718,7 @@ namespace RentalMobile.Controllers
 
         public void AddSpecialistPicture(string photoPath)
         {
-            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId());
             if (!ModelState.IsValid) return;
             specialist.Photo = CleanUpPhotoPath(photoPath);
             _db.SaveChanges();
@@ -726,7 +726,7 @@ namespace RentalMobile.Controllers
 
         public void AddProviderPicture(string photoPath)
         {
-            var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+            var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId());
             if (!ModelState.IsValid) return;
             provider.Photo = CleanUpPhotoPath(photoPath);
             _db.SaveChanges();
@@ -826,7 +826,7 @@ namespace RentalMobile.Controllers
                 {
                     if (User.IsInRole("Tenant"))
                     {
-                        var tenant = _db.Tenants.Find(UserHelper.GetTenantID());
+                        var tenant = _db.Tenants.Find(UserHelper.GetTenantId());
                         {
                             tenant.VimeoVideo = primaryVideo.VimeoVideo;
                             tenant.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
@@ -838,7 +838,7 @@ namespace RentalMobile.Controllers
 
                     if (User.IsInRole("Owner"))
                     {
-                        var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+                        var owner = _db.Owners.Find(UserHelper.GetOwnerId());
                         {
                             owner.VimeoVideo = primaryVideo.VimeoVideo;
                             owner.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
@@ -850,7 +850,7 @@ namespace RentalMobile.Controllers
 
                     if (User.IsInRole("Agent"))
                     {
-                        var agent = _db.Agents.Find(UserHelper.GetAgentID());
+                        var agent = _db.Agents.Find(UserHelper.GetAgentId());
                         {
                             agent.VimeoVideo = primaryVideo.VimeoVideo;
                             agent.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
@@ -862,7 +862,7 @@ namespace RentalMobile.Controllers
 
                     if (User.IsInRole("Specialist"))
                     {
-                        var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+                        var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId());
                         {
                             specialist.VimeoVideo = primaryVideo.VimeoVideo;
                             specialist.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
@@ -873,7 +873,7 @@ namespace RentalMobile.Controllers
                     }
                     if (User.IsInRole("Provider"))
                     {
-                        var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+                        var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId());
                         {
                             provider.VimeoVideo = primaryVideo.VimeoVideo;
                             provider.VimeoVideoURL = primaryVideo.VimeoVideoUrl;
@@ -913,7 +913,7 @@ namespace RentalMobile.Controllers
             var user = System.Web.HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
-                var tenant = _db.Tenants.Find(UserHelper.GetTenantID());
+                var tenant = _db.Tenants.Find(UserHelper.GetTenantId());
                 {
                     model.VimeoVideo = tenant.VimeoVideo ?? false;
                     model.VimeoVideoUrl = tenant.VimeoVideoURL ?? "";
@@ -924,7 +924,7 @@ namespace RentalMobile.Controllers
 
             if (user.IsInRole("Owner"))
             {
-                var owner = _db.Owners.Find(UserHelper.GetOwnerID());
+                var owner = _db.Owners.Find(UserHelper.GetOwnerId());
                 {
                     model.VimeoVideo = owner.VimeoVideo ?? false;
                     model.VimeoVideoUrl = owner.VimeoVideoURL ?? "";
@@ -935,7 +935,7 @@ namespace RentalMobile.Controllers
 
             if (user.IsInRole("Agent"))
             {
-                var agent = _db.Agents.Find(UserHelper.GetAgentID());
+                var agent = _db.Agents.Find(UserHelper.GetAgentId());
                 {
                     model.VimeoVideo = agent.VimeoVideo ?? false;
                     model.VimeoVideoUrl = agent.VimeoVideoURL ?? "";
@@ -946,7 +946,7 @@ namespace RentalMobile.Controllers
 
             if (user.IsInRole("Specialist"))
             {
-                var specialist = _db.Specialists.Find(UserHelper.GetSpecialistID());
+                var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId());
                 {
                     model.VimeoVideo = specialist.VimeoVideo ?? false;
                     model.VimeoVideoUrl = specialist.VimeoVideoURL ?? "";
@@ -956,7 +956,7 @@ namespace RentalMobile.Controllers
             }
             if (user.IsInRole("Provider"))
             {
-                var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderID());
+                var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId());
                 {
                     model.VimeoVideo = provider.VimeoVideo ?? false;
                     model.VimeoVideoUrl = provider.VimeoVideoURL ?? "";

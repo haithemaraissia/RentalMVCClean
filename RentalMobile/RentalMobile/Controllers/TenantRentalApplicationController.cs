@@ -15,8 +15,8 @@ namespace RentalMobile.Controllers
     public class TenantRentalApplicationController : Controller
     {
         private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
-        public static Guid UserGUID = (Guid)UserHelper.GetUserGUID();
-        public int TenantID = (int)UserHelper.GetTenantID(UserGUID);
+        public static Guid UserGUID = (Guid)UserHelper.GetUserGuid();
+        public int TenantID = (int)UserHelper.GetTenantId(UserGUID);
 
 
         // GET: /RATest/

@@ -10,7 +10,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index(int id)
         {
-            var tenant = _db.Tenants.Find(UserHelper.GetTenantID(id));
+            var tenant = _db.Tenants.Find(UserHelper.GetTenantId(id));
             ViewBag.TenantProfile = tenant;
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;

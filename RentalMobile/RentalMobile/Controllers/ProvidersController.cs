@@ -10,7 +10,7 @@ namespace RentalMobile.Controllers
 
         public ViewResult Index(int id)
         {
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID(id));
+            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId(id));
             ViewBag.providerProfile = provider;
             ViewBag.providerId = provider.MaintenanceProviderId;
             ViewBag.providerGoogleMap = provider.GoogleMap;
