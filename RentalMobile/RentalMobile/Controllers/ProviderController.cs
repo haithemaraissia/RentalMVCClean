@@ -37,6 +37,37 @@ namespace RentalMobile.Controllers
             return View(provider);
         }
 
+        public PartialViewResult _Coverage()
+        {
+            var providerId = UserHelper.GetProviderId();
+            if (providerId != null)
+            {
+                const int providerrole = 2;
+                var lookUp =
+                    Db.MaintenanceCompanyLookUps.FirstOrDefault(
+                        x => x.Role == providerrole && x.UserId == providerId);
+                if (lookUp != null)
+                {
+                    int companyId = lookUp.CompanyId;
+
+                    var mp = new ProviderMaintenanceProfile
+                    {
+                        MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
+                        MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
+                        MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
+                        MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
+                        MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
+                        MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
+                        MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
+                        MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
+                        MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                    };
+
+                    return PartialView(mp);
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// Only 1 team can exist
@@ -77,6 +108,227 @@ namespace RentalMobile.Controllers
             var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
             return lookUp == null ? 0 : Db.MaintenanceCompanySpecializations.Find(lookUp.CompanyId).Years_Experience;
         }
+
+
+
+
+
+
+
+
+
+
+       //********************************* WIP **********************************//
+        public ActionResult CompleteProfile()
+        {
+            var providerId = UserHelper.GetProviderId();
+            if (providerId != null)
+            {
+                const int providerrole = 2;
+                var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == providerId);
+                if (lookUp != null)
+                {
+                    int companyId = lookUp.CompanyId;
+
+                    var mp = new ProviderMaintenanceProfile
+                    {
+                        MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
+                        MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
+                        MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
+                        MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
+                        MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
+                        MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
+                        MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
+                        MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
+                        MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                    };
+
+                    return View(mp);
+                }
+
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult CompleteProfile(ProviderMaintenanceProfile s)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var providerId = UserHelper.GetProviderId();
+                    if (providerId != null)
+                    {
+
+                        s.MaintenanceCompanySpecialization.Currency =
+                            UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
+                        Db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceExterior).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceInterior).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceRepair).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
+                        UpdateproviderProfile((int)providerId, s.MaintenanceCompany);
+                        Db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View(s);
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                          ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+        }
+
+        private void UpdateproviderProfile(int providerId, MaintenanceCompany m)
+        {
+            var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == providerId);
+
+            if (provider == null) return;
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                provider.Address = m.Address;
+            }
+            if (!string.IsNullOrEmpty(m.City))
+            {
+                provider.City = m.City;
+            }
+            if (!string.IsNullOrEmpty(m.Country))
+            {
+                provider.Country = m.Country;
+            }
+            if (!string.IsNullOrEmpty(m.Description))
+            {
+                provider.Description = m.Description;
+            }
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                provider.Address = m.Address;
+            }
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                provider.Address = m.Address;
+            }
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                provider.Address = m.Address;
+            }
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                provider.Address = m.Address;
+            }
+            provider.GoogleMap = m.GoogleMap = string.IsNullOrEmpty(m.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
+        }
+
+        public int CalculateNewProfileCompletionPercentage(MaintenanceCompany m)
+        {
+            //Calucation of Completion
+            //description = 20 ; Other = 10
+
+            //Members of formula 
+            //Name 
+            //Address 
+            //EmailAddress 
+            //Description 
+            //Country 
+            //Region 
+            //City 
+            //Zip 
+            //CountryCode
+
+            var initialValue = 0;
+
+            if (!string.IsNullOrEmpty(m.Name))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.Address))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.EmailAddress))
+            {
+                initialValue += 30;
+            }
+            if (!string.IsNullOrEmpty(m.Description))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.Region))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.City))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.Zip))
+            {
+                initialValue += 10;
+            }
+            if (!string.IsNullOrEmpty(m.Country))
+            {
+                initialValue += 10;
+            }
+            m.GoogleMap = string.IsNullOrEmpty(m.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
+            return initialValue >= 50 ? initialValue : 50;
+        }
+
+        public void UpdateProfileCompletion(int newprofilecompletionpercentage)
+        {
+            var providerId = UserHelper.GetProviderId();
+            if (providerId == null) return;
+            var currentprovider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == providerId);
+            if (currentprovider != null)
+                currentprovider.PercentageofCompletion = newprofilecompletionpercentage;
+        }
+
+        public decimal? GetProfessionalRate(int providerId)
+        {
+            var providerMaintenanceCompany = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == providerId);
+            if (providerMaintenanceCompany != null)
+            {
+                var providercompanyid = providerMaintenanceCompany.CompanyId;
+                var providercompany = Db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == providercompanyid);
+
+                if (providercompany != null)
+                {
+
+                    return (decimal)providercompany.Rate;
+                }
+                return null;
+            }
+            return null;
+        }
+        //********************************* WIP **********************************//
+
+
+
+
+
+
+
+
+
+
+
 
 
         //******************************************************************************************************//
@@ -515,55 +767,55 @@ namespace RentalMobile.Controllers
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
 
-        public ActionResult CompleteProfile()
-        {
-            return View();
-        }
+        //public ActionResult CompleteProfile()
+        //{
+        //    return View();
+        //}
 
 
-        [HttpPost]
-        public ActionResult CompleteProfile(UnitModelView u)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    Db.Units.Add(u.Unit);
-                    Db.UnitPricings.Add(u.UnitPricing);
-                    Db.UnitFeatures.Add(u.UnitFeature);
-                    Db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
-                    Db.UnitAppliances.Add(u.UnitAppliance);
-                    Db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
-                    Db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
-                    Db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
-                    //Think if tyou need or not because of the upload control
-                    //Db.UnitGalleries.Add(u.UnitGallery);
-                    Db.SaveChanges();
-                    // SavePictures(u.Unit);
-                    return RedirectToAction("Index");
-                }
-                return View(u);
-            }
+        //[HttpPost]
+        //public ActionResult CompleteProfile(UnitModelView u)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            Db.Units.Add(u.Unit);
+        //            Db.UnitPricings.Add(u.UnitPricing);
+        //            Db.UnitFeatures.Add(u.UnitFeature);
+        //            Db.UnitCommunityAmenities.Add(u.UnitCommunityAmenity);
+        //            Db.UnitAppliances.Add(u.UnitAppliance);
+        //            Db.UnitInteriorAmenities.Add(u.UnitInteriorAmenity);
+        //            Db.UnitExteriorAmenities.Add(u.UnitExteriorAmenity);
+        //            Db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
+        //            //Think if tyou need or not because of the upload control
+        //            //Db.UnitGalleries.Add(u.UnitGallery);
+        //            Db.SaveChanges();
+        //            // SavePictures(u.Unit);
+        //            return RedirectToAction("Index");
+        //        }
+        //        return View(u);
+        //    }
 
 
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                          ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        foreach (var eve in e.EntityValidationErrors)
+        //        {
+        //            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+        //                              eve.Entry.Entity.GetType().Name, eve.Entry.State);
+        //            foreach (var ve in eve.ValidationErrors)
+        //            {
+        //                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+        //                                  ve.PropertyName, ve.ErrorMessage);
+        //            }
+        //        }
+        //        throw;
+        //    }
 
 
 
-        }
+        //}
 
         //*************************************** WORK NOT COMPLETED***************************************//
         //*************************************************************************************************//

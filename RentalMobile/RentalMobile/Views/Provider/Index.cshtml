@@ -1,17 +1,48 @@
-﻿@using RentalMobile.Helpers
+﻿@using System.Globalization
+@using RentalMobile.Helpers
 @model RentalMobile.Models.MaintenanceProvider
 @{
     ViewBag.Title = "Provider Profile";
     Layout = "~/Views/Shared/Profiles/_Provider.cshtml";
 }
+
+@functions {
+    public string GetVideo()
+    {
+        var uri = HttpContext.Current.Request.Url;
+        var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        try
+        {
+            if ((Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
+            {
+                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+            else if ((Model.VimeoVideo != null && (bool)Model.VimeoVideo))
+            {
+                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+            }
+        }
+        catch (Exception)
+        {
+            videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
+        }
+        return videourl;
+    }
+}
 @section profile
 {
     @Html.Partial("_ProfileDetail", (object)ViewBag.MaintenanceProvider)
 }
+@section video
+    {
+    <div id="video" class="panel">
+        <iframe src="@GetVideo()" width="900" height="400"></iframe>
+    </div>
+}
 @section map
 {
     <div id="map" class="panel">
-        <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.SpecialistGoogleMap&amp;z=13&amp;output=embed">
+        <iframe width="100%" height="300" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.ProviderGoogleMap&amp;z=13&amp;output=embed">
         </iframe>
         <br />
     </div>
@@ -46,7 +77,7 @@
             </div>
             <div class="sixteen columns prop-details">
                 <div class="six columns push by-one">
-                    <input type="submit" class="full-width tall" value="Update Video" onclick="location.href='/Account/UpdateVideo'"/>
+                    <input type="submit" class="full-width tall" value="Update Video" onclick="location.href='/Account/UpdateVideo'" />
                 </div>
             </div>
         </section>
@@ -91,11 +122,11 @@
                 <div class="six columns push by-one">
                     <input type="submit" class="full-width tall" value="New Job Offers" onclick="location.href='./Provider/NewJobOffer';" />
                 </div>
-                                <div class="six columns push by-two">
+                <div class="six columns push by-two">
                     <input type="submit" class="full-width tall" value="Accepted Jobs" onclick="location.href='';" />
                 </div>
             </div>
-                        <div class="sixteen columns prop-details">
+            <div class="sixteen columns prop-details">
                 <div class="six columns push by-one">
                     <input type="submit" class="full-width tall" value="Rejected Jobs" onclick="location.href='';" />
                 </div>
@@ -105,758 +136,324 @@
 }
 @section property
 {
-   <div id="property" class="panel">
-            <section class="fourteen columns">
-@*                <h2 class="remove-top">
+    <div id="property" class="panel">
+        <section class="fourteen columns">
+            @*                <h2 class="remove-top">
                     Rent</h2>*@
-                <!-- filters -->
-                <form action="#" class="row">
-                <!-- tag filters -->
-                <ul class="filter-list nine alpha columns row">
-                    <li><a data-rel="all" class="current">All</a></li>
-                    <li><a data-rel="house">House</a></li>
-                    <li><a data-rel="appartment">Apartment</a></li>
-                    <li><a data-rel="loft">Loft</a></li>
-                    <li><a data-rel="offices">Offices</a></li>
-                    <li><a data-rel="condos">Condos</a></li>
-                </ul>
-                <div class="switcher fr">
-                    <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
-                        id="listview" class="switcher active"><i class="icon-menu"></i></a>
-                </div>
-                </form>
-                <!-- List/Grid gallery -->
-                <ul id="property-list" class="list-grid-gallery list">
-                    <li class="prop-type all house">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                    <li class="next-arr">@Html.RouteLink("Property", new { id = 0 }, null)></li>
-                                    @*  @Html.RouteLink("Description", "Property",new { id = 0 } )*@ @*			<li class="next-arr">@Html.ActionLink("Description", "Index", "Property", new { id = 0 }, null)></li>
+            <!-- filters -->
+            <form action="#" class="row">
+            <!-- tag filters -->
+            <ul class="filter-list nine alpha columns row">
+                <li><a data-rel="all" class="current">All</a></li>
+                <li><a data-rel="house">House</a></li>
+                <li><a data-rel="appartment">Apartment</a></li>
+                <li><a data-rel="loft">Loft</a></li>
+                <li><a data-rel="offices">Offices</a></li>
+                <li><a data-rel="condos">Condos</a></li>
+            </ul>
+            <div class="switcher fr">
+                <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+                    id="listview" class="switcher active"><i class="icon-menu"></i></a>
+            </div>
+            </form>
+            <!-- List/Grid gallery -->
+            <ul id="property-list" class="list-grid-gallery list">
+                <li class="prop-type all house">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                                <li class="next-arr">@Html.RouteLink("Property", new { id = 0 }, null)></li>
+                                @*  @Html.RouteLink("Description", "Property",new { id = 0 } )*@ @*			<li class="next-arr">@Html.ActionLink("Description", "Index", "Property", new { id = 0 }, null)></li>
 *@
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all house">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all appartment">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all appartment">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all loft">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all loft">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all condos">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="prop-type all condos">
-                        <article>
-                            <figure class="five columns alpha">
-                                <a href="#" class="camera">3</a>
-                                <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                    alt="gallery" />
-                            </figure>
-                            <div class="eight columns omega">
-                                <h4>
-                                    House 79th St #8C, New York NY, USA</h4>
-                                <ul class="prop-data">
-                                    <li class="price">$1,875,000</li>
-                                    <li class="new">New construction</li>
-                                </ul>
-                                <p class="propr-details">
-                                    1 bedroom / 2 bathrom / 1,300 sqft
-                                </p>
-                                <p class="prop-extract">
-                                    Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                    rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                    commodteger bibendum c scele.</p>
-                                <p class="prop-webid">
-                                    Web ID #1</p>
-                                <ul class="toolbar">
-                                    <li class="dollar"><a href="#">Compare</a></li>
-                                    <li class="map"><a href="#">Map</a></li>
-                                    <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                    </li>
-                </ul>
-                <!-- /.List -->
-            </section>
-        </div>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all house">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all appartment">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all appartment">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all loft">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all loft">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all condos">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+                <li class="prop-type all condos">
+                    <article>
+                        <figure class="five columns alpha">
+                            <a href="#" class="camera">3</a>
+                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
+                                alt="gallery" />
+                        </figure>
+                        <div class="eight columns omega">
+                            <h4>
+                                House 79th St #8C, New York NY, USA</h4>
+                            <ul class="prop-data">
+                                <li class="price">$1,875,000</li>
+                                <li class="new">New construction</li>
+                            </ul>
+                            <p class="propr-details">
+                                1 bedroom / 2 bathrom / 1,300 sqft
+                            </p>
+                            <p class="prop-extract">
+                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
+                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
+                                commodteger bibendum c scele.</p>
+                            <p class="prop-webid">
+                                Web ID #1</p>
+                            <ul class="toolbar">
+                                <li class="dollar"><a href="#">Compare</a></li>
+                                <li class="map"><a href="#">Map</a></li>
+                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+            <!-- /.List -->
+        </section>
+    </div>
 }
-
-
 @section coverage
 {
     <div id="coverage" class="panel">
-    
-    
-    Do the Binding and alos the linq for editing 
-        <div id="Exteriors">
-                <h4 class="section-titling">
-                    Exteriors</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
+        <div id="Coveragemenu">
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="Edit Coverage" onclick="location.href='./Specialist/CompleteProfile';" />
+                    </div>
+                    <div class="six columns push by-two">
+                        <input type="submit" class="full-width tall" id="ViewCoverageButton" value="View Coverage" />
+                    </div>
                 </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
+                 <div class="sixteen columns prop-details">
+                    <div class="six columns push by-one">
+                        <input type="submit" class="full-width tall" value="Edit Zone" onclick="location.href='./Specialist/CompleteProfile';" />
+                    </div>
+                    <div class="six columns push by-two">
+                        <input type="submit" class="full-width tall" id="ViewZoneButton" value="View Zone" />
+                    </div>
                 </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
-            
-            
-            <div id="Interiors">
-                <h4 class="section-titling">
-                    Interiors</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
-            
-            
-            <div id="MaintenanceandRepairs">
-                <h4 class="section-titling"> Maintenance and Repairs</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
-            
-            <div id="NewConstruction">
-                <h4 class="section-titling">Constructions</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
 
-
-            
-            <div id="Custom Services">
-                <h4 class="section-titling">
-                    Custom Services</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
+            </section>
+        </div>
+        <div id="CoverageSection" style="display: none">
+            @{ Html.RenderAction("_Coverage", "Specialist"); }
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="three columns push by-one">
+                        <input type="submit" class="full-width tall" id="BacktoCoverageButton" value="Back To Coverage" />
+                    </div>
                 </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
-            
-
-            
-            <div id="Utilities">
-                <h4 class="section-titling">
-                    Utilities</h4>
-                <br />
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div>
-                <div class="three columns push by-one ">
-                    <ul class="arrow">
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                        <li>50% Approval</li>
-                    </ul>
-                    <br />
-                    <br />
-                </div> 
-            </div>
-
+            </section>
+        </div>
     </div>
 }
 @section team
 {
     <div id="team" class="panel">
-        <div id="Teammenu" style="display:block">
+        <div id="Teammenu" style="display: block">
             @if (ViewBag.TeamId == null)
             {
                 <section class="row double-bottom" id="NoTeamSection">
@@ -875,7 +472,7 @@
                             <input type="submit" class="full-width tall" value="Edit Team" onclick="location.href='./Team/Edit/@ViewBag.TeamId';" />
                         </div>
                         <div class="six columns push by-two">
-                            <input type="submit" class="full-width tall" id="ViewCoverageButton" value="View Team" />
+                            <input type="submit" class="full-width tall" id="ViewTeam" value="View Team" />
                         </div>
                     </div>
                     <div class="sixteen columns prop-details">
@@ -891,21 +488,21 @@
         </div>
         @if (ViewBag.TeamId != null)
         {
-        <div id="TeamMemberSectionSection" style="display:none">
-             @{ Html.RenderAction("_Team", "Provider"); }
-            <section class="row double-bottom">
-                <div class="sixteen columns prop-details">
-                    <div class="three columns push by-six">
-                        <input type="submit" class="full-width tall" id="BacktoTeamMenuButton" value="Back To Team"  onclick=" location.href= '/Provider#team';"/>
+
+            <div id="TeamMemberSectionSection" style="display: none">
+                @{ Html.RenderAction("_Team", "Provider"); }
+                <section class="row double-bottom">
+                    <div class="sixteen columns prop-details">
+                        <div class="three columns push by-six">
+                            <input type="submit" class="full-width tall" id="BacktoTeamMenuButton" value="Back To Team"
+                                onclick=" location.href= '/Provider#team';" />
+                        </div>
                     </div>
-                </div>
-            </section>      
-        </div> 
+                </section>
+            </div> 
         }
-    </div>  
+    </div>
 }
-
-
 @section contract
 {
     <div id="contract" class="panel">
@@ -930,7 +527,6 @@
         </section>
     </div>
 }
-
 @section advertise
 {
     <div id="advertise">
@@ -962,18 +558,10 @@
         </section>
     </div>
 }
-
-
-
-
-
-
-
-
 @section scripts
 {
     <script type="text/javascript">
-        $("#ViewCoverageButton").click(function () {
+        $("#ViewTeam").click(function () {
             $("#Teammenu").toggle('slow');
             $("#TeamMemberSectionSection").toggle('slow');
         });
@@ -981,6 +569,20 @@
         $("#BacktoTeamMenuButton").click(function () {
             $("#Teammenu").toggle('slow');
             $("#TeamMemberSectionSection").toggle('slow');
+        });
+
+
+
+
+        //Coverage
+        $("#ViewCoverage").click(function () {
+            $("#Coveragemenu").toggle('slow');
+            $("#CoverageSection").toggle('slow');
+        });
+
+        $("#BacktoCoverageMenuButton").click(function () {
+            $("#Coveragemenu").toggle('slow');
+            $("#CoverageSection").toggle('slow');
         });
     </script>
 }

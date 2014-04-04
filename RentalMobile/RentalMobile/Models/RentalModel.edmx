@@ -62,6 +62,7 @@
           </EntitySet>
           <EntitySet Name="Project" EntityType="DB_33736_rentalModel.Store.Project" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProjectPhoto" EntityType="DB_33736_rentalModel.Store.ProjectPhoto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProviderWork" EntityType="DB_33736_rentalModel.Store.ProviderWork" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalApplication" EntityType="DB_33736_rentalModel.Store.RentalApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialist" EntityType="DB_33736_rentalModel.Store.Specialist" store:Type="Tables" Schema="dbo" />
@@ -904,6 +905,8 @@
           <Property Name="City" Type="varchar" MaxLength="128" />
           <Property Name="Zip" Type="nvarchar" MaxLength="20" />
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
+          <Property Name="PercentageofCompletion" Type="int" />
+          <Property Name="Rating" Type="int" />
           <Property Name="YouTubeVideo" Type="bit" />
           <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
           <Property Name="VimeoVideo" Type="bit" />
@@ -1488,6 +1491,14 @@
             <PropertyRef Name="PhotoID" />
           </Key>
           <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderWork">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="ProviderId" Type="int" Nullable="false" />
           <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -2395,6 +2406,7 @@
           </AssociationSet>
           <EntitySet Name="SpecialistWorks" EntityType="DB_33736_rentalModel.SpecialistWork" />
           <EntitySet Name="SpecialistProfileComments" EntityType="DB_33736_rentalModel.SpecialistProfileComment" />
+          <EntitySet Name="ProviderWorks" EntityType="DB_33736_rentalModel.ProviderWork" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -2739,6 +2751,8 @@
           <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="VimeoVideo" />
           <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PercentageofCompletion" />
+          <Property Type="Int32" Name="Rating" />
         </EntityType>
         <EntityType Name="RentalApplication">
           <Key>
@@ -4503,6 +4517,14 @@
           <Property Type="String" Name="PosterName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PosterProfileLink" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ProviderWork">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Type="Int32" Name="ProviderId" Nullable="false" />
+          <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4729,6 +4751,8 @@
           <EntitySetMapping Name="MaintenanceProviders">
             <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProvider">
               <MappingFragment StoreEntitySet="MaintenanceProvider">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
                 <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
                 <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
                 <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
@@ -6340,6 +6364,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProviderWorks">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.ProviderWork">
+              <MappingFragment StoreEntitySet="ProviderWork">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6565,6 +6598,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistWork" Width="1.5" PointX="25.375" PointY="23.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistProfileComment" Width="1.5" PointX="27.375" PointY="23.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.ProviderWork" Width="1.5" PointX="0.75" PointY="28.75" Height="1.5956835937499818" />
         </Diagram>
     </Diagrams>
   </Designer>

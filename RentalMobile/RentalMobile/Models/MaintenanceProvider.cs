@@ -64,6 +64,10 @@ public partial class MaintenanceProvider
 
     public string VimeoVideoURL { get; set; }
 
+    public Nullable<int> PercentageofCompletion { get; set; }
+
+    public Nullable<int> Rating { get; set; }
+
 }
 
 }

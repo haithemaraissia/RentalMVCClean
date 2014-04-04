@@ -182,6 +182,8 @@ public partial class DB_33736_rentalEntities : DbContext
 
     public DbSet<SpecialistProfileComment> SpecialistProfileComments { get; set; }
 
+    public DbSet<ProviderWork> ProviderWorks { get; set; }
+
 }
 
 }

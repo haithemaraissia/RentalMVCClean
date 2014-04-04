@@ -309,6 +309,9 @@
     <Compile Include="Models\ProjectPhoto.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProviderWork.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RentalApplication.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -387,6 +390,7 @@
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\OwnerPendingShowingCalendarModelView.cs" />
+    <Compile Include="ModelViews\ProviderMaintenanceProfile.cs" />
     <Compile Include="ModelViews\SpecialistMaintenanceProfile.cs" />
     <Compile Include="ModelViews\Test.cs" />
     <Compile Include="ModelViews\UnitModelView.cs" />
@@ -1433,6 +1437,7 @@
     <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.cshtml" />
     <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Text.cshtml" />
+    <Content Include="Views\Provider\_Coverage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

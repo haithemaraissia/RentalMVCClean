@@ -28,9 +28,6 @@
             position: absolute;
             border-radius: 8px;
         }
-        #ImagePreview img
-        {
-        }
     </style>
 </head>
 <h1> Update Your Profile Photo</h1>
@@ -128,7 +125,7 @@
         });
 
         // only allow 5 files to be uploaded at once
-        uploader.bind("FilesAdded", function (up, filesToBeAdded) {
+        uploader.bind("FilesAdded", function (up) {
             if (up.files.length > 1) {
                 up.files.splice(0, up.files.length - 1);
                 alert("Only 1 file max are allowed per upload. Extra files will be removed.", 3000, true);

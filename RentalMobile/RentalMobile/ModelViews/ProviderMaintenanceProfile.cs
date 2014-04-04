@@ -2,9 +2,8 @@
 
 namespace RentalMobile.ModelViews
 {
-    public class SpecialistMaintenanceProfile
+    public class ProviderMaintenanceProfile
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
         public MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
         public MaintenanceCompany MaintenanceCompany { get; set; }
         public MaintenanceCompanySpecialization MaintenanceCompanySpecialization { get; set; }

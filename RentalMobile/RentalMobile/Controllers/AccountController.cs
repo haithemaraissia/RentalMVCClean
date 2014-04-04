@@ -502,6 +502,8 @@ namespace RentalMobile.Controllers
             _db.MaintenanceProviders.Add(newprovider);
             _db.SaveChanges();
 
+            ProviderInitialProfileValues(model, newprovider.MaintenanceProviderId);
+
         }
 
         //HELPERS
@@ -598,7 +600,7 @@ namespace RentalMobile.Controllers
         {
             SavePictures(id);
             var user = System.Web.HttpContext.Current.User;
-            if (user.IsInRole("Agent"))
+            if (user.IsInRole("Tenant"))
             {
                 return RedirectToAction("Index", "Tenant");
             }
@@ -610,7 +612,7 @@ namespace RentalMobile.Controllers
             {
                 return RedirectToAction("Index", "Agent");
             }
-            if (user.IsInRole("Agent"))
+            if (user.IsInRole("Provider"))
             {
                 return RedirectToAction("Index", "Provider");
             }
@@ -810,6 +812,84 @@ namespace RentalMobile.Controllers
                 _db.MaintenanceRepairs.Add(newMaintenanceRepair);
                 _db.MaintenanceUtilities.Add(newMaintenanceUtility);
                 _db.SpecialistWorks.Add(specialistwork);
+                _db.SaveChanges();
+
+            }
+        }
+
+        public void ProviderInitialProfileValues(RegisterModel model, int providerId)
+        {
+
+            if (providerId != 0)
+            {
+                var newMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp
+                {
+                    UserId = providerId,
+                    Role = 2
+                };
+                _db.MaintenanceCompanyLookUps.Add(newMaintenanceCompanyLookUp);
+                _db.SaveChanges();
+
+                var providerCompanyId = newMaintenanceCompanyLookUp.CompanyId;
+                var newMaintenanceCompany = new MaintenanceCompany
+                {
+                    CompanyId = providerCompanyId,
+                    Name = model.UserName,
+                    EmailAddress = model.Email,
+                    GoogleMap = "USA",
+                    Country = "US",
+                    //   CountryCode = "US"
+                };
+                var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
+                {
+                    CompanyId = providerCompanyId,
+                    NumberofEmployee = 1,
+                    NumberofCertifitedEmplyee = 1,
+                    IsInsured = true,
+                    Rate = 50,
+                    CurrencyID = 1,
+                    Currency = "USD"
+                };
+                var newMaintenanceCustomService = new MaintenanceCustomService
+                {
+                    CompanyId = providerCompanyId
+                };
+
+                var newMaintenanceExterior = new MaintenanceExterior
+                {
+                    CompanyId = providerCompanyId
+                };
+                var newMaintenanceInterior = new MaintenanceInterior
+                {
+                    CompanyId = providerCompanyId
+                };
+                var newMaintenanceNewConstruction = new MaintenanceNewConstruction
+                {
+                    CompanyId = providerCompanyId
+                };
+                var newMaintenanceRepair = new MaintenanceRepair
+                {
+                    CompanyId = providerCompanyId
+                };
+                var newMaintenanceUtility = new MaintenanceUtility
+                {
+                    CompanyId = providerCompanyId
+                };
+                var providerwork = new ProviderWork
+                {
+                    PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
+                    ProviderId = providerCompanyId
+                };
+
+                _db.MaintenanceCompanies.Add(newMaintenanceCompany);
+                _db.MaintenanceCompanySpecializations.Add(newMaintenanceCompanySpecialization);
+                _db.MaintenanceCustomServices.Add(newMaintenanceCustomService);
+                _db.MaintenanceExteriors.Add(newMaintenanceExterior);
+                _db.MaintenanceInteriors.Add(newMaintenanceInterior);
+                _db.MaintenanceNewConstructions.Add(newMaintenanceNewConstruction);
+                _db.MaintenanceRepairs.Add(newMaintenanceRepair);
+                _db.MaintenanceUtilities.Add(newMaintenanceUtility);
+                _db.ProviderWorks.Add(providerwork);
                 _db.SaveChanges();
 
             }

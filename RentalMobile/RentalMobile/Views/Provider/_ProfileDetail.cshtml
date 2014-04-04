@@ -2,48 +2,74 @@
 <div id="profile" class="panel center">
     <div class="seven columns">
         <img src="@Model.Photo" alt="agent" class="scale-with-grid" style = "width:100%; min-height:320px"  />
-    </div>
-    <div class="eight columns prop-details">
-        <h6 class="h6custom">
-            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h6>
-        <p class="profile-meta">
-            <span class="social-profile"><a href="mailto:@Html.DisplayFor(model => model.EmailAddress)">
-                <i class="icon-mail"></i></a><a href="@Html.DisplayFor(model => model.VCard)" target="_blank">
-                    <i class="icon-vcard"></i></a><a href="@Html.DisplayFor(model => model.Skype)" target="_blank">
-                        <i class="icon-skype"></i></a><a href="@Html.DisplayFor(model => model.Twitter)" target="_blank">
-                            <i class="icon-twitter"></i></a><a href="@Html.DisplayFor(model => model.LinkedIn)" target="_blank">
-                                <i class="icon-linkedin"></i></a><a href="@Html.DisplayFor(model => model.GooglePlus)" target="_blank">
-                                    <i class="icon-gplus-1"></i></a></span>
-        </p>
-        <br />
-        <h6 class="h6custom">
-            About</h6>
-        <p>
-            @(Model.Description == null ? Html.TextBoxFor(model => model.Description, new { placeholder = "Description", style = "width:100%; min-height:150px" }) : Html.DisplayFor(model => model.Description, new { style = "width:100%; min-height:150px" }))
-        </p>
-        <h6 class="h6custom">
-            Rate</h6>
-        <p>
-            55 per hour or similar
-        </p>
-        <p>
-            <a href="">
-                <h6>
-                    View Public Profile</h6>
-            </a>
-        </p>
-        
-        
-        <p>
-            <h6 style="color: green">Profile Completed </h6>
-        </p>
-       
-        <p>
-            <h6 style="color: red">20% Profile Completed</h6>
-        </p>
-        
-        <p style="text-align:right">
-               <input type="submit" class="full-width tall" value="Complete Profile if you didn't complete it" onclick="location.href='/Provider/CompleteProfile'"/>
+        <p style="text-align: right">
+            <input type="submit" class="full-width tall" value="View Public Profile" onclick="location.href='/Providers/@Model.MaintenanceProviderId'" />
         </p>
     </div>
+    <div class="eight columns prop-details" style="min-height: 320px" />
+    <h6 class="h6custom">
+        @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h6>
+    <p class="profile-meta">
+        <span class="social-profile"><a href="mailto:@Html.DisplayFor(model => model.EmailAddress)">
+            <i class="icon-mail"></i></a><a href="@Html.DisplayFor(model => model.VCard)" target="_blank">
+                <i class="icon-vcard"></i></a><a href="@Html.DisplayFor(model => model.Skype)" target="_blank">
+                    <i class="icon-skype"></i></a><a href="@Html.DisplayFor(model => model.Twitter)" target="_blank">
+                        <i class="icon-twitter"></i></a><a href="@Html.DisplayFor(model => model.LinkedIn)" target="_blank">
+                            <i class="icon-linkedin"></i></a><a href="@Html.DisplayFor(model => model.GooglePlus)" target="_blank">
+                                <i class="icon-gplus-1"></i></a></span>
+    </p>
+    <br />
+    <h6 class="h6custom">
+        About</h6>
+    <p>
+        @(Model.Description == null ? Html.TextBoxFor(model => model.Description, new { placeholder = "Description", style = "width:100%; min-height:175px" }) : Html.DisplayFor(model => model.Description, new { style = "width:100%; min-height:150px" }))
+    </p>
+    <br />
+    <h6 style="color: green">
+        Profile Progress
+    </h6>
+    @{
+        if (Model.PercentageofCompletion <= 90 || Model.PercentageofCompletion.HasValue == false)
+        {
+
+
+        <span style="text-align: center">
+            <h6 style="color: red; text-align: center">
+                @Model.PercentageofCompletion% Profile Completed</h6>
+        </span>
+
+        <meter value="@Model.PercentageofCompletion" max="100">
+        </meter>
+
+        <style type="text/css">
+            meter
+            {
+                border: 1px solid #0063A6;
+                font-size: 0.6em;
+                height: 1.8em;
+                line-height: 1.5em;
+                margin: 2px;
+                text-indent: 0.5em;
+                text-align: center;
+                width: 98%;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
+        </style>
+         
+
+        <p style="text-align: right">
+            <input type="submit" class="full-width tall button green" value="Complete Profile"
+                onclick="location.href='/Provider/CompleteProfile'" />
+        </p>
+        }
+        else
+        {
+
+        <p style="text-align: right">
+            <input type="submit" class="full-width tall button green" value="Edit Profile" onclick="location.href='/Provider/CompleteProfile'" />
+        </p>
+        }
+ }
+</div>
 </div>
