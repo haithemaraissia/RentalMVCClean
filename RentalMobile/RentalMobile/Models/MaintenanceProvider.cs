@@ -56,17 +56,17 @@ public partial class MaintenanceProvider
 
     public string CountryCode { get; set; }
 
-    public Nullable<bool> YouTubeVideo { get; set; }
-
-    public string YouTubeVideoURL { get; set; }
-
-    public Nullable<bool> VimeoVideo { get; set; }
-
-    public string VimeoVideoURL { get; set; }
-
     public Nullable<int> PercentageofCompletion { get; set; }
 
     public Nullable<int> Rating { get; set; }
+
+    public bool YouTubeVideo { get; set; }
+
+    public string YouTubeVideoURL { get; set; }
+
+    public bool VimeoVideo { get; set; }
+
+    public string VimeoVideoURL { get; set; }
 
 }
 

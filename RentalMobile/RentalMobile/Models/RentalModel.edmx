@@ -39,6 +39,7 @@
           <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderAcceptedJobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderNewJobOffers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderRejectedJobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaintenanceProviderZone" EntityType="DB_33736_rentalModel.Store.MaintenanceProviderZone" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceRepairs" EntityType="DB_33736_rentalModel.Store.MaintenanceRepairs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceTeam" EntityType="DB_33736_rentalModel.Store.MaintenanceTeam" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaintenanceTeamAssociation" EntityType="DB_33736_rentalModel.Store.MaintenanceTeamAssociation" store:Type="Tables" Schema="dbo" />
@@ -907,9 +908,9 @@
           <Property Name="CountryCode" Type="varchar" MaxLength="3" />
           <Property Name="PercentageofCompletion" Type="int" />
           <Property Name="Rating" Type="int" />
-          <Property Name="YouTubeVideo" Type="bit" />
+          <Property Name="YouTubeVideo" Type="bit" Nullable="false" />
           <Property Name="YouTubeVideoURL" Type="nvarchar" MaxLength="256" />
-          <Property Name="VimeoVideo" Type="bit" />
+          <Property Name="VimeoVideo" Type="bit" Nullable="false" />
           <Property Name="VimeoVideoURL" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="MaintenanceProviderAcceptedJobs">
@@ -947,6 +948,17 @@
           <Property Name="PropertyId" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderZone">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderZoneId" />
+          </Key>
+          <Property Name="MaintenanceProviderZoneId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaintenanceProviderId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="128" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TeamMemberCount" Type="int" />
         </EntityType>
         <EntityType Name="MaintenanceRepairs">
           <Key>
@@ -2277,7 +2289,6 @@
           <EntitySet Name="Agents" EntityType="DB_33736_rentalModel.Agent" />
           <EntitySet Name="Owners" EntityType="DB_33736_rentalModel.Owner" />
           <EntitySet Name="Specialists" EntityType="DB_33736_rentalModel.Specialist" />
-          <EntitySet Name="MaintenanceProviders" EntityType="DB_33736_rentalModel.MaintenanceProvider" />
           <EntitySet Name="RentalApplications" EntityType="DB_33736_rentalModel.RentalApplication" />
           <EntitySet Name="OwnerPendingApplications" EntityType="DB_33736_rentalModel.OwnerPendingApplication" />
           <EntitySet Name="AgentAcceptedApplications" EntityType="DB_33736_rentalModel.AgentAcceptedApplication" />
@@ -2407,6 +2418,8 @@
           <EntitySet Name="SpecialistWorks" EntityType="DB_33736_rentalModel.SpecialistWork" />
           <EntitySet Name="SpecialistProfileComments" EntityType="DB_33736_rentalModel.SpecialistProfileComment" />
           <EntitySet Name="ProviderWorks" EntityType="DB_33736_rentalModel.ProviderWork" />
+          <EntitySet Name="MaintenanceProviders" EntityType="DB_33736_rentalModel.MaintenanceProvider" />
+          <EntitySet Name="MaintenanceProviderZones" EntityType="DB_33736_rentalModel.MaintenanceProviderZone" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -2723,36 +2736,6 @@
           <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="VimeoVideo" />
           <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="MaintenanceProvider">
-          <Key>
-            <PropertyRef Name="MaintenanceProviderId" />
-          </Key>
-          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="GUID" Nullable="false" />
-          <Property Type="String" Name="VCard" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Skype" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Twitter" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LinkedIn" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="GooglePlus" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Photo" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="GoogleMap" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Country" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Region" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="YouTubeVideo" />
-          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="VimeoVideo" />
-          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="PercentageofCompletion" />
-          <Property Type="Int32" Name="Rating" />
         </EntityType>
         <EntityType Name="RentalApplication">
           <Key>
@@ -4525,6 +4508,47 @@
           <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="MaintenanceProvider">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderId" />
+          </Key>
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GUID" Nullable="false" />
+          <Property Type="String" Name="VCard" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Skype" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Twitter" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LinkedIn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GooglePlus" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Photo" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GoogleMap" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Region" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PercentageofCompletion" />
+          <Property Type="Int32" Name="Rating" />
+          <Property Type="Boolean" Name="YouTubeVideo" Nullable="false" />
+          <Property Type="String" Name="YouTubeVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VimeoVideo" Nullable="false" />
+          <Property Type="String" Name="VimeoVideoURL" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MaintenanceProviderZone">
+          <Key>
+            <PropertyRef Name="MaintenanceProviderZoneId" />
+          </Key>
+          <Property Type="Int32" Name="MaintenanceProviderZoneId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MaintenanceProviderId" Nullable="false" />
+          <Property Type="String" Name="CityName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZipCode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TeamMemberCount" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4745,37 +4769,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceProviders">
-            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProvider">
-              <MappingFragment StoreEntitySet="MaintenanceProvider">
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
-                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
-                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
-                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
-                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Region" ColumnName="Region" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="GooglePlus" ColumnName="GooglePlus" />
-                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
-                <ScalarProperty Name="VCard" ColumnName="VCard" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6373,6 +6366,49 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceProviders">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProvider">
+              <MappingFragment StoreEntitySet="MaintenanceProvider">
+                <ScalarProperty Name="VimeoVideoURL" ColumnName="VimeoVideoURL" />
+                <ScalarProperty Name="VimeoVideo" ColumnName="VimeoVideo" />
+                <ScalarProperty Name="YouTubeVideoURL" ColumnName="YouTubeVideoURL" />
+                <ScalarProperty Name="YouTubeVideo" ColumnName="YouTubeVideo" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PercentageofCompletion" ColumnName="PercentageofCompletion" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="GooglePlus" ColumnName="GooglePlus" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="VCard" ColumnName="VCard" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceProviderZones">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.MaintenanceProviderZone">
+              <MappingFragment StoreEntitySet="MaintenanceProviderZone">
+                <ScalarProperty Name="TeamMemberCount" ColumnName="TeamMemberCount" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />
+                <ScalarProperty Name="MaintenanceProviderZoneId" ColumnName="MaintenanceProviderZoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6394,7 +6430,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RentalModel" ZoomLevel="16">
+      <Diagram Name="RentalModel" ZoomLevel="94">
         <EntityTypeShape EntityType="DB_33736_rentalModel.TenantShowing" Width="1.5" PointX="9.5" PointY="1.25" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Tenant" Width="1.5" PointX="7.125" PointY="1.25" Height="4.2879036458333326" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_TenantShowing_Tenant" >
@@ -6444,7 +6480,6 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.Agent" Width="1.5" PointX="7.625" PointY="8.75" Height="4.8648079427083388" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Owner" Width="1.5" PointX="9.375" PointY="8.75" Height="4.6725065104166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.Specialist" Width="1.5" PointX="11.25" PointY="8.75" Height="4.6725065104166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProvider" Width="1.875" PointX="13.375" PointY="8.75" Height="4.6725065104166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.RentalApplication" Width="3" PointX="9.375" PointY="14.75" Height="20.05662109375001" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.OwnerPendingApplication" Width="2.25" PointX="13.375" PointY="14.75" Height="20.63352539062501" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.AgentAcceptedApplication" Width="1.5" PointX="15.375" PointY="0.75" Height="20.63352539062501" />
@@ -6547,23 +6582,23 @@
           <ConnectorPoint PointX="25.60741984375" PointY="57.134348958333334" />
           <ConnectorPoint PointX="27.625" PointY="57.134348958333334" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceRepair" Width="1.5" PointX="30.625" PointY="21.375" Height="5.6340136718749818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceRepair" Width="2.25" PointX="30.625" PointY="21.375" Height="5.6340136718749818" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceRepairs_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="29.713181018356323" PointY="16.509095052083335" />
-          <ConnectorPoint PointX="29.713181018356323" PointY="24.982605794270825" />
-          <ConnectorPoint PointX="30.05450967584483" PointY="24.982605794270825" />
-          <ConnectorPoint PointX="30.221176342511495" PointY="24.982605794270825" />
-          <ConnectorPoint PointX="30.625" PointY="24.982605794270825" />
+          <ConnectorPoint PointX="29.84375" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="29.84375" PointY="23.321848958333334" />
+          <ConnectorPoint PointX="30.119794166666669" PointY="23.321848958333334" />
+          <ConnectorPoint PointX="30.286460833333333" PointY="23.321848958333334" />
+          <ConnectorPoint PointX="30.625" PointY="23.321848958333334" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCompanySpecialization" Width="2.25" PointX="33.375" PointY="18.875" Height="6.4032194010416674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceCustomService" Width="2" PointX="35.5" PointY="12.875" Height="5.249410807291671" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceExterior" Width="1.5" PointX="31" PointY="2.625" Height="5.6340136718749818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceExterior" Width="3" PointX="31" PointY="2.625" Height="5.6340136718749818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceInterior" Width="1.5" PointX="31" PointY="13.625" Height="6.9801236979166674" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" Width="1.5" PointX="31" PointY="9" Height="3.9033007812499818" />
-        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceUtility" Width="1.5" PointX="31" PointY="28.375" Height="4.287903645833353" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceNewConstruction" Width="2.625" PointX="31" PointY="9" Height="3.9033007812499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceUtility" Width="2.75" PointX="31" PointY="28.375" Height="4.287903645833353" />
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceExteriors_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="30.234374" PointY="13.375" />
-          <ConnectorPoint PointX="30.234374" PointY="3.2401432291666623" />
+          <ConnectorPoint PointX="30.1679675" PointY="13.375" />
+          <ConnectorPoint PointX="30.1679675" PointY="3.2401432291666623" />
           <ConnectorPoint PointX="31" PointY="3.2401432291666623" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceInteriors_MaintenanceCompanyLookUp" >
@@ -6577,8 +6612,8 @@
           <ConnectorPoint PointX="31" PointY="12.903300781249982" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.FK_MaintenanceUtilities_MaintenanceCompanyLookUp" >
-          <ConnectorPoint PointX="30.137843009178162" PointY="16.509095052083335" />
-          <ConnectorPoint PointX="30.137843009178162" PointY="32.53550292968751" />
+          <ConnectorPoint PointX="30.2031275" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="30.2031275" PointY="32.53550292968751" />
           <ConnectorPoint PointX="31" PointY="32.53550292968751" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCustomService">
@@ -6586,19 +6621,21 @@
           <ConnectorPoint PointX="35.5" PointY="13.500002499999994" />
         </AssociationConnector>
         <AssociationConnector Association="DB_33736_rentalModel.MaintenanceCompanyLookUpMaintenanceCompanySpecialization">
-          <ConnectorPoint PointX="29.387839009178162" PointY="16.509095052083335" />
-          <ConnectorPoint PointX="29.387839009178162" PointY="21.125" />
-          <ConnectorPoint PointX="29.629847685022991" PointY="21.125" />
-          <ConnectorPoint PointX="29.796514351689655" PointY="21.125" />
-          <ConnectorPoint PointX="30.05450967584483" PointY="21.125" />
-          <ConnectorPoint PointX="30.221176342511495" PointY="21.125" />
+          <ConnectorPoint PointX="29.4531235" PointY="16.509095052083335" />
+          <ConnectorPoint PointX="29.4531235" PointY="21.125" />
+          <ConnectorPoint PointX="29.760416666666668" PointY="21.125" />
+          <ConnectorPoint PointX="29.927083333333332" PointY="21.125" />
+          <ConnectorPoint PointX="30.119794166666669" PointY="21.125" />
+          <ConnectorPoint PointX="30.286460833333333" PointY="21.125" />
           <ConnectorPoint PointX="33" PointY="21.125" />
-          <ConnectorPoint PointX="33" PointY="22.172760416666669" />
-          <ConnectorPoint PointX="33.375" PointY="22.172760416666669" />
+          <ConnectorPoint PointX="33" PointY="22.2689111328125" />
+          <ConnectorPoint PointX="33.375" PointY="22.2689111328125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistWork" Width="1.5" PointX="25.375" PointY="23.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.SpecialistProfileComment" Width="1.5" PointX="27.375" PointY="23.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.ProviderWork" Width="1.5" PointX="0.75" PointY="28.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProvider" Width="1.5" PointX="20.375" PointY="29.75" Height="5.8263151041666674" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderZone" Width="1.5" PointX="16.375" PointY="30.75" Height="2.1725878906249818" />
         </Diagram>
     </Diagrams>
   </Designer>

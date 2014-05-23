@@ -60,8 +60,6 @@ public partial class DB_33736_rentalEntities : DbContext
 
     public DbSet<Specialist> Specialists { get; set; }
 
-    public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
-
     public DbSet<RentalApplication> RentalApplications { get; set; }
 
     public DbSet<OwnerPendingApplication> OwnerPendingApplications { get; set; }
@@ -183,6 +181,10 @@ public partial class DB_33736_rentalEntities : DbContext
     public DbSet<SpecialistProfileComment> SpecialistProfileComments { get; set; }
 
     public DbSet<ProviderWork> ProviderWorks { get; set; }
+
+    public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
+
+    public DbSet<MaintenanceProviderZone> MaintenanceProviderZones { get; set; }
 
 }
 

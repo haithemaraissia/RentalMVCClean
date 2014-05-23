@@ -1,0 +1,33 @@
+﻿@if (ViewBag.HasTeam == "false")
+{
+    <div id="CoverageCreateTeam">
+        <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Create your Team <a href="#" title="Your coverage is the acculmation of your team member coverage. You can add more Coverage by adding new Team Member">
+                <img src="../../images/questionMark.gif" alt="questionmark"/></a></h3>
+        <br />
+        <section class="row double-bottom" id="NoTeamSection">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Create Team" onclick="location.href='./Team/Create';" />
+                </div>
+            </div>
+        </section>
+    </div>
+}
+else
+{
+    <div id="CoverageManageTeam">
+        <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Manage your Team<a href="#" title="Your coverage is the acculmation of your team member coverage. You can add more Coverage by adding new Team Member">
+                <img src="../../images/questionMark.gif" alt="questionmark"/></a></h3>
+        <br />
+        <div class="sixteen columns prop-details">
+            <div class="six columns push by-one">
+                <input type="submit" class="full-width tall" value="Add Team Member" onclick=" location.href = '../Provider/AddTeamMember'; " />
+            </div>
+            <div class="six columns push by-two">
+                <input type="submit" class="full-width tall" value="Remove Team Member" onclick=" location.href = '../Provider/RemoveTeamMember'; " />
+            </div>
+        </div>
+    </div>
+}

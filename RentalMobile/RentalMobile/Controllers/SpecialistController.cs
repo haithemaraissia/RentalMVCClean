@@ -264,9 +264,18 @@ namespace RentalMobile.Controllers
             {
                 specialist.Address = m.Address;
             }
+            if (!string.IsNullOrEmpty(m.Zip))
+            {
+                specialist.Zip = m.Zip;
+            }
+
             if (!string.IsNullOrEmpty(m.City))
             {
                 specialist.City = m.City;
+            }
+            if (!string.IsNullOrEmpty(m.Region))
+            {
+                specialist.Region = m.Region;
             }
             if (!string.IsNullOrEmpty(m.Country))
             {
@@ -275,22 +284,6 @@ namespace RentalMobile.Controllers
             if (!string.IsNullOrEmpty(m.Description))
             {
                 specialist.Description = m.Description;
-            }
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                specialist.Address = m.Address;
-            }
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                specialist.Address = m.Address;
-            }
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                specialist.Address = m.Address;
-            }
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                specialist.Address = m.Address;
             }
             specialist.GoogleMap = m.GoogleMap = string.IsNullOrEmpty(m.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
         }
@@ -411,10 +404,44 @@ namespace RentalMobile.Controllers
 
             Db.MaintenanceTeamAssociations.Add(mti);
             Db.SpecialistPendingTeamInvitations.Remove(invitation);
+            AddSpecialistZoneToProviderTeamZone(sti.MaintenanceProviderId, sti.SpecialistID);
             Db.SaveChanges();
+            var teamcoverageUpdate = new UpdateCoverage(sti.MaintenanceProviderId, sti.SpecialistID);
+            teamcoverageUpdate.AddAllCoverageFromSpecialistToTeam();
             JNotify("Your request has been completed.", "/Specialist/CurrentProvider");
             return RedirectToAction("CurrentProvider");
 
+        }
+
+        public void AddSpecialistZoneToProviderTeamZone(int providerId, int specialistId)
+        {
+            var specialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+            {
+                var teamMemberCount = 0;
+                var maintenanceProviderZones = Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == providerId).ToList();
+                if (maintenanceProviderZones.Exists(x => specialist != null && x.ZipCode == specialist.Zip))
+                {
+                    return;
+                }
+                if (maintenanceProviderZones.Any())
+                {
+                    teamMemberCount =
+                        Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId);
+                }
+                if (specialist != null)
+                    Db.MaintenanceProviderZones.Add(
+                        new MaintenanceProviderZone
+                            {
+                                CityName = specialist.City,
+                                Country = specialist.Country,
+                                MaintenanceProviderId = providerId,
+                                ZipCode = specialist.Zip,
+                                TeamMemberCount = teamMemberCount + 1
+
+                            }
+                        );
+                Db.SaveChanges();
+            }
         }
 
         public ActionResult DenyInvitation(int id)

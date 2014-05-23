@@ -5,7 +5,12 @@
     ViewBag.Title = "Provider Profile";
     Layout = "~/Views/Shared/Profiles/_Provider.cshtml";
 }
-
+@* ReSharper disable ConditionIsAlwaysTrueOrFalse *@
+@* ReSharper disable RedundantCast *@
+@* ReSharper restore RedundantCast *@
+@* ReSharper restore ConditionIsAlwaysTrueOrFalse *@
+@* ReSharper disable UnknownCssClass *@
+@* ReSharper disable Html.PathError *@
 @functions {
     public string GetVideo()
     {
@@ -13,11 +18,11 @@
         var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
         try
         {
-            if ((Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
+            if (Model != null && (Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
             {
                 videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
             }
-            else if ((Model.VimeoVideo != null && (bool)Model.VimeoVideo))
+            else if (Model != null && (Model.VimeoVideo != null && (bool)Model.VimeoVideo))
             {
                 videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
             }
@@ -32,20 +37,6 @@
 @section profile
 {
     @Html.Partial("_ProfileDetail", (object)ViewBag.MaintenanceProvider)
-}
-@section video
-    {
-    <div id="video" class="panel">
-        <iframe src="@GetVideo()" width="900" height="400"></iframe>
-    </div>
-}
-@section map
-{
-    <div id="map" class="panel">
-        <iframe width="100%" height="300" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.ProviderGoogleMap&amp;z=13&amp;output=embed">
-        </iframe>
-        <br />
-    </div>
 }
 @section account
 {
@@ -82,7 +73,21 @@
             </div>
         </section>
     </div>
+}@section video
+    {
+    <div id="video" class="panel">
+        <iframe src="@GetVideo()" width="900" height="400"></iframe>
+    </div>
 }
+@section map
+{
+    <div id="map" class="panel">
+        <iframe width="100%" height="300" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.ProviderGoogleMap&amp;z=13&amp;output=embed">
+        </iframe>
+        <br />
+    </div>
+}
+
 @section maintenance
 {
     <div id="maintenance">
@@ -99,9 +104,6 @@
                 <div class="six columns push by-one">
                     <input type="submit" class="full-width tall" value="Archived Requests" onclick="location.href='./SpecialistMaintenance';" />
                 </div>
-                @*       <div class="six columns push by-two">
-                    <input type="submit" class="full-width tall" value="Archived Requests" />
-                </div>*@
             </div>
             @* <div class="sixteen columns prop-details">
                 <div class="six columns push by-one">
@@ -136,283 +138,7 @@
 }
 @section property
 {
-    <div id="property" class="panel">
-        <section class="fourteen columns">
-            @*                <h2 class="remove-top">
-                    Rent</h2>*@
-            <!-- filters -->
-            <form action="#" class="row">
-            <!-- tag filters -->
-            <ul class="filter-list nine alpha columns row">
-                <li><a data-rel="all" class="current">All</a></li>
-                <li><a data-rel="house">House</a></li>
-                <li><a data-rel="appartment">Apartment</a></li>
-                <li><a data-rel="loft">Loft</a></li>
-                <li><a data-rel="offices">Offices</a></li>
-                <li><a data-rel="condos">Condos</a></li>
-            </ul>
-            <div class="switcher fr">
-                <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
-                    id="listview" class="switcher active"><i class="icon-menu"></i></a>
-            </div>
-            </form>
-            <!-- List/Grid gallery -->
-            <ul id="property-list" class="list-grid-gallery list">
-                <li class="prop-type all house">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                <li class="next-arr">@Html.RouteLink("Property", new { id = 0 }, null)></li>
-                                @*  @Html.RouteLink("Description", "Property",new { id = 0 } )*@ @*			<li class="next-arr">@Html.ActionLink("Description", "Index", "Property", new { id = 0 }, null)></li>
-*@
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all house">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all appartment">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all appartment">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all loft">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all loft">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all condos">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-                <li class="prop-type all condos">
-                    <article>
-                        <figure class="five columns alpha">
-                            <a href="#" class="camera">3</a>
-                            <img src="../../images/dotimages/properties/gallery-280x165.png" class="scale-with-grid"
-                                alt="gallery" />
-                        </figure>
-                        <div class="eight columns omega">
-                            <h4>
-                                House 79th St #8C, New York NY, USA</h4>
-                            <ul class="prop-data">
-                                <li class="price">$1,875,000</li>
-                                <li class="new">New construction</li>
-                            </ul>
-                            <p class="propr-details">
-                                1 bedroom / 2 bathrom / 1,300 sqft
-                            </p>
-                            <p class="prop-extract">
-                                Duis a est quis nunc bibendum consequat. Cras ornare sodales venenatis. Proin id
-                                rhoncus massa ellentesque quis orci non lacus tincidunt scelerisque. Integer bibendum
-                                commodteger bibendum c scele.</p>
-                            <p class="prop-webid">
-                                Web ID #1</p>
-                            <ul class="toolbar">
-                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>
-                                <li class="next-arr"><a href="/property/index/0">Description</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </li>
-            </ul>
-            <!-- /.List -->
-        </section>
-    </div>
+    @Html.Partial("_Property")
 }
 @section coverage
 {
@@ -421,33 +147,62 @@
             <section class="row double-bottom">
                 <div class="sixteen columns prop-details">
                     <div class="six columns push by-one">
-                        <input type="submit" class="full-width tall" value="Edit Coverage" onclick="location.href='./Specialist/CompleteProfile';" />
+                        <input type="submit" class="full-width tall" id="EditCoverageButton" value="Edit Coverage"  />
                     </div>
                     <div class="six columns push by-two">
                         <input type="submit" class="full-width tall" id="ViewCoverageButton" value="View Coverage" />
                     </div>
                 </div>
-                 <div class="sixteen columns prop-details">
+                <div class="sixteen columns prop-details">
                     <div class="six columns push by-one">
-                        <input type="submit" class="full-width tall" value="Edit Zone" onclick="location.href='./Specialist/CompleteProfile';" />
+                        <input type="submit" class="full-width tall"  id="EditZoneButton"  value="Edit Zone"  />
                     </div>
                     <div class="six columns push by-two">
                         <input type="submit" class="full-width tall" id="ViewZoneButton" value="View Zone" />
                     </div>
                 </div>
-
             </section>
         </div>
         <div id="CoverageSection" style="display: none">
-            @{ Html.RenderAction("_Coverage", "Specialist"); }
+            @{ Html.RenderAction("_Coverage", "Provider"); }
             <section class="row double-bottom">
-                <div class="sixteen columns prop-details">
-                    <div class="three columns push by-one">
+                <div class="fifteen columns prop-details">
+                     <div class="six columns push by-five">
                         <input type="submit" class="full-width tall" id="BacktoCoverageButton" value="Back To Coverage" />
                     </div>
                 </div>
             </section>
         </div>
+           <div id="EditCoverageSection" style="display: none">
+            @{ Html.RenderAction("_EditCoverage", "Provider"); }
+            <section class="row double-bottom">
+                <div class="sixteen columns prop-details">
+                    <div class="six columns push by-five">
+                        <input type="submit" class="full-width tall button gray" id="BacktoEditCoverageButton" value="Back To Coverage" />
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="ViewZoneSection" style="display: none">
+            @{ Html.RenderAction("_ViewZone", "Provider"); }
+            <section class="row double-bottom">
+                <div class="fifteen columns prop-details">
+                    <div class="six columns push by-five">
+                        <input type="submit" class="full-width tall" id="BacktoZoneButton" value="Back To Zone" />
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="EditZoneSection" style="display: none">
+            @{ Html.RenderAction("_EditZone", "Provider"); }
+            <section class="sixteen columns prop-details">
+                <div class="fifteen columns">
+                    <div class="six columns push by-five">
+                        <input type="submit" class="full-width tall button gray" id="BacktoEditZoneButton" value="Back To Coverage" style="background-color: gray" />
+                    </div>
+                </div>
+            </section>
+        </div> 
     </div>
 }
 @section team
@@ -483,12 +238,16 @@
                             <input type="submit" class="full-width tall" value="Remove Team Member" onclick=" location.href = '../Provider/RemoveTeamMember'; " />
                         </div>
                     </div>
+                    <div class="sixteen columns prop-details">
+                        <div class="six columns push by-one">
+                            <input type="submit" class="full-width tall" value="View Team Invitation" onclick=" location.href = '../Provider/ViewTeamInvitation'; " />
+                        </div>
+                    </div>
                 </section>       
             }
         </div>
         @if (ViewBag.TeamId != null)
         {
-
             <div id="TeamMemberSectionSection" style="display: none">
                 @{ Html.RenderAction("_Team", "Provider"); }
                 <section class="row double-bottom">
@@ -561,6 +320,7 @@
 @section scripts
 {
     <script type="text/javascript">
+        //Team
         $("#ViewTeam").click(function () {
             $("#Teammenu").toggle('slow');
             $("#TeamMemberSectionSection").toggle('slow');
@@ -571,18 +331,55 @@
             $("#TeamMemberSectionSection").toggle('slow');
         });
 
-
-
-
         //Coverage
-        $("#ViewCoverage").click(function () {
+        $("#ViewCoverageButton").click(function () {
+            $("#EditCoveragemenu").hide();
             $("#Coveragemenu").toggle('slow');
             $("#CoverageSection").toggle('slow');
         });
 
-        $("#BacktoCoverageMenuButton").click(function () {
+        $("#BacktoCoverageButton").click(function () {
             $("#Coveragemenu").toggle('slow');
             $("#CoverageSection").toggle('slow');
+        });
+
+        //Edit Coverage
+        $("#EditCoverageButton").click(function () {
+            $("#Coveragemenu").hide();
+            $("#EditCoveragemenu").toggle('slow');
+            $("#EditCoverageSection").toggle('slow');
+        });
+
+        $("#BacktoEditCoverageButton").click(function () {
+            $("#Coveragemenu").show();
+            $("#EditCoveragemenu").toggle('slow');
+            $("#EditCoverageSection").toggle('slow');
+        });
+
+        //Zone
+        $("#ViewZoneButton").click(function () {
+            $("#Coveragemenu").hide();
+            $("#Zonemenu").toggle('slow');
+            $("#ViewZoneSection").toggle('slow');
+        });
+
+        $("#BacktoZoneButton").click(function () {
+            $("#Coveragemenu").show();
+            $("#Zonemenu").toggle('slow');
+            $("#ViewZoneSection").toggle('slow');
+        });
+
+        //Edit Zone
+        $("#EditZoneButton").click(function () {
+            $("#Coveragemenu").hide();
+            $("#EditZonemenu").toggle('slow');
+            $("#EditZoneSection").toggle('slow');
+        });
+
+        $("#BacktoEditZoneButton").click(function () {
+            $("#Coveragemenu").show();
+            $("#EditZonemenu").toggle('slow');
+            $("#EditZoneSection").toggle('slow');
         });
     </script>
 }

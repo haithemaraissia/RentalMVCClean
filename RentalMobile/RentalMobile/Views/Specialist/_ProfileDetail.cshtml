@@ -37,10 +37,8 @@
             <h6 style="color: red; text-align: center">
                 @Model.PercentageofCompletion% Profile Completed</h6>
         </span>
-
         <meter value="@Model.PercentageofCompletion" max="100">
         </meter>
-
         <style type="text/css">
             meter
             {
@@ -56,8 +54,6 @@
                 margin-left: 1px;
             }
         </style>
-         
-
         <p style="text-align: right">
             <input type="submit" class="full-width tall button green" value="Complete Profile"
                 onclick="location.href='/Specialist/CompleteProfile'" />

@@ -1,0 +1,90 @@
+﻿@using System.Web.Mvc.Html
+@using PagedList.Mvc
+@model PagedList.IPagedList<RentalMobile.Models.MaintenanceProviderZone>
+@{
+    ViewBag.Title = "Update Zone List ";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+
+    <section class="sixteen columns">
+        <h3 class="tagline"> Select your Zone</h3>
+    </section>
+    <section class="sixteen columns">
+        @if (Model.Count > 0)
+        {  
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("UpdateZoneList", new { page }), new PagedListRenderOptions
+                    {
+                        DisplayLinkToFirstPage = false,
+                        DisplayLinkToLastPage = false,
+                        DisplayLinkToPreviousPage = true,
+                        DisplayLinkToNextPage = true,
+                        DisplayLinkToIndividualPages = false,
+                        ContainerDivClasses = null,
+                        UlElementClasses = new[] { "pager" },
+                        ClassToApplyToFirstListItemInPager = "previous",
+                        ClassToApplyToLastListItemInPager = "next",
+                        LinkToPreviousPageFormat = "&larr; Older",
+                        LinkToNextPageFormat = "Newer &rarr;",
+                        DisplayPageCountAndCurrentLocation = true
+                    })
+            </div> 
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <label class="full-width tall button">
+                        City</label>
+                    @foreach (var cityName in Model)
+                    {
+                        <div class="six columns push by-two">
+                            <label class="full-width tall" id="EditZoneButton" style="margin-bottom: 10px">@Html.DisplayFor(modelItem => cityName.CityName)</label>
+                        </div>
+                    }
+                </div>
+                <div class="seven columns push by-one">
+                    <label class="full-width tall button ">
+                        Zipcode</label>
+                    @foreach (var zipCodeitem in Model)
+                    {
+                        
+                        <div class="four columns push by-three ">
+                            <label class="full-width tall" id="ViewZoneButton" style="margin-bottom: 10px">@Html.DisplayFor(modelItem => zipCodeitem.ZipCode)</label>
+                        </div>
+                        <div class="two columns push by-three" style="text-align: center">
+                            @Html.ActionLink("Select", "UpdateZone", "Provider", new { id = zipCodeitem.MaintenanceProviderZoneId }, null)
+                        </div>
+                        
+                    }
+                </div>
+            </div>
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("UpdateZoneList", new { page }), new PagedListRenderOptions
+           {
+               DisplayLinkToFirstPage = false,
+               DisplayLinkToLastPage = false,
+               DisplayLinkToPreviousPage = true,
+               DisplayLinkToNextPage = true,
+               DisplayLinkToIndividualPages = false,
+               ContainerDivClasses = null,
+               UlElementClasses = new[] { "pager" },
+               ClassToApplyToFirstListItemInPager = "previous",
+               ClassToApplyToLastListItemInPager = "next",
+               LinkToPreviousPageFormat = "&larr; Older",
+               LinkToNextPageFormat = "Newer &rarr;",
+               DisplayPageCountAndCurrentLocation = true
+           })
+            </div>         
+        }
+        else
+        { 
+            <br />
+            <p>
+                You have no Zone available at this moment.</p>
+            <section class="row">
+                <div class="sixteen columns">
+                    <div class="five columns" style="float: right">
+                        <input type="submit" class="full-width tall" value="Ok" onclick=" location.href = '/Provider' " />
+                    </div>
+                </div>
+            </section>
+        }
+    </section>
+}

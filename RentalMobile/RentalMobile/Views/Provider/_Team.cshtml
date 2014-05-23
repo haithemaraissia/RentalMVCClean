@@ -1,0 +1,138 @@
+﻿@model IEnumerable<RentalMobile.Helpers.Teammate>
+<style>
+    .container .one-third.column
+    {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .thumbnail
+    {
+        height: 100%;
+        position: relative;
+    }
+    .thumbnail img
+    {
+        vertical-align: bottom;
+    }
+    .thumbnail .details
+    {
+        background-color: #1FB4DD;
+        color: #FFFFFF;
+        left: 0;
+        min-height: 40%;
+        opacity: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        transition: all 0.25s ease-in 0;
+        width: 100%;
+    }
+    .no-opacity .thumbnail .details
+    {
+        background: none repeat scroll 0 0 transparent;
+        min-height: 40%;
+        text-align: center;
+        top: -9999px;
+        width: 100%;
+    }
+    .thumbnail:hover .details
+    {
+        margin-top: 0;
+        opacity: 0.9;
+    }
+    .thumbnail .details h3, .h3
+    {
+        border: medium none;
+        color: #FFFFFF;
+        font-family: atrament-web-1,atrament-web-2, "HelveticaNeue" , "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+        font-size: 28px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        line-height: 30px;
+        margin: 0 auto;
+        padding: 27px 0 5px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .thumbnail .details p
+    {
+        font-size: 18px;
+        text-align: center;
+    }
+    div.section
+    {
+        margin: 30px 0;
+        overflow: hidden;
+    }
+    div.section img
+    {
+        height: auto;
+        max-width: 100%;
+    }
+</style>
+@if (ViewBag.TeamName != null)
+{
+    <h3 style="text-align: center; color: #346993">
+        @if (ViewBag.TeamName != null)
+        {
+            @ViewBag.TeamName
+        }
+    </h3>   
+}
+@if (Model.Any())
+{
+    <div class="sixteen columns content" style="margin-left: 0; margin-right: 0; margin-top: 0">
+        <div class="section" style="margin-top: 30px; margin-bottom: 0">
+            @{
+    var counter = 0;
+    foreach (var item in Model)
+    {
+        counter++;
+        var customclass = "alpha";
+        if ((counter % 2) == 0)
+        {
+            customclass = "";
+        }
+        if ((counter % 3) == 0)
+        {
+            customclass = "omega";
+        }
+                <div class="one-third column thumbnail @customclass">
+                    <a href="./Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                        <img alt="Fishbone" src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)" height="520" width="450" />
+                        <div class="details">
+                            <h3>
+                                @Html.DisplayFor(modelItem => item.SpecialistName)</h3>
+                            @if (item.YearofExperience == 0)
+                            {
+                            }
+                            @if (item.YearofExperience == 1)
+                            {
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.YearofExperience) year Experience
+                                </p>
+                            }
+                            @if (item.YearofExperience > 1)
+                            {
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.YearofExperience) years Experience
+                                </p>
+                            }
+                        </div>
+                    </a>
+                </div>
+    }
+            }
+        </div>
+    </div>
+}
+else
+{
+    <section class="row double-bottom" id="NoTeamSection">
+        <div class="sixteen columns prop-details" style="padding-top: 0">
+            <div class="six columns push by-one">
+                <input type="submit" class="full-width tall" value="Create Team" onclick="location.href='./Team/Create';" />
+            </div>
+        </div>
+    </section>
+}

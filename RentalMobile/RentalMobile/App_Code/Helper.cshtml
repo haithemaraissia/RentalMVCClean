@@ -1,11 +1,11 @@
 ﻿@using System.Globalization
+@using System.Linq
 @using RentalMobile.Helpers
 @using System.Web.Mvc
 @using System.Web.Mvc.Html
-
-
-
+@using RentalMobile.Models
 @functions {
+    private static readonly DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
 
     public static string GetVideo()
     {
@@ -41,9 +41,7 @@
         return String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.png" : Model.Unit.PrimaryPhoto;
 
     }
-
-
-
+    
     /// <summary>
     /// Functions for Specialist Coverage
     /// </summary>
@@ -62,7 +60,6 @@
         return atleastoneAttribute;
     }
 
-
     public static bool CheckifAtLeastOnePropertyisTrue(object t)
     {
         return t.GetType().GetProperties()
@@ -79,6 +76,13 @@
     {
         get { return ((WebViewPage)CurrentPage).Url; }
     }
+
+    public static bool ProviderHasAnyTeamMember(int maintenanceProviderId)
+    {
+        var maintenanceTeamAssociation = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId);
+        return maintenanceTeamAssociation.Any();
+    }
+
 }
 @*    /// <summary>
       /// Begining Helper for Specialist Coverage
@@ -88,6 +92,12 @@
     {
     
     @SplitList()<li>No Coverage</li>
+}
+@helper NoTeamMemberHtml()
+    {
+    
+    @SplitList()<li>You have no team member</li><li>Add Team Member to Add / Remove Coverage</li>
+}
 }
 @helper SplitingAttributesListHtml(int itemcount)
     {
@@ -101,12 +111,12 @@
 }
 @helper SplitList()
     {
-    Itemcount++;
+        Itemcount++;
     @SplitingAttributesListHtml(Itemcount)
 }
 @helper  ResetItemCount()
     {
-    Itemcount = 0;
+        Itemcount = 0;
 }
 @*    /// <summary>
       /// End Helper for Specialist Coverage

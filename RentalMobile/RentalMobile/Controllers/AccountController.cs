@@ -139,11 +139,12 @@ namespace RentalMobile.Controllers
 
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
-                bool changePasswordSucceeded;
+                var changePasswordSucceeded = false;
                 try
                 {
-                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
-                    changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
+                    var currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    if (currentUser != null)
+                        changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
                 }
                 catch (Exception)
                 {
@@ -401,17 +402,16 @@ namespace RentalMobile.Controllers
             }
         }
 
-
         [Authorize]
         public void RegisterTenant(RegisterModel model)
         {
-            var newtenant = new Tenant {EmailAddress = model.Email};
+            var newtenant = new Tenant { EmailAddress = model.Email };
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newtenant.GUID = (Guid) providerUserKey;
+                    newtenant.GUID = (Guid)providerUserKey;
                 newtenant.FirstName = model.UserName;
                 newtenant.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newtenant.GoogleMap = "USA";
@@ -425,13 +425,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterOwner(RegisterModel model)
         {
-            var newowner = new Owner {EmailAddress = model.Email};
+            var newowner = new Owner { EmailAddress = model.Email };
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newowner.GUID = (Guid) providerUserKey;
+                    newowner.GUID = (Guid)providerUserKey;
                 newowner.FirstName = model.UserName;
                 newowner.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newowner.GoogleMap = "USA";
@@ -445,13 +445,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterAgent(RegisterModel model)
         {
-            var newagent = new Agent {EmailAddress = model.Email};
+            var newagent = new Agent { EmailAddress = model.Email };
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newagent.GUID = (Guid) providerUserKey;
+                    newagent.GUID = (Guid)providerUserKey;
                 newagent.FirstName = model.UserName;
                 newagent.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newagent.GoogleMap = "USA";
@@ -465,13 +465,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterSpecialist(RegisterModel model)
         {
-            var newspecialist = new Specialist {EmailAddress = model.Email};
+            var newspecialist = new Specialist { EmailAddress = model.Email };
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newspecialist.GUID = (Guid) providerUserKey;
+                    newspecialist.GUID = (Guid)providerUserKey;
                 newspecialist.FirstName = model.UserName;
                 newspecialist.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newspecialist.GoogleMap = "USA";
@@ -487,13 +487,13 @@ namespace RentalMobile.Controllers
         [Authorize]
         public void RegisterProvider(RegisterModel model)
         {
-            var newprovider = new MaintenanceProvider {EmailAddress = model.Email};
+            var newprovider = new MaintenanceProvider { EmailAddress = model.Email };
             var user = Membership.GetUser(model.UserName);
             if (user != null)
             {
                 var providerUserKey = user.ProviderUserKey;
                 if (providerUserKey != null)
-                    newprovider.GUID = (Guid) providerUserKey;
+                    newprovider.GUID = (Guid)providerUserKey;
                 newprovider.FirstName = model.UserName;
                 newprovider.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newprovider.GoogleMap = "USA";
@@ -985,11 +985,11 @@ namespace RentalMobile.Controllers
         {
             var model = new PrimaryVideo
                 {
-                     VimeoVideo = false,
-                     VimeoVideoUrl = "",
-                     YouTubeVideo = false,
-                     YouTubeVideoUrl = ""
-                 };
+                    VimeoVideo = false,
+                    VimeoVideoUrl = "",
+                    YouTubeVideo = false,
+                    YouTubeVideoUrl = ""
+                };
             var user = System.Web.HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
@@ -1038,9 +1038,9 @@ namespace RentalMobile.Controllers
             {
                 var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId());
                 {
-                    model.VimeoVideo = provider.VimeoVideo ?? false;
+                    model.VimeoVideo = provider.VimeoVideo;
                     model.VimeoVideoUrl = provider.VimeoVideoURL ?? "";
-                    model.YouTubeVideo = provider.YouTubeVideo ?? false;
+                    model.YouTubeVideo = provider.YouTubeVideo;
                     model.YouTubeVideoUrl = provider.YouTubeVideoURL ?? "";
                 }
             }
@@ -1055,7 +1055,7 @@ namespace RentalMobile.Controllers
 
         public string JNotifyConfirmationUpdatingVideo()
         {
-            var jNotifyConfirmationScript = 
+            var jNotifyConfirmationScript =
                                 string.Format(@"jSuccess('Your video has been sent successfully updated.")
                                  +
                                 @"',{
@@ -1074,7 +1074,7 @@ namespace RentalMobile.Controllers
 	  	                        onClosed : function(){ // added in v2.0
 	  	                        },
 	  	                        onCompleted : function(){ // added in v2.0
-	  	                        window.location.href = " 
+	  	                        window.location.href = "
                                + string.Format(@"'../{0}'", GetCurrentRole()) + @"; }});";
             return jNotifyConfirmationScript;
         }

@@ -1,0 +1,68 @@
+﻿@using RentalMobile.Helpers
+@model List<RentalMobile.Models.MaintenanceProviderZone>
+@{
+    var availableSpot = 0;
+    
+    if (@Model.Any())
+    {
+        availableSpot = @UserHelper.GetTotalAvailableZoneSpotForProvider(Model.First().MaintenanceProviderId) - Model.Count();
+    }
+    else
+    {
+        if (ViewBag.TotalAvailableZoneSpot != null)
+        {
+            availableSpot = ViewBag.TotalAvailableZoneSpot;
+        }
+        
+    }
+
+
+}
+<div>
+</div>
+@if (availableSpot <= 0)
+{
+    
+    <link rel="stylesheet" type="text/css" href="../../css/tooltipster/tooltipster.css" />
+
+    <script type="text/javascript" src="../../Scripts/tooltipster/jquery.tooltipster.js"></script>
+    
+    
+    <div id="CoverageCreateTeam">
+        <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Manage Your Coverage Zone <a href="#" title="You can add an additional zone Coverage for each Team Member">
+                <img src="../../images/questionMark.gif" alt="questionmark"/></a>
+        </h3>
+        <br />
+        <section class="" id="NoZoneAvailableSection">
+            <div class="sixteen columns prop-details">
+                <div class="six columns push by-one">
+                    <input type="submit" class="full-width tall" value="Update Zone" onclick=" location.href = '../Provider/UpdateZoneList'; " />
+                </div>
+                <div class="six columns push by-two">
+                <input type="submit" class="full-width tall" value="Remove Zone" onclick=" location.href = '../Provider/RemoveZoneList'; " />
+            </div>
+            </div>
+        </section>
+    </div>
+}
+else
+{
+    <div id="CoverageManageTeam">
+         <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Manage Your Coverage Zone <a href="#" title="You can add an additional zone Coverage for each Team Member">
+                <img src="../../images/questionMark.gif"  alt="questionmark"/></a>
+        </h3>
+        <br />
+        <h4 class="section-titling" style="position: relative; color: #040404; right: 0">
+           You can add  <span style="color: #a20303; ">@availableSpot</span> additional Zone.</h4>
+        <div class="sixteen columns prop-details">
+            <div class="six columns push by-one">
+                <input type="submit" class="full-width tall" value="Add Zone" onclick=" location.href = '../Provider/AddZone'; " />
+            </div>
+            <div class="six columns push by-two">
+                <input type="submit" class="full-width tall" value="Remove Zone" onclick=" location.href = '../Provider/RemoveZoneList'; " />
+            </div>
+        </div>
+    </div>
+}

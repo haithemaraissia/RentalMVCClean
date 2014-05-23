@@ -347,6 +347,27 @@ img.scale-with-grid
     font-weight: bold;
     padding: 8px 10px;
 }
+.button.gray
+{
+    background: #7f8c81;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#819079), to(#819079));
+    background: -webkit-linear-gradient(#495546 0%, #485146 100%);
+    background: -moz-linear-gradient(#495546 0%, #819079 100%);
+    background: -o-linear-gradient(#495546 0%, #819079 100%);
+    background: linear-gradient(#495546 0%, #819079 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#495546', endColorstr='#819079',GradientType=0 );
+    border: 0px solid #aaa; /*border-top: 1px solid #ccc; 	  border-left: 1px solid #ccc; 	  font-weight: bold;*/
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 20px;
+    line-height: normal;
+    font-weight: bold;
+    padding: 8px 10px;
+}
 
 .button.tall, button.tall, input.tall[type="submit"], input.tall[type="reset"], input.tall[type="button"]
 {
@@ -388,6 +409,19 @@ img.scale-with-grid
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46769c', endColorstr='#215785',GradientType=0 );
     border: 0px solid #888; /*border-top: 1px solid #aaa; 	  border-left: 1px solid #aaa; */
 }
+.button.gray:hover
+{
+    color: #fff;
+    background: #407930;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#8f978b), to(#494e47));
+    background: -webkit-linear-gradient(#8f978b 0%, #494e47 100%);
+    background: -moz-linear-gradient(#8f978b 0%, #494e47 100%);
+    background: -o-linear-gradient(#8f978b 0%, #494e47 100%);
+    background: linear-gradient(#8f978b 0%, #494e47 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46769c', endColorstr='#215785',GradientType=0 );
+    border: 0px solid #888; /*border-top: 1px solid #aaa; 	  border-left: 1px solid #aaa; */
+}
+a.
 a.button:hover
 {
     text-decoration: none;
@@ -544,4 +578,54 @@ label span, legend span
 .CharacterLeftColor
 {
      color: #346993;
+}
+
+
+
+.AutoCenter {
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bubble {
+  position: relative;
+  background-color:#eee;
+  margin: 0;
+  padding:10px;
+  text-align:center;
+  width:180px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
+  box-shadow: 0px 0 3px rgba(0,0,0,0.25); 
+}
+.bubble:after {
+  position: absolute;
+  display: block;
+  content: "";  
+  border-color: #eee transparent transparent transparent;
+  border-style: solid;
+  border-width: 10px;
+  height:0;
+  width:0;
+  position:absolute;
+  bottom:-19px;
+  left:1em;
 }

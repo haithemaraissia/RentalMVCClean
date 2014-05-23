@@ -4,6 +4,7 @@ namespace RentalMobile.ModelViews
 {
     public class ProviderMaintenanceProfile
     {
+        public MaintenanceProvider MaintenanceProvider { get; set; }
         public MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
         public MaintenanceCompany MaintenanceCompany { get; set; }
         public MaintenanceCompanySpecialization MaintenanceCompanySpecialization { get; set; }

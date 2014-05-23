@@ -41,9 +41,12 @@
     <Reference Include="AntiXssLibrary">
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\AntiXssLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Facebook.6.4.2\lib\net40-client\Facebook.dll</HintPath>
@@ -141,10 +144,13 @@
     <Compile Include="Controllers\AddTeamMemberController.cs" />
     <Compile Include="Controllers\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
+    <Compile Include="Controllers\ReflectionHelper.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\Test2Controller.cs" />
+    <Compile Include="Controllers\TestCleanController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UpdateCoverage.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
@@ -153,9 +159,12 @@
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
+    <Compile Include="Helpers\PhotoHelper.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
+    <Compile Include="Helpers\SpecialistInTeam.cs" />
+    <Compile Include="Helpers\Teammate.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -255,6 +264,9 @@
     <Compile Include="Models\MaintenanceProviderRejectedJob.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MaintenanceProviderZone.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MaintenanceRepair.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -338,6 +350,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeamSpecialistInvitation.cs" />
     <Compile Include="Models\Tenant.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -389,6 +402,7 @@
     <Compile Include="Models\UrgencyType.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelViews\ProviderMaintenanceCompleteProfile.cs" />
     <Compile Include="ModelViews\OwnerPendingShowingCalendarModelView.cs" />
     <Compile Include="ModelViews\ProviderMaintenanceProfile.cs" />
     <Compile Include="ModelViews\SpecialistMaintenanceProfile.cs" />
@@ -493,6 +507,7 @@
     <Compile Include="Emails\SendToFriend\SendToFriend.aspx.designer.cs">
       <DependentUpon>SendToFriend.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WIP\BackUp\UpdateCoverage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ASPNETDB.MDF" />
@@ -679,6 +694,11 @@
     <Content Include="css\pupload\Css\Standard.css" />
     <Content Include="css\smartwizard\smart_wizard.css" />
     <Content Include="css\smartwizard\smart_wizard_vertical.css" />
+    <Content Include="css\tooltipster\themes\tooltipster-light.css" />
+    <Content Include="css\tooltipster\themes\tooltipster-noir.css" />
+    <Content Include="css\tooltipster\themes\tooltipster-punk.css" />
+    <Content Include="css\tooltipster\themes\tooltipster-shadow.css" />
+    <Content Include="css\tooltipster\tooltipster.css" />
     <Content Include="Design\General.aspx" />
     <Content Include="Design\SmartWizard.htm" />
     <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
@@ -802,6 +822,7 @@
     <Content Include="images\dotimages\wip\registration-linkedin.gif" />
     <Content Include="images\hsep.png" />
     <Content Include="images\mainbk.png" />
+    <Content Include="images\notice-alert.png" />
     <Content Include="images\property\bg.jpg" />
     <Content Include="images\property\blue-gradient.png" />
     <Content Include="images\property\home.jpg" />
@@ -819,6 +840,7 @@
     <Content Include="images\property\home7.jpg" />
     <Content Include="images\property\home8.jpg" />
     <Content Include="images\property\home9.jpg" />
+    <Content Include="images\questionMark.gif" />
     <Content Include="images\Vimeo_logo.png" />
     <Content Include="images\YouTubeLogo.jpg" />
     <Content Include="obj\Debug\TempPE\Models.RentalContextGenerator1.cs.dll" />
@@ -871,6 +893,8 @@
     <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="Scripts\MaskedInputPlugin\jquery.maskedinput.js" />
     <Content Include="Scripts\MaxLength\jquery.maxlength.js" />
+    <Content Include="Scripts\tooltipster\jquery.tooltipster.js" />
+    <Content Include="Scripts\tooltipster\jquery.tooltipster.min.js" />
     <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
@@ -1067,6 +1091,7 @@
     <None Include="bin\AdControl.dll.refresh" />
     <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
     <None Include="bin\itextsharp.dll.refresh" />
+    <None Include="css\dotcss\base.css.bak" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />
     <None Include="css\dotcss\entypo\entypo.ttf" />
@@ -1438,6 +1463,17 @@
     <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\RemoveSpecialistForTeam\Multipart.Text.cshtml" />
     <Content Include="Views\Provider\_Coverage.cshtml" />
+    <Content Include="Views\Provider\ViewTeamInvitation.cshtml" />
+    <Content Include="Views\Provider\_EditCoverage.cshtml" />
+    <Content Include="Views\Provider\_EditZone.cshtml" />
+    <Content Include="Views\Provider\_ViewZone.cshtml" />
+    <Content Include="Views\Provider\AddZone.cshtml" />
+    <Content Include="Views\Provider\RemoveZone.cshtml" />
+    <Content Include="Views\Provider\UpdateZoneList.cshtml" />
+    <Content Include="Views\Provider\UpdateZone.cshtml" />
+    <Content Include="Views\Provider\RemoveZoneList.cshtml" />
+    <Content Include="Views\TestClean\Index.cshtml" />
+    <Content Include="Views\Provider\_Property.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

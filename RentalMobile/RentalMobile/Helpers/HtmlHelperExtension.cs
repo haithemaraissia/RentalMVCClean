@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.UI.WebControls;
 using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
@@ -37,9 +35,6 @@ namespace RentalMobile.Helpers
             };
         }
 
-
-
-
         public static IEnumerable<SelectListItem> Currency(this HtmlHelper helper, int? selectedvalue)
         {
             var query = db.Currencies.Select(c => new { c.CurrencyID, c.CurrencyValue });
@@ -63,7 +58,6 @@ namespace RentalMobile.Helpers
             var query = db.Garages.Select(c => new { c.GarageID, c.GarageValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", 0) : new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", selectedvalue);
         }
-
 
         public static IEnumerable<SelectListItem> Heating(this HtmlHelper helper, int? selectedvalue)
         {
@@ -119,7 +113,6 @@ namespace RentalMobile.Helpers
             return b.Value ? ifTrue : ifFalse;
         }
 
-
         public static string GetCurrencyValue(this HtmlHelper helper, int? currencyID)
         {
             var currency = db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyID);
@@ -128,14 +121,12 @@ namespace RentalMobile.Helpers
             return db.Currencies.First().CurrencyValue;
         }
 
-
         public static string GetBedValue(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "1";
             var bed = db.Beds.FirstOrDefault(x => x.BedID == selectedvalue);
             return bed != null ? bed.BedValue : "1";
         }
-
 
         public static string GetBathroomValue(this HtmlHelper helper, int? selectedvalue)
         {
@@ -144,13 +135,10 @@ namespace RentalMobile.Helpers
             return bathroom != null ? bathroom.BathroomValue : "1";
         }
 
-
-
         public static string CountPhoto(this HtmlHelper helper, int? unitid)
         {
             return unitid == null ? "1" : db.UnitGalleries.Count(x => x.UnitId == unitid).ToString(CultureInfo.InvariantCulture);
         }
-
 
         public static string GetMaintenanceProviderPrimaryPhoto(this HtmlHelper helper, int? id)
         {
@@ -159,8 +147,6 @@ namespace RentalMobile.Helpers
                 return id == null ? " " : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return "";
         }
-
-
 
         public static string GetUnitType(this HtmlHelper helper, int? selectedvalue)
         {
@@ -184,6 +170,7 @@ namespace RentalMobile.Helpers
         {
             return LabelFor(html, expression, new RouteValueDictionary(htmlAttributes));
         }
+        
         public static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes)
         {
             var metadata = ModelMetadata.FromLambdaExpression(expression, html.ViewData);
@@ -200,14 +187,17 @@ namespace RentalMobile.Helpers
             tag.SetInnerText(labelText);
             return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
         }
+        
         public static HtmlString Label(this HtmlHelper helper, string target = "", string text = "", string id = "")
         {
             return new HtmlString(string.Format("<label id='{0}' for='{1}'>{2}</label>", id, target, text));
         }
+        
         public static MvcHtmlString CustomHyperlink(this HtmlHelper helper, string linkText)
         {
             return MvcHtmlString.Create(String.Format("<a href='/{0}'>{1}</a>", GetCurrentRole(), linkText));
         }
+        
         public static string GetCurrentRole()
         {
             var user = System.Web.HttpContext.Current.User;
@@ -226,28 +216,18 @@ namespace RentalMobile.Helpers
             return user.IsInRole("Specialist") ? "Specialist" : null;
         }
 
-
-
-
-
-        public static string GeVimeoVideoEmbeddedUrl(string vimeoVideoURL)
+        public static string GeVimeoVideoEmbeddedUrl(string vimeoVideoUrl)
         {
-            return vimeoVideoURL.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
+            return vimeoVideoUrl.ToLower().Replace("vimeo.com", "player.vimeo.com/video");
         }
 
-        public static string GetYouTubeVideoEmbeddedUrl(string youTubeVideoURL)
+        public static string GetYouTubeVideoEmbeddedUrl(string youTubeVideoUrl)
         {
-            var youTubeUri = new Uri(youTubeVideoURL);
+            var youTubeUri = new Uri(youTubeVideoUrl);
             var query = HttpUtility.ParseQueryString(youTubeUri.Query);
             var youTubeQueryValue = query.Get("v");
             return "http://www.youtube.com/embed/" + youTubeQueryValue;
         }
-
-
-
-
-
-
 
         //public static string GetVideoEmbeddedUrl(this HtmlHelper helper, int? unitid)
         //{
@@ -272,13 +252,11 @@ namespace RentalMobile.Helpers
         //    return defaulturlreturn;
         //}
 
-
         public static string TruncateLongString(this HtmlHelper helper, string str, int maxLength)
         {
             if (String.IsNullOrEmpty(str)) return "";
             return str.Substring(0, Math.Min(str.Length, maxLength));
         }
-
 
         public static string GetTeamPrimaryPhoto(this HtmlHelper helper, int? id)
         {
@@ -287,27 +265,6 @@ namespace RentalMobile.Helpers
                 return id == null ? DefaultAvatarPlaceholderImagePath : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return DefaultAvatarPlaceholderImagePath;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         public static MvcHtmlString GetSpecialistZone(this HtmlHelper html, int? specialistId)
         {
@@ -328,8 +285,7 @@ namespace RentalMobile.Helpers
                     db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId && x.Role == 1);
                 if (companyLookUp != null)
                 {
-                    var specialistcompany =
-             db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
+                    var specialistcompany = db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
                     if (specialistcompany != null)
                     {
                         if (specialist != null && (specialistcompany.City != null && specialist.City != specialistcompany.City))
@@ -355,21 +311,13 @@ namespace RentalMobile.Helpers
             var resultString = new MvcHtmlString(renderedResult);
             return resultString;
         }
-   
-    
-    
-    
-    
 
-
-
-        
         /// <summary>
         /// Used to return any html for Razor View
         /// </summary>
         /// <param name="html"></param>
         /// <returns></returns>
-        
+
         public static MvcHtmlString ReturnHtmlRaw(this HtmlHelper html)
         {
             var renderedResult = @"<html> Whatver </html>";

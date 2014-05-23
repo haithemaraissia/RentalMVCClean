@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RentalMobile.Models.MaintenanceProviderZone>
+<div class="sixteen columns prop-details">
+    <div class="six columns push by-one">
+        <label class="full-width tall button gray">
+            City</label>
+        @foreach (var cityName in Model)
+        {
+            <div class="six columns ">
+                <label class="full-width tall" id="CityLabel" style="margin-bottom: 10px">@Html.DisplayFor(modelItem => cityName.CityName)</label>
+            </div>
+        }
+        @if (!@Model.Any())
+        {
+            <div class="six columns ">
+                <label class="full-width tall" id="NoCityLabel" style="margin-bottom: 10px">
+                    You have no City available at this moment.</label>
+            </div>
+        }
+    </div>
+    <div class="six columns push by-two">
+        <label class="full-width tall button gray">
+            Zipcode</label>
+        @foreach (var zipCodeitem in Model)
+        {
+            <div class="six columns">
+                <label class="full-width tall" id="ZipCodeLabel" style="margin-bottom: 10px">@Html.DisplayFor(modelItem => zipCodeitem.ZipCode)</label>
+            </div>
+        }
+        @if (!@Model.Any())
+        {
+            <div class="six columns ">
+                <label class="full-width tall" id="ZipcodeAvailableLabel" style="margin-bottom: 10px">
+                    You have no Zipcode available at this moment.</label>
+            </div>
+        }
+    </div>
+</div>

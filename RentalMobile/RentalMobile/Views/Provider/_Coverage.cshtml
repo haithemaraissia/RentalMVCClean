@@ -137,9 +137,17 @@
 
             }
             @{
-                if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceExterior))
+                if (!Helper.ProviderHasAnyTeamMember(Model.MaintenanceProvider.MaintenanceProviderId))
+                { 
+                @Helper.NoTeamMemberHtml()   
+                }
+                else
                 {
-                @Helper.EmptyAttributesHtml()
+                       
+                if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceExterior))
+                    {
+                        @Helper.EmptyAttributesHtml()
+                    }
                 }
             }
         </ul>
