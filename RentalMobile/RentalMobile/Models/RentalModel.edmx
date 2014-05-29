@@ -63,6 +63,7 @@
           </EntitySet>
           <EntitySet Name="Project" EntityType="DB_33736_rentalModel.Store.Project" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProjectPhoto" EntityType="DB_33736_rentalModel.Store.ProjectPhoto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProviderProfileComment" EntityType="DB_33736_rentalModel.Store.ProviderProfileComment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProviderWork" EntityType="DB_33736_rentalModel.Store.ProviderWork" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalApplication" EntityType="DB_33736_rentalModel.Store.RentalApplication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ServiceType" EntityType="DB_33736_rentalModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
@@ -1506,6 +1507,20 @@
           <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PhotoPath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProviderProfileComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="PosterId" Type="int" />
+          <Property Name="PosterRole" Type="int" />
+          <Property Name="PosterName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PosterPhotoPath" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="300" />
+          <Property Name="CommentDate" Type="smalldatetime" />
+          <Property Name="PosterProfileLink" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="ProviderWork">
           <Key>
             <PropertyRef Name="PhotoID" />
@@ -2420,6 +2435,7 @@
           <EntitySet Name="ProviderWorks" EntityType="DB_33736_rentalModel.ProviderWork" />
           <EntitySet Name="MaintenanceProviders" EntityType="DB_33736_rentalModel.MaintenanceProvider" />
           <EntitySet Name="MaintenanceProviderZones" EntityType="DB_33736_rentalModel.MaintenanceProviderZone" />
+          <EntitySet Name="ProviderProfileComments" EntityType="DB_33736_rentalModel.ProviderProfileComment" />
           </EntityContainer>
         <EntityType Name="TenantShowing">
           <Key>
@@ -4549,6 +4565,20 @@
           <Property Type="String" Name="ZipCode" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="TeamMemberCount" />
         </EntityType>
+        <EntityType Name="ProviderProfileComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Type="Int32" Name="CommentId" Nullable="false" />
+          <Property Type="Int32" Name="ProviderId" />
+          <Property Type="Int32" Name="PosterId" />
+          <Property Type="Int32" Name="PosterRole" />
+          <Property Type="String" Name="PosterName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PosterPhotoPath" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CommentDate" />
+          <Property Type="String" Name="PosterProfileLink" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6409,6 +6439,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProviderProfileComments">
+            <EntityTypeMapping TypeName="DB_33736_rentalModel.ProviderProfileComment">
+              <MappingFragment StoreEntitySet="ProviderProfileComment">
+                <ScalarProperty Name="PosterProfileLink" ColumnName="PosterProfileLink" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PosterPhotoPath" ColumnName="PosterPhotoPath" />
+                <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+                <ScalarProperty Name="PosterRole" ColumnName="PosterRole" />
+                <ScalarProperty Name="PosterId" ColumnName="PosterId" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -6636,6 +6681,7 @@
         <EntityTypeShape EntityType="DB_33736_rentalModel.ProviderWork" Width="1.5" PointX="0.75" PointY="28.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProvider" Width="1.5" PointX="20.375" PointY="29.75" Height="5.8263151041666674" />
         <EntityTypeShape EntityType="DB_33736_rentalModel.MaintenanceProviderZone" Width="1.5" PointX="16.375" PointY="30.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="DB_33736_rentalModel.ProviderProfileComment" Width="1.5" PointX="22.375" PointY="29.75" Height="2.7494921874999818" />
         </Diagram>
     </Diagrams>
   </Designer>

@@ -186,6 +186,8 @@ public partial class DB_33736_rentalEntities : DbContext
 
     public DbSet<MaintenanceProviderZone> MaintenanceProviderZones { get; set; }
 
+    public DbSet<ProviderProfileComment> ProviderProfileComments { get; set; }
+
 }
 
 }

@@ -2,6 +2,7 @@
 @using RentalMobile.Helpers
 @model RentalMobile.Models.Specialist
 @{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName + " Profile";
     Layout = "~/Views/Shared/ViewofProfiles/_Professional.cshtml";
     if (String.IsNullOrEmpty(Model.SpecialistId.ToString(CultureInfo.InvariantCulture)))
     {

@@ -321,6 +321,9 @@
     <Compile Include="Models\ProjectPhoto.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProviderProfileComment.cs">
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProviderWork.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -1474,6 +1477,9 @@
     <Content Include="Views\Provider\RemoveZoneList.cshtml" />
     <Content Include="Views\TestClean\Index.cshtml" />
     <Content Include="Views\Provider\_Property.cshtml" />
+    <Content Include="Views\Providers\_Coverage.cshtml" />
+    <Content Include="Views\Providers\_Comment.cshtml" />
+    <Content Include="Views\Providers\_Description.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

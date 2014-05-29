@@ -1,0 +1,55 @@
+﻿@model List<RentalMobile.Models.ProviderProfileComment>
+<h4 class="section-titling" style="color: #346993;">
+    Comments
+</h4>
+<ul class="comments-list fourteen columns row">
+    @if (Model.Count == 0)
+    {
+        <li class="clearfix" style="padding-top: 10px">
+            <p>
+                No Comment Available</p>
+        </li>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+        <li class="clearfix" style="padding-bottom: 10px">
+            <figure class="avatar">
+                <img src="@item.PosterPhotoPath" alt="@item.PosterName"  width="54px" height="54px"/></figure>
+            <div class="com-text">
+                <h5>
+                    @item.PosterName said:</h5>
+                <p>
+                    @item.Comment
+                </p>
+            </div>
+        </li>
+        }
+    }
+</ul>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("InsertComment", "Professionals", new { id = ViewBag.SpecialistId, @class = "comment-form fourteen columns row", enctype = "multipart/form-data" }, FormMethod.Post))
+    {
+    <h4 class="divider-title fourteen columns alpha omega ">
+        Leave your comment</h4>
+    <ul class="grid-form row remove-bottom fourteen columns alpha omega">
+        <li class="fourteen columns alpha omega">
+            <label for="message-field" class="screen-reader-text">
+                Comment</label>
+            <textarea id="message-field" placeholder="Comment" name="comment" class="full-width"
+                maxlength="300" cols="" rows=""></textarea>
+            <label for="message-character-left" class="Characterrightalign">
+                Character Left <span id="NumberofCharacterLeft" class="CharacterLeftColor"></span>
+            </label>
+        </li>
+        <li class="two columns alpha">
+            <input type="submit" value="Send it" />
+        </li>
+        <li class="two columns omega">
+            <input type="button" value="Clear" id="ClearMessage" onclick="ClearComment();" />
+        </li>
+    </ul>
+    }
+}

@@ -62,5 +62,35 @@ namespace RentalMobile.Helpers
             }
             return "";
         }
+
+
+
+        public static string FancyProvider(int id)
+        {
+            const string fancyBoxScriptBeginning = @" $.fancybox.open([";
+            var currentprovider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            if (currentprovider != null)
+            {
+                var providerWorkGallery = db.ProviderWorks.Where(x => x.ProviderId == id);
+                if (providerWorkGallery.Any())
+                {
+                    var tag = Enumerable.Aggregate(providerWorkGallery, "",
+                                              (current, u) => current + ("{href: '" + u.PhotoPath + "', title: '" + currentprovider.FirstName + " " + currentprovider.LastName + " work" + "'},"));
+
+                    tag = tag.Substring(0, tag.Length - 1) + @"], {
+				    helpers: {
+				        thumbs: {
+				            width: 75,
+			            height: 50
+			        }
+		    }
+        			});";
+
+
+                    return fancyBoxScriptBeginning + tag;
+                }
+            }
+            return "";
+        }
     }
 }

@@ -312,6 +312,42 @@ namespace RentalMobile.Helpers
             return resultString;
         }
 
+
+
+
+
+
+
+
+
+
+        public static MvcHtmlString GetMaintenanceProviderZone(this HtmlHelper html, int? maintenanceProviderId)
+        {
+            var renderedResult = @"<ul class='arrow'>";
+            var providerZones = db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
+            foreach (var maintenanceProviderZone in providerZones)
+            {
+                renderedResult += "<li>";
+                renderedResult += maintenanceProviderZone.CityName;
+                renderedResult += "</li>";
+            }
+
+            if (providerZones.Count == 0)
+            {
+                renderedResult += "<li>";
+                renderedResult += "No Zone Available";
+                renderedResult += "</li>";
+            }
+            renderedResult += "</ul>";
+            var resultString = new MvcHtmlString(renderedResult);
+            return resultString;
+        }
+
+
+   
+
+
+
         /// <summary>
         /// Used to return any html for Razor View
         /// </summary>
