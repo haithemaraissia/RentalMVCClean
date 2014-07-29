@@ -1,0 +1,11 @@
+IT semems to have 35 controll that you need to clean
+
+Do and Understand fully site map
+		you might need to delete some control, or move some controls
+
+
+
+58 total + root
+
+48  index
+10 loose
