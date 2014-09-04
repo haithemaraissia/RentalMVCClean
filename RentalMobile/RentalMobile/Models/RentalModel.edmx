@@ -1511,7 +1511,7 @@
           <Key>
             <PropertyRef Name="CommentId" />
           </Key>
-          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProviderId" Type="int" />
           <Property Name="PosterId" Type="int" />
           <Property Name="PosterRole" Type="int" />

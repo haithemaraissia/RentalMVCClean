@@ -84,6 +84,9 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
+    <Reference Include="RequestReduce">
+      <HintPath>..\packages\RequestReduce.1.8.76\Lib\net40\RequestReduce.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -154,6 +157,9 @@
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
+    <Compile Include="Handler\RoutinePerformance.ashx.cs">
+      <DependentUpon>RoutinePerformance.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Helpers\Email.cs" />
     <Compile Include="Helpers\FacebookHelper.cs" />
@@ -630,6 +636,7 @@
     <Content Include="css\dotcss\lato\Lato-Hai-webfont.svg" />
     <Content Include="css\dotcss\lato\Lato-HaiIta-webfont.svg" />
     <Content Include="css\dotcss\lato\Lato-Lig-webfont.svg" />
+    <Content Include="css\dotcss\lato\stylesheet.css" />
     <Content Include="css\dotcss\layout.css" />
     <Content Include="css\dotcss\nivo-slider.css" />
     <Content Include="css\dotcss\PagedList.css" />
@@ -902,6 +909,11 @@
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
     <Content Include="UploadedImages\Default\Property\coming_soon.png" />
+    <Content Include="Views\Ad\Ads\Ad1.gif" />
+    <Content Include="Views\Ad\Ads\Ad2.gif" />
+    <Content Include="Views\Ad\Ads\Ad3.jpg" />
+    <Content Include="Views\Ad\Ads\Ad4.jpg" />
+    <Content Include="Views\Ad\Ads\Ad6.jpg" />
     <Content Include="WebForms\Ads\AdTest\AdTest.ascx" />
     <Content Include="WebForms\Ads\AdTest\Index.aspx" />
     <Content Include="WebForms\Ads\AdTest\Test.ascx" />
@@ -958,11 +970,6 @@
     <Content Include="Scripts\timepicker\jquery-ui-timepicker-addon.js" />
     <Content Include="UploadedImages\jack\img_2.jpg" />
     <Content Include="UploadedImages\jack\img_5.jpg" />
-    <Content Include="UploadedImages\jack\Profile\4\img_1.jpg" />
-    <Content Include="UploadedImages\jack\Profile\4\img_2.jpg" />
-    <Content Include="UploadedImages\jack\Profile\4\img_3.jpg" />
-    <Content Include="UploadedImages\jack\Profile\4\img_4.jpg" />
-    <Content Include="UploadedImages\jack\Profile\4\img_5.jpg" />
     <Content Include="UploadedImages\jack\Profile\img_1.jpg" />
     <Content Include="UploadedImages\jack\Requests\4\img_barbershop.jpg" />
     <Content Include="UploadedImages\jack\Requests\53\img_barbershop.jpg" />
@@ -986,8 +993,6 @@
     <Content Include="UploadedImages\jack\Requests\60\img_bg-top-bar.png" />
     <Content Include="UploadedImages\jack\Requests\60\img_DowntownSkyline006.jpg" />
     <Content Include="UploadedImages\jack\Requests\60\img_form-slider-bg.gif" />
-    <Content Include="UploadedImages\jack\Requests\img_2.jpg" />
-    <Content Include="UploadedImages\jack\Requests\img_Ad1.png" />
     <Content Include="UploadedImages\jack\Requests\img_BKS_cover.jpg" />
     <Content Include="UploadedImages\jack\Requests\img_logo_dawn.png" />
     <Content Include="UploadedImages\lobna\Requests\img_af.png" />
@@ -1155,6 +1160,7 @@
     <None Include="Documentation\TEMP TO DO PERSONEL.docx" />
     <None Include="Documentation\What I %27m doing.docx" />
     <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
+    <Content Include="Handler\RoutinePerformance.ashx" />
     <None Include="images\dotimages\wip\linkedin_icon_black.psd" />
     <None Include="Models\RentalContextGenerator.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1290,7 +1296,9 @@
     <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jNotify-master\index.php" />
     <None Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
@@ -1480,6 +1488,7 @@
     <Content Include="Views\Providers\_Coverage.cshtml" />
     <Content Include="Views\Providers\_Comment.cshtml" />
     <Content Include="Views\Providers\_Description.cshtml" />
+    <Content Include="Views\Providers\_Team.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -1532,4 +1541,8 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+start /MIN xcopy /s /y "$(SolutionDir)packages\RequestReduce.1.8.76\pngoptimization\*.exe" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

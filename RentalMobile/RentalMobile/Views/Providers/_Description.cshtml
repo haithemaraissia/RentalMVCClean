@@ -1,38 +1,59 @@
 ﻿@model RentalMobile.Models.MaintenanceProvider
 @using RentalMobile.Helpers
-<div class="seven columns">
-    <h4 style="color: #346993;">General Description</h4>
-   @if (Model.Description == null)
-        { 
-       <span>No Description Available</span>
-        }
-    else
+@helper NoDescription()
     {
-        <span>@Model.Description</span>
-    }
-</div>
-<div class="six columns push by-two">
-    <h4 style="color: #346993;">Recommendation</h4>
-    <ul class="arrow">
-        <li>
-            @if (Model.Rating == null)
-            {
-                <span>100 % Approval</span>
-            }
-            else
-            {
-                <span>@Model.Rating % Approval</span>
-            }
+
+    <h4 style="color: #346993;" class="section-titling">
+        Description
+    </h4>
+    <ul class="comments-list fourteen columns row">
+        <li style="padding-top: 10px" class="clearfix">
+            <p>
+                No Description Available</p>
         </li>
     </ul>
-    <h4 style="color: #346993;">Rate</h4>
-    <ul class="arrow">
-        <li>@ViewBag.Rate @ViewBag.Currency</li>
-    </ul>
-    <h4 style="color: #346993;">Years of Experience</h4>
+
+}
+@if (Model != null)
+{
+    <div class="seven columns">
+        <h4 style="color: #346993;">General Description</h4>
+        @if (Model.Description == null)
+        {
+            <span>No Description Available</span>
+        }
+        else
+        {
+            <span>@Model.Description</span>
+        }
+    </div>
+    <div class="six columns push by-two">
+        <h4 style="color: #346993;">Recommendation</h4>
         <ul class="arrow">
-        <li>@ViewBag.YearsofExperience</li>
-    </ul>
-    <h4 style="color: #346993;">Zone</h4>
-    @Html.GetMaintenanceProviderZone(Model.MaintenanceProviderId)
-</div>
+            <li>
+                @if (Model.Rating == null)
+                {
+                    <span>100 % Approval</span>
+                }
+                else
+                {
+                    <span>@Model.Rating % Approval</span>
+                }
+            </li>
+        </ul>
+        <h4 style="color: #346993;">Rate</h4>
+        <ul class="arrow">
+            <li>@ViewBag.Rate @ViewBag.Currency</li>
+        </ul>
+        <h4 style="color: #346993;">Years of Experience</h4>
+        <ul class="arrow">
+            <li>@ViewBag.YearsofExperience</li>
+        </ul>
+        <h4 style="color: #346993;">Zone</h4>
+        @Html.GetMaintenanceProviderZone(Model.MaintenanceProviderId)
+    </div>
+}
+else
+{
+    @NoDescription()
+}

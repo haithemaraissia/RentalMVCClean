@@ -349,10 +349,10 @@ namespace RentalMobile.Controllers
         }
 
         ///<summary>
-        ///Find the new Zipcode of the company
-        ///     If the new Zipcode does not match any zip
-        ///          Add the new Zipcode to the list
-        ///     If previous Zipcode exist
+        ///Find the new Zip code of the company
+        ///     If the new Zip code does not match any zip
+        ///          Add the new Zip code to the list
+        ///     If previous Zip code exist
         ///         Don't Update
         /// </summary>
         /// <param name="providerCompanyZip"></param>
@@ -569,21 +569,100 @@ namespace RentalMobile.Controllers
             }
         }
 
+        public void UpdateProviderMaintenanceCompany()
+        {
+            var providerUserId = UserHelper.GetProviderId();
+            if (providerUserId != null)
+            {
+                const int providerrole = 2;
+                var lookUp =
+                    Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == providerUserId);
+                if (lookUp != null)
+                {
+                    int companyId = lookUp.CompanyId;
+
+                    var maintenanceCompany = Db.MaintenanceCompanies.Find(companyId);
+                    if ( maintenanceCompany != null)
+                    {
+                          var providerId = (int) providerUserId;
+                          var provider = Db.MaintenanceProviders.Find(providerId);
+
+
+                        //reverse the Assignment
+
+                          if (!string.IsNullOrEmpty(provider.VCard))
+                          {
+                              maintenanceCompany.VCard = provider.VCard;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Skype))
+                          {
+                              maintenanceCompany.Skype = provider.Skype;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Twitter))
+                          {
+                              maintenanceCompany.Twitter = provider.Twitter;
+                          }
+                          if (!string.IsNullOrEmpty(provider.LinkedIn))
+                          {
+                              maintenanceCompany.LinkedIn = provider.LinkedIn;
+                          }
+                          if (!string.IsNullOrEmpty(provider.GooglePlus))
+                          {
+                              maintenanceCompany.GooglePlus = provider.GooglePlus;
+                          }
+
+                          if (!string.IsNullOrEmpty(provider.Address))
+                          {
+                              maintenanceCompany.Address = provider.Address;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Country))
+                          {
+                              maintenanceCompany.Country = provider.Country;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Region))
+                          {
+                              maintenanceCompany.Region = provider.Region;
+                          }
+                          if (!string.IsNullOrEmpty(provider.City))
+                          {
+                              maintenanceCompany.City = provider.City;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Zip))
+                          {
+                              maintenanceCompany.Zip = provider.Zip;
+                          }
+                          if (!string.IsNullOrEmpty(provider.Description))
+                          {
+                              maintenanceCompany.Description = provider.Description;
+                          }
+                          maintenanceCompany.GoogleMap =
+                              provider.GoogleMap =
+                              string.IsNullOrEmpty(provider.Address)
+                                  ? UserHelper.GetFormattedLocation("", "", "USA")
+                                  : UserHelper.GetFormattedLocation(provider.Address, provider.City, provider.Country);
+
+                          Db.SaveChanges();
+                    }
+
+                }
+            }
+        }
+
         /// <summary>
-        /// Calucation of Completion
-        /// description = 20 ; Other = 10
-        /// 
-        /// Members of formula 
-        /// Name 
-        /// Address 
-        /// EmailAddress 
-        /// Description 
-        /// Country 
-        /// Region 
-        /// City 
-        /// Zip 
-        /// CountryCode
-        /// </summary>
+                /// Calculation of Completion
+                /// description = 20 ; Other = 10
+                /// 
+                /// Members of formula 
+                /// Name 
+                /// Address 
+                /// EmailAddress 
+                /// Description 
+                /// Country 
+                /// Region 
+                /// City 
+                /// Zip 
+                /// CountryCode
+                /// </summary>
         public int CalculateNewProfileCompletionPercentage(MaintenanceCompany m)
         {
             var initialValue = 0;
@@ -689,6 +768,7 @@ namespace RentalMobile.Controllers
             {
                 Db.Entry(provider).State = EntityState.Modified;
                 Db.SaveChanges();
+                UpdateProviderMaintenanceCompany();
                 return RedirectToAction("Index");
             }
             return View(provider);
@@ -970,8 +1050,11 @@ namespace RentalMobile.Controllers
             {
                 providerZone.TeamMemberCount = updatedteamcount;
             }
+            if (providerZones.Any())
+            {
             Db.MaintenanceProviderZones.Remove(specialistzone);
             Db.SaveChanges();
+            }
         }
 
         public ProviderMaintenanceProfile GetProviderCoverage()

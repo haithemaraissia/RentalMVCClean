@@ -42,9 +42,10 @@
 
 /* LOADER */
 
-.bx-wrapper .bx-loading {
-	min-height: 50px;
-	background: url(../images/bx-images/bx_loader.gif) center center no-repeat;
+.bx-wrapper .bx-loading
+{
+    min-height: 50px;
+    background: url('../../images/dotimages/bx-images/bx_loader.gif') no-repeat center center;
 }
 
 /* PAGER */

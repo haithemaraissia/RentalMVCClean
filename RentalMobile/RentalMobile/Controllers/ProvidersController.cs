@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -52,6 +53,9 @@ namespace RentalMobile.Controllers
             return View(provider);
         }
 
+
+
+
         public PartialViewResult _Coverage(int id)
         {
             if (id != 0)
@@ -79,8 +83,12 @@ namespace RentalMobile.Controllers
                     return PartialView(mp);
                 }
             }
-            return null;
+            return PartialView(null);
         }
+
+
+
+
 
         public PartialViewResult _Description(int id)
         {
@@ -107,7 +115,62 @@ namespace RentalMobile.Controllers
                     return PartialView(currentprovider);
                 }
             }
-            return null;
+            return PartialView(null);
+        }
+
+        public PartialViewResult _Team(int id)
+        {
+            if (id != 0)
+            {
+                var provider = _db.MaintenanceProviders.Find(UserHelper.GetProviderId(id));
+                if (provider != null)
+                {
+                    var teamexistance =
+                                _db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+                    if (teamexistance > 0)
+                    {
+                        var checkteamexistance =
+                        _db.MaintenanceTeamAssociations.FirstOrDefault(
+                            x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+                        var allTeamAssociations =
+                        _db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+                          .ToList();
+                        if (checkteamexistance != null)
+                        {
+                            ViewBag.TeamName = checkteamexistance.TeamName;
+                            var team = GetProviderTeam(allTeamAssociations);
+                            return PartialView(team);
+                        }
+                    }
+                }
+
+            }
+            return PartialView(null);
+        }
+
+        private List<Teammember> GetProviderTeam(IEnumerable<MaintenanceTeamAssociation> team)
+        {
+            var myTeam = (from i in team
+                          let currentspecialist = _db.Specialists.Find(i.SpecialistId)
+                          let specialistDescription = currentspecialist.Description
+                          let description = (currentspecialist != null &&  specialistDescription != null) ? specialistDescription.Length : 0
+                          select new Teammember
+                          {
+                              SpecialistId = i.SpecialistId,
+                              SpecialistName = currentspecialist.FirstName + currentspecialist.LastName,
+                              YearofExperience = GetSpecialistYearofExperience(i.SpecialistId),
+                              SpecialistDescription = description < 200 ? specialistDescription : specialistDescription.Substring(0, 200),
+                              SpecialistImageProfile = currentspecialist.Photo
+                          }).ToList();
+            return myTeam;
+        }
+
+        public int GetSpecialistYearofExperience(int specialistId)
+        {
+            const int specialistrole = 1;
+            var lookUp =
+                _db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+            return lookUp == null ? 0 : _db.MaintenanceCompanySpecializations.Find(lookUp.CompanyId).Years_Experience;
         }
 
         public void Shareprovider(MaintenanceProvider s)
@@ -148,15 +211,6 @@ namespace RentalMobile.Controllers
             ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
         }
 
-
-        /// <summary>
-        /// YOU MIGHT NEED TO CREATE A NEW MESSAGE
-        /// </summary>
-        /// <param name="friendname"></param>
-        /// <param name="friendemailaddress"></param>
-        /// <param name="message"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
         {
             dynamic email = new Email("ForwardtoFriend/Multipart");
@@ -168,7 +222,7 @@ namespace RentalMobile.Controllers
             email.Title = string.Format("Request From {0}", poster.FirstName);
             email.SubTitle = "Request from ";
             email.Message = message;
-            email.InvitationNote = " invite you to see this skilled professional.";
+            email.InvitationNote = " invite you to see this skilled provider";
             email.FooterNote = "Check out this Provider";
             var uri = Request.Url;
             if (uri != null)

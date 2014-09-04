@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RentalMobile.Helpers.Teammember>
+@helper NoTeamMember()
+    {
+
+    <h4 style="color: #346993;" class="section-titling">
+        Team
+    </h4>
+    <ul class="comments-list fourteen columns row">
+        <li style="padding-top: 10px" class="clearfix">
+            <p>
+                No Team Member Available</p>
+        </li>
+    </ul>
+
+}
+@if (Model != null)
+{
+    if (Model.Any())
+    {
+    <ul class="gallery-in-two">
+        @{
+        foreach (var item in Model)
+        {
+            <li>
+                <article>
+                    <figure>
+                        <a href="../../Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                            @Html.DisplayFor(modelItem => item.SpecialistName)
+                        </a>
+                        <img src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)" 
+                                    alt="@Html.DisplayFor(modelItem => item.SpecialistName)"
+                                     width="160" height="115" />
+                    </figure>
+                    <h4>
+                        <a href="../Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                            @Html.DisplayFor(modelItem => item.SpecialistName)
+                        </a>
+                    </h4>
+                    <p class="prop-extract">
+                        @Html.DisplayFor(modelItem => item.SpecialistDescription)</p>
+                    <p class="price">
+                        @if (item.YearofExperience == 0)
+                        {
+                        }
+                        @if (item.YearofExperience == 1)
+                        {
+                            <p class="price">
+                                Experience: <span>@Html.DisplayFor(modelItem => item.YearofExperience) year</span></p>
+                        }
+                        @if (item.YearofExperience > 1)
+                        {
+                            <p class="price">
+                                Experience: <span>@Html.DisplayFor(modelItem => item.YearofExperience) years</span></p>
+                        }
+                    </p>
+                </article>
+            </li>
+        }
+                
+        }
+    </ul>
+    }
+}
+
+else
+{
+    @NoTeamMember()
+}

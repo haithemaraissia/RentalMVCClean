@@ -20,7 +20,7 @@ namespace RentalMobile.Helpers
         public static string ProviderPhotoPath = "~/Photo/Provider/Property";
         public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
         
-        public static PosterAttributes DefaultPoster = new PosterAttributes("Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
+        public static PosterAttributes DefaultPoster = new PosterAttributes("A Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
 
         public static string Login()
         {

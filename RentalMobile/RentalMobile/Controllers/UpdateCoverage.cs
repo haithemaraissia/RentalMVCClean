@@ -105,7 +105,7 @@ namespace RentalMobile.Controllers
             {
                 if (pi.Name == propertyInfo.Name)
                 {
-                    return (bool) objectType.GetProperty(pi.Name).GetValue(objectInstance, null);
+                    return (bool)objectType.GetProperty(pi.Name).GetValue(objectInstance, null);
                 }
             }
             return false;
@@ -124,8 +124,9 @@ namespace RentalMobile.Controllers
                 {
                     if (value1 is bool && value2 is bool)
                     {
+                        var value2Bool = (bool)value2;
                         var value1Bool = (bool)value1;
-                        if (value1Bool)
+                        if (value1Bool && value2Bool == false)
                         {
                             propertyList.Add(pi);
                         }
@@ -200,26 +201,26 @@ namespace RentalMobile.Controllers
 
         public void RemoveSpecialistCoverageFromProviderCoverage(IEnumerable<PropertyInfo> properties, Type maintenance)
         {
-                const int providerrole = 2;
-                var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == ProviderId);
-                if (lookUp != null)
+            const int providerrole = 2;
+            var lookUp = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == ProviderId);
+            if (lookUp != null)
+            {
+                int companyId = lookUp.CompanyId;
+                var maintenanceCoverage = Db.Set(maintenance).Find(companyId);
+                foreach (PropertyInfo pi in properties)
                 {
-                    int companyId = lookUp.CompanyId;
-                    var maintenanceCoverage = Db.Set(maintenance).Find(companyId);
-                    foreach (PropertyInfo pi in properties)
-                    {
-                        SetProperty(maintenanceCoverage, pi.Name, false);
-                    }
-
-                    var maintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId);
-                    var allSpecialistInTeam = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == ProviderId ).Select(x => x.SpecialistId).ToList();
-                    if (allSpecialistInTeam.Count > 1)
-                    {
-                        maintenanceCompanySpecialization.NumberofEmployee = allSpecialistInTeam.Count - 1;
-                        maintenanceCompanySpecialization.NumberofCertifitedEmplyee = allSpecialistInTeam.Count -1;
-                    }
-                    Db.SaveChanges();
+                    SetProperty(maintenanceCoverage, pi.Name, false);
                 }
+
+                var maintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId);
+                var allSpecialistInTeam = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == ProviderId).Select(x => x.SpecialistId).ToList();
+                if (allSpecialistInTeam.Count > 1)
+                {
+                    maintenanceCompanySpecialization.NumberofEmployee = allSpecialistInTeam.Count - 1;
+                    maintenanceCompanySpecialization.NumberofCertifitedEmplyee = allSpecialistInTeam.Count - 1;
+                }
+                Db.SaveChanges();
+            }
         }
 
         public void AddSpecialistCoverageFromProviderCoverage(IEnumerable<PropertyInfo> properties, Type maintenance)
@@ -260,8 +261,9 @@ namespace RentalMobile.Controllers
             }
         }
 
-        public void RemoveCoverageFromTeam( object specialistCoverage, object providerCoverage, Type coverageType)
+        public void RemoveCoverageFromTeam(object specialistCoverage, object providerCoverage, Type coverageType)
         {
+            if (specialistCoverage == null || providerCoverage == null || coverageType == null) return;
             var difference = EnumeratePropertyWithTrueValue(specialistCoverage, coverageType);
             var propertyInfos = difference as PropertyInfo[] ?? difference.ToArray();
             var propertyListTheNeedToBeRemovedFromProvider = new List<PropertyInfo>();
@@ -269,7 +271,7 @@ namespace RentalMobile.Controllers
             {
                 foreach (var propertyInfo in propertyInfos)
                 {
-                    var propertyInfoTrueforOtherMember = IsPropertyInfoTrueforOtherMemberInTheTeam( propertyInfo, coverageType, specialistCoverage);
+                    var propertyInfoTrueforOtherMember = IsPropertyInfoTrueforOtherMemberInTheTeam(propertyInfo, coverageType, specialistCoverage);
 
                     if (!propertyInfoTrueforOtherMember)
                     {
@@ -280,8 +282,9 @@ namespace RentalMobile.Controllers
             }
         }
 
-        public void AddCoverageToTeam( object specialistCoverage, object providerCoverage, Type coverageType)
+        public void AddCoverageToTeam(object specialistCoverage, object providerCoverage, Type coverageType)
         {
+            if (specialistCoverage == null || providerCoverage == null || coverageType == null) return;
             var difference = EnumeratePropertyDifferences(specialistCoverage, providerCoverage, coverageType);
             var differenceList = difference as IList<PropertyInfo> ?? difference.ToList();
             var propertyInfos = difference as PropertyInfo[] ?? differenceList.ToArray();
@@ -293,6 +296,7 @@ namespace RentalMobile.Controllers
 
         public void RemoveAllCoverageFromSpecialistToTeam()
         {
+            if (GetSpecialistCoverage() == null || GetProviderCoverage() == null) return;
             RemoveCoverageFromTeam(GetSpecialistCoverage().MaintenanceCompanySpecialization, GetProviderCoverage().MaintenanceCompanySpecialization, typeof(MaintenanceCompanySpecialization));
             RemoveCoverageFromTeam(GetSpecialistCoverage().MaintenanceCustomService, GetProviderCoverage().MaintenanceCustomService, typeof(MaintenanceCustomService));
             RemoveCoverageFromTeam(GetSpecialistCoverage().MaintenanceExterior, GetProviderCoverage().MaintenanceExterior, typeof(MaintenanceExterior));
@@ -304,7 +308,8 @@ namespace RentalMobile.Controllers
 
         public void AddAllCoverageFromSpecialistToTeam()
         {
-            AddCoverageToTeam(GetSpecialistCoverage().MaintenanceCompanySpecialization,GetProviderCoverage().MaintenanceCompanySpecialization,typeof(MaintenanceCompanySpecialization));
+            if (GetSpecialistCoverage() == null || GetProviderCoverage() == null) return;
+            AddCoverageToTeam(GetSpecialistCoverage().MaintenanceCompanySpecialization, GetProviderCoverage().MaintenanceCompanySpecialization, typeof(MaintenanceCompanySpecialization));
             AddCoverageToTeam(GetSpecialistCoverage().MaintenanceCustomService, GetProviderCoverage().MaintenanceCustomService, typeof(MaintenanceCustomService));
             AddCoverageToTeam(GetSpecialistCoverage().MaintenanceExterior, GetProviderCoverage().MaintenanceExterior, typeof(MaintenanceExterior));
             AddCoverageToTeam(GetSpecialistCoverage().MaintenanceInterior, GetProviderCoverage().MaintenanceInterior, typeof(MaintenanceInterior));
@@ -312,5 +317,38 @@ namespace RentalMobile.Controllers
             AddCoverageToTeam(GetSpecialistCoverage().MaintenanceRepair, GetProviderCoverage().MaintenanceRepair, typeof(MaintenanceRepair));
             AddCoverageToTeam(GetSpecialistCoverage().MaintenanceUtility, GetProviderCoverage().MaintenanceUtility, typeof(MaintenanceUtility));
         }
+
+
+
+
+
+
+
+
+        public void CleanOutCoverageFromProvider( object providerCoverage, Type coverageType)
+        {
+            if (providerCoverage == null || coverageType == null) return;
+            var difference = EnumeratePropertyWithTrueValue(providerCoverage, coverageType);
+            var propertyInfos = difference as PropertyInfo[] ?? difference.ToArray();
+            if (propertyInfos.Count() < 0) return;
+            foreach (PropertyInfo pi in propertyInfos)
+            {
+                SetProperty(providerCoverage, pi.Name, false);
+            }
+            Db.SaveChanges();
+        }
+
+        public void CleanOutProvider()
+        {
+            if (GetProviderCoverage() == null) return;
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceCompanySpecialization, typeof(MaintenanceCompanySpecialization));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceCustomService, typeof(MaintenanceCustomService));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceExterior, typeof(MaintenanceExterior));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceInterior, typeof(MaintenanceInterior));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceNewConstruction, typeof(MaintenanceNewConstruction));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceRepair, typeof(MaintenanceRepair));
+            CleanOutCoverageFromProvider(GetProviderCoverage().MaintenanceUtility, typeof(MaintenanceUtility));
+        }
+
     }
 }

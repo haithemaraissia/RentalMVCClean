@@ -16,7 +16,7 @@
         {
             Response.Redirect(Request.Url.ToString());
         }
-        e.NavigateUrl = "~/Advertiser/AdHandler.ashx?id=" + e.AdProperties["ID"];
+        e.NavigateUrl = "~/Handler/AdHandler.ashx?id=" + e.AdProperties["ID"];
         
         MiddleBannerRotator.KeywordFilter = ViewBag.MiddleBannerKeywordFilter;
     }

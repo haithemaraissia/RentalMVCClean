@@ -1,1001 +1,1019 @@
 ﻿@using RentalMobile.Helpers
 @model RentalMobile.ModelViews.ProviderMaintenanceProfile
-<div id="Exteriors">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Exteriors</h4>
-    <div class="six columns push by-one " id="exterior">
-        <ul class="arrow">
-            @{
-                @Helper.ResetItemCount()
-                if (Model.MaintenanceExterior.Asphalt_Paving)
-                {
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Asphalt_Paving, "Asphalt Paving")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Awnings)
-                {
+@helper NoCoverage()
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Awnings) </li>
-                }
-                if (Model.MaintenanceExterior.Concrete_Installation___Repair)
-                {
+    <h4 style="color: #346993;" class="section-titling">
+        Coverage
+    </h4>
+    <ul class="comments-list fourteen columns row">
+        <li style="padding-top: 10px" class="clearfix">
+            <p>
+                No Coverage Available</p>
+        </li>
+    </ul>
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Concrete_Installation___Repair, "Concrete Installation Repair")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Decks__Patios___Enclosures)
-                {
+}
+@if (Model != null)
+{
+    <div id="Exteriors">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Exteriors</h4>
+        <div class="six columns push by-one " id="exterior">
+            <ul class="arrow">
+                @{
+                    @Helper.ResetItemCount()
+    if (Model.MaintenanceExterior.Asphalt_Paving)
+    {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Asphalt_Paving, "Asphalt Paving")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Awnings)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Decks__Patios___Enclosures, "Decks Patios Enclosures")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Fence_Install_and_Repair)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Awnings) </li>
+    }
+    if (Model.MaintenanceExterior.Concrete_Installation___Repair)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Fence_Install_and_Repair, "Fence Install & Repair")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Gutter_Services)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Concrete_Installation___Repair, "Concrete Installation Repair")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Decks__Patios___Enclosures)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Gutter_Services, "Gutter Services")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Hurricane_Shutter_Systems)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Decks__Patios___Enclosures, "Decks Patios Enclosures")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Fence_Install_and_Repair)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Hurricane_Shutter_Systems, "Hurricane Shutter Systems")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Interlocking___Stonework)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Fence_Install_and_Repair, "Fence Install & Repair")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Gutter_Services)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Interlocking___Stonework, "Interlocking Stonework")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Ironwork___Wrought_Iron)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Gutter_Services, "Gutter Services")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Hurricane_Shutter_Systems)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Ironwork___Wrought_Iron, "Ironwork Wrought Iron")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Landscaping_Installation)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Hurricane_Shutter_Systems, "Hurricane Shutter Systems")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Interlocking___Stonework)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Landscaping_Installation, "Landscaping Installation")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Lawn_Care)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Interlocking___Stonework, "Interlocking Stonework")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Ironwork___Wrought_Iron)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Lawn_Care, "Lawn Care")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Masonry_and_Brick_Work)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Ironwork___Wrought_Iron, "Ironwork Wrought Iron")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Landscaping_Installation)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Masonry_and_Brick_Work, "Masonry & Brick Work")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Power_Washing)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Landscaping_Installation, "Landscaping Installation")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Lawn_Care)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Power_Washing, "Power Washing")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Roofing_Services)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Lawn_Care, "Lawn Care")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Masonry_and_Brick_Work)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Roofing_Services, "Roofing Services")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Siding)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Masonry_and_Brick_Work, "Masonry & Brick Work")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Power_Washing)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Siding) </li>
-                }
-                if (Model.MaintenanceExterior.Skylights)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Power_Washing, "Power Washing")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Roofing_Services)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Skylights) </li>
-                }
-                if (Model.MaintenanceExterior.Sprinkler_Systems_and_Irrigation)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Roofing_Services, "Roofing Services")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Siding)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Sprinkler_Systems_and_Irrigation, "Sprinkler Systems & Irrigation")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Stucco___Plaster)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Siding) </li>
+    }
+    if (Model.MaintenanceExterior.Skylights)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Stucco___Plaster, "Stucco Plaster")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Swimming_Pool_Install)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Skylights) </li>
+    }
+    if (Model.MaintenanceExterior.Sprinkler_Systems_and_Irrigation)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Swimming_Pool_Install, "Swimming Pool Install")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Tree_Service)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Sprinkler_Systems_and_Irrigation, "Sprinkler Systems & Irrigation")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Stucco___Plaster)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Tree_Service, "Tree Service")
-                </li>
-                }
-                if (Model.MaintenanceExterior.Waterproofing)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Stucco___Plaster, "Stucco Plaster")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Swimming_Pool_Install)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Waterproofing)
-                </li>
-                }
-                if (Model.MaintenanceExterior.Windows___Exterior_Doors)
-                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Swimming_Pool_Install, "Swimming Pool Install")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Tree_Service)
+    {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Windows___Exterior_Doors, "Windows Exterior Doors")
-                </li>
-                }
-                @Helper.ResetItemCount()
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Tree_Service, "Tree Service")
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Waterproofing)
+    {
 
-            }
-            @{
-                if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceExterior))
-                {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Waterproofing)
+                    </li>
+    }
+    if (Model.MaintenanceExterior.Windows___Exterior_Doors)
+    {
+
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceExterior.Windows___Exterior_Doors, "Windows Exterior Doors")
+                    </li>
+    }
+                    @Helper.ResetItemCount()
+
                 }
-            }
-        </ul>
+                @{
+    if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceExterior))
+    {
+                    @Helper.EmptyAttributesHtml()
+    }
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="Interiors">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Interiors</h4>
-   
-    <div class="seven columns push by-one " id="interior">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceInterior.Basement_Lowering)
-            {
+    <div class="clear">
+    </div>
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Basement_Lowering, "Basement Lowering")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Basement_Remodeling)
-            {
+    <div id="Interiors">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Interiors</h4>
+        <div class="seven columns push by-one " id="interior">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceInterior.Basement_Lowering)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Basement_Remodeling, "Basement Remodeling")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Bathroom_Remodeling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Basement_Lowering, "Basement Lowering")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Basement_Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Bathroom_Remodeling, "Bathroom Remodeling")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Cabinetry_and_Built_ins)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Basement_Remodeling, "Basement Remodeling")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Bathroom_Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Cabinetry_and_Built_ins, "Cabinetry & Built Ins.")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Carpenters)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Bathroom_Remodeling, "Bathroom Remodeling")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Cabinetry_and_Built_ins)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpenters) </li>
-            }
-            @if (Model.MaintenanceInterior.Carpet_and_Vinyl_Floors)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Cabinetry_and_Built_ins, "Cabinetry & Built Ins.")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Carpenters)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpet_and_Vinyl_Floors, "Carpet & Vinyl Floors")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Ceiling_Install_and_Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpenters) </li>
+                }
+                @if (Model.MaintenanceInterior.Carpet_and_Vinyl_Floors)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Ceiling_Install_and_Repair, "Ceiling Install & Repair")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Closets_Designing_Organizing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpet_and_Vinyl_Floors, "Carpet & Vinyl Floors")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Ceiling_Install_and_Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Closets_Designing_Organizing, "Closets Designing Organizing")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Counter_Tops)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Ceiling_Install_and_Repair, "Ceiling Install & Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Closets_Designing_Organizing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Counter_Tops, "Counter Tops")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Remodeling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Closets_Designing_Organizing, "Closets Designing Organizing")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Counter_Tops)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Remodeling) </li>
-            }
-            @if (Model.MaintenanceInterior.Buffing___Polishing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Counter_Tops, "Counter Tops")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Buffing___Polishing, "Buffing Polishing")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Drywall)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Remodeling) </li>
+                }
+                @if (Model.MaintenanceInterior.Buffing___Polishing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Drywall) </li>
-            }
-            @if (Model.MaintenanceInterior.Carpet_Installation)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Buffing___Polishing, "Buffing Polishing")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Drywall)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpet_Installation, "Carpet Installation")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Fireplaces___Firewood)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Drywall) </li>
+                }
+                @if (Model.MaintenanceInterior.Carpet_Installation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Fireplaces___Firewood, "Fireplaces & Firewood")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Floor_Heating)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Carpet_Installation, "Carpet Installation")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Fireplaces___Firewood)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Floor_Heating, "Floor Heating")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Framing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Fireplaces___Firewood, "Fireplaces & Firewood")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Floor_Heating)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Framing) </li>
-            }
-            @if (Model.MaintenanceInterior.Hardwood_and_Laminate_Flooring)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Floor_Heating, "Floor Heating")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Framing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hardwood_and_Laminate_Flooring, "Hardwood & Laminate Flooring")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Hardwood_Floor_Refinishing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Framing) </li>
+                }
+                @if (Model.MaintenanceInterior.Hardwood_and_Laminate_Flooring)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hardwood_Floor_Refinishing, "Hardwood Floor Refinishing")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Home_Theaters)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hardwood_and_Laminate_Flooring, "Hardwood & Laminate Flooring")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Hardwood_Floor_Refinishing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Home_Theaters, "Home Theaters")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Hot_Tubs__Spas___Jacuzzis)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hardwood_Floor_Refinishing, "Hardwood Floor Refinishing")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Home_Theaters)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hot_Tubs__Spas___Jacuzzis, "Hot Tubs, Spas & Jacuzzis")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Insulation)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Home_Theaters, "Home Theaters")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Hot_Tubs__Spas___Jacuzzis)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Insulation) </li>
-            }
-            @if (Model.MaintenanceInterior.Decorating___Design)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Hot_Tubs__Spas___Jacuzzis, "Hot Tubs, Spas & Jacuzzis")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Insulation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Decorating___Design, "Decorating & Design")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Kitchen_Remodeling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Insulation) </li>
+                }
+                @if (Model.MaintenanceInterior.Decorating___Design)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Kitchen_Remodeling, "Kitchen Remodeling")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Non_Slip_Treatments)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Decorating___Design, "Decorating & Design")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Kitchen_Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Non_Slip_Treatments, "Non Slip Treatments")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Painting_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Kitchen_Remodeling, "Kitchen Remodeling")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Non_Slip_Treatments)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Painting_Services, "Painting Services")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Solariums_and_Sunrooms)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Non_Slip_Treatments, "Non Slip Treatments")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Painting_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Solariums_and_Sunrooms, "Solariums & Sunrooms")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Tile___Tiling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Painting_Services, "Painting Services")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Solariums_and_Sunrooms)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Tile___Tiling, "Tile & Tiling")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Asbestos_Removal)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Solariums_and_Sunrooms, "Solariums & Sunrooms")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Tile___Tiling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Asbestos_Removal, "Asbestos Removal")
-                </li>
-            }
-            @if (Model.MaintenanceInterior.Wallpaper___Wall_Coverings___Removal)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Tile___Tiling, "Tile & Tiling")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Asbestos_Removal)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Wallpaper___Wall_Coverings___Removal, "Wallpaper Wall Coverings & Removal")
-                </li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Asbestos_Removal, "Asbestos Removal")
+                    </li>
+                }
+                @if (Model.MaintenanceInterior.Wallpaper___Wall_Coverings___Removal)
+                {
+
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceInterior.Wallpaper___Wall_Coverings___Removal, "Wallpaper Wall Coverings & Removal")
+                    </li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceInterior))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="Specialization">
-    <h4 class="section-titling" style="position: relative; color: #346993; width: 200px;
-        padding: 0; right: 0">
-        Specialization</h4>
-   
-    <div class="seven columns push by-one " id="specialization">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceCompanySpecialization.NumberofEmployee != 0)
-            {
-                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofEmployee
-                    Employee</span> </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee != 0)
-            {
+    <div class="clear">
+    </div>
+    <div id="Specialization">
+        <h4 class="section-titling" style="position: relative; color: #346993; width: 200px;
+            padding: 0; right: 0">
+            Specialization</h4>
+        <div class="seven columns push by-one " id="specialization">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceCompanySpecialization.NumberofEmployee != 0)
+                {
+                    @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofEmployee
+                        Employee</span> </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee != 0)
+                {
 
-                @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee
-                    Certifited Employee</span> </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Air_Conditioning)
-            {
+                    @Helper.SplitList()<li><span>@Model.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee
+                        Certifited Employee</span> </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Air_Conditioning)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Air_Conditioning, "Air Conditioning")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Electrical)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Air_Conditioning, "Air Conditioning")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Electrical)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Electrical)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Kitchen_Remodeling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Electrical)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Kitchen_Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Kitchen_Remodeling, "Kitchen Remodeling")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Architects)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Kitchen_Remodeling, "Kitchen Remodeling")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Architects)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Architects)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Flooring)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Architects)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Flooring)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Flooring)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Landscaping)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Flooring)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Landscaping)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Landscaping)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Asphalt_Paving)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Landscaping)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Asphalt_Paving)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Asphalt_Paving, "Asphalt Paving")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.General_Contracting)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Asphalt_Paving, "Asphalt Paving")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.General_Contracting)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.General_Contracting, "General Contracting")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Painting)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.General_Contracting, "General Contracting")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Painting)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Painting)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Basement_Finishing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Painting)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Basement_Finishing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Basement_Finishing, "Basement Finishing")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Handyman_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Basement_Finishing, "Basement Finishing")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Handyman_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Handyman_Services, "Handyman Services")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Plumbing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Handyman_Services, "Handyman Services")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Plumbing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Plumbing)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Bathroom_Remodeling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Plumbing)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Bathroom_Remodeling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Bathroom_Remodeling, "Bathroom Remodeling")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Heating)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Bathroom_Remodeling, "Bathroom Remodeling")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Heating)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Heating)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Roofing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Heating)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Roofing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Roofing)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Concrete)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Roofing)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Concrete)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Concrete)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Home_Addition_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Concrete)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Home_Addition_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Addition_Construction, "Home Addition Construction")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Siding)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Addition_Construction, "Home Addition Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Siding)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Siding)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Deck_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Siding)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Deck_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Deck_Construction, "Deck Construction")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Home_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Deck_Construction, "Deck Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Home_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction, "Home Construction")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Tiling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Home_Construction, "Home Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Tiling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Tiling)
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.IsInsured)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Tiling)
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.IsInsured)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.IsInsured, "Insured")
-                </li>
-            }
-            @if (Model.MaintenanceCompanySpecialization.Rate < 0 && Model.MaintenanceCompanySpecialization.CurrencyID != 0)
-            {
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate)
-                    @Model.MaintenanceCompanySpecialization.Rate @Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID)</li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.IsInsured, "Insured")
+                    </li>
+                }
+                @if (Model.MaintenanceCompanySpecialization.Rate < 0 && Model.MaintenanceCompanySpecialization.CurrencyID != 0)
+                {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCompanySpecialization.Rate)
+                        @Model.MaintenanceCompanySpecialization.Rate @Html.Currency(Model.MaintenanceCompanySpecialization.CurrencyID)</li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceCompanySpecialization))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="MaintenanceandRepairs">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Maintenance and Repairs</h4>
-   
-    <div class="seven columns push by-one " id="MaintenanceandRepair">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceRepair.Appliances_Service_and_Repair)
-            {
+    <div class="clear">
+    </div>
+    <div id="MaintenanceandRepairs">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Maintenance and Repairs</h4>
+        <div class="seven columns push by-one " id="MaintenanceandRepair">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceRepair.Appliances_Service_and_Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Appliances_Service_and_Repair, "Appliances Service & Repair")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Bathtub___Sink_Repair_Refinishing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Appliances_Service_and_Repair, "Appliances Service & Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Bathtub___Sink_Repair_Refinishing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Bathtub___Sink_Repair_Refinishing, "Bathtub/Sink Repair & Refinishing")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Black_Mold_Removal)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Bathtub___Sink_Repair_Refinishing, "Bathtub/Sink Repair & Refinishing")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Black_Mold_Removal)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Black_Mold_Removal, "Black Mold Removal")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Carpet___Rug_Cleaning)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Black_Mold_Removal, "Black Mold Removal")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Carpet___Rug_Cleaning)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Carpet___Rug_Cleaning, "Carpet Rug Cleaning")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Caulking)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Carpet___Rug_Cleaning, "Carpet Rug Cleaning")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Caulking)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Caulking)
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Chimney_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Caulking)
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Chimney_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Chimney_Services, "Chimney Services")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Cleaning_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Chimney_Services, "Chimney Services")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Cleaning_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Cleaning_Services, "Cleaning Services")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Computers_Service_and_Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Cleaning_Services, "Cleaning Services")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Computers_Service_and_Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Computers_Service_and_Repair, "Computers Service & Repair")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Duct_Cleaning)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Computers_Service_and_Repair, "Computers Service & Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Duct_Cleaning)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Duct_Cleaning, "Duct Cleaning")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Foundation_Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Duct_Cleaning, "Duct Cleaning")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Foundation_Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Foundation_Repair, "Foundation Repair")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Furniture_Repair___Restoration)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Foundation_Repair, "Foundation Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Furniture_Repair___Restoration)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Furniture_Repair___Restoration, "Furniture Repair Restoration")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Garage_Door_Install___Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Furniture_Repair___Restoration, "Furniture Repair Restoration")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Garage_Door_Install___Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Garage_Door_Install___Repair, "Garage Door Install Repair")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Handyman_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Garage_Door_Install___Repair, "Garage Door Install Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Handyman_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Handyman_Services, "Handyman Services")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Drain_Pipe)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Handyman_Services, "Handyman Services")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Drain_Pipe)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Drain_Pipe, "Drain Pipe")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Doors)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Drain_Pipe, "Drain Pipe")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Doors)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Doors)
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Locksmithing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Doors)
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Locksmithing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Locksmithing)
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Pest_Control)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Locksmithing)
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Pest_Control)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Pest_Control, "Pest Control")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Property_Management)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Pest_Control, "Pest Control")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Property_Management)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Property_Management, "Property Management")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Snow_Removal)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Property_Management, "Property Management")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Snow_Removal)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Snow_Removal, "Snow Removal")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Window_Cleaning)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Snow_Removal, "Snow Removal")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Window_Cleaning)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Window_Cleaning, "Window Cleaning")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Glass___Window_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Window_Cleaning, "Window Cleaning")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Glass___Window_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Glass___Window_Services, "Glass Window Services")
-                </li>
-            }
-            @if (Model.MaintenanceRepair.Mailbox_Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Glass___Window_Services, "Glass Window Services")
+                    </li>
+                }
+                @if (Model.MaintenanceRepair.Mailbox_Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Mailbox_Repair, "Mailbox Repair")
-                </li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceRepair.Mailbox_Repair, "Mailbox Repair")
+                    </li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceRepair))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="NewConstruction">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        New Construction</h4>
-   
-    <div class="seven columns push by-one " id="newconstructions">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceNewConstruction.Architects)
-            {
+    <div class="clear">
+    </div>
+    <div id="NewConstruction">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            New Construction</h4>
+        <div class="seven columns push by-one " id="newconstructions">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceNewConstruction.Architects)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Architects)
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Barns__Gazebos_and_Sheds)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Architects)
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Barns__Gazebos_and_Sheds)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Barns__Gazebos_and_Sheds, "Barns, Gazebos & Sheds")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Commercial_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Barns__Gazebos_and_Sheds, "Barns, Gazebos & Sheds")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Commercial_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Commercial_Construction, "Commercial Construction")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Design_Build)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Commercial_Construction, "Commercial Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Design_Build)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Design_Build, "Design Build")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Custom_Cabinets___Furniture)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Design_Build, "Design Build")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Custom_Cabinets___Furniture)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Custom_Cabinets___Furniture, "Custom Cabinets & Furniture")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Foundation)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Custom_Cabinets___Furniture, "Custom Cabinets & Furniture")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Foundation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Foundation)
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Garage___Carport_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Foundation)
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Garage___Carport_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Garage___Carport_Construction, "Garage / Carport Construction")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Home_Additions)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Garage___Carport_Construction, "Garage / Carport Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Home_Additions)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Home_Additions, "Home Additions")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Bathtub_Refinishing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Home_Additions, "Home Additions")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Bathtub_Refinishing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Bathtub_Refinishing, "Bathtub Refinishing")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Home___Garage_Builders)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Bathtub_Refinishing, "Bathtub Refinishing")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Home___Garage_Builders)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Home___Garage_Builders, "Home & Garage Builders")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Land_Clearing___Site_Preparation)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Home___Garage_Builders, "Home & Garage Builders")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Land_Clearing___Site_Preparation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Land_Clearing___Site_Preparation, "Land Clearing / Site Preparation")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.New_Home_Construction)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Land_Clearing___Site_Preparation, "Land Clearing / Site Preparation")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.New_Home_Construction)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.New_Home_Construction, "New Home Construction")
-                </li>
-            }
-            @if (Model.MaintenanceNewConstruction.Surveyors___Land)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.New_Home_Construction, "New Home Construction")
+                    </li>
+                }
+                @if (Model.MaintenanceNewConstruction.Surveyors___Land)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Surveyors___Land, "Surveyors Land")
-                </li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceNewConstruction.Surveyors___Land, "Surveyors Land")
+                    </li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceNewConstruction))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="Utilities">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Utilities</h4>
-   
-    <div class="seven columns push by-one " id="utilities">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceUtility.Security_Systems___Automation)
-            {
+    <div class="clear">
+    </div>
+    <div id="Utilities">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Utilities</h4>
+        <div class="seven columns push by-one " id="utilities">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceUtility.Security_Systems___Automation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Security_Systems___Automation, "Security Systems & Automation")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Central_Vacuum)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Security_Systems___Automation, "Security Systems & Automation")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Central_Vacuum)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Central_Vacuum, "Central Vacuum")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Electrical)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Central_Vacuum, "Central Vacuum")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Electrical)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Electrical)
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Energy_Audit)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Electrical)
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Energy_Audit)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Energy_Audit, "Energy Audit")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Gas___Propane_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Energy_Audit, "Energy Audit")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Gas___Propane_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Gas___Propane_Services, "Gas & Propane Services")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Heating___Air_Conditioning)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Gas___Propane_Services, "Gas & Propane Services")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Heating___Air_Conditioning)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Heating___Air_Conditioning, "Heating & Air Conditioning")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Lighting_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Heating___Air_Conditioning, "Heating & Air Conditioning")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Lighting_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Lighting_Services, "Lighting Services")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Plumbing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Lighting_Services, "Lighting Services")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Plumbing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Plumbing)
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Satellite_Dish_Systems)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Plumbing)
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Satellite_Dish_Systems)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Satellite_Dish_Systems, "Satellite Dish Systems")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Sewer___Septic_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Satellite_Dish_Systems, "Satellite Dish Systems")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Sewer___Septic_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Sewer___Septic_Services, "Sewer & Septic Services")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Solar_Panels___Energy)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Sewer___Septic_Services, "Sewer & Septic Services")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Solar_Panels___Energy)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Solar_Panels___Energy, "Solar Panels & Energy")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Voice___Data_Wiring_Install___Repair)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Solar_Panels___Energy, "Solar Panels & Energy")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Voice___Data_Wiring_Install___Repair)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Voice___Data_Wiring_Install___Repair, "Voice & Data Wiring Install & Repair")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Radon_Testing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Voice___Data_Wiring_Install___Repair, "Voice & Data Wiring Install & Repair")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Radon_Testing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Radon_Testing, "Radon Testing")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Water_Heaters___Pumps)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Radon_Testing, "Radon Testing")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Water_Heaters___Pumps)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Water_Heaters___Pumps, "Water Heaters & Pumps")
-                </li>
-            }
-            @if (Model.MaintenanceUtility.Water_Purification___Softening)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Water_Heaters___Pumps, "Water Heaters & Pumps")
+                    </li>
+                }
+                @if (Model.MaintenanceUtility.Water_Purification___Softening)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Water_Purification___Softening, "Water Purification & Softening")
-                </li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceUtility.Water_Purification___Softening, "Water Purification & Softening")
+                    </li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceUtility))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
-<div class="clear">
-</div>
-<div id="CustomService">
-    <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
-        Custom Service</h4>
-   
-    <div class="seven columns push by-one " id="customservice">
-        <ul class="arrow">
-            @Helper.ResetItemCount()
-            @if (Model.MaintenanceCustomService.Demolition_Services)
-            {
+    <div class="clear">
+    </div>
+    <div id="CustomService">
+        <h4 class="section-titling" style="position: relative; color: #346993; right: 0">
+            Custom Service</h4>
+        <div class="seven columns push by-one " id="customservice">
+            <ul class="arrow">
+                @Helper.ResetItemCount()
+                @if (Model.MaintenanceCustomService.Demolition_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Demolition_Services, "Demolition Services")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Disability_Accessibility)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Demolition_Services, "Demolition Services")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Disability_Accessibility)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Disability_Accessibility, "Disability Accessibility")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Childproofing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Disability_Accessibility, "Disability Accessibility")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Childproofing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Childproofing)
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Energy_Efficiency_Inspection)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Childproofing)
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Energy_Efficiency_Inspection)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Energy_Efficiency_Inspection, "Energy Efficiency Inspection")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Excavation)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Energy_Efficiency_Inspection, "Energy Efficiency Inspection")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Excavation)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Excavation)
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Biohazard_Cleanup)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Excavation)
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Biohazard_Cleanup)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Biohazard_Cleanup, "Biohazard Cleanup")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Mold_Removal)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Biohazard_Cleanup, "Biohazard Cleanup")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Mold_Removal)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Mold_Removal, "Mold Removal")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Home_Staging)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Mold_Removal, "Mold Removal")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Home_Staging)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Home_Staging, "Home Staging")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Inspection_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Home_Staging, "Home Staging")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Inspection_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Inspection_Services, "Inspection Services")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Moving_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Inspection_Services, "Inspection Services")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Moving_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Moving_Services, "Moving Services")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Restoration)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Moving_Services, "Moving Services")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Restoration)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Restoration)
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Metal_Restoration)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Restoration)
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Metal_Restoration)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Metal_Restoration, "Metal Restoration")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Earthquake_Retrofitting)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Metal_Restoration, "Metal Restoration")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Earthquake_Retrofitting)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Earthquake_Retrofitting, "Earthquake Retrofitting")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Epoxy_Flooring_Excavators)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Earthquake_Retrofitting, "Earthquake Retrofitting")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Epoxy_Flooring_Excavators)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Epoxy_Flooring_Excavators, "Epoxy Flooring Excavators")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Structural_Engineering)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Epoxy_Flooring_Excavators, "Epoxy Flooring Excavators")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Structural_Engineering)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Structural_Engineering, "Structural Engineering")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Trash_Removal___Hauling)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Structural_Engineering, "Structural Engineering")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Trash_Removal___Hauling)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Trash_Removal___Hauling, "Trash Removal & Hauling")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Welding)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Trash_Removal___Hauling, "Trash Removal & Hauling")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Welding)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Welding)
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Mudjacking)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Welding)
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Mudjacking)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Mudjacking)
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Picture_Framing)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Mudjacking)
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Picture_Framing)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Picture_Framing, "Picture Framing")
-                </li>
-            }
-            @if (Model.MaintenanceCustomService.Woodworking_Services)
-            {
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Picture_Framing, "Picture Framing")
+                    </li>
+                }
+                @if (Model.MaintenanceCustomService.Woodworking_Services)
+                {
 
-                @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Woodworking_Services, "Woodworking Services")
-                </li>
-            }
-            @Helper.ResetItemCount()
-            @{
+                    @Helper.SplitList()<li>@Html.LabelFor(m => m.MaintenanceCustomService.Woodworking_Services, "Woodworking Services")
+                    </li>
+                }
+                @Helper.ResetItemCount()
+                @{
                 if (!Helper.CheckifAtLeastOnePropertyisTrue(Model.MaintenanceCustomService))
                 {
-                @Helper.EmptyAttributesHtml()
+                    @Helper.EmptyAttributesHtml()
                 }
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-</div>
+
+}
+
+else
+{
+    @NoCoverage()
+}

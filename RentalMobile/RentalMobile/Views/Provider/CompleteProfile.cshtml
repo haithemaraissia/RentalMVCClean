@@ -1,4 +1,5 @@
 ﻿@model ProviderMaintenanceProfile
+@using RentalMobile.Helpers
 @using RentalMobile.ModelViews
 @{
     ViewBag.Title = "Complete Profile";
@@ -107,8 +108,18 @@
                     </li>
                     <li class="five columns" style="margin-bottom: 15px; margin-top: 15px;">
                         <label id="NumberofCertifitedEmplyeeLabel">
-                            Number of Certifited Employee</label>
+                            Number of Certified Employee</label>
                         @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.NumberofCertifitedEmplyee, new { id = "NumberofCertifitedEmployee", required = "required", @class = "number-width center", placeholder = "1", @pattern = @"\d+", step = "1", style = "margin: 0 auto" })
+                    </li>
+                     <li class="five columns" style="margin-bottom: 15px; margin-top: 15px;">
+                        <label id="RateLabel">
+                            Rate</label>
+                        @Html.TextBoxFor(m => m.MaintenanceCompanySpecialization.Rate, new { id = "Rate", type = "number", required = "required", @class = "number-ExtraWidth center", placeholder = "0.00", @pattern = @"^\d+(\.|\,)\d{2}$" })
+                    </li>
+                      <li class="five columns" style="margin-bottom: 15px; margin-top: 15px;">
+                        <label id="CurrencyLabel">
+                            Currency</label>
+                        @Html.DropDownListFor(m => m.MaintenanceCompanySpecialization.CurrencyID, Html.Currency((int?)ViewBag.CurrencyCode))
                     </li>
                 </ul>
             </section>
