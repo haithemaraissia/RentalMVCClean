@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using RentalMobile.Controllers;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Handler
@@ -13,7 +14,7 @@ namespace RentalMobile.Handler
     /// </summary>
     public class RoutinePerformance : IHttpHandler
     {
-        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public RentalContext Db = new RentalContext();
         public void ProcessRequest(HttpContext context)
         {
             CoverageMaintenanceRoutineForProvider();

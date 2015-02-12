@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Security.Application;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 using Email = Postal.Email;
@@ -14,7 +15,7 @@ namespace RentalMobile.Controllers
 {
     public class ProvidersController : Controller
     {
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
         public ActionResult Index(int? id, bool? shareprovider, bool? insertingnewcomment)
         {

@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Objects;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
-using RentalMobile.ModelViews;
-using RentalMobile.Models;
+﻿using System.Web.Mvc;
 
 namespace RentalMobile.Controllers
 {
     public class TestCleanController : Controller
     {
 
-        //public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        //public RentalContext Db = new RentalContext();
 
         //public static void WriteResult(String result)
         //{

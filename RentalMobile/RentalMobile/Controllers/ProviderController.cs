@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using PagedList;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 using Email = Postal.Email;
@@ -17,7 +18,7 @@ namespace RentalMobile.Controllers
     [Authorize]
     public class ProviderController : Controller
     {
-        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public RentalContext Db = new RentalContext();
         public string Username = UserHelper.GetUserName();
         public string RequestId;
         public static int SelectedTeam = 0;
@@ -540,10 +541,10 @@ namespace RentalMobile.Controllers
                     {
                         s.MaintenanceCompanySpecialization.Currency =
                             UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
-                        Db.Entry(s.MaintenanceProvider).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceProvider).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompany).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanyLookUp).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanySpecialization).State = (System.Data.Entity.EntityState) EntityState.Modified;
                         UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
                         UpdateproviderProfile(s.MaintenanceProvider, s.MaintenanceCompany);
                         UpdateProviderZoneList(s.MaintenanceCompany.Zip, s.MaintenanceCompany.City);
@@ -766,7 +767,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(provider).State = EntityState.Modified;
+                Db.Entry(provider).State = (System.Data.Entity.EntityState) EntityState.Modified;
                 Db.SaveChanges();
                 UpdateProviderMaintenanceCompany();
                 return RedirectToAction("Index");
@@ -785,7 +786,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(provider).State = EntityState.Modified;
+                Db.Entry(provider).State = (System.Data.Entity.EntityState) EntityState.Modified;
                 provider.GoogleMap = string.IsNullOrEmpty(provider.Address)
                                          ? UserHelper.GetFormattedLocation("", "", "USA")
                                          : UserHelper.GetFormattedLocation(provider.Address, provider.City,

@@ -5,13 +5,15 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 { 
     public class TenantMaintenanceController : Controller
     {
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
         public ViewResult Index()
         {

@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
 {
     public static class UserHelper
     {
-        private static readonly DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        private static readonly RentalContext Db = new RentalContext();
         public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
         public static string DefaultSpecialistName = "Specialist";
         public static string TenantPhotoPath = "~/Photo/Tenant/Property";

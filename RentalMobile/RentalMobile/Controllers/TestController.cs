@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Objects;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 
@@ -20,7 +20,7 @@ namespace RentalMobile.Controllers
         // GET: /Test/3
 
 
-        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public RentalContext Db = new RentalContext();
 
         public SpecialistZone GetSpecialistZone(int specialistId)
         {

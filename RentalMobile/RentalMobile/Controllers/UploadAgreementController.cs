@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
@@ -14,7 +15,7 @@ namespace RentalMobile.Controllers
     public class UploadAgreementController : Controller
     {
         //From HERE
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
 
         public string OwnerUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();

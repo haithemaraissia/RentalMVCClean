@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
@@ -16,7 +17,7 @@ namespace RentalMobile.Controllers
     {
 
         //Variables that should be queried with the request
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private RentalContext db = new RentalContext();
 
         public string TenantUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
         public string TenantPhotoPath = @"~/Photo/Tenant/Requests";

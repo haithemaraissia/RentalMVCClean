@@ -8,6 +8,7 @@ using RentalMobile.Helpers;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 using PagedList;
+using RentalMobile.Model.Models;
 
 namespace RentalMobile.Controllers
 {
@@ -15,7 +16,7 @@ namespace RentalMobile.Controllers
     public class SpecialistController : Controller
     {
 
-        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public RentalContext Db = new RentalContext();
         public string Username = UserHelper.GetUserName();
         public string RequestId;
         public string PhotoPath;
@@ -40,7 +41,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(specialist).State = EntityState.Modified;
+                Db.Entry(specialist).State = (System.Data.Entity.EntityState) EntityState.Modified;
                 Db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,7 +59,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(specialist).State = EntityState.Modified;
+                Db.Entry(specialist).State = (System.Data.Entity.EntityState) EntityState.Modified;
                 specialist.GoogleMap = string.IsNullOrEmpty(specialist.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(specialist.Address, specialist.City, specialist.CountryCode);
                 Db.SaveChanges();
                 return RedirectToAction("Index");
@@ -221,16 +222,16 @@ namespace RentalMobile.Controllers
 
                         s.MaintenanceCompanySpecialization.Currency =
                             UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
-                        Db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceExterior).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceInterior).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceRepair).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompany).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanyLookUp).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanySpecialization).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCustomService).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceExterior).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceInterior).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceNewConstruction).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceRepair).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = (System.Data.Entity.EntityState) EntityState.Modified;
                         UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
                         UpdateSpecialistProfile((int)specialistId, s.MaintenanceCompany);
                         Db.SaveChanges();

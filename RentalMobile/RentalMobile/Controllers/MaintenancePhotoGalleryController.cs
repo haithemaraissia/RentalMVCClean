@@ -5,13 +5,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     public class MaintenancePhotoGalleryController : Controller
     {
-        private readonly DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private readonly RentalContext db = new RentalContext();
 
         public JsonResult GetJsonData()
         {

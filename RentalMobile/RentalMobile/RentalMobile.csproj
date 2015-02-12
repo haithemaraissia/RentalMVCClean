@@ -38,15 +38,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AdControl.dll</HintPath>
     </Reference>
-    <Reference Include="AntiXssLibrary">
-      <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\AntiXssLibrary.dll</HintPath>
+    <Reference Include="BundleTransformer.Core, Version=1.9.43.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\BundleTransformer.Core.1.9.43\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Yui">
+      <HintPath>packages\BundleTransformer.Yui.1.9.34\lib\net40\BundleTransformer.Yui.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Facebook.6.4.2\lib\net40-client\Facebook.dll</HintPath>
@@ -54,11 +61,17 @@
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MvcJqGrid.dll</HintPath>
@@ -81,8 +94,9 @@
     <Reference Include="Postal">
       <HintPath>..\packages\postal.0.8.2\lib\net40\Postal.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine">
-      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+    <Reference Include="RazorEngine, Version=3.3.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\RazorEngine.3.3.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="RequestReduce">
       <HintPath>..\packages\RequestReduce.1.8.76\Lib\net40\RequestReduce.dll</HintPath>
@@ -91,10 +105,12 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -116,9 +132,19 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease">
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>packages\YUICompressor.NET.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Bundles\CssUrlTransform.cs" />
+    <Compile Include="Bundles\CustomBundle.cs" />
+    <Compile Include="Bundles\LessStyleBundle.cs" />
     <Compile Include="Contracts\Reports\PDFReport.aspx.cs">
       <DependentUpon>PDFReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,6 +179,8 @@
     <Compile Include="Controllers\TestCleanController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UnitofWorkPatternController.cs" />
+    <Compile Include="Controllers\UnitRepositoryPatternController.cs" />
     <Compile Include="Controllers\UpdateCoverage.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
@@ -171,252 +199,6 @@
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Helpers\SpecialistInTeam.cs" />
     <Compile Include="Helpers\Teammate.cs" />
-    <Compile Include="Models\Agent.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentAcceptedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentAcceptedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentPendingApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentPendingPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentRejectedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentRejectedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Basement.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bathroom.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bed.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cooling.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Currency.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Floor.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FloorCovering.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Foundation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Garage.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GeneratedRentalContract.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Heating.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceCompany.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceCompanyLookUp.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceCompanySpecialization.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceCrew.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceCustomService.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceExterior.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceInterior.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceNewConstruction.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceOrder.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenancePhoto.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceProvider.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceProviderAcceptedJob.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceProviderNewJobOffer.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceProviderRejectedJob.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceProviderZone.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceRepair.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceTeam.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceTeamAssociation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaintenanceUtility.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Owner.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerAcceptedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerAcceptedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerMaintenance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerPendingApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerPendingPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerPendingShowingCalendar.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerRejectedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerRejectedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OwnerShowingCalendar.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ParkingSpace.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Project.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProjectPhoto.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProviderProfileComment.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProviderWork.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RentalApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RentalContextGenerator1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ServiceType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Specialist.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SpecialistPendingTeamInvitation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SpecialistProfileComment.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SpecialistWork.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TeamSpecialistInvitation.cs" />
-    <Compile Include="Models\Tenant.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TenantFavorite.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TenantMaintenance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TenantSavedSearch.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TenantShowing.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Unit.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitAppliance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitCommunityAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitExteriorAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitFeature.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitGallery.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitInteriorAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitLuxuryAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitPricing.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UploadedContract.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UrgencyType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelViews\ProviderMaintenanceCompleteProfile.cs" />
-    <Compile Include="ModelViews\OwnerPendingShowingCalendarModelView.cs" />
-    <Compile Include="ModelViews\ProviderMaintenanceProfile.cs" />
-    <Compile Include="ModelViews\SpecialistMaintenanceProfile.cs" />
-    <Compile Include="ModelViews\Test.cs" />
-    <Compile Include="ModelViews\UnitModelView.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />
     <Compile Include="Controllers\AdvancedSearchController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
@@ -444,13 +226,11 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
-    <Compile Include="BackUp\Controllers\RATestController.cs" />
     <Compile Include="Controllers\RentalApplicationController.cs" />
     <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Controllers\SpecialistController.cs" />
     <Compile Include="Controllers\SpecialistsController.cs" />
     <Compile Include="Controllers\TenantController.cs" />
-    <Compile Include="BackUp\Controllers\TenantFavoriteController.cs" />
     <Compile Include="Controllers\TenantMaintenanceController.cs" />
     <Compile Include="Controllers\TenantProfileController.cs" />
     <Compile Include="Controllers\TenantRentalApplicationController.cs" />
@@ -483,23 +263,6 @@
     <Compile Include="Helpers\UploadHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="MobileViewEngine.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\RentalContextGenerator.Context1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalContextGenerator.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RentalContextGenerator.cs" />
-    <Compile Include="Models\RentalModel.Designer.cs" />
-    <Compile Include="Models\RentalModel1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentalModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Session.cs" />
-    <Compile Include="Models\Sessions.cs" />
-    <Compile Include="ModelViews\TenantMaintenanceViewModel.cs" />
-    <Compile Include="ModelViews\TenantModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalMobile.cs" />
     <Compile Include="WebForms\Ads\AdTest.aspx.cs">
@@ -516,7 +279,6 @@
     <Compile Include="Emails\SendToFriend\SendToFriend.aspx.designer.cs">
       <DependentUpon>SendToFriend.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WIP\BackUp\UpdateCoverage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ASPNETDB.MDF" />
@@ -711,43 +473,6 @@
     <Content Include="css\tooltipster\tooltipster.css" />
     <Content Include="Design\General.aspx" />
     <Content Include="Design\SmartWizard.htm" />
-    <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
-    <Content Include="Documentation\Done\UnitProperty\P3.txt" />
-    <Content Include="Documentation\Done\UnitProperty\P4.txt" />
-    <Content Include="Documentation\Process\Documentation\ProcessAction2.txt" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\changelog.txt" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\agenda-views.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\basic-views.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\animated-overlay.gif" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\jquery-ui.min.css" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\default.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\external-dragging.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\gcal.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\selectable.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\theme.html" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.css" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.js" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.min.js" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.print.css" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\gcal.js" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery-ui.custom.min.js" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery.min.js" />
-    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\license.txt" />
     <Content Include="Global.asax" />
     <Content Include="Html\NoVideo.htm" />
     <Content Include="images\arrowsub.png" />
@@ -867,6 +592,7 @@
     <Content Include="Photo\Owner\Property\carrie\2\img_walle.jpg" />
     <Content Include="Photo\Owner\UploadedContract\carrie\2\img_mcvisa.gif" />
     <Content Include="Photo\Owner\UploadedContract\carrie\2\img_supersavings.jpg" />
+    <Content Include="Photo\Provider\Profile\pro5\2\img_DefaultTiny.png" />
     <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-1.jpg" />
     <Content Include="Photo\Tenant\Profile\bob\6\img_big-800x500-6.jpg" />
     <Content Include="Photo\Tenant\Profile\bon\10\img_agent-480x350.png" />
@@ -883,6 +609,7 @@
     <Content Include="Photo\Tenant\Profile\zou\0\img_toystory.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\0\img_walle - Copy.jpg" />
     <Content Include="Photo\Tenant\Profile\zou\9\img_apple-touch-icon-114x114.png" />
+    <Content Include="Scripts\app\home\app.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\gcal.js" />
@@ -894,18 +621,12 @@
     <Content Include="Scripts\jNotify-master\jquery\jNotify.jquery.min.js" />
     <Content Include="Scripts\jNotify-master\jquery\jquery.js" />
     <Content Include="Scripts\jNotify-master\success.png" />
-    <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
-    <Content Include="Scripts\jquery-2.0.3.js" />
-    <Content Include="Scripts\jquery-2.0.3.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\lib\jquery-ui.custom.min.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="Scripts\MaskedInputPlugin\jquery.maskedinput.js" />
     <Content Include="Scripts\MaxLength\jquery.maxlength.js" />
     <Content Include="Scripts\tooltipster\jquery.tooltipster.js" />
     <Content Include="Scripts\tooltipster\jquery.tooltipster.min.js" />
-    <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
     <Content Include="Scripts\js\scripts2.js" />
     <Content Include="Scripts\old\js\jquery.min.js" />
     <Content Include="UploadedImages\Default\Property\coming_soon.png" />
@@ -1064,38 +785,11 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="WIP\Design\advices.html" />
     <Content Include="Emails\SendToFriend\SendToFriend.aspx" />
-    <Content Include="WIP\Pool\building.html" />
-    <Content Include="WIP\Pool\buy.html" />
-    <Content Include="WIP\Pool\home-nivoslider.html" />
-    <Content Include="WIP\Pool\home-static-image.html" />
-    <Content Include="WIP\Pool\home-static-video.html" />
-    <Content Include="WIP\Pool\mortgage.html" />
-    <Content Include="WIP\Pool\property-single.html" />
-    <Content Include="WIP\Pool\sell.html" />
-    <Content Include="WIP\ToDo.txt" />
-    <Content Include="WIP\Used\advanced-search.html" />
-    <Content Include="WIP\Used\advices.html" />
-    <Content Include="WIP\Used\company-single.html" />
-    <Content Include="WIP\Used\company.html" />
-    <Content Include="WIP\Used\contact.html" />
-    <Content Include="WIP\Used\CSS3 Menu.html" />
-    <Content Include="WIP\Used\home2.html" />
-    <Content Include="WIP\Used\index.html" />
-    <Content Include="WIP\Used\registration.html" />
-    <Content Include="WIP\Used\rent.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\Helper.cshtml" />
     <None Include="App_Data\GeoLiteCity.dat" />
-    <Content Include="BackUp\View\Unit\Create.cshtml" />
-    <Content Include="BackUp\View\Unit\Delete.cshtml" />
-    <Content Include="BackUp\View\Unit\Details.cshtml" />
-    <Content Include="BackUp\View\Unit\Edit.cshtml" />
-    <Content Include="BackUp\View\Unit\Index.cshtml" />
-    <Content Include="BackUp\View\UnitDetail\Index.cshtml" />
-    <Content Include="BackUp\View\Professionals\_ProfileDetail.cshtml" />
     <None Include="bin\AdControl.dll.refresh" />
     <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
     <None Include="bin\itextsharp.dll.refresh" />
@@ -1136,44 +830,11 @@
     <None Include="css\dotcss\lato\Lato-Lig-webfont.eot%40" />
     <None Include="css\dotcss\lato\Lato-Lig-webfont.ttf" />
     <Content Include="Design\Tenant\Index.cshtml" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListOfContractorAnglieListEdited.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor2010.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource - Partioned.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Functions and tools.docx" />
-    <None Include="Documentation\Done\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
-    <None Include="Documentation\JQueryCalendar.docx" />
-    <None Include="Documentation\Process\Bugs.docx" />
-    <None Include="Documentation\Done\UnitProperty\AllProperties.docx" />
-    <None Include="Documentation\Done\UnitProperty\P1.docx" />
-    <None Include="Documentation\Done\UnitProperty\P2.docx" />
     <Content Include="Handler\ImageUploadHandler.ashx" />
     <Content Include="Handler\ProfileImageUploadHandler.ashx" />
     <Content Include="Handler\AdHandler.ashx" />
-    <None Include="Documentation\Process\CoverLetterTunisaPassport.docx" />
-    <None Include="Documentation\Process\Documentation\Functions.docx" />
-    <None Include="Documentation\Process\Documentation\ToDo.docx" />
-    <None Include="Documentation\Process\GamePlan.docx" />
-    <None Include="Documentation\TEMP TO DO PERSONEL.docx" />
-    <None Include="Documentation\What I %27m doing.docx" />
-    <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
     <Content Include="Handler\RoutinePerformance.ashx" />
     <None Include="images\dotimages\wip\linkedin_icon_black.psd" />
-    <None Include="Models\RentalContextGenerator.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RentalContextGenerator.Context1.cs</LastGenOutput>
-    </None>
-    <None Include="Models\RentalContextGenerator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RentalContextGenerator1.cs</LastGenOutput>
-    </None>
-    <EntityDeploy Include="Models\RentalModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RentalModel1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Account\ChangeEmail.cshtml" />
     <Content Include="Views\Account\ChangeEmailSuccess.cshtml" />
@@ -1300,7 +961,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jNotify-master\index.php" />
-    <None Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\plupload\ww.jquery.min.js.map" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistBigTabMenu.cshtml" />
     <Content Include="Views\Shared\Menu\ViewsofProfile\_SpecialistMiniTabMenu.cshtml" />
@@ -1348,7 +1008,6 @@
     <Content Include="Views\ProjectDetail\Index.cshtml" />
     <Content Include="Views\Project\MakeOffer.cshtml" />
     <Content Include="Views\ProjectDetail\Confirm.cshtml" />
-    <Content Include="ToDelete\GeneratedContract.cshtml" />
     <Content Include="Views\Owner\GeneratedRentalAgreement.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Index.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Details.cshtml" />
@@ -1452,11 +1111,6 @@
     <Content Include="Views\Deletethis.cshtml" />
     <Content Include="Views\Test\Delete5.cshtml" />
     <Content Include="Views\Specialist\_Coverage.cshtml" />
-    <Content Include="Views\TenantFavorite\Index.cshtml" />
-    <Content Include="Views\TenantFavorite\Details.cshtml" />
-    <Content Include="Views\TenantFavorite\Create.cshtml" />
-    <Content Include="Views\TenantFavorite\Edit.cshtml" />
-    <Content Include="Views\TenantFavorite\Delete.cshtml" />
     <Content Include="Views\Professionals\_Coverage.cshtml" />
     <Content Include="Views\Professionals\_Description.cshtml" />
     <Content Include="Views\Shared\Script\_Paging.cshtml" />
@@ -1489,6 +1143,9 @@
     <Content Include="Views\Providers\_Comment.cshtml" />
     <Content Include="Views\Providers\_Description.cshtml" />
     <Content Include="Views\Providers\_Team.cshtml" />
+    <Content Include="Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
+    <Content Include="Views\UnitofWorkPattern\Index.cshtml" />
+    <Content Include="Views\UnitRepositoryPattern\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
@@ -1509,7 +1166,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Documentation\Done\Structure\" />
+    <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
+      <Project>{3B753DDF-58F6-42E5-BD18-E1903B50589B}</Project>
+      <Name>RentalMobile.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -1528,7 +1188,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56224</DevelopmentServerPort>
+          <DevelopmentServerPort>61933</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

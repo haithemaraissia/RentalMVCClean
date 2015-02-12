@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {
     public class TenantsController : Controller
     {
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
         public ActionResult Index()
         {
             return View(_db.Tenants.ToList());

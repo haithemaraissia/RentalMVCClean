@@ -45,7 +45,7 @@
 .bx-wrapper .bx-loading
 {
     min-height: 50px;
-    background: url('../../images/dotimages/bx-images/bx_loader.gif') no-repeat center center;
+    background: url('/../../..//../../../images/dotimages/bx-images/bx_loader.gif') no-repeat center center;
 }
 
 /* PAGER */
@@ -87,12 +87,12 @@
 
 .bx-wrapper .bx-prev {
 	left: 10px;
-	background: url(../images/bx-images/controls.png) no-repeat 0 -32px;
+	background:url('../../images/dotimages/bx-images/controls.png')no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
 	right: 10px;
-	background: url(../images/bx-images/controls.png) no-repeat -43px -32px;
+	background:url('../../images/dotimages/bx-images/controls.png')no-repeat -43px -32px;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -128,7 +128,7 @@
 	text-indent: -9999px;
 	width: 10px;
 	height: 11px;
-	background: url(../images/bx-images/controls.png) -86px -11px no-repeat;
+	background:url('../../images/dotimages/bx-images/controls.png')-86px -11px no-repeat;
 	margin: 0 3px;
 }
 
@@ -137,13 +137,14 @@
 	background-position: -86px 0;
 }
 
-.bx-wrapper .bx-controls-auto .bx-stop {
-	display: block;
-	text-indent: -9999px;
-	width: 9px;
-	height: 11px;
-	background: url(../images/bx-images/controls.png) -86px -44px no-repeat;
-	margin: 0 3px;
+.bx-wrapper .bx-controls-auto .bx-stop
+{
+    display: block;
+    text-indent: -9999px;
+    width: 9px;
+    height: 11px;
+    background: url('../../images/dotimages/bx-images/controls.png') no-repeat -86px -44px;
+    margin: 0 3px;
 }
 
 .bx-wrapper .bx-controls-auto .bx-stop:hover,

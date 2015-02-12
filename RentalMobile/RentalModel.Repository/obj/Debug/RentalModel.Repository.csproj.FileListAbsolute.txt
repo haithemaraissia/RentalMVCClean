@@ -1,0 +1,8 @@
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile\RentalModel.Repository\bin\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile\RentalModel.Repository\bin\Debug\RentalModel.Repository.pdb
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile\RentalModel.Repository\obj\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile\RentalModel.Repository\obj\Debug\RentalModel.Repository.pdb
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalModel.Repository\bin\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalModel.Repository\bin\Debug\RentalModel.Repository.pdb
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalModel.Repository\obj\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalModel.Repository\obj\Debug\RentalModel.Repository.pdb

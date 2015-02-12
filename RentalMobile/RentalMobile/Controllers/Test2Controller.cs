@@ -4,15 +4,17 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     public class Test2Controller : Controller
     {
 //
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private RentalContext db = new RentalContext();
 
         //
         // GET: /Unit/
@@ -73,7 +75,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(unit).State = EntityState.Modified;
+                db.Entry(unit).State = (EntityState) System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -11,15 +11,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 using Email = Postal.Email;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     public class OwnerController : Controller
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private RentalContext db = new RentalContext();
         private static bool _confirmationRequest;
 
         // GET: /Owner/
@@ -1081,7 +1083,7 @@ namespace RentalMobile.Controllers
 
 
 
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
         //MAKE SURE THAT USER ARE AUTHENTICATED
         public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();

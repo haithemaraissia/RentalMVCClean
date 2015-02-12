@@ -6,13 +6,15 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     public class NewUnitTestController : Controller
     {
-        private DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private RentalContext db = new RentalContext();
 
         //
         // GET: /NewUnitTest/

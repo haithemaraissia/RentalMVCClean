@@ -1,12 +1,13 @@
 ﻿using System.Web.Mvc;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {
     public class ChangeProviderController : Controller
     {
-        private readonly DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private readonly RentalContext db = new RentalContext();
 
 
         public ViewResult Index(int id)

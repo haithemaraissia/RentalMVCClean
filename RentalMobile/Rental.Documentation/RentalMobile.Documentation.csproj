@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAE25840-E7EC-44BB-B405-AFC704987AAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rental.Documentation</RootNamespace>
+    <AssemblyName>Rental.Documentation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackUp\Controllers\RaTestController.cs" />
+    <Compile Include="BackUp\Controllers\TenantFavoriteController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WIP\BackUp\UpdateCoverage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
+      <Project>{3B753DDF-58F6-42E5-BD18-E1903B50589B}</Project>
+      <Name>RentalMobile.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalMobile.Helper\RentalMobile.Helper.csproj">
+      <Project>{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}</Project>
+      <Name>RentalMobile.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalMobile\RentalMobile.csproj">
+      <Project>{7E67FC65-FF32-43FA-875C-401948AAA097}</Project>
+      <Name>RentalMobile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalModel.Repository\RentalModel.Repository.csproj">
+      <Project>{8C07283F-1394-4F91-B4DC-850436BCD0AD}</Project>
+      <Name>RentalModel.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Westwind.plUploadHandler\Westwind.plUploadHandler.csproj">
+      <Project>{913A8E97-DC0B-4D26-AB59-4AC5C232910E}</Project>
+      <Name>Westwind.plUploadHandler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\Done\BrainStorming+MaintenanceData\BrainStorming.txt" />
+    <Content Include="Documentation\Done\UnitProperty\P3.txt" />
+    <Content Include="Documentation\Done\UnitProperty\P4.txt" />
+    <Content Include="Documentation\Process\Documentation\ProcessAction2.txt" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\changelog.txt" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\agenda-views.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\basic-views.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\animated-overlay.gif" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\cupertino\jquery-ui.min.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\default.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\external-dragging.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\gcal.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\selectable.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\theme.html" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\fullcalendar.print.css" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\fullcalendar\gcal.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery-ui.custom.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\lib\jquery.min.js" />
+    <Content Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\license.txt" />
+    <Content Include="ToDelete\Copy of AmenitiesAlignment.js" />
+    <Content Include="WIP\Design\advices.html" />
+    <Content Include="WIP\Pool\building.html" />
+    <Content Include="WIP\Pool\buy.html" />
+    <Content Include="WIP\Pool\home-nivoslider.html" />
+    <Content Include="WIP\Pool\home-static-image.html" />
+    <Content Include="WIP\Pool\home-static-video.html" />
+    <Content Include="WIP\Pool\mortgage.html" />
+    <Content Include="WIP\Pool\property-single.html" />
+    <Content Include="WIP\Pool\sell.html" />
+    <Content Include="WIP\ToDo.txt" />
+    <Content Include="WIP\Used\advanced-search.html" />
+    <Content Include="WIP\Used\advices.html" />
+    <Content Include="WIP\Used\company-single.html" />
+    <Content Include="WIP\Used\company.html" />
+    <Content Include="WIP\Used\contact.html" />
+    <Content Include="WIP\Used\CSS3 Menu.html" />
+    <Content Include="WIP\Used\home2.html" />
+    <Content Include="WIP\Used\index.html" />
+    <Content Include="WIP\Used\registration.html" />
+    <Content Include="WIP\Used\rent.html" />
+    <None Include="App.config" />
+    <None Include="Architecture\Controller.csv" />
+    <None Include="Architecture\Controller1.xlsx" />
+    <None Include="Architecture\Diagram\Controller\Account.ddd" />
+    <None Include="Architecture\Diagram\Controller\Agent.ddd" />
+    <None Include="Architecture\Diagram\Controller\Back Up\Index.ddd" />
+    <None Include="Architecture\Diagram\Controller\Back Up\LooseControls.ddd" />
+    <None Include="Architecture\Diagram\Controller\Index.ddd" />
+    <None Include="Architecture\Diagram\Controller\Legend.ddd" />
+    <None Include="Architecture\Diagram\Controller\Professional.ddd" />
+    <None Include="Architecture\Diagram\Controller\Providers.ddd" />
+    <None Include="Architecture\Diagram\Controller\Specialist.ddd" />
+    <None Include="Architecture\Diagram\Controller\Specialist.docx" />
+    <None Include="Architecture\Diagram\Controller\Specialists.ddd" />
+    <None Include="Architecture\Diagram\Logical\Provider.ddd" />
+    <None Include="Architecture\Diagram\Logical\Root.ddd" />
+    <None Include="Architecture\Diagram\Logical\Tenant.ddd" />
+    <None Include="Architecture\Diagram\Logical\Tester- Helper.ddd" />
+    <None Include="Architecture\Diagram\Logical\Unit.ddd" />
+    <Content Include="BackUp\View\Professionals\_ProfileDetail.cshtml" />
+    <Content Include="BackUp\View\Unit\Create.cshtml" />
+    <Content Include="BackUp\View\Unit\Delete.cshtml" />
+    <Content Include="BackUp\View\Unit\Details.cshtml" />
+    <Content Include="BackUp\View\Unit\Edit.cshtml" />
+    <Content Include="BackUp\View\Unit\Index.cshtml" />
+    <Content Include="BackUp\View\UnitDetail\Index.cshtml" />
+    <None Include="DailyProcess\ProcessDaytoDay.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListOfContractorAnglieListEdited.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofTypeOfWorkForContractor2010.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource - Partioned.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ZillowDataSource.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\Functions and tools.docx" />
+    <None Include="Documentation\Done\BrainStorming+MaintenanceData\RentHomeVirtuallyConcept.docx" />
+    <None Include="Documentation\Done\UnitProperty\AllProperties.docx" />
+    <None Include="Documentation\Done\UnitProperty\P1.docx" />
+    <None Include="Documentation\Done\UnitProperty\P2.docx" />
+    <None Include="Documentation\JQueryCalendar.docx" />
+    <None Include="Documentation\Process\Bugs.docx" />
+    <None Include="Documentation\Process\CoverLetterTunisaPassport.docx" />
+    <None Include="Documentation\Process\Documentation\Functions.docx" />
+    <None Include="Documentation\Process\Documentation\ToDo.docx" />
+    <None Include="Documentation\Process\GamePlan.docx" />
+    <None Include="Documentation\What I %27m doing.docx" />
+    <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
+    <None Include="packages.config" />
+    <Content Include="Views\TenantFavorite\Create.cshtml" />
+    <Content Include="Views\TenantFavorite\Delete.cshtml" />
+    <Content Include="Views\TenantFavorite\Details.cshtml" />
+    <Content Include="Views\TenantFavorite\Edit.cshtml" />
+    <Content Include="Views\TenantFavorite\Index.cshtml" />
+    <Content Include="Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
+    <Content Include="ToDelete\GeneratedContract.cshtml" />
+    <None Include="Views\RATest\Create.cshtml" />
+    <None Include="Views\RATest\Delete.cshtml" />
+    <None Include="Views\RATest\Details.cshtml" />
+    <None Include="Views\RATest\Edit.cshtml" />
+    <None Include="Views\RATest\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Architecture\notes\day1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documentation\Done\Structure\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

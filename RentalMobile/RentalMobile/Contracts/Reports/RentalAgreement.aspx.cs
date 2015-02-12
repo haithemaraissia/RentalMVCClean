@@ -10,12 +10,13 @@ using RentalMobile.Models;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using RentalMobile.Model.Models;
 
 namespace RentalMobile.Contracts.Reports
 {
     public partial class RentalAgreement : System.Web.UI.Page
     {    
-        public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public RentalContext db = new RentalContext();
 
         protected void Page_Load(object sender, EventArgs e)
         {

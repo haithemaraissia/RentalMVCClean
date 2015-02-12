@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
@@ -9,7 +10,7 @@ namespace RentalMobile.Helpers
 
     public static class FancyBox
     {
-        private static DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private static RentalContext db = new RentalContext();
 
         public static string FancyUnit(int id)
         {

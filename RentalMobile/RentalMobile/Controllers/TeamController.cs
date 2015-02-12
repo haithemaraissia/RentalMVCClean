@@ -6,14 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     [Authorize(Roles = "Provider")]
     public class TeamController : Controller
     {
-        public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public RentalContext db = new RentalContext();
         public string Username = UserHelper.GetUserName();
         public MaintenanceProvider  Provider;
 

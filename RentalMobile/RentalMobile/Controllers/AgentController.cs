@@ -7,14 +7,16 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
     [Authorize]
     public class AgentController : Controller
     {
-        public DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public RentalContext db = new RentalContext();
 
         public ViewResult Index()
         {

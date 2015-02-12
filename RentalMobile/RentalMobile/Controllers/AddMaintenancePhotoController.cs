@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Web.Mvc;
 using System.Web.Security;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
@@ -11,7 +12,7 @@ namespace RentalMobile.Controllers
     [Authorize]
     public class AddMaintenancePhotoController : Controller
     {
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
         public string TenantUsername = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();
         public string TenantPhotoPath = @"~/Photo/Tenant/Requests";

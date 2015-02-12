@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
@@ -14,7 +15,7 @@ namespace RentalMobile.Helpers
     public static class HtmlHelperExtensions
     {
 
-        public static DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        public static RentalContext db = new RentalContext();
 
         public static string DefaultAvatarPlaceholderImagePath =
             "../../images/dotimages/avatar-placeholder.png";

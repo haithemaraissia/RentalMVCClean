@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
 using RentalMobile.Helpers;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 using Email = Postal.Email;
@@ -19,7 +20,7 @@ namespace RentalMobile.Controllers
 {
     public class UnitController : Controller
     {
-        private readonly DB_33736_rentalEntities db = new DB_33736_rentalEntities();
+        private readonly RentalContext db = new RentalContext();
 
         //
         // GET: /Test/
@@ -162,14 +163,14 @@ namespace RentalMobile.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    db.Entry(u.Unit).State = EntityState.Modified;
-                    db.Entry(u.UnitPricing).State = EntityState.Modified;
-                    db.Entry(u.UnitFeature).State = EntityState.Modified;
-                    db.Entry(u.UnitCommunityAmenity).State = EntityState.Modified;
-                    db.Entry(u.UnitAppliance).State = EntityState.Modified;
-                    db.Entry(u.UnitInteriorAmenity).State = EntityState.Modified;
-                    db.Entry(u.UnitExteriorAmenity).State = EntityState.Modified;
-                    db.Entry(u.UnitLuxuryAmenity).State = EntityState.Modified;
+                    db.Entry(u.Unit).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitPricing).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitFeature).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitCommunityAmenity).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitAppliance).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitInteriorAmenity).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitExteriorAmenity).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                    db.Entry(u.UnitLuxuryAmenity).State = (System.Data.Entity.EntityState) EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -275,7 +276,7 @@ namespace RentalMobile.Controllers
 
 
 
-        private readonly DB_33736_rentalEntities _db = new DB_33736_rentalEntities();
+        private readonly RentalContext _db = new RentalContext();
 
         //MAKE SURE THAT USER ARE AUTHENTICATED
         public string Username = Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name).ToString();

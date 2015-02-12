@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using RentalMobile.Model.Models;
 using RentalMobile.ModelViews;
 using RentalMobile.Models;
 
@@ -9,7 +10,7 @@ namespace RentalMobile.Controllers
 {
     public class UpdateCoverage
     {
-        public DB_33736_rentalEntities Db = new DB_33736_rentalEntities();
+        public RentalContext Db = new RentalContext();
         public int ProviderId { get; set; }
         public int SpecialistId { get; set; }
 
