@@ -17,7 +17,7 @@ namespace Westwind.plUpload
         /// <summary>
         /// Delegate to ProcessRequest method
         /// </summary>
-        Action<HttpContext> processRequest;
+    //    Action<HttpContext> processRequest;
 
         TaskCompletionSource<object> tcs;
 

@@ -22,7 +22,7 @@ namespace RentalMobile.Controllers
     public class OwnerController : Controller
     {
         private RentalContext db = new RentalContext();
-        private static bool _confirmationRequest;
+       // private static bool _confirmationRequest;
 
         // GET: /Owner/
 
@@ -1060,11 +1060,12 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 //Write To Database Error
 
                 //Output Message
+                Response.Write("Fail");
                 throw;
             }
 

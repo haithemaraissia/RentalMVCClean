@@ -9,7 +9,7 @@ namespace RentalMobile.Helpers
         public const string AgentPhotoPath = "~/Photo/Agent/Property";
         public const string ProviderPhotoPath = "~/Photo/Provider/Property";
         public const string SpecialistPhotoPath = "~/Photo/Specialist/Property";
-        public string RequestID;
+      //  public string RequestID;
         public string PhotoPath { get; set; }
         public string Role { get; set; }
 

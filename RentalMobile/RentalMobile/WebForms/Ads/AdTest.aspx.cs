@@ -191,10 +191,10 @@ namespace RentalMobile.WebForms.Ads
         {
             try
             {
-                var fullDBPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
+               // var fullDBPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
                 // Visitor's IP address
                 // var visitorIP = Request.ServerVariables["REMOTE_ADDR"];
-                var visitorIP = "68.70.88.2";
+               // var visitorIP = "68.70.88.2";
                 //ImpressionUtility.UpdateImpression(e.AdProperties["ID"].ToString(), 0, fullDBPath, visitorIP, Request.Url.ToString());
             }
             catch
@@ -206,7 +206,7 @@ namespace RentalMobile.WebForms.Ads
 
         private void TopBanner(string positionid, string sectionId)
         {
-            string keyword;
+           // string keyword;
             //using (var context = new AdDatabaseModel.AdDatabaseEntities())
             //{
             //    var t = Utility.KeywordFiltering(positionid, sectionId,GetCurrentLCID());
@@ -226,10 +226,10 @@ namespace RentalMobile.WebForms.Ads
         {
             try
             {
-                var fullDBPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
+               // var fullDBPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
                 // Visitor's IP address
                 // var visitorIP = Request.ServerVariables["REMOTE_ADDR"];
-                var visitorIP = "68.70.88.2";
+                //var visitorIP = "68.70.88.2";
              //   ImpressionUtility.UpdateImpression(e.AdProperties["ID"].ToString(), 0, fullDBPath, visitorIP, Request.Url.ToString());
             }
             catch
@@ -241,7 +241,7 @@ namespace RentalMobile.WebForms.Ads
 
         private void RightBanner(string positionid, string sectionId)
         {
-            string keyword;
+           // string keyword;
             //using (var context = new AdDatabaseModel.AdDatabaseEntities())
             //{
             //    var t = Utility.KeywordFiltering(positionid, sectionId, GetCurrentLCID());

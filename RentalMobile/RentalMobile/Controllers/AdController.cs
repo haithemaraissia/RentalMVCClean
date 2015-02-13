@@ -37,7 +37,7 @@ namespace RentalMobile.Controllers
 
         private void MiddleBanner(string positionid, string sectionId)
         {
-            string keyword;
+           // string keyword;
             //using (var context = new AdDatabaseModel.AdDatabaseEntities())
             //{
             //    var t = Utility.KeywordFiltering(positionid, sectionId,GetCurrentLCID());

@@ -854,11 +854,12 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Write To Database Error
 
                 //Output Message
+                Response.Write("Fail");
                 throw;
             }
 
@@ -923,7 +924,7 @@ namespace RentalMobile.Controllers
                 //ViewBag.RequestShowing = true;
                 //ViewBag.RequestShowingSucess = JNotifyRequestShowingSucess();
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
                 //Jfailure;
@@ -1009,11 +1010,12 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Write To Database Error
 
                 //Output Message
+                Response.Write("Fail");
                 throw;
             }
 
@@ -1052,11 +1054,12 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Write To Database Error
 
                 //Output Message
+                Response.Write("Fail");
                 throw;
             }
         }

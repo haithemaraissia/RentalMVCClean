@@ -62,10 +62,11 @@ namespace RentalMobile.Controllers
                 email.SendAsync();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Write To Database Error
                 //Output Message
+                Response.Write("Fail");
                 throw;
             }
 

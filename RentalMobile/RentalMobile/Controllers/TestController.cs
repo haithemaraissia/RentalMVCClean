@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
-using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using RentalMobile.ModelViews;
 
 namespace RentalMobile.Controllers
 {
@@ -417,10 +413,8 @@ namespace RentalMobile.Controllers
 
 
             // Test for equality.
-	        var equal = false;
             if (providerProfileDictionary.Count == specialistProfileDictionary.Count) // Require equal count.
             {
-                equal = true;
                 foreach (var providerValue in providerProfileDictionary)
                 {
                     object specialistValue;
@@ -428,7 +422,6 @@ namespace RentalMobile.Controllers
                     {
                         Type coverageTypeObject;
                         lookUpTypeDictionary.TryGetValue(providerValue.Key, out coverageTypeObject);
-                        var test ="";
 
                         //var currentProviderInstancePropertyObject =
                         //    typeof(SpecialistMaintenanceProfile).GetProperty(providerValue.Key)
@@ -457,7 +450,6 @@ namespace RentalMobile.Controllers
                     else
                     {
                         // Require key be present.
-                        equal = false;
                         break;
                     }
 
@@ -527,7 +519,7 @@ namespace RentalMobile.Controllers
         }
 
 
-        public void UpdateCoverage(object providerCoverage, object specialistCoverage, int providerId , Type CoverageType)
+        public void UpdateCoverage(object providerCoverage, object specialistCoverage, int providerId , Type coverageType)
         {
             Response.Write(String.Format("Getting The Property of Provider Type {0}", providerCoverage));
             Response.Write("<br/>");
@@ -566,7 +558,7 @@ namespace RentalMobile.Controllers
                 Response.Write(String.Format("Removing the Value From {0}", providerCoverage));
 
                 RemoveSpecialistCoverageFromProviderCoverage(
-                    propertyListTheNeedToBeRemovedFromProvider, CoverageType);
+                    propertyListTheNeedToBeRemovedFromProvider, coverageType);
                 Response.Write(String.Format("Removing the Value From {0}", providerCoverage));
                 Response.Write("<br/>-----");
 
@@ -840,7 +832,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -898,7 +890,7 @@ namespace RentalMobile.Controllers
         {
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 //Get All Specialist in Team
                 var provider = Db.MaintenanceProviders.Find(providerId);
@@ -940,7 +932,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -976,7 +968,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -1008,7 +1000,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -1040,7 +1032,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -1111,7 +1103,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
@@ -1178,7 +1170,7 @@ namespace RentalMobile.Controllers
             //  var providerId = UserHelper.GetProviderId();
             var providerId = 2;
 
-            if (providerId != null)
+            if (providerId != 0)
             {
                 const int providerrole = 2;
                 var lookUp =
