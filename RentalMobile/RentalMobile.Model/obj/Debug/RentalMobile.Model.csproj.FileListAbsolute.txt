@@ -4,3 +4,9 @@ C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile.Model\bin\Debug\En
 C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile.Model\bin\Debug\EntityFramework.xml
 C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile.Model\obj\Debug\RentalMobile.Model.dll
 C:\Users\haraissia\Desktop\RM\trunk\RentalMobile\RentalMobile.Model\obj\Debug\RentalMobile.Model.pdb
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\bin\Debug\RentalMobile.Model.dll
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\bin\Debug\RentalMobile.Model.pdb
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\bin\Debug\EntityFramework.dll
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\bin\Debug\EntityFramework.xml
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\obj\Debug\RentalMobile.Model.dll
+C:\Users\haraissia\Desktop\AnotherOne\RentalMobile.Model\obj\Debug\RentalMobile.Model.pdb
