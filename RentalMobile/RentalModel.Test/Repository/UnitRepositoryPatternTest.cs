@@ -15,7 +15,7 @@ namespace TestProject.Repository
     public class UnitRepositoryPatternTest
     {
 
-        public DummyRentalRepository UnitRepo;
+        public DummyRentalRepositoryTest UnitRepo;
         public UnitRepositoryPatternController Controller;
 
         private readonly FakeUnits _fakeUnits = new FakeUnits();
@@ -31,7 +31,7 @@ namespace TestProject.Repository
         {
             //Arrange//
             // Lets create our dummy repository
-            UnitRepo = new DummyRentalRepository(_fakeUnits.MyUnits);
+            UnitRepo = new DummyRentalRepositoryTest(_fakeUnits.MyUnits);
 
             // Now lets create the unitsController object to test and pass our unit of work
             Controller = new UnitRepositoryPatternController(UnitRepo);
@@ -51,7 +51,7 @@ namespace TestProject.Repository
         {
             //Arrange//
             // Lets create our dummy repository
-            UnitRepo = new DummyRentalRepository(_fakeUnits.MyUnits);
+            UnitRepo = new DummyRentalRepositoryTest(_fakeUnits.MyUnits);
 
             // Now lets create the unitsController object to test and pass our unit of work
             Controller = new UnitRepositoryPatternController(UnitRepo);

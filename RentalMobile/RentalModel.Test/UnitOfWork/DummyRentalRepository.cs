@@ -6,11 +6,11 @@ using RentalMobile.Models.CommonPattern;
 
 namespace TestProject.UnitOfWork
 {
-    public class DummyRentalRepository : IUnitRepository
+    public class DummyRentalRepositoryTest : IUnitRepository
     {
         public List<Unit> MyUnits;
 
-        public DummyRentalRepository(List<Unit> myUnits)
+        public DummyRentalRepositoryTest(List<Unit> myUnits)
         {
             MyUnits = myUnits;
         }

@@ -13,7 +13,7 @@ namespace TestProject.UnitOfWork
     [TestClass]
     public class UnitofWorkPatternTest
     { 
-        public DummyRentalRepository UnitRepo;
+        public DummyRentalRepositoryTest UnitRepo;
         public RentalMobile.Models.UnitOfWork.UnitOfWork Uow;
         public UnitofWorkPatternController Controller;
         private readonly FakeUnits _fakeUnits = new FakeUnits();
@@ -29,7 +29,7 @@ namespace TestProject.UnitOfWork
         {
             //Arrange//
             // Lets create our dummy repository
-            UnitRepo = new DummyRentalRepository(_fakeUnits.MyUnits);
+            UnitRepo = new DummyRentalRepositoryTest(_fakeUnits.MyUnits);
 
             // Let us now create the Unit of work with our dummy repository
             Uow = new RentalMobile.Models.UnitOfWork.UnitOfWork(UnitRepo);

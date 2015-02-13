@@ -75,7 +75,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(unit).State = (EntityState) System.Data.EntityState.Modified;
+                db.Entry(unit).State = (EntityState)System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
