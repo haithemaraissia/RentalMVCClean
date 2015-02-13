@@ -133,4 +133,3 @@ C:\Users\haraissia\Desktop\AnotherOne\RentalModel.Test\bin\Debug\System.Web.WebP
 C:\Users\haraissia\Desktop\AnotherOne\RentalModel.Test\obj\Debug\RentalMobile.Test.csprojResolveAssemblyReference.cache
 C:\Users\haraissia\Desktop\AnotherOne\RentalModel.Test\obj\Debug\TestProject.dll
 C:\Users\haraissia\Desktop\AnotherOne\RentalModel.Test\obj\Debug\TestProject.pdb
-C:\Users\haraissia\Desktop\AnotherOne\RentalModel.Test\bin\Debug\EntityFramework.xml
