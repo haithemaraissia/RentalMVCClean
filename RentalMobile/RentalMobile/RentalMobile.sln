@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile", "RentalMobile.csproj", "{7E67FC65-FF32-43FA-875C-401948AAA097}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westwind.plUploadHandler", "..\Westwind.plUploadHandler\Westwind.plUploadHandler.csproj", "{913A8E97-DC0B-4D26-AB59-4AC5C232910E}"
