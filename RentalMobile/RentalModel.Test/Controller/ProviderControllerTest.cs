@@ -28,7 +28,7 @@ namespace TestProject.Controller
             //for testing skill, try to test the group by caluse in linq
 
             var test2 = maintenanceteamassocation.ToList();
-            Assert.AreEqual("5", maintenanceteamassocation.Count().ToString(CultureInfo.InvariantCulture));
+            Assert.AreEqual("2", maintenanceteamassocation.Count().ToString(CultureInfo.InvariantCulture));
         }
     }
 }

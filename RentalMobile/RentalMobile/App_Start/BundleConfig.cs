@@ -1,8 +1,7 @@
 ﻿using System.Web.Optimization;
 using BundleTransformer.Core.Transformers;
-using RentalMobile.Bundles;
 
-namespace RentalMobile.App_Start
+namespace RentalMobile
 {
     /// <summary>
     /// Configuration of all bundle declarations.

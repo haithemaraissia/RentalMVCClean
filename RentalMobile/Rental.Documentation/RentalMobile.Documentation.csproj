@@ -63,10 +63,6 @@
       <Project>{3B753DDF-58F6-42E5-BD18-E1903B50589B}</Project>
       <Name>RentalMobile.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RentalMobile.Helper\RentalMobile.Helper.csproj">
-      <Project>{21A35F0E-3FAA-4FCF-A213-9B7D2D1F1022}</Project>
-      <Name>RentalMobile.Helper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RentalMobile\RentalMobile.csproj">
       <Project>{7E67FC65-FF32-43FA-875C-401948AAA097}</Project>
       <Name>RentalMobile</Name>
