@@ -3,12 +3,14 @@
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PROVIDER/@EntryIndexedValue">Provider</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPROVIDERS_005CPROFESSIONALS/@EntryIndexedValue">Views\Providers\Professionals</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPROVIDER_005CPROFESSIONALS/@EntryIndexedValue">Views\Provider\Professionals</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=CONFIGURATIONS_002EMAILSETTING_002ECONFIG/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=CONTENT_005CIMAGES_005CNOTICE_002DALERT_002EPNG/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=PROVIDERS/@EntryIndexedValue"></s:String>
 	
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=VIEWS_005CPROVIDER_005CSELECTTEAM/@EntryIndexedValue"></s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=VIEWS_005CSHARED_005CLAYOUTFRAME_005CIE7_002ECSS/@EntryIndexedValue">css\dotcss\ie\ie7.css</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=VIEWS_005CTEAM_005CPROVIDER/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONFIGURATIONS_002EMAILSETTING_002ECONFIG/@EntryIndexedValue">Configurations.MailSetting.config</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CIMAGES_005CNOTICE_002DALERT_002EPNG/@EntryIndexedValue">Content\Images\notice-alert.png</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PROPERTY/@EntryIndexedValue">property</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PROVIDER/@EntryIndexedValue">Provider</s:String>
