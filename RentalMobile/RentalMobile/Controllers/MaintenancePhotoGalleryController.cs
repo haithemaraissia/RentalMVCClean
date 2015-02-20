@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
 using RentalMobile.Models;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {

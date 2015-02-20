@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
 using RentalMobile.Models;

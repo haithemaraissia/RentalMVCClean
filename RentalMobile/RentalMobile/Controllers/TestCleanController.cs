@@ -278,7 +278,7 @@ namespace RentalMobile.Controllers
         public enum TeamCoverageOperations
         {
             Add = 1,
-            Remove = 2,
+            Remove = 2
         }
 
     

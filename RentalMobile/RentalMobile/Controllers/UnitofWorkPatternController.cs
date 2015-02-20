@@ -1,26 +1,46 @@
 ﻿using System.Web.Mvc;
-using RentalMobile.Models.UnitOfWork;
+using RentalModel.Repository.Generic.UnitofWork;
+//using RentalModel.Repository.UnitOfWork;
 
 namespace RentalMobile.Controllers
 {
     public class UnitofWorkPatternController : Controller
     {
-        private readonly UnitOfWork _unitOfWork;
+        //private readonly UnitOfWork _unitOfWork;
 
-        public UnitofWorkPatternController()
-            : this(new UnitOfWork())
+        //public UnitofWorkPatternController()
+        //    : this(new UnitOfWork())
+        //{
+        //}
+
+        //public UnitofWorkPatternController(UnitOfWork uow)
+        //{
+        //    _unitOfWork = uow;
+        //}
+
+        //public ActionResult Index()
+        //{
+        //    return View(_unitOfWork.UnitRepository.GetUnits());
+
+        //}
+
+        private readonly IGenericUnitofWork _unitofWork;
+
+        public UnitofWorkPatternController() 
         {
+            _unitofWork = new UnitofWork();
         }
 
-        public UnitofWorkPatternController(UnitOfWork uow)
+        public UnitofWorkPatternController(IGenericUnitofWork unitOfWork)
         {
-            _unitOfWork = uow;
+            _unitofWork = unitOfWork;
         }
 
         public ActionResult Index()
         {
-            return View(_unitOfWork.UnitRepository.GetUnits());
+            return View(_unitofWork.UnitRepository.All);
 
         }
+
     }
 }

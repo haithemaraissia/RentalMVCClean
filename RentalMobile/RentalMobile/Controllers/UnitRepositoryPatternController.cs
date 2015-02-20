@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
-using RentalMobile.Models.CommonPattern;
+
+using RentalModel.Repository.CommonPattern;
+using RentalModel.Repository.ToDelete.CommonPattern;
 
 namespace RentalMobile.Controllers
 {

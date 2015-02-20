@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.ServiceModel.Syndication;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using RentalMobile.ModelViews;
 using Email = Postal.Email;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace RentalMobile.Controllers
 {
@@ -635,7 +631,7 @@ namespace RentalMobile.Controllers
                                                title = e.EventTitle,
                                                start = startDate.Value.ToUnixTimestamp(),
                                                end = endDate.Value.ToUnixTimestamp(),
-                                               allDay = e.IsAllDay,
+                                               allDay = e.IsAllDay
                                            };
 
                 var rows = eventList.ToArray();
@@ -1273,7 +1269,7 @@ namespace RentalMobile.Controllers
         public static long ToUnixTimestamp(this DateTime target)
         {
             var date = new DateTime(1970, 1, 1, 0, 0, 0, target.Kind);
-            var unixTimestamp = System.Convert.ToInt64((target - date).TotalSeconds);
+            var unixTimestamp = Convert.ToInt64((target - date).TotalSeconds);
 
             return unixTimestamp;
         }

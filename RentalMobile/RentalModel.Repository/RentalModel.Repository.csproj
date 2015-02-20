@@ -31,7 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +48,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Data\Repositories\Model\FakeUnitRepository.cs" />
+    <Compile Include="ToDelete\CommonPattern\DummyRentalRepository.cs" />
+    <Compile Include="ToDelete\CommonPattern\IUnitRepository.cs" />
+    <Compile Include="ToDelete\CommonPattern\UnitRepository.cs" />
+    <Compile Include="Data\Fake\FakeUnits.cs" />
+    <Compile Include="Generic\Repositories\Base\FakeGenericRepository.cs" />
+    <Compile Include="Generic\Repositories\Base\GenericRepository.cs" />
+    <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
+    <Compile Include="Generic\Repositories\Model\ITenantRepository.cs" />
+    <Compile Include="Generic\Repositories\Model\TenantRepository.cs" />
+    <Compile Include="Generic\UnitofWork\IUnitofWork.cs" />
+    <Compile Include="Generic\UnitofWork\UnitofWork.cs" />
+    <Compile Include="ToDelete\UnitofWork2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
+      <Project>{3b753ddf-58f6-42e5-bd18-e1903b50589b}</Project>
+      <Name>RentalMobile.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Westwind.plUploadHandler\Westwind.plUploadHandler.csproj">
+      <Project>{913a8e97-dc0b-4d26-ab59-4ac5c232910e}</Project>
+      <Name>Westwind.plUploadHandler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

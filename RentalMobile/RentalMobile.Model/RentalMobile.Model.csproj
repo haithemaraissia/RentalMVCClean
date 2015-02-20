@@ -83,9 +83,6 @@
     <Compile Include="Models\Bed.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommonPattern\DummyRentalRepository.cs" />
-    <Compile Include="Models\CommonPattern\IUnitRepository.cs" />
-    <Compile Include="Models\CommonPattern\UnitRepository.cs" />
     <Compile Include="Models\Cooling.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -295,7 +292,6 @@
     <Compile Include="Models\UnitLuxuryAmenity.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UnitOfWork\UnitofWork.cs" />
     <Compile Include="Models\UnitPricing.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -331,9 +327,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RentalModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\UnitOfWork\Summary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

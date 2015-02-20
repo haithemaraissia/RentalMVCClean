@@ -6,10 +6,9 @@ using System.Web.Mvc;
 using Microsoft.Security.Application;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using RentalMobile.ModelViews;
 using Email = Postal.Email;
-
 
 namespace RentalMobile.Controllers
 {
@@ -79,7 +78,7 @@ namespace RentalMobile.Controllers
                         MaintenanceInterior = _db.MaintenanceInteriors.Find(companyId),
                         MaintenanceNewConstruction = _db.MaintenanceNewConstructions.Find(companyId),
                         MaintenanceRepair = _db.MaintenanceRepairs.Find(companyId),
-                        MaintenanceUtility = _db.MaintenanceUtilities.Find(companyId),
+                        MaintenanceUtility = _db.MaintenanceUtilities.Find(companyId)
                     };
                     return PartialView(mp);
                 }

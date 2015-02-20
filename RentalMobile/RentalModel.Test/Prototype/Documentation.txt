@@ -1,0 +1,11 @@
+Unit Test 
+	Memory test for controller
+	Moq for Service
+
+Integration Test 
+	Test Database for integration
+
+Steps
+Test
+Clean
+Move and Create a new 4.5 Solution

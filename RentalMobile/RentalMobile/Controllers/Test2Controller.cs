@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
-using RentalMobile.ModelViews;
 using RentalMobile.Models;
-using EntityState = System.Data.Entity.EntityState;
+using RentalMobile.ModelViews;
 
 namespace RentalMobile.Controllers
 {
@@ -75,7 +71,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(unit).State = (EntityState)System.Data.Entity.EntityState.Modified;
+                db.Entry(unit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

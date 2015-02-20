@@ -853,7 +853,7 @@ namespace RentalMobile.Controllers
                             MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                             MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                             MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                         };
                 }
             }
@@ -880,7 +880,7 @@ namespace RentalMobile.Controllers
                         MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                         MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                         MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                        MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                        MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                     };
             }
             return null;
@@ -1090,7 +1090,7 @@ namespace RentalMobile.Controllers
         public enum TeamCoverageOperations
         {
         Add = 1,
-	    Remove = 2,
+	    Remove = 2
         }
 
         public void AddSpecialistCoveragetoProviderCoverage(IEnumerable<PropertyInfo> properties)
@@ -1124,7 +1124,7 @@ namespace RentalMobile.Controllers
                             MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                             MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                             MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                         };
 
                    // var providerMaintenanceProfileproperties = typeof(ProviderMaintenanceProfile).GetProperties();

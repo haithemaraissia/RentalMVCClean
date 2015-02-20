@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using RentalMobile.Model.Models;
-using RentalMobile.ModelViews;
 using RentalMobile.Models;
+using RentalMobile.ModelViews;
 
 namespace RentalMobile.Controllers
 {
@@ -42,7 +42,7 @@ namespace RentalMobile.Controllers
                             MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                             MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                             MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                         };
                 }
             }
@@ -68,7 +68,7 @@ namespace RentalMobile.Controllers
                     MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                     MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                     MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                    MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                    MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                 };
             }
             return null;
@@ -93,7 +93,7 @@ namespace RentalMobile.Controllers
                     MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                     MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                     MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                    MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                    MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                 };
             }
             return null;

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
@@ -249,8 +247,8 @@ namespace RentalMobile.Controllers
             var provider = db.MaintenanceProviders.FirstOrDefault(t => t.MaintenanceProviderId == providerid);
             if (provider == null) return;
             //var opa = new OwnerPendingApplication
-            var mpj = new MaintenanceProviderNewJobOffer()
-                {
+            var mpj = new MaintenanceProviderNewJobOffer
+            {
                     TenantId = tenant.TenantId,
                     TenantName = tenant.FirstName + " " + tenant.LastName,
                     TenantEmailAddress = tenant.EmailAddress,

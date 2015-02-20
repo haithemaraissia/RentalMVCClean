@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-using RentalMobile.Helpers;
-using RentalMobile.ModelViews;
-using RentalMobile.Models;
 using PagedList;
+using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
+using RentalMobile.Models;
+using RentalMobile.ModelViews;
 
 namespace RentalMobile.Controllers
 {
@@ -42,7 +41,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(specialist).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                Db.Entry(specialist).State = EntityState.Modified;
                 Db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -60,7 +59,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(specialist).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                Db.Entry(specialist).State = EntityState.Modified;
                 specialist.GoogleMap = string.IsNullOrEmpty(specialist.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(specialist.Address, specialist.City, specialist.CountryCode);
                 Db.SaveChanges();
                 return RedirectToAction("Index");
@@ -200,7 +199,7 @@ namespace RentalMobile.Controllers
                                      MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                                      MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                                      MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                                     MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                                     MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                                  };
 
                     return View(mp);
@@ -223,16 +222,16 @@ namespace RentalMobile.Controllers
 
                         s.MaintenanceCompanySpecialization.Currency =
                             UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
-                        Db.Entry(s.MaintenanceCompany).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanyLookUp).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanySpecialization).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceCustomService).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceExterior).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceInterior).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceNewConstruction).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceRepair).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceUtility).State = (System.Data.Entity.EntityState) EntityState.Modified;
-                        Db.Entry(s.MaintenanceUtility).State = (System.Data.Entity.EntityState) EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceCustomService).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceExterior).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceInterior).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceNewConstruction).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceRepair).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
+                        Db.Entry(s.MaintenanceUtility).State = EntityState.Modified;
                         UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
                         UpdateSpecialistProfile((int)specialistId, s.MaintenanceCompany);
                         Db.SaveChanges();
@@ -400,7 +399,7 @@ namespace RentalMobile.Controllers
                                                      TeamId = sti.TeamId,
                                                      TeamName = sti.TeamName,
                                                      MaintenanceProviderId = sti.MaintenanceProviderId,
-                                                     SpecialistId = sti.SpecialistID,
+                                                     SpecialistId = sti.SpecialistID
 
                                                  };
 
@@ -528,7 +527,7 @@ namespace RentalMobile.Controllers
                             MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
                             MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
                             MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId),
+                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
                         };
 
                     return PartialView(mp);

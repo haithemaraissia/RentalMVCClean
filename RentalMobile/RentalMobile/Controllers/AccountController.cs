@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -371,23 +374,23 @@ namespace RentalMobile.Controllers
             body += "<p>If you did not request a password reset you do not need to take any action.</p>";
 
             var plainView = AlternateView.CreateAlternateViewFromString
-                (System.Text.RegularExpressions.Regex.Replace(body, @"<(.|\n)*?>", string.Empty), null, "text/plain");
+                (Regex.Replace(body, @"<(.|\n)*?>", string.Empty), null, "text/plain");
 
             var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
 
             var message = new MailMessage("haithem-araissia.com", user.Email)
                 {
                     Subject = "Password Reset",
-                    BodyEncoding = System.Text.Encoding.GetEncoding("utf-8"),
+                    BodyEncoding = Encoding.GetEncoding("utf-8"),
                     IsBodyHtml = true,
-                    Priority = MailPriority.High,
+                    Priority = MailPriority.High
                 };
 
             message.AlternateViews.Add(plainView);
             message.AlternateViews.Add(htmlView);
 
             var smtpMail = new SmtpClient();
-            var basicAuthenticationInfo = new System.Net.NetworkCredential("postmaster@haithem-araissia.com",
+            var basicAuthenticationInfo = new NetworkCredential("postmaster@haithem-araissia.com",
                                                                            "haithem759163");
             smtpMail.Host = "mail.haithem-araissia.com";
             smtpMail.UseDefaultCredentials = false;
@@ -760,7 +763,7 @@ namespace RentalMobile.Controllers
                         Name = model.UserName,
                         EmailAddress = model.Email,
                         GoogleMap = "USA",
-                        Country = "US",
+                        Country = "US"
                         //   CountryCode = "US"
                     };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
@@ -838,7 +841,7 @@ namespace RentalMobile.Controllers
                     Name = model.UserName,
                     EmailAddress = model.Email,
                     GoogleMap = "USA",
-                    Country = "US",
+                    Country = "US"
                     //   CountryCode = "US"
                 };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
