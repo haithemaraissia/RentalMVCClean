@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\MoreModel\AccountModels.cs" />
     <Compile Include="Models\Agent.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -222,9 +222,9 @@
     </Compile>
     <Compile Include="Models\RentalContextGenerator.cs" />
     <Compile Include="Models\RentalContextGenerator1.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalModel.Designer.cs" />
     <Compile Include="Models\RentalModel1.Designer.cs">
@@ -235,8 +235,8 @@
     <Compile Include="Models\ServiceType.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Session.cs" />
-    <Compile Include="Models\Sessions.cs" />
+    <Compile Include="Models\MoreModel\Session.cs" />
+    <Compile Include="Models\MoreModel\Sessions.cs" />
     <Compile Include="Models\Specialist.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -252,7 +252,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TeamSpecialistInvitation.cs" />
+    <Compile Include="Models\MoreModel\TeamSpecialistInvitation.cs" />
     <Compile Include="Models\Tenant.cs">
       <DependentUpon>RentalContextGenerator.tt</DependentUpon>
     </Compile>
@@ -327,6 +327,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RentalModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,13 +9,12 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class Unit
+using System.Collections.Generic;
+
+namespace RentalMobile.Model.Models
+{
+    public partial class Unit
 {
 
     public Unit()

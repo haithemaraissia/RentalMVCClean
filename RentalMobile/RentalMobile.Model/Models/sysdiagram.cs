@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class sysdiagram
+
+namespace RentalMobile.Model.Models
+{
+    public partial class sysdiagram
 {
 
     public string name { get; set; }

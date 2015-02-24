@@ -8,66 +8,9 @@ using RentalModel.Repository.ToDelete.CommonPattern;
 
 namespace RentalModel.Repository.Generic.UnitofWork
 {
-    public class UnitofWork : IGenericUnitofWork
+    public partial class UnitofWork : IGenericUnitofWork
     {
-        public  DbContext Context;
-      
-
-        public UnitofWork()
-        {
-            Context = new RentalContext();
-        }
-
-        public UnitofWork(DbContext context)
-        {
-            Context = context;
-        }
-
-
-        private IGenericRepository<Tenant> _tenantRepository;
-        private IGenericRepository<Unit> _unitRepository;
-
-        public IGenericRepository<Tenant> TenantRepository
-        {
-            get { return _tenantRepository ?? (_tenantRepository = new GenericRepository<Tenant>(Context)); }
-            set { _tenantRepository = value; }
-        }
-        public IGenericRepository<Unit> UnitRepository
-        {
-            get { return _unitRepository ?? (_unitRepository = new GenericRepository<Unit>(Context)); }
-            set { _unitRepository = value; }
-        }
-
-
-        public void Save()
-        {
-            Context.SaveChanges();
-        }
-
-        private bool _disposed;
-
-
-
-        public void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    Context.Dispose();
-                }
-            }
-            _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }        
-        
-        
-        
+       
 
 
 

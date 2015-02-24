@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
+using System.Collections.Generic;
 
-using System;
-    using System.Collections.Generic;
-    
-public partial class UrgencyType
+namespace RentalMobile.Model.Models
+{
+    public partial class UrgencyType
 {
 
     public UrgencyType()

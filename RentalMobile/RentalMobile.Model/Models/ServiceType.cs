@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
+using System.Collections.Generic;
 
-using System;
-    using System.Collections.Generic;
-    
-public partial class ServiceType
+namespace RentalMobile.Model.Models
+{
+    public partial class ServiceType
 {
 
     public ServiceType()

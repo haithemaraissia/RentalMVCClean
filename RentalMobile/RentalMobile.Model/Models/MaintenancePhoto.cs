@@ -9,13 +9,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
+namespace RentalMobile.Model.Models
 {
-
-using System;
-    using System.Collections.Generic;
-    
-public partial class MaintenancePhoto
+    public partial class MaintenancePhoto
 {
 
     public int MaintenanceID { get; set; }

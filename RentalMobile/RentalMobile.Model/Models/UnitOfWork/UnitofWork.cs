@@ -16,6 +16,8 @@ namespace RentalMobile.Models.UnitOfWork
         // This will be created from test project and passed on to the
         // controllers parameterized constructors
 
+        //Over here to simply , we have passed the repository , for our case we passed the unit of work
+
         public UnitOfWork(IUnitRepository unitRepository)
         {
             UnitRepository = unitRepository;

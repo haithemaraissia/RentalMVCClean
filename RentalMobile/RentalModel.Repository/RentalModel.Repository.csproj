@@ -49,9 +49,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Repositories\Model\FakeUnitRepository.cs" />
-    <Compile Include="ToDelete\CommonPattern\DummyRentalRepository.cs" />
-    <Compile Include="ToDelete\CommonPattern\IUnitRepository.cs" />
-    <Compile Include="ToDelete\CommonPattern\UnitRepository.cs" />
+    <Compile Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.cs">
+      <DependentUpon>IGenericUnitofWorkGenerator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Generic\UnitofWork\UnitOfWorkGenerator.cs">
+      <DependentUpon>UnitOfWorkGenerator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\DummyRentalRepository.cs" />
+    <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\IUnitRepository.cs" />
+    <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\UnitRepository.cs" />
     <Compile Include="Data\Fake\FakeUnits.cs" />
     <Compile Include="Generic\Repositories\Base\FakeGenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\GenericRepository.cs" />
@@ -60,8 +70,17 @@
     <Compile Include="Generic\Repositories\Model\TenantRepository.cs" />
     <Compile Include="Generic\UnitofWork\IUnitofWork.cs" />
     <Compile Include="Generic\UnitofWork\UnitofWork.cs" />
-    <Compile Include="ToDelete\UnitofWork2.cs" />
+    <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Testing\Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Testing\TestTemplate.cs">
+      <DependentUpon>TestTemplate.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
@@ -73,10 +92,24 @@
       <Name>Westwind.plUploadHandler</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IGenericUnitofWorkGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generic\UnitofWork\UnitOfWorkGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnitOfWorkGenerator.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+    <None Include="Tools\Testing\TestTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

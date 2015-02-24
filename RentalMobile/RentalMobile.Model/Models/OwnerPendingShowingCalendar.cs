@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class OwnerPendingShowingCalendar
+
+namespace RentalMobile.Model.Models
+{
+    public partial class OwnerPendingShowingCalendar
 {
 
     public int EventID { get; set; }

@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class SpecialistProfileComment
+
+namespace RentalMobile.Model.Models
+{
+    public partial class SpecialistProfileComment
 {
 
     public int CommentId { get; set; }

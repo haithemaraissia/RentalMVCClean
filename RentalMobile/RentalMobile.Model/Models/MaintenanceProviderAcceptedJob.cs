@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class MaintenanceProviderAcceptedJob
+
+namespace RentalMobile.Model.Models
+{
+    public partial class MaintenanceProviderAcceptedJob
 {
 
     public int MaintenanceProviderId { get; set; }

@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
+using System.Collections.Generic;
 
-using System;
-    using System.Collections.Generic;
-    
-public partial class MaintenanceOrder
+namespace RentalMobile.Model.Models
+{
+    public partial class MaintenanceOrder
 {
 
     public MaintenanceOrder()

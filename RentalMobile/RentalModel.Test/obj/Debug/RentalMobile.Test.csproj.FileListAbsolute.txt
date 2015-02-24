@@ -1,0 +1,78 @@
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\obj\Debug\RentalMobile.Test.csprojResolveAssemblyReference.cache
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\bin\PagedList.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\bin\PagedList.Mvc.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\TestProject.dll.config
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\TestProject.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\TestProject.pdb
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\EntityFramework.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\Moq.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\nunit.framework.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalMobile.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalMobile.Model.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\System.Web.Mvc.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\System.Web.Optimization.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\plUploadHandler.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\AdControl.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\BundleTransformer.Core.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\WebGrease.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\itextsharp.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\Postal.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\Facebook.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\HtmlSanitizationLibrary.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\PagedList.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalMobile.Model.pdb
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalMobile.pdb
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\RentalModel.Repository.pdb
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\EntityFramework.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\Moq.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\nunit.framework.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\System.Web.Mvc.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\System.Web.Optimization.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\plUploadHandler.pdb
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\HtmlSanitizationLibrary.xml
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\bin\Debug\ru-ru\BundleTransformer.Core.resources.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\obj\Debug\TestProject.dll
+C:\Users\haraissia\Desktop\Another Test2\RentalModel.Test\obj\Debug\TestProject.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\bin\PagedList.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\bin\PagedList.Mvc.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\TestProject.dll.config
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\TestProject.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\TestProject.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\EntityFramework.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\Moq.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\nunit.framework.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalMobile.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalMobile.Model.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalModel.Repository.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\System.Web.Mvc.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\System.Web.Optimization.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\plUploadHandler.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\AdControl.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\BundleTransformer.Core.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\WebGrease.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\itextsharp.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\Postal.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\Facebook.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\HtmlSanitizationLibrary.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\PagedList.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalMobile.Model.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalMobile.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\RentalModel.Repository.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\EntityFramework.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\Moq.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\nunit.framework.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\System.Web.Mvc.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\System.Web.Optimization.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\plUploadHandler.pdb
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\HtmlSanitizationLibrary.xml
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\bin\Debug\ru-ru\BundleTransformer.Core.resources.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\obj\Debug\RentalMobile.Test.csprojResolveAssemblyReference.cache
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\obj\Debug\TestProject.dll
+C:\Users\haraissia\Desktop\Last\RentalModel.Test\obj\Debug\TestProject.pdb

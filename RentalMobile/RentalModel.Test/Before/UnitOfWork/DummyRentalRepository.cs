@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 using RentalModel.Repository.CommonPattern;
 

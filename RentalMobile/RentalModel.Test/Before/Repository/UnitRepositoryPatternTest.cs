@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 using RentalModel.Repository.CommonPattern;
 using TestProject.Before.Fake;

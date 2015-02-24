@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class OwnerAcceptedPostedProject
+
+namespace RentalMobile.Model.Models
+{
+    public partial class OwnerAcceptedPostedProject
 {
 
     public int ID { get; set; }

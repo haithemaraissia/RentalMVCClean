@@ -1,4 +1,5 @@
 ﻿
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 
 namespace RentalMobile.ModelViews

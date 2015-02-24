@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
+using RentalMobile.Model.Models;
 using RentalMobile.Models;
 using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Data.Repositories.Model;

@@ -9,13 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-namespace RentalMobile.Models
-{
-
 using System;
-    using System.Collections.Generic;
-    
-public partial class AgentRejectedApplication
+
+namespace RentalMobile.Model.Models
+{
+    public partial class AgentRejectedApplication
 {
 
     public int ApplicationId { get; set; }
