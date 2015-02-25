@@ -7,9 +7,5 @@ namespace RentalModel.Repository.Generic.Repositories.Model
 {
     public class TenantRepository : GenericRepository<Tenant>, ITenantRepository
     {
-        public void test()
-        {
-            
-        }
     }
 }
