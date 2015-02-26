@@ -74,7 +74,6 @@
         <EntityTypeShape EntityType="RentalModel.SpecialistPendingTeamInvitation" Width="1.5" PointX="32.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.SpecialistProfileComment" Width="1.5" PointX="32.75" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.SpecialistWork" Width="1.5" PointX="32.75" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RentalModel.sysdiagram" Width="1.5" PointX="33.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.Tenant" Width="1.5" PointX="12.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.TenantFavorite" Width="1.5" PointX="15" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.TenantMaintenance" Width="1.5" PointX="10.25" PointY="8.5" IsExpanded="true" />

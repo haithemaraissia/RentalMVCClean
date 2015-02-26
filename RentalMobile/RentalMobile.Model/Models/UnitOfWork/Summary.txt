@@ -1,8 +1,0 @@
-﻿
-Unit of Work:
-	Good things:
-		Test the logic
-		Use dataSet linq entity from Microsoft
-
-	Bad Thing:
-		You can't save the data.

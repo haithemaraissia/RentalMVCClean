@@ -277,9 +277,6 @@
     <Compile Include="Models\SpecialistWork.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>RentalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Tenant.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>

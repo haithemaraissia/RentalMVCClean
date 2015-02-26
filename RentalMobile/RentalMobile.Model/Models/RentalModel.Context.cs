@@ -94,7 +94,6 @@ namespace RentalMobile.Model.Models
         public virtual DbSet<SpecialistPendingTeamInvitation> SpecialistPendingTeamInvitations { get; set; }
         public virtual DbSet<SpecialistProfileComment> SpecialistProfileComments { get; set; }
         public virtual DbSet<SpecialistWork> SpecialistWorks { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tenant> Tenants { get; set; }
         public virtual DbSet<TenantFavorite> TenantFavorites { get; set; }
         public virtual DbSet<TenantMaintenance> TenantMaintenances { get; set; }
