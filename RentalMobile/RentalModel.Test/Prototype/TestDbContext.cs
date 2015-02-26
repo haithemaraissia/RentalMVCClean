@@ -96,7 +96,6 @@ namespace TestProject.Prototype
         public DbSet<MaintenancePhoto> MaintenancePhotoes { get; set; }
         public DbSet<OwnerMaintenance> OwnerMaintenances { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
-        public DbSet<sysdiagram> Sysdiagrams { get; set; }
         public DbSet<UrgencyType> UrgencyTypes { get; set; }
         public DbSet<TenantMaintenance> TenantMaintenances { get; set; }
         public DbSet<Agent> Agents { get; set; }

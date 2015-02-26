@@ -31,7 +31,25 @@ namespace RentalModel.Repository.Generic.Repositories.Model
     }
 }
        <#
-    }        
+    }   
+    
+ 
+        foreach ( var FileName in  GetAllFilesFromModelPath(CurrentModelViewDirectoryFromSolution()))
+    { 
+        manager.StartNewFile(FileName + "Repository.cs");#>
+using RentalMobile.Model.ModelViews;
+using RentalModel.Repository.Generic.Repositories.Base;
+
+namespace RentalModel.Repository.Generic.Repositories.Model
+{
+    public partial class <#=FileName#>Repository : GenericRepository<<#=FileName#>>, I<#=FileName#>Repository
+    {
+
+    }
+}
+       <#
+    }   
+
  manager.Process(true, true); #>
 
 

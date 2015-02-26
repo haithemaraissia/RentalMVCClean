@@ -328,7 +328,12 @@
     <Compile Include="Models\UrgencyType.cs">
       <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelViews\AccountModels.cs" />
+    <Compile Include="ModelViews\ChangeEmail.cs" />
+    <Compile Include="ModelViews\ChangePasswordModel.cs" />
+    <Compile Include="ModelViews\ForgotPasswordModel.cs" />
+    <Compile Include="ModelViews\LogOnModel.cs" />
+    <Compile Include="ModelViews\PrimaryVideo.cs" />
+    <Compile Include="ModelViews\RegisterModel.cs" />
     <Compile Include="Pattern\CommonPattern\DummyRentalRepository.cs">
       <SubType>Code</SubType>
     </Compile>

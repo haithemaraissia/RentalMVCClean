@@ -29,8 +29,6 @@ namespace TestProject.Before.Model
 
     public DbSet<ServiceType> ServiceTypes { get; set; }
 
-    public DbSet<sysdiagram> sysdiagrams { get; set; }
-
     public DbSet<UrgencyType> UrgencyTypes { get; set; }
 
     public DbSet<TenantMaintenance> TenantMaintenances { get; set; }

@@ -17,6 +17,7 @@
 <#    
     var manager = Manager.Create(Host, GenerationEnvironment); 
 
+    //Model
     foreach ( var FileName in  GetAllFilesFromModelPath(CurrentModelDirectoryFromSolution()))
     { 
         manager.StartNewFile("I" + FileName + "Repository.cs");#>
@@ -31,7 +32,25 @@ namespace RentalModel.Repository.Generic.Repositories.Model
     }
 }
        <#
-    }        
+    }     
+   
+
+    //ModelView 
+        foreach ( var FileName in  GetAllFilesFromModelPath(CurrentModelViewDirectoryFromSolution()))
+    { 
+        manager.StartNewFile("I" + FileName + "Repository.cs");#>
+using RentalMobile.Model.ModelViews;
+using RentalModel.Repository.Generic.Repositories.Base;
+
+namespace RentalModel.Repository.Generic.Repositories.Model
+{
+    interface I<#=FileName#>Repository : IGenericRepository<<#=FileName#>>
+    {
+
+    }
+}
+       <#
+    }     
  manager.Process(true, true); #>
 
 

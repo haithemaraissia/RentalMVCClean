@@ -77,6 +77,36 @@
     <Compile Include="Generic\Repositories\Model\AgentRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_ApplicationsRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_MembershipRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_PathsRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_PersonalizationAllUsersRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_PersonalizationPerUserRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_ProfileRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_RolesRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_SchemaVersionsRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_UsersRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\aspnet_WebEvent_EventsRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\BasementRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -84,6 +114,12 @@
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\BedRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ChangeEmailRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ChangePasswordModelRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\CoolingRepository.cs">
@@ -96,6 +132,9 @@
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\FloorRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ForgotPasswordModelRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\FoundationRepository.cs">
@@ -139,6 +178,36 @@
     <Compile Include="Generic\Repositories\Model\IAgentRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_ApplicationsRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_MembershipRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_PathsRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_PersonalizationAllUsersRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_PersonalizationPerUserRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_ProfileRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_RolesRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_SchemaVersionsRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_UsersRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\Iaspnet_WebEvent_EventsRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\IBasementRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -146,6 +215,12 @@
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IBedRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IChangeEmailRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IChangePasswordModelRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ICoolingRepository.cs">
@@ -158,6 +233,9 @@
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IFloorRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IForgotPasswordModelRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IFoundationRepository.cs">
@@ -175,6 +253,9 @@
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IHeatingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ILogOnModelRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IMaintenanceCompanyLookUpRepository.cs">
@@ -249,6 +330,9 @@
     <Compile Include="Generic\Repositories\Model\IOwnerPendingPostedProjectRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerPendingShowingCalendarModelViewRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\IOwnerPendingShowingCalendarRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -270,10 +354,19 @@
     <Compile Include="Generic\Repositories\Model\IParkingSpaceRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\IPrimaryVideoRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\IProjectPhotoRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProviderMaintenanceCompleteProfileRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProviderMaintenanceProfileRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IProviderProfileCommentRepository.cs">
@@ -282,10 +375,16 @@
     <Compile Include="Generic\Repositories\Model\IProviderWorkRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\IRegisterModelRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\IRentalApplicationRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IServiceTypeRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ISpecialistMaintenanceProfileRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ISpecialistPendingTeamInvitationRepository.cs">
@@ -300,10 +399,19 @@
     <Compile Include="Generic\Repositories\Model\ISpecialistWorkRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\ITeamSpecialistInvitationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\ITenantFavoriteRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ITenantMaintenanceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantMaintenanceViewModelRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantModelViewRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ITenantRepository.cs">
@@ -313,6 +421,9 @@
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ITenantShowingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITestRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\IUnitApplianceRepository.cs">
@@ -336,6 +447,9 @@
     <Compile Include="Generic\Repositories\Model\IUnitLuxuryAmenityRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitModelViewRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\IUnitPricingRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -350,6 +464,9 @@
     </Compile>
     <Compile Include="Generic\Repositories\Model\IUrgencyTypeRepository.cs">
       <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\LogOnModelRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\MaintenanceCompanyLookUpRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
@@ -423,6 +540,9 @@
     <Compile Include="Generic\Repositories\Model\OwnerPendingPostedProjectRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerPendingShowingCalendarModelViewRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\OwnerPendingShowingCalendarRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -444,10 +564,19 @@
     <Compile Include="Generic\Repositories\Model\ParkingSpaceRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\PrimaryVideoRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\ProjectPhotoRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProviderMaintenanceCompleteProfileRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProviderMaintenanceProfileRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ProviderProfileCommentRepository.cs">
@@ -456,10 +585,16 @@
     <Compile Include="Generic\Repositories\Model\ProviderWorkRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\RegisterModelRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\RentalApplicationRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\ServiceTypeRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\SpecialistMaintenanceProfileRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\SpecialistPendingTeamInvitationRepository.cs">
@@ -474,10 +609,19 @@
     <Compile Include="Generic\Repositories\Model\SpecialistWorkRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Repositories\Model\TeamSpecialistInvitationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Model\TenantFavoriteRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\TenantMaintenanceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantMaintenanceViewModelRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantModelViewRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\TenantRepository.cs">
@@ -487,6 +631,9 @@
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\TenantShowingRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TestRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\UnitApplianceRepository.cs">
@@ -508,6 +655,9 @@
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\UnitLuxuryAmenityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitModelViewRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Generic\Repositories\Model\UnitPricingRepository.cs">
