@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RentalMobile.Model.Models;
-using RentalMobile.Models;
+﻿using RentalMobile.Model.Models;
 
-namespace RentalMobile.ModelViews
+namespace RentalMobile.Model.ModelViews
 {
     public class UnitModelView
     {
@@ -17,11 +12,7 @@ namespace RentalMobile.ModelViews
         public UnitExteriorAmenity UnitExteriorAmenity { get; set; }
         public UnitLuxuryAmenity UnitLuxuryAmenity { get; set; }
         public UnitPricing UnitPricing { get; set; }
-
-
         public UnitGallery UnitGallery { get; set; }
-
         public Currency Currency { get; set; }
-
     }
 }

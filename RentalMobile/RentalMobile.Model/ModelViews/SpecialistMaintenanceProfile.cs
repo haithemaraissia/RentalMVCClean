@@ -1,7 +1,6 @@
 ﻿using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
-namespace RentalMobile.ModelViews
+namespace RentalMobile.Model.ModelViews
 {
     public class SpecialistMaintenanceProfile
     {
@@ -14,6 +13,5 @@ namespace RentalMobile.ModelViews
         public MaintenanceNewConstruction MaintenanceNewConstruction { get; set; }
         public MaintenanceRepair MaintenanceRepair { get; set; }
         public MaintenanceUtility MaintenanceUtility { get; set; }
-
     }
 }

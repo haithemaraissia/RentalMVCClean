@@ -1,8 +1,6 @@
-﻿
-using RentalMobile.Model.Models;
-using RentalMobile.Models;
+﻿using RentalMobile.Model.Models;
 
-namespace RentalMobile.ModelViews
+namespace RentalMobile.Model.ModelViews
 {
     public class Test
     {
@@ -10,4 +8,3 @@ namespace RentalMobile.ModelViews
         public UnitFeature UnitFeature { get; set; }
     }
 }
-

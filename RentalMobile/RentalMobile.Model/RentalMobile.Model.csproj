@@ -31,13 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -49,261 +52,298 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MoreModel\AccountModels.cs" />
     <Compile Include="Models\Agent.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentAcceptedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentAcceptedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentPendingApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentPendingPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentRejectedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentRejectedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Applications.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Membership.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Paths.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Profile.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Roles.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_SchemaVersions.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_Users.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_WebEvent_Events.cs">
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Basement.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bathroom.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bed.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cooling.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Currency.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Floor.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FloorCovering.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Foundation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Garage.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedRentalContract.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Heating.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceCompany.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceCompanyLookUp.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceCompanySpecialization.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceCrew.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceCustomService.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceExterior.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceInterior.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceNewConstruction.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceOrder.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenancePhoto.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceProvider.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceProviderAcceptedJob.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceProviderNewJobOffer.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceProviderRejectedJob.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceProviderZone.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceRepair.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceTeam.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceTeamAssociation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MaintenanceUtility.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Owner.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerAcceptedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerAcceptedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerMaintenance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerPendingApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerPendingPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerPendingShowingCalendar.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerRejectedApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerRejectedPostedProject.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OwnerShowingCalendar.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ParkingSpace.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Project.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProjectPhoto.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProviderProfileComment.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProviderWork.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalApplication.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentalContextGenerator.Context1.cs">
-      <DependentUpon>RentalContextGenerator.Context.tt</DependentUpon>
+    <Compile Include="Models\RentalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>RentalModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentalContextGenerator.cs" />
-    <Compile Include="Models\RentalContextGenerator1.cs">
+    <Compile Include="Models\RentalModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentalModel.Designer.cs" />
-    <Compile Include="Models\RentalModel1.Designer.cs">
+    <Compile Include="Models\RentalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>RentalModel.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\ServiceType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MoreModel\Session.cs" />
-    <Compile Include="Models\MoreModel\Sessions.cs" />
     <Compile Include="Models\Specialist.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpecialistPendingTeamInvitation.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpecialistProfileComment.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpecialistWork.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MoreModel\TeamSpecialistInvitation.cs" />
     <Compile Include="Models\Tenant.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TenantFavorite.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TenantMaintenance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TenantSavedSearch.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TenantShowing.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Unit.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitAppliance.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitCommunityAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitExteriorAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitFeature.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitGallery.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitInteriorAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitLuxuryAmenity.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitPricing.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UploadedContract.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UrgencyType.cs">
-      <DependentUpon>RentalContextGenerator.tt</DependentUpon>
+      <DependentUpon>RentalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelViews\AccountModels.cs" />
+    <Compile Include="Pattern\CommonPattern\DummyRentalRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pattern\CommonPattern\IUnitRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pattern\CommonPattern\UnitRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pattern\MoreModelFeatures\FromXMLExample\Session.cs" />
+    <Compile Include="Pattern\MoreModelFeatures\FromXMLExample\Sessions.cs" />
+    <Compile Include="ModelViews\TeamSpecialistInvitation.cs" />
     <Compile Include="ModelViews\OwnerPendingShowingCalendarModelView.cs" />
     <Compile Include="ModelViews\ProviderMaintenanceCompleteProfile.cs" />
     <Compile Include="ModelViews\ProviderMaintenanceProfile.cs" />
@@ -312,25 +352,39 @@
     <Compile Include="ModelViews\TenantModelView.cs" />
     <Compile Include="ModelViews\Test.cs" />
     <Compile Include="ModelViews\UnitModelView.cs" />
+    <Compile Include="Pattern\UnitOfWork\UnitofWork.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\RentalContextGenerator.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RentalContextGenerator.Context1.cs</LastGenOutput>
-    </None>
-    <None Include="Models\RentalContextGenerator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RentalContextGenerator1.cs</LastGenOutput>
-    </None>
+    <Content Include="Documentation\DocumentationPart1.txt" />
+    <Content Include="Pattern\UnitOfWork\Summary.txt" />
+    <None Include="App.config" />
+    <Content Include="Configurations\ConnectionString.config" />
     <EntityDeploy Include="Models\RentalModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RentalModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>RentalModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Models\RentalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalModel.edmx</DependentUpon>
+      <LastGenOutput>RentalModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\RentalModel.edmx.diagram">
+      <DependentUpon>RentalModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\RentalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalModel.edmx</DependentUpon>
+      <LastGenOutput>RentalModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

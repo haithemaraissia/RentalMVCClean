@@ -1,0 +1,20 @@
+﻿Documentation
+It should be clean 
+
+Configuration
+	
+Models
+	EMDX File , then Add 
+	
+
+ModelView
+	All Classes from ViewModel
+	
+Pattern
+
+	CommonPattern and UnitofWork
+		Old Pattern with using only Repository not unit of work pattern
+
+	MoreModelFeatures
+		FromXMLFeatures
+			Example of using xml to load property into an entity class 
