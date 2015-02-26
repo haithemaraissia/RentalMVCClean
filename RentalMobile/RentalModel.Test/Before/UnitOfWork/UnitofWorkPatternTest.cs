@@ -4,8 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalModel.Repository.CommonPattern;
+using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
 using TestProject.Before.Fake;
 using Assert = NUnit.Framework.Assert;
 

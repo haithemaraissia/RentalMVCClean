@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using NUnit.Framework;
-using RentalMobile.Controllers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 using Assert = NUnit.Framework.Assert;
 
-namespace TestProject.Logic
+namespace TestProject.Before.Logic
 {
     [TestClass]
     public class OwnerControllerUnitTest

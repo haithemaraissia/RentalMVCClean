@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
 namespace RentalMobile.Helpers
 {

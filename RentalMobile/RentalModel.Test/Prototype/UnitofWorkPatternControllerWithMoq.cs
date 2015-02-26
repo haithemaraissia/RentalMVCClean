@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Generic.Repositories.Base;
 using RentalModel.Repository.Generic.UnitofWork;

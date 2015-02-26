@@ -1,10 +1,9 @@
-using System;
 using System.IO;
 using System.Web;
-using plUploadHandler.Properties;
 using System.Web.Script.Serialization;
+using plUploadHandler.Properties;
 
-namespace Westwind.plUpload
+namespace plUploadHandler
 {
 
 /// <summary>

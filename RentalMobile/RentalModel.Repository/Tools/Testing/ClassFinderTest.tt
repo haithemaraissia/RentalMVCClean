@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(ProjectDir)\bin\Debug\RentalModel.Repository.dll" #>
+using System.ComponentModel;
+using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.Repositories.Base;
+
+<#@ include file="$(ProjectDir)\Tools\ClassFinder.tt"#>
+
+<#
+	Start(
+		typeof(RentalModel.Repository.Generic.Repositories.Base.IGenericRepository<Type>), 
+		new Predicate<string>((s) => s.StartsWith("_"))
+		);
+#>
+
+<#+
+private void WriteClassStart(string className, string classAccess, string classNamespace)
+{
+#>
+namespace <#= classNamespace #>
+{
+	<#= classAccess #> partial class <#= className #>
+	{
+<#+
+}
+
+private void WriteClassEnd(string className, string classAccess, string classNamespace)
+{
+#>
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged(string name)
+		{
+			if(this.PropertyChanged != null)
+			{
+				this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(name));
+			}
+		}
+	}
+}
+<#+
+}
+
+private void WriteProperty(string fieldName, string propType)
+{
+		char[] tmp = fieldName.TrimStart('_').ToCharArray();
+		tmp.SetValue(char.ToUpper(tmp[0]),0);
+
+		string propName = new string(tmp);
+#>
+		public <#= propType #> <#= propName #>
+		{
+			get { return <#= fieldName #>; }
+			set { <#= fieldName #> = value; OnPropertyChanged("<#= propName #>"); }
+		}
+<#+
+}
+#>

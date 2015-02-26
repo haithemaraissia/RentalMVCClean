@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalModel.Repository.CommonPattern;
 using RentalModel.Repository.Generic.Repositories.Base;
-using RentalModel.Repository.ToDelete.CommonPattern;
+using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
 
 namespace RentalModel.Repository.Generic.UnitofWork
 {
@@ -17,7 +15,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
 
         ////////////////////////TO BE DELETED////////////////////////////////
         //to be deleted after all the cleanning , necessary for the build and its reference
-        private readonly RentalContext _rentalContext;
+        public readonly RentalContext _rentalContext;
         public void UnitOfWork2()
         {
            // _context = new RentalContext();

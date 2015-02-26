@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
+using EntityState = System.Data.EntityState;
 
 namespace RentalMobile.Controllers
 { 
@@ -68,7 +68,7 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(generatedrentalcontract).State = EntityState.Modified;
+                db.Entry(generatedrentalcontract).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -2,9 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
-namespace TestProject.Controller
+namespace TestProject.Before.Controller
 {
     [TestClass]
     public class ProviderControllerTest

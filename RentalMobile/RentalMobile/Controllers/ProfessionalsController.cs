@@ -5,8 +5,7 @@ using System.Web.Mvc;
 using Microsoft.Security.Application;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalMobile.ModelViews;
+using RentalMobile.Model.ModelViews;
 using Email = Postal.Email;
 
 namespace RentalMobile.Controllers

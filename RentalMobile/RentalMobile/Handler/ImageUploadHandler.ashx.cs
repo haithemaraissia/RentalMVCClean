@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Web;
-using Westwind.plUpload;
+using plUploadHandler;
 
 namespace RentalMobile.Handler
 {

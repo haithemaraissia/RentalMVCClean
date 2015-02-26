@@ -1,9 +1,7 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Westwind.plUpload
+namespace plUploadHandler
 {
     /// <summary>
     /// Same implementation as above but implements the Async request processsing.

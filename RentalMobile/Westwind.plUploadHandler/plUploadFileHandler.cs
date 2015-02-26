@@ -1,8 +1,7 @@
-using plUploadHandler.Properties;
-using System;
 using System.IO;
+using plUploadHandler.Properties;
 
-namespace Westwind.plUpload
+namespace plUploadHandler
 {
 
     /// <summary>

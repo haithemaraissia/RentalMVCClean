@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using  System.Xml;
 
-namespace RentalMobile.Model.Tools
+namespace RentalModel.Repository.Tools.Testing
 {
     public class Test
     {

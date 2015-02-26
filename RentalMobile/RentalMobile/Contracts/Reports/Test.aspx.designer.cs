@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentalMobile.Reports
+namespace RentalMobile.Contracts.Reports
 {
 
 

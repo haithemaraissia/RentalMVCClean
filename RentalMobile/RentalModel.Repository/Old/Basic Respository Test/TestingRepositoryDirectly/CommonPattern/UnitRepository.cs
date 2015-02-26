@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalModel.Repository.CommonPattern;
 using EntityState = System.Data.Entity.EntityState;
 
-namespace RentalModel.Repository.ToDelete.CommonPattern
+namespace RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern
 {
     public class UnitRepository : IUnitRepository
     {

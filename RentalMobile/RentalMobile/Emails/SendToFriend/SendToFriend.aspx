@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendToFriend.aspx.cs" Inherits="RentalMobile.Views.Emails.SendtoFriend.SendToFriend" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendToFriend.aspx.cs" Inherits="RentalMobile.Emails.SendToFriend.SendToFriend" %>
 
 <html>
     <head>

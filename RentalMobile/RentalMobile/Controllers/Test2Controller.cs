@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalMobile.ModelViews;
+using RentalMobile.Model.ModelViews;
 
 namespace RentalMobile.Controllers
 {

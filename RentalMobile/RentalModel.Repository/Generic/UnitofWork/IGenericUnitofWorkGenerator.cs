@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
+using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Pattern.MoreModelFeatures.FromXMLExample;
 using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.UnitofWork
@@ -20,6 +21,10 @@ namespace RentalModel.Repository.Generic.UnitofWork
             Context = context;
         }
  
+
+
+    
+
         private IGenericRepository<Agent> _AgentRepository;
 
         public IGenericRepository<Agent> AgentRepository
@@ -29,6 +34,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentAcceptedApplication> _AgentAcceptedApplicationRepository;
 
         public IGenericRepository<AgentAcceptedApplication> AgentAcceptedApplicationRepository
@@ -38,6 +44,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentAcceptedPostedProject> _AgentAcceptedPostedProjectRepository;
 
         public IGenericRepository<AgentAcceptedPostedProject> AgentAcceptedPostedProjectRepository
@@ -47,6 +54,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentPendingApplication> _AgentPendingApplicationRepository;
 
         public IGenericRepository<AgentPendingApplication> AgentPendingApplicationRepository
@@ -56,6 +64,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentPendingPostedProject> _AgentPendingPostedProjectRepository;
 
         public IGenericRepository<AgentPendingPostedProject> AgentPendingPostedProjectRepository
@@ -65,6 +74,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentProject> _AgentProjectRepository;
 
         public IGenericRepository<AgentProject> AgentProjectRepository
@@ -74,6 +84,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentRejectedApplication> _AgentRejectedApplicationRepository;
 
         public IGenericRepository<AgentRejectedApplication> AgentRejectedApplicationRepository
@@ -83,6 +94,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<AgentRejectedPostedProject> _AgentRejectedPostedProjectRepository;
 
         public IGenericRepository<AgentRejectedPostedProject> AgentRejectedPostedProjectRepository
@@ -92,6 +104,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Basement> _BasementRepository;
 
         public IGenericRepository<Basement> BasementRepository
@@ -101,6 +114,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Bathroom> _BathroomRepository;
 
         public IGenericRepository<Bathroom> BathroomRepository
@@ -110,6 +124,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Bed> _BedRepository;
 
         public IGenericRepository<Bed> BedRepository
@@ -119,6 +134,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Cooling> _CoolingRepository;
 
         public IGenericRepository<Cooling> CoolingRepository
@@ -128,6 +144,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Currency> _CurrencyRepository;
 
         public IGenericRepository<Currency> CurrencyRepository
@@ -137,6 +154,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Floor> _FloorRepository;
 
         public IGenericRepository<Floor> FloorRepository
@@ -146,6 +164,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<FloorCovering> _FloorCoveringRepository;
 
         public IGenericRepository<FloorCovering> FloorCoveringRepository
@@ -155,6 +174,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Foundation> _FoundationRepository;
 
         public IGenericRepository<Foundation> FoundationRepository
@@ -164,6 +184,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Garage> _GarageRepository;
 
         public IGenericRepository<Garage> GarageRepository
@@ -173,6 +194,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<GeneratedRentalContract> _GeneratedRentalContractRepository;
 
         public IGenericRepository<GeneratedRentalContract> GeneratedRentalContractRepository
@@ -182,6 +204,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Heating> _HeatingRepository;
 
         public IGenericRepository<Heating> HeatingRepository
@@ -191,6 +214,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceCompany> _MaintenanceCompanyRepository;
 
         public IGenericRepository<MaintenanceCompany> MaintenanceCompanyRepository
@@ -200,6 +224,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceCompanyLookUp> _MaintenanceCompanyLookUpRepository;
 
         public IGenericRepository<MaintenanceCompanyLookUp> MaintenanceCompanyLookUpRepository
@@ -209,6 +234,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceCompanySpecialization> _MaintenanceCompanySpecializationRepository;
 
         public IGenericRepository<MaintenanceCompanySpecialization> MaintenanceCompanySpecializationRepository
@@ -218,6 +244,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceCrew> _MaintenanceCrewRepository;
 
         public IGenericRepository<MaintenanceCrew> MaintenanceCrewRepository
@@ -227,6 +254,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceCustomService> _MaintenanceCustomServiceRepository;
 
         public IGenericRepository<MaintenanceCustomService> MaintenanceCustomServiceRepository
@@ -236,6 +264,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceExterior> _MaintenanceExteriorRepository;
 
         public IGenericRepository<MaintenanceExterior> MaintenanceExteriorRepository
@@ -245,6 +274,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceInterior> _MaintenanceInteriorRepository;
 
         public IGenericRepository<MaintenanceInterior> MaintenanceInteriorRepository
@@ -254,6 +284,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceNewConstruction> _MaintenanceNewConstructionRepository;
 
         public IGenericRepository<MaintenanceNewConstruction> MaintenanceNewConstructionRepository
@@ -263,6 +294,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceOrder> _MaintenanceOrderRepository;
 
         public IGenericRepository<MaintenanceOrder> MaintenanceOrderRepository
@@ -272,6 +304,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenancePhoto> _MaintenancePhotoRepository;
 
         public IGenericRepository<MaintenancePhoto> MaintenancePhotoRepository
@@ -281,6 +314,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceProvider> _MaintenanceProviderRepository;
 
         public IGenericRepository<MaintenanceProvider> MaintenanceProviderRepository
@@ -290,6 +324,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceProviderAcceptedJob> _MaintenanceProviderAcceptedJobRepository;
 
         public IGenericRepository<MaintenanceProviderAcceptedJob> MaintenanceProviderAcceptedJobRepository
@@ -299,6 +334,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceProviderNewJobOffer> _MaintenanceProviderNewJobOfferRepository;
 
         public IGenericRepository<MaintenanceProviderNewJobOffer> MaintenanceProviderNewJobOfferRepository
@@ -308,6 +344,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceProviderRejectedJob> _MaintenanceProviderRejectedJobRepository;
 
         public IGenericRepository<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobRepository
@@ -317,6 +354,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceProviderZone> _MaintenanceProviderZoneRepository;
 
         public IGenericRepository<MaintenanceProviderZone> MaintenanceProviderZoneRepository
@@ -326,6 +364,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceRepair> _MaintenanceRepairRepository;
 
         public IGenericRepository<MaintenanceRepair> MaintenanceRepairRepository
@@ -335,6 +374,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceTeam> _MaintenanceTeamRepository;
 
         public IGenericRepository<MaintenanceTeam> MaintenanceTeamRepository
@@ -344,6 +384,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceTeamAssociation> _MaintenanceTeamAssociationRepository;
 
         public IGenericRepository<MaintenanceTeamAssociation> MaintenanceTeamAssociationRepository
@@ -353,6 +394,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<MaintenanceUtility> _MaintenanceUtilityRepository;
 
         public IGenericRepository<MaintenanceUtility> MaintenanceUtilityRepository
@@ -362,6 +404,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Owner> _OwnerRepository;
 
         public IGenericRepository<Owner> OwnerRepository
@@ -371,6 +414,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerAcceptedApplication> _OwnerAcceptedApplicationRepository;
 
         public IGenericRepository<OwnerAcceptedApplication> OwnerAcceptedApplicationRepository
@@ -380,6 +424,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerAcceptedPostedProject> _OwnerAcceptedPostedProjectRepository;
 
         public IGenericRepository<OwnerAcceptedPostedProject> OwnerAcceptedPostedProjectRepository
@@ -389,6 +434,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerMaintenance> _OwnerMaintenanceRepository;
 
         public IGenericRepository<OwnerMaintenance> OwnerMaintenanceRepository
@@ -398,6 +444,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerPendingApplication> _OwnerPendingApplicationRepository;
 
         public IGenericRepository<OwnerPendingApplication> OwnerPendingApplicationRepository
@@ -407,6 +454,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerPendingPostedProject> _OwnerPendingPostedProjectRepository;
 
         public IGenericRepository<OwnerPendingPostedProject> OwnerPendingPostedProjectRepository
@@ -416,6 +464,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerPendingShowingCalendar> _OwnerPendingShowingCalendarRepository;
 
         public IGenericRepository<OwnerPendingShowingCalendar> OwnerPendingShowingCalendarRepository
@@ -425,6 +474,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerProject> _OwnerProjectRepository;
 
         public IGenericRepository<OwnerProject> OwnerProjectRepository
@@ -434,6 +484,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerRejectedApplication> _OwnerRejectedApplicationRepository;
 
         public IGenericRepository<OwnerRejectedApplication> OwnerRejectedApplicationRepository
@@ -443,6 +494,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerRejectedPostedProject> _OwnerRejectedPostedProjectRepository;
 
         public IGenericRepository<OwnerRejectedPostedProject> OwnerRejectedPostedProjectRepository
@@ -452,6 +504,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<OwnerShowingCalendar> _OwnerShowingCalendarRepository;
 
         public IGenericRepository<OwnerShowingCalendar> OwnerShowingCalendarRepository
@@ -461,6 +514,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<ParkingSpace> _ParkingSpaceRepository;
 
         public IGenericRepository<ParkingSpace> ParkingSpaceRepository
@@ -470,6 +524,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Project> _ProjectRepository;
 
         public IGenericRepository<Project> ProjectRepository
@@ -479,6 +534,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<ProjectPhoto> _ProjectPhotoRepository;
 
         public IGenericRepository<ProjectPhoto> ProjectPhotoRepository
@@ -488,6 +544,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<ProviderProfileComment> _ProviderProfileCommentRepository;
 
         public IGenericRepository<ProviderProfileComment> ProviderProfileCommentRepository
@@ -497,6 +554,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<ProviderWork> _ProviderWorkRepository;
 
         public IGenericRepository<ProviderWork> ProviderWorkRepository
@@ -506,6 +564,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<RentalApplication> _RentalApplicationRepository;
 
         public IGenericRepository<RentalApplication> RentalApplicationRepository
@@ -515,6 +574,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<ServiceType> _ServiceTypeRepository;
 
         public IGenericRepository<ServiceType> ServiceTypeRepository
@@ -524,6 +584,20 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
+        private IGenericRepository<Session> _SessionRepository;
+
+        public IGenericRepository<Session> SessionRepository
+        {
+            get { return  _SessionRepository ?? ( _SessionRepository = new GenericRepository<Session>(Context)); }
+            set {  _SessionRepository = value; }
+        }
+
+    
+
+
+    
+
         private IGenericRepository<Specialist> _SpecialistRepository;
 
         public IGenericRepository<Specialist> SpecialistRepository
@@ -533,6 +607,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<SpecialistPendingTeamInvitation> _SpecialistPendingTeamInvitationRepository;
 
         public IGenericRepository<SpecialistPendingTeamInvitation> SpecialistPendingTeamInvitationRepository
@@ -542,6 +617,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<SpecialistProfileComment> _SpecialistProfileCommentRepository;
 
         public IGenericRepository<SpecialistProfileComment> SpecialistProfileCommentRepository
@@ -551,6 +627,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<SpecialistWork> _SpecialistWorkRepository;
 
         public IGenericRepository<SpecialistWork> SpecialistWorkRepository
@@ -560,6 +637,17 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
+        private IGenericRepository<TeamSpecialistInvitation> _TeamSpecialistInvitationRepository;
+
+        public IGenericRepository<TeamSpecialistInvitation> TeamSpecialistInvitationRepository
+        {
+            get { return  _TeamSpecialistInvitationRepository ?? ( _TeamSpecialistInvitationRepository = new GenericRepository<TeamSpecialistInvitation>(Context)); }
+            set {  _TeamSpecialistInvitationRepository = value; }
+        }
+
+    
+
         private IGenericRepository<Tenant> _TenantRepository;
 
         public IGenericRepository<Tenant> TenantRepository
@@ -569,6 +657,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<TenantFavorite> _TenantFavoriteRepository;
 
         public IGenericRepository<TenantFavorite> TenantFavoriteRepository
@@ -578,6 +667,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<TenantMaintenance> _TenantMaintenanceRepository;
 
         public IGenericRepository<TenantMaintenance> TenantMaintenanceRepository
@@ -587,6 +677,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<TenantSavedSearch> _TenantSavedSearchRepository;
 
         public IGenericRepository<TenantSavedSearch> TenantSavedSearchRepository
@@ -596,6 +687,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<TenantShowing> _TenantShowingRepository;
 
         public IGenericRepository<TenantShowing> TenantShowingRepository
@@ -605,6 +697,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<Unit> _UnitRepository;
 
         public IGenericRepository<Unit> UnitRepository
@@ -614,6 +707,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitAppliance> _UnitApplianceRepository;
 
         public IGenericRepository<UnitAppliance> UnitApplianceRepository
@@ -623,6 +717,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitCommunityAmenity> _UnitCommunityAmenityRepository;
 
         public IGenericRepository<UnitCommunityAmenity> UnitCommunityAmenityRepository
@@ -632,6 +727,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitExteriorAmenity> _UnitExteriorAmenityRepository;
 
         public IGenericRepository<UnitExteriorAmenity> UnitExteriorAmenityRepository
@@ -641,6 +737,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitFeature> _UnitFeatureRepository;
 
         public IGenericRepository<UnitFeature> UnitFeatureRepository
@@ -650,6 +747,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitGallery> _UnitGalleryRepository;
 
         public IGenericRepository<UnitGallery> UnitGalleryRepository
@@ -659,6 +757,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitInteriorAmenity> _UnitInteriorAmenityRepository;
 
         public IGenericRepository<UnitInteriorAmenity> UnitInteriorAmenityRepository
@@ -668,6 +767,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitLuxuryAmenity> _UnitLuxuryAmenityRepository;
 
         public IGenericRepository<UnitLuxuryAmenity> UnitLuxuryAmenityRepository
@@ -677,6 +777,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitPricing> _UnitPricingRepository;
 
         public IGenericRepository<UnitPricing> UnitPricingRepository
@@ -686,6 +787,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UnitType> _UnitTypeRepository;
 
         public IGenericRepository<UnitType> UnitTypeRepository
@@ -695,6 +797,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UploadedContract> _UploadedContractRepository;
 
         public IGenericRepository<UploadedContract> UploadedContractRepository
@@ -704,6 +807,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
 
     
+
         private IGenericRepository<UrgencyType> _UrgencyTypeRepository;
 
         public IGenericRepository<UrgencyType> UrgencyTypeRepository
@@ -712,7 +816,8 @@ namespace RentalModel.Repository.Generic.UnitofWork
             set {  _UrgencyTypeRepository = value; }
         }
 
-            public void Save()
+    
+        public void Save()
         {
             Context.SaveChanges();
         }
@@ -740,4 +845,14 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
     }     
 }
+
+
+
+
+
+
+
+
+
+
 

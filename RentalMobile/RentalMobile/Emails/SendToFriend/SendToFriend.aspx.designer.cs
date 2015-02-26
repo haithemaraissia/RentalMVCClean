@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentalMobile.Views.Emails.SendtoFriend {
+namespace RentalMobile.Emails.SendToFriend {
     
     
     public partial class SendToFriend {

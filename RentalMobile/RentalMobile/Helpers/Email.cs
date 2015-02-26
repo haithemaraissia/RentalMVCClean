@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 using RentalMobile.Helpers;
-using RentalMobile.Models;
 
 
 namespace RentalMobile.Helpers

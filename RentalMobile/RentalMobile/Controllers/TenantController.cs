@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 { 

@@ -38,6 +38,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 2010 SDK SP1\VisualStudioIntegration\Common\Assemblies\v4.0\Microsoft.VisualStudio.TextTemplating.10.0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,6 +53,478 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Repositories\Model\FakeUnitRepository.cs" />
+    <Compile Include="Generic\Repositories\Model\AgentAcceptedApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentAcceptedPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentPendingApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentPendingPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentRejectedApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentRejectedPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\AgentRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\BasementRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\BathroomRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\BedRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\CoolingRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\CurrencyRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\FloorCoveringRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\FloorRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\FoundationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\GarageRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\GeneratedRentalContractRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\GenericRepositoryGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\HeatingRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentAcceptedApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentAcceptedPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentPendingApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentPendingPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentRejectedApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentRejectedPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IAgentRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IBasementRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IBathroomRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IBedRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ICoolingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ICurrencyRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IFloorCoveringRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IFloorRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IFoundationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IGarageRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IGeneratedRentalContractRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IGenericRepositoryGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IHeatingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceCompanyLookUpRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceCompanyRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceCompanySpecializationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceCrewRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceCustomServiceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceExteriorRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceInteriorRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceNewConstructionRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceOrderRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenancePhotoRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceProviderAcceptedJobRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceProviderNewJobOfferRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceProviderRejectedJobRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceProviderRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceProviderZoneRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceRepairRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceTeamAssociationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceTeamRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IMaintenanceUtilityRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerAcceptedApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerAcceptedPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerMaintenanceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerPendingApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerPendingPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerPendingShowingCalendarRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerRejectedApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerRejectedPostedProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IOwnerShowingCalendarRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IParkingSpaceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProjectPhotoRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProjectRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProviderProfileCommentRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IProviderWorkRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IRentalApplicationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IServiceTypeRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ISpecialistPendingTeamInvitationRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ISpecialistProfileCommentRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ISpecialistRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ISpecialistWorkRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantFavoriteRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantMaintenanceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantSavedSearchRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ITenantShowingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitApplianceRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitCommunityAmenityRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitExteriorAmenityRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitFeatureRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitGalleryRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitInteriorAmenityRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitLuxuryAmenityRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitPricingRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUnitTypeRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUploadedContractRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\IUrgencyTypeRepository.cs">
+      <DependentUpon>IGenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceCompanyLookUpRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceCompanyRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceCompanySpecializationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceCrewRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceCustomServiceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceExteriorRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceInteriorRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceNewConstructionRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceOrderRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenancePhotoRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceProviderAcceptedJobRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceProviderNewJobOfferRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceProviderRejectedJobRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceProviderRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceProviderZoneRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceRepairRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceTeamAssociationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceTeamRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\MaintenanceUtilityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerAcceptedApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerAcceptedPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerMaintenanceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerPendingApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerPendingPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerPendingShowingCalendarRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerRejectedApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerRejectedPostedProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\OwnerShowingCalendarRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ParkingSpaceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProjectPhotoRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProjectRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProviderProfileCommentRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ProviderWorkRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\RentalApplicationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\ServiceTypeRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\SpecialistPendingTeamInvitationRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\SpecialistProfileCommentRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\SpecialistRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\SpecialistWorkRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantFavoriteRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantMaintenanceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantSavedSearchRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\TenantShowingRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitApplianceRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitCommunityAmenityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitExteriorAmenityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitFeatureRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitGalleryRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitInteriorAmenityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitLuxuryAmenityRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitPricingRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UnitTypeRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UploadedContractRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\Repositories\Model\UrgencyTypeRepository.cs">
+      <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.cs">
       <DependentUpon>IGenericUnitofWorkGenerator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -66,12 +542,15 @@
     <Compile Include="Generic\Repositories\Base\FakeGenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\GenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
-    <Compile Include="Generic\Repositories\Model\ITenantRepository.cs" />
-    <Compile Include="Generic\Repositories\Model\TenantRepository.cs" />
     <Compile Include="Generic\UnitofWork\IUnitofWork.cs" />
     <Compile Include="Generic\UnitofWork\UnitofWork.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Testing\ClassFinderTest.cs">
+      <DependentUpon>ClassFinderTest.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Tools\Testing\Test.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,6 +576,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Generic\Repositories\Model\GenericRepositoryGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenericRepositoryGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generic\Repositories\Model\IGenericRepositoryGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IGenericRepositoryGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\ModelHelper.tt" />
+    <None Include="Tools\MultipleOutputHelper.ttinclude.tt" />
     <None Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGenericUnitofWorkGenerator.cs</LastGenOutput>
@@ -106,6 +595,11 @@
       <LastGenOutput>UnitOfWorkGenerator.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Tools\ClassFinder.tt" />
+    <None Include="Tools\Testing\ClassFinderTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClassFinderTest.cs</LastGenOutput>
+    </None>
     <None Include="Tools\Testing\TestTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TestTemplate.cs</LastGenOutput>

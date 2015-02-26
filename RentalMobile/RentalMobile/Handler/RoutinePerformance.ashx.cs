@@ -5,7 +5,6 @@ using System.Web;
 using RentalMobile.Controllers;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
 namespace RentalMobile.Handler
 {

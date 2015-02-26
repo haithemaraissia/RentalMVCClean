@@ -1,13 +1,13 @@
 ﻿using System;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
+using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.UnitofWork
 {
     public partial interface IGenericUnitofWork :IDisposable
     {
-      IGenericRepository<Agent> AgentRepository {get;}
+     IGenericRepository<Agent> AgentRepository {get;}
      IGenericRepository<AgentAcceptedApplication> AgentAcceptedApplicationRepository {get;}
      IGenericRepository<AgentAcceptedPostedProject> AgentAcceptedPostedProjectRepository {get;}
      IGenericRepository<AgentPendingApplication> AgentPendingApplicationRepository {get;}
@@ -67,6 +67,7 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<SpecialistPendingTeamInvitation> SpecialistPendingTeamInvitationRepository {get;}
      IGenericRepository<SpecialistProfileComment> SpecialistProfileCommentRepository {get;}
      IGenericRepository<SpecialistWork> SpecialistWorkRepository {get;}
+     IGenericRepository<TeamSpecialistInvitation> TeamSpecialistInvitationRepository {get;}
      IGenericRepository<Tenant> TenantRepository {get;}
      IGenericRepository<TenantFavorite> TenantFavoriteRepository {get;}
      IGenericRepository<TenantMaintenance> TenantMaintenanceRepository {get;}
@@ -84,7 +85,19 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<UnitType> UnitTypeRepository {get;}
      IGenericRepository<UploadedContract> UploadedContractRepository {get;}
      IGenericRepository<UrgencyType> UrgencyTypeRepository {get;}
+
     void Save();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 

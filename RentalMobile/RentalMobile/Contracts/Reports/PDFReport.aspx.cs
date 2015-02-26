@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 
-namespace RentalMobile.Reports
+namespace RentalMobile.Contracts.Reports
 {
     public partial class PdfReport : System.Web.UI.Page
     {

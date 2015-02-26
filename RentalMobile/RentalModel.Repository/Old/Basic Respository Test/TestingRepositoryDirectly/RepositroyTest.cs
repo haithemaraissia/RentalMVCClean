@@ -1,8 +1,7 @@
 ﻿using RentalMobile.Model.Models;
-using RentalModel.Repository.CommonPattern;
-using RentalModel.Repository.ToDelete.CommonPattern;
+using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
 
-namespace RentalModel.Repository.ToDelete
+namespace RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly
 {
     ////////////////////////TO BE DELETED////////////////////////////////
     //to be deleted after all the cleanning , necessary for the build and its reference

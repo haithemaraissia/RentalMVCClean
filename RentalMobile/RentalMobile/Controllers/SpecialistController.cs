@@ -7,8 +7,7 @@ using System.Web.Security;
 using PagedList;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
-using RentalMobile.ModelViews;
+using RentalMobile.Model.ModelViews;
 
 namespace RentalMobile.Controllers
 {

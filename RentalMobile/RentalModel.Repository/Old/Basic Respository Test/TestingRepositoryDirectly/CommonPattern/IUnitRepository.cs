@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
-namespace RentalModel.Repository.CommonPattern
+namespace RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern
 {
     public interface IUnitRepository : IDisposable
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
 namespace TestProject.Before.Fake
 {

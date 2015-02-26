@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
 namespace RentalMobile.Controllers
 {

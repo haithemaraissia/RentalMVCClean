@@ -1,0 +1,37 @@
+﻿<#@ template debug="true"  hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace=" System.IO" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="$(ProjectDir)\Tools\MultipleOutputHelper.ttinclude.tt"#>
+<#@ include file="$(ProjectDir)\Tools\ModelHelper.tt"#>
+<#@ output extension=".cs" #>
+
+
+<#    
+    var manager = Manager.Create(Host, GenerationEnvironment); 
+
+    foreach ( var FileName in  GetAllFilesFromModelPath(CurrentModelDirectoryFromSolution()))
+    { 
+        manager.StartNewFile("I" + FileName + "Repository.cs");#>
+using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.Repositories.Base;
+
+namespace RentalModel.Repository.Generic.Repositories.Model
+{
+    interface I<#=FileName#>Repository : IGenericRepository<<#=FileName#>>
+    {
+
+    }
+}
+       <#
+    }        
+ manager.Process(true, true); #>
+
+

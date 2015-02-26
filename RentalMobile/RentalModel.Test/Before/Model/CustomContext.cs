@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
 
-namespace TestProject.Model
+namespace TestProject.Before.Model
 {
     public class FakeDbContext : DbContext
     {
