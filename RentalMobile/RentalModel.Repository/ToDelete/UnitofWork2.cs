@@ -6,6 +6,7 @@ namespace RentalModel.Repository.ToDelete
 {
     ////////////////////////TO BE DELETED////////////////////////////////
     //to be deleted after all the cleanning , necessary for the build and its reference
+      //public partial class UnitofWork : IGenericUnitofWork
     public class UnitofWork2
     {
         private readonly RentalContext _context;

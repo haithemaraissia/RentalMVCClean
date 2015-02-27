@@ -1,17 +1,26 @@
 ﻿using System;
-using RentalMobile.Models;
+using RentalMobile.Model.Models;
+using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.UnitofWork
 {
     public partial interface IGenericUnitofWork :IDisposable
     {
+        //Model
  <#   foreach ( var FileName in  GetAllFiles())
     {
         Write(string.Format("     IGenericRepository<{0}>", FileName));
         Write(string.Format(@" {0}Repository ", FileName));
         WriteLine(@"{get;}");
+    }#>
 
+        //ModelView
+ <#   foreach ( var FileName in  GetAllModelViewFiles())
+    {
+        Write(string.Format("     IGenericRepository<{0}>", FileName));
+        Write(string.Format(@" {0}Repository ", FileName));
+        WriteLine(@"{get;}");
     }#>
     void Save();
     }

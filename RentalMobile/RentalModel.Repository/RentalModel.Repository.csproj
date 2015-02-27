@@ -692,8 +692,6 @@
     <Compile Include="Generic\Repositories\Base\FakeGenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\GenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
-    <Compile Include="Generic\UnitofWork\IUnitofWork.cs" />
-    <Compile Include="Generic\UnitofWork\UnitofWork.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Testing\ClassFinderTest.cs">

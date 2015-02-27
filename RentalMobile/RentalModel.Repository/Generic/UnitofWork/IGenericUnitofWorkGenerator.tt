@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using RentalMobile.Model.Models;
-using RentalMobile.Models;
+using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.UnitofWork
@@ -19,18 +19,32 @@ namespace RentalModel.Repository.Generic.UnitofWork
         {
             Context = context;
         }
+
+        //Model
  <#   foreach ( var FileName in  GetAllFiles())
     { #>
 
-        private IGenericRepository<<#=FileName#>> _<#=FileName#>Repository;
-
+        private IGenericRepository<<#=FileName#>> _<#=ToLowerFirstChar(FileName)#>Repository;
         public IGenericRepository<<#=FileName#>> <#=FileName#>Repository
         {
-            get { return  _<#=FileName#>Repository ?? ( _<#=FileName#>Repository = new GenericRepository<<#=FileName#>>(Context)); }
-            set {  _<#=FileName#>Repository = value; }
+            get { return  _<#=ToLowerFirstChar(FileName)#>Repository ?? ( _<#=ToLowerFirstChar(FileName)#>Repository = new GenericRepository<<#=FileName#>>(Context)); }
+            set {  _<#=ToLowerFirstChar(FileName)#>Repository = value; }
         }
-
     <# } #>
+
+        //ModelView
+<#   foreach ( var FileName in  GetAllModelViewFiles())
+    { #>
+
+        private IGenericRepository<<#=FileName#>> _<#=ToLowerFirstChar(FileName)#>Repository;
+        public IGenericRepository<<#=FileName#>> <#=FileName#>Repository
+        {
+            get { return  _<#=ToLowerFirstChar(FileName)#>Repository ?? ( _<#=ToLowerFirstChar(FileName)#>Repository = new GenericRepository<<#=FileName#>>(Context)); }
+            set {  _<#=ToLowerFirstChar(FileName)#>Repository = value; }
+        }
+    <# } #>
+
+
         public void Save()
         {
             Context.SaveChanges();

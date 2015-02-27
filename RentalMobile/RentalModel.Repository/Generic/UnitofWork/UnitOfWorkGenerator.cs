@@ -7,7 +7,8 @@ namespace RentalModel.Repository.Generic.UnitofWork
 {
     public partial interface IGenericUnitofWork :IDisposable
     {
-     IGenericRepository<Agent> AgentRepository {get;}
+        //Model
+      IGenericRepository<Agent> AgentRepository {get;}
      IGenericRepository<AgentAcceptedApplication> AgentAcceptedApplicationRepository {get;}
      IGenericRepository<AgentAcceptedPostedProject> AgentAcceptedPostedProjectRepository {get;}
      IGenericRepository<AgentPendingApplication> AgentPendingApplicationRepository {get;}
@@ -15,6 +16,16 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<AgentProject> AgentProjectRepository {get;}
      IGenericRepository<AgentRejectedApplication> AgentRejectedApplicationRepository {get;}
      IGenericRepository<AgentRejectedPostedProject> AgentRejectedPostedProjectRepository {get;}
+     IGenericRepository<aspnet_Applications> aspnet_ApplicationsRepository {get;}
+     IGenericRepository<aspnet_Membership> aspnet_MembershipRepository {get;}
+     IGenericRepository<aspnet_Paths> aspnet_PathsRepository {get;}
+     IGenericRepository<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsersRepository {get;}
+     IGenericRepository<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUserRepository {get;}
+     IGenericRepository<aspnet_Profile> aspnet_ProfileRepository {get;}
+     IGenericRepository<aspnet_Roles> aspnet_RolesRepository {get;}
+     IGenericRepository<aspnet_SchemaVersions> aspnet_SchemaVersionsRepository {get;}
+     IGenericRepository<aspnet_Users> aspnet_UsersRepository {get;}
+     IGenericRepository<aspnet_WebEvent_Events> aspnet_WebEvent_EventsRepository {get;}
      IGenericRepository<Basement> BasementRepository {get;}
      IGenericRepository<Bathroom> BathroomRepository {get;}
      IGenericRepository<Bed> BedRepository {get;}
@@ -67,7 +78,6 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<SpecialistPendingTeamInvitation> SpecialistPendingTeamInvitationRepository {get;}
      IGenericRepository<SpecialistProfileComment> SpecialistProfileCommentRepository {get;}
      IGenericRepository<SpecialistWork> SpecialistWorkRepository {get;}
-     IGenericRepository<TeamSpecialistInvitation> TeamSpecialistInvitationRepository {get;}
      IGenericRepository<Tenant> TenantRepository {get;}
      IGenericRepository<TenantFavorite> TenantFavoriteRepository {get;}
      IGenericRepository<TenantMaintenance> TenantMaintenanceRepository {get;}
@@ -86,9 +96,35 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<UploadedContract> UploadedContractRepository {get;}
      IGenericRepository<UrgencyType> UrgencyTypeRepository {get;}
 
+
+        //ModelView
+      IGenericRepository<ChangeEmail> ChangeEmailRepository {get;}
+     IGenericRepository<ChangePasswordModel> ChangePasswordModelRepository {get;}
+     IGenericRepository<ForgotPasswordModel> ForgotPasswordModelRepository {get;}
+     IGenericRepository<LogOnModel> LogOnModelRepository {get;}
+     IGenericRepository<OwnerPendingShowingCalendarModelView> OwnerPendingShowingCalendarModelViewRepository {get;}
+     IGenericRepository<PrimaryVideo> PrimaryVideoRepository {get;}
+     IGenericRepository<ProviderMaintenanceCompleteProfile> ProviderMaintenanceCompleteProfileRepository {get;}
+     IGenericRepository<ProviderMaintenanceProfile> ProviderMaintenanceProfileRepository {get;}
+     IGenericRepository<RegisterModel> RegisterModelRepository {get;}
+     IGenericRepository<SpecialistMaintenanceProfile> SpecialistMaintenanceProfileRepository {get;}
+     IGenericRepository<TeamSpecialistInvitation> TeamSpecialistInvitationRepository {get;}
+     IGenericRepository<TenantMaintenanceViewModel> TenantMaintenanceViewModelRepository {get;}
+     IGenericRepository<TenantModelView> TenantModelViewRepository {get;}
+     IGenericRepository<Test> TestRepository {get;}
+     IGenericRepository<UnitModelView> UnitModelViewRepository {get;}
+
     void Save();
     }
 }
+
+
+
+
+
+
+
+
 
 
 
