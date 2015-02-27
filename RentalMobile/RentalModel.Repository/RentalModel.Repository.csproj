@@ -694,20 +694,19 @@
     <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\Testing\ClassFinderTest.cs">
+    <Compile Include="Tools\Testing\AnotherTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnotherTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\ClassFinderTest.cs" />
+    <Compile Include="Tools\Testing\ClassFinderTest1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>ClassFinderTest.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Tools\Testing\Test.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tools\Testing\TestTemplate.cs">
-      <DependentUpon>TestTemplate.tt</DependentUpon>
-      <SubType>Code</SubType>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Compile Include="Tools\Testing\Test.cs" />
+    <Compile Include="Tools\Testing\TestTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
@@ -724,6 +723,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Fake\FakeDataGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FakeDataGenerator.txt</LastGenOutput>
+    </None>
     <None Include="Generic\Repositories\Model\GenericRepositoryGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenericRepositoryGenerator.cs</LastGenOutput>
@@ -744,15 +747,32 @@
     </None>
     <None Include="packages.config" />
     <None Include="Tools\ClassFinder.tt" />
+    <None Include="Tools\Testing\AnotherTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AnotherTest.cs</LastGenOutput>
+    </None>
     <None Include="Tools\Testing\ClassFinderTest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ClassFinderTest.cs</LastGenOutput>
+      <LastGenOutput>ClassFinderTest1.cs</LastGenOutput>
     </None>
-    <None Include="Tools\Testing\TestTemplate.tt">
+    <None Include="Tools\Testing\ClassHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TestTemplate.cs</LastGenOutput>
+      <LastGenOutput>ClassHelper.txt</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Fake\FakeDataGenerator.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FakeDataGenerator.tt</DependentUpon>
+    </Content>
+    <Content Include="Tools\Testing\ClassHelper.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClassHelper.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,132 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+
+<#@ output extension=".txt" #>
+
+ <#   
+    //WriteLine("//////////////////Classes FROM ModelView////////////////////");
+    //WriteLine("");
+    //foreach (Type classType in GetAllClasses())
+    //{
+        //WriteLine(classType.Name);
+    //}
+    //WriteLine("");
+    //WriteLine("//////////////////Fields////////////////////");
+    //WriteLine("");
+    //foreach (Type classType in GetAllClasses())
+    //{
+        //Write("       ");  Write(classType.Name);
+        //WriteLine("");
+        //FieldInfo[] fi = classType.GetFields();
+        //WriteLine(fi.Count().ToString());
+        //foreach (FieldInfo field in fi)
+        //{
+            //WriteLine(field.Name, field.FieldType);
+            //WriteLine("");
+        //}
+    //}
+    //WriteLine("");
+    //WriteLine("//////////////////Memebers////////////////////");
+    //WriteLine("");
+    //foreach (Type classType in GetAllClasses())
+    //{
+        //Write("       ");  Write(classType.Name);
+        //WriteLine("");
+        //MemberInfo[] mi =  classType.GetMembers();
+        //WriteLine(mi.Count().ToString());
+        //foreach (MemberInfo member in mi)
+        //{
+            //WriteLine(member.Name, member.GetType().ToString());
+            //WriteLine("");
+        //}
+    //}
+    WriteLine("");
+    WriteLine("//////////////////Properties////////////////////");
+    WriteLine("");
+    foreach (Type classType in GetAllClasses())
+    {
+        Write("       ");  Write(classType.Name);
+        WriteLine("");
+        var propertycount  =  classType.GetType().GetProperties(BindingFlags.Public);
+        WriteLine(propertycount.Count().ToString());
+        foreach (var prop in classType.GetType().GetProperties(BindingFlags.Public))
+         {
+            WriteLine(prop.Name);
+            WriteLine("");
+        }
+    }
+
+#>
+
+
+
+<#+
+
+
+    public IEnumerable<Type> GetTypesFromNamespace(Assembly assembly,  String desiredNamespace)
+    {
+        return assembly.GetTypes()
+            .Where(type => type.Namespace == desiredNamespace);
+    }
+
+    public IEnumerable<Type> GetAllClasses()
+    {
+        var classTypes = new List<Type>();
+        var assembly = Assembly.LoadFile(@"C:\Users\haraissia\Desktop\Latest\RentalMobile\RentalMobile.Model\bin\Debug\RentalMobile.Model.dll");
+
+        foreach (Type type in assembly.GetTypes().Where(x => x.IsClass && x.Namespace == "RentalMobile.Model.ModelViews"))
+        {
+            classTypes.Add(type);
+        }
+        return classTypes;
+    }
+
+
+    public Dictionary<string, string> GetAllFiledOfEachClass()
+    {
+        Dictionary<string,string> fieldDictionary = new Dictionary<string, string>();
+        foreach (var classType in GetAllClasses())
+        {
+            FieldInfo[] fi = classType.GetFields();
+
+            foreach (FieldInfo field in fi)
+            {
+                fieldDictionary.Add(field.Name, field.FieldType.ToString());
+            }
+        }
+
+        return fieldDictionary;
+    }
+
+    public Dictionary<string, string> GetAllMemebersForEachClass()
+    {
+        var memberDictionary = new Dictionary<string, string>();
+        foreach (var classType in GetAllClasses())
+        {
+            MemberInfo[] mi =  classType.GetMembers();
+
+            foreach (MemberInfo member in mi)
+            {
+                memberDictionary.Add(member.Name, member.GetType().ToString());
+            }
+        }
+
+        return memberDictionary;
+    } 
+
+            public void GetProperties()
+        {
+             Dictionary<string,string> PropertyDictionary = new Dictionary<string, string>();
+            foreach (var classType in GetAllClasses())
+            {
+                foreach (var prop in classType.GetType().GetProperties())
+                {
+                    Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(classType, null));
+                }
+            }
+        }
+#>
