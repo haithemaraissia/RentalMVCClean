@@ -1,0 +1,132 @@
+﻿<#@ template debug="true" language="C#"  #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+
+
+<#+
+    //Model Folder
+    public List<string> GetAllFiles()
+    {
+        DirectoryInfo dinfo = new DirectoryInfo(GetModelPath());
+        List<string> files = (dinfo.GetFiles("*.cs").Select(fileName => Path.GetFileNameWithoutExtension(fileName.ToString()))).ToList();
+        var mylist  = files.Except(excludedclasses);
+        return mylist.ToList();
+    }
+
+    //Model View Folder
+    public List<string> GetAllModelViewFiles()
+    {
+        DirectoryInfo dinfo = new DirectoryInfo(GetModelViewPath());
+        List<string> files = (dinfo.GetFiles("*.cs").Select(fileName => Path.GetFileNameWithoutExtension(fileName.ToString()))).ToList();
+        var mylist  = files.Except(excludedclasses);
+        return mylist.ToList();
+    }
+
+    public string GetModelPath()
+    {
+        FileInfo fi = new FileInfo(Host.TemplateFile);
+        string currentUnitofWorkFolder = fi.Directory.FullName;
+        string currentRepositorySolutionFolder = fi.Directory.Parent.Parent.FullName;
+        string ApplicatonSolutionFolder= fi.Directory.Parent.Parent.Parent.FullName;
+
+
+        string parentFolder= fi.Directory.Parent.FullName;
+        string ModelFolder= Path.Combine(ApplicatonSolutionFolder,@"RentalMobile.Model\Models");
+        if ( Directory.Exists(ModelFolder)) {
+            return ModelFolder;
+        }
+        Error("Could not find the Model Folder");
+        return string.Empty;
+    }
+
+    public string GetModelViewPath()
+    {
+        FileInfo fi = new FileInfo(Host.TemplateFile);
+        string currentUnitofWorkFolder = fi.Directory.FullName;
+        string currentRepositorySolutionFolder = fi.Directory.Parent.Parent.FullName;
+        string ApplicatonSolutionFolder= fi.Directory.Parent.Parent.Parent.FullName;
+
+
+        string parentFolder= fi.Directory.Parent.FullName;
+        string ModelFolder= Path.Combine(ApplicatonSolutionFolder,@"RentalMobile.Model\ModelViews");
+        if ( Directory.Exists(ModelFolder)) {
+            return ModelFolder;
+        }
+        Error("Could not find the Model Folder");
+        return string.Empty;
+    }
+
+    public List<string> excludedclasses =  new List<string>
+        {
+            "RentalModel.Context",
+            "RentalModel.Designer",
+            "RentalModel.edmx.diagram",
+            "sysdiagram",
+            "RentalModel"
+            };
+
+    public List<string> GetAllFilesFromModelPath(string ModelPath)
+    {
+        DirectoryInfo dinfo = new DirectoryInfo(ModelPath);
+        List<string> files = (dinfo.GetFiles("*.cs").Select(fileName => Path.GetFileNameWithoutExtension(fileName.ToString()))).ToList();
+        var mylist  = files.Except(excludedclasses);
+        return mylist.ToList();
+    }
+
+    
+    public string CurrentModelDirectoryFromSolution()
+    {
+        var serviceProvider = this.Host as IServiceProvider;
+        var dte = serviceProvider.GetService(typeof(DTE)) as DTE;
+        foreach (Project p in dte.Solution.Projects)
+
+        {
+            if (p.Name == "RentalMobile.Model")
+            {
+                FileInfo fi = new FileInfo(p.FullName);
+                string SolutionModelFolder = fi.Directory.FullName;
+                string ModelFolder= Path.Combine(SolutionModelFolder,@"Models");
+                return ModelFolder;
+
+            }
+        }
+        Error("Could not find the Model Folder");
+        return string.Empty;
+    }
+
+    public string CurrentModelViewDirectoryFromSolution()
+    {
+        var serviceProvider = this.Host as IServiceProvider;
+        var dte = serviceProvider.GetService(typeof(DTE)) as DTE;
+        foreach (Project p in dte.Solution.Projects)
+
+        {
+            if (p.Name == "RentalMobile.Model")
+            {
+                FileInfo fi = new FileInfo(p.FullName);
+                string SolutionModelFolder = fi.Directory.FullName;
+                string ModelFolder= Path.Combine(SolutionModelFolder,@"ModelViews");
+                return ModelFolder;
+
+            }
+        }
+        Error("Could not find the Model Folder");
+        return string.Empty;
+    }
+
+    public static string ToLowerFirstChar(string input)
+    {
+        string newString = input;
+        if (!String.IsNullOrEmpty(newString) && Char.IsUpper(newString[0]))
+            newString = Char.ToLower(newString[0]) + newString.Substring(1);
+        return newString;
+    }
+
+#>

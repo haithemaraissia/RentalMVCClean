@@ -52,6 +52,322 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Fake\FakeAgentAcceptedApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentAcceptedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentPendingApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentPendingPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentRejectedApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgentRejectedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeAgents.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Applicationss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Memberships.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Pathss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_PersonalizationAllUserss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_PersonalizationPerUsers.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Profiles.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Roless.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_SchemaVersionss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_Userss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\Fakeaspnet_WebEvent_Eventss.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeBasements.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeBathrooms.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeBeds.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeChangeEmails.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeChangePasswordModels.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeCoolings.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeCurrencys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeFloorCoverings.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeFloors.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeForgotPasswordModels.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeFoundations.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeGarages.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeGeneratedRentalContracts.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeHeatings.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeLogOnModels.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceCompanyLookUps.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceCompanys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceCompanySpecializations.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceCrews.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceCustomServices.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceExteriors.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceInteriors.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceNewConstructions.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceOrders.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenancePhotos.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceProviderAcceptedJobs.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceProviderNewJobOffers.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceProviderRejectedJobs.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceProviders.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceProviderZones.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceRepairs.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceTeamAssociations.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceTeams.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeMaintenanceUtilitys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeModelDataGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeModelViewDataGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerAcceptedApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerAcceptedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerMaintenances.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerPendingApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerPendingPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerPendingShowingCalendarModelViews.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerPendingShowingCalendars.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerRejectedApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerRejectedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwners.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeOwnerShowingCalendars.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeParkingSpaces.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakePrimaryVideos.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProjectPhotos.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProjects.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProviderMaintenanceCompleteProfiles.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProviderMaintenanceProfiles.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProviderProfileComments.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeProviderWorks.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeRegisterModels.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeRentalApplications.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeRentalContexts.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeServiceTypes.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeSpecialistMaintenanceProfiles.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeSpecialistPendingTeamInvitations.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeSpecialistProfileComments.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeSpecialists.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeSpecialistWorks.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTeamSpecialistInvitations.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantFavorites.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantMaintenances.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantMaintenanceViewModels.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantModelViews.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenants.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantSavedSearchs.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTenantShowings.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeTests.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitAppliances.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitCommunityAmenitys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitExteriorAmenitys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitFeatures.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitGallerys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitInteriorAmenitys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitLuxuryAmenitys.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitModelViews.cs">
+      <DependentUpon>FakeModelViewDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitPricings.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUnitTypes.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUploadedContracts.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Fake\FakeUrgencyTypes.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Repositories\Model\FakeUnitRepository.cs" />
     <Compile Include="Generic\Repositories\Model\AgentAcceptedApplicationRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
@@ -688,25 +1004,288 @@
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\DummyRentalRepository.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\IUnitRepository.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\CommonPattern\UnitRepository.cs" />
-    <Compile Include="Data\Fake\FakeUnits.cs" />
+    <Compile Include="Data\Fake\FakeUnits.cs">
+      <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic\Repositories\Base\FakeGenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\GenericRepository.cs" />
     <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\Testing\AnotherTest.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AnotherTest.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Testing\ClassFinderTest.cs" />
     <Compile Include="Tools\Testing\ClassFinderTest1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassFinderTest.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Testing\Test.cs" />
-    <Compile Include="Tools\Testing\TestTemplate.cs" />
+    <Compile Include="Tools\Testing\FakeAgentAcceptedApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentAcceptedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentPendingApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentPendingPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentRejectedApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgentRejectedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeAgents.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Applicationss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Memberships.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Pathss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_PersonalizationAllUserss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_PersonalizationPerUsers.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Profiles.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Roless.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_SchemaVersionss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_Userss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\Fakeaspnet_WebEvent_Eventss.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeBasements.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeBathrooms.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeBeds.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeCoolings.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeCurrencys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeFloorCoverings.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeFloors.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeFoundations.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeGarages.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeGeneratedRentalContracts.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeHeatings.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceCompanyLookUps.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceCompanys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceCompanySpecializations.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceCrews.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceCustomServices.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceExteriors.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceInteriors.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceNewConstructions.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceOrders.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenancePhotos.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceProviderAcceptedJobs.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceProviderNewJobOffers.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceProviderRejectedJobs.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceProviders.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceProviderZones.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceRepairs.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceTeamAssociations.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceTeams.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeMaintenanceUtilitys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeModelDataGeneratorTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerAcceptedApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerAcceptedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerMaintenances.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerPendingApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerPendingPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerPendingShowingCalendars.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerRejectedApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerRejectedPostedProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwners.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeOwnerShowingCalendars.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeParkingSpaces.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeProjectPhotos.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeProjects.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeProviderProfileComments.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeProviderWorks.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeRentalApplications.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeRentalContexts.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeServiceTypes.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeSpecialistPendingTeamInvitations.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeSpecialistProfileComments.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeSpecialists.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeSpecialistWorks.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeTenantFavorites.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeTenantMaintenances.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeTenants.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeTenantSavedSearchs.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeTenantShowings.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitAppliances.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitCommunityAmenitys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitExteriorAmenitys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitFeatures.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitGallerys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitInteriorAmenitys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitLuxuryAmenitys.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitPricings.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnits.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUnitTypes.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUploadedContracts.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Testing\FakeUrgencyTypes.cs">
+      <DependentUpon>FakeModelDataGeneratorTest.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
@@ -723,9 +1302,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Fake\FakeDataGenerator.tt">
+    <None Include="Data\Fake\FakeModelDataGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FakeDataGenerator.txt</LastGenOutput>
+      <LastGenOutput>FakeModelDataGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Fake\FakeModelViewDataGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FakeModelViewDataGenerator.cs</LastGenOutput>
     </None>
     <None Include="Generic\Repositories\Model\GenericRepositoryGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -735,8 +1318,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGenericRepositoryGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Tools\ModelHelper.tt" />
-    <None Include="Tools\MultipleOutputHelper.ttinclude.tt" />
+    <None Include="Tools\Base\ModelHelper.tt" />
+    <None Include="Tools\Base\MultipleOutputHelper.ttinclude.tt" />
     <None Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGenericUnitofWorkGenerator.cs</LastGenOutput>
@@ -746,33 +1329,16 @@
       <LastGenOutput>UnitOfWorkGenerator.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Tools\ClassFinder.tt" />
-    <None Include="Tools\Testing\AnotherTest.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AnotherTest.cs</LastGenOutput>
-    </None>
+    <None Include="Tools\Base\ClassFinder.tt" />
     <None Include="Tools\Testing\ClassFinderTest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ClassFinderTest1.cs</LastGenOutput>
     </None>
-    <None Include="Tools\Testing\ClassHelper.tt">
+    <None Include="Tools\Testing\FakeModelDataGeneratorTest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ClassHelper.txt</LastGenOutput>
+      <LastGenOutput>FakeModelDataGeneratorTest.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\Fake\FakeDataGenerator.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FakeDataGenerator.tt</DependentUpon>
-    </Content>
-    <Content Include="Tools\Testing\ClassHelper.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClassHelper.tt</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

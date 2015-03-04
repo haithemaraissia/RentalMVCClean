@@ -1,4 +1,3 @@
-
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.Repositories.Base;
 

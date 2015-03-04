@@ -1,0 +1,276 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace=" System.IO" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="$(ProjectDir)\Tools\Base\MultipleOutputHelper.ttinclude.tt"#>
+<#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>
+<#@ output extension=".cs" #>
+<#   
+    var manager = Manager.Create(Host, GenerationEnvironment); 
+    foreach ( Type classType in GetAllClasses())
+    { 
+        manager.StartNewFile("Fake" + classType.Name.ToString() + "s.cs");
+        var properties = classType.GetProperties();
+        var i = 0;
+        var j = properties.Count();
+#>using System;
+using System.Collections.Generic;
+using RentalMobile.Model.ModelViews;
+
+namespace RentalModel.Repository.Data.Fake
+{
+    public class <#=            "Fake" + classType.Name.ToString() #>
+    { 
+       public List<<#=            classType.Name#>> My<#=            classType.Name#>s;
+
+       public <#=            "Fake" + classType.Name.ToString()#>()
+        {
+            Initialize<#=            classType.Name.ToString()#>List();
+        }
+
+       public void Initialize<#=            classType.Name.ToString()#>List()
+        {
+            My<#=            classType.Name#>s = new List<<#=            classType.Name#>> {
+                First<#=            classType.Name#>(), 
+                Second<#=            classType.Name#>(),
+                Third<#=            classType.Name#>()
+            };
+        }
+
+       public <#=            classType.Name#> First<#=            classType.Name#>()
+        {
+
+            var first<#=            classType.Name#> = new <#=            classType.Name#> {
+
+<#        WriteProperties(properties);#>         
+ };
+
+            return first<#=            classType.Name#>;
+        }
+
+       public <#=            classType.Name#> Second<#=            classType.Name#>()
+        {
+
+            var second<#=            classType.Name#> = new <#=            classType.Name#> {
+
+<#        WriteProperties(properties);#>        
+ };
+
+            return second<#=            classType.Name#>;
+        }
+
+       public <#=            classType.Name#> Third<#=            classType.Name#>()
+        {
+
+            var third<#=            classType.Name#> = new <#=            classType.Name#> {
+
+<#        WriteProperties(properties);#> 
+ };
+
+            return third<#=            classType.Name#>;
+        }
+
+        ~<#=            "Fake" + classType.Name.ToString()#>()
+        {
+            My<#=            classType.Name#>s = null;
+        }
+    }
+}
+
+
+    <#    
+    }
+    manager.Process(true, true); #>
+
+
+
+    <#
+
+    foreach (Type classType in GetAllClasses())
+    {
+        WriteLine("");
+        Write("***********");  Write(classType.Name); Write("***********");
+        WriteLine("");
+        var propertycount  =  classType.GetProperties();
+        Write("Property Count "); WriteLine(propertycount.Count().ToString());
+
+
+        var properties = classType.GetProperties();
+        var changes = new List<string>();
+        var propertyList = new List<PropertyInfo>();
+
+        foreach (PropertyInfo pi in properties)
+        {
+
+            Write(pi.Name); Write(" = new "); Write(pi.PropertyType.Name);WriteLine("();");
+            
+        }
+
+    }
+
+
+
+
+    //PrimitiveTypeName ::= NumericTypeName | Boolean | Date | Char | String
+    //NumericTypeName ::= IntegralTypeName | FloatingPointTypeName | Decimal
+    //IntegralTypeName ::= Byte | Short | Integer | Long
+    //FloatingPointTypeName ::= Single | Double
+
+#>
+
+
+
+<#+
+
+
+
+
+    public IEnumerable<Type> GetTypesFromNamespace(Assembly assembly,  String desiredNamespace)
+    {
+        return assembly.GetTypes()
+            .Where(type => type.Namespace == desiredNamespace);
+    }
+
+    public IEnumerable<Type> GetAllClasses()
+    {
+        var classTypes = new List<Type>();
+        var assembly = Assembly.LoadFile(@"C:\Users\haraissia\Desktop\Latest\RentalMobile\RentalMobile.Model\bin\Debug\RentalMobile.Model.dll");
+
+        foreach (Type type in assembly.GetTypes().Where(x => x.IsClass && x.Namespace == "RentalMobile.Model.ModelViews"))
+        {
+            classTypes.Add(type);
+        }
+        return classTypes;
+    }
+
+
+    public Dictionary<string, string> GetAllFiledOfEachClass()
+    {
+        Dictionary<string,string> fieldDictionary = new Dictionary<string, string>();
+        foreach (var classType in GetAllClasses())
+        {
+            FieldInfo[] fi = classType.GetFields();
+
+            foreach (FieldInfo field in fi)
+            {
+                fieldDictionary.Add(field.Name, field.FieldType.ToString());
+            }
+        }
+
+        return fieldDictionary;
+    }
+
+    public Dictionary<string, string> GetAllMemebersForEachClass()
+    {
+        var memberDictionary = new Dictionary<string, string>();
+        foreach (var classType in GetAllClasses())
+        {
+            MemberInfo[] mi =  classType.GetMembers();
+
+            foreach (MemberInfo member in mi)
+            {
+                memberDictionary.Add(member.Name, member.GetType().ToString());
+            }
+        }
+
+        return memberDictionary;
+    } 
+
+    public void GetProperties()
+    {
+        Dictionary<string,string> PropertyDictionary = new Dictionary<string, string>();
+        foreach (var classType in GetAllClasses())
+        {
+            foreach (var prop in classType.GetType().GetProperties())
+            {
+                WriteLine("{0}={1}", prop.Name, prop.GetValue(classType, null));
+            }
+        }
+    }
+
+
+
+
+
+    public  void GetPrimitiveProperty(Type classType)
+    {
+        while (classType.IsPrimitive == false)
+        {
+            var properties = classType.GetProperties();
+
+            foreach (PropertyInfo pi in properties)
+            {
+                Write("Name ");
+                Write(pi.Name);
+                Write("  ");
+                Write("Property ");
+                Write(pi.PropertyType.ToString());
+                Write("  ");
+
+                if (pi.PropertyType.IsPrimitive)
+                {
+                    Write("Primitive Type ");
+                    Write(pi.PropertyType.ToString());
+                    Write("  ");
+                    Write("Testing ");
+                    Write(pi.Name);
+                    Write(" = new ");
+                    Write(pi.PropertyType.ToString());
+                    Write(" ();");
+                }
+                else
+                {
+                    Write("User Defined Type ");
+                    Write(pi.PropertyType.ToString());
+                    // GetPrimitiveProperty(pi.PropertyType);
+                    Write("This should be another iteration");
+                    Write("  ");
+                }
+            }
+        }
+    }  
+
+
+
+
+
+
+
+    public void WriteProperties(PropertyInfo[] properties )
+    {
+        var i = 0;
+        var j = properties.Count();
+
+        foreach (PropertyInfo pi in properties)
+        {
+            i ++;
+            if (pi.PropertyType == typeof(string)) 
+            {
+            Write("                 ");Write(pi.Name); Write(" = null");          
+            }
+            else
+            {
+            Write("                 ");Write(pi.Name); Write(" = new "); Write(pi.PropertyType.Name);WriteLine("()");
+            }
+            if ( i >0 && i <j)  
+            {
+                Write(",");WriteLine("");
+            }
+            else
+            {
+                WriteLine("");
+            }
+        }  
+        i = 0; 
+    }
+#>
+
+

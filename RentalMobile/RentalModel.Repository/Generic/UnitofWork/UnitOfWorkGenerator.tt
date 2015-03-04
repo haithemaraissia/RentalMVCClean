@@ -36,4 +36,4 @@ namespace RentalModel.Repository.Generic.UnitofWork
 <#@ assembly name="System.Xml" #>
 <#@ assembly name="System.Xml.Linq" #>
 <#@ output extension=".cs" #>
-<#@ include file="$(ProjectDir)\Tools\ModelHelper.tt"#>
+<#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>

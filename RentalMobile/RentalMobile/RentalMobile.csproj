@@ -185,16 +185,15 @@
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\ReflectionHelper.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="Controllers\Test2Controller.cs" />
-    <Compile Include="Controllers\TestCleanController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UnitofWorkPatternController.cs" />
     <Compile Include="Controllers\UnitRepositoryPatternController.cs" />
-    <Compile Include="Controllers\UpdateCoverage.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
     <Compile Include="Controllers\UploadPropertyController.cs" />
     <Compile Include="Controllers\UploadUnitPictureController.cs" />
+    <Compile Include="ControllerTester\Test2Controller.cs" />
+    <Compile Include="ControllerTester\TestCleanController.cs" />
+    <Compile Include="ControllerTester\TestController.cs" />
     <Compile Include="Handler\RoutinePerformance.ashx.cs">
       <DependentUpon>RoutinePerformance.ashx</DependentUpon>
     </Compile>
@@ -209,6 +208,7 @@
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Helpers\SpecialistInTeam.cs" />
     <Compile Include="Helpers\Teammate.cs" />
+    <Compile Include="Process\UpdateCoverage.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />
     <Compile Include="Controllers\AdvancedSearchController.cs" />
     <Compile Include="Controllers\AgentController.cs" />

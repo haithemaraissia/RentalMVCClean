@@ -8,6 +8,7 @@ using PagedList;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Process;
 
 namespace RentalMobile.Controllers
 {
