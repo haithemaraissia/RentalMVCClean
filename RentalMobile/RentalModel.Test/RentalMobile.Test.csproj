@@ -41,6 +41,7 @@
       <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
@@ -77,10 +78,75 @@
     <Compile Include="Before\Fake\FakeUnits.cs" />
     <Compile Include="Before\UnitOfWork\UnitofWorkPatternTest.cs" />
     <Compile Include="Prototype\UnitofWorkPatternControllerWithMoq.cs" />
+    <Compile Include="UnitTest\Controller\AboutControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AboutControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AccountControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AdControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AddMaintenancePhotoControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AddTeamMemberControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AdvancedSearchControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AgentControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AgentProfileControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\AgentsControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ChangeMaintenanceControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ChangeProviderControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ChooseMaintenanceControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ChooseProviderControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ContactControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\EmailTestControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\GeneratedRentalAgreementControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\HelpControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\HomeControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\MaintainControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\MaintenanceOrderControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\MaintenancePhotoGalleryControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\MorePhotoControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\NewUnitTestControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\OwnerControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\OwnerProfileControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\OwnersControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\PostControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ProfessionalsControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ProjectControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ProjectDetailControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\PropertyControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ProviderControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ProvidersControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\ReflectionHelperTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\RentalApplicationControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\RentControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\SpecialistControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\SpecialistsControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TeamControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantMaintenanceControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantProfileControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantRentalApplicationControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantsControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\TenantShowingControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UnitControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UnitFeatureTestControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UnitofWorkPatternControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UnitRepositoryPatternControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UploadAgreementControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UploadControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UploadMaintenancePhotoControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UploadPropertyControllerTest.cs" />
+    <Compile Include="UnitTest\PreGenerated\UploadUnitPictureControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tools\UnitTest\Controller\ControllerCRUDGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControllerCRUDGenerator.txt</LastGenOutput>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Tools\Base\ClassHelper.tt" />
+    <None Include="Tools\Base\ControllersList.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControllersList.txt</LastGenOutput>
+    </None>
+    <None Include="Tools\Base\MultipleOutputHelper.ttinclude.tt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
@@ -96,11 +162,18 @@
       <Name>RentalModel.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Prototype\Documentation.txt" />
-    <Content Include="UnitTest\Controller\JustoSatisfySVN.txt" />
+    <Content Include="Tools\Base\ControllersList.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControllersList.tt</DependentUpon>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
