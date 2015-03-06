@@ -1369,6 +1369,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FakeModelViewRepositoryGenerator.tt</DependentUpon>
     </Content>
+    <Content Include="Documentation\Documentation.txt" />
     <Content Include="Generic\Repositories\Model\GenericRepositoryGenerator.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
