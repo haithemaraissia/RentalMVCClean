@@ -661,7 +661,6 @@
     <Compile Include="Data\Repositories\FakeUrgencyTypeRepository.cs">
       <DependentUpon>FakeModelRepositoryGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Repositories\Model\FakeUnitRepository.cs" />
     <Compile Include="Generic\Repositories\Model\AgentAcceptedApplicationRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>
@@ -1295,11 +1294,6 @@
     <Compile Include="Generic\Repositories\Base\IGenericRepository.cs" />
     <Compile Include="Old\Basic Respository Test\TestingRepositoryDirectly\RepositroyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\Testing\ClassFinderTest1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClassFinderTest.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tools\Testing\Test.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1353,10 +1347,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="Tools\Base\ClassFinder.tt" />
-    <None Include="Tools\Testing\ClassFinderTest.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ClassFinderTest1.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Fake\FakeModelDataGenerator.txt">

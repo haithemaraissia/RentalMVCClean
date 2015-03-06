@@ -3,7 +3,7 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.Repositories.Model
 {
-    public partial class aspnet_ApplicationsRepository : GenericRepository<aspnet_Applications>, Iaspnet_ApplicationsRepository
+    public partial class AspnetApplicationsRepository : GenericRepository<aspnet_Applications>, IAspnetApplicationsRepository
     {
 
     }

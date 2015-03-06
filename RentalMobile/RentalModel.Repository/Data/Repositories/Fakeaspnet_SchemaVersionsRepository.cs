@@ -5,12 +5,12 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Data.Repositories
 {
-    public class Fakeaspnet_SchemaVersionsRepository : FakeGenericRepository<aspnet_SchemaVersions>
+    public class FakeaspnetSchemaVersionsRepository : FakeGenericRepository<aspnet_SchemaVersions>
     {
-        public Fakeaspnet_SchemaVersionsRepository() : base(new Fakeaspnet_SchemaVersionss().Myaspnet_SchemaVersionss)
+        public FakeaspnetSchemaVersionsRepository() : base(new FakeaspnetSchemaVersionss().MyaspnetSchemaVersionss)
         {
         }
-        public Fakeaspnet_SchemaVersionsRepository(List<aspnet_SchemaVersions> myaspnet_SchemaVersions): base(myaspnet_SchemaVersions)
+        public FakeaspnetSchemaVersionsRepository(List<aspnet_SchemaVersions> myaspnetSchemaVersions): base(myaspnetSchemaVersions)
         {
         }
 

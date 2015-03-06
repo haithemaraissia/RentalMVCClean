@@ -10,7 +10,7 @@ namespace RentalModel.Repository.Tools.Testing
     internal class Test
     {
 
-        public List<string> excludedclasses = new List<string>
+        public List<string> Excludedclasses = new List<string>
         {
             "RentalModel.Context",
             "RentalModel.Designer",
@@ -32,7 +32,7 @@ namespace RentalModel.Repository.Tools.Testing
             foreach (
                 Type type in assembly.GetTypes().Where(x => x.IsClass && x.Namespace == "RentalMobile.Model.Models"))
             {
-                if (!excludedclasses.Contains(type.Name))
+                if (!Excludedclasses.Contains(type.Name))
                 {
                     classTypes.Add(type);
                 }

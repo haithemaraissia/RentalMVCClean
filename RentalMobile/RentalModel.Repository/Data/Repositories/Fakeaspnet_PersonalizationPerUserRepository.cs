@@ -5,12 +5,12 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Data.Repositories
 {
-    public class Fakeaspnet_PersonalizationPerUserRepository : FakeGenericRepository<aspnet_PersonalizationPerUser>
+    public class FakeaspnetPersonalizationPerUserRepository : FakeGenericRepository<aspnet_PersonalizationPerUser>
     {
-        public Fakeaspnet_PersonalizationPerUserRepository() : base(new Fakeaspnet_PersonalizationPerUsers().Myaspnet_PersonalizationPerUsers)
+        public FakeaspnetPersonalizationPerUserRepository() : base(new FakeaspnetPersonalizationPerUsers().MyaspnetPersonalizationPerUsers)
         {
         }
-        public Fakeaspnet_PersonalizationPerUserRepository(List<aspnet_PersonalizationPerUser> myaspnet_PersonalizationPerUser): base(myaspnet_PersonalizationPerUser)
+        public FakeaspnetPersonalizationPerUserRepository(List<aspnet_PersonalizationPerUser> myaspnetPersonalizationPerUser): base(myaspnetPersonalizationPerUser)
         {
         }
 

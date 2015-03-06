@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Profiles
+    public class FakeaspnetProfiles
     { 
-       public List<aspnet_Profile> Myaspnet_Profiles;
+       public List<aspnet_Profile> MyaspnetProfiles;
 
-       public Fakeaspnet_Profiles()
+       public FakeaspnetProfiles()
         {
             Initializeaspnet_ProfileList();
         }
 
        public void Initializeaspnet_ProfileList()
         {
-            Myaspnet_Profiles = new List<aspnet_Profile> {
+            MyaspnetProfiles = new List<aspnet_Profile> {
                 Firstaspnet_Profile(), 
                 Secondaspnet_Profile(),
                 Thirdaspnet_Profile()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Profile Firstaspnet_Profile()
         {
 
-            var firstaspnet_Profile = new aspnet_Profile {
+            var firstaspnetProfile = new aspnet_Profile {
 
                  UserId = new Guid()
 ,
@@ -41,13 +41,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Profile;
+            return firstaspnetProfile;
         }
 
        public aspnet_Profile Secondaspnet_Profile()
         {
 
-            var secondaspnet_Profile = new aspnet_Profile {
+            var secondaspnetProfile = new aspnet_Profile {
 
                  UserId = new Guid()
 ,
@@ -62,13 +62,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Profile;
+            return secondaspnetProfile;
         }
 
        public aspnet_Profile Thirdaspnet_Profile()
         {
 
-            var thirdaspnet_Profile = new aspnet_Profile {
+            var thirdaspnetProfile = new aspnet_Profile {
 
                  UserId = new Guid()
 ,
@@ -83,12 +83,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Profile;
+            return thirdaspnetProfile;
         }
 
-        ~Fakeaspnet_Profiles()
+        ~FakeaspnetProfiles()
         {
-            Myaspnet_Profiles = null;
+            MyaspnetProfiles = null;
         }
     }
 }

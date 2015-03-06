@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Roless
+    public class FakeaspnetRoless
     { 
-       public List<aspnet_Roles> Myaspnet_Roless;
+       public List<aspnet_Roles> MyaspnetRoless;
 
-       public Fakeaspnet_Roless()
+       public FakeaspnetRoless()
         {
             Initializeaspnet_RolesList();
         }
 
        public void Initializeaspnet_RolesList()
         {
-            Myaspnet_Roless = new List<aspnet_Roles> {
+            MyaspnetRoless = new List<aspnet_Roles> {
                 Firstaspnet_Roles(), 
                 Secondaspnet_Roles(),
                 Thirdaspnet_Roles()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Roles Firstaspnet_Roles()
         {
 
-            var firstaspnet_Roles = new aspnet_Roles {
+            var firstaspnetRoles = new aspnet_Roles {
 
                  ApplicationId = new Guid()
 ,
@@ -42,13 +42,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Roles;
+            return firstaspnetRoles;
         }
 
        public aspnet_Roles Secondaspnet_Roles()
         {
 
-            var secondaspnet_Roles = new aspnet_Roles {
+            var secondaspnetRoles = new aspnet_Roles {
 
                  ApplicationId = new Guid()
 ,
@@ -64,13 +64,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Roles;
+            return secondaspnetRoles;
         }
 
        public aspnet_Roles Thirdaspnet_Roles()
         {
 
-            var thirdaspnet_Roles = new aspnet_Roles {
+            var thirdaspnetRoles = new aspnet_Roles {
 
                  ApplicationId = new Guid()
 ,
@@ -86,12 +86,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Roles;
+            return thirdaspnetRoles;
         }
 
-        ~Fakeaspnet_Roless()
+        ~FakeaspnetRoless()
         {
-            Myaspnet_Roless = null;
+            MyaspnetRoless = null;
         }
     }
 }

@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Memberships
+    public class FakeaspnetMemberships
     { 
-       public List<aspnet_Membership> Myaspnet_Memberships;
+       public List<aspnet_Membership> MyaspnetMemberships;
 
-       public Fakeaspnet_Memberships()
+       public FakeaspnetMemberships()
         {
             Initializeaspnet_MembershipList();
         }
 
        public void Initializeaspnet_MembershipList()
         {
-            Myaspnet_Memberships = new List<aspnet_Membership> {
+            MyaspnetMemberships = new List<aspnet_Membership> {
                 Firstaspnet_Membership(), 
                 Secondaspnet_Membership(),
                 Thirdaspnet_Membership()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Membership Firstaspnet_Membership()
         {
 
-            var firstaspnet_Membership = new aspnet_Membership {
+            var firstaspnetMembership = new aspnet_Membership {
 
                  ApplicationId = new Guid()
 ,
@@ -69,13 +69,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Membership;
+            return firstaspnetMembership;
         }
 
        public aspnet_Membership Secondaspnet_Membership()
         {
 
-            var secondaspnet_Membership = new aspnet_Membership {
+            var secondaspnetMembership = new aspnet_Membership {
 
                  ApplicationId = new Guid()
 ,
@@ -118,13 +118,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Membership;
+            return secondaspnetMembership;
         }
 
        public aspnet_Membership Thirdaspnet_Membership()
         {
 
-            var thirdaspnet_Membership = new aspnet_Membership {
+            var thirdaspnetMembership = new aspnet_Membership {
 
                  ApplicationId = new Guid()
 ,
@@ -167,12 +167,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Membership;
+            return thirdaspnetMembership;
         }
 
-        ~Fakeaspnet_Memberships()
+        ~FakeaspnetMemberships()
         {
-            Myaspnet_Memberships = null;
+            MyaspnetMemberships = null;
         }
     }
 }

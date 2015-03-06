@@ -3,7 +3,7 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.Repositories.Model
 {
-    public partial class aspnet_PathsRepository : GenericRepository<aspnet_Paths>, Iaspnet_PathsRepository
+    public partial class AspnetPathsRepository : GenericRepository<aspnet_Paths>, IAspnetPathsRepository
     {
 
     }

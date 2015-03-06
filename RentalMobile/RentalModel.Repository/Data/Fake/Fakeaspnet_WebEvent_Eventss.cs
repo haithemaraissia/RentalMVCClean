@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_WebEvent_Eventss
+    public class FakeaspnetWebEventEventss
     { 
-       public List<aspnet_WebEvent_Events> Myaspnet_WebEvent_Eventss;
+       public List<aspnet_WebEvent_Events> MyaspnetWebEventEventss;
 
-       public Fakeaspnet_WebEvent_Eventss()
+       public FakeaspnetWebEventEventss()
         {
             Initializeaspnet_WebEvent_EventsList();
         }
 
        public void Initializeaspnet_WebEvent_EventsList()
         {
-            Myaspnet_WebEvent_Eventss = new List<aspnet_WebEvent_Events> {
+            MyaspnetWebEventEventss = new List<aspnet_WebEvent_Events> {
                 Firstaspnet_WebEvent_Events(), 
                 Secondaspnet_WebEvent_Events(),
                 Thirdaspnet_WebEvent_Events()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_WebEvent_Events Firstaspnet_WebEvent_Events()
         {
 
-            var firstaspnet_WebEvent_Events = new aspnet_WebEvent_Events {
+            var firstaspnetWebEventEvents = new aspnet_WebEvent_Events {
 
                  EventId = null,
                  EventTimeUtc = new DateTime()
@@ -52,13 +52,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_WebEvent_Events;
+            return firstaspnetWebEventEvents;
         }
 
        public aspnet_WebEvent_Events Secondaspnet_WebEvent_Events()
         {
 
-            var secondaspnet_WebEvent_Events = new aspnet_WebEvent_Events {
+            var secondaspnetWebEventEvents = new aspnet_WebEvent_Events {
 
                  EventId = null,
                  EventTimeUtc = new DateTime()
@@ -84,13 +84,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_WebEvent_Events;
+            return secondaspnetWebEventEvents;
         }
 
        public aspnet_WebEvent_Events Thirdaspnet_WebEvent_Events()
         {
 
-            var thirdaspnet_WebEvent_Events = new aspnet_WebEvent_Events {
+            var thirdaspnetWebEventEvents = new aspnet_WebEvent_Events {
 
                  EventId = null,
                  EventTimeUtc = new DateTime()
@@ -116,12 +116,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_WebEvent_Events;
+            return thirdaspnetWebEventEvents;
         }
 
-        ~Fakeaspnet_WebEvent_Eventss()
+        ~FakeaspnetWebEventEventss()
         {
-            Myaspnet_WebEvent_Eventss = null;
+            MyaspnetWebEventEventss = null;
         }
     }
 }

@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Userss
+    public class FakeaspnetUserss
     { 
-       public List<aspnet_Users> Myaspnet_Userss;
+       public List<aspnet_Users> MyaspnetUserss;
 
-       public Fakeaspnet_Userss()
+       public FakeaspnetUserss()
         {
             Initializeaspnet_UsersList();
         }
 
        public void Initializeaspnet_UsersList()
         {
-            Myaspnet_Userss = new List<aspnet_Users> {
+            MyaspnetUserss = new List<aspnet_Users> {
                 Firstaspnet_Users(), 
                 Secondaspnet_Users(),
                 Thirdaspnet_Users()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Users Firstaspnet_Users()
         {
 
-            var firstaspnet_Users = new aspnet_Users {
+            var firstaspnetUsers = new aspnet_Users {
 
                  ApplicationId = new Guid()
 ,
@@ -51,13 +51,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Users;
+            return firstaspnetUsers;
         }
 
        public aspnet_Users Secondaspnet_Users()
         {
 
-            var secondaspnet_Users = new aspnet_Users {
+            var secondaspnetUsers = new aspnet_Users {
 
                  ApplicationId = new Guid()
 ,
@@ -82,13 +82,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Users;
+            return secondaspnetUsers;
         }
 
        public aspnet_Users Thirdaspnet_Users()
         {
 
-            var thirdaspnet_Users = new aspnet_Users {
+            var thirdaspnetUsers = new aspnet_Users {
 
                  ApplicationId = new Guid()
 ,
@@ -113,12 +113,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Users;
+            return thirdaspnetUsers;
         }
 
-        ~Fakeaspnet_Userss()
+        ~FakeaspnetUserss()
         {
-            Myaspnet_Userss = null;
+            MyaspnetUserss = null;
         }
     }
 }

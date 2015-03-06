@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Applicationss
+    public class FakeaspnetApplicationss
     { 
-       public List<aspnet_Applications> Myaspnet_Applicationss;
+       public List<aspnet_Applications> MyaspnetApplicationss;
 
-       public Fakeaspnet_Applicationss()
+       public FakeaspnetApplicationss()
         {
             Initializeaspnet_ApplicationsList();
         }
 
        public void Initializeaspnet_ApplicationsList()
         {
-            Myaspnet_Applicationss = new List<aspnet_Applications> {
+            MyaspnetApplicationss = new List<aspnet_Applications> {
                 Firstaspnet_Applications(), 
                 Secondaspnet_Applications(),
                 Thirdaspnet_Applications()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Applications Firstaspnet_Applications()
         {
 
-            var firstaspnet_Applications = new aspnet_Applications {
+            var firstaspnetApplications = new aspnet_Applications {
 
                  ApplicationName = null,
                  LoweredApplicationName = null,
@@ -41,13 +41,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Applications;
+            return firstaspnetApplications;
         }
 
        public aspnet_Applications Secondaspnet_Applications()
         {
 
-            var secondaspnet_Applications = new aspnet_Applications {
+            var secondaspnetApplications = new aspnet_Applications {
 
                  ApplicationName = null,
                  LoweredApplicationName = null,
@@ -62,13 +62,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Applications;
+            return secondaspnetApplications;
         }
 
        public aspnet_Applications Thirdaspnet_Applications()
         {
 
-            var thirdaspnet_Applications = new aspnet_Applications {
+            var thirdaspnetApplications = new aspnet_Applications {
 
                  ApplicationName = null,
                  LoweredApplicationName = null,
@@ -83,12 +83,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Applications;
+            return thirdaspnetApplications;
         }
 
-        ~Fakeaspnet_Applicationss()
+        ~FakeaspnetApplicationss()
         {
-            Myaspnet_Applicationss = null;
+            MyaspnetApplicationss = null;
         }
     }
 }

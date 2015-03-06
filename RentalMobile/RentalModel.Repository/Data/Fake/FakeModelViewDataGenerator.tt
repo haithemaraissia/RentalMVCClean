@@ -86,7 +86,6 @@ namespace RentalModel.Repository.Data.Fake
     }
 }
 
-
     <#    
     }
     manager.Process(true, true); #>
@@ -116,23 +115,9 @@ namespace RentalModel.Repository.Data.Fake
         }
 
     }
-
-
-
-
-    //PrimitiveTypeName ::= NumericTypeName | Boolean | Date | Char | String
-    //NumericTypeName ::= IntegralTypeName | FloatingPointTypeName | Decimal
-    //IntegralTypeName ::= Byte | Short | Integer | Long
-    //FloatingPointTypeName ::= Single | Double
-
 #>
 
-
-
 <#+
-
-
-
 
     public IEnumerable<Type> GetTypesFromNamespace(Assembly assembly,  String desiredNamespace)
     {
@@ -201,10 +186,6 @@ namespace RentalModel.Repository.Data.Fake
         }
     }
 
-
-
-
-
     public  void GetPrimitiveProperty(Type classType)
     {
         while (classType.IsPrimitive == false)
@@ -235,19 +216,12 @@ namespace RentalModel.Repository.Data.Fake
                 {
                     Write("User Defined Type ");
                     Write(pi.PropertyType.ToString());
-                    // GetPrimitiveProperty(pi.PropertyType);
                     Write("This should be another iteration");
                     Write("  ");
                 }
             }
         }
     }  
-
-
-
-
-
-
 
      public void WriteProperties(PropertyInfo[] properties )
     {

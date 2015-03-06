@@ -78,5 +78,4 @@ namespace RentalModel.Repository.Data.Fake
     }
 }
 
-
     

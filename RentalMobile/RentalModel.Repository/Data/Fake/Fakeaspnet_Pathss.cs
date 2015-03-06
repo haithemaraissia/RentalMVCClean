@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Pathss
+    public class FakeaspnetPathss
     { 
-       public List<aspnet_Paths> Myaspnet_Pathss;
+       public List<aspnet_Paths> MyaspnetPathss;
 
-       public Fakeaspnet_Pathss()
+       public FakeaspnetPathss()
         {
             Initializeaspnet_PathsList();
         }
 
        public void Initializeaspnet_PathsList()
         {
-            Myaspnet_Pathss = new List<aspnet_Paths> {
+            MyaspnetPathss = new List<aspnet_Paths> {
                 Firstaspnet_Paths(), 
                 Secondaspnet_Paths(),
                 Thirdaspnet_Paths()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_Paths Firstaspnet_Paths()
         {
 
-            var firstaspnet_Paths = new aspnet_Paths {
+            var firstaspnetPaths = new aspnet_Paths {
 
                  ApplicationId = new Guid()
 ,
@@ -42,13 +42,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_Paths;
+            return firstaspnetPaths;
         }
 
        public aspnet_Paths Secondaspnet_Paths()
         {
 
-            var secondaspnet_Paths = new aspnet_Paths {
+            var secondaspnetPaths = new aspnet_Paths {
 
                  ApplicationId = new Guid()
 ,
@@ -64,13 +64,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_Paths;
+            return secondaspnetPaths;
         }
 
        public aspnet_Paths Thirdaspnet_Paths()
         {
 
-            var thirdaspnet_Paths = new aspnet_Paths {
+            var thirdaspnetPaths = new aspnet_Paths {
 
                  ApplicationId = new Guid()
 ,
@@ -86,12 +86,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_Paths;
+            return thirdaspnetPaths;
         }
 
-        ~Fakeaspnet_Pathss()
+        ~FakeaspnetPathss()
         {
-            Myaspnet_Pathss = null;
+            MyaspnetPathss = null;
         }
     }
 }

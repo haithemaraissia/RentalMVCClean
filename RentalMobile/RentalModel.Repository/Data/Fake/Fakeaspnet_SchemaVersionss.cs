@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_SchemaVersionss
+    public class FakeaspnetSchemaVersionss
     { 
-       public List<aspnet_SchemaVersions> Myaspnet_SchemaVersionss;
+       public List<aspnet_SchemaVersions> MyaspnetSchemaVersionss;
 
-       public Fakeaspnet_SchemaVersionss()
+       public FakeaspnetSchemaVersionss()
         {
             Initializeaspnet_SchemaVersionsList();
         }
 
        public void Initializeaspnet_SchemaVersionsList()
         {
-            Myaspnet_SchemaVersionss = new List<aspnet_SchemaVersions> {
+            MyaspnetSchemaVersionss = new List<aspnet_SchemaVersions> {
                 Firstaspnet_SchemaVersions(), 
                 Secondaspnet_SchemaVersions(),
                 Thirdaspnet_SchemaVersions()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_SchemaVersions Firstaspnet_SchemaVersions()
         {
 
-            var firstaspnet_SchemaVersions = new aspnet_SchemaVersions {
+            var firstaspnetSchemaVersions = new aspnet_SchemaVersions {
 
                  Feature = null,
                  CompatibleSchemaVersion = null,
@@ -35,13 +35,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_SchemaVersions;
+            return firstaspnetSchemaVersions;
         }
 
        public aspnet_SchemaVersions Secondaspnet_SchemaVersions()
         {
 
-            var secondaspnet_SchemaVersions = new aspnet_SchemaVersions {
+            var secondaspnetSchemaVersions = new aspnet_SchemaVersions {
 
                  Feature = null,
                  CompatibleSchemaVersion = null,
@@ -50,13 +50,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_SchemaVersions;
+            return secondaspnetSchemaVersions;
         }
 
        public aspnet_SchemaVersions Thirdaspnet_SchemaVersions()
         {
 
-            var thirdaspnet_SchemaVersions = new aspnet_SchemaVersions {
+            var thirdaspnetSchemaVersions = new aspnet_SchemaVersions {
 
                  Feature = null,
                  CompatibleSchemaVersion = null,
@@ -65,12 +65,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_SchemaVersions;
+            return thirdaspnetSchemaVersions;
         }
 
-        ~Fakeaspnet_SchemaVersionss()
+        ~FakeaspnetSchemaVersionss()
         {
-            Myaspnet_SchemaVersionss = null;
+            MyaspnetSchemaVersionss = null;
         }
     }
 }

@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_PersonalizationAllUserss
+    public class FakeaspnetPersonalizationAllUserss
     { 
-       public List<aspnet_PersonalizationAllUsers> Myaspnet_PersonalizationAllUserss;
+       public List<aspnet_PersonalizationAllUsers> MyaspnetPersonalizationAllUserss;
 
-       public Fakeaspnet_PersonalizationAllUserss()
+       public FakeaspnetPersonalizationAllUserss()
         {
             Initializeaspnet_PersonalizationAllUsersList();
         }
 
        public void Initializeaspnet_PersonalizationAllUsersList()
         {
-            Myaspnet_PersonalizationAllUserss = new List<aspnet_PersonalizationAllUsers> {
+            MyaspnetPersonalizationAllUserss = new List<aspnet_PersonalizationAllUsers> {
                 Firstaspnet_PersonalizationAllUsers(), 
                 Secondaspnet_PersonalizationAllUsers(),
                 Thirdaspnet_PersonalizationAllUsers()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_PersonalizationAllUsers Firstaspnet_PersonalizationAllUsers()
         {
 
-            var firstaspnet_PersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
+            var firstaspnetPersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
 
                  PathId = new Guid()
 ,
@@ -39,13 +39,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_PersonalizationAllUsers;
+            return firstaspnetPersonalizationAllUsers;
         }
 
        public aspnet_PersonalizationAllUsers Secondaspnet_PersonalizationAllUsers()
         {
 
-            var secondaspnet_PersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
+            var secondaspnetPersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
 
                  PathId = new Guid()
 ,
@@ -58,13 +58,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_PersonalizationAllUsers;
+            return secondaspnetPersonalizationAllUsers;
         }
 
        public aspnet_PersonalizationAllUsers Thirdaspnet_PersonalizationAllUsers()
         {
 
-            var thirdaspnet_PersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
+            var thirdaspnetPersonalizationAllUsers = new aspnet_PersonalizationAllUsers {
 
                  PathId = new Guid()
 ,
@@ -77,12 +77,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_PersonalizationAllUsers;
+            return thirdaspnetPersonalizationAllUsers;
         }
 
-        ~Fakeaspnet_PersonalizationAllUserss()
+        ~FakeaspnetPersonalizationAllUserss()
         {
-            Myaspnet_PersonalizationAllUserss = null;
+            MyaspnetPersonalizationAllUserss = null;
         }
     }
 }

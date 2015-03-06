@@ -16,16 +16,16 @@ namespace RentalModel.Repository.Generic.UnitofWork
      IGenericRepository<AgentProject> AgentProjectRepository {get;}
      IGenericRepository<AgentRejectedApplication> AgentRejectedApplicationRepository {get;}
      IGenericRepository<AgentRejectedPostedProject> AgentRejectedPostedProjectRepository {get;}
-     IGenericRepository<aspnet_Applications> aspnet_ApplicationsRepository {get;}
-     IGenericRepository<aspnet_Membership> aspnet_MembershipRepository {get;}
-     IGenericRepository<aspnet_Paths> aspnet_PathsRepository {get;}
-     IGenericRepository<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsersRepository {get;}
-     IGenericRepository<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUserRepository {get;}
-     IGenericRepository<aspnet_Profile> aspnet_ProfileRepository {get;}
-     IGenericRepository<aspnet_Roles> aspnet_RolesRepository {get;}
-     IGenericRepository<aspnet_SchemaVersions> aspnet_SchemaVersionsRepository {get;}
-     IGenericRepository<aspnet_Users> aspnet_UsersRepository {get;}
-     IGenericRepository<aspnet_WebEvent_Events> aspnet_WebEvent_EventsRepository {get;}
+     IGenericRepository<aspnet_Applications> AspnetApplicationsRepository {get;}
+     IGenericRepository<aspnet_Membership> AspnetMembershipRepository {get;}
+     IGenericRepository<aspnet_Paths> AspnetPathsRepository {get;}
+     IGenericRepository<aspnet_PersonalizationAllUsers> AspnetPersonalizationAllUsersRepository {get;}
+     IGenericRepository<aspnet_PersonalizationPerUser> AspnetPersonalizationPerUserRepository {get;}
+     IGenericRepository<aspnet_Profile> AspnetProfileRepository {get;}
+     IGenericRepository<aspnet_Roles> AspnetRolesRepository {get;}
+     IGenericRepository<aspnet_SchemaVersions> AspnetSchemaVersionsRepository {get;}
+     IGenericRepository<aspnet_Users> AspnetUsersRepository {get;}
+     IGenericRepository<aspnet_WebEvent_Events> AspnetWebEventEventsRepository {get;}
      IGenericRepository<Basement> BasementRepository {get;}
      IGenericRepository<Bathroom> BathroomRepository {get;}
      IGenericRepository<Bed> BedRepository {get;}

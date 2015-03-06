@@ -5,18 +5,18 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_PersonalizationPerUsers
+    public class FakeaspnetPersonalizationPerUsers
     { 
-       public List<aspnet_PersonalizationPerUser> Myaspnet_PersonalizationPerUsers;
+       public List<aspnet_PersonalizationPerUser> MyaspnetPersonalizationPerUsers;
 
-       public Fakeaspnet_PersonalizationPerUsers()
+       public FakeaspnetPersonalizationPerUsers()
         {
             Initializeaspnet_PersonalizationPerUserList();
         }
 
        public void Initializeaspnet_PersonalizationPerUserList()
         {
-            Myaspnet_PersonalizationPerUsers = new List<aspnet_PersonalizationPerUser> {
+            MyaspnetPersonalizationPerUsers = new List<aspnet_PersonalizationPerUser> {
                 Firstaspnet_PersonalizationPerUser(), 
                 Secondaspnet_PersonalizationPerUser(),
                 Thirdaspnet_PersonalizationPerUser()
@@ -26,7 +26,7 @@ namespace RentalModel.Repository.Data.Fake
        public aspnet_PersonalizationPerUser Firstaspnet_PersonalizationPerUser()
         {
 
-            var firstaspnet_PersonalizationPerUser = new aspnet_PersonalizationPerUser {
+            var firstaspnetPersonalizationPerUser = new aspnet_PersonalizationPerUser {
 
                  Id = new Guid()
 ,
@@ -43,13 +43,13 @@ namespace RentalModel.Repository.Data.Fake
     
  };
 
-            return firstaspnet_PersonalizationPerUser;
+            return firstaspnetPersonalizationPerUser;
         }
 
        public aspnet_PersonalizationPerUser Secondaspnet_PersonalizationPerUser()
         {
 
-            var secondaspnet_PersonalizationPerUser = new aspnet_PersonalizationPerUser {
+            var secondaspnetPersonalizationPerUser = new aspnet_PersonalizationPerUser {
 
                  Id = new Guid()
 ,
@@ -66,13 +66,13 @@ namespace RentalModel.Repository.Data.Fake
         
  };
 
-            return secondaspnet_PersonalizationPerUser;
+            return secondaspnetPersonalizationPerUser;
         }
 
        public aspnet_PersonalizationPerUser Thirdaspnet_PersonalizationPerUser()
         {
 
-            var thirdaspnet_PersonalizationPerUser = new aspnet_PersonalizationPerUser {
+            var thirdaspnetPersonalizationPerUser = new aspnet_PersonalizationPerUser {
 
                  Id = new Guid()
 ,
@@ -89,12 +89,12 @@ namespace RentalModel.Repository.Data.Fake
  
  };
 
-            return thirdaspnet_PersonalizationPerUser;
+            return thirdaspnetPersonalizationPerUser;
         }
 
-        ~Fakeaspnet_PersonalizationPerUsers()
+        ~FakeaspnetPersonalizationPerUsers()
         {
-            Myaspnet_PersonalizationPerUsers = null;
+            MyaspnetPersonalizationPerUsers = null;
         }
     }
 }

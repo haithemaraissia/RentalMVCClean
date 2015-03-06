@@ -5,12 +5,12 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Data.Repositories
 {
-    public class Fakeaspnet_MembershipRepository : FakeGenericRepository<aspnet_Membership>
+    public class FakeaspnetMembershipRepository : FakeGenericRepository<aspnet_Membership>
     {
-        public Fakeaspnet_MembershipRepository() : base(new Fakeaspnet_Memberships().Myaspnet_Memberships)
+        public FakeaspnetMembershipRepository() : base(new FakeaspnetMemberships().MyaspnetMemberships)
         {
         }
-        public Fakeaspnet_MembershipRepository(List<aspnet_Membership> myaspnet_Membership): base(myaspnet_Membership)
+        public FakeaspnetMembershipRepository(List<aspnet_Membership> myaspnetMembership): base(myaspnetMembership)
         {
         }
 

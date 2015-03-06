@@ -3,7 +3,7 @@ using RentalModel.Repository.Generic.Repositories.Base;
 
 namespace RentalModel.Repository.Generic.Repositories.Model
 {
-    public partial class aspnet_PersonalizationAllUsersRepository : GenericRepository<aspnet_PersonalizationAllUsers>, Iaspnet_PersonalizationAllUsersRepository
+    public partial class AspnetPersonalizationAllUsersRepository : GenericRepository<aspnet_PersonalizationAllUsers>, IAspnetPersonalizationAllUsersRepository
     {
 
     }

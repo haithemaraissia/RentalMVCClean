@@ -87,83 +87,83 @@ namespace RentalModel.Repository.Generic.UnitofWork
         }
     
 
-        private IGenericRepository<aspnet_Applications> _aspnet_ApplicationsRepository;
-        public IGenericRepository<aspnet_Applications> aspnet_ApplicationsRepository
+        private IGenericRepository<aspnet_Applications> _aspnetApplicationsRepository;
+        public IGenericRepository<aspnet_Applications> AspnetApplicationsRepository
         {
-            get { return  _aspnet_ApplicationsRepository ?? ( _aspnet_ApplicationsRepository = new GenericRepository<aspnet_Applications>(Context)); }
-            set {  _aspnet_ApplicationsRepository = value; }
+            get { return  _aspnetApplicationsRepository ?? ( _aspnetApplicationsRepository = new GenericRepository<aspnet_Applications>(Context)); }
+            set {  _aspnetApplicationsRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_Membership> _aspnet_MembershipRepository;
-        public IGenericRepository<aspnet_Membership> aspnet_MembershipRepository
+        private IGenericRepository<aspnet_Membership> _aspnetMembershipRepository;
+        public IGenericRepository<aspnet_Membership> AspnetMembershipRepository
         {
-            get { return  _aspnet_MembershipRepository ?? ( _aspnet_MembershipRepository = new GenericRepository<aspnet_Membership>(Context)); }
-            set {  _aspnet_MembershipRepository = value; }
+            get { return  _aspnetMembershipRepository ?? ( _aspnetMembershipRepository = new GenericRepository<aspnet_Membership>(Context)); }
+            set {  _aspnetMembershipRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_Paths> _aspnet_PathsRepository;
-        public IGenericRepository<aspnet_Paths> aspnet_PathsRepository
+        private IGenericRepository<aspnet_Paths> _aspnetPathsRepository;
+        public IGenericRepository<aspnet_Paths> AspnetPathsRepository
         {
-            get { return  _aspnet_PathsRepository ?? ( _aspnet_PathsRepository = new GenericRepository<aspnet_Paths>(Context)); }
-            set {  _aspnet_PathsRepository = value; }
+            get { return  _aspnetPathsRepository ?? ( _aspnetPathsRepository = new GenericRepository<aspnet_Paths>(Context)); }
+            set {  _aspnetPathsRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_PersonalizationAllUsers> _aspnet_PersonalizationAllUsersRepository;
-        public IGenericRepository<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsersRepository
+        private IGenericRepository<aspnet_PersonalizationAllUsers> _aspnetPersonalizationAllUsersRepository;
+        public IGenericRepository<aspnet_PersonalizationAllUsers> AspnetPersonalizationAllUsersRepository
         {
-            get { return  _aspnet_PersonalizationAllUsersRepository ?? ( _aspnet_PersonalizationAllUsersRepository = new GenericRepository<aspnet_PersonalizationAllUsers>(Context)); }
-            set {  _aspnet_PersonalizationAllUsersRepository = value; }
+            get { return  _aspnetPersonalizationAllUsersRepository ?? ( _aspnetPersonalizationAllUsersRepository = new GenericRepository<aspnet_PersonalizationAllUsers>(Context)); }
+            set {  _aspnetPersonalizationAllUsersRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_PersonalizationPerUser> _aspnet_PersonalizationPerUserRepository;
-        public IGenericRepository<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUserRepository
+        private IGenericRepository<aspnet_PersonalizationPerUser> _aspnetPersonalizationPerUserRepository;
+        public IGenericRepository<aspnet_PersonalizationPerUser> AspnetPersonalizationPerUserRepository
         {
-            get { return  _aspnet_PersonalizationPerUserRepository ?? ( _aspnet_PersonalizationPerUserRepository = new GenericRepository<aspnet_PersonalizationPerUser>(Context)); }
-            set {  _aspnet_PersonalizationPerUserRepository = value; }
+            get { return  _aspnetPersonalizationPerUserRepository ?? ( _aspnetPersonalizationPerUserRepository = new GenericRepository<aspnet_PersonalizationPerUser>(Context)); }
+            set {  _aspnetPersonalizationPerUserRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_Profile> _aspnet_ProfileRepository;
-        public IGenericRepository<aspnet_Profile> aspnet_ProfileRepository
+        private IGenericRepository<aspnet_Profile> _aspnetProfileRepository;
+        public IGenericRepository<aspnet_Profile> AspnetProfileRepository
         {
-            get { return  _aspnet_ProfileRepository ?? ( _aspnet_ProfileRepository = new GenericRepository<aspnet_Profile>(Context)); }
-            set {  _aspnet_ProfileRepository = value; }
+            get { return  _aspnetProfileRepository ?? ( _aspnetProfileRepository = new GenericRepository<aspnet_Profile>(Context)); }
+            set {  _aspnetProfileRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_Roles> _aspnet_RolesRepository;
-        public IGenericRepository<aspnet_Roles> aspnet_RolesRepository
+        private IGenericRepository<aspnet_Roles> _aspnetRolesRepository;
+        public IGenericRepository<aspnet_Roles> AspnetRolesRepository
         {
-            get { return  _aspnet_RolesRepository ?? ( _aspnet_RolesRepository = new GenericRepository<aspnet_Roles>(Context)); }
-            set {  _aspnet_RolesRepository = value; }
+            get { return  _aspnetRolesRepository ?? ( _aspnetRolesRepository = new GenericRepository<aspnet_Roles>(Context)); }
+            set {  _aspnetRolesRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_SchemaVersions> _aspnet_SchemaVersionsRepository;
-        public IGenericRepository<aspnet_SchemaVersions> aspnet_SchemaVersionsRepository
+        private IGenericRepository<aspnet_SchemaVersions> _aspnetSchemaVersionsRepository;
+        public IGenericRepository<aspnet_SchemaVersions> AspnetSchemaVersionsRepository
         {
-            get { return  _aspnet_SchemaVersionsRepository ?? ( _aspnet_SchemaVersionsRepository = new GenericRepository<aspnet_SchemaVersions>(Context)); }
-            set {  _aspnet_SchemaVersionsRepository = value; }
+            get { return  _aspnetSchemaVersionsRepository ?? ( _aspnetSchemaVersionsRepository = new GenericRepository<aspnet_SchemaVersions>(Context)); }
+            set {  _aspnetSchemaVersionsRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_Users> _aspnet_UsersRepository;
-        public IGenericRepository<aspnet_Users> aspnet_UsersRepository
+        private IGenericRepository<aspnet_Users> _aspnetUsersRepository;
+        public IGenericRepository<aspnet_Users> AspnetUsersRepository
         {
-            get { return  _aspnet_UsersRepository ?? ( _aspnet_UsersRepository = new GenericRepository<aspnet_Users>(Context)); }
-            set {  _aspnet_UsersRepository = value; }
+            get { return  _aspnetUsersRepository ?? ( _aspnetUsersRepository = new GenericRepository<aspnet_Users>(Context)); }
+            set {  _aspnetUsersRepository = value; }
         }
     
 
-        private IGenericRepository<aspnet_WebEvent_Events> _aspnet_WebEvent_EventsRepository;
-        public IGenericRepository<aspnet_WebEvent_Events> aspnet_WebEvent_EventsRepository
+        private IGenericRepository<aspnet_WebEvent_Events> _aspnetWebEventEventsRepository;
+        public IGenericRepository<aspnet_WebEvent_Events> AspnetWebEventEventsRepository
         {
-            get { return  _aspnet_WebEvent_EventsRepository ?? ( _aspnet_WebEvent_EventsRepository = new GenericRepository<aspnet_WebEvent_Events>(Context)); }
-            set {  _aspnet_WebEvent_EventsRepository = value; }
+            get { return  _aspnetWebEventEventsRepository ?? ( _aspnetWebEventEventsRepository = new GenericRepository<aspnet_WebEvent_Events>(Context)); }
+            set {  _aspnetWebEventEventsRepository = value; }
         }
     
 
