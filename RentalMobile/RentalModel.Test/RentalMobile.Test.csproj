@@ -135,18 +135,18 @@
     <Compile Include="UnitTest\PreGenerated\UploadUnitPictureControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tools\UnitTest\Controller\ControllerCRUDGenerator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ControllerCRUDGenerator.txt</LastGenOutput>
-    </None>
-    <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Tools\Base\ClassHelper.tt" />
     <None Include="Tools\Base\ControllersList.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ControllersList.txt</LastGenOutput>
     </None>
     <None Include="Tools\Base\MultipleOutputHelper.ttinclude.tt" />
+    <None Include="Tools\UnitTest\Controller\ControllerCRUDGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControllerCRUDGenerator.txt</LastGenOutput>
+    </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RentalMobile.Model\RentalMobile.Model.csproj">
