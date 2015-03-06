@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile", "RentalMobile.csproj", "{7E67FC65-FF32-43FA-875C-401948AAA097}"
 EndProject
@@ -14,6 +14,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile.Test", "..\RentalModel.Test\RentalMobile.Test.csproj", "{7DE53F95-95D2-42DC-A985-B5BC80BDBB86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile.Documentation", "..\Rental.Documentation\RentalMobile.Documentation.csproj", "{CAE25840-E7EC-44BB-B405-AFC704987AAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToDo", "ToDo", "{AAF63A46-2C21-40F1-A9AC-7E9669E92417}"
+	ProjectSection(SolutionItems) = preProject
+		ToDO.txt = ToDO.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
