@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeRegisterModel
+    public class FakeRegisterModels
     { 
        public List<RegisterModel> MyRegisterModels;
 
-       public FakeRegisterModel()
+       public FakeRegisterModels()
         {
             InitializeRegisterModelList();
         }
@@ -70,7 +71,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdRegisterModel;
         }
 
-        ~FakeRegisterModel()
+        ~FakeRegisterModels()
         {
             MyRegisterModels = null;
         }

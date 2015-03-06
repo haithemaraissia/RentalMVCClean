@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Fake;
-using RentalModel.Repository.Data.Repositories.Model;
+using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace TestProject.Prototype

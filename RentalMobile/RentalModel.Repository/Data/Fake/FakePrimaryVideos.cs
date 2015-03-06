@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakePrimaryVideo
+    public class FakePrimaryVideos
     { 
        public List<PrimaryVideo> MyPrimaryVideos;
 
-       public FakePrimaryVideo()
+       public FakePrimaryVideos()
         {
             InitializePrimaryVideoList();
         }
@@ -73,7 +74,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdPrimaryVideo;
         }
 
-        ~FakePrimaryVideo()
+        ~FakePrimaryVideos()
         {
             MyPrimaryVideos = null;
         }

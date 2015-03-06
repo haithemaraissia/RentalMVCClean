@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeTenantFavorite
+    public class FakeTenantFavorites
     { 
        public List<TenantFavorite> MyTenantFavorites;
 
-       public FakeTenantFavorite()
+       public FakeTenantFavorites()
         {
             InitializeTenantFavoriteList();
         }
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdTenantFavorite;
         }
 
-        ~FakeTenantFavorite()
+        ~FakeTenantFavorites()
         {
             MyTenantFavorites = null;
         }

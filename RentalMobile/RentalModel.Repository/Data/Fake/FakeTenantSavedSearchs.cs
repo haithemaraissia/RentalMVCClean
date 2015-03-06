@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeTenantSavedSearch
+    public class FakeTenantSavedSearchs
     { 
        public List<TenantSavedSearch> MyTenantSavedSearchs;
 
-       public FakeTenantSavedSearch()
+       public FakeTenantSavedSearchs()
         {
             InitializeTenantSavedSearchList();
         }
@@ -83,7 +83,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdTenantSavedSearch;
         }
 
-        ~FakeTenantSavedSearch()
+        ~FakeTenantSavedSearchs()
         {
             MyTenantSavedSearchs = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeFloorCovering
+    public class FakeFloorCoverings
     { 
        public List<FloorCovering> MyFloorCoverings;
 
-       public FakeFloorCovering()
+       public FakeFloorCoverings()
         {
             InitializeFloorCoveringList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdFloorCovering;
         }
 
-        ~FakeFloorCovering()
+        ~FakeFloorCoverings()
         {
             MyFloorCoverings = null;
         }

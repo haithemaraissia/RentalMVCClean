@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeServiceType
+    public class FakeServiceTypes
     { 
        public List<ServiceType> MyServiceTypes;
 
-       public FakeServiceType()
+       public FakeServiceTypes()
         {
             InitializeServiceTypeList();
         }
@@ -77,7 +77,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdServiceType;
         }
 
-        ~FakeServiceType()
+        ~FakeServiceTypes()
         {
             MyServiceTypes = null;
         }

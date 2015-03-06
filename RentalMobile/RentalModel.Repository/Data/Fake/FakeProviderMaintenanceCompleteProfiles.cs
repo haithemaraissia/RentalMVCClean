@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeProviderMaintenanceCompleteProfile
+    public class FakeProviderMaintenanceCompleteProfiles
     { 
        public List<ProviderMaintenanceCompleteProfile> MyProviderMaintenanceCompleteProfiles;
 
-       public FakeProviderMaintenanceCompleteProfile()
+       public FakeProviderMaintenanceCompleteProfiles()
         {
             InitializeProviderMaintenanceCompleteProfileList();
         }
@@ -67,7 +68,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdProviderMaintenanceCompleteProfile;
         }
 
-        ~FakeProviderMaintenanceCompleteProfile()
+        ~FakeProviderMaintenanceCompleteProfiles()
         {
             MyProviderMaintenanceCompleteProfiles = null;
         }

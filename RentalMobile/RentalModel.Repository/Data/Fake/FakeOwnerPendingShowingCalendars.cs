@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeOwnerPendingShowingCalendar
+    public class FakeOwnerPendingShowingCalendars
     { 
        public List<OwnerPendingShowingCalendar> MyOwnerPendingShowingCalendars;
 
-       public FakeOwnerPendingShowingCalendar()
+       public FakeOwnerPendingShowingCalendars()
         {
             InitializeOwnerPendingShowingCalendarList();
         }
@@ -95,7 +95,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdOwnerPendingShowingCalendar;
         }
 
-        ~FakeOwnerPendingShowingCalendar()
+        ~FakeOwnerPendingShowingCalendars()
         {
             MyOwnerPendingShowingCalendars = null;
         }

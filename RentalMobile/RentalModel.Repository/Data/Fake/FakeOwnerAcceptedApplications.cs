@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeOwnerAcceptedApplication
+    public class FakeOwnerAcceptedApplications
     { 
        public List<OwnerAcceptedApplication> MyOwnerAcceptedApplications;
 
-       public FakeOwnerAcceptedApplication()
+       public FakeOwnerAcceptedApplications()
         {
             InitializeOwnerAcceptedApplicationList();
         }
@@ -368,7 +368,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdOwnerAcceptedApplication;
         }
 
-        ~FakeOwnerAcceptedApplication()
+        ~FakeOwnerAcceptedApplications()
         {
             MyOwnerAcceptedApplications = null;
         }

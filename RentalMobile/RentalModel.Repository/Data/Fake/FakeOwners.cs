@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeOwner
+    public class FakeOwners
     { 
        public List<Owner> MyOwners;
 
-       public FakeOwner()
+       public FakeOwners()
         {
             InitializeOwnerList();
         }
@@ -131,7 +131,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdOwner;
         }
 
-        ~FakeOwner()
+        ~FakeOwners()
         {
             MyOwners = null;
         }

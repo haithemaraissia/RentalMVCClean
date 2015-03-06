@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeForgotPasswordModel
+    public class FakeForgotPasswordModels
     { 
        public List<ForgotPasswordModel> MyForgotPasswordModels;
 
-       public FakeForgotPasswordModel()
+       public FakeForgotPasswordModels()
         {
             InitializeForgotPasswordModelList();
         }
@@ -58,7 +59,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdForgotPasswordModel;
         }
 
-        ~FakeForgotPasswordModel()
+        ~FakeForgotPasswordModels()
         {
             MyForgotPasswordModels = null;
         }

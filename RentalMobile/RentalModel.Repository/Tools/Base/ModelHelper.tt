@@ -69,8 +69,10 @@
             "RentalModel.Designer",
             "RentalModel.edmx.diagram",
             "sysdiagram",
-            "RentalModel"
+            "RentalModel",
+            "RentalContext"
             };
+
 
     public List<string> GetAllFilesFromModelPath(string ModelPath)
     {

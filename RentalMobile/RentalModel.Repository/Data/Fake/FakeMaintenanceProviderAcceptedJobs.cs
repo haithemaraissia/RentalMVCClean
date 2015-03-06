@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeMaintenanceProviderAcceptedJob
+    public class FakeMaintenanceProviderAcceptedJobs
     { 
        public List<MaintenanceProviderAcceptedJob> MyMaintenanceProviderAcceptedJobs;
 
-       public FakeMaintenanceProviderAcceptedJob()
+       public FakeMaintenanceProviderAcceptedJobs()
         {
             InitializeMaintenanceProviderAcceptedJobList();
         }
@@ -80,7 +80,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdMaintenanceProviderAcceptedJob;
         }
 
-        ~FakeMaintenanceProviderAcceptedJob()
+        ~FakeMaintenanceProviderAcceptedJobs()
         {
             MyMaintenanceProviderAcceptedJobs = null;
         }

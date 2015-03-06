@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeBathroom
+    public class FakeBathrooms
     { 
        public List<Bathroom> MyBathrooms;
 
-       public FakeBathroom()
+       public FakeBathrooms()
         {
             InitializeBathroomList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdBathroom;
         }
 
-        ~FakeBathroom()
+        ~FakeBathrooms()
         {
             MyBathrooms = null;
         }

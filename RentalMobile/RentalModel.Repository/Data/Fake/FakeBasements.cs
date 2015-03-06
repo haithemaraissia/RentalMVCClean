@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeBasement
+    public class FakeBasements
     { 
        public List<Basement> MyBasements;
 
-       public FakeBasement()
+       public FakeBasements()
         {
             InitializeBasementList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdBasement;
         }
 
-        ~FakeBasement()
+        ~FakeBasements()
         {
             MyBasements = null;
         }

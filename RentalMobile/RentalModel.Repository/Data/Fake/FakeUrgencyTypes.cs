@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeUrgencyType
+    public class FakeUrgencyTypes
     { 
        public List<UrgencyType> MyUrgencyTypes;
 
-       public FakeUrgencyType()
+       public FakeUrgencyTypes()
         {
             InitializeUrgencyTypeList();
         }
@@ -77,7 +77,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdUrgencyType;
         }
 
-        ~FakeUrgencyType()
+        ~FakeUrgencyTypes()
         {
             MyUrgencyTypes = null;
         }

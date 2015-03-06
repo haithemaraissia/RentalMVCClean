@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeFoundation
+    public class FakeFoundations
     { 
        public List<Foundation> MyFoundations;
 
-       public FakeFoundation()
+       public FakeFoundations()
         {
             InitializeFoundationList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdFoundation;
         }
 
-        ~FakeFoundation()
+        ~FakeFoundations()
         {
             MyFoundations = null;
         }

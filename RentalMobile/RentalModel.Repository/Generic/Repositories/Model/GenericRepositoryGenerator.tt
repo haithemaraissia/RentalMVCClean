@@ -11,7 +11,7 @@
 <#@ import namespace="EnvDTE" #>
 <#@ include file="$(ProjectDir)\Tools\Base\MultipleOutputHelper.ttinclude.tt"#>
 <#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>
-<#@ output extension=".cs" #>
+<#@ output extension=".txt" #>
 
 
 <#    

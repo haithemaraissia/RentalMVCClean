@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Users
+    public class Fakeaspnet_Userss
     { 
        public List<aspnet_Users> Myaspnet_Userss;
 
-       public Fakeaspnet_Users()
+       public Fakeaspnet_Userss()
         {
             Initializeaspnet_UsersList();
         }
@@ -116,7 +116,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_Users;
         }
 
-        ~Fakeaspnet_Users()
+        ~Fakeaspnet_Userss()
         {
             Myaspnet_Userss = null;
         }

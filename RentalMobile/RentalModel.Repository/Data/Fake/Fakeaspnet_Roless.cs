@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Roles
+    public class Fakeaspnet_Roless
     { 
        public List<aspnet_Roles> Myaspnet_Roless;
 
-       public Fakeaspnet_Roles()
+       public Fakeaspnet_Roless()
         {
             Initializeaspnet_RolesList();
         }
@@ -89,7 +89,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_Roles;
         }
 
-        ~Fakeaspnet_Roles()
+        ~Fakeaspnet_Roless()
         {
             Myaspnet_Roless = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeMaintenanceProvider
+    public class FakeMaintenanceProviders
     { 
        public List<MaintenanceProvider> MyMaintenanceProviders;
 
-       public FakeMaintenanceProvider()
+       public FakeMaintenanceProviders()
         {
             InitializeMaintenanceProviderList();
         }
@@ -143,7 +143,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdMaintenanceProvider;
         }
 
-        ~FakeMaintenanceProvider()
+        ~FakeMaintenanceProviders()
         {
             MyMaintenanceProviders = null;
         }

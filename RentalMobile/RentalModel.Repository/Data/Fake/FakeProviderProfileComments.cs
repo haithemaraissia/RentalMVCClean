@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeProviderProfileComment
+    public class FakeProviderProfileComments
     { 
        public List<ProviderProfileComment> MyProviderProfileComments;
 
-       public FakeProviderProfileComment()
+       public FakeProviderProfileComments()
         {
             InitializeProviderProfileCommentList();
         }
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdProviderProfileComment;
         }
 
-        ~FakeProviderProfileComment()
+        ~FakeProviderProfileComments()
         {
             MyProviderProfileComments = null;
         }

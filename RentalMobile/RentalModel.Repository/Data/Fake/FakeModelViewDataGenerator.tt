@@ -12,7 +12,7 @@
 <#@ import namespace="EnvDTE" #>
 <#@ include file="$(ProjectDir)\Tools\Base\MultipleOutputHelper.ttinclude.tt"#>
 <#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>
-<#@ output extension=".cs" #>
+<#@ output extension=".txt" #>
 <#   
     var manager = Manager.Create(Host, GenerationEnvironment); 
     foreach ( Type classType in GetAllClasses())
@@ -24,14 +24,15 @@
 #>using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class <#=            "Fake" + classType.Name.ToString() #>
+    public class <#=            "Fake" + classType.Name.ToString() + "s"#>
     { 
        public List<<#=            classType.Name#>> My<#=            classType.Name#>s;
 
-       public <#=            "Fake" + classType.Name.ToString()#>()
+       public <#=            "Fake" + classType.Name.ToString()+ "s"#>()
         {
             Initialize<#=            classType.Name.ToString()#>List();
         }
@@ -78,7 +79,7 @@ namespace RentalModel.Repository.Data.Fake
             return third<#=            classType.Name#>;
         }
 
-        ~<#=            "Fake" + classType.Name.ToString()#>()
+        ~<#=            "Fake" + classType.Name.ToString()+ "s"#>()
         {
             My<#=            classType.Name#>s = null;
         }
@@ -139,6 +140,7 @@ namespace RentalModel.Repository.Data.Fake
             .Where(type => type.Namespace == desiredNamespace);
     }
 
+    
     public IEnumerable<Type> GetAllClasses()
     {
         var classTypes = new List<Type>();
@@ -146,7 +148,10 @@ namespace RentalModel.Repository.Data.Fake
 
         foreach (Type type in assembly.GetTypes().Where(x => x.IsClass && x.Namespace == "RentalMobile.Model.ModelViews"))
         {
-            classTypes.Add(type);
+            if (!excludedclasses.Contains(type.Name))
+            {
+                classTypes.Add(type);
+            }
         }
         return classTypes;
     }
@@ -244,25 +249,60 @@ namespace RentalModel.Repository.Data.Fake
 
 
 
-    public void WriteProperties(PropertyInfo[] properties )
+     public void WriteProperties(PropertyInfo[] properties )
     {
         var i = 0;
         var j = properties.Count();
-
         foreach (PropertyInfo pi in properties)
         {
-            i ++;
+            i += 1;
+            bool alreadyPickedUp = false; 
+            bool SkipComma = false;
             if (pi.PropertyType == typeof(string)) 
             {
-            Write("                 ");Write(pi.Name); Write(" = null");          
+                Write("                 ");Write(pi.Name); Write(" = null");   
+                alreadyPickedUp = true;
             }
-            else
+            //Nullable
+            else if (pi.PropertyType == typeof(Nullable<int>) 
+                || pi.PropertyType == typeof(Nullable<double>) 
+                || pi.PropertyType == typeof(Nullable<bool>)
+                || pi.PropertyType == typeof(Nullable<System.DateTime>)
+                || pi.PropertyType == typeof(Nullable<System.Guid>) && alreadyPickedUp == false)
             {
-            Write("                 ");Write(pi.Name); Write(" = new "); Write(pi.PropertyType.Name);WriteLine("()");
+                Write("                 ");Write(pi.Name); Write(" = new "); Write (pi.PropertyType.GetGenericArguments()[0].Name);Write("()");  
+                alreadyPickedUp = true;
             }
-            if ( i >0 && i <j)  
+            //byte
+            else if ( pi.PropertyType == typeof(Byte[]))
             {
-                Write(",");WriteLine("");
+                Write("                 ");Write(pi.Name); Write(" = new "); Write("[] {new byte()}");WriteLine("()");  
+            alreadyPickedUp = true;
+            }
+            //Collections
+            else if (  pi.PropertyType.GetInterface("IEnumerable") != null)
+            {
+                //Skip the ICollection
+                Write("//Skipping ");Write(pi.PropertyType.GetGenericArguments()[0].Name); Write(" Collection");WriteLine("");
+                SkipComma = true;
+                alreadyPickedUp = true;
+            }
+            //All Other Properties
+            else{
+                Write("                 ");Write(pi.Name); Write(" = new "); Write(pi.PropertyType.Name);WriteLine("()");
+            alreadyPickedUp = true;
+            }
+
+            //Comma and New Lines
+            if ( i >=1 && i <j)  
+            {
+                if( SkipComma == false){
+                    Write(",");WriteLine("");
+                }
+                else{
+                    SkipComma = true;
+                    //Not Writing (",");
+                }
             }
             else
             {
@@ -272,5 +312,4 @@ namespace RentalModel.Repository.Data.Fake
         i = 0; 
     }
 #>
-
 

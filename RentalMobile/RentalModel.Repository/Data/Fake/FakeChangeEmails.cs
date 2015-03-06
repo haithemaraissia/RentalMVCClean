@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeChangeEmail
+    public class FakeChangeEmails
     { 
        public List<ChangeEmail> MyChangeEmails;
 
-       public FakeChangeEmail()
+       public FakeChangeEmails()
         {
             InitializeChangeEmailList();
         }
@@ -58,7 +59,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdChangeEmail;
         }
 
-        ~FakeChangeEmail()
+        ~FakeChangeEmails()
         {
             MyChangeEmails = null;
         }

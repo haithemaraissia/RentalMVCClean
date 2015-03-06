@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeUnitType
+    public class FakeUnitTypes
     { 
        public List<UnitType> MyUnitTypes;
 
-       public FakeUnitType()
+       public FakeUnitTypes()
         {
             InitializeUnitTypeList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdUnitType;
         }
 
-        ~FakeUnitType()
+        ~FakeUnitTypes()
         {
             MyUnitTypes = null;
         }

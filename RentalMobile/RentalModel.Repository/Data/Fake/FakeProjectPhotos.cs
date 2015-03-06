@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeProjectPhoto
+    public class FakeProjectPhotos
     { 
        public List<ProjectPhoto> MyProjectPhotos;
 
-       public FakeProjectPhoto()
+       public FakeProjectPhotos()
         {
             InitializeProjectPhotoList();
         }
@@ -71,7 +71,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdProjectPhoto;
         }
 
-        ~FakeProjectPhoto()
+        ~FakeProjectPhotos()
         {
             MyProjectPhotos = null;
         }

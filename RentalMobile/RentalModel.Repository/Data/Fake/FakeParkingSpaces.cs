@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeParkingSpace
+    public class FakeParkingSpaces
     { 
        public List<ParkingSpace> MyParkingSpaces;
 
-       public FakeParkingSpace()
+       public FakeParkingSpaces()
         {
             InitializeParkingSpaceList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdParkingSpace;
         }
 
-        ~FakeParkingSpace()
+        ~FakeParkingSpaces()
         {
             MyParkingSpaces = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_SchemaVersions
+    public class Fakeaspnet_SchemaVersionss
     { 
        public List<aspnet_SchemaVersions> Myaspnet_SchemaVersionss;
 
-       public Fakeaspnet_SchemaVersions()
+       public Fakeaspnet_SchemaVersionss()
         {
             Initializeaspnet_SchemaVersionsList();
         }
@@ -68,7 +68,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_SchemaVersions;
         }
 
-        ~Fakeaspnet_SchemaVersions()
+        ~Fakeaspnet_SchemaVersionss()
         {
             Myaspnet_SchemaVersionss = null;
         }

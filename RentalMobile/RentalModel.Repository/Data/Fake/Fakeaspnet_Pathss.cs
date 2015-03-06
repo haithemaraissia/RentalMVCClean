@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Paths
+    public class Fakeaspnet_Pathss
     { 
        public List<aspnet_Paths> Myaspnet_Pathss;
 
-       public Fakeaspnet_Paths()
+       public Fakeaspnet_Pathss()
         {
             Initializeaspnet_PathsList();
         }
@@ -89,7 +89,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_Paths;
         }
 
-        ~Fakeaspnet_Paths()
+        ~Fakeaspnet_Pathss()
         {
             Myaspnet_Pathss = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeOwnerShowingCalendar
+    public class FakeOwnerShowingCalendars
     { 
        public List<OwnerShowingCalendar> MyOwnerShowingCalendars;
 
-       public FakeOwnerShowingCalendar()
+       public FakeOwnerShowingCalendars()
         {
             InitializeOwnerShowingCalendarList();
         }
@@ -95,7 +95,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdOwnerShowingCalendar;
         }
 
-        ~FakeOwnerShowingCalendar()
+        ~FakeOwnerShowingCalendars()
         {
             MyOwnerShowingCalendars = null;
         }

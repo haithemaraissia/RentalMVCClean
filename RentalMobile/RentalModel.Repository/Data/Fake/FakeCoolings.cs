@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeCooling
+    public class FakeCoolings
     { 
        public List<Cooling> MyCoolings;
 
-       public FakeCooling()
+       public FakeCoolings()
         {
             InitializeCoolingList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdCooling;
         }
 
-        ~FakeCooling()
+        ~FakeCoolings()
         {
             MyCoolings = null;
         }

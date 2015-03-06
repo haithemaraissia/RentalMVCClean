@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeMaintenanceProviderZone
+    public class FakeMaintenanceProviderZones
     { 
        public List<MaintenanceProviderZone> MyMaintenanceProviderZones;
 
-       public FakeMaintenanceProviderZone()
+       public FakeMaintenanceProviderZones()
         {
             InitializeMaintenanceProviderZoneList();
         }
@@ -80,7 +80,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdMaintenanceProviderZone;
         }
 
-        ~FakeMaintenanceProviderZone()
+        ~FakeMaintenanceProviderZones()
         {
             MyMaintenanceProviderZones = null;
         }

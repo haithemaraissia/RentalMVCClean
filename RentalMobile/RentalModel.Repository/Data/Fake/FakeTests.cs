@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using RentalMobile.Model.ModelViews;
+using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeTest
+    public class FakeTests
     { 
        public List<Test> MyTests;
 
-       public FakeTest()
+       public FakeTests()
         {
             InitializeTestList();
         }
@@ -67,7 +68,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdTest;
         }
 
-        ~FakeTest()
+        ~FakeTests()
         {
             MyTests = null;
         }

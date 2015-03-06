@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeUnitCommunityAmenity
+    public class FakeUnitCommunityAmenitys
     { 
        public List<UnitCommunityAmenity> MyUnitCommunityAmenitys;
 
-       public FakeUnitCommunityAmenity()
+       public FakeUnitCommunityAmenitys()
         {
             InitializeUnitCommunityAmenityList();
         }
@@ -116,7 +116,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdUnitCommunityAmenity;
         }
 
-        ~FakeUnitCommunityAmenity()
+        ~FakeUnitCommunityAmenitys()
         {
             MyUnitCommunityAmenitys = null;
         }

@@ -32,7 +32,8 @@ namespace TestProject.Before.UnitOfWork
             UnitRepo = new DummyRentalRepositoryTest(_fakeUnits.MyUnits);
 
             // Let us now create the Unit of work with our dummy repository
-            Uow = new RentalModel.Repository.Generic.UnitofWork.UnitofWork(UnitRepo);
+            Uow = new RentalModel.Repository.Generic.UnitofWork.UnitofWork();
+            Uow.UnitRepository = UnitRepo;
 
             // Now lets create the unitsController object to test and pass our unit of work
             Controller = new UnitofWorkPatternController(Uow);

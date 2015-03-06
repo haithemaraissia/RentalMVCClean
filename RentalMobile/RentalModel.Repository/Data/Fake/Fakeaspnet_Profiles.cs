@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Profile
+    public class Fakeaspnet_Profiles
     { 
        public List<aspnet_Profile> Myaspnet_Profiles;
 
-       public Fakeaspnet_Profile()
+       public Fakeaspnet_Profiles()
         {
             Initializeaspnet_ProfileList();
         }
@@ -32,7 +32,7 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  PropertyNames = null,
                  PropertyValuesString = null,
-                 PropertyValuesBinary = new Byte[new byte()]()
+                 PropertyValuesBinary = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -53,7 +53,7 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  PropertyNames = null,
                  PropertyValuesString = null,
-                 PropertyValuesBinary = new Byte[new byte()]()
+                 PropertyValuesBinary = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -74,7 +74,7 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  PropertyNames = null,
                  PropertyValuesString = null,
-                 PropertyValuesBinary = new Byte[new byte()]()
+                 PropertyValuesBinary = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_Profile;
         }
 
-        ~Fakeaspnet_Profile()
+        ~Fakeaspnet_Profiles()
         {
             Myaspnet_Profiles = null;
         }

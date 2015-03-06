@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_WebEvent_Events
+    public class Fakeaspnet_WebEvent_Eventss
     { 
        public List<aspnet_WebEvent_Events> Myaspnet_WebEvent_Eventss;
 
-       public Fakeaspnet_WebEvent_Events()
+       public Fakeaspnet_WebEvent_Eventss()
         {
             Initializeaspnet_WebEvent_EventsList();
         }
@@ -119,7 +119,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_WebEvent_Events;
         }
 
-        ~Fakeaspnet_WebEvent_Events()
+        ~Fakeaspnet_WebEvent_Eventss()
         {
             Myaspnet_WebEvent_Eventss = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeUploadedContract
+    public class FakeUploadedContracts
     { 
        public List<UploadedContract> MyUploadedContracts;
 
-       public FakeUploadedContract()
+       public FakeUploadedContracts()
         {
             InitializeUploadedContractList();
         }
@@ -74,7 +74,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdUploadedContract;
         }
 
-        ~FakeUploadedContract()
+        ~FakeUploadedContracts()
         {
             MyUploadedContracts = null;
         }

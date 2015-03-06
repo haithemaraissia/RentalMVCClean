@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeCurrency
+    public class FakeCurrencys
     { 
        public List<Currency> MyCurrencys;
 
-       public FakeCurrency()
+       public FakeCurrencys()
         {
             InitializeCurrencyList();
         }
@@ -65,7 +65,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdCurrency;
         }
 
-        ~FakeCurrency()
+        ~FakeCurrencys()
         {
             MyCurrencys = null;
         }

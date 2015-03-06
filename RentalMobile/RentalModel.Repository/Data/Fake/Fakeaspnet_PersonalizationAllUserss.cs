@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_PersonalizationAllUsers
+    public class Fakeaspnet_PersonalizationAllUserss
     { 
        public List<aspnet_PersonalizationAllUsers> Myaspnet_PersonalizationAllUserss;
 
-       public Fakeaspnet_PersonalizationAllUsers()
+       public Fakeaspnet_PersonalizationAllUserss()
         {
             Initializeaspnet_PersonalizationAllUsersList();
         }
@@ -30,7 +30,7 @@ namespace RentalModel.Repository.Data.Fake
 
                  PathId = new Guid()
 ,
-                 PageSettings = new Byte[new byte()]()
+                 PageSettings = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -49,7 +49,7 @@ namespace RentalModel.Repository.Data.Fake
 
                  PathId = new Guid()
 ,
-                 PageSettings = new Byte[new byte()]()
+                 PageSettings = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -68,7 +68,7 @@ namespace RentalModel.Repository.Data.Fake
 
                  PathId = new Guid()
 ,
-                 PageSettings = new Byte[new byte()]()
+                 PageSettings = new [] {new byte()}
 ,
                  LastUpdatedDate = new DateTime()
 ,
@@ -80,7 +80,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_PersonalizationAllUsers;
         }
 
-        ~Fakeaspnet_PersonalizationAllUsers()
+        ~Fakeaspnet_PersonalizationAllUserss()
         {
             Myaspnet_PersonalizationAllUserss = null;
         }

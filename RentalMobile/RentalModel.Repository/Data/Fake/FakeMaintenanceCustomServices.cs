@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeMaintenanceCustomService
+    public class FakeMaintenanceCustomServices
     { 
        public List<MaintenanceCustomService> MyMaintenanceCustomServices;
 
-       public FakeMaintenanceCustomService()
+       public FakeMaintenanceCustomServices()
         {
             InitializeMaintenanceCustomServiceList();
         }
@@ -182,7 +182,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdMaintenanceCustomService;
         }
 
-        ~FakeMaintenanceCustomService()
+        ~FakeMaintenanceCustomServices()
         {
             MyMaintenanceCustomServices = null;
         }

@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeAgent
+    public class FakeAgents
     { 
        public List<Agent> MyAgents;
 
-       public FakeAgent()
+       public FakeAgents()
         {
             InitializeAgentList();
         }
@@ -134,7 +134,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdAgent;
         }
 
-        ~FakeAgent()
+        ~FakeAgents()
         {
             MyAgents = null;
         }

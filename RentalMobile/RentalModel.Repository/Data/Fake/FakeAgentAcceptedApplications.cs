@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeAgentAcceptedApplication
+    public class FakeAgentAcceptedApplications
     { 
        public List<AgentAcceptedApplication> MyAgentAcceptedApplications;
 
-       public FakeAgentAcceptedApplication()
+       public FakeAgentAcceptedApplications()
         {
             InitializeAgentAcceptedApplicationList();
         }
@@ -368,7 +368,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdAgentAcceptedApplication;
         }
 
-        ~FakeAgentAcceptedApplication()
+        ~FakeAgentAcceptedApplications()
         {
             MyAgentAcceptedApplications = null;
         }

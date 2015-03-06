@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class FakeUnitGallery
+    public class FakeUnitGallerys
     { 
        public List<UnitGallery> MyUnitGallerys;
 
-       public FakeUnitGallery()
+       public FakeUnitGallerys()
         {
             InitializeUnitGalleryList();
         }
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdUnitGallery;
         }
 
-        ~FakeUnitGallery()
+        ~FakeUnitGallerys()
         {
             MyUnitGallerys = null;
         }

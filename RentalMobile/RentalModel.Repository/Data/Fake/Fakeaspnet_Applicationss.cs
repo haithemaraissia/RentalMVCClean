@@ -5,11 +5,11 @@ using RentalMobile.Model.ModelViews;
 
 namespace RentalModel.Repository.Data.Fake
 {
-    public class Fakeaspnet_Applications
+    public class Fakeaspnet_Applicationss
     { 
        public List<aspnet_Applications> Myaspnet_Applicationss;
 
-       public Fakeaspnet_Applications()
+       public Fakeaspnet_Applicationss()
         {
             Initializeaspnet_ApplicationsList();
         }
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
             return thirdaspnet_Applications;
         }
 
-        ~Fakeaspnet_Applications()
+        ~Fakeaspnet_Applicationss()
         {
             Myaspnet_Applicationss = null;
         }
