@@ -32,17 +32,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class <#=FileName#>Test
     {
-        //public Fake<#=FileName#>s Fake<#=FileName#>s;
-        //public <#=FileName#>Controller Controller;
+        //public <#=NameWithoutController(FileName)#>Controller Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fake<#=FileName#>s = new Fake<#=FileName#>s();
-            //var <#=FileName#>Repo = new Fake<#=FileName#>Repository(fake<#=FileName#>s.My<#=FileName#>s);
-            //var uow = new <#=FileName#>ofWork { <#=FileName#>Repository = <#=FileName#>Repo };
-            //Controller = new <#=FileName#>Controller(uow);
+            //var fake<#=NameWithoutS(NameWithoutController(FileName))#>s = new Fake<#=NameWithoutS(NameWithoutController(FileName))#>s();
+            //var <#=ToLowerFirstChar(NameWithoutS(NameWithoutController(FileName)))#>Repo = new Fake<#=NameWithoutS(NameWithoutController(FileName))#>Repository(fake<#=NameWithoutS(NameWithoutController(FileName))#>s.My<#=NameWithoutS(NameWithoutController(FileName))#>s);
+            //var uow = new UnitofWork { <#=NameWithoutS(NameWithoutController(FileName))#>Repository = <#=ToLowerFirstChar(NameWithoutS(NameWithoutController(FileName)))#>Repo };
+            //Controller = new <#=NameWithoutController(FileName)#>Controller(uow);
         }
 
         [TestMethod]
@@ -120,7 +119,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //Fake<#=FileName#>s = null;
             //Controller.Dispose();
         }
     }

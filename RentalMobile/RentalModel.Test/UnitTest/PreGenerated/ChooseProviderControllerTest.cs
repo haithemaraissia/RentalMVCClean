@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ChooseProviderControllerTest
     {
-        //public FakeChooseProviderControllers FakeChooseProviderControllers;
-        //public ChooseProviderControllerController Controller;
+        //public ChooseProviderController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeChooseProviderControllers = new FakeChooseProviderControllers();
-            //var ChooseProviderControllerRepo = new FakeChooseProviderControllerRepository(fakeChooseProviderControllers.MyChooseProviderControllers);
-            //var uow = new ChooseProviderControllerofWork { ChooseProviderControllerRepository = ChooseProviderControllerRepo };
-            //Controller = new ChooseProviderControllerController(uow);
+            //var fakeChooseProviders = new FakeChooseProviders();
+            //var chooseProviderRepo = new FakeChooseProviderRepository(fakeChooseProviders.MyChooseProviders);
+            //var uow = new UnitofWork { ChooseProviderRepository = chooseProviderRepo };
+            //Controller = new ChooseProviderController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeChooseProviderControllers = null;
             //Controller.Dispose();
         }
     }

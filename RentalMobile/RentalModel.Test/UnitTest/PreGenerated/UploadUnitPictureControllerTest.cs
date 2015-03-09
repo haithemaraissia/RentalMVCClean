@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class UploadUnitPictureControllerTest
     {
-        //public FakeUploadUnitPictureControllers FakeUploadUnitPictureControllers;
-        //public UploadUnitPictureControllerController Controller;
+        //public UploadUnitPictureController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeUploadUnitPictureControllers = new FakeUploadUnitPictureControllers();
-            //var UploadUnitPictureControllerRepo = new FakeUploadUnitPictureControllerRepository(fakeUploadUnitPictureControllers.MyUploadUnitPictureControllers);
-            //var uow = new UploadUnitPictureControllerofWork { UploadUnitPictureControllerRepository = UploadUnitPictureControllerRepo };
-            //Controller = new UploadUnitPictureControllerController(uow);
+            //var fakeUploadUnitPictures = new FakeUploadUnitPictures();
+            //var uploadUnitPictureRepo = new FakeUploadUnitPictureRepository(fakeUploadUnitPictures.MyUploadUnitPictures);
+            //var uow = new UnitofWork { UploadUnitPictureRepository = uploadUnitPictureRepo };
+            //Controller = new UploadUnitPictureController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeUploadUnitPictureControllers = null;
             //Controller.Dispose();
         }
     }

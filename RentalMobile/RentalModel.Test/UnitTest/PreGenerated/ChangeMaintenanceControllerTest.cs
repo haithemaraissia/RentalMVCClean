@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ChangeMaintenanceControllerTest
     {
-        //public FakeChangeMaintenanceControllers FakeChangeMaintenanceControllers;
-        //public ChangeMaintenanceControllerController Controller;
+        //public ChangeMaintenanceController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeChangeMaintenanceControllers = new FakeChangeMaintenanceControllers();
-            //var ChangeMaintenanceControllerRepo = new FakeChangeMaintenanceControllerRepository(fakeChangeMaintenanceControllers.MyChangeMaintenanceControllers);
-            //var uow = new ChangeMaintenanceControllerofWork { ChangeMaintenanceControllerRepository = ChangeMaintenanceControllerRepo };
-            //Controller = new ChangeMaintenanceControllerController(uow);
+            //var fakeChangeMaintenances = new FakeChangeMaintenances();
+            //var changeMaintenanceRepo = new FakeChangeMaintenanceRepository(fakeChangeMaintenances.MyChangeMaintenances);
+            //var uow = new UnitofWork { ChangeMaintenanceRepository = changeMaintenanceRepo };
+            //Controller = new ChangeMaintenanceController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeChangeMaintenanceControllers = null;
             //Controller.Dispose();
         }
     }

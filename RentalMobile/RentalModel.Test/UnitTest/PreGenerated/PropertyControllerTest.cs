@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class PropertyControllerTest
     {
-        //public FakePropertyControllers FakePropertyControllers;
-        //public PropertyControllerController Controller;
+        //public PropertyController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakePropertyControllers = new FakePropertyControllers();
-            //var PropertyControllerRepo = new FakePropertyControllerRepository(fakePropertyControllers.MyPropertyControllers);
-            //var uow = new PropertyControllerofWork { PropertyControllerRepository = PropertyControllerRepo };
-            //Controller = new PropertyControllerController(uow);
+            //var fakePropertys = new FakePropertys();
+            //var propertyRepo = new FakePropertyRepository(fakePropertys.MyPropertys);
+            //var uow = new UnitofWork { PropertyRepository = propertyRepo };
+            //Controller = new PropertyController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakePropertyControllers = null;
             //Controller.Dispose();
         }
     }

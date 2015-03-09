@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ChooseMaintenanceControllerTest
     {
-        //public FakeChooseMaintenanceControllers FakeChooseMaintenanceControllers;
-        //public ChooseMaintenanceControllerController Controller;
+        //public ChooseMaintenanceController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeChooseMaintenanceControllers = new FakeChooseMaintenanceControllers();
-            //var ChooseMaintenanceControllerRepo = new FakeChooseMaintenanceControllerRepository(fakeChooseMaintenanceControllers.MyChooseMaintenanceControllers);
-            //var uow = new ChooseMaintenanceControllerofWork { ChooseMaintenanceControllerRepository = ChooseMaintenanceControllerRepo };
-            //Controller = new ChooseMaintenanceControllerController(uow);
+            //var fakeChooseMaintenances = new FakeChooseMaintenances();
+            //var chooseMaintenanceRepo = new FakeChooseMaintenanceRepository(fakeChooseMaintenances.MyChooseMaintenances);
+            //var uow = new UnitofWork { ChooseMaintenanceRepository = chooseMaintenanceRepo };
+            //Controller = new ChooseMaintenanceController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeChooseMaintenanceControllers = null;
             //Controller.Dispose();
         }
     }

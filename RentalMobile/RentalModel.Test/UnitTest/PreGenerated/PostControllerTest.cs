@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class PostControllerTest
     {
-        //public FakePostControllers FakePostControllers;
-        //public PostControllerController Controller;
+        //public PostController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakePostControllers = new FakePostControllers();
-            //var PostControllerRepo = new FakePostControllerRepository(fakePostControllers.MyPostControllers);
-            //var uow = new PostControllerofWork { PostControllerRepository = PostControllerRepo };
-            //Controller = new PostControllerController(uow);
+            //var fakePosts = new FakePosts();
+            //var postRepo = new FakePostRepository(fakePosts.MyPosts);
+            //var uow = new UnitofWork { PostRepository = postRepo };
+            //Controller = new PostController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakePostControllers = null;
             //Controller.Dispose();
         }
     }

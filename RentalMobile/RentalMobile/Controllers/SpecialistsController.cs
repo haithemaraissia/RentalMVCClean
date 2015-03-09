@@ -1,15 +1,21 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
+
 
 namespace RentalMobile.Controllers
 {
     public class SpecialistsController : Controller
     {
-        private readonly RentalContext _db = new RentalContext();
+
+        private readonly UnitofWork _unitOfWork;
+        public SpecialistsController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
         public ActionResult Index()
         {
-            return View(_db.Specialists.ToList());
+            return View(_unitOfWork.SpecialistRepository.All.ToList());
         }
 
     }

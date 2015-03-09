@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class UploadAgreementControllerTest
     {
-        //public FakeUploadAgreementControllers FakeUploadAgreementControllers;
-        //public UploadAgreementControllerController Controller;
+        //public UploadAgreementController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeUploadAgreementControllers = new FakeUploadAgreementControllers();
-            //var UploadAgreementControllerRepo = new FakeUploadAgreementControllerRepository(fakeUploadAgreementControllers.MyUploadAgreementControllers);
-            //var uow = new UploadAgreementControllerofWork { UploadAgreementControllerRepository = UploadAgreementControllerRepo };
-            //Controller = new UploadAgreementControllerController(uow);
+            //var fakeUploadAgreements = new FakeUploadAgreements();
+            //var uploadAgreementRepo = new FakeUploadAgreementRepository(fakeUploadAgreements.MyUploadAgreements);
+            //var uow = new UnitofWork { UploadAgreementRepository = uploadAgreementRepo };
+            //Controller = new UploadAgreementController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeUploadAgreementControllers = null;
             //Controller.Dispose();
         }
     }

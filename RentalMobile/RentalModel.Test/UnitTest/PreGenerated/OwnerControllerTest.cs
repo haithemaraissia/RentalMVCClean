@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class OwnerControllerTest
     {
-        //public FakeOwnerControllers FakeOwnerControllers;
-        //public OwnerControllerController Controller;
+        //public OwnerController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeOwnerControllers = new FakeOwnerControllers();
-            //var OwnerControllerRepo = new FakeOwnerControllerRepository(fakeOwnerControllers.MyOwnerControllers);
-            //var uow = new OwnerControllerofWork { OwnerControllerRepository = OwnerControllerRepo };
-            //Controller = new OwnerControllerController(uow);
+            //var fakeOwners = new FakeOwners();
+            //var ownerRepo = new FakeOwnerRepository(fakeOwners.MyOwners);
+            //var uow = new UnitofWork { OwnerRepository = ownerRepo };
+            //Controller = new OwnerController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeOwnerControllers = null;
             //Controller.Dispose();
         }
     }

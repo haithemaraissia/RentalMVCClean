@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ProjectControllerTest
     {
-        //public FakeProjectControllers FakeProjectControllers;
-        //public ProjectControllerController Controller;
+        //public ProjectController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeProjectControllers = new FakeProjectControllers();
-            //var ProjectControllerRepo = new FakeProjectControllerRepository(fakeProjectControllers.MyProjectControllers);
-            //var uow = new ProjectControllerofWork { ProjectControllerRepository = ProjectControllerRepo };
-            //Controller = new ProjectControllerController(uow);
+            //var fakeProjects = new FakeProjects();
+            //var projectRepo = new FakeProjectRepository(fakeProjects.MyProjects);
+            //var uow = new UnitofWork { ProjectRepository = projectRepo };
+            //Controller = new ProjectController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeProjectControllers = null;
             //Controller.Dispose();
         }
     }

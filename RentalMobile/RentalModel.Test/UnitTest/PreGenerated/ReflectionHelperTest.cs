@@ -12,7 +12,6 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ReflectionHelperTest
     {
-        //public FakeReflectionHelpers FakeReflectionHelpers;
         //public ReflectionHelperController Controller;
 
         [TestInitialize]
@@ -20,8 +19,8 @@ namespace TestProject.UnitTest.Controller
         {
             // Arrange
             //var fakeReflectionHelpers = new FakeReflectionHelpers();
-            //var ReflectionHelperRepo = new FakeReflectionHelperRepository(fakeReflectionHelpers.MyReflectionHelpers);
-            //var uow = new ReflectionHelperofWork { ReflectionHelperRepository = ReflectionHelperRepo };
+            //var reflectionHelperRepo = new FakeReflectionHelperRepository(fakeReflectionHelpers.MyReflectionHelpers);
+            //var uow = new UnitofWork { ReflectionHelperRepository = reflectionHelperRepo };
             //Controller = new ReflectionHelperController(uow);
         }
 
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeReflectionHelpers = null;
             //Controller.Dispose();
         }
     }

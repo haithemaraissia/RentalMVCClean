@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class AgentProfileControllerTest
     {
-        //public FakeAgentProfileControllers FakeAgentProfileControllers;
-        //public AgentProfileControllerController Controller;
+        //public AgentProfileController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeAgentProfileControllers = new FakeAgentProfileControllers();
-            //var AgentProfileControllerRepo = new FakeAgentProfileControllerRepository(fakeAgentProfileControllers.MyAgentProfileControllers);
-            //var uow = new AgentProfileControllerofWork { AgentProfileControllerRepository = AgentProfileControllerRepo };
-            //Controller = new AgentProfileControllerController(uow);
+            //var fakeAgentProfiles = new FakeAgentProfiles();
+            //var agentProfileRepo = new FakeAgentProfileRepository(fakeAgentProfiles.MyAgentProfiles);
+            //var uow = new UnitofWork { AgentProfileRepository = agentProfileRepo };
+            //Controller = new AgentProfileController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeAgentProfileControllers = null;
             //Controller.Dispose();
         }
     }

@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class UploadPropertyControllerTest
     {
-        //public FakeUploadPropertyControllers FakeUploadPropertyControllers;
-        //public UploadPropertyControllerController Controller;
+        //public UploadPropertyController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeUploadPropertyControllers = new FakeUploadPropertyControllers();
-            //var UploadPropertyControllerRepo = new FakeUploadPropertyControllerRepository(fakeUploadPropertyControllers.MyUploadPropertyControllers);
-            //var uow = new UploadPropertyControllerofWork { UploadPropertyControllerRepository = UploadPropertyControllerRepo };
-            //Controller = new UploadPropertyControllerController(uow);
+            //var fakeUploadPropertys = new FakeUploadPropertys();
+            //var uploadPropertyRepo = new FakeUploadPropertyRepository(fakeUploadPropertys.MyUploadPropertys);
+            //var uow = new UnitofWork { UploadPropertyRepository = uploadPropertyRepo };
+            //Controller = new UploadPropertyController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeUploadPropertyControllers = null;
             //Controller.Dispose();
         }
     }

@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class RentalApplicationControllerTest
     {
-        //public FakeRentalApplicationControllers FakeRentalApplicationControllers;
-        //public RentalApplicationControllerController Controller;
+        //public RentalApplicationController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeRentalApplicationControllers = new FakeRentalApplicationControllers();
-            //var RentalApplicationControllerRepo = new FakeRentalApplicationControllerRepository(fakeRentalApplicationControllers.MyRentalApplicationControllers);
-            //var uow = new RentalApplicationControllerofWork { RentalApplicationControllerRepository = RentalApplicationControllerRepo };
-            //Controller = new RentalApplicationControllerController(uow);
+            //var fakeRentalApplications = new FakeRentalApplications();
+            //var rentalApplicationRepo = new FakeRentalApplicationRepository(fakeRentalApplications.MyRentalApplications);
+            //var uow = new UnitofWork { RentalApplicationRepository = rentalApplicationRepo };
+            //Controller = new RentalApplicationController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeRentalApplicationControllers = null;
             //Controller.Dispose();
         }
     }

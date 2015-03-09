@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class GeneratedRentalAgreementControllerTest
     {
-        //public FakeGeneratedRentalAgreementControllers FakeGeneratedRentalAgreementControllers;
-        //public GeneratedRentalAgreementControllerController Controller;
+        //public GeneratedRentalAgreementController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeGeneratedRentalAgreementControllers = new FakeGeneratedRentalAgreementControllers();
-            //var GeneratedRentalAgreementControllerRepo = new FakeGeneratedRentalAgreementControllerRepository(fakeGeneratedRentalAgreementControllers.MyGeneratedRentalAgreementControllers);
-            //var uow = new GeneratedRentalAgreementControllerofWork { GeneratedRentalAgreementControllerRepository = GeneratedRentalAgreementControllerRepo };
-            //Controller = new GeneratedRentalAgreementControllerController(uow);
+            //var fakeGeneratedRentalAgreements = new FakeGeneratedRentalAgreements();
+            //var generatedRentalAgreementRepo = new FakeGeneratedRentalAgreementRepository(fakeGeneratedRentalAgreements.MyGeneratedRentalAgreements);
+            //var uow = new UnitofWork { GeneratedRentalAgreementRepository = generatedRentalAgreementRepo };
+            //Controller = new GeneratedRentalAgreementController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeGeneratedRentalAgreementControllers = null;
             //Controller.Dispose();
         }
     }

@@ -75,4 +75,23 @@
         return newString;
     }
 
+    public string NameWithoutController( string input)
+    {
+        string WithoutControllerInTheName = input.Replace("Controller", "");
+        return WithoutControllerInTheName.ToString();
+    }
+
+    public string NameWithoutS ( string input)
+    {
+        var WithoutS = input;
+        char lastChar = input[input.Length - 1];
+
+        if ( lastChar == 's')
+        {
+            WithoutS = input.Replace("s", "");
+        }
+        
+        return WithoutS;
+    }
+
 #>

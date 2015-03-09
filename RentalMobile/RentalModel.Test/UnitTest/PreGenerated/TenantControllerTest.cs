@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class TenantControllerTest
     {
-        //public FakeTenantControllers FakeTenantControllers;
-        //public TenantControllerController Controller;
+        //public TenantController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeTenantControllers = new FakeTenantControllers();
-            //var TenantControllerRepo = new FakeTenantControllerRepository(fakeTenantControllers.MyTenantControllers);
-            //var uow = new TenantControllerofWork { TenantControllerRepository = TenantControllerRepo };
-            //Controller = new TenantControllerController(uow);
+            //var fakeTenants = new FakeTenants();
+            //var tenantRepo = new FakeTenantRepository(fakeTenants.MyTenants);
+            //var uow = new UnitofWork { TenantRepository = tenantRepo };
+            //Controller = new TenantController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeTenantControllers = null;
             //Controller.Dispose();
         }
     }

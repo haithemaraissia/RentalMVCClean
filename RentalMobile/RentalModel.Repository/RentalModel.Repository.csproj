@@ -1335,12 +1335,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGenericRepositoryGenerator.txt</LastGenOutput>
     </None>
-    <None Include="Tools\Base\ModelHelper.tt" />
-    <None Include="Tools\Base\MultipleOutputHelper.ttinclude.tt" />
     <None Include="Generic\UnitofWork\IGenericUnitofWorkGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGenericUnitofWorkGenerator.cs</LastGenOutput>
     </None>
+    <None Include="Tools\Base\ModelHelper.tt" />
+    <None Include="Tools\Base\MultipleOutputHelper.ttinclude.tt" />
     <None Include="Generic\UnitofWork\UnitOfWorkGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnitOfWorkGenerator.cs</LastGenOutput>

@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class MorePhotoControllerTest
     {
-        //public FakeMorePhotoControllers FakeMorePhotoControllers;
-        //public MorePhotoControllerController Controller;
+        //public MorePhotoController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeMorePhotoControllers = new FakeMorePhotoControllers();
-            //var MorePhotoControllerRepo = new FakeMorePhotoControllerRepository(fakeMorePhotoControllers.MyMorePhotoControllers);
-            //var uow = new MorePhotoControllerofWork { MorePhotoControllerRepository = MorePhotoControllerRepo };
-            //Controller = new MorePhotoControllerController(uow);
+            //var fakeMorePhotos = new FakeMorePhotos();
+            //var morePhotoRepo = new FakeMorePhotoRepository(fakeMorePhotos.MyMorePhotos);
+            //var uow = new UnitofWork { MorePhotoRepository = morePhotoRepo };
+            //Controller = new MorePhotoController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeMorePhotoControllers = null;
             //Controller.Dispose();
         }
     }

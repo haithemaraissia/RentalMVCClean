@@ -12,17 +12,16 @@ namespace TestProject.UnitTest.Controller
     [TestClass]
     public class ProvidersControllerTest
     {
-        //public FakeProvidersControllers FakeProvidersControllers;
-        //public ProvidersControllerController Controller;
+        //public ProvidersController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeProvidersControllers = new FakeProvidersControllers();
-            //var ProvidersControllerRepo = new FakeProvidersControllerRepository(fakeProvidersControllers.MyProvidersControllers);
-            //var uow = new ProvidersControllerofWork { ProvidersControllerRepository = ProvidersControllerRepo };
-            //Controller = new ProvidersControllerController(uow);
+            //var fakeProviders = new FakeProviders();
+            //var providerRepo = new FakeProviderRepository(fakeProviders.MyProviders);
+            //var uow = new UnitofWork { ProviderRepository = providerRepo };
+            //Controller = new ProvidersController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeProvidersControllers = null;
             //Controller.Dispose();
         }
     }

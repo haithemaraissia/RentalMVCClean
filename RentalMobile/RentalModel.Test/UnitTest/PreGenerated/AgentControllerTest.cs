@@ -10,19 +10,18 @@ using RentalModel.Repository.Generic.UnitofWork;
 namespace TestProject.UnitTest.Controller
 {
     [TestClass]
-    public class AgentControllerTest
+    public partial class AgentControllerTest
     {
-        //public FakeAgentControllers FakeAgentControllers;
-        //public AgentControllerController Controller;
+        //public AgentController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeAgentControllers = new FakeAgentControllers();
-            //var AgentControllerRepo = new FakeAgentControllerRepository(fakeAgentControllers.MyAgentControllers);
-            //var uow = new AgentControllerofWork { AgentControllerRepository = AgentControllerRepo };
-            //Controller = new AgentControllerController(uow);
+            //var fakeAgents = new FakeAgents();
+            //var agentRepo = new FakeAgentRepository(fakeAgents.MyAgents);
+            //var uow = new UnitofWork { AgentRepository = agentRepo };
+            //Controller = new AgentController(uow);
         }
 
         [TestMethod]
@@ -100,7 +99,6 @@ namespace TestProject.UnitTest.Controller
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeAgentControllers = null;
             //Controller.Dispose();
         }
     }
