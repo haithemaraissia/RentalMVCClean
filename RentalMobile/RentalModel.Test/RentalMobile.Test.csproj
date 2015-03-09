@@ -112,7 +112,6 @@
     <Compile Include="UnitTest\PreGenerated\ChooseMaintenanceControllerTest.cs" />
     <Compile Include="UnitTest\PreGenerated\ChooseProviderControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Simple\ContactControllerTest.cs" />
-    <Compile Include="UnitTest\PreGenerated\EmailTestControllerTest.cs" />
     <Compile Include="UnitTest\PreGenerated\GeneratedRentalAgreementControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Simple\HelpControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Simple\HomeControllerTest.cs" />
