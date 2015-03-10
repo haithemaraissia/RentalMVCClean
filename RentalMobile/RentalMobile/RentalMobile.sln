@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile.Test", "..\Ren
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalMobile.Documentation", "..\Rental.Documentation\RentalMobile.Documentation.csproj", "{CAE25840-E7EC-44BB-B405-AFC704987AAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TODOWORDDOCUMENT", "..\TODOWORDDOCUMENT\TODOWORDDOCUMENT.csproj", "{CCF6F280-1DAD-4D9B-BDCC-D75BBA6BD8DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{CAE25840-E7EC-44BB-B405-AFC704987AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE25840-E7EC-44BB-B405-AFC704987AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAE25840-E7EC-44BB-B405-AFC704987AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF6F280-1DAD-4D9B-BDCC-D75BBA6BD8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF6F280-1DAD-4D9B-BDCC-D75BBA6BD8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF6F280-1DAD-4D9B-BDCC-D75BBA6BD8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF6F280-1DAD-4D9B-BDCC-D75BBA6BD8DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
