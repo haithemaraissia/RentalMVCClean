@@ -28,13 +28,13 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstOwner = new Owner {
 
-                 OwnerId = new Int32()
+                 OwnerId = 1
 ,
-                 FirstName = null,
-                 LastName = null,
-                 Address = null,
-                 EmailAddress = null,
-                 Description = null,
+                 FirstName = "Bob Owner",
+                 LastName = "Godard",
+                 Address = "8080 north Broadway, South Beach, Florida 5404",
+                 EmailAddress = "BobGoddar@yahoo.com",
+                 Description = "Bob Description",
                  GUID = new Guid()
 ,
                  VCard = null,
@@ -43,7 +43,7 @@ namespace RentalModel.Repository.Data.Fake
                  LinkedIn = null,
                  GooglePlus = null,
                  Photo = null,
-                 GoogleMap = null,
+                 GoogleMap = "Google Map",
                  Country = null,
                  Region = null,
                  City = null,

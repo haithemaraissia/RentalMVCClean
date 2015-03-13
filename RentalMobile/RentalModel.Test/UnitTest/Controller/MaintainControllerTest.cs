@@ -18,8 +18,7 @@ namespace TestProject.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            var fakeMaintains = new FakeMaintenanceProviders();
-            var maintainRepo = new FakeMaintenanceProviderRepository(fakeMaintains.MyMaintenanceProviders);
+            var maintainRepo = new FakeMaintenanceProviderRepository();
             var uow = new UnitofWork { MaintenanceProviderRepository = maintainRepo };
             Controller = new MaintainController(uow);
         }

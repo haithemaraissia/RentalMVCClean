@@ -19,7 +19,6 @@ namespace RentalMobile.Controllers
             public ActionResult Index()
             {
                 RequestID = TempData["Id"].ToString();
-                //ViewBag.UserName = TenantUsername;
 
                 ViewBag.UserName = "test";
                 ViewBag.Id = TempData["Id"].ToString();

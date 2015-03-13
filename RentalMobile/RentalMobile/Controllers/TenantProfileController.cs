@@ -1,26 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using RentalMobile.Helpers;
-using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     public class TenantProfileController : Controller
     {
-        private readonly RentalContext _db = new RentalContext();
-
-        public ViewResult Index(int id)
+        private readonly UnitofWork _unitOfWork;
+        public TenantProfileController(UnitofWork uow)
         {
-            var tenant = _db.Tenants.Find(UserHelper.GetTenantId(id));
-            ViewBag.TenantProfile = tenant;
+            _unitOfWork = uow;
+        }
+        public ActionResult Index(int id)
+        {
+            var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == UserHelper.GetTenantId(id)).FirstOrDefault();
+            if (tenant == null) return RedirectToAction("Index", "Home");
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;
             return View(tenant);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

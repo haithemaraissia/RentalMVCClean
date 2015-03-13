@@ -13,6 +13,7 @@ namespace RentalMobile.Controllers
         {
             _unitOfWork = uow;
         }
+
         public ActionResult Index()
         {
             return View(_unitOfWork.SpecialistRepository.All.ToList());

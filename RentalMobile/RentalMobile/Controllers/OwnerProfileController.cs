@@ -1,28 +1,25 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using RentalMobile.Helpers;
-using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     public class OwnerProfileController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-
-        public ViewResult Index(int id)
+        private readonly UnitofWork _unitOfWork;
+        public OwnerProfileController(UnitofWork uow)
         {
-            var Owner = db.Owners.Find(UserHelper.GetOwnerId(id));
-            ViewBag.OwnerProfile = Owner;
-            ViewBag.OwnerId = Owner.OwnerId;
-            ViewBag.OwnerGoogleMap = Owner.GoogleMap;
-            return View(Owner);
+            _unitOfWork = uow;
         }
 
-        protected override void Dispose(bool disposing)
+        public ActionResult Index(int id)
         {
-            db.Dispose();
-            base.Dispose(disposing);
+            var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == UserHelper.GetOwnerId(id)).FirstOrDefault();
+            if (owner == null) return RedirectToAction("Index", "Home");
+            ViewBag.OwnerId = owner.OwnerId;
+            ViewBag.OwnerGoogleMap = owner.GoogleMap;
+            return View(owner);
         }
-
     }
 }

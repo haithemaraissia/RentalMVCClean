@@ -1,27 +1,21 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
     public class ProjectController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-        //
-        // GET: /Project/
-
+        private readonly UnitofWork _unitOfWork;
+        public ProjectController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
         public ViewResult Index()
         {
-            return View(db.Projects.ToList());
+            return View(_unitOfWork.ProjectRepository.All.ToList());
         }
-
-        //
-        // GET: /Project/Details/5
-
-
-
-
 
 
         //Only Specialist Make an Offer
@@ -29,13 +23,6 @@ namespace RentalMobile.Controllers
         public ViewResult MakeOffer()
         {
             return View();
-        }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

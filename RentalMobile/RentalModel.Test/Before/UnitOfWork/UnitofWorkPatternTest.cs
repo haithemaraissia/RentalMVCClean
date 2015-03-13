@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
 using RentalMobile.Model.Models;
-using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
+using RentalModel.Repository.Generic.Repositories.Base;
+using RentalModel.Repository.Generic.UnitofWork;
 using TestProject.Before.Fake;
 using Assert = NUnit.Framework.Assert;
 
@@ -14,7 +16,7 @@ namespace TestProject.Before.UnitOfWork
     public class UnitofWorkPatternTest
     { 
         public DummyRentalRepositoryTest UnitRepo;
-        public RentalModel.Repository.Generic.UnitofWork.UnitofWork Uow;
+        public UnitofWork Uow;
         public UnitofWorkPatternController Controller;
         private readonly FakeUnits _fakeUnits = new FakeUnits();
 
@@ -28,12 +30,10 @@ namespace TestProject.Before.UnitOfWork
         public void Index()
         {
             //Arrange//
-            // Lets create our dummy repository
             UnitRepo = new DummyRentalRepositoryTest(_fakeUnits.MyUnits);
 
             // Let us now create the Unit of work with our dummy repository
-            Uow = new RentalModel.Repository.Generic.UnitofWork.UnitofWork();
-            Uow.UnitRepository = UnitRepo;
+            Uow = new UnitofWork {UnitRepository = UnitRepo};
 
             // Now lets create the unitsController object to test and pass our unit of work
             Controller = new UnitofWorkPatternController(Uow);
@@ -54,11 +54,14 @@ namespace TestProject.Before.UnitOfWork
             // Arrange
             //Creating a mock Object
             //Pass the mock to the SUT
-            var repoMock = new Mock<IUnitRepository>();
-            repoMock.Setup(x => x.GetUnits()).Returns(_fakeUnits.MyUnits);
+            var repoMock = new Mock<IGenericRepository<Unit>>();    
+            repoMock.Setup(x => x.All).Returns(_fakeUnits.MyUnits.AsQueryable());
 
-            var uowMock = new Mock<RentalModel.Repository.Generic.UnitofWork.UnitofWork>(repoMock.Object);
-            Controller = new UnitofWorkPatternController(uowMock.Object);
+
+            var unitofWork = new UnitofWork{ UnitRepository = repoMock.Object};
+
+          //  var uowMock = new Mock<UnitofWork>(repoMock.Object);
+            Controller = new UnitofWorkPatternController(unitofWork);
 
             //ACT
                 //Execute the SUT
@@ -71,16 +74,5 @@ namespace TestProject.Before.UnitOfWork
             var data = viewResult.ViewData.Model as IList<Unit>;
             if (data != null) Assert.AreEqual(1, data.Count );
         }
-
-
-        ///TODO 
-        /// With Only Mocking of IRepository
-        /// 
-        /// 
-        /// 
-        /// FakeDBContext with IDataSet
-        /// Unit test for Control ; Simplistic for View returned by a Controller
-        /// Effort for Entity 6
-        /// TODO
     }
 }

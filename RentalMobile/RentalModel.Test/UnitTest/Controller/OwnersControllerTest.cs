@@ -17,8 +17,7 @@ namespace TestProject.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            var fakeOwners = new FakeOwners();
-            var ownerRepo = new FakeOwnerRepository(fakeOwners.MyOwners);
+            var ownerRepo = new FakeOwnerRepository();
             var uow = new UnitofWork { OwnerRepository = ownerRepo };
             Controller = new OwnersController(uow);
         }

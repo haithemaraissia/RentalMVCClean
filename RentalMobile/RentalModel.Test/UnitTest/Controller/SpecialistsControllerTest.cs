@@ -18,8 +18,7 @@ namespace TestProject.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            var fakeSpecialits = new FakeSpecialists();
-            var specialitRepo = new FakeSpecialistRepository(fakeSpecialits.MySpecialists);
+            var specialitRepo = new FakeSpecialistRepository();
             var uow = new UnitofWork { SpecialistRepository = specialitRepo };
             Controller = new SpecialistsController(uow);
         }
@@ -33,7 +32,7 @@ namespace TestProject.UnitTest.Controller
             // Assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as IList<SpecialistsController>;
+            var data = viewResult.ViewData.Model as IList<Agent>;
             if (data != null) Assert.AreEqual(3, data.Count);
         }
 

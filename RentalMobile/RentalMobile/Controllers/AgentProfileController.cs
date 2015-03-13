@@ -1,27 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using RentalMobile.Helpers;
-using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     public class AgentProfileController : Controller
     {
-        private readonly RentalContext _db = new RentalContext();
-
-
-        public ViewResult Index(int id)
+        private readonly UnitofWork _unitOfWork;
+        public AgentProfileController(UnitofWork uow)
         {
-            var agent = _db.Agents.Find(UserHelper.GetAgentId(id));
-            ViewBag.agentProfile = agent;
+            _unitOfWork = uow;
+        }
+        public ActionResult Index(int id)
+        {
+            var agent = _unitOfWork.AgentRepository.FindBy(x => x.AgentId == UserHelper.GetAgentId(id)).FirstOrDefault();
+            if (agent == null) return RedirectToAction("Index", "Home");
             ViewBag.agentId = agent.AgentId;
             ViewBag.agentGoogleMap = agent.GoogleMap;
             return View(agent);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

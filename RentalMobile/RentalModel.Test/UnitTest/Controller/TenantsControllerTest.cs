@@ -18,8 +18,7 @@ namespace TestProject.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            var fakeTenants = new FakeTenants();
-            var tenantRepo = new FakeTenantRepository(fakeTenants.MyTenants);
+            var tenantRepo = new FakeTenantRepository();
             var uow = new UnitofWork { TenantRepository = tenantRepo };
             Controller = new TenantsController(uow);
         }

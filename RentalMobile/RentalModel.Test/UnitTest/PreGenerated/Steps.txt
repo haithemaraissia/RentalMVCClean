@@ -1,0 +1,1 @@
+﻿Any new Controller , just add it to this pre generated

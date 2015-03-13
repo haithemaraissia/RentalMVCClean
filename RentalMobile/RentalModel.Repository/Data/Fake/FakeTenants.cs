@@ -108,20 +108,20 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdTenant = new Tenant {
 
-                 TenantId = new Int32()
+                 TenantId = 3
 ,
-                 FirstName = null,
-                 LastName = null,
-                 Address = null,
-                 EmailAddress = null,
-                 Description = null,
+                 FirstName = "Lynda Tenant",
+                 LastName = "Smith",
+                 Address = "5412 South Bronx, NY 2008",
+                 EmailAddress = "lyndasmith@yahoo.com",
+                 Description = "Lynda Description",
                  GUID = new Guid()
 ,
                  VCard = null,
                  Skype = null,
                  Twitter = null,
                  LinkedIn = null,
-                 GooglePlus = null,
+                 GooglePlus = "Google Map",
                  Photo = null,
                  GoogleMap = null,
                  Country = null,

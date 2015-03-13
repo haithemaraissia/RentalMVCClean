@@ -199,7 +199,6 @@
     <Compile Include="Controllers\AddTeamMemberController.cs" />
     <Compile Include="ControllerTester\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
-    <Compile Include="Controllers\ReflectionHelper.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="ControllerTester\UnitofWorkPatternController.cs" />
@@ -220,6 +219,7 @@
     <Compile Include="Helpers\JQueryHelper.cs" />
     <Compile Include="Helpers\PhotoHelper.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Helpers\SpecialistInTeam.cs" />

@@ -18,8 +18,7 @@ namespace TestProject.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            var fakeAgents = new FakeAgents();
-            var agentRepo = new FakeAgentRepository(fakeAgents.MyAgents);
+            var agentRepo = new FakeAgentRepository();
             var uow = new UnitofWork { AgentRepository = agentRepo };
             Controller = new AgentsController(uow);
         }

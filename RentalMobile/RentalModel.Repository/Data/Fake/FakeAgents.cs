@@ -65,13 +65,13 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondAgent = new Agent {
 
-                 AgentId = new Int32()
+                 AgentId = 2
 ,
-                 FirstName = null,
-                 LastName = null,
-                 Address = null,
-                 EmailAddress = null,
-                 Description = null,
+                 FirstName = "Sammy Agent",
+                 LastName = "Douglas",
+                 Address = "11125 NorthEast Boulevard, California 552441",
+                 EmailAddress = "mikedouglas@yhaoo.com",
+                 Description = "Mike Description",
                  GUID = new Guid()
 ,
                  VCard = null,
@@ -80,7 +80,7 @@ namespace RentalModel.Repository.Data.Fake
                  LinkedIn = null,
                  GooglePlus = null,
                  Photo = null,
-                 GoogleMap = null,
+                 GoogleMap = "Google Address",
                  Country = null,
                  Region = null,
                  City = null,
