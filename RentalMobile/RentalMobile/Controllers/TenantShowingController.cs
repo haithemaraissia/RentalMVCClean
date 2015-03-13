@@ -1,104 +1,78 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
     public class TenantShowingController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-        //
-        // GET: /TenantShowing/
+        private readonly UnitofWork _unitOfWork;
+        public TenantShowingController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
         public ViewResult Index()
         {
-            return View(db.TenantShowings.ToList());
+            return View(_unitOfWork.TenantShowingRepository.All.ToList());
         }
-
-        //
-        // GET: /TenantShowing/Details/5
 
         public ViewResult Details(int id)
         {
-            TenantShowing tenantshowing = db.TenantShowings.Find(id);
+            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
-
-        //
-        // GET: /TenantShowing/Create
 
         public ActionResult Create()
         {
             return View();
         } 
 
-        //
-        // POST: /TenantShowing/Create
-
         [HttpPost]
         public ActionResult Create(TenantShowing tenantshowing)
         {
             if (ModelState.IsValid)
             {
-                db.TenantShowings.Add(tenantshowing);
-                db.SaveChanges();
+                _unitOfWork.TenantShowingRepository.Add(tenantshowing);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");  
             }
 
             return View(tenantshowing);
         }
         
-        //
-        // GET: /TenantShowing/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            TenantShowing tenantshowing = db.TenantShowings.Find(id);
+            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
-
-        //
-        // POST: /TenantShowing/Edit/5
 
         [HttpPost]
         public ActionResult Edit(TenantShowing tenantshowing)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tenantshowing).State = EntityState.Modified;
-                db.SaveChanges();
+                _unitOfWork.TenantShowingRepository.Edit(tenantshowing);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(tenantshowing);
         }
-
-        //
-        // GET: /TenantShowing/Delete/5
  
         public ActionResult Delete(int id)
         {
-            TenantShowing tenantshowing = db.TenantShowings.Find(id);
+            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
 
-        //
-        // POST: /TenantShowing/Delete/5
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            TenantShowing tenantshowing = db.TenantShowings.Find(id);
-            db.TenantShowings.Remove(tenantshowing);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
         {
-            db.Dispose();
-            base.Dispose(disposing);
+            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
+            _unitOfWork.TenantShowingRepository.Delete(tenantshowing);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
         }
     }
 }

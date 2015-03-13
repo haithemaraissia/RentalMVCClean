@@ -49,13 +49,13 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondTenantShowing = new TenantShowing {
 
-                 ShowingId = new Int32()
+                 ShowingId = 2
 ,
                  Date = new DateTime()
 ,
                  UnitId = new Int32()
 ,
-                 TenantId = new Int32()
+                 TenantId = 4
 ,
                  Tenant = new Tenant()
 
