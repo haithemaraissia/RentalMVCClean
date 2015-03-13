@@ -241,7 +241,6 @@
     <Compile Include="Controllers\MaintenanceOrderController.cs" />
     <Compile Include="Controllers\MaintenancePhotoGalleryController.cs" />
     <Compile Include="Controllers\MorePhotoController.cs" />
-    <Compile Include="Controllers\NewUnitTestController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\OwnerProfileController.cs" />
     <Compile Include="Controllers\OwnersController.cs" />
@@ -894,11 +893,6 @@
     <Content Include="Views\MaintenancePhotoGallery\Index.cshtml" />
     <Content Include="Views\MaintenancePhotoGallery\Json.cshtml" />
     <Content Include="Views\MorePhoto\Index.cshtml" />
-    <Content Include="Views\NewUnitTest\Create.cshtml" />
-    <Content Include="Views\NewUnitTest\Delete.cshtml" />
-    <Content Include="Views\NewUnitTest\Details.cshtml" />
-    <Content Include="Views\NewUnitTest\Edit.cshtml" />
-    <Content Include="Views\NewUnitTest\Index.cshtml" />
     <Content Include="Views\OwnerProfile\Index.cshtml" />
     <Content Include="Views\Owners\Index.cshtml" />
     <Content Include="Views\Owner\ChangeAddress.cshtml" />

@@ -120,7 +120,6 @@
     <Compile Include="UnitTest\Core\NotDone\MaintenanceOrderControllerTest.cs" />
     <Compile Include="UnitTest\Core\NotDone\MaintenancePhotoGalleryControllerTest.cs" />
     <Compile Include="UnitTest\Core\NotDone\MorePhotoControllerTest.cs" />
-    <Compile Include="UnitTest\Core\NotDone\NewUnitTestControllerTest.cs" />
     <Compile Include="UnitTest\Core\NotDone\OwnerControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Profiles\OwnerProfileControllerTest.cs" />
     <Compile Include="UnitTest\Controller\OwnersControllerTest.cs" />
