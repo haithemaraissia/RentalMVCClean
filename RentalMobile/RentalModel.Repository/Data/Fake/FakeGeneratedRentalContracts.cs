@@ -28,7 +28,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstGeneratedRentalContract = new GeneratedRentalContract {
 
-                 ID = new Int32()
+                 ID = 1
 ,
                  LandLoardName = null,
                  LandLoardRole = null,
@@ -67,7 +67,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondGeneratedRentalContract = new GeneratedRentalContract {
 
-                 ID = new Int32()
+                 ID = 2
 ,
                  LandLoardName = null,
                  LandLoardRole = null,
@@ -75,7 +75,7 @@ namespace RentalModel.Repository.Data.Fake
                  LandLoardAddress = null,
                  TenantName = null,
                  TenantID = new Int32(),
-                 PropertyID = new Int32(),
+                 PropertyID = 5,
                  PropertyAddress = null,
                  PropertyCity = null,
                  MonthlyRent = new Double(),
@@ -106,7 +106,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdGeneratedRentalContract = new GeneratedRentalContract {
 
-                 ID = new Int32()
+                 ID = 3
 ,
                  LandLoardName = null,
                  LandLoardRole = null,

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace RentalModel.Repository.Generic.Repositories.Base
 {
@@ -74,6 +75,13 @@ namespace RentalModel.Repository.Generic.Repositories.Base
         public void Dispose()
         {
             MyList = null;
+        }
+
+
+        //Async
+        public Task<IQueryable<T>> AllAsync()
+        {
+            return Task<IQueryable<T>>.Factory.StartNew(() => MyList.AsQueryable());
         }
     }
 }

@@ -1,11 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
     public class TenantControllerTest
     {
-        //public TenantController Controller;
+       public TenantController Controller;
 
         [TestInitialize]
         public void Initialize()

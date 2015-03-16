@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Net;
@@ -19,7 +20,6 @@ namespace RentalMobile.Helpers
             const string scope = "publish_stream,manage_pages";
 
 
-
             if (HttpContext.Current.Request["code"] == null)
             {
 
@@ -36,16 +36,11 @@ namespace RentalMobile.Helpers
 
                 var tokens = new Dictionary<string, string>();
 
-
-
                 string url = string.Format("https://graph.facebook.com/oauth/access_token?client_id={0}&redirect_uri={1}&scope={2}&code={3}&client_secret={4}",
 
                     appId, HttpContext.Current.Request.Url.AbsoluteUri, scope, HttpContext.Current.Request["code"], appSecret);
 
-
-
                 var request = WebRequest.Create(url) as HttpWebRequest;
-
 
                 if (request != null)
                     using (var response = request.GetResponse() as HttpWebResponse)
@@ -53,35 +48,25 @@ namespace RentalMobile.Helpers
                         if (response != null)
                         {
                             var reader = new StreamReader(response.GetResponseStream());
-
-
-
                             var vals = reader.ReadToEnd();
-
-
 
                             foreach (string token in vals.Split('&'))
                             {
 
                                 //meh.aspx?token1=steve&token2=jake&...
 
-                                tokens.Add(token.Substring(0, token.IndexOf("=")),
+                                tokens.Add(token.Substring(0, token.IndexOf("=", StringComparison.Ordinal)),
 
-                                           token.Substring(token.IndexOf("=") + 1, token.Length - token.IndexOf("=") - 1));
+                                           token.Substring(token.IndexOf("=", StringComparison.Ordinal) + 1, token.Length - token.IndexOf("=", StringComparison.Ordinal) - 1));
 
                             }
                         }
                     }
-
-
-                string accessToken = tokens["access_token"];
+                var accessToken = tokens["access_token"];
 
 
 
                 var client = new FacebookClient(accessToken);
-
-
-
                 client.Post("/me/feed", new { message = "test 101" });
 
             }

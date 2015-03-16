@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using RentalMobile.Model.Models;
 
 namespace RentalModel.Repository.Generic.Repositories.Base
@@ -86,6 +87,13 @@ namespace RentalModel.Repository.Generic.Repositories.Base
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+
+        //Async
+        public Task<IQueryable<T>> AllAsync()
+        {
+            return Task<IQueryable<T>>.Factory.StartNew(() => Dbset.AsQueryable());
         }
 
     }

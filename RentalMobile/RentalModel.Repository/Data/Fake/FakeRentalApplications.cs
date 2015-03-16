@@ -141,7 +141,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondRentalApplication = new RentalApplication {
 
-                 ApplicationId = new Int32()
+                 ApplicationId = 2
 ,
                  FirstName = null,
                  LastName = null,
@@ -196,7 +196,7 @@ namespace RentalModel.Repository.Data.Fake
                  PreviousLandLoardPhone = null,
                  PreviousLandLoardFax = null,
                  PreviousAddress = null,
-                 PreviousAddressCity = null,
+                 PreviousAddressCity = "Shawnee",
                  PreviousAddressState = null,
                  PreviousAddressZip = null,
                  PreviousRent = null,

@@ -217,6 +217,7 @@
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
+    <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
     <Compile Include="Helpers\PhotoHelper.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
@@ -261,7 +262,6 @@
     <Compile Include="Controllers\TenantRentalApplicationController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\TenantShowingController.cs" />
-    <Compile Include="Controllers\UnitFeatureTestController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UploadMaintenancePhotoController.cs" />
     <Compile Include="Design\General.aspx.cs">
@@ -971,11 +971,6 @@
     <Content Include="Views\Tenant\Index.cshtml" />
     <Content Include="Views\Tenant\_ProfileDetail.cshtml" />
     <Content Include="Views\UnitDetail\Index.cshtml" />
-    <Content Include="Views\UnitFeatureTest\Create.cshtml" />
-    <Content Include="Views\UnitFeatureTest\Delete.cshtml" />
-    <Content Include="Views\UnitFeatureTest\Details.cshtml" />
-    <Content Include="Views\UnitFeatureTest\Edit.cshtml" />
-    <Content Include="Views\UnitFeatureTest\Index.cshtml" />
     <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -1201,6 +1196,7 @@
       <Name>Westwind.plUploadHandler</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

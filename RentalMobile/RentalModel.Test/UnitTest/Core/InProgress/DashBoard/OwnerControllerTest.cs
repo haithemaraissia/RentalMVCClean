@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class PropertyControllerTest
+    public class OwnerControllerTest
     {
-        //public PropertyController Controller;
+      public OwnerController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakePropertys = new FakePropertys();
-            //var propertyRepo = new FakePropertyRepository(fakePropertys.MyPropertys);
-            //var uow = new UnitofWork { PropertyRepository = propertyRepo };
-            //Controller = new PropertyController(uow);
+            //var fakeOwners = new FakeOwners();
+            //var ownerRepo = new FakeOwnerRepository(fakeOwners.MyOwners);
+            //var uow = new UnitofWork { OwnerRepository = ownerRepo };
+            //Controller = new OwnerController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<PropertyController>;
+            //var data = viewResult.ViewData.Model as IList<OwnerController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<PropertyController>;
+            //var data = viewResult.ViewData.Model as IList<OwnerController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as PropertyController;
+            //var data = viewResult.ViewData.Model as OwnerController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as PropertyController;
+            //var data = viewResult.ViewData.Model as OwnerController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

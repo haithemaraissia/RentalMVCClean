@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class ProfessionalsControllerTest
+    public partial class AgentControllerTest
     {
-        //public ProfessionalsController Controller;
+        public AgentController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeProfeionals = new FakeProfeionals();
-            //var profeionalRepo = new FakeProfeionalRepository(fakeProfeionals.MyProfeionals);
-            //var uow = new UnitofWork { ProfeionalRepository = profeionalRepo };
-            //Controller = new ProfessionalsController(uow);
+            //var fakeAgents = new FakeAgents();
+            //var agentRepo = new FakeAgentRepository(fakeAgents.MyAgents);
+            //var uow = new UnitofWork { AgentRepository = agentRepo };
+            //Controller = new AgentController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
+            //var data = viewResult.ViewData.Model as IList<AgentController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
+            //var data = viewResult.ViewData.Model as IList<AgentController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProfessionalsController;
+            //var data = viewResult.ViewData.Model as AgentController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProfessionalsController;
+            //var data = viewResult.ViewData.Model as AgentController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

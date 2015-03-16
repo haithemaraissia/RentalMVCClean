@@ -1,24 +1,23 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using RentalMobile.Model.Models;
+using RentalMobile.Helpers;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
     public class ProjectDetailController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-        //
-        // GET: /ProjectDetail/
+        private readonly UnitofWork _unitOfWork;
+        public ProjectDetailController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
         public ViewResult Index()
         {
-            return View(db.ProjectPhotoes.ToList());
+            return View(_unitOfWork.ProjectPhotoRepository.All.ToList());
         }
-
-
 
 
         [HttpPost]
@@ -31,22 +30,14 @@ namespace RentalMobile.Controllers
         }
 
 
-
-        //
-        // GET: /RATest/Edit/5
-
         public ActionResult Confirm()
         {
             ViewBag.StartDate = TempData["startDate"];
             ViewBag.EndDate = TempData["endDate"];
             ViewBag.ProjectID = TempData["ProjectId"];
-
             return View();
         }
 
-
-
-        
 
         [HttpPost]
         public ActionResult Confirm(FormCollection form)
@@ -54,28 +45,30 @@ namespace RentalMobile.Controllers
 
             //SpecialistID
             var specialistID = (Convert.ToInt32( form["HiddenProjectId"]));
-            var specialist = db.Specialists.FirstOrDefault(t => t.SpecialistId == specialistID);
+            var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == UserHelper.GetAgentId(specialistID)).FirstOrDefault();
+
             if (specialist == null)
             {
                 return RedirectToAction("MakeOffer");
             }
 
 
-
-//Make sure Project is still Open, not closed by Owner, Agent or finished.
-
+            ////<Summary>///
+            //TODO The below//
+            //Make sure Project is still Open, not closed by Owner, Agent or finished.
 
             //Offer Data
             //More Work
             //You need to put them in the view so you can grab them
+
+            //It Should be already included
             var startdate = form["StartDate"];
-            var enddate = form["StartDate"];
+            var enddate = form["EndDate"];
+            //It Should be already included
+
             var amount = form["Amount"];
             var currency = form["Currency"];
             var quicknote = form["Quick Note"];
-
-
-
 
             //Insert into Owner, Agent Offer
             //Insert into Sepcialist submittted ofer
@@ -111,10 +104,5 @@ namespace RentalMobile.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

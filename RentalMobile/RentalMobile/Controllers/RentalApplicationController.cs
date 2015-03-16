@@ -1,127 +1,94 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     public class RentalApplicationController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-        //
-        // GET: /RATest/
+        private readonly UnitofWork _unitOfWork;
+        public RentalApplicationController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
         public ViewResult Index()
         {
-            //return View(db.RentalApplications.Where(x => x.TenantId == 5).ToList());
-
-            return View(db.RentalApplications.ToList());
+            return View(_unitOfWork.RentalApplicationRepository.All.ToList());
         }
-
-        //
-        // GET: /RATest/Details/5
 
         public ViewResult Details(int id)
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
+            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
-
-        //
-        // GET: /RATest/Create
 
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /RATest/Create
-
         [HttpPost]
         public ActionResult Create(RentalApplication rentalapplication)
         {
             if (ModelState.IsValid)
             {
-                db.RentalApplications.Add(rentalapplication);
-                db.SaveChanges();
+                _unitOfWork.RentalApplicationRepository.Add(rentalapplication);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             return View(rentalapplication);
         }
 
-        //
-        // GET: /RATest/Edit/5
-
         public ActionResult Edit(int id)
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
+            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
-
-        //
-        // POST: /RATest/Edit/5
 
         [HttpPost]
         public ActionResult Edit(RentalApplication rentalapplication)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rentalapplication).State = EntityState.Modified;
-                db.SaveChanges();
+                _unitOfWork.RentalApplicationRepository.Edit(rentalapplication);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(rentalapplication);
         }
 
-        //
-        // GET: /RATest/Delete/5
-
         public ActionResult Delete(int id)
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
+            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
-
-        //
-        // POST: /RATest/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
-            db.RentalApplications.Remove(rentalapplication);
-            db.SaveChanges();
+            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            _unitOfWork.RentalApplicationRepository.Delete(rentalapplication);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
         }
 
-
-
-        //
-        // GET: /RATest/Edit/5
-
         public ActionResult Submit(int id)
         {
-            RentalApplication rentalapplication = db.RentalApplications.Find(id);
+            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
-
-        //
-        // POST: /RATest/Edit/5
 
         [HttpPost]
         public ActionResult Submit(RentalApplication rentalapplication)
         {
 
-
-
             //OVER HERE YOU HAVE TO
             //CHECK THAT AN APPLICATION EXIST
             //PROCESS TO AMAZONPAYPAL
             //YOU DON'T NEED MODEL VALIDATION
-            
 
 
             //ALOS WHEN SUCCED
@@ -130,21 +97,13 @@ namespace RentalMobile.Controllers
             //ALSO SEND EMAIL TO LISTER
             //SO HE OR SHE DOES BACKGROUND CHECKING AND ACCPET/DENY APPLICATION
 
-
             if (ModelState.IsValid)
             {
-                db.Entry(rentalapplication).State = EntityState.Modified;
-                db.SaveChanges();
+                _unitOfWork.RentalApplicationRepository.Add(rentalapplication);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(rentalapplication);
-        }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

@@ -92,9 +92,9 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondUnit = new Unit {
 
-                 UnitId = new Int32()
+                 UnitId = 2
 ,
-                 Bed = new Int32()
+                 Bed = 4
 ,
                  Bathroom = new Double()
 ,

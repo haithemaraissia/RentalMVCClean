@@ -2,25 +2,29 @@
 using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
+using RentalMobile.Helpers.Json;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     public class PropertyController : Controller
     {
-        private RentalContext db = new RentalContext();
+        private readonly UnitofWork _unitOfWork;
+        public PropertyController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
-        //
-        // GET: /UnitDetail/
 
         public ActionResult Index(int id)
         {
-            Unit unit = db.Units.Find(id) ?? db.Units.Find(1);
+
+            var unit = _unitOfWork.UnitRepository.FindBy(x => x.UnitId == id).FirstOrDefault() ??
+                       _unitOfWork.UnitRepository.FindBy(x => x.UnitId == 1).First();
             ViewBag.UnitId = unit.UnitId;
             ViewBag.UnitGoogleMap = unit.GoogleMap;
             ViewBag.Sript = FancyBox.FancyUnit(id);
-
-
 
             //Complete these fields//
             var url = "url";
@@ -31,8 +35,6 @@ namespace RentalMobile.Controllers
             var tweet = "tweet";
             var sitename = "noDescidedyet";
             //Complete these fields//
-
-
 
             ViewBag.FaceBook = SocialHelper.FacebookShare(url,primaryimagethumbnail,title,summary);
             ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
@@ -49,12 +51,10 @@ namespace RentalMobile.Controllers
         }
 
 
-
-
         public ActionResult JsonFun(int id)
         {
             var data = new List<UnitGalleryJsonData>();
-            IQueryable<UnitGallery> unitGallery = db.UnitGalleries.Where(x => x.UnitId == id);
+            IQueryable<UnitGallery> unitGallery = _unitOfWork.UnitGalleryRepository.FindBy(x => x.UnitId == id).AsQueryable();
             if (unitGallery.Count() != 0)
             {
                 data.AddRange(unitGallery.Select(photo => new UnitGalleryJsonData { href = photo.Path, title = photo.Caption }));
@@ -63,17 +63,5 @@ namespace RentalMobile.Controllers
         }
 
 
-
     }
-
-
-
-    public class UnitGalleryJsonData
-    {
-        public string href { get; set; }
-
-        public string title { get; set; }
-    }
-
-
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.Repositories.Base;
 using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
@@ -102,6 +103,11 @@ namespace TestProject.Before.UnitOfWork
         public void Save()
         {
            // throw new NotImplementedException();
+        }
+
+        public Task<IQueryable<Unit>> AllAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public void Dispose()

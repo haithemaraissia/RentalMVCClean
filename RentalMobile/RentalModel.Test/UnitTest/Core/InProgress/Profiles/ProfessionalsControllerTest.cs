@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class ProjectDetailControllerTest
+    public class ProfessionalsControllerTest
     {
-        //public ProjectDetailController Controller;
+        public ProfessionalsController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeProjectDetails = new FakeProjectDetails();
-            //var projectDetailRepo = new FakeProjectDetailRepository(fakeProjectDetails.MyProjectDetails);
-            //var uow = new UnitofWork { ProjectDetailRepository = projectDetailRepo };
-            //Controller = new ProjectDetailController(uow);
+            //var fakeProfeionals = new FakeProfeionals();
+            //var profeionalRepo = new FakeProfeionalRepository(fakeProfeionals.MyProfeionals);
+            //var uow = new UnitofWork { ProfeionalRepository = profeionalRepo };
+            //Controller = new ProfessionalsController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProjectDetailController>;
+            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProjectDetailController>;
+            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProjectDetailController;
+            //var data = viewResult.ViewData.Model as ProfessionalsController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProjectDetailController;
+            //var data = viewResult.ViewData.Model as ProfessionalsController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

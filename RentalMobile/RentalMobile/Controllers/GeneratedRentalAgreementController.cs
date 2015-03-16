@@ -1,105 +1,80 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Model.Models;
-using EntityState = System.Data.EntityState;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
-{ 
+{
     public class GeneratedRentalAgreementController : Controller
     {
-        private RentalContext db = new RentalContext();
-
-        //
-        // GET: /GeneratedRentalAgreement/
+        private readonly UnitofWork _unitOfWork;
+        public GeneratedRentalAgreementController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
         public ViewResult Index()
         {
-            return View(db.GeneratedRentalContracts.ToList());
+            return View(_unitOfWork.GeneratedRentalContractRepository.All.ToList());
         }
-
-        //
-        // GET: /GeneratedRentalAgreement/Details/5
 
         public ViewResult Details(int id)
         {
-            GeneratedRentalContract generatedrentalcontract = db.GeneratedRentalContracts.Find(id);
+            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
-
-        //
-        // GET: /GeneratedRentalAgreement/Create
 
         public ActionResult Create()
         {
             return View();
-        } 
-
-        //
-        // POST: /GeneratedRentalAgreement/Create
+        }
 
         [HttpPost]
         public ActionResult Create(GeneratedRentalContract generatedrentalcontract)
         {
             if (ModelState.IsValid)
             {
-                db.GeneratedRentalContracts.Add(generatedrentalcontract);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                _unitOfWork.GeneratedRentalContractRepository.Add(generatedrentalcontract);
+                _unitOfWork.Save();
+                return RedirectToAction("Index");
             }
 
             return View(generatedrentalcontract);
         }
-        
-        //
-        // GET: /GeneratedRentalAgreement/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
-            GeneratedRentalContract generatedrentalcontract = db.GeneratedRentalContracts.Find(id);
+            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
 
-        //
-        // POST: /GeneratedRentalAgreement/Edit/5
 
         [HttpPost]
         public ActionResult Edit(GeneratedRentalContract generatedrentalcontract)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(generatedrentalcontract).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                _unitOfWork.GeneratedRentalContractRepository.Edit(generatedrentalcontract);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(generatedrentalcontract);
         }
 
-        //
-        // GET: /GeneratedRentalAgreement/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
-            GeneratedRentalContract generatedrentalcontract = db.GeneratedRentalContracts.Find(id);
+            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
 
-        //
-        // POST: /GeneratedRentalAgreement/Delete/5
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            GeneratedRentalContract generatedrentalcontract = db.GeneratedRentalContracts.Find(id);
-            db.GeneratedRentalContracts.Remove(generatedrentalcontract);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
         {
-            db.Dispose();
-            base.Dispose(disposing);
+            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
+            _unitOfWork.GeneratedRentalContractRepository.Delete(generatedrentalcontract);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
         }
     }
 }

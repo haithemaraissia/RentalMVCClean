@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace RentalModel.Repository.Generic.Repositories.Base
 {
@@ -17,5 +18,8 @@ namespace RentalModel.Repository.Generic.Repositories.Base
         void Edit(T entity);
         void Delete(T entity);
         void Save();
+
+        //For the Async
+        Task<IQueryable<T>> AllAsync();
     }
 }

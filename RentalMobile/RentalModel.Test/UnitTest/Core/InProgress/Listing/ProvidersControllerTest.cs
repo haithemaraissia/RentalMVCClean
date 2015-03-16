@@ -1,22 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
-using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Core.InProgress
+namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class UnitFeatureTestControllerTest
+    public class ProvidersControllerTest
     {
-        public UnitFeatureTestController Controller;
+        public ProvidersController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeUnitFeatureTests = new FakeUnits();
-            //var unitFeatureTestRepo = new FakeUnitFeatureTestRepository(fakeUnitFeatureTests.MyUnitFeatureTests);
-            //var uow = new UnitofWork { UnitFeatureTestRepository = unitFeatureTestRepo };
-            //Controller = new UnitFeatureTestController(uow);
+            //var fakeProviders = new FakeProviders();
+            //var providerRepo = new FakeProviderRepository(fakeProviders.MyProviders);
+            //var uow = new UnitofWork { ProviderRepository = providerRepo };
+            //Controller = new ProvidersController(uow);
         }
 
         [TestMethod]
@@ -28,7 +27,7 @@ namespace TestProject.UnitTest.Core.InProgress
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<UnitFeatureTestController>;
+            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -43,7 +42,7 @@ namespace TestProject.UnitTest.Core.InProgress
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<UnitFeatureTestController>;
+            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -56,7 +55,7 @@ namespace TestProject.UnitTest.Core.InProgress
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as UnitFeatureTestController;
+            //var data = viewResult.ViewData.Model as ProvidersController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -73,7 +72,7 @@ namespace TestProject.UnitTest.Core.InProgress
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as UnitFeatureTestController;
+            //var data = viewResult.ViewData.Model as ProvidersController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 
