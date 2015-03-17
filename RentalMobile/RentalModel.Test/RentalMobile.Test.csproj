@@ -105,7 +105,7 @@
     <Compile Include="UnitTest\Core\InProgress\DashBoard\Common\AccountControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\AddMaintenancePhotoControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Provider\Team\AddTeamMemberControllerTest.cs" />
-    <Compile Include="UnitTest\Controller\Menu\Main\AdvancedSearchControllerTest.cs" />
+    <Compile Include="UnitTest\Controller\Menu\Main\NotIntheMenu\AdvancedSearchControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\DashBoard\AgentControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Profiles\AgentProfileControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\ManageMaintenance\Prototype\ChangeMaintenanceControllerTest.cs" />
@@ -114,8 +114,8 @@
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\ManageMaintenance\Prototype\ChooseProviderControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Contact\ContactControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Common\Contract\GeneratedRentalAgreementControllerTest.cs" />
-    <Compile Include="UnitTest\Controller\Menu\Main\HelpControllerTest.cs" />
-    <Compile Include="UnitTest\Controller\Menu\Main\HomeControllerTest.cs" />
+    <Compile Include="UnitTest\Controller\Menu\Main\NotIntheMenu\HelpControllerTest.cs" />
+    <Compile Include="UnitTest\Controller\Menu\Main\NotIntheMenu\HomeControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Maintain\MaintainControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\MaintenanceOrderControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\MaintenancePhotoGalleryControllerTest.cs" />

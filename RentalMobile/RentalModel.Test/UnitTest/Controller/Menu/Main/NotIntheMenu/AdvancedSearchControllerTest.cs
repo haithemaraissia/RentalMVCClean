@@ -1,12 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
 
-namespace TestProject.UnitTest.Controller.Menu.Main.Contact
+namespace TestProject.UnitTest.Controller.Menu.Main.NotIntheMenu
 {
     [TestClass]
-    public class ContactControllerTest
+    public class AdvancedSearchControllerTest
     {
-        //public ContactController Controller;
+        //public AdvancedSearchController Controller;
 
         [TestMethod]
         public void IndexHasNoCode()
