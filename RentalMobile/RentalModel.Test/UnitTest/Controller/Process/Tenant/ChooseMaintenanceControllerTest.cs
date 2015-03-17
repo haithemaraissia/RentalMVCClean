@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Controller.Simple
 {
     [TestClass]
-    public class MaintenancePhotoGalleryControllerTest
+    public class ChooseMaintenanceControllerTest
     {
-        //public MaintenancePhotoGalleryController Controller;
+        public ChooseMaintenanceController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeMaintenancePhotoGallerys = new FakeMaintenancePhotoGallerys();
-            //var maintenancePhotoGalleryRepo = new FakeMaintenancePhotoGalleryRepository(fakeMaintenancePhotoGallerys.MyMaintenancePhotoGallerys);
-            //var uow = new UnitofWork { MaintenancePhotoGalleryRepository = maintenancePhotoGalleryRepo };
-            //Controller = new MaintenancePhotoGalleryController(uow);
+            //var fakeChooseMaintenances = new FakeChooseMaintenances();
+            //var chooseMaintenanceRepo = new FakeChooseMaintenanceRepository(fakeChooseMaintenances.MyChooseMaintenances);
+            //var uow = new UnitofWork { ChooseMaintenanceRepository = chooseMaintenanceRepo };
+            //Controller = new ChooseMaintenanceController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MaintenancePhotoGalleryController>;
+            //var data = viewResult.ViewData.Model as IList<ChooseMaintenanceController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MaintenancePhotoGalleryController>;
+            //var data = viewResult.ViewData.Model as IList<ChooseMaintenanceController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MaintenancePhotoGalleryController;
+            //var data = viewResult.ViewData.Model as ChooseMaintenanceController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MaintenancePhotoGalleryController;
+            //var data = viewResult.ViewData.Model as ChooseMaintenanceController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

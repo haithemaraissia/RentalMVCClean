@@ -1,20 +1,22 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
-namespace TestProject.UnitTest.Controller.Simple
+namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class ChooseMaintenanceControllerTest
+    public class AccountControllerTest
     {
-        //public ChooseMaintenanceController Controller;
+        //public FakeAccountControllers FakeAccountControllers;
+        public AccountController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeChooseMaintenances = new FakeChooseMaintenances();
-            //var chooseMaintenanceRepo = new FakeChooseMaintenanceRepository(fakeChooseMaintenances.MyChooseMaintenances);
-            //var uow = new UnitofWork { ChooseMaintenanceRepository = chooseMaintenanceRepo };
-            //Controller = new ChooseMaintenanceController(uow);
+            //var fakeAccountControllers = new FakeAccountControllers();
+            //var AccountControllerRepo = new FakeAccountControllerRepository(fakeAccountControllers.MyAccountControllers);
+            //var uow = new AccountControllerofWork { AccountControllerRepository = AccountControllerRepo };
+            //Controller = new AccountControllerController(uow);
         }
 
         [TestMethod]
@@ -26,7 +28,7 @@ namespace TestProject.UnitTest.Controller.Simple
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ChooseMaintenanceController>;
+            //var data = viewResult.ViewData.Model as IList<AccountController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +43,7 @@ namespace TestProject.UnitTest.Controller.Simple
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ChooseMaintenanceController>;
+            //var data = viewResult.ViewData.Model as IList<AccountController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +56,7 @@ namespace TestProject.UnitTest.Controller.Simple
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ChooseMaintenanceController;
+            //var data = viewResult.ViewData.Model as AccountController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +73,7 @@ namespace TestProject.UnitTest.Controller.Simple
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ChooseMaintenanceController;
+            //var data = viewResult.ViewData.Model as AccountController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 
@@ -92,6 +94,7 @@ namespace TestProject.UnitTest.Controller.Simple
         [TestCleanup]
         public void CleanUp()
         {
+            //FakeAccountControllers = null;
             //Controller.Dispose();
         }
     }

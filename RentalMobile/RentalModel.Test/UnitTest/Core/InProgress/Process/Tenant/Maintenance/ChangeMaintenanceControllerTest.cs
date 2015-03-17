@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class ChooseProviderControllerTest
+    public class ChangeMaintenanceControllerTest
     {
-        //public ChooseProviderController Controller;
+       public ChangeMaintenanceController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeChooseProviders = new FakeChooseProviders();
-            //var chooseProviderRepo = new FakeChooseProviderRepository(fakeChooseProviders.MyChooseProviders);
-            //var uow = new UnitofWork { ChooseProviderRepository = chooseProviderRepo };
-            //Controller = new ChooseProviderController(uow);
+            //var fakeChangeMaintenances = new FakeChangeMaintenances();
+            //var changeMaintenanceRepo = new FakeChangeMaintenanceRepository(fakeChangeMaintenances.MyChangeMaintenances);
+            //var uow = new UnitofWork { ChangeMaintenanceRepository = changeMaintenanceRepo };
+            //Controller = new ChangeMaintenanceController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ChooseProviderController>;
+            //var data = viewResult.ViewData.Model as IList<ChangeMaintenanceController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ChooseProviderController>;
+            //var data = viewResult.ViewData.Model as IList<ChangeMaintenanceController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ChooseProviderController;
+            //var data = viewResult.ViewData.Model as ChangeMaintenanceController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ChooseProviderController;
+            //var data = viewResult.ViewData.Model as ChangeMaintenanceController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class MorePhotoControllerTest
+    public class ChooseProviderControllerTest
     {
-        //public MorePhotoController Controller;
+        public ChooseProviderController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeMorePhotos = new FakeMorePhotos();
-            //var morePhotoRepo = new FakeMorePhotoRepository(fakeMorePhotos.MyMorePhotos);
-            //var uow = new UnitofWork { MorePhotoRepository = morePhotoRepo };
-            //Controller = new MorePhotoController(uow);
+            //var fakeChooseProviders = new FakeChooseProviders();
+            //var chooseProviderRepo = new FakeChooseProviderRepository(fakeChooseProviders.MyChooseProviders);
+            //var uow = new UnitofWork { ChooseProviderRepository = chooseProviderRepo };
+            //Controller = new ChooseProviderController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MorePhotoController>;
+            //var data = viewResult.ViewData.Model as IList<ChooseProviderController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MorePhotoController>;
+            //var data = viewResult.ViewData.Model as IList<ChooseProviderController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MorePhotoController;
+            //var data = viewResult.ViewData.Model as ChooseProviderController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MorePhotoController;
+            //var data = viewResult.ViewData.Model as ChooseProviderController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

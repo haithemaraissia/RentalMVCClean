@@ -33,7 +33,7 @@ namespace TestProject.UnitTest.Controller.CRUD
 
             // Assert
             var viewResult = actual as ViewResult;
-            if (viewResult == null) return;
+            if (viewResult == null)  return;
             var data = viewResult.ViewData.Model as IList<GeneratedRentalContract>;
             if (data != null) Assert.AreEqual(3, data.Count);
         }

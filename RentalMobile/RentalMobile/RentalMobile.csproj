@@ -820,6 +820,7 @@
     <None Include="bin\itextsharp.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
     <Content Include="Configurations\AppSettings.config" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="css\dotcss\base.css.bak" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />

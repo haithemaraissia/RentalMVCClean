@@ -1,21 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class AccountControllerTest
+    public class MorePhotoControllerTest
     {
-        //public FakeAccountControllers FakeAccountControllers;
-        //public AccountControllerController Controller;
+        public MorePhotoController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeAccountControllers = new FakeAccountControllers();
-            //var AccountControllerRepo = new FakeAccountControllerRepository(fakeAccountControllers.MyAccountControllers);
-            //var uow = new AccountControllerofWork { AccountControllerRepository = AccountControllerRepo };
-            //Controller = new AccountControllerController(uow);
+            //var fakeMorePhotos = new FakeMorePhotos();
+            //var morePhotoRepo = new FakeMorePhotoRepository(fakeMorePhotos.MyMorePhotos);
+            //var uow = new UnitofWork { MorePhotoRepository = morePhotoRepo };
+            //Controller = new MorePhotoController(uow);
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<AccountController>;
+            //var data = viewResult.ViewData.Model as IList<MorePhotoController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -42,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<AccountController>;
+            //var data = viewResult.ViewData.Model as IList<MorePhotoController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -55,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as AccountController;
+            //var data = viewResult.ViewData.Model as MorePhotoController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -72,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as AccountController;
+            //var data = viewResult.ViewData.Model as MorePhotoController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 
@@ -93,7 +93,6 @@ namespace TestProject.UnitTest.Core.NotDone
         [TestCleanup]
         public void CleanUp()
         {
-            //FakeAccountControllers = null;
             //Controller.Dispose();
         }
     }

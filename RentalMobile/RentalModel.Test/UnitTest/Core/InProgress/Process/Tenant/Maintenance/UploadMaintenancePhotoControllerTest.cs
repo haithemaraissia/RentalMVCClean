@@ -1,20 +1,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RentalMobile.Controllers;
 
 namespace TestProject.UnitTest.Core.NotDone
 {
     [TestClass]
-    public class UploadControllerTest
+    public class UploadMaintenancePhotoControllerTest
     {
-        //public UploadController Controller;
+        public UploadMaintenancePhotoController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeUploads = new FakeUploads();
-            //var uploadRepo = new FakeUploadRepository(fakeUploads.MyUploads);
-            //var uow = new UnitofWork { UploadRepository = uploadRepo };
-            //Controller = new UploadController(uow);
+            //var fakeUploadMaintenancePhotos = new FakeUploadMaintenancePhotos();
+            //var uploadMaintenancePhotoRepo = new FakeUploadMaintenancePhotoRepository(fakeUploadMaintenancePhotos.MyUploadMaintenancePhotos);
+            //var uow = new UnitofWork { UploadMaintenancePhotoRepository = uploadMaintenancePhotoRepo };
+            //Controller = new UploadMaintenancePhotoController(uow);
         }
 
         [TestMethod]
@@ -26,7 +27,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<UploadController>;
+            //var data = viewResult.ViewData.Model as IList<UploadMaintenancePhotoController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +42,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<UploadController>;
+            //var data = viewResult.ViewData.Model as IList<UploadMaintenancePhotoController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +55,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as UploadController;
+            //var data = viewResult.ViewData.Model as UploadMaintenancePhotoController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +72,7 @@ namespace TestProject.UnitTest.Core.NotDone
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as UploadController;
+            //var data = viewResult.ViewData.Model as UploadMaintenancePhotoController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 
