@@ -28,7 +28,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstMaintenanceRepair = new MaintenanceRepair {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
                  Appliances_Service_and_Repair = new Boolean()
 ,
@@ -56,7 +56,7 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  Handyman_Services = new Boolean()
 ,
-                 Drain_Pipe = new Boolean()
+                 Drain_Pipe = true
 ,
                  Doors = new Boolean()
 ,

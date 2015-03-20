@@ -28,9 +28,9 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstCurrency = new Currency {
 
-                 CurrencyID = new Int32()
+                 CurrencyID = 1
 ,
-                 CurrencyValue = null
+                 CurrencyValue = "US"
     
  };
 

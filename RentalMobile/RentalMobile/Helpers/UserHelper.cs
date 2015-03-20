@@ -19,8 +19,8 @@ namespace RentalMobile.Helpers
         public static string AgentPhotoPath = "~/Photo/Agent/Property";
         public static string ProviderPhotoPath = "~/Photo/Provider/Property";
         public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
-        
-        public static PosterAttributes DefaultPoster = new PosterAttributes("A Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", null, 0);
+
+        public static PosterAttributes DefaultPoster = new PosterAttributes("A Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", "notauthenticated", 0);
 
         public static string Login()
         {
@@ -216,7 +216,8 @@ namespace RentalMobile.Helpers
             }
             if (user.IsInRole("Agent"))
             {
-                HttpContext.Current.Server.MapPath(AgentPhotoPath);
+                photoPath = HttpContext.Current.Server.MapPath(AgentPhotoPath);
+                return "Agent";
             }
             if (user.IsInRole("Provider"))
             {
@@ -457,6 +458,8 @@ namespace RentalMobile.Helpers
                     return 4;
                 case "provider":
                     return 5;
+                case "notauthenticated":
+                    return 6;
                 default:
                     return 6;
             }
@@ -487,30 +490,6 @@ namespace RentalMobile.Helpers
             return Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId) * 2 + 1;
         }
 
-    }
-
-
-    public class PosterAttributes
-    {
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string ProfileLink { get; set; }
-        public string ProfilePicturePath { get; set; }
-        public string EmailAddress { get; set; }
-        public string Role { get; set; }
-        public int PosterId { get; set; }
-
-        public PosterAttributes(string f, string l, string pl, string pp, string e, string r, int pid)
-        {
-            FirstName = f;
-            LastName = l;
-            ProfileLink = pl;
-            ProfilePicturePath = pp;
-            EmailAddress = e;
-            Role = r;
-            PosterId = pid;
-        }
     }
 }
 

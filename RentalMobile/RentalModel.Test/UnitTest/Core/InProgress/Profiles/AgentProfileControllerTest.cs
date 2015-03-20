@@ -5,7 +5,7 @@ using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Controller.Profiles
+namespace TestProject.UnitTest.Core.InProgress.Profiles
 {
     [TestClass]
     public class AgentProfileControllerTest
@@ -16,8 +16,8 @@ namespace TestProject.UnitTest.Controller.Profiles
         public void Initialize()
         {
             // Arrange
-            var agentProfileRepo = new FakeAgentRepository();
-            var uow = new UnitofWork { AgentRepository = agentProfileRepo };
+            var agentRepo = new FakeAgentRepository();
+            var uow = new UnitofWork { AgentRepository = agentRepo };
             Controller = new AgentProfileController(uow);
         }
 

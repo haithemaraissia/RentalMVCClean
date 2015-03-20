@@ -44,11 +44,11 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondSpecialistWork = new SpecialistWork {
 
-                 SpecialistId = new Int32()
+                 SpecialistId = 2
 ,
                  PhotoID = new Int32()
 ,
-                 PhotoPath = null
+                 PhotoPath = "PhotoPath"
         
  };
 

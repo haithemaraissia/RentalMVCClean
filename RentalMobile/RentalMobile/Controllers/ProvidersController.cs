@@ -43,10 +43,10 @@ namespace RentalMobile.Controllers
 
 
 
-            //    //For Advertismement
+            //    //For Advertisement
             //TODO MORE WORK NEED TO BE DONE
-             ViewBag.MiddleBannerKeywordFilter = Advertisement.MiddleBanner("11", "2");
-            //   // For Advertismement
+            ViewBag.MiddleBannerKeywordFilter = Advertisement.MiddleBanner("11", "2");
+            //   // For Advertisement
 
 
             return View(provider);
@@ -152,7 +152,7 @@ namespace RentalMobile.Controllers
             var myTeam = (from i in team
                           let currentspecialist = _db.Specialists.Find(i.SpecialistId)
                           let specialistDescription = currentspecialist.Description
-                          let description = (currentspecialist != null &&  specialistDescription != null) ? specialistDescription.Length : 0
+                          let description = (currentspecialist != null && specialistDescription != null) ? specialistDescription.Length : 0
                           select new Teammember
                           {
                               SpecialistId = i.SpecialistId,

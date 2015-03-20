@@ -57,6 +57,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
@@ -147,6 +148,9 @@
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Create-Current-Archive Requests\UploadMaintenancePhotoControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\UploadPropertyControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Unit\Prototype\UploadUnitPictureControllerTest.cs" />
+    <Compile Include="UnitTest\Helpers\Helper.cs" />
+    <Compile Include="UnitTest\Helpers\MockControllerContext.cs" />
+    <Compile Include="UnitTest\Helpers\MVCMockHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tools\Base\ClassHelper.tt" />

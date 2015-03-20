@@ -220,6 +220,7 @@
     <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
     <Compile Include="Helpers\PhotoHelper.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
+    <Compile Include="Helpers\PosterAttributes.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />

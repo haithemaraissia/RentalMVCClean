@@ -57,11 +57,11 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
-                 UserId = new Int32()
+                 UserId = 2
 ,
-                 Role = new Int32()
+                 Role = 1
 ,
                  MaintenanceCompany = new MaintenanceCompany()
 ,

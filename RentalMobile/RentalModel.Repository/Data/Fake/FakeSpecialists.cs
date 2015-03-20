@@ -66,7 +66,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondSpecialist = new Specialist {
 
-                 SpecialistId = new Int32()
+                 SpecialistId = 2
 ,
                  FirstName = null,
                  LastName = null,
@@ -82,7 +82,7 @@ namespace RentalModel.Repository.Data.Fake
                  GooglePlus = null,
                  Photo = null,
                  GoogleMap = null,
-                 Country = null,
+                 Country = "USA",
                  Region = null,
                  City = null,
                  Zip = null,

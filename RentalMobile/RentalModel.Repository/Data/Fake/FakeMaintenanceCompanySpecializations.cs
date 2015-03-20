@@ -96,9 +96,9 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
-                 Years_Experience = new Int32()
+                 Years_Experience = 5
 ,
                  NumberofEmployee = new Int32()
 ,
@@ -148,10 +148,9 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  IsInsured = new Boolean()
 ,
-                 Rate = new Double()
-,
-                 Currency = null,
-                 CurrencyID = new Int32()
+                 Rate = 55.50,
+                 Currency = "US",
+                 CurrencyID = 1
 
         
  };

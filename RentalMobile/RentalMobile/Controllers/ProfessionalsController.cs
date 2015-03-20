@@ -6,13 +6,18 @@ using Microsoft.Security.Application;
 using RentalMobile.Helpers;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
+using RentalModel.Repository.Generic.UnitofWork;
 using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 {
     public class ProfessionalsController : Controller
     {
-        private readonly RentalContext _db = new RentalContext();
+        private readonly UnitofWork _unitOfWork;
+        public ProfessionalsController(UnitofWork uow)
+        {
+            _unitOfWork = uow;
+        }
 
         public ActionResult Index(int? id, bool? sharespecialist, bool? insertingnewcomment)
         {
@@ -20,26 +25,30 @@ namespace RentalMobile.Controllers
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var specialist = _db.Specialists.Find(UserHelper.GetSpecialistId((int)id));
+            var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == UserHelper.GetSpecialistId((int)id)).FirstOrDefault();
             ViewBag.SpecialistProfile = specialist;
-            ViewBag.SpecialistId = specialist.SpecialistId;
-            ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
-            ViewBag.Title = specialist.FirstName + " " + specialist.LastName + " Profile";
-            ViewBag.CommentCount = GetCommentCount((int)id);
-            ViewBag.Sript = FancyBox.FancySpecialist((int)id);
-            ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryPhoto((int)id);
-            ShareSpecialist(specialist);
-            if (sharespecialist != null && sharespecialist == true)
+            if (specialist != null)
             {
-                ViewBag.EmailSharedwithFriend = true;
-                ViewBag.EmailSucessSharedwithFriend = JNotifyConfirmationSharingEmail();
+                ViewBag.SpecialistId = specialist.SpecialistId;
+                ViewBag.SpecialistGoogleMap = specialist.GoogleMap;
+                ViewBag.Title = specialist.FirstName + " " + specialist.LastName + " Profile";
+                ViewBag.CommentCount = GetCommentCount((int)id);
+                ViewBag.Sript = FancyBox.FancySpecialist((int)id);
+                ViewBag.SpecialistPrimaryPhoto = GetSpecialistPrimaryWorkPhoto((int)id);
+                ShareSpecialist(specialist);
+                if (sharespecialist != null && sharespecialist == true)
+                {
+                    ViewBag.EmailSharedwithFriend = true;
+                    ViewBag.EmailSucessSharedwithFriend = JNotfiyScriptQueryHelper.JNotifyConfirmationSharingEmail();
+                }
+                if (insertingnewcomment != null && insertingnewcomment == true)
+                {
+                    ViewBag.InsertNewComment = true;
+                    ViewBag.InsertNewCommentSuccess = JNotfiyScriptQueryHelper.JNotifyConfirmationSuccessComment();
+                }
+                return View(specialist);
             }
-            if (insertingnewcomment != null && insertingnewcomment == true)
-            {
-                ViewBag.InsertNewComment = true;
-                ViewBag.InsertNewCommentSuccess = JNotifyConfirmationSuccessComment();
-            }
-            return View(specialist);
+            return RedirectToAction("Index", "Specialists");
         }
 
         public PartialViewResult _Coverage(int id)
@@ -48,23 +57,22 @@ namespace RentalMobile.Controllers
             {
                 const int specialistrole = 1;
                 var lookUp =
-                    _db.MaintenanceCompanyLookUps.FirstOrDefault(
-                        x => x.Role == specialistrole && x.UserId == id);
+                    _unitOfWork.MaintenanceCompanyLookUpRepository.FindBy(x => x.Role == specialistrole && x.UserId == id).FirstOrDefault();
                 if (lookUp != null)
                 {
                     int companyId = lookUp.CompanyId;
 
                     var mp = new SpecialistMaintenanceProfile
                     {
-                        MaintenanceCompanyLookUp = _db.MaintenanceCompanyLookUps.Find(companyId),
-                        MaintenanceCompany = _db.MaintenanceCompanies.Find(companyId),
-                        MaintenanceCompanySpecialization = _db.MaintenanceCompanySpecializations.Find(companyId),
-                        MaintenanceCustomService = _db.MaintenanceCustomServices.Find(companyId),
-                        MaintenanceExterior = _db.MaintenanceExteriors.Find(companyId),
-                        MaintenanceInterior = _db.MaintenanceInteriors.Find(companyId),
-                        MaintenanceNewConstruction = _db.MaintenanceNewConstructions.Find(companyId),
-                        MaintenanceRepair = _db.MaintenanceRepairs.Find(companyId),
-                        MaintenanceUtility = _db.MaintenanceUtilities.Find(companyId)
+                        MaintenanceCompanyLookUp = _unitOfWork.MaintenanceCompanyLookUpRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceCompany = _unitOfWork.MaintenanceCompanyRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceCompanySpecialization = _unitOfWork.MaintenanceCompanySpecializationRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceCustomService = _unitOfWork.MaintenanceCustomServiceRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceExterior = _unitOfWork.MaintenanceExteriorRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceInterior = _unitOfWork.MaintenanceInteriorRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceNewConstruction = _unitOfWork.MaintenanceNewConstructionRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceRepair = _unitOfWork.MaintenanceRepairRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault(),
+                        MaintenanceUtility = _unitOfWork.MaintenanceUtilityRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault()
                     };
                     return PartialView(mp);
                 }
@@ -78,22 +86,21 @@ namespace RentalMobile.Controllers
             {
                 const int specialistrole = 1;
                 var lookUp =
-                    _db.MaintenanceCompanyLookUps.FirstOrDefault(
-                        x => x.Role == specialistrole && x.UserId == id);
+                   _unitOfWork.MaintenanceCompanyLookUpRepository.FindBy(x => x.Role == specialistrole && x.UserId == id).FirstOrDefault();
                 if (lookUp != null)
                 {
                     int companyId = lookUp.CompanyId;
-                    var mcs = _db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == companyId);
+                    var mcs = _unitOfWork.MaintenanceCompanySpecializationRepository.FindBy(x => x.CompanyId == companyId).FirstOrDefault();
                     if (mcs != null)
                     {
                         ViewBag.Rate = mcs.Rate;
                         ViewBag.YearsofExperience = mcs.Years_Experience;
-                        var currency = _db.Currencies.FirstOrDefault(x => x.CurrencyID == mcs.CurrencyID);
+                        var currency = _unitOfWork.CurrencyRepository.FindBy(x => x.CurrencyID == mcs.CurrencyID).FirstOrDefault();
                         if (currency != null)
                             ViewBag.Currency = currency.CurrencyValue;
                     }
 
-                    var currentspecialist = _db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+                    var currentspecialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
                     return PartialView(currentspecialist);
                 }
             }
@@ -102,13 +109,9 @@ namespace RentalMobile.Controllers
 
         public void ShareSpecialist(Specialist s)
         {
-            if (Request.Url == null) return;
+            if (Request == null || Request.Url == null) return;
             var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
-            var title = (s.FirstName + " , " + s.LastName + " , " + s.Address + " , " + s.Region + " , " + s.City);
-            if (title.Length >= 50)
-            {
-                title = title.Substring(0, 50);
-            }
+            var title = SocialTitleBuilding(s);
             var summary = s.Description;
             if (!String.IsNullOrEmpty(summary))
             {
@@ -117,7 +120,12 @@ namespace RentalMobile.Controllers
                     summary = summary.Substring(0, 140);
                 }
             }
-            var tweet = title + "--" + url;
+            var tweet = title;
+            if (tweet != null && title.Length >= 1)
+            {
+                tweet += "--";
+            }
+            tweet += url;
             if (!String.IsNullOrEmpty(tweet))
             {
                 if (tweet.Length >= 140)
@@ -126,16 +134,54 @@ namespace RentalMobile.Controllers
                 }
             }
 
-            //TO UPDATE BEFORE RELEASE
+            //TODO UPDATE BEFORE RELEASE
             const string sitename = "http://www.haithem-araissia.com";
-            //This is the correct one for production
+            //This is the correct one for production because facebook require active url present. after you Register your domain
             //ViewBag.FaceBook = SocialHelper.FacebookShareOnlyUrl(url);
-            //TO UPDATE BEFORE RELEASE
+            //TOD UPDATE BEFORE RELEASE
             ViewBag.FaceBook = SocialHelper.FacebookShareOnlyUrl(sitename);
 
             ViewBag.Twitter = SocialHelper.TwitterShare(tweet);
             ViewBag.GooglePlusShare = SocialHelper.GooglePlusShare(url);
             ViewBag.LinkedIn = SocialHelper.LinkedInShare(url, title, summary, sitename);
+        }
+
+        public string SocialTitleBuilding(Specialist s)
+        {
+            var title = s.FirstName;
+            if (title != null)
+            {
+                title += " , ";
+            }
+
+            title += s.LastName;
+            if (title.Length >= 1)
+            {
+                title += " , ";
+            }
+
+            title += s.Address;
+            if (title.Length >= 1)
+            {
+                title += " , ";
+            }
+
+            title += s.Region;
+            if (title.Length >= 1)
+            {
+                title += " , ";
+            }
+            title += s.City;
+            if (title.Length >= 1)
+            {
+                title += " , ";
+            }
+
+            if (title.Length >= 50)
+            {
+                title = title.Substring(0, 50);
+            }
+            return title;
         }
 
         public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
@@ -156,7 +202,7 @@ namespace RentalMobile.Controllers
             {
                 var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
                 email.ProfileUrl = host + uri.AbsolutePath.Replace("ForwardtoFriend", "");
-                var currentSpecialist = _db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+                var currentSpecialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
                 if (currentSpecialist != null)
                 {
                     var specialistTitle = currentSpecialist.FirstName + " , " + currentSpecialist.LastName;
@@ -168,7 +214,7 @@ namespace RentalMobile.Controllers
                 }
                 if (currentSpecialist != null)
                 {
-                    email.PhotoPath = host + "/" + GetSpecialistPrimaryPhoto(id).Replace("../../", "");
+                    email.PhotoPath = host + "/" + GetSpecialistPrimaryWorkPhoto(id).Replace("../../", "");
 
                 }
             }
@@ -190,10 +236,9 @@ namespace RentalMobile.Controllers
             ViewBag.SpecialistId = id;
             if (id != 0)
             {
-                var specialistPublicProfileComment =
-                    _db.SpecialistProfileComments.Where(x => x.SpecialistId == id);
-                ViewBag.CommentCount = specialistPublicProfileComment.Any() ? "( " + specialistPublicProfileComment.Count() + " )" : "";
-                return PartialView(specialistPublicProfileComment.ToList());
+
+                ViewBag.CommentCount = GetCommentCount(id);
+                return PartialView(_unitOfWork.SpecialistProfileCommentRepository.FindBy(x => x.SpecialistId == id).ToList());
             }
             return null;
         }
@@ -203,80 +248,16 @@ namespace RentalMobile.Controllers
             if (id != 0)
             {
                 var specialistPublicProfileComment =
-                    _db.SpecialistProfileComments.Where(x => x.SpecialistId == id);
+                    _unitOfWork.SpecialistProfileCommentRepository.FindBy(x => x.SpecialistId == id).ToList();
                 return specialistPublicProfileComment.Any() ? "( " + specialistPublicProfileComment.Count() + " )" : "";
             }
             return "";
         }
 
-        public string JNotifyConfirmationSharingEmail()
+        public string GetSpecialistPrimaryWorkPhoto(int id)
         {
-
-            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your sharing has been sent successfully.")
-                                            +
-                                            @"',{
-	                        autoHide : true, // added in v2.0
-	  	                        clickOverlay : false, // added in v2.0
-	  	                        MinWidth : 300,
-	  	                        TimeShown : 3000,
-	  	                        ShowTimeEffect : 200,
-	  	                        HideTimeEffect : 200,
-	  	                        LongTrip :10,
-	  	                        HorizontalPosition : 'center',
-	  	                        VerticalPosition : 'center',
-	  	                        ShowOverlay : true,
-  		  	                        ColorOverlay : '#000',
-	  	                        OpacityOverlay : 0.3,
-	  	                        onClosed : function(){ // added in v2.0
-	   
-	  	                        },
-	  	                         onCompleted : function(){ // added in v2.0
-	  	                        
-	  	                          window.location.href = location.href.replace('?sharespecialist=True','#send-to-friend'); 
-	   
-	  	                }
-		             });
-
-";
-            return jNotifyConfirmationScript;
-        }
-
-        public string JNotifyConfirmationSuccessComment()
-        {
-
-            var jNotifyConfirmationScript = string.Format(@"jSuccess('Your comment have been successfully inserted.")
-                                            +
-                                            @"',{
-	                        autoHide : true, // added in v2.0
-	  	                        clickOverlay : false, // added in v2.0
-	  	                        MinWidth : 300,
-	  	                        TimeShown : 3000,
-	  	                        ShowTimeEffect : 200,
-	  	                        HideTimeEffect : 200,
-	  	                        LongTrip :10,
-	  	                        HorizontalPosition : 'center',
-	  	                        VerticalPosition : 'center',
-	  	                        ShowOverlay : true,
-  		  	                        ColorOverlay : '#000',
-	  	                        OpacityOverlay : 0.3,
-	  	                        onClosed : function(){ // added in v2.0
-	   
-	  	                        },
-	  	                         onCompleted : function(){ // added in v2.0
-	  	                        
-	  	                          window.location.href = location.href.replace('?insertingnewcomment=True','#comments'); 
-	   
-	  	                }
-		             });
-
-";
-            return jNotifyConfirmationScript;
-        }
-
-        public string GetSpecialistPrimaryPhoto(int id)
-        {
-            var specialistwork = _db.SpecialistWorks.FirstOrDefault(x => x.SpecialistId == id);
-            return specialistwork == null ? "./../images/dotimages/home-handyman-projects.jpg" : specialistwork.PhotoPath;
+            var specialistwork = _unitOfWork.SpecialistWorkRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
+            return (specialistwork == null || specialistwork.PhotoPath == null) ? "./../images/dotimages/home-handyman-projects.jpg" : specialistwork.PhotoPath;
         }
 
         [HttpPost]
@@ -301,17 +282,13 @@ namespace RentalMobile.Controllers
                         PosterRole = UserHelper.GetRoleId(poster.Role),
                         SpecialistId = id
                     };
-                _db.SpecialistProfileComments.Add(specialistComment);
-                _db.SaveChanges();
+                _unitOfWork.SpecialistProfileCommentRepository.Add(specialistComment);
+                _unitOfWork.Save();
             }
             return RedirectToAction("Index", new { id, insertingnewcomment = true });
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-            base.Dispose(disposing);
-        }
+
 
 
 

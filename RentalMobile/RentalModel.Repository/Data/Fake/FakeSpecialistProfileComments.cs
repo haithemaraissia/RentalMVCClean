@@ -28,9 +28,9 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstSpecialistProfileComment = new SpecialistProfileComment {
 
-                 CommentId = new Int32()
+                 CommentId = 1
 ,
-                 SpecialistId = new Int32(),
+                 SpecialistId = 2,
                  PosterId = new Int32(),
                  PosterRole = new Int32(),
                  PosterName = null,
@@ -49,9 +49,9 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondSpecialistProfileComment = new SpecialistProfileComment {
 
-                 CommentId = new Int32()
+                 CommentId = 2
 ,
-                 SpecialistId = new Int32(),
+                 SpecialistId = 2,
                  PosterId = new Int32(),
                  PosterRole = new Int32(),
                  PosterName = null,
