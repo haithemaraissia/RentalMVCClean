@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Security.Application;
 using RentalMobile.Helpers;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Identity.Correct;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -11,12 +14,13 @@ using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 {
-    public class ProfessionalsController : Controller
+    public class ProfessionalsController : BaseController
     {
         private readonly UnitofWork _unitOfWork;
-        public ProfessionalsController(UnitofWork uow)
+        public ProfessionalsController(UnitofWork uow, IMembershipService membershipService)
         {
             _unitOfWork = uow;
+            MembershipService = membershipService;
         }
 
         public ActionResult Index(int? id, bool? sharespecialist, bool? insertingnewcomment)
@@ -25,7 +29,8 @@ namespace RentalMobile.Controllers
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == UserHelper.GetSpecialistId((int)id)).FirstOrDefault();
+            var specialistId = UserHelper.GetSpecialistId((int)id);
+            var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == specialistId).FirstOrDefault();
             ViewBag.SpecialistProfile = specialist;
             if (specialist != null)
             {
@@ -268,7 +273,9 @@ namespace RentalMobile.Controllers
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
+         //   var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
+
+            var poster = new PosterHelper(_unitOfWork, MembershipService).GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
             if (ModelState.IsValid)
             {
                 var specialistComment = new SpecialistProfileComment

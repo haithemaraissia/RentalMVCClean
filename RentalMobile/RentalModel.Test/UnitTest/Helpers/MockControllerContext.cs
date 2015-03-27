@@ -63,8 +63,7 @@ namespace TestProject.UnitTest.Helpers
             var myhttpContext =
                 new HttpContextWrapper(new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
                     new HttpResponse(null)));
-            controllerContext.SetupGet(x => x.HttpContext)
-                .Returns(myhttpContext);
+            controllerContext.SetupGet(x => x.HttpContext) .Returns(myhttpContext);
             controller.ControllerContext = controllerContext.Object;
         }
 

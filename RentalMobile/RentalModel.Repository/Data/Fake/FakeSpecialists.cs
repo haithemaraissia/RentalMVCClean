@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
+using RentalModel.Repository.Data.Tool;
 
 namespace RentalModel.Repository.Data.Fake
 {
@@ -28,14 +29,14 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstSpecialist = new Specialist {
 
-                 SpecialistId = new Int32()
+                 SpecialistId = 1
 ,
                  FirstName = null,
                  LastName = null,
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
+                 GUID = new CustomGuid().CreateGuid("BSNAItOawkSl07t77RKnMjYwYyG4bCt0g8DVDBv5m0")
 ,
                  VCard = null,
                  Skype = null,
@@ -73,7 +74,7 @@ namespace RentalModel.Repository.Data.Fake
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
+                 GUID = new CustomGuid().CreateGuid("BSNePf57YwhzeE9QfOyepPfIPao4UD5UohG_fI-#eda7d")
 ,
                  VCard = null,
                  Skype = null,
@@ -104,14 +105,14 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdSpecialist = new Specialist {
 
-                 SpecialistId = new Int32()
+                 SpecialistId = 3
 ,
                  FirstName = null,
                  LastName = null,
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
+                 GUID = new CustomGuid().CreateGuid("BSNAItOeidr07t77RKnMjYwYyG4bCt0g8DVDBv5m0")
 ,
                  VCard = null,
                  Skype = null,

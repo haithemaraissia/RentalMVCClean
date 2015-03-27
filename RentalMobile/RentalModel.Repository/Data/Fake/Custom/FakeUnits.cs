@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using RentalMobile.Models;
+using RentalMobile.Model.Models;
 
-namespace TestProject.Fake
+namespace RentalModel.Repository.Data.Fake.Custom
 {
     public class FakeUnits
     {

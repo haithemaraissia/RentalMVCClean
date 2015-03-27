@@ -5,15 +5,21 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
 using RentalMobile.Helpers;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Identity;
+using RentalMobile.Helpers.Identity.Correct;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
+using TestProject.Fake;
 using TestProject.UnitTest.Helpers;
 
 namespace TestProject.UnitTest.Core.InProgress.Profiles
@@ -28,9 +34,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
         [TestInitialize]
         public void Initialize()
         {
-            //Mocking HttpContext.Current
-         //   Helper.HttpContext();
-
             // Arrange
             var professionalRepo = new FakeSpecialistRepository();
             var maintenanceCompanyLookUpRepo = new FakeMaintenanceCompanyLookUpRepository();
@@ -50,12 +53,15 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
                 SpecialistProfileCommentRepository = specialistProfileCommentRepo,
                 SpecialistWorkRepository = specialistWorkRepo,
             };
-            Controller = new ProfessionalsController(Uow);
 
-            //Controller.ControllerContext = new ControllerContext
-            //    (new HttpContextWrapper(new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
-            //        new HttpResponse(null))), new RouteData(), Controller);
-
+             //MembershipService
+             var membershipMock = new Mock<IMembershipService>();
+             var userMock = new Mock<MembershipUser>();
+             var secondSpecialist = professionalRepo.MyList[1];
+             userMock.Setup(u => u.ProviderUserKey).Returns(secondSpecialist.GUID);
+             userMock.Setup(u => u.UserName).Returns(secondSpecialist.FirstName);
+             membershipMock.Setup(s => s.GetUser(It.IsAny<string>())).Returns(userMock.Object);
+             Controller = new ProfessionalsController(Uow, membershipMock.Object);
         }
 
         /// <summary>
@@ -421,6 +427,8 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
         {
             //Act
             Controller.FakeHttpContext();
+
+            //Context
             var actual = Controller.InsertComment(1000, "");
             
             //Assert
@@ -440,9 +448,11 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
         [TestCategory("InsertComment")]
         [TestMethod]
         public void InsertComment_When_Poster_Is_Authenticated()
-        {
+        {            
             //Act
             Controller.FakeHttpContextWithAuthenticatedSpecialist();
+            Controller.MockControllerContextForServerMap();
+
             var actual = Controller.InsertComment(2, "");
 
             //Assert
@@ -455,7 +465,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             var insertedRecord = Uow.SpecialistProfileCommentRepository.FindBy(x => x.PosterId == 2 ).First();
             Debug.Assert(insertedRecord != null, "insertedRecord != null");
             Assert.AreEqual(insertedRecord.PosterProfileLink,
-                "http://tempuri.org:80/professionals/3");
+                "http://tempuri.org:80/professionals/2");
         }
 
 

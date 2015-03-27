@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Fake\Custom\FakeUnits.cs" />
     <Compile Include="Data\Fake\FakeAgentAcceptedApplications.cs">
       <DependentUpon>FakeModelDataGenerator.tt</DependentUpon>
     </Compile>
@@ -661,6 +662,7 @@
     <Compile Include="Data\Repositories\FakeUrgencyTypeRepository.cs">
       <DependentUpon>FakeModelRepositoryGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Tool\CustomGuid.cs" />
     <Compile Include="Generic\Repositories\Model\AgentAcceptedApplicationRepository.cs">
       <DependentUpon>GenericRepositoryGenerator.tt</DependentUpon>
     </Compile>

@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7E67FC65-FF32-43FA-875C-401948AAA097}</ProjectGuid>
-    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RentalMobile</RootNamespace>
@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\Base\BaseController.cs" />
     <Compile Include="ControllerTester\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
     <Compile Include="Controllers\AddTeamMemberController.cs" />
@@ -216,6 +217,13 @@
     <Compile Include="Helpers\Email.cs" />
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
+    <Compile Include="Helpers\Identity\Correct\PosterHelper.cs" />
+    <Compile Include="Helpers\Identity\Correct\UserIdentityWithBase.cs" />
+    <Compile Include="Helpers\Identity\Correct\UserIdentity.cs" />
+    <Compile Include="Helpers\Membership\IMembershipService.cs" />
+    <Compile Include="Helpers\Membership\MembershipService.cs" />
+    <Compile Include="Helpers\Identity\UserHelperIdentity.cs" />
+    <Compile Include="Helpers\Identity\Correct\IUserIdentity.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
     <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
     <Compile Include="Helpers\PhotoHelper.cs" />

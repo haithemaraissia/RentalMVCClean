@@ -3,15 +3,16 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Newtonsoft.Json;
+using RentalMobile.Helpers.Identity.Correct;
 using RentalMobile.Model.Models;
+using System.Web.Security;
 
 namespace RentalMobile.Helpers
 {
     public static class UserHelper
     {
-        private static readonly RentalContext Db = new RentalContext();
+        public static readonly RentalContext Db = new RentalContext();
         public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
         public static string DefaultSpecialistName = "Specialist";
         public static string TenantPhotoPath = "~/Photo/Tenant/Property";
@@ -30,15 +31,15 @@ namespace RentalMobile.Helpers
 
         public static string GetUserName()
         {
-            var currentuser = Membership.GetUser(HttpContext.Current.User.Identity.Name);
-            return currentuser != null ? currentuser.ToString() : Login();
+            var currentuser = System.Web.Security.Membership.GetUser(HttpContext.Current.User.Identity.Name);
+            return currentuser != null ? currentuser.UserName : Login();
         }
 
         public static Guid? GetUserGuid()
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                var user = Membership.GetUser(HttpContext.Current.User.Identity.Name);
+                var user = System.Web.Security.Membership.GetUser(HttpContext.Current.User.Identity.Name);
                 if (user != null && user.ProviderUserKey != null)
                 {
                     return (Guid)user.ProviderUserKey;
@@ -351,6 +352,9 @@ namespace RentalMobile.Helpers
 
             if (role == "Specialist")
             {
+                //For Testing Before Rewritting this piece
+                var specialist2 = Db.Agents.Find(new UserIdentity().GetSpecialistId());
+                //For Testing Before Rewritting this piece
                 var specialist = Db.Specialists.Find(GetSpecialistId());
                 if (specialist != null)
                 {
