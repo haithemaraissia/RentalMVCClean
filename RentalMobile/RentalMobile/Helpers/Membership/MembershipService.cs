@@ -1,6 +1,5 @@
 using System.Web;
 using System.Web.Security;
-using RentalMobile.Helpers.Identity;
 
 namespace RentalMobile.Helpers.Membership
 {

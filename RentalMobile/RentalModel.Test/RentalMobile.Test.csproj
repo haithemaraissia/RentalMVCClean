@@ -91,16 +91,16 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fake\FakeActionDescriptor.cs" />
-    <Compile Include="Fake\FakeControllerContext.cs" />
-    <Compile Include="Fake\FakeHttpContext.cs" />
-    <Compile Include="Fake\FakeHttpRequest.cs" />
-    <Compile Include="Fake\FakeHttpResponse.cs" />
-    <Compile Include="Fake\FakeHttpServerUtility.cs" />
-    <Compile Include="Fake\FakeHttpSessionState.cs" />
-    <Compile Include="Fake\FakeIdentity.cs" />
-    <Compile Include="Fake\FakeMembershipProvider.cs" />
-    <Compile Include="Fake\FakePrincipal.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeActionDescriptor.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeControllerContext.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeHttpContext.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeHttpRequest.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeHttpResponse.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeHttpServerUtility.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeHttpSessionState.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeIdentity.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeMembershipProvider.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakePrincipal.cs" />
     <Compile Include="Prototype\TestDbContext.cs" />
     <Compile Include="Prototype\UnitofWorkPatternControllerWithMemory.cs" />
     <Compile Include="Prototype\UnitRepositoryWithTestDB.cs" />

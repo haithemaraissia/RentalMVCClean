@@ -12,7 +12,6 @@ using RentalMobile.Controllers;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Identity;
-using RentalMobile.Helpers.Identity.Correct;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;

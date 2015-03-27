@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Identity.Abstract;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace RentalMobile.Helpers.Identity.Correct
+namespace RentalMobile.Helpers.Identity.Base
 {
-    public class PosterHelper : BaseController
+
+    public class PosterHelper : BaseController, IPosterHelper
     {
         public string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
         public string DefaultSpecialistName = "Specialist";
@@ -18,16 +20,19 @@ namespace RentalMobile.Helpers.Identity.Correct
         public PosterAttributes DefaultPoster = new PosterAttributes("A Friend", "Friend", "#", "../../images/dotimages/single-property/agent-480x350.png", "none@yahoo.com", "notauthenticated", 0);
 
         private readonly UnitofWork _unitOfWork;
+
         public PosterHelper(UnitofWork uow, IMembershipService membershipService)
         {
             MembershipService = membershipService;
             _unitOfWork = uow;
         }
+
         public PosterHelper()
         {
             MembershipService = new MembershipService();
             _unitOfWork = new UnitofWork();
         }
+
         public PosterAttributes GetPoster(int uniId)
         {
             var uri = HttpContext.Request.Url;
@@ -82,10 +87,10 @@ namespace RentalMobile.Helpers.Identity.Correct
                 return DefaultPoster;
             }
             string photoPath;
-            var role = new UserIdentityWithBase().GetCurrentRole(out photoPath);
+            var role = new UserIdentity().GetCurrentRole(out photoPath);
             if (role == "Tenant")
             {
-                var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetTenantId()).FirstOrDefault();
+                var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == new UserIdentity(_unitOfWork, MembershipService).GetTenantId()).FirstOrDefault();
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
@@ -95,7 +100,7 @@ namespace RentalMobile.Helpers.Identity.Correct
             }
             if (role == "Owner")
             {
-                var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetOwnerId()).FirstOrDefault();
+                var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == new UserIdentity(_unitOfWork, MembershipService).GetOwnerId()).FirstOrDefault();
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
@@ -105,7 +110,7 @@ namespace RentalMobile.Helpers.Identity.Correct
             }
             if (role == "Agent")
             {
-                var agent = _unitOfWork.AgentRepository.FindBy(x => x.AgentId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetAgentId()).FirstOrDefault();
+                var agent = _unitOfWork.AgentRepository.FindBy(x => x.AgentId == new UserIdentity(_unitOfWork, MembershipService).GetAgentId()).FirstOrDefault();
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
@@ -128,7 +133,7 @@ namespace RentalMobile.Helpers.Identity.Correct
 
             if (role == "Provider")
             {
-                var provider = _unitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetProviderId()).FirstOrDefault();
+                var provider = _unitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == new UserIdentity(_unitOfWork, MembershipService).GetProviderId()).FirstOrDefault();
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
@@ -152,10 +157,10 @@ namespace RentalMobile.Helpers.Identity.Correct
                 return DefaultPoster;
             }
             string photoPath;
-            var role = new UserIdentityWithBase(_unitOfWork, MembershipService).GetCurrentRole(out photoPath);
+            var role = new UserIdentity(_unitOfWork, MembershipService).GetCurrentRole(out photoPath);
             if (role == "Tenant")
             {
-                var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetTenantId()).FirstOrDefault();
+                var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == new UserIdentity(_unitOfWork, MembershipService).GetTenantId()).FirstOrDefault();
                 if (tenant != null)
                 {
                     return new PosterAttributes(tenant.FirstName, tenant.LastName,
@@ -165,7 +170,7 @@ namespace RentalMobile.Helpers.Identity.Correct
             }
             if (role == "Owner")
             {
-                var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetOwnerId()).FirstOrDefault();
+                var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == new UserIdentity(_unitOfWork, MembershipService).GetOwnerId()).FirstOrDefault();
                 if (owner != null)
                 {
                     return new PosterAttributes(owner.FirstName, owner.LastName,
@@ -175,7 +180,7 @@ namespace RentalMobile.Helpers.Identity.Correct
             }
             if (role == "Agent")
             {
-                var agent = _unitOfWork.AgentRepository.FindBy(x => x.AgentId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetAgentId()).FirstOrDefault();
+                var agent = _unitOfWork.AgentRepository.FindBy(x => x.AgentId == new UserIdentity(_unitOfWork, MembershipService).GetAgentId()).FirstOrDefault();
                 if (agent != null)
                 {
                     return new PosterAttributes(agent.FirstName, agent.LastName,
@@ -186,7 +191,7 @@ namespace RentalMobile.Helpers.Identity.Correct
 
             if (role == "Specialist")
             {
-                var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetSpecialistId()).FirstOrDefault();
+                var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == new UserIdentity(_unitOfWork, MembershipService).GetSpecialistId()).FirstOrDefault();
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
@@ -198,7 +203,7 @@ namespace RentalMobile.Helpers.Identity.Correct
 
             if (role == "Provider")
             {
-                var provider = _unitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == new UserIdentityWithBase(_unitOfWork, MembershipService).GetProviderId()).FirstOrDefault();
+                var provider = _unitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == new UserIdentity(_unitOfWork, MembershipService).GetProviderId()).FirstOrDefault();
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,

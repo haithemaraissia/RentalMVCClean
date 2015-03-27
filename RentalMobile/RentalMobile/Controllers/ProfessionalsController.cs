@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Microsoft.Security.Application;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
-using RentalMobile.Helpers.Identity.Correct;
+using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;

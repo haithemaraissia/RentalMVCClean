@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Identity.Abstract;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace RentalMobile.Helpers.Identity.Correct
+namespace RentalMobile.Helpers.Identity.Base
 {
-    public class UserIdentityWithBase : BaseController, IUserIdentity
+    public class UserIdentity : BaseController, IUserIdentity
     {
-        public IMembershipService MembershipService { get; set; }
         public UnitofWork UnitOfWork;
         public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
         public static string DefaultSpecialistName = "Specialist";
@@ -21,21 +18,30 @@ namespace RentalMobile.Helpers.Identity.Correct
         public static string ProviderPhotoPath = "~/Photo/Provider/Property";
         public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
 
-        public UserIdentityWithBase(UnitofWork uow, IMembershipService membershipService)
+        public UserIdentity(UnitofWork uow, IMembershipService membershipService)
         {
             MembershipService = membershipService;
             UnitOfWork = uow;
         }
 
-        public UserIdentityWithBase()
+        public UserIdentity()
         {
             MembershipService = new MembershipService();
             UnitOfWork = new UnitofWork();
         }
 
+        //Using the Base Class
+        public string GetUserNameFromMembership()
+        {
+            var currentuser = MembershipProvider.GetUser(HttpContext.User.Identity.Name, true);
+            return currentuser != null ? currentuser.UserName : UserHelper.Login();
+        }
+        //Using the Base Class
+
+
         public string GetUserName()
         {
-            var currentuser = MembershipService.GetUser(HttpContext.User.Identity.Name);
+            var currentuser =  MembershipService.GetUser(HttpContext.User.Identity.Name);
             return currentuser != null ? currentuser.UserName: UserHelper.Login();
         }
 

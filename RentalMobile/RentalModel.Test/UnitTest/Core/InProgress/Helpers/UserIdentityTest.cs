@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Identity;
-using RentalMobile.Helpers.Identity.Correct;
+using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -90,7 +90,7 @@ namespace TestProject.UnitTest.Core.InProgress.Helpers
            userIdentity.ControllerContext = controllerContext.Object;
 
 
-           Assert.AreEqual(userIdentity.GetUserName2(), "fred");
+           Assert.AreEqual(userIdentity.GetUserNameFromMembership(), "fred");
 
        }
     }

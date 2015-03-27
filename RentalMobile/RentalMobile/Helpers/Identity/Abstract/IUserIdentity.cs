@@ -1,9 +1,10 @@
 using System;
 
-namespace RentalMobile.Helpers.Identity.Correct
+namespace RentalMobile.Helpers.Identity.Abstract
 {
     public interface IUserIdentity
     {
+        string Login();
         string GetUserName();
         Guid? GetUserGuid();
         int? GetTenantId(Guid userId);
@@ -17,6 +18,8 @@ namespace RentalMobile.Helpers.Identity.Correct
         int GetSpecialistId(int id);
         int GetProviderId();
         int GetProviderId(int id);
+        int GetRoleId(string chosenRole);
         string GetCurrentRole(out string photoPath);
+        string ResolveImageUrl(string relativeUrl);
     }
 }
