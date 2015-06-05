@@ -157,11 +157,7 @@
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\MightNotNeeded\Prototype\TenantShowing\TenantShowingControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Unit\Prototype\UnitControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Shared\Owner-Tenant\UploadAgreementControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\UploadControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Create-Current-Archive Requests\UploadMaintenancePhotoControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\UploadPropertyControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Process\Unit\Prototype\UploadUnitPictureControllerTest.cs" />
-    <Compile Include="UnitTest\Helpers\Helper.cs" />
+    <Compile Include="UnitTest\Helpers\AssertHelper.cs" />
     <Compile Include="UnitTest\Helpers\MockControllerContext.cs" />
     <Compile Include="UnitTest\Helpers\MVCMockHelper.cs" />
   </ItemGroup>

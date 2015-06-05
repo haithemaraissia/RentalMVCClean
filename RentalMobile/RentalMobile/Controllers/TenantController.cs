@@ -1,136 +1,93 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using System.Web.Security;
-using RentalMobile.Helpers;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
     [Authorize]
-    public class TenantController : Controller
+    public class TenantController : BaseController
     {
+        #region TenantHelper
 
-        public RentalContext db = new RentalContext();
-
-        //
-        // GET: /Tenant/
-        //GET: CurrentTenant
+        public TenantController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        {
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
+        }
 
         public ViewResult Index()
         {
-            var tenant = db.Tenants.Find(UserHelper.GetTenantId());
+            var tenant = UserHelper.TenantPrivateProfileHelper.GetTenant();
             ViewBag.TenantProfile = tenant;
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;
-            ViewBag.tenantApplicationCount  =   db.RentalApplications.Where(t => t.TenantId == tenant.TenantId).Count();
+            ViewBag.tenantApplicationCount = UserHelper.TenantPrivateProfileHelper.GetTenantApplicationCount(tenant.TenantId);
             return View(tenant);
         }
 
-
-        // GET: /Tenant/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            Tenant tenant = db.Tenants.Find(id);
+            var tenant = UserHelper.TenantPrivateProfileHelper.GetPrivateProfileTenantByTenantId(id);
             return View(tenant);
         }
-
-        //
-        // POST: /Tenant/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Tenant tenant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tenant).State = EntityState.Modified;
-                db.SaveChanges();
+                UnitofWork.TenantRepository.Edit(tenant);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(tenant);
         }
 
-
-        //
-        // GET: /Tenant/Edit/5
-
         public ActionResult ChangeAddress(int id)
         {
-            Tenant tenant = db.Tenants.Find(id);
+            var tenant = UserHelper.TenantPrivateProfileHelper.GetPrivateProfileTenantByTenantId(id);
             return View(tenant);
         }
-
-        //
-        // POST: /Tenant/Edit/5
 
         [HttpPost]
         public ActionResult ChangeAddress(Tenant tenant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tenant).State = EntityState.Modified;
-                tenant.GoogleMap = string.IsNullOrEmpty(tenant.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(tenant.Address, tenant.City, tenant.CountryCode);
-                db.SaveChanges();
+                UnitofWork.TenantRepository.Edit(tenant);
+                tenant.GoogleMap = UserHelper.TenantPrivateProfileHelper.TenantGoogleMap();
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(tenant);
         }
-
-        //
-        // GET: /Tenant/Delete/5
  
         public ActionResult Delete(int id)
         {
-            Tenant tenant = db.Tenants.Find(id);
+            var tenant = UserHelper.TenantPrivateProfileHelper.GetPrivateProfileTenantByTenantId(id);
             return View(tenant);
         }
 
-        //
-        // POST: /Tenant/Delete/5
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Tenant tenant = db.Tenants.Find(id);
-            db.Tenants.Remove(tenant);
-            db.SaveChanges();
-
-
-
-            // Delete All associated records
-
-            var tenantshowing = db.TenantShowings.Where(x => x.TenantId == id).ToList();
-            foreach (var x in tenantshowing)
-            {
-                db.TenantShowings.Remove(x);
-            }
-            db.SaveChanges();
-
-
-        
-
-            //Delete from Membership
-
-            if (Roles.GetRolesForUser(User.Identity.Name).Any())
-            {
-                Roles.RemoveUserFromRoles(User.Identity.Name, Roles.GetRolesForUser(User.Identity.Name));
-            }
-            Membership.DeleteUser(User.Identity.Name);
-            FormsAuthentication.SignOut();
-
+        {
+            UserHelper.TenantPrivateProfileHelper.DeleteTenantRecords(id);
+            UserHelper.TenantPrivateProfileHelper.DeleteTenantMemebership();
             return RedirectToAction("Index","Home");
         }
-
 
         public ActionResult UpdateProfilePicture(int id)
         {
             return RedirectToAction("Upload","Account",new {id});
         }
 
-
+        #region TODO MIGHT BE NEEDED
         //DETAIL OF TENANT FAVORITE
-
         //public PartialViewResult FavoriteDetails(int id)
         //{
 
@@ -138,37 +95,17 @@ namespace RentalMobile.Controllers
         //    //Tenant tenant = db.TenantFavorites.Where(Tenant == 6 && )
         //    return PartialView("_TenantFavDetail",tenantfavorite);
         //}
+#endregion
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-
-
+        #endregion
 
 
 
 
         public ViewResult GeneratedRentalAgreement()
         {
-            if (UserHelper.GetTenantId() != null)
-            {
-                var id = UserHelper.GetTenantId();
-                if (id != null)
-                {
-                    var tenantId = (int)id;
-
-                    var result = db.GeneratedRentalContracts.Count(x => x.TenantID == tenantId);
-                    if (result != 0)
-                    {
-                        return View(db.GeneratedRentalContracts.Where(x => x.TenantID == UserHelper.GetTenantId()).ToList());
-                    }
-                }
-            }
-
-            return db.GeneratedRentalContracts != null ? View(db.GeneratedRentalContracts.ToList()) : null;
+            var tenantContracts = UserHelper.TenantPrivateProfileHelper.GetTenantContract(UserHelper.TenantPrivateProfileHelper.GetTenant().TenantId);
+            return View(tenantContracts.ToList());
         }
     }
 }

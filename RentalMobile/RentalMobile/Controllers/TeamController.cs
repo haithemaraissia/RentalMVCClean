@@ -1,65 +1,41 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using RentalMobile.Helpers;
+﻿using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     [Authorize(Roles = "Provider")]
-    public class TeamController : Controller
+    public class TeamController : BaseController
     {
-        public RentalContext db = new RentalContext();
-        public string Username = UserHelper.GetUserName();
-        public MaintenanceProvider  Provider;
-
-
-        //Constructir
-        public TeamController()
+        public TeamController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
-            Provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
         }
-
-        //
-        // GET: /Team/
 
         public ViewResult Index()
         {
-            var teams =
-                db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == Provider.MaintenanceProviderId).ToList();
-            return View(teams);
+            return View(
+                UserHelper.
+                GetAllProviderPrivateMaintenanceTeamByProviderId
+                (UserHelper.GetProviderId()));
         }
-
-        //
-        // GET: /Team/Details/5
 
         public ViewResult Details(int id)
         {
-            MaintenanceTeam maintenanceteam = db.MaintenanceTeams.Find(id);
+            var maintenanceteam = UserHelper.GetProviderPrivateMaintenanceTeamByProviderId(id);
             return View(maintenanceteam);
         }
 
-        //
-        // GET: /Team/Create
         public ActionResult Create()
         {
             return View();
         } 
 
-
-        public string ProviderTeamTabUrl()
-        {
-            var uri = HttpContext.Request.Url;
-            if (uri != null)
-            {
-                return  uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Provider#team";
-            }
-            return "~/Provider#team";
-        }
-        //
-        // POST: /Team/Create
-        //THis one Should be Done///
         [HttpPost]
         public ActionResult Create(MaintenanceTeam maintenanceteam)
         {
@@ -67,77 +43,46 @@ namespace RentalMobile.Controllers
             {
                 return null;
             }
-            maintenanceteam.MaintenanceProviderId = Provider.MaintenanceProviderId;
-            db.MaintenanceTeams.Add(maintenanceteam);
-            db.SaveChanges();
-            return Redirect(ProviderTeamTabUrl());
+            maintenanceteam.MaintenanceProviderId = UserHelper.GetProviderId();
+            UnitofWork.MaintenanceTeamRepository.Add(maintenanceteam);
+            UnitofWork.Save();
+            return Redirect(UserHelper.ProviderMaintenanceTeamTabUrl());
         }
- //THis one Should be Done///
 
-
-
-        // GET: /Team/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            MaintenanceTeam maintenanceteam = db.MaintenanceTeams.Find(id);
+            var maintenanceteam = UserHelper.GetProviderPrivateMaintenanceTeamByProviderId(id);
             return View(maintenanceteam);
         }
-
-        //
-        // POST: /Team/Edit/5
 
         [HttpPost]
         public ActionResult Edit(MaintenanceTeam maintenanceteam)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(maintenanceteam).State = EntityState.Modified;
-
-                //Save Change for Each Team association Team Name
-                var maintenanceTeamAssociation = db.MaintenanceTeamAssociations.
-                    Where(x=>x.TeamId == maintenanceteam.TeamId 
-                        && x.MaintenanceProviderId == Provider.MaintenanceProviderId).ToList();
-               if (maintenanceTeamAssociation.Count > 0)
-               {
-                   foreach (var mta in maintenanceTeamAssociation)
-                   {
-                       mta.TeamName = maintenanceteam.TeamName;
-                   }
-               }
-               db.SaveChanges();
-                return Redirect(ProviderTeamTabUrl());
+                UserHelper.UpdateMaintenanceTeamsName(maintenanceteam);
+                return Redirect(UserHelper.ProviderMaintenanceTeamTabUrl());
             }
             return View(maintenanceteam);
         }
 
-        //
-        // GET: /Team/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            MaintenanceTeam maintenanceteam = db.MaintenanceTeams.Find(id);
+            var maintenanceteam = UserHelper.GetProviderPrivateMaintenanceTeamByProviderId(id);
             return View(maintenanceteam);
         }
 
-        //
-        // POST: /Team/Delete/5
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            MaintenanceTeam maintenanceteam = db.MaintenanceTeams.Find(id);
-            db.MaintenanceTeams.Remove(maintenanceteam);
-            db.SaveChanges();
+        {
+            var maintenanceteam = UserHelper.GetProviderPrivateMaintenanceTeamByProviderId(id);
+            UnitofWork.MaintenanceTeamRepository.Delete(maintenanceteam);
+            UnitofWork.Save();
             return RedirectToAction("Index");
         }
 
-
-
-
-
-
-
+        #region TODO 
+        //Still On Design
 
         //Select which Team based upon available Provider ID
         //Also Will get specialistid as parameter
@@ -157,13 +102,6 @@ namespace RentalMobile.Controllers
             return RedirectToAction("Index");
         }
 
-
-
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+        #endregion
     }
 }

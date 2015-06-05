@@ -13,10 +13,14 @@ using RentalMobile.Helpers;
 
 namespace RentalMobile.Helpers
 {
-    public static class Email
+    public class Email
     {
+        public Email(string emailMessagePath)
+        {
+           // throw new NotImplementedException();
+        }
 
-           //public static void SendEmail(string userEmail, string userName, int lcid, string templateUrl,Message messageType)
+        //public static void SendEmail(string userEmail, string userName, int lcid, string templateUrl,Message messageType)
 
 
         public static void SendEmail(string fromsender, string toreceiver,  string templateUrl )

@@ -1,75 +1,81 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.Security;
-using RentalMobile.Helpers;
+﻿using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
     [Authorize]
-    public class AgentController : Controller
+    public class AgentController : BaseController
     {
-        public RentalContext db = new RentalContext();
+        public AgentController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        {
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
+        }
 
         public ViewResult Index()
         {
-            var Agent = db.Agents.Find(UserHelper.GetAgentId());
-            ViewBag.AgentProfile = Agent;
-            ViewBag.AgentId = Agent.AgentId;
-            ViewBag.AgentGoogleMap = Agent.GoogleMap;
-            return View(Agent);
+            var agent = UserHelper.AgentPrivateProfileHelper.GetAgent();
+            ViewBag.AgentProfile = agent;
+            ViewBag.AgentId = agent.AgentId;
+            ViewBag.AgentGoogleMap = agent.GoogleMap;
+            return View(agent);
         }
 
         public ActionResult Edit(int id)
         {
-            Agent Agent = db.Agents.Find(id);
-            return View(Agent);
+            var agent = UserHelper.AgentPrivateProfileHelper.GetAgentPrivateProfileByAgentId(id);
+            return View(agent);
         }
 
         [HttpPost]
-        public ActionResult Edit(Agent Agent)
+        public ActionResult Edit(Agent agent)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Agent).State = EntityState.Modified;
-                db.SaveChanges();
+                UnitofWork.AgentRepository.Edit(agent);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
-            return View(Agent);
+            return View(agent);
         }
 
         public ActionResult ChangeAddress(int id)
         {
-            Agent Agent = db.Agents.Find(id);
-            return View(Agent);
+            var agent = UserHelper.AgentPrivateProfileHelper.GetAgentPrivateProfileByAgentId(id);
+            return View(agent);
         }
 
         [HttpPost]
-        public ActionResult ChangeAddress(Agent Agent)
+        public ActionResult ChangeAddress(Agent agent)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Agent).State = EntityState.Modified;
-                Agent.GoogleMap = string.IsNullOrEmpty(Agent.Address) ? UserHelper.GetFormattedLocation("", "", "USA") : UserHelper.GetFormattedLocation(Agent.Address, Agent.City, Agent.CountryCode);
-                db.SaveChanges();
+                UnitofWork.AgentRepository.Edit(agent);
+                agent.GoogleMap = UserHelper.AgentPrivateProfileHelper.AgentGoogleMap();
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
-            return View(Agent);
+            return View(agent);
         }
 
         public ActionResult Delete(int id)
         {
-            Agent Agent = db.Agents.Find(id);
-            return View(Agent);
+            var agent = UserHelper.AgentPrivateProfileHelper.GetAgentPrivateProfileByAgentId(id);
+            return View(agent);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Agent Agent = db.Agents.Find(id);
-            db.Agents.Remove(Agent);
-            db.SaveChanges();
+            var agent = UserHelper.AgentPrivateProfileHelper.GetAgentPrivateProfileByAgentId(id);
+            UnitofWork.AgentRepository.Delete(agent);
+            UnitofWork.Save();
+
             // Delete All associated records
 
             //var Agentshowing = db.AgentShowings.Where(x => x.AgentId == id).ToList();
@@ -78,32 +84,15 @@ namespace RentalMobile.Controllers
             //    db.AgentShowings.Remove(x);
             //}
             //db.SaveChanges();
-            if (Roles.GetRolesForUser(User.Identity.Name).Any())
-            {
-                Roles.RemoveUserFromRoles(User.Identity.Name, Roles.GetRolesForUser(User.Identity.Name));
-            }
-            Membership.DeleteUser(User.Identity.Name);
-            FormsAuthentication.SignOut();
 
+            UserHelper.AgentPrivateProfileHelper.DeleteAgentMemebership();
             return RedirectToAction("Index", "Home");
         }
-
 
         public ActionResult UpdateProfilePicture(int id)
         {
             return RedirectToAction("Upload", "Account", new { id });
         }
-
-
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-
-
 
         //////////////Maybe Needed for Future Option///////////        
         //DETAIL OF Agent FAVORITE

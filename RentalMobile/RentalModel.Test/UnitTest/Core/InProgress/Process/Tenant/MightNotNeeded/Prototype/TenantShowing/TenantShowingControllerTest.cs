@@ -20,7 +20,7 @@ namespace TestProject.UnitTest.Controller.CRUD
         {
             // Arrange
             var uow = new UnitofWork { TenantShowingRepository = TenantShowingRepo };
-            Controller = new TenantShowingController(uow);
+            Controller = new TenantShowingController(uow, null,null);
         }
 
         [TestMethod]

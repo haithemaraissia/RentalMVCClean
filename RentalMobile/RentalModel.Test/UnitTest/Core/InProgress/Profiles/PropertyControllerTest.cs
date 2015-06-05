@@ -23,7 +23,7 @@ namespace TestProject.UnitTest.Core.NotDone
             var unitRepo = new FakeUnitRepository(fakeUnits.MyUnits);
             var unitGalleryRepo = new FakeUnitGalleryRepository(fakeUnitGallery.MyUnitGallerys);
             var uow = new UnitofWork { UnitRepository = unitRepo, UnitGalleryRepository = unitGalleryRepo };
-            Controller = new PropertyController(uow);
+            Controller = new PropertyController(uow, null, null);
         }
 
         [TestMethod]

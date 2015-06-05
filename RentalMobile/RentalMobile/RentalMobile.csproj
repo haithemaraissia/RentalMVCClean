@@ -127,15 +127,22 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -194,6 +201,14 @@
     </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ProviderController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\UnitController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\Account\ErrorCode.cs" />
+    <Compile Include="Helpers\Account\AccountHelper.cs" />
     <Compile Include="Helpers\Base\BaseController.cs" />
     <Compile Include="ControllerTester\AdController.cs" />
     <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
@@ -201,12 +216,9 @@
     <Compile Include="ControllerTester\EmailTestController.cs" />
     <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="ControllerTester\UnitofWorkPatternController.cs" />
     <Compile Include="ControllerTester\UnitRepositoryPatternController.cs" />
     <Compile Include="Controllers\UploadAgreementController.cs" />
-    <Compile Include="Controllers\UploadPropertyController.cs" />
-    <Compile Include="Controllers\UploadUnitPictureController.cs" />
     <Compile Include="ControllerTester\Test2Controller.cs" />
     <Compile Include="ControllerTester\TestCleanController.cs" />
     <Compile Include="ControllerTester\TestController.cs" />
@@ -219,23 +231,62 @@
     <Compile Include="Helpers\FancyBoxHelper.cs" />
     <Compile Include="Helpers\Identity\Abstract\ILocationHelper.cs" />
     <Compile Include="Helpers\Identity\Abstract\IPosterHelper.cs" />
-    <Compile Include="Helpers\Identity\Abstract\ISpecialistHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\Associated\Provider\IProviderTeamPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\IAgentPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\IOwnerPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PublicProfile\IOwnerPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\ISpecialistPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PublicProfile\IProviderPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PublicProfile\ISpecialistPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PublicProfile\IAgentPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\IProviderPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PrivateProfile\ITenantPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Abstract\Roles\PublicProfile\ITenantPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\LocationHelper.cs" />
     <Compile Include="Helpers\Identity\Base\PosterHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\AgentPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\Associated\ProviderTeamPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\OwnerPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\SpecialistPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\ProviderPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\SpecialistPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\OwnerPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\AgentPublicProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\ProviderPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PrivateProfile\TenantPrivateProfileHelper.cs" />
+    <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\TenantPublicProfileHelper.cs" />
     <Compile Include="Helpers\Identity\Base\UserIdentity.cs" />
-    <Compile Include="Helpers\Identity\IUserHelper.cs" />
+    <Compile Include="Helpers\Core\IUserHelper.cs" />
+    <Compile Include="Helpers\JQuery\JNotifyMessage.cs" />
     <Compile Include="Helpers\Membership\IMembershipService.cs" />
     <Compile Include="Helpers\Membership\MembershipService.cs" />
     <Compile Include="Helpers\Identity\Abstract\IUserIdentity.cs" />
     <Compile Include="Helpers\JQueryHelper.cs" />
     <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
+    <Compile Include="Helpers\Old\UserHelper.cs" />
+    <Compile Include="Helpers\Old\UserHelperBefore.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Helpers\PhotoHelper.cs" />
+    <Compile Include="Helpers\Photo\MaintenancePhoto\Address.cs" />
+    <Compile Include="Helpers\Photo\MaintenancePhoto\Person.cs" />
+    <Compile Include="Helpers\Photo\MaintenancePhoto\Photo.cs" />
+    <Compile Include="Helpers\Photo\Unit\UnitPhoto.cs" />
+    <Compile Include="Helpers\Photo\Unit\UnitUploaderAttributes.cs" />
     <Compile Include="Helpers\PostalExtenedHelper.cs" />
     <Compile Include="Helpers\PosterAttributes.cs" />
+    <Compile Include="Helpers\Process\Application\ITenantRentalApplication.cs" />
+    <Compile Include="Helpers\Process\Application\TenantRentalApplicationHelper.cs" />
+    <Compile Include="Helpers\Process\JobOffer\IJobOfferHelper.cs" />
+    <Compile Include="Helpers\Process\JobOffer\JobOffer.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="Helpers\Roles\LookUpRoles.cs" />
     <Compile Include="Helpers\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
     <Compile Include="Helpers\SpecialistInTeam.cs" />
     <Compile Include="Helpers\Teammate.cs" />
+    <Compile Include="Helpers\Unit\IUnitHelper.cs" />
+    <Compile Include="Helpers\Unit\UnitHelper.cs" />
     <Compile Include="Process\UpdateCoverage.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />
     <Compile Include="Controllers\AdvancedSearchController.cs" />
@@ -261,7 +312,6 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
-    <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\RentalApplicationController.cs" />
     <Compile Include="Controllers\RentController.cs" />
@@ -273,8 +323,6 @@
     <Compile Include="Controllers\TenantRentalApplicationController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\TenantShowingController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="Controllers\UploadMaintenancePhotoController.cs" />
     <Compile Include="Design\General.aspx.cs">
       <DependentUpon>General.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,8 +344,8 @@
     </Compile>
     <Compile Include="Helpers\GoogleGeoCodeResponse.cs" />
     <Compile Include="Helpers\HtmlHelperExtension.cs" />
-    <Compile Include="Helpers\UploadHelper.cs" />
-    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Helpers\IO\DirectoryHelper.cs" />
+    <Compile Include="Helpers\Core\CoreUserHelper.cs" />
     <Compile Include="MobileViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalMobile.cs" />
@@ -831,7 +879,7 @@
     <None Include="bin\itextsharp.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
     <Content Include="Configurations\AppSettings.config" />
-    <Content Include="ClassDiagram1.cd" />
+    <Content Include="IdentityClassDiagram.cd" />
     <None Include="css\dotcss\base.css.bak" />
     <None Include="css\dotcss\entypo\entypo.eot" />
     <None Include="css\dotcss\entypo\entypo.eot%40" />
@@ -983,8 +1031,6 @@
     <Content Include="Views\Tenant\Index.cshtml" />
     <Content Include="Views\Tenant\_ProfileDetail.cshtml" />
     <Content Include="Views\UnitDetail\Index.cshtml" />
-    <Content Include="Views\UploadMaintenancePhoto\Index.cshtml" />
-    <Content Include="Views\Upload\Index.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -1061,9 +1107,6 @@
     <Content Include="Views\Unit\ToDelete\_PropertyPhoto.cshtml" />
     <Content Include="Views\Unit\ToDelete\_Test.cshtml" />
     <Content Include="Views\Unit\ToDelete\ViewUserControl2.cshtml" />
-    <Content Include="Views\UploadProperty\_Test.cshtml" />
-    <Content Include="Views\UploadProperty\GetPhoto.cshtml" />
-    <Content Include="Views\UploadProperty\Index.cshtml" />
     <Content Include="Views\Unit\_Partial2.cshtml" />
     <Content Include="Views\Test2\Create.cshtml" />
     <Content Include="Views\Test2\Delete.cshtml" />

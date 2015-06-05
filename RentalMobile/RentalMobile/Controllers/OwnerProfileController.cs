@@ -1,21 +1,21 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using RentalMobile.Helpers;
+﻿using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class OwnerProfileController : Controller
+    public class OwnerProfileController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public OwnerProfileController(UnitofWork uow)
+        public OwnerProfileController(IGenericUnitofWork uow, IUserHelper userHelper)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
+            UserHelper = userHelper;
         }
 
         public ActionResult Index(int id)
         {
-            var owner = _unitOfWork.OwnerRepository.FindBy(x => x.OwnerId == UserHelper.GetOwnerId(id)).FirstOrDefault();
+            var owner = UserHelper.OwnerPublicProfileHelper.GetPublicProfileOwnerByOwnerId(id);
             if (owner == null) return RedirectToAction("Index", "Home");
             ViewBag.OwnerId = owner.OwnerId;
             ViewBag.OwnerGoogleMap = owner.GoogleMap;

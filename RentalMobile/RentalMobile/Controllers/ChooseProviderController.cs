@@ -1,59 +1,47 @@
 ﻿using System;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
-using RentalMobile.Helpers;
-using RentalMobile.Model.Models;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    [Authorize]
-    public class ChooseProviderController : Controller
+    [Authorize(Roles = "Provider, Tenant")]
+    public class ChooseProviderController : BaseController
     {
-        private RentalContext db = new RentalContext();
-
+        public ChooseProviderController(IGenericUnitofWork uow, IUserHelper userHelper)
+        {
+            UnitofWork = uow;
+            UserHelper = userHelper;
+        }
 
         public ViewResult Index(int providerid)
         {
-            var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId((Convert.ToInt32(providerid))));
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(providerid);
             ViewBag.providerProfile = provider;
             ViewBag.providerId = provider.MaintenanceProviderId;
             ViewBag.providerGoogleMap = provider.GoogleMap;
 
-
-
-            //If Tenant is log on
-            var tenant = db.Tenants.Find(UserHelper.GetTenantId());
-            ViewBag.TenantName = tenant.FirstName + " " + tenant.LastName;
-            ViewBag.TenantEmail = tenant.EmailAddress;
-
+            var role = UserHelper.GetCurrentRole();
+            if (role == "Tenant")
+            {
+                //If Tenant is log on
+                var tenant = UnitofWork.TenantRepository.FindBy(x=>x.TenantId == UserHelper.GetTenantId()).FirstOrDefault();
+                if (tenant != null)
+                {
+                    ViewBag.TenantName = tenant.FirstName + " " + tenant.LastName;
+                    ViewBag.TenantEmail = tenant.EmailAddress;
+                }
+            }
 
             //Tenant Telephone not required
-
-
-
             TempData["providerid"] = providerid;
-
             return View(provider);
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //TODO
         //public ActionResult Hire()
         //{
         //    return View();
@@ -62,7 +50,6 @@ namespace RentalMobile.Controllers
          //public ActionResult Index(string propertyIdcustom, string providerid)
 
         //   public ActionResult Select(string propertyIdcustom, string providerid, FormCollection collection)
-
 
         public ActionResult Submit()
         {
@@ -73,11 +60,9 @@ namespace RentalMobile.Controllers
         [HttpPost]
         public ActionResult Submit(string propertyIdcustom)
         {
-
             var startdate = TempData["startDate"];
             var endate = TempData["endDate"];
             var providerid = TempData["providerid"];
-
 
                 ////PROCESS TO AMAZONPAYPAL
                 ////YOU DON'T NEED MODEL VALIDATION
@@ -89,33 +74,23 @@ namespace RentalMobile.Controllers
                 ////SO HE OR SHE DOES BACKGROUND CHECKING AND ACCPET/DENY JOB OFFER
 
 
-
                 //Tenant propose job for the provider
                 //It will in pending jobs for provider
                 //If provider accept
                 //Notify Tenant, OWner, PRovider
                 //Generate Contracts for all
-
-
-                var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderId((Convert.ToInt32(providerid))));
-                var tenant = db.Tenants.Find(UserHelper.GetTenantId());
-
-                //Property
-                var propertyId = (Convert.ToInt32(propertyIdcustom));
-                var property = db.Units.FirstOrDefault(t => t.UnitId == propertyId);
-                if (property == null)
-                {
-                    return RedirectToAction("Index");
-                }
-
-
-                InsertPendingJobOffer(provider.MaintenanceProviderId, tenant, propertyId, Convert.ToDateTime(startdate),Convert.ToDateTime(endate));
-                ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Provider.";
-                return View(provider);
-
-
-
-
+     
+            var providerId = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId((Convert.ToInt32(providerid))).MaintenanceProviderId;
+            var provider = UnitofWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == providerId).FirstOrDefault();
+            var tenant = UnitofWork.TenantRepository.FindBy(x => x.TenantId == UserHelper.GetTenantId()).FirstOrDefault();
+            var propertyId = (Convert.ToInt32(propertyIdcustom));
+            var property = UnitofWork.UnitRepository.FindBy(x=>x.UnitId == propertyId).FirstOrDefault();
+            if (property == null)
+               {
+                   return RedirectToAction("Index");
+               }
+            UserHelper.JobOffer.InsertPendingJobOffer(providerId, tenant, propertyId, Convert.ToDateTime(startdate), Convert.ToDateTime(endate));
+            return View(provider);
         }
 
 
@@ -137,13 +112,6 @@ namespace RentalMobile.Controllers
 
             return RedirectToAction("Submit");
 
-
-
-
-
-
-
-
             //form["HiddenStart"]
             //form["HiddenEnd"]
 
@@ -154,9 +122,6 @@ namespace RentalMobile.Controllers
             //var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
 
         }
-
-
-
 
 
         //[HttpPost]
@@ -240,50 +205,5 @@ namespace RentalMobile.Controllers
 
         //}
 
-
-        protected void InsertPendingJobOffer(int providerid, Tenant tenant, int propertyid, DateTime startDate, DateTime endDate)
-        {
-            var provider = db.MaintenanceProviders.FirstOrDefault(t => t.MaintenanceProviderId == providerid);
-            if (provider == null) return;
-            //var opa = new OwnerPendingApplication
-            var mpj = new MaintenanceProviderNewJobOffer
-            {
-                    TenantId = tenant.TenantId,
-                    TenantName = tenant.FirstName + " " + tenant.LastName,
-                    TenantEmailAddress = tenant.EmailAddress,
-                    PropertyId = propertyid,
-                    StartDate = startDate,
-                    EndDate = endDate
-                };
-
-
-            try
-            {
-                db.MaintenanceProviderNewJobOffers.Add(mpj);
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-            ViewData["confirmationmsg"] = "Your Application had been succesfully submitted to the Owner.";
-        }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

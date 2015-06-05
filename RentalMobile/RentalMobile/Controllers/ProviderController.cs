@@ -1,37 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Security;
 using PagedList;
 using RentalMobile.Helpers;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalMobile.Process;
+using RentalModel.Repository.Generic.UnitofWork;
 using Email = Postal.Email;
 
 namespace RentalMobile.Controllers
 {
     [Authorize]
-    public class ProviderController : Controller
+    public class ProviderController : BaseController
     {
-        public RentalContext Db = new RentalContext();
-        public string Username = UserHelper.GetUserName();
-        public string RequestId;
-        public static int SelectedTeam = 0;
-        public static int SelectedProfessionalId = 0;
+
+        #region Main
+
+        public ProviderController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        {
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
+        }
 
         public ViewResult Index()
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
             ViewBag.ProviderProfile = provider;
             ViewBag.ProviderId = provider.MaintenanceProviderId;
-            var maintenanceTeamAssociation =
-                Db.MaintenanceTeamAssociations.FirstOrDefault(
-                    x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
+            var maintenanceTeamAssociation = UserHelper.ProviderPrivateProfileHelper.GetMaintenanceTeamAssociations();
             if (maintenanceTeamAssociation != null)
             {
                 ViewBag.TeamId = maintenanceTeamAssociation.TeamId;
@@ -41,6 +43,10 @@ namespace RentalMobile.Controllers
             return View(provider);
         }
 
+        #endregion
+
+        #region Coverage
+
         //************************************************* Coverage *********************************************//
         /// <summary>
         /// Coverage Tab
@@ -49,81 +55,36 @@ namespace RentalMobile.Controllers
 
         public PartialViewResult _Coverage()
         {
-            var providerId = UserHelper.GetProviderId();
-            if (providerId != null)
-            {
-                const int providerrole = 2;
-                var lookUp =
-                    Db.MaintenanceCompanyLookUps.FirstOrDefault(
-                        x => x.Role == providerrole && x.UserId == providerId);
-                if (lookUp != null)
-                {
-                    int companyId = lookUp.CompanyId;
-
-                    var mp = new ProviderMaintenanceProfile
-                        {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
-                            MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
-                            MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
-                            MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
-                            MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
-                            MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
-                            MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
-                            MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
-                            MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
-                        };
-
-                    return PartialView(mp);
-                }
-            }
-            return null;
+            return PartialView(UserHelper.ProviderPrivateProfileHelper.GetMaintenanceProviderProfile());
         }
 
         public PartialViewResult _EditCoverage()
         {
-            var providerId = UserHelper.GetProviderId();
-            if (providerId != null)
-            {
-                if (Db.MaintenanceTeams.Any(x => x.MaintenanceProviderId == providerId))
-                {
-                    ViewBag.HasTeam = "true";
-                }
-            }
-            else
-            {
-                ViewBag.HasTeam = "false";
-            }
-
+            ViewBag.HasTeam = UserHelper.ProviderPrivateProfileHelper.DoesProviderHasTeam();
             return PartialView();
         }
 
         public PartialViewResult _EditZone()
         {
-            var id = UserHelper.GetProviderId();
-            if (id != null)
+            int availableSpot;
+            var totalZonesCount = UserHelper.ProviderPrivateProfileHelper.GetDistinctProviderZones().Count;
+            if (totalZonesCount > 0)
             {
-                var providerId = (int) id;
-                ViewBag.TotalAvailableZoneSpot =
-                    Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId)*2;
-                var distinctMaintenanceProviderZones =
-                    Db.MaintenanceProviderZones.
-                       Where(maitnenanceproviderzone => maitnenanceproviderzone.MaintenanceProviderId == providerId)
-                      .GroupBy(maitnenanceproviderzone => maitnenanceproviderzone.ZipCode,
-                               (key, group) => group.FirstOrDefault())
-                      .OrderBy(filteredZone => filteredZone.ZipCode).
-                       ToList();
-                return PartialView(distinctMaintenanceProviderZones);
+                availableSpot = UserHelper.ProviderPrivateProfileHelper.GetTotalAvailableZoneSpot() - totalZonesCount;
             }
-            return null;
+            else
+            {
+                availableSpot = UserHelper.ProviderPrivateProfileHelper.GetTotalAvailableZoneSpot();
+            }
+            ViewBag.AvailableSpot = availableSpot;
+            ViewBag.TotalAvailableZoneSpot = UserHelper.ProviderPrivateProfileHelper.GetTotalAvailableZoneSpot();
+            return PartialView(UserHelper.ProviderPrivateProfileHelper.GetDistinctProviderZones());
         }
 
         public PartialViewResult _ViewZone()
         {
-            var id = UserHelper.GetProviderId();
-            return id != null
-                       ? PartialView(Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == id).ToList())
-                       : null;
+            return PartialView(UserHelper.ProviderPrivateProfileHelper.GetAllProviderZones());
+
         }
 
         public ViewResult AddZone()
@@ -132,363 +93,97 @@ namespace RentalMobile.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddZone(MaintenanceProviderZone maintenanceproviderzone)
+        public ActionResult AddZone(MaintenanceProviderZone maintenanceProviderZone)
         {
-            var provider = UserHelper.GetProviderId();
-            if (provider != null)
+            var maintenanceProviderZones = UnitofWork.MaintenanceProviderZoneRepository.
+                    FindBy(x => x.MaintenanceProviderId == UserHelper.ProviderPrivateProfileHelper.
+                    GetProvider().MaintenanceProviderId).ToList();
+            if (UserHelper.ProviderPrivateProfileHelper.IsProviderZoneAlreadyExist(maintenanceProviderZone, maintenanceProviderZones))
             {
-                var providerId = (int) provider;
-                var teamMemberCount = 0;
-                var maintenanceProviderZones =
-                    Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == providerId).ToList();
-                if (maintenanceProviderZones.Exists(x => x.ZipCode == maintenanceproviderzone.ZipCode))
-                {
-                    ModelState.AddModelError("Zone Duplication ", "Zone already exist in your list");
-                    JNotify("This Zone already exist in your list.", "#");
-                }
-                if (ModelState.IsValid)
-                {
-                    if (maintenanceProviderZones.Any())
-                    {
-                        teamMemberCount =
-                            Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId);
-                    }
-                    //Validation To Not Exceed the allowed number of zones
-                    var availablezoneplaceholder =
-                        Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId)*2 + 1;
-                    var zoneplaceholderused = Db.MaintenanceProviderZones.
-                                                 Where(
-                                                     maitnenanceproviderzone =>
-                                                     maitnenanceproviderzone.MaintenanceProviderId == providerId)
-                                                .GroupBy(maitnenanceproviderzone => maitnenanceproviderzone.ZipCode,
-                                                         (key, group) => group.FirstOrDefault())
-                                                .OrderBy(filteredZone => filteredZone.ZipCode).
-                                                 Count();
-                    if (availablezoneplaceholder > zoneplaceholderused)
-                    {
-                        Db.MaintenanceProviderZones.Add(
-                            new MaintenanceProviderZone
-                                {
-                                    CityName = maintenanceproviderzone.CityName,
-                                    Country = "US",
-                                    MaintenanceProviderId = providerId,
-                                    ZipCode = maintenanceproviderzone.ZipCode,
-                                    TeamMemberCount = teamMemberCount + 1
-
-                                }
-                            );
-                    }
-                    Db.SaveChanges();
-                    JNotify("Your zone has been added.", "/Provider/#coverage");
-                    return View();
-                }
+                ModelState.AddModelError("Zone Duplication ", @"Zone already exist in your list");
+                JNotify("This Zone already exist in your list.", "#");
             }
-            return View(maintenanceproviderzone);
+            if (ModelState.IsValid)
+            {
+                UserHelper.ProviderPrivateProfileHelper.AddNewMaintenanceProviderZone(maintenanceProviderZone, maintenanceProviderZones);
+                JNotify("Your zone has been added.", "/Provider/#coverage");
+                return View();
+            }
+            return View(maintenanceProviderZone);
         }
 
         public ViewResult RemoveZoneList(int page = 1)
         {
-            var id = UserHelper.GetProviderId();
-            return id != null
-                       ? View(
-                           Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == id)
-                             .ToList()
-                             .ToPagedList(page, 10))
-                       : null;
+            var providerId = UserHelper.ProviderPrivateProfileHelper.
+                GetProvider().MaintenanceProviderId;
+            return View(
+                UnitofWork.MaintenanceProviderZoneRepository.
+                    FindBy(x => x.MaintenanceProviderId == providerId)
+                    .ToList()
+                    .ToPagedList(page, 10));
         }
 
         public ActionResult RemoveZone(int id)
         {
-            MaintenanceProviderZone maintenanceproviderzone = Db.MaintenanceProviderZones.Find(id);
+            var maintenanceproviderzone =
+                UnitofWork.MaintenanceProviderZoneRepository.
+                    FirstOrDefault(x => x.MaintenanceProviderZoneId == id);
             return View(maintenanceproviderzone);
         }
 
         [HttpPost, ActionName("RemoveZone")]
         public ActionResult RemoveZoneConfirmed(int id)
         {
-            var maintenanceproviderzone = Db.MaintenanceProviderZones.Find(id);
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
-            if (provider.Zip != null)
-            {
-                var providerId = UserHelper.GetProviderId();
-                if (providerId != null && IsZipcodeBelongtoTeamMember((int) providerId, maintenanceproviderzone.ZipCode))
-                {
-                    JNotify(
-                        "Your can not delete your Team Member Zone. The Zone Coverage is based upon Team Member Profile",
-                        "#");
-                }
-                else
-                {
-                    if (maintenanceproviderzone.ZipCode != provider.Zip)
-                    {
-                        Db.MaintenanceProviderZones.Remove(maintenanceproviderzone);
-                        var teamMemberCount = GetmNumberofMembersInTeam();
-                        maintenanceproviderzone.TeamMemberCount = teamMemberCount - 1;
-                        JNotify("Your zone has been deleted.", "/Provider/#coverage");
-                        Db.SaveChanges();
-                    }
-                    else
-                    {
-                        JNotify("Your can not delete your own zone.Update your profile instead", "#");
-                    }
-                }
-            }
-
+            var maintenanceproviderzone =
+                    UnitofWork.MaintenanceProviderZoneRepository
+                    .FirstOrDefault(x => x.MaintenanceProviderZoneId == id);
+            if (UserHelper.ProviderPrivateProfileHelper.GetProvider().Zip == null) return null;
+            var jNotifyMessage = UserHelper.ProviderPrivateProfileHelper.RemoveProviderZone(maintenanceproviderzone);
+            JNotify(jNotifyMessage.Message, jNotifyMessage.RedirectUrl);
             return View(maintenanceproviderzone);
-        }
-
-        public bool IsZipcodeBelongtoTeamMember(int providerId, string zipcode)
-        {
-            var teamList =
-                Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == providerId)
-                  .Select(x => x.SpecialistId)
-                  .ToList();
-            var teamListZipCode = (from teammember in teamList
-                                   select Db.Specialists.
-                                             FirstOrDefault(x => x.SpecialistId == teammember)
-                                   into specialist
-                                   where specialist != null
-                                   where specialist.Zip != null
-                                   select specialist.Zip).
-                ToList();
-            return teamListZipCode.Any(x => x == zipcode);
-        }
-
-        public int GetmNumberofMembersInTeam()
-        {
-            var provider = UserHelper.GetProviderId();
-            if (provider != null)
-            {
-                var providerId = (int) provider;
-
-                var maintenanceProviderZones =
-                    Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == providerId).ToList();
-                return maintenanceProviderZones.Any()
-                           ? Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId)
-                           : 0;
-            }
-            return 0;
         }
 
         public ViewResult UpdateZoneList(int page = 1)
         {
-            var id = UserHelper.GetProviderId();
-            return id != null
-                       ? View(
-                           Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == id)
-                             .ToList()
-                             .ToPagedList(page, 10))
-                       : null;
+            var test = UserHelper.ProviderPrivateProfileHelper.GetAllProviderZones()
+                .ToList()
+                .ToPagedList(page, 10);
+            return View(test);
         }
 
         public ActionResult UpdateZone(int id)
         {
-            MaintenanceProviderZone maintenanceproviderzone = Db.MaintenanceProviderZones.Find(id);
-            return View(maintenanceproviderzone);
+            return View(UnitofWork.MaintenanceProviderZoneRepository.FirstOrDefault(x => x.MaintenanceProviderZoneId == id));
         }
 
         [HttpPost, ActionName("UpdateZone")]
         public ActionResult UpdateZoneConfirmed(MaintenanceProviderZone maintenanceproviderzone)
         {
-            var provider = UserHelper.GetProviderId();
-
-            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == provider);
-            if (maintenanceProvider != null)
+            var maintenanceProviderZones = UserHelper.ProviderPrivateProfileHelper.GetAllProviderZones();
+            if (UserHelper.ProviderPrivateProfileHelper.IsProviderZoneAlreadyExist(maintenanceproviderzone, maintenanceProviderZones))
             {
-                var providerMaintenanceProviderZip = maintenanceProvider.Zip;
-
-                if (provider != null)
-                {
-                    var providerId = (int) provider;
-                    var maintenanceProviderZones =
-                        Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == providerId).ToList();
-                    if (maintenanceProviderZones.Exists(x => x.ZipCode == maintenanceproviderzone.ZipCode))
-                    {
-                        JNotify("Zone already exist in your list", "#");
-
-                        ModelState.AddModelError("Zone Duplication ", "Zone already exist in your list");
-
-                    }
-                    if (ModelState.IsValid)
-                    {
-                        var currentmaintenanceproviderzone =
-                            Db.MaintenanceProviderZones.Find(maintenanceproviderzone.MaintenanceProviderZoneId);
-                        if (IsZipcodeBelongtoTeamMember(providerId, currentmaintenanceproviderzone.ZipCode))
-                        {
-                            JNotify(
-                                "Your can not update your Team Member Zone. The Zone Coverage is based upon Team Member Profile",
-                                "/Provider/#coverage");
-                            ModelState.AddModelError("Zone Update ",
-                                                     "Your can not update your Team Member Zone. The Zone Coverage is based upon Team Member Profile");
-
-                        }
-                        else if (providerMaintenanceProviderZip == currentmaintenanceproviderzone.ZipCode)
-                        {
-                            JNotify(
-                                "Your can not update your Zone from this section. Please update your profile to reflect the new zone",
-                                "/Provider/#coverage");
-                            ModelState.AddModelError("Zone Update ",
-                                                     "Your can not update your Team Member Zone. The Zone Coverage is based upon Team Member Profile");
-                        }
-                        else
-                        {
-                            var maintenanceproviderzone2 =
-                                Db.MaintenanceProviderZones.First(
-                                    x =>
-                                    x.MaintenanceProviderZoneId == maintenanceproviderzone.MaintenanceProviderZoneId);
-                            maintenanceproviderzone2.CityName = maintenanceproviderzone.CityName;
-                            maintenanceproviderzone2.ZipCode = maintenanceproviderzone.ZipCode;
-                            Db.SaveChanges();
-                            JNotify("Your zone has been updated.", "/Provider/#coverage");
-                        }
-
-                        return View(maintenanceproviderzone);
-                    }
-                }
+                ModelState.AddModelError("Zone Duplication ", @"Zone already exist in your list");
+                JNotify("This Zone already exist in your list.", "#");
+            }
+            if (ModelState.IsValid)
+            {
+                var jNotifyMessage = UserHelper.ProviderPrivateProfileHelper.UpdateZone(maintenanceproviderzone);
+                JNotify(jNotifyMessage.Message, jNotifyMessage.RedirectUrl);
             }
             return View(maintenanceproviderzone);
         }
 
-        ///<summary>
-        ///Find the new Zip code of the company
-        ///     If the new Zip code does not match any zip
-        ///          Add the new Zip code to the list
-        ///     If previous Zip code exist
-        ///         Don't Update
-        /// </summary>
-        /// <param name="providerCompanyZip"></param>
-        /// <param name="providerCompanyZipCity"></param>
-        private void UpdateProviderZoneList(string providerCompanyZip = "", string providerCompanyZipCity = "")
-        {
-            if (providerCompanyZip == null) return;
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
-            var maintenanceProviderZonesList =
-                Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
-                  .ToList();
-            if (
-                maintenanceProviderZonesList.Exists(
-                    x => x.ZipCode == providerCompanyZip.ToString(CultureInfo.InvariantCulture))) return;
-            if (maintenanceProviderZonesList.Exists(x => x.ZipCode == provider.Zip))
-            {
-                maintenanceProviderZonesList.RemoveAll(x => x.ZipCode == provider.Zip);
-            }
-            if (providerCompanyZipCity != null)
-                Db.MaintenanceProviderZones.Add(new MaintenanceProviderZone
-                    {
-                        CityName = providerCompanyZipCity,
-                        Country = "US",
-                        MaintenanceProviderId = provider.MaintenanceProviderId,
-                        ZipCode = providerCompanyZip,
-                        TeamMemberCount = GetmNumberofMembersInTeam()
-                    });
-        }
-
-        private void UpdateproviderProfile(MaintenanceProvider p, MaintenanceCompany m)
-        {
-            var providerId = UserHelper.GetProviderId();
-            if (providerId == null) return;
-            var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == providerId);
-            if (provider == null) return;
-            if (!string.IsNullOrEmpty(m.VCard))
-            {
-                provider.VCard = m.VCard;
-            }
-            if (!string.IsNullOrEmpty(m.Skype))
-            {
-                provider.Skype = m.Skype;
-            }
-            if (!string.IsNullOrEmpty(m.Twitter))
-            {
-                provider.Twitter = m.Twitter;
-            }
-            if (!string.IsNullOrEmpty(m.LinkedIn))
-            {
-                provider.LinkedIn = m.LinkedIn;
-            }
-            if (!string.IsNullOrEmpty(m.GooglePlus))
-            {
-                provider.GooglePlus = m.GooglePlus;
-            }
-
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                provider.Address = m.Address;
-            }
-            if (!string.IsNullOrEmpty(m.Country))
-            {
-                provider.Country = m.Country;
-            }
-            if (!string.IsNullOrEmpty(m.Region))
-            {
-                provider.City = m.Region;
-            }
-            if (!string.IsNullOrEmpty(m.City))
-            {
-                provider.City = m.City;
-            }
-            if (!string.IsNullOrEmpty(m.Zip))
-            {
-                provider.Zip = m.Zip;
-            }
-            if (!string.IsNullOrEmpty(m.Description))
-            {
-                provider.Description = m.Description;
-            }
-            provider.GoogleMap =
-                m.GoogleMap =
-                string.IsNullOrEmpty(m.Address)
-                    ? UserHelper.GetFormattedLocation("", "", "USA")
-                    : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
-            provider.YouTubeVideo = p.YouTubeVideo;
-            provider.YouTubeVideoURL = p.YouTubeVideoURL;
-            provider.VimeoVideo = p.VimeoVideo;
-            provider.VimeoVideoURL = p.VimeoVideoURL;
-        }
-
         public ActionResult ViewTeamInvitation(int page = 1)
         {
-            var providerId = UserHelper.GetProviderId();
-            if (providerId != null)
-            {
-                var allteam = Db.MaintenanceTeams.Where
-                    (x => x.MaintenanceProviderId == providerId)
-                                .Select(x => x.TeamId).ToList();
-                var teamSpecialistPendingList = (from currenteam in allteam
-                                                 from specialistPendingTeamInvitation in
-                                                     Db.SpecialistPendingTeamInvitations.Where(
-                                                         x => x.TeamId == currenteam)
-                                                 let currentspecialist =
-                                                     Db.Specialists.FirstOrDefault(
-                                                         x =>
-                                                         x.SpecialistId == specialistPendingTeamInvitation.SpecialistID)
-                                                 where currentspecialist != null
-                                                 select new TeamSpecialistInvitation
-                                                     {
-                                                         PendingTeamInvitationID =
-                                                             specialistPendingTeamInvitation.PendingTeamInvitationID,
-                                                         TeamId = specialistPendingTeamInvitation.TeamId,
-                                                         TeamName = specialistPendingTeamInvitation.TeamName,
-                                                         MaintenanceProviderId =
-                                                             specialistPendingTeamInvitation.MaintenanceProviderId,
-                                                         SpecialistID = specialistPendingTeamInvitation.SpecialistID,
-                                                         SpecialistPhoto = currentspecialist.Photo,
-                                                         SpecialistFirstName = currentspecialist.FirstName,
-                                                         SpecialistLastName = currentspecialist.LastName,
-                                                         SpecialistAddress = currentspecialist.Address,
-                                                         SpecialistRegion = currentspecialist.Region,
-                                                         SpecialistCity = currentspecialist.City,
-                                                         SpecialistCountryCode = currentspecialist.CountryCode,
-                                                         SpecialistDescription = currentspecialist.Description
-                                                     }).ToList();
+            return View(UserHelper.ProviderPrivateProfileHelper.GetAllSpecialistThatHasPendingTeamInvitation().
+                OrderBy(x => x.PendingTeamInvitationID).ToPagedList(page, 10));
 
-                return View(teamSpecialistPendingList.OrderBy(x => x.PendingTeamInvitationID).ToPagedList(page, 10));
-            }
-            return null;
         }
 
         //************************************************* Coverage *********************************************//
-        //*******************************************************************************************************//
-        //*******************************************************************************************************//
+        #endregion
+
+        #region Account
 
         //****************************************************Account********************************************//
         /// <summary>
@@ -500,265 +195,48 @@ namespace RentalMobile.Controllers
         public ActionResult CompleteProfile()
         {
             var providerId = UserHelper.GetProviderId();
-            if (providerId != null)
+
+            const int providerrole = 2;
+            var lookUp =
+                UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.Role == providerrole && x.UserId == providerId);
+            if (lookUp != null)
             {
-                const int providerrole = 2;
-                var lookUp =
-                    Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == providerId);
-                if (lookUp != null)
-                {
-                    int companyId = lookUp.CompanyId;
+                int companyId = lookUp.CompanyId;
 
-                    var mp = new ProviderMaintenanceProfile
-                        {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
-                            MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
-                            MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
-                            MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
-                            MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
-                            MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
-                            MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
-                            MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
-                            MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
-                        };
+                var mp = new ProviderMaintenanceProfile
+                    {
+                        MaintenanceProvider = UnitofWork.MaintenanceProviderRepository.FirstOrDefault(x => x.MaintenanceProviderId == providerId),
+                        MaintenanceCompanyLookUp = UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompany = UnitofWork.MaintenanceCompanyRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompanySpecialization = UnitofWork.MaintenanceCompanySpecializationRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCustomService = UnitofWork.MaintenanceCustomServiceRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceExterior = UnitofWork.MaintenanceExteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceInterior = UnitofWork.MaintenanceInteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceNewConstruction = UnitofWork.MaintenanceNewConstructionRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceRepair = UnitofWork.MaintenanceRepairRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceUtility = UnitofWork.MaintenanceUtilityRepository.FirstOrDefault(x => x.CompanyId == companyId)
+                    };
 
-                    return View(mp);
-                }
+                return View(mp);
             }
+
             return null;
         }
 
         [HttpPost]
         public ActionResult CompleteProfile(ProviderMaintenanceProfile s)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var providerId = UserHelper.GetProviderId();
-                    if (providerId != null)
-                    {
-                        s.MaintenanceCompanySpecialization.Currency =
-                            UserHelper.GetCurrencyValue(s.MaintenanceCompanySpecialization.CurrencyID);
-                        Db.Entry(s.MaintenanceProvider).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompany).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanyLookUp).State = EntityState.Modified;
-                        Db.Entry(s.MaintenanceCompanySpecialization).State = EntityState.Modified;
-                        UpdateProfileCompletion(CalculateNewProfileCompletionPercentage(s.MaintenanceCompany));
-                        UpdateproviderProfile(s.MaintenanceProvider, s.MaintenanceCompany);
-                        UpdateProviderZoneList(s.MaintenanceCompany.Zip, s.MaintenanceCompany.City);
-                        Db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                }
-                return View(s);
+                UserHelper.ProviderPrivateProfileHelper.CompleteProviderProfile(s);
+                return RedirectToAction("Index");
             }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                      eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                          ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-        }
-
-        public void UpdateProviderMaintenanceCompany()
-        {
-            var providerUserId = UserHelper.GetProviderId();
-            if (providerUserId != null)
-            {
-                const int providerrole = 2;
-                var lookUp =
-                    Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == providerrole && x.UserId == providerUserId);
-                if (lookUp != null)
-                {
-                    int companyId = lookUp.CompanyId;
-
-                    var maintenanceCompany = Db.MaintenanceCompanies.Find(companyId);
-                    if ( maintenanceCompany != null)
-                    {
-                          var providerId = (int) providerUserId;
-                          var provider = Db.MaintenanceProviders.Find(providerId);
-
-
-                        //reverse the Assignment
-
-                          if (!string.IsNullOrEmpty(provider.VCard))
-                          {
-                              maintenanceCompany.VCard = provider.VCard;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Skype))
-                          {
-                              maintenanceCompany.Skype = provider.Skype;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Twitter))
-                          {
-                              maintenanceCompany.Twitter = provider.Twitter;
-                          }
-                          if (!string.IsNullOrEmpty(provider.LinkedIn))
-                          {
-                              maintenanceCompany.LinkedIn = provider.LinkedIn;
-                          }
-                          if (!string.IsNullOrEmpty(provider.GooglePlus))
-                          {
-                              maintenanceCompany.GooglePlus = provider.GooglePlus;
-                          }
-
-                          if (!string.IsNullOrEmpty(provider.Address))
-                          {
-                              maintenanceCompany.Address = provider.Address;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Country))
-                          {
-                              maintenanceCompany.Country = provider.Country;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Region))
-                          {
-                              maintenanceCompany.Region = provider.Region;
-                          }
-                          if (!string.IsNullOrEmpty(provider.City))
-                          {
-                              maintenanceCompany.City = provider.City;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Zip))
-                          {
-                              maintenanceCompany.Zip = provider.Zip;
-                          }
-                          if (!string.IsNullOrEmpty(provider.Description))
-                          {
-                              maintenanceCompany.Description = provider.Description;
-                          }
-                          maintenanceCompany.GoogleMap =
-                              provider.GoogleMap =
-                              string.IsNullOrEmpty(provider.Address)
-                                  ? UserHelper.GetFormattedLocation("", "", "USA")
-                                  : UserHelper.GetFormattedLocation(provider.Address, provider.City, provider.Country);
-
-                          Db.SaveChanges();
-                    }
-
-                }
-            }
-        }
-
-        /// <summary>
-                /// Calculation of Completion
-                /// description = 20 ; Other = 10
-                /// 
-                /// Members of formula 
-                /// Name 
-                /// Address 
-                /// EmailAddress 
-                /// Description 
-                /// Country 
-                /// Region 
-                /// City 
-                /// Zip 
-                /// CountryCode
-                /// </summary>
-        public int CalculateNewProfileCompletionPercentage(MaintenanceCompany m)
-        {
-            var initialValue = 0;
-
-            if (!string.IsNullOrEmpty(m.Name))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.Address))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.EmailAddress))
-            {
-                initialValue += 30;
-            }
-            if (!string.IsNullOrEmpty(m.Description))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.Region))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.City))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.Zip))
-            {
-                initialValue += 10;
-            }
-            if (!string.IsNullOrEmpty(m.Country))
-            {
-                initialValue += 10;
-            }
-            m.GoogleMap = string.IsNullOrEmpty(m.Address)
-                              ? UserHelper.GetFormattedLocation("", "", "USA")
-                              : UserHelper.GetFormattedLocation(m.Address, m.City, m.Country);
-            return initialValue >= 50 ? initialValue : 50;
-        }
-
-        public void UpdateProfileCompletion(int newprofilecompletionpercentage)
-        {
-            var providerId = UserHelper.GetProviderId();
-            if (providerId == null) return;
-            var currentprovider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == providerId);
-            if (currentprovider != null)
-                currentprovider.PercentageofCompletion = newprofilecompletionpercentage;
-        }
-
-        public decimal? GetProviderRate(int providerId)
-        {
-            var providerMaintenanceCompany = Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == providerId);
-            if (providerMaintenanceCompany != null)
-            {
-                var providercompanyid = providerMaintenanceCompany.CompanyId;
-                var providercompany =
-                    Db.MaintenanceCompanySpecializations.FirstOrDefault(x => x.CompanyId == providercompanyid);
-
-                if (providercompany != null)
-                {
-
-                    return (decimal) providercompany.Rate;
-                }
-                return null;
-            }
-            return null;
-        }
-
-        public List<MaintenanceCompany> GetProviderCompanies()
-        {
-            var providerMaintenanceCompanies = new List<MaintenanceCompany>();
-            var providerMaintenanceCompanyLookup =
-                Db.MaintenanceCompanyLookUps.Where(x => x.UserId == UserHelper.GetProviderId());
-            if (providerMaintenanceCompanyLookup.Any())
-            {
-                providerMaintenanceCompanies.
-                    AddRange(providerMaintenanceCompanyLookup.
-                                 Select(maintenanceCompanyLookUp => Db.MaintenanceCompanies.
-                                                                       FirstOrDefault(
-                                                                           x =>
-                                                                           x.CompanyId ==
-                                                                           maintenanceCompanyLookUp.CompanyId)).
-                                 Where(currentMaintenanceCompany => currentMaintenanceCompany != null));
-
-
-                return providerMaintenanceCompanies.ToList();
-            }
-            return null;
+            return View(s);
         }
 
         public ActionResult Edit(int id)
         {
-            var provider = Db.MaintenanceProviders.Find(id);
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(id);
             return View(provider);
         }
 
@@ -767,9 +245,9 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(provider).State = EntityState.Modified;
-                Db.SaveChanges();
-                UpdateProviderMaintenanceCompany();
+                UnitofWork.MaintenanceProviderRepository.Edit(provider);
+                UnitofWork.Save();
+                UserHelper.ProviderPrivateProfileHelper.UpdateProviderMaintenanceCompany();
                 return RedirectToAction("Index");
             }
             return View(provider);
@@ -777,7 +255,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult ChangeAddress(int id)
         {
-            var provider = Db.MaintenanceProviders.Find(id);
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(id);
             return View(provider);
         }
 
@@ -786,12 +264,9 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(provider).State = EntityState.Modified;
-                provider.GoogleMap = string.IsNullOrEmpty(provider.Address)
-                                         ? UserHelper.GetFormattedLocation("", "", "USA")
-                                         : UserHelper.GetFormattedLocation(provider.Address, provider.City,
-                                                                           provider.CountryCode);
-                Db.SaveChanges();
+                provider.GoogleMap = UserHelper.ProviderPrivateProfileHelper.ProviderGoogleMap();
+                UnitofWork.MaintenanceProviderRepository.Edit(provider);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(provider);
@@ -799,43 +274,21 @@ namespace RentalMobile.Controllers
 
         public ActionResult Delete(int id)
         {
-            MaintenanceProvider provider = Db.MaintenanceProviders.Find(id);
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(id);
             return View(provider);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            MaintenanceProvider provider = Db.MaintenanceProviders.Find(id);
-            Db.MaintenanceProviders.Remove(provider);
-            Db.SaveChanges();
-
-
-
-            //TODO// Delete All associated records
-
-            //var Providershowing = Db.ProviderShowings.Where(x => x.ProviderId == id).ToList();
-            //foreach (var x in Providershowing)
-            //{
-            //    Db.ProviderShowings.Remove(x);
-            //}
-            //Db.SaveChanges();
-
-            //Delete from Membership
-
-            if (Roles.GetRolesForUser(User.Identity.Name).Any())
-            {
-                Roles.RemoveUserFromRoles(User.Identity.Name, Roles.GetRolesForUser(User.Identity.Name));
-            }
-            Membership.DeleteUser(User.Identity.Name);
-            FormsAuthentication.SignOut();
-
+            UserHelper.ProviderPrivateProfileHelper.DeleteProviderRecords(id);
+            UserHelper.ProviderPrivateProfileHelper.DeleteProviderMemebership();
             return RedirectToAction("Index", "Home");
         }
-
         //***************************************************Account*********************************************//
-        //*******************************************************************************************************//
-        //*******************************************************************************************************//
+        #endregion
+
+        #region Team
 
         //**************************************************** Team *********************************************//
         /// <summary>
@@ -846,12 +299,12 @@ namespace RentalMobile.Controllers
 
         public PartialViewResult _Team()
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
             var checkteamexistance =
-                Db.MaintenanceTeamAssociations.FirstOrDefault(
+                UnitofWork.MaintenanceTeamAssociationRepository.FirstOrDefault(
                     x => x.MaintenanceProviderId == provider.MaintenanceProviderId);
             var allTeamAssociations =
-                Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+               UnitofWork.MaintenanceTeamAssociationRepository.FindBy(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
                   .ToList();
             if (checkteamexistance != null)
             {
@@ -865,7 +318,7 @@ namespace RentalMobile.Controllers
         private List<Teammate> GetProviderTeam(IEnumerable<MaintenanceTeamAssociation> team)
         {
             var myTeam = (from i in team
-                          let currentspecialist = Db.Specialists.Find(i.SpecialistId)
+                          let currentspecialist = UnitofWork.SpecialistRepository.FirstOrDefault(x => x.SpecialistId == i.SpecialistId)
                           select new Teammate
                               {
                                   SpecialistId = i.SpecialistId,
@@ -880,36 +333,40 @@ namespace RentalMobile.Controllers
         {
             const int specialistrole = 1;
             var lookUp =
-                Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
-            return lookUp == null ? 0 : Db.MaintenanceCompanySpecializations.Find(lookUp.CompanyId).Years_Experience;
+                UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+            return lookUp == null ? 0 : UnitofWork.MaintenanceCompanySpecializationRepository.FirstOrDefault(x => x.CompanyId == lookUp.CompanyId).Years_Experience;
         }
 
         public ActionResult AddTeamMember(int page = 1)
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
+            var providerId = provider.MaintenanceProviderId;
             var existingTeamAssociation =
-                Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+                UnitofWork.MaintenanceTeamAssociationRepository.FindBy(x => x.MaintenanceProviderId == providerId)
                   .Select(x => x.SpecialistId)
                   .ToList();
             var pendingTeamAssociation =
-                Db.SpecialistPendingTeamInvitations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+                UnitofWork.SpecialistPendingTeamInvitationRepository.FindBy(x => x.MaintenanceProviderId == providerId)
                   .Select(x => x.SpecialistID)
                   .ToList();
             var mergedExistingandPendingTeamAssociation =
                 new List<int>(existingTeamAssociation.Union(pendingTeamAssociation));
-            var excludedSpecialistList =
-                Db.Specialists.Where(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
+            IEnumerable<Specialist> excludedSpecialistList =
+                UnitofWork.SpecialistRepository.FindBy(x => mergedExistingandPendingTeamAssociation.Contains(x.SpecialistId));
+            var allSpecialists = UnitofWork.SpecialistRepository.All;
             var filterSpecialistList =
-                Db.Specialists.Except(excludedSpecialistList).OrderBy(x => x.SpecialistId).ToPagedList(page, 10);
+                allSpecialists.Except(excludedSpecialistList)
+                .OrderBy(x => x.SpecialistId).ToPagedList(page, 10);
             return View(filterSpecialistList);
         }
 
         public ActionResult SelectTeam(int pid, int page = 1)
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
+            var providerId = provider.MaintenanceProviderId;
             ViewBag.SelectedSpecialistId = pid;
             var currentTeam =
-                Db.MaintenanceTeams.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+                UnitofWork.MaintenanceTeamRepository.FindBy(x => x.MaintenanceProviderId == providerId)
                   .OrderBy(x => x.TeamId)
                   .ToPagedList(page, 10);
             return View(currentTeam);
@@ -919,7 +376,7 @@ namespace RentalMobile.Controllers
         {
             ViewBag.SelectedSpecialistId = pid;
             ViewBag.SelectedTeamId = stid;
-            return View(Db.MaintenanceTeams.Where(x => x.TeamId == stid));
+            return View(UnitofWork.MaintenanceTeamRepository.FindBy(x => x.TeamId == stid));
         }
 
         [HttpPost]
@@ -930,8 +387,9 @@ namespace RentalMobile.Controllers
                 return RedirectToAction("AddTeamMember");
             }
             var tid = Convert.ToInt32(Request.Params["stid"]);
-            var selectedteam = Db.MaintenanceTeams.FirstOrDefault(x => x.TeamId == tid);
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var selectedteam = UnitofWork.MaintenanceTeamRepository.
+                FirstOrDefault(x => x.TeamId == tid);
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
             var proid = provider.MaintenanceProviderId;
             if (selectedteam != null)
             {
@@ -942,9 +400,9 @@ namespace RentalMobile.Controllers
                         TeamId = selectedteam.TeamId,
                         TeamName = selectedteam.TeamName
                     };
-                Db.SpecialistPendingTeamInvitations.Add(npti);
+                UnitofWork.SpecialistPendingTeamInvitationRepository.Add(npti);
             }
-            Db.SaveChanges();
+            UnitofWork.Save();
             InviteSpecialist(Convert.ToInt32(Request.Params["stid"]), Convert.ToInt32(Request.Params["pid"]));
             JNotify("Your request has been completed.", "/Provider/#team");
             return View();
@@ -953,8 +411,8 @@ namespace RentalMobile.Controllers
         public void InviteSpecialist(int stid, int pid)
         {
             dynamic email = new Email("InviteSpecialistToJoinTeam/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
-            var selectedspecialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == pid);
+            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var selectedspecialist = UnitofWork.SpecialistRepository.FirstOrDefault(x => x.SpecialistId == pid);
             if (selectedspecialist == null) return;
             email.To = selectedspecialist.EmailAddress;
             email.From = "postmaster@haithem-araissia.com";
@@ -978,13 +436,13 @@ namespace RentalMobile.Controllers
 
         public ActionResult RemoveTeamMember(int page = 1)
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
             var existingTeamAssociation =
-                Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
+                UnitofWork.MaintenanceTeamAssociationRepository.FindBy(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
                   .Select(x => x.SpecialistId)
                   .ToList();
-            var mergedExistingandPendingTeamAssociation = Db.Specialists.
-                                                             Where(x => existingTeamAssociation.Contains(x.SpecialistId));
+            var mergedExistingandPendingTeamAssociation = UnitofWork.SpecialistRepository.
+                                                             FindBy(x => existingTeamAssociation.Contains(x.SpecialistId));
             var filterSpecialistList =
                 mergedExistingandPendingTeamAssociation.OrderBy(x => x.SpecialistId).ToPagedList(page, 10);
             return View(filterSpecialistList);
@@ -992,10 +450,10 @@ namespace RentalMobile.Controllers
 
         public ActionResult RemoveFromTeam(int pid, int page = 1)
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
             ViewBag.SelectedSpecialistId = pid;
             var currentTeam =
-                Db.MaintenanceTeamAssociations.Where(
+                UnitofWork.MaintenanceTeamAssociationRepository.FindBy(
                     x => x.MaintenanceProviderId == provider.MaintenanceProviderId && x.SpecialistId == pid)
                   .OrderBy(x => x.TeamId)
                   .ToPagedList(page, 10);
@@ -1006,7 +464,8 @@ namespace RentalMobile.Controllers
         {
             ViewBag.SelectedSpecialistId = pid;
             ViewBag.SelectedTeamId = stid;
-            return View(Db.MaintenanceTeams.Where(x => x.TeamId == stid));
+            return View(UnitofWork.MaintenanceTeamRepository.
+                FindBy(x => x.TeamId == stid));
         }
 
         [HttpPost]
@@ -1018,15 +477,15 @@ namespace RentalMobile.Controllers
             }
             int pid = Convert.ToInt32(Request.Params["pid"]);
             int sid = Convert.ToInt32(Request.Params["stid"]);
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
-            var currentspecialist = Db.MaintenanceTeamAssociations.FirstOrDefault(
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
+            var currentspecialist = UnitofWork.MaintenanceTeamAssociationRepository.FirstOrDefault(
                 x => x.MaintenanceProviderId == provider.MaintenanceProviderId
                      && x.SpecialistId == pid
                      && x.TeamId == sid);
             if (currentspecialist != null)
             {
-                Db.MaintenanceTeamAssociations.Remove(currentspecialist);
-                Db.SaveChanges();
+                UnitofWork.MaintenanceTeamAssociationRepository.Delete(currentspecialist);
+                UnitofWork.Save();
             }
             RemoveSpecialistZoneFromProviderTeamZone(Convert.ToInt32(Request.Params["pid"]),
                                                      Convert.ToInt32(Request.Params["stid"]));
@@ -1039,53 +498,55 @@ namespace RentalMobile.Controllers
 
         public void RemoveSpecialistZoneFromProviderTeamZone(int providerId, int specialistId)
         {
-
-            var currenteamcount = Db.MaintenanceTeamAssociations.Count(x => x.MaintenanceProviderId == providerId);
+            var currenteamcount =
+                UnitofWork.MaintenanceTeamAssociationRepository.
+                Count(x => x.MaintenanceProviderId == providerId);
             var updatedteamcount = currenteamcount == 0 ? 0 : currenteamcount + 1;
-            var specialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
-            var specialistzone = Db.MaintenanceProviderZones.
+            var specialist =
+                UserHelper.SpecialistPrivateProfileHelper.GetPrivateProfileSpecialistBySpecialistId(specialistId);
+            var specialistzone = UnitofWork.MaintenanceProviderZoneRepository.
                                     FirstOrDefault(
                                         x => x.MaintenanceProviderId == providerId && x.ZipCode == specialist.Zip);
-            var providerZones = Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == providerId).ToList();
+            var providerZones = UnitofWork.MaintenanceProviderZoneRepository.FindBy(x => x.MaintenanceProviderId == providerId).ToList();
             foreach (var providerZone in providerZones)
             {
                 providerZone.TeamMemberCount = updatedteamcount;
             }
             if (providerZones.Any())
             {
-            Db.MaintenanceProviderZones.Remove(specialistzone);
-            Db.SaveChanges();
+                UnitofWork.MaintenanceProviderZoneRepository.Delete(specialistzone);
+                UnitofWork.Save();
             }
         }
 
         public ProviderMaintenanceProfile GetProviderCoverage()
         {
-           var providerId = UserHelper.GetProviderId();
-            if (providerId != null)
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
+            const int providerrole = 2;
+            var lookUp =
+                UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(
+                    x => x.Role == providerrole && x.UserId == provider.MaintenanceProviderId);
+            if (lookUp != null)
             {
-                const int providerrole = 2;
-                var lookUp =
-                    Db.MaintenanceCompanyLookUps.FirstOrDefault(
-                        x => x.Role == providerrole && x.UserId == providerId);
-                if (lookUp != null)
-                {
-                    int companyId = lookUp.CompanyId;
+                int companyId = lookUp.CompanyId;
 
-                    return new ProviderMaintenanceProfile
-                        {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
-                            MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
-                            MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
-                            MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
-                            MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
-                            MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
-                            MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
-                            MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
-                            MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                            MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
-                        };
-                }
+                return new ProviderMaintenanceProfile
+                    {
+                        MaintenanceProvider = UnitofWork.MaintenanceProviderRepository.FirstOrDefault(x => x.MaintenanceProviderId == provider.MaintenanceProviderId),
+                        MaintenanceCompanyLookUp = UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompany = UnitofWork.MaintenanceCompanyRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompanySpecialization = UnitofWork.MaintenanceCompanySpecializationRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCustomService = UnitofWork.MaintenanceCustomServiceRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceExterior = UnitofWork.MaintenanceExteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceInterior = UnitofWork.MaintenanceInteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceNewConstruction = UnitofWork.MaintenanceNewConstructionRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceRepair = UnitofWork.MaintenanceRepairRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceUtility = UnitofWork.MaintenanceUtilityRepository.FirstOrDefault(x => x.CompanyId == companyId)
+                    };
+
+
             }
+
             return null;
 
         }
@@ -1094,22 +555,22 @@ namespace RentalMobile.Controllers
         {
             const int specialistrole = 1;
             var specialistlookUp =
-                Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
+                UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.Role == specialistrole && x.UserId == specialistId);
             if (specialistlookUp != null)
             {
                 int companyId = specialistlookUp.CompanyId;
 
                 return new SpecialistMaintenanceProfile
                     {
-                        MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
-                        MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
-                        MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
-                        MaintenanceCustomService = Db.MaintenanceCustomServices.Find(companyId),
-                        MaintenanceExterior = Db.MaintenanceExteriors.Find(companyId),
-                        MaintenanceInterior = Db.MaintenanceInteriors.Find(companyId),
-                        MaintenanceNewConstruction = Db.MaintenanceNewConstructions.Find(companyId),
-                        MaintenanceRepair = Db.MaintenanceRepairs.Find(companyId),
-                        MaintenanceUtility = Db.MaintenanceUtilities.Find(companyId)
+                        MaintenanceCompanyLookUp = UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompany = UnitofWork.MaintenanceCompanyRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCompanySpecialization = UnitofWork.MaintenanceCompanySpecializationRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceCustomService = UnitofWork.MaintenanceCustomServiceRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceExterior = UnitofWork.MaintenanceExteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceInterior = UnitofWork.MaintenanceInteriorRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceNewConstruction = UnitofWork.MaintenanceNewConstructionRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceRepair = UnitofWork.MaintenanceRepairRepository.FirstOrDefault(x => x.CompanyId == companyId),
+                        MaintenanceUtility = UnitofWork.MaintenanceUtilityRepository.FirstOrDefault(x => x.CompanyId == companyId)
                     };
             }
             return null;
@@ -1118,8 +579,8 @@ namespace RentalMobile.Controllers
         public void RemoveSpecialist(int stid, int pid)
         {
             dynamic email = new Email("RemoveSpecialistForTeam/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
-            var selectedspecialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == pid);
+            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var selectedspecialist = UnitofWork.SpecialistRepository.FirstOrDefault(x => x.SpecialistId == pid);
             if (selectedspecialist == null) return;
             email.To = selectedspecialist.EmailAddress;
             email.From = "postmaster@haithem-araissia.com";
@@ -1141,43 +602,32 @@ namespace RentalMobile.Controllers
             }
         }
 
-        public void JNotify(string message = "", string url = "")
-        {
-            ViewBag.Confirmation = true;
-            ViewBag.ConfirmationSuccess = JNotfiyScriptQueryHelper.JNotifyConfirmationMessage(message, url);
-        }
         //************************************************** Team *************************************************//
         //*******************************************************************************************************//
         //*******************************************************************************************************//
+        #endregion
 
-
-
-
-
-
-
-
+        #region WIP
 
         //*************************************** WIP and WORK NOT COMPLETED***************************************//
         //*************************************************************************************************//
         //*************************************************************************************************//
 
-
         public ActionResult _Property()
         {
             return PartialView();
         }
+
         public ActionResult UpdateProfilePicture(int id)
         {
             return RedirectToAction("Upload", "Account", new { id });
         }
 
-        //Continue from here like Owner for pending, accpeted and rejected
+        //Continue from here like Owner for pending, accepted and rejected
         public ActionResult NewJobOffer()
         {
-            var provider = Db.MaintenanceProviders.Find(UserHelper.GetProviderId());
-
-            return View(Db.MaintenanceProviderAcceptedJobs.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList());
+            var provider = UserHelper.ProviderPrivateProfileHelper.GetProvider();
+            return View(UnitofWork.MaintenanceProviderAcceptedJobRepository.FindBy(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).ToList());
         }
 
         public ActionResult Partial2(UnitModelView unitModelView)
@@ -1240,12 +690,15 @@ namespace RentalMobile.Controllers
         //*************************************** WORK NOT COMPLETED***************************************//
         //*************************************************************************************************//
         //*************************************************************************************************//
+        #endregion
 
-        protected override void Dispose(bool disposing)
+        #region Common
+        public void JNotify(string message = "", string url = "")
         {
-            Db.Dispose();
-            base.Dispose(disposing);
+            ViewBag.Confirmation = true;
+            ViewBag.ConfirmationSuccess = new JNotfiyScriptQueryHelper().JNotifyConfirmationMessage(message, url);
         }
+        #endregion
 
     }
 }

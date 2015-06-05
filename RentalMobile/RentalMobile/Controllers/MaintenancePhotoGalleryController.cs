@@ -1,15 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Photo.MaintenancePhoto;
 using RentalMobile.Model.Models;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class MaintenancePhotoGalleryController : Controller
+    public class MaintenancePhotoGalleryController : BaseController
     {
-        private readonly RentalContext db = new RentalContext();
 
+        public MaintenancePhotoGalleryController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        {
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
+        }
+
+        #region ToDO
+        //TODO NEED TO COMPLETE AND CLEAN
         public JsonResult GetJsonData()
         {
             //var persons = new List<Person>
@@ -30,14 +41,14 @@ namespace RentalMobile.Controllers
             //                                              new Address{Line1 = "LaneD"}
             //                                          }}};
 
-            var persons = db.MaintenancePhotoes.ToList();
-            var p = persons.Select(d => new Photo {PhotoID = d.PhotoID, PathPath = d.PhotoPath}).ToList();
+            var persons = UnitofWork.MaintenancePhotoRepository.All;
+            var p = persons.Select(d => new Photo {PhotoId = d.PhotoID, PathPath = d.PhotoPath}).ToList();
 
 
 
             foreach (var ph in p)
             {
-                ph.PathPath = ph.PathPath.Replace(@"~\Photo", @"../../Photo").Replace("\\", "/");
+                ph.PathPath = ph.PathPath.Replace(@"~\Photo", @"../../Photo").Replace(@"\\", "/");
             }
             //foreach (var i in p)
                 //{
@@ -49,10 +60,9 @@ namespace RentalMobile.Controllers
 
         public JsonResult PopulateDetails(int id)
         {
-            var a = db.MaintenancePhotoes.ToList();
-            return Json(a, JsonRequestBehavior.AllowGet);
+            var photoes = UnitofWork.MaintenancePhotoRepository.All.ToList();
+            return Json(photoes, JsonRequestBehavior.AllowGet);
         }
-
 
         public ViewResult Json()
         {
@@ -75,152 +85,79 @@ namespace RentalMobile.Controllers
         //
         // GET: /MaintenancePhotoGallery/
 
-
-
-
-
-
-
-
-
-
+       #endregion
 
 
         public ViewResult Index()
         {
-            var maintenancephotoes = db.MaintenancePhotoes.Include(m => m.MaintenanceOrder);
+            var maintenancephotoes = UnitofWork.MaintenancePhotoRepository.AllIncluding(m => m.MaintenanceOrder);
             return View(maintenancephotoes.ToList());
         }
 
-
         public ViewResult Details(int id)
         {
-            MaintenancePhoto maintenancephoto = db.MaintenancePhotoes.Find(id);
+            var maintenancephoto = UnitofWork.MaintenancePhotoRepository.FindBy(x => x.MaintenanceID == id).FirstOrDefault();
             return View(maintenancephoto);
         }
 
-
         public ActionResult Create()
         {
-            ViewBag.MaintenanceID = new SelectList(db.MaintenanceOrders, "MaintenanceID", "Description");
+            ViewBag.MaintenanceID = new SelectList(UnitofWork.MaintenanceOrderRepository.All, "MaintenanceID", "Description");
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Create(MaintenancePhoto maintenancephoto)
         {
             if (ModelState.IsValid)
             {
-                db.MaintenancePhotoes.Add(maintenancephoto);
-                db.SaveChanges();
+                UnitofWork.MaintenancePhotoRepository.Add(maintenancephoto);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaintenanceID = new SelectList(db.MaintenanceOrders, "MaintenanceID", "Description",
+            ViewBag.MaintenanceID = new SelectList(UnitofWork.MaintenanceOrderRepository.All, "MaintenanceID", "Description",
                                                    maintenancephoto.MaintenanceID);
             return View(maintenancephoto);
         }
-
 
         public ActionResult Edit(int id)
         {
-            MaintenancePhoto maintenancephoto = db.MaintenancePhotoes.Find(id);
-            ViewBag.MaintenanceID = new SelectList(db.MaintenanceOrders, "MaintenanceID", "Description",
-                                                   maintenancephoto.MaintenanceID);
+            var maintenancephoto = UnitofWork.MaintenancePhotoRepository.FindBy(x => x.MaintenanceID == id).FirstOrDefault();
+            if (maintenancephoto == null) return null;
+            ViewBag.MaintenanceID = new SelectList(UnitofWork.MaintenanceOrderRepository.All, "MaintenanceID", "Description",
+                maintenancephoto.MaintenanceID);
             return View(maintenancephoto);
         }
-
 
         [HttpPost]
         public ActionResult Edit(MaintenancePhoto maintenancephoto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(maintenancephoto).State = EntityState.Modified;
-                db.SaveChanges();
+                UnitofWork.MaintenancePhotoRepository.Edit(maintenancephoto);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaintenanceID = new SelectList(db.MaintenanceOrders, "MaintenanceID", "Description",
+            ViewBag.MaintenanceID = new SelectList(UnitofWork.MaintenanceOrderRepository.All, "MaintenanceID", "Description",
                                                    maintenancephoto.MaintenanceID);
             return View(maintenancephoto);
         }
 
-
         public ActionResult Delete(int id)
         {
-            MaintenancePhoto maintenancephoto = db.MaintenancePhotoes.Find(id);
+            var maintenancephoto = UnitofWork.MaintenancePhotoRepository.FindBy(x => x.MaintenanceID == id).FirstOrDefault();
             return View(maintenancephoto);
         }
-
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            MaintenancePhoto maintenancephoto = db.MaintenancePhotoes.Find(id);
-            db.MaintenancePhotoes.Remove(maintenancephoto);
-            db.SaveChanges();
+            var maintenancephoto = UnitofWork.MaintenancePhotoRepository.FindBy(x => x.MaintenanceID == id).FirstOrDefault();
+            UnitofWork.MaintenancePhotoRepository.Delete(maintenancephoto);
+            UnitofWork.Save();
             return RedirectToAction("Index", "TenantMaintenance");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public class Person
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
-        public List<Address> Addresses { get; set; }
-    }
-
-    public class Address
-    {
-        public string Line1 { get; set; }
-        public string Line2 { get; set; }
-        public string ZipCode { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-    }
-
-    public class Photo
-    {
-        public int PhotoID { get; set; }
-        public string PathPath { get; set; }
     }
 }

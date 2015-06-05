@@ -8,7 +8,7 @@
     {
         try
         {
-            var fullDbPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
+            var fullDbPath = HttpContext.Current.Server.MapPath("~/App_Data/GeoLiteCity.dat");
             // Visitor's IP address
             // var visitorIP = Request.ServerVariables["REMOTE_ADDR"];
             var visitorIp = "68.70.88.2";
@@ -16,7 +16,7 @@
         }
         catch
         {
-            Response.Redirect(Request.Url.ToString());
+            HttpContext.Current.Response.Redirect( HttpContext.Current.Request.Url.ToString());
         }
         e.NavigateUrl = "~/Advertiser/AdHandler.ashx?id=" + e.AdProperties["ID"];
     }
@@ -25,7 +25,7 @@
     {
         try
         {
-            var fullDbPath = Server.MapPath("~/App_Data/GeoLiteCity.dat");
+            var fullDbPath = HttpContext.Current.Server.MapPath("~/App_Data/GeoLiteCity.dat");
             // Visitor's IP address
             // var visitorIP = Request.ServerVariables["REMOTE_ADDR"];
             var test = Request.ServerVariables["REMOTE_ADDR"];
@@ -34,7 +34,7 @@
         }
         catch
         {
-            Response.Redirect(Request.Url.ToString());
+            HttpContext.Current.Response.Redirect(HttpContext.Current.Request.Url.ToString());
         }
         e.NavigateUrl = "~/Advertiser/AdHandler.ashx?id=" + e.AdProperties["ID"];
     }

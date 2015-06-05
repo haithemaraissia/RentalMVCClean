@@ -1,19 +1,19 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class RentController : Controller
+    public class RentController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public RentController(UnitofWork uow)
+        public RentController(IGenericUnitofWork uow)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
         }
         public ActionResult Index()
         {
-            return View(_unitOfWork.UnitRepository.AllIncluding(x=>x.UnitPricing).ToList());
+            return View(UnitofWork.UnitRepository.AllIncluding(x => x.UnitPricing).ToList());
         }
 
     }

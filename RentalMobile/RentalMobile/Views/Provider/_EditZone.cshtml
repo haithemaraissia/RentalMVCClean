@@ -1,22 +1,7 @@
 ﻿@using RentalMobile.Helpers
 @model List<RentalMobile.Model.Models.MaintenanceProviderZone>
 @{
-    var availableSpot = 0;
-    
-    if (@Model.Any())
-    {
-        availableSpot = @UserHelper.GetTotalAvailableZoneSpotForProvider(Model.First().MaintenanceProviderId) - Model.Count();
-    }
-    else
-    {
-        if (ViewBag.TotalAvailableZoneSpot != null)
-        {
-            availableSpot = ViewBag.TotalAvailableZoneSpot;
-        }
-        
-    }
-
-
+    var availableSpot = ViewBag.AvailableSpot;
 }
 <div>
 </div>

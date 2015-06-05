@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Security.Principal;
-using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.SessionState;
 using Moq;
 
 namespace TestProject.UnitTest.Helpers
 {
     public static class ControllerContextHelper
     {
+        /// <summary>
+        /// You can either use mocking of faking
+        /// 
+        /// Fake live instance of HtpContext
+        /// Mock is Mock Instance of HtpContext
+        /// 
+        /// </summary>
+     
         public static void FakeHttpContext(this System.Web.Mvc.Controller controller)
         {
             HttpContext myhttpContext = new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
@@ -43,13 +45,9 @@ namespace TestProject.UnitTest.Helpers
                 new HttpResponse(null));
             HttpContext.Current = myhttpContext;
 
-            GenericIdentity ident = new GenericIdentity("sami5");
-
-            GenericPrincipal principal = new GenericPrincipal(ident, new string[] { "Specialist" });
-
-            System.Threading.Thread.CurrentPrincipal = principal;
-
-            String[] rolesArray = { "Specialist" };
+            var ident = new GenericIdentity("sami5");
+            var principal = new GenericPrincipal(ident, new[] { "Specialist" });
+            Thread.CurrentPrincipal = principal;
 
             // User is logged in
             HttpContext.Current.User = principal;

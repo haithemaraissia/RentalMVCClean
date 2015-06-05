@@ -50,10 +50,6 @@ UnitFeatureTestController
 UnitofWorkPatternController
 UnitRepositoryPatternController
 UploadAgreementController
-UploadController
-UploadMaintenancePhotoController
-UploadPropertyController
-UploadUnitPictureController
 
 
 

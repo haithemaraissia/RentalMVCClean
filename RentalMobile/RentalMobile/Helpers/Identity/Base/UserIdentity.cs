@@ -3,22 +3,24 @@ using System.Linq;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Identity.Abstract;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Roles;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Helpers.Identity.Base
 {
     public class UserIdentity : BaseController, IUserIdentity
     {
-        public UnitofWork UnitOfWork;
-        public static string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
-        public static string DefaultSpecialistName = "Specialist";
-        public static string TenantPhotoPath = "~/Photo/Tenant/Property";
-        public static string OwnerPhotoPath = "~/Photo/Owner/Property";
-        public static string AgentPhotoPath = "~/Photo/Agent/Property";
-        public static string ProviderPhotoPath = "~/Photo/Provider/Property";
-        public static string SpecialistPhotoPath = "~/Photo/Specialist/Property";
+        public string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
+        public string DefaultSpecialistName = "Specialist";
+        public string TenantPhotoPath = "~/Photo/Tenant/Property";
+        public string OwnerPhotoPath = "~/Photo/Owner/Property";
+        public string AgentPhotoPath = "~/Photo/Agent/Property";
+        public string ProviderPhotoPath = "~/Photo/Provider/Property";
+        public string SpecialistPhotoPath = "~/Photo/Specialist/Property";
 
-        public UserIdentity(UnitofWork uow, IMembershipService membershipService)
+        public IGenericUnitofWork UnitOfWork;
+
+        public UserIdentity(IGenericUnitofWork uow, IMembershipService membershipService)
         {
             MembershipService = membershipService;
             UnitOfWork = uow;
@@ -34,15 +36,22 @@ namespace RentalMobile.Helpers.Identity.Base
         public string GetUserNameFromMembership()
         {
             var currentuser = MembershipProvider.GetUser(HttpContext.User.Identity.Name, true);
-            return currentuser != null ? currentuser.UserName : UserHelper.Login();
+            return currentuser != null ? currentuser.UserName : new UserIdentity(UnitOfWork, MembershipService).Login();
         }
         //Using the Base Class
 
 
+        public string Login()
+        {
+            if (HttpContext.Request.Url != null)
+                return "~/NotAuthenticated/SignIn.aspx?ReturnUrl={0}" + HttpContext.Request.Url.AbsoluteUri;
+            return "~/NotAuthenticated/SignIn.aspx";
+        }
+
         public string GetUserName()
         {
             var currentuser =  MembershipService.GetUser(HttpContext.User.Identity.Name);
-            return currentuser != null ? currentuser.UserName: UserHelper.Login();
+            return currentuser != null ? currentuser.UserName : new UserIdentity(UnitOfWork, MembershipService).Login();
         }
 
         public Guid? GetUserGuid()
@@ -58,27 +67,27 @@ namespace RentalMobile.Helpers.Identity.Base
             return null;
         }
 
-        public int? GetTenantId(Guid userId)
+        public int GetTenantId(Guid userId)
         {
-            var tenant = UserHelper.Db.Tenants.FirstOrDefault(x => x.GUID == userId);
+            var tenant = UnitOfWork.TenantRepository.FindBy(x => x.GUID == userId).FirstOrDefault();
             if (tenant != null) return tenant.TenantId;
             return 0;
         }
 
-        public int? GetTenantId()
+        public int GetTenantId()
         {
             var userId = GetUserGuid();
-            var tenant = UserHelper.Db.Tenants.FirstOrDefault(x => x.GUID == userId);
+            var tenant = UnitOfWork.TenantRepository.FindBy(x => x.GUID == userId).FirstOrDefault();
             if (tenant != null) return tenant.TenantId;
             return 0;
         }
 
-        public int? GetTenantId(int id)
+        public int GetTenantId(int id)
         {
-            var userId = UserHelper.Db.Tenants.FirstOrDefault(x => x.TenantId == id);
+            var userId = UnitOfWork.TenantRepository.FindBy(x => x.TenantId == id).FirstOrDefault();
             if (userId != null)
             {
-                var tenant = UserHelper.Db.Tenants.FirstOrDefault(x => x.GUID == userId.GUID);
+                var tenant = UnitOfWork.TenantRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
                 if (tenant != null) return tenant.TenantId;
             }
             return 0;
@@ -87,17 +96,17 @@ namespace RentalMobile.Helpers.Identity.Base
         public int GetAgentId()
         {
             var userId = GetUserGuid();
-            var agent = UserHelper.Db.Agents.FirstOrDefault(x => x.GUID == userId);
+            var agent = UnitOfWork.AgentRepository.FindBy(x => x.GUID == userId).FirstOrDefault();
             if (agent != null) return agent.AgentId;
             return 0;
         }
 
         public int GetAgentId(int id)
         {
-            var userId = UserHelper.Db.Agents.FirstOrDefault(x => x.AgentId == id);
+            var userId = UnitOfWork.AgentRepository.FindBy(x => x.AgentId == id).FirstOrDefault();
             if (userId != null)
             {
-                var agent = UserHelper.Db.Agents.FirstOrDefault(x => x.GUID == userId.GUID);
+                var agent = UnitOfWork.AgentRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
                 if (agent != null) return agent.AgentId;
             }
             return 0;
@@ -106,17 +115,17 @@ namespace RentalMobile.Helpers.Identity.Base
         public int GetOwnerId()
         {
             var userId = GetUserGuid();
-            var owner = UserHelper.Db.Owners.FirstOrDefault(x => x.GUID == userId);
+            var owner = UnitOfWork.OwnerRepository.FindBy(x => x.GUID == userId).FirstOrDefault();
             if (owner != null) return owner.OwnerId;
             return 0;
         }
 
         public int GetOwnerId(int id)
         {
-            var userId = UserHelper.Db.Owners.FirstOrDefault(x => x.OwnerId == id);
+            var userId = UnitOfWork.OwnerRepository.FindBy(x => x.OwnerId == id).FirstOrDefault();
             if (userId != null)
             {
-                var owner = UserHelper.Db.Owners.FirstOrDefault(x => x.GUID == userId.GUID);
+                var owner = UnitOfWork.OwnerRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
                 if (owner != null) return owner.OwnerId;
             }
             return 0;
@@ -132,10 +141,10 @@ namespace RentalMobile.Helpers.Identity.Base
 
         public int GetSpecialistId(int id)
         {
-            var userId = UserHelper.Db.Specialists.FirstOrDefault(x => x.SpecialistId == id);
+            var userId = UnitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
             if (userId != null)
             {
-                var specialist = UserHelper.Db.Specialists.FirstOrDefault(x => x.GUID == userId.GUID);
+                var specialist = UnitOfWork.SpecialistRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
                 if (specialist != null) return specialist.SpecialistId;
             }
             return 0;
@@ -144,48 +153,109 @@ namespace RentalMobile.Helpers.Identity.Base
         public int GetProviderId()
         {
             var userId = GetUserGuid();
-            var provider = UserHelper.Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId);
+            var provider = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.GUID == userId).FirstOrDefault();
             if (provider != null) return provider.MaintenanceProviderId;
             return 0;
         }
 
         public int GetProviderId(int id)
         {
-            var userId = UserHelper.Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var userId = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == id).FirstOrDefault();
             if (userId != null)
             {
-                var provider = UserHelper.Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId.GUID);
+                var provider = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
                 if (provider != null) return provider.MaintenanceProviderId;
             }
             return 0;
         }
 
-        public  string GetCurrentRole(out string photoPath)
+        public int GetRoleId(string chosenRole)
         {
-            var user = HttpContext.User;
+            switch (chosenRole.ToLower())
+            {
+                case LookUpRoles.TenantRoleId:
+                    return 1;
+                case LookUpRoles.OwnerRoleId:
+                    return 2;
+                case LookUpRoles.AgentRoleId:
+                    return 3;
+                case LookUpRoles.SpecialistRoleId:
+                    return 4;
+                case LookUpRoles.ProviderRoleId:
+                    return 5;
+                case LookUpRoles.NotAuthenticatedRoleId:
+                    return 6;
+                default:
+                    return 6;
+            }
+        }
+
+        public string GetCurrentRole()
+        {
+            var user = System.Web.HttpContext.Current.User;
             if (user.IsInRole("Tenant"))
             {
-                photoPath = HttpContext.Server.MapPath(TenantPhotoPath);
                 return "Tenant";
             }
             if (user.IsInRole("Owner"))
             {
-                photoPath = HttpContext.Server.MapPath(OwnerPhotoPath);
                 return "Owner";
             }
             if (user.IsInRole("Agent"))
             {
-                photoPath = HttpContext.Server.MapPath(AgentPhotoPath);
                 return "Agent";
             }
             if (user.IsInRole("Provider"))
             {
-                photoPath = HttpContext.Server.MapPath(ProviderPhotoPath);
                 return "Provider";
+            }
+            return user.IsInRole("Specialist") ? "Specialist" : null;
+        }
+
+        public  string SetPhotoPathByCurrentRole(out string photoPath)
+        {
+            var user = HttpContext.User;
+            if (user.IsInRole(LookUpRoles.TenantRole))
+            {
+                photoPath = HttpContext.Server.MapPath(TenantPhotoPath);
+                return LookUpRoles.Tenant;
+            }
+            if (user.IsInRole(LookUpRoles.OwnerRole))
+            {
+                photoPath = HttpContext.Server.MapPath(OwnerPhotoPath);
+                return LookUpRoles.Owner;
+            }
+            if (user.IsInRole(LookUpRoles.AgentRole))
+            {
+                photoPath = HttpContext.Server.MapPath(AgentPhotoPath);
+                return LookUpRoles.Agent;
+            }
+            if (user.IsInRole(LookUpRoles.ProviderRole))
+            {
+                photoPath = HttpContext.Server.MapPath(ProviderPhotoPath);
+                return LookUpRoles.Provider;
             }
 
             photoPath = HttpContext.Server.MapPath(SpecialistPhotoPath);
-            return user.IsInRole("Specialist") ? "Specialist" : null;
+            return user.IsInRole(LookUpRoles.SpecialistRole) ? LookUpRoles.Agent : null;
+        }
+
+
+        public string ResolveImageUrl(string relativeUrl)
+        {
+            if (HttpContext.Request == null) return null;
+            return HttpContext.Request.Url != null ? 
+                new Uri(HttpContext.Request.Url, relativeUrl).AbsoluteUri : null;
+
+            //if (VirtualPathUtility.IsAppRelative(relativeUrl))
+            //{
+            //    return VirtualPathUtility.ToAbsolute(relativeUrl);
+            //}
+            //else
+            //{
+            //    var curPath = WebPageContext.Current.Page.TemplateInfo.VirtualPath;
+            //    var curDir = VirtualPathUtility.GetDirectory(curPath);
+            //    return VirtualPathUtility.ToAbsolute(VirtualPathUtility.Combine(curDir, relativeUrl));
         }
     }
 }

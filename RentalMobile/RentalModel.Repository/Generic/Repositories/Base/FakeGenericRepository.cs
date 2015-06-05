@@ -30,6 +30,41 @@ namespace RentalModel.Repository.Generic.Repositories.Base
             return MyList.Where(predicate.Compile()).AsEnumerable();
         }
 
+        public T Single(Expression<Func<T, bool>> predicate)
+        {
+            return MyList.Where(predicate.Compile()).Single();
+        }
+
+        public T SingleOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            return MyList.Where(predicate.Compile()).SingleOrDefault();
+        }
+
+        public T First(Expression<Func<T, bool>> predicate)
+        {
+            return MyList.Where(predicate.Compile()).First();
+        }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            return MyList.Where(predicate.Compile()).FirstOrDefault();
+        }
+        //Addition
+        public  IQueryable<T> Except(IQueryable<T> excluded)
+        {
+            return MyList.AsQueryable().Except( excluded).AsQueryable();
+        }
+        //Addition
+        public int Count()
+        {
+            return MyList.Count();
+        }
+
+        public int Count(Expression<Func<T, bool>> predicate)
+        {
+            return MyList.Count(predicate.Compile());
+        }
+
         public virtual T Find(T entity)
         {
             var index = MyList.IndexOf(entity);

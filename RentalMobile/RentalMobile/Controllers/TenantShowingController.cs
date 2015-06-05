@@ -1,26 +1,30 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
-    public class TenantShowingController : Controller
+    public class TenantShowingController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public TenantShowingController(UnitofWork uow)
+        public TenantShowingController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
         }
 
         public ViewResult Index()
         {
-            return View(_unitOfWork.TenantShowingRepository.All.ToList());
+            return View(UnitofWork.TenantShowingRepository.All.ToList());
         }
 
         public ViewResult Details(int id)
         {
-            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
+            var tenantshowing = UnitofWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
 
@@ -34,8 +38,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.TenantShowingRepository.Add(tenantshowing);
-                _unitOfWork.Save();
+                UnitofWork.TenantShowingRepository.Add(tenantshowing);
+                UnitofWork.Save();
                 return RedirectToAction("Index");  
             }
 
@@ -44,7 +48,7 @@ namespace RentalMobile.Controllers
         
         public ActionResult Edit(int id)
         {
-            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
+            var tenantshowing = UnitofWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
 
@@ -53,8 +57,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.TenantShowingRepository.Edit(tenantshowing);
-                _unitOfWork.Save();
+                UnitofWork.TenantShowingRepository.Edit(tenantshowing);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(tenantshowing);
@@ -62,16 +66,16 @@ namespace RentalMobile.Controllers
  
         public ActionResult Delete(int id)
         {
-            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
+            var tenantshowing = UnitofWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
             return View(tenantshowing);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var tenantshowing = _unitOfWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
-            _unitOfWork.TenantShowingRepository.Delete(tenantshowing);
-            _unitOfWork.Save();
+            var tenantshowing = UnitofWork.TenantShowingRepository.FindBy(x => x.ShowingId == id).FirstOrDefault();
+            UnitofWork.TenantShowingRepository.Delete(tenantshowing);
+            UnitofWork.Save();
             return RedirectToAction("Index");
         }
     }

@@ -1,6 +1,9 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using RentalMobile.Controllers;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -18,7 +21,12 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             // Arrange
             var agentRepo = new FakeAgentRepository();
             var uow = new UnitofWork { AgentRepository = agentRepo };
-            Controller = new AgentProfileController(uow);
+
+            //MockHelper
+            var mockHelper = new Mock<IUserHelper>();
+            mockHelper.Setup(x => x.AgentPrivateProfileHelper).Returns(new AgentPrivateProfileHelper(uow, null));
+            Controller = new AgentProfileController(uow, mockHelper.Object);
+
         }
 
         [TestMethod]

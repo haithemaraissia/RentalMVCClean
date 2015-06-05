@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -18,7 +19,7 @@ namespace TestProject.UnitTest.Controller.Profiles
             // Arrange
             var ownerProfileRepo = new FakeOwnerRepository();
             var uow = new UnitofWork { OwnerRepository = ownerProfileRepo };
-            Controller = new OwnerProfileController(uow);
+            Controller = new OwnerProfileController(uow,null);
         }
 
         [TestMethod]

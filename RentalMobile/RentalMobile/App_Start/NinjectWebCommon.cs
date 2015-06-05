@@ -5,6 +5,8 @@ using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
 using RentalMobile;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Generic.UnitofWork;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
@@ -63,6 +65,8 @@ namespace RentalMobile
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IGenericUnitofWork>().To<UnitofWork>().InRequestScope();
+            kernel.Bind<IMembershipService>().To<MembershipService>().InRequestScope();
+            kernel.Bind<IUserHelper>().To<CoreUserHelper>().InRequestScope();
         }        
     }
 }

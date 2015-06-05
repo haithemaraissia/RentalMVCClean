@@ -1,20 +1,19 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using RentalMobile.Helpers;
+﻿using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class TenantProfileController : Controller
+    public class TenantProfileController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public TenantProfileController(UnitofWork uow)
+        public TenantProfileController(IGenericUnitofWork uow)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
         }
+
         public ActionResult Index(int id)
         {
-            var tenant = _unitOfWork.TenantRepository.FindBy(x => x.TenantId == UserHelper.GetTenantId(id)).FirstOrDefault();
+            var tenant = UserHelper.TenantPublicProfileHelper.GetPublicProfileTenantByTenantId(id);
             if (tenant == null) return RedirectToAction("Index", "Home");
             ViewBag.TenantId = tenant.TenantId;
             ViewBag.TenantGoogleMap = tenant.GoogleMap;

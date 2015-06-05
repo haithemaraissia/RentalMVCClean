@@ -66,6 +66,41 @@ namespace TestProject.Before.UnitOfWork
             return MyUnits;
         }
 
+        public Unit Single(Expression<Func<Unit, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Unit SingleOrDefault(Expression<Func<Unit, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Unit First(Expression<Func<Unit, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Unit FirstOrDefault(Expression<Func<Unit, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Unit> Except(IQueryable<Unit> excluded)
+        {
+            return MyUnits.Except(excluded).AsQueryable();
+        }
+
+        public int Count()
+        {
+            return MyUnits.Count();
+        }
+
+        public int Count(Expression<Func<Unit, bool>> predicate)
+        {
+            return MyUnits.Count();
+        }
+
         public Unit Find(Unit entity)
         {
             return MyUnits.SingleOrDefault(x => x.UnitId == entity.UnitId);

@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Pattern.UnitOfWork;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -42,11 +43,21 @@ namespace RentalMobile.Helpers.Base
         //        return ControllerContext != null ? ControllerContext.HttpContext : null;
         //    }
         //}
+
+
+
+        #region UnitofWork UnitofWork
+        public IGenericUnitofWork UnitofWork;
+        #endregion
+
+
         #region Membership provider
-
         public IMembershipService MembershipService;
+        #endregion
 
-
+        #region UserHelper
+        public IUserHelper UserHelper;
+         #endregion
 
         private MembershipProvider _membershipProvider;
         public virtual MembershipProvider MembershipProvider
@@ -64,8 +75,6 @@ namespace RentalMobile.Helpers.Base
                 _membershipProvider = value;
             }
         }
-
-        #endregion
 
     }
 }

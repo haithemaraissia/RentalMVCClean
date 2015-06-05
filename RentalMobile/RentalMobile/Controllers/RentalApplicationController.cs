@@ -1,26 +1,27 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class RentalApplicationController : Controller
+    public class RentalApplicationController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public RentalApplicationController(UnitofWork uow)
+
+        public RentalApplicationController(IGenericUnitofWork uow)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
         }
 
         public ViewResult Index()
         {
-            return View(_unitOfWork.RentalApplicationRepository.All.ToList());
+            return View(UnitofWork.RentalApplicationRepository.All.ToList());
         }
 
         public ViewResult Details(int id)
         {
-            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            var rentalapplication = UnitofWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
 
@@ -34,17 +35,17 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.RentalApplicationRepository.Add(rentalapplication);
-                _unitOfWork.Save();
+                UnitofWork.RentalApplicationRepository.Add(rentalapplication);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
+           // var errors = ModelState.Values.SelectMany(v => v.Errors);
             return View(rentalapplication);
         }
 
         public ActionResult Edit(int id)
         {
-            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            var rentalapplication = UnitofWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
 
@@ -53,8 +54,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.RentalApplicationRepository.Edit(rentalapplication);
-                _unitOfWork.Save();
+                UnitofWork.RentalApplicationRepository.Edit(rentalapplication);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(rentalapplication);
@@ -62,22 +63,22 @@ namespace RentalMobile.Controllers
 
         public ActionResult Delete(int id)
         {
-            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            var rentalapplication = UnitofWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
-            _unitOfWork.RentalApplicationRepository.Delete(rentalapplication);
-            _unitOfWork.Save();
+            var rentalapplication = UnitofWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            UnitofWork.RentalApplicationRepository.Delete(rentalapplication);
+            UnitofWork.Save();
             return RedirectToAction("Index");
         }
 
         public ActionResult Submit(int id)
         {
-            var rentalapplication = _unitOfWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
+            var rentalapplication = UnitofWork.RentalApplicationRepository.FindBy(x => x.ApplicationId == id).FirstOrDefault();
             return View(rentalapplication);
         }
 
@@ -99,8 +100,8 @@ namespace RentalMobile.Controllers
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.RentalApplicationRepository.Add(rentalapplication);
-                _unitOfWork.Save();
+                UnitofWork.RentalApplicationRepository.Add(rentalapplication);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(rentalapplication);

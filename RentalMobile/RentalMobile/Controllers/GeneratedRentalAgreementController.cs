@@ -1,26 +1,26 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using RentalMobile.Helpers.Base;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 {
-    public class GeneratedRentalAgreementController : Controller
+    public class GeneratedRentalAgreementController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public GeneratedRentalAgreementController(UnitofWork uow)
+        public GeneratedRentalAgreementController(IGenericUnitofWork uow)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
         }
 
         public ViewResult Index()
         {
-            return View(_unitOfWork.GeneratedRentalContractRepository.All.ToList());
+            return View(UnitofWork.GeneratedRentalContractRepository.All.ToList());
         }
 
         public ViewResult Details(int id)
         {
-            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
+            var generatedrentalcontract = UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
 
@@ -34,8 +34,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.GeneratedRentalContractRepository.Add(generatedrentalcontract);
-                _unitOfWork.Save();
+                UnitofWork.GeneratedRentalContractRepository.Add(generatedrentalcontract);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
 
@@ -44,7 +44,7 @@ namespace RentalMobile.Controllers
 
         public ActionResult Edit(int id)
         {
-            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
+            var generatedrentalcontract = UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
 
@@ -54,8 +54,8 @@ namespace RentalMobile.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.GeneratedRentalContractRepository.Edit(generatedrentalcontract);
-                _unitOfWork.Save();
+                UnitofWork.GeneratedRentalContractRepository.Edit(generatedrentalcontract);
+                UnitofWork.Save();
                 return RedirectToAction("Index");
             }
             return View(generatedrentalcontract);
@@ -64,16 +64,16 @@ namespace RentalMobile.Controllers
 
         public ActionResult Delete(int id)
         {
-            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
+            var generatedrentalcontract = UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
             return View(generatedrentalcontract);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var generatedrentalcontract = _unitOfWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
-            _unitOfWork.GeneratedRentalContractRepository.Delete(generatedrentalcontract);
-            _unitOfWork.Save();
+            var generatedrentalcontract = UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.ID == id).FirstOrDefault();
+            UnitofWork.GeneratedRentalContractRepository.Delete(generatedrentalcontract);
+            UnitofWork.Save();
             return RedirectToAction("Index");
         }
     }

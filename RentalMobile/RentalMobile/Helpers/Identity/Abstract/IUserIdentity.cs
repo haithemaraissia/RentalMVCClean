@@ -7,9 +7,9 @@ namespace RentalMobile.Helpers.Identity.Abstract
         string Login();
         string GetUserName();
         Guid? GetUserGuid();
-        int? GetTenantId(Guid userId);
-        int? GetTenantId();
-        int? GetTenantId(int id);
+        int GetTenantId(Guid userId);
+        int GetTenantId();
+        int GetTenantId(int id);
         int GetAgentId();
         int GetAgentId(int id);
         int GetOwnerId();
@@ -19,7 +19,8 @@ namespace RentalMobile.Helpers.Identity.Abstract
         int GetProviderId();
         int GetProviderId(int id);
         int GetRoleId(string chosenRole);
-        string GetCurrentRole(out string photoPath);
+        string GetCurrentRole();
+        string SetPhotoPathByCurrentRole(out string photoPath);
         string ResolveImageUrl(string relativeUrl);
     }
 }

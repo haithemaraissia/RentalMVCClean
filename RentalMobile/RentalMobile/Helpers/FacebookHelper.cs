@@ -8,9 +8,9 @@ using Facebook;
 
 namespace RentalMobile.Helpers
 {
-    public static class Facebook
+    public  class Facebook
     {
-        public static void CheckAuthorization()
+        public  void CheckAuthorization()
         {
 
             const string appId = "491313520953187";

@@ -20,8 +20,8 @@ namespace TestProject.UnitTest.Core.InProgress.Helpers
    [TestClass]
     public class UserIdentityTest
     {
-       
-        public TestHelper Helper = new TestHelper();
+
+       public AssertHelper Helper = new AssertHelper();
         public UnitofWork Uow;
         [TestInitialize]
         public void Initialize()

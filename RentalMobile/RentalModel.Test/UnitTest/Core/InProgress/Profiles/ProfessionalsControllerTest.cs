@@ -1,24 +1,16 @@
-using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Principal;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
-using RentalMobile.Helpers;
-using RentalMobile.Helpers.Base;
-using RentalMobile.Helpers.Identity;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
-using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
-using TestProject.Fake;
 using TestProject.UnitTest.Helpers;
 
 namespace TestProject.UnitTest.Core.InProgress.Profiles
@@ -28,7 +20,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
     public class ProfessionalsControllerTest
     {
         public ProfessionalsController Controller;
-        public TestHelper Helper = new TestHelper();
+        public AssertHelper Helper = new AssertHelper();
         public UnitofWork Uow;
         [TestInitialize]
         public void Initialize()
@@ -60,13 +52,12 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
              userMock.Setup(u => u.ProviderUserKey).Returns(secondSpecialist.GUID);
              userMock.Setup(u => u.UserName).Returns(secondSpecialist.FirstName);
              membershipMock.Setup(s => s.GetUser(It.IsAny<string>())).Returns(userMock.Object);
-             Controller = new ProfessionalsController(Uow, membershipMock.Object);
+             Controller = new ProfessionalsController(Uow, membershipMock.Object, new CoreUserHelper(Uow, membershipMock.Object));
         }
 
         /// <summary>
         /// Index
         /// </summary>
-
         [TestCategory("Index")]
         [TestMethod]
         public void Index_Where_Id_isNull_And_sharespecialist_isNull_And_InsertingNewComment_isNull_Should_Return_Null()
@@ -160,7 +151,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
                 "http://www.linkedin.com/shareArticle?mini=true&url=http://tempuri.org/&title=&summary=&source=http://www.haithem-araissia.com");
         }
 
-
         /// <summary>
         /// Coverage Partial View
         /// </summary>
@@ -251,7 +241,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
         /// <summary>
         /// Forward to Friend
         /// </summary>
-
         [TestCategory("ForwardtoFriend")]
         [TestMethod]
         public void ForwardToFriend()
@@ -345,27 +334,27 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             Assert.AreEqual(viewResult.ViewBag.CommentCount, "( 2 )");
         }
 
-        [TestCategory("GetSpecialistPrimaryPhoto")]
-        [TestMethod]
-        public void GetSpecialistPrimaryPhoto_Wher_Id_Is_Null_Should_Returns_Default_Specialist_Photo()
-        {
-            //Act
-            var actual = Controller.GetSpecialistPrimaryWorkPhoto(0);
+        //[TestCategory("GetSpecialistPrimaryPhoto")]
+        //[TestMethod]
+        //public void GetSpecialistPrimaryPhoto_Wher_Id_Is_Null_Should_Returns_Default_Specialist_Photo()
+        //{
+        //    //Act
+        //    var actual = Controller.GetSpecialistPrimaryWorkPhoto(0);
 
-            //Assert
-            Assert.AreEqual(actual, "./../images/dotimages/home-handyman-projects.jpg");
-        }
+        //    //Assert
+        //    Assert.AreEqual(actual, "./../images/dotimages/home-handyman-projects.jpg");
+        //}
 
-        [TestCategory("GetSpecialistPrimaryPhoto")]
-        [TestMethod]
-        public void GetSpecialistPrimaryPhoto_Wher_Id_Is_NOT_Null_()
-        {
-            //Act
-            var actual = Controller.GetSpecialistPrimaryWorkPhoto(2);
+        //[TestCategory("GetSpecialistPrimaryPhoto")]
+        //[TestMethod]
+        //public void GetSpecialistPrimaryPhoto_Wher_Id_Is_NOT_Null_()
+        //{
+        //    //Act
+        //    var actual = Controller.GetSpecialistPrimaryWorkPhoto(2);
 
-            //Assert
-            Assert.AreEqual(actual, "PhotoPath");
-        }
+        //    //Assert
+        //    Assert.AreEqual(actual, "PhotoPath");
+        //}
 
         /// <summary>
         /// InsertComment 
@@ -405,7 +394,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             Assert.Inconclusive("Not Implemented Yet");
         }
 
-
         [TestCategory("InsertComment")]
         [TestMethod]
         public void InsertCommen_When_Id_Is_Zero_Should_Return_Null()
@@ -419,10 +407,9 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             Assert.AreEqual(routeResult.RouteValues["action"], "Index");
         }
 
-
         [TestCategory("InsertComment")]
         [TestMethod]
-        public void InsertCommen_When_Poster_Is_Not_Authenticated_Should_Return_DefaultPoster()
+        public void InsertComment_When_Poster_Is_Not_Authenticated_Should_Return_DefaultPoster()
         {
             //Act
             Controller.FakeHttpContext();
@@ -442,7 +429,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             Assert.AreEqual(defaultInsertedRecord.First().PosterPhotoPath,
                 "../../images/dotimages/single-property/agent-480x350.png");
         }
-
 
         [TestCategory("InsertComment")]
         [TestMethod]
@@ -467,7 +453,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
                 "http://tempuri.org:80/professionals/2");
         }
 
-
         /// <summary>
         /// HireProfessional 
         /// </summary>
@@ -477,7 +462,6 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
         {
             Assert.Inconclusive("Not Implemented Yet");
         }
-
 
         [TestCleanup]
         public void CleanUp()

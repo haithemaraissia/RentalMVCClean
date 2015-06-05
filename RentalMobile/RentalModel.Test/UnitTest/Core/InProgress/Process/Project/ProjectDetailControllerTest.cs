@@ -23,7 +23,7 @@ namespace TestProject.UnitTest.Core.NotDone
             var fakeProjectDetails = new FakeProjectPhotos();
             var projectDetailRepo = new FakeProjectPhotoRepository(fakeProjectDetails.MyProjectPhotos);
             var uow = new UnitofWork { ProjectPhotoRepository = projectDetailRepo };
-            Controller = new ProjectDetailController(uow);
+            Controller = new ProjectDetailController(uow, null);
         }
 
         [TestMethod]

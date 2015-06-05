@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using RentalMobile.Helpers;
+using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers
 { 
-    public class ProjectDetailController : Controller
+    public class ProjectDetailController : BaseController
     {
-        private readonly UnitofWork _unitOfWork;
-        public ProjectDetailController(UnitofWork uow)
+
+        public ProjectDetailController(IGenericUnitofWork uow,  IUserHelper userHelper)
         {
-            _unitOfWork = uow;
+            UnitofWork = uow;
+            UserHelper = userHelper;
         }
 
         public ViewResult Index()
         {
-            return View(_unitOfWork.ProjectPhotoRepository.All.ToList());
+            return View(UnitofWork.ProjectPhotoRepository.All.ToList());
         }
-
 
         [HttpPost]
         public ActionResult MakeOffer(FormCollection form)
@@ -29,7 +30,6 @@ namespace RentalMobile.Controllers
             return RedirectToAction("Confirm");
         }
 
-
         public ActionResult Confirm()
         {
             ViewBag.StartDate = TempData["startDate"];
@@ -38,14 +38,13 @@ namespace RentalMobile.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult Confirm(FormCollection form)
         {
 
             //SpecialistID
-            var specialistID = (Convert.ToInt32( form["HiddenProjectId"]));
-            var specialist = _unitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == UserHelper.GetAgentId(specialistID)).FirstOrDefault();
+            var specialistId = (Convert.ToInt32( form["HiddenProjectId"]));
+            var specialist = UserHelper.SpecialistPrivateProfileHelper.GetPrivateProfileSpecialistBySpecialistId(specialistId);
 
             if (specialist == null)
             {

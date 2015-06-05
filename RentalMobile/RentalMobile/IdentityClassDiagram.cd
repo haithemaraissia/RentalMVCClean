@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.Roles.IAgentHelper">
+    <Position X="7.25" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\Roles\IAgentHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.Roles.IOwnerHelper">
+    <Position X="2" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\Roles\IOwnerHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.Roles.IProviderHelper">
+    <Position X="2" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\Roles\IProviderHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.Roles.ISpecialistHelper">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAEAAAAAACAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\Roles\ISpecialistHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.Roles.ITenantHelper">
+    <Position X="2" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\Roles\ITenantHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.ILocationHelper">
+    <Position X="7.75" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAACAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\ILocationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.IPosterHelper">
+    <Position X="1" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgAAAQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Helpers\Identity\Abstract\IPosterHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Identity.Abstract.IUserIdentity">
+    <Position X="4.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAADAAAAAAAIQAAAAAAAAAAAAAAAAIQAABAAAM=</HashCode>
+      <FileName>Helpers\Identity\Abstract\IUserIdentity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RentalMobile.Helpers.Core.IUserHelper" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAAAAAAAAAAAAAAAEAAAIAAAAAAEAACAAAFAA=</HashCode>
+      <FileName>Helpers\Core\IUserHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
