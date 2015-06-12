@@ -169,6 +169,17 @@
     <Content Include="BackUp\View\Unit\Edit.cshtml" />
     <Content Include="BackUp\View\Unit\Index.cshtml" />
     <Content Include="BackUp\View\UnitDetail\Index.cshtml" />
+    <None Include="BackUp\Views\RATest\Create.cshtml" />
+    <None Include="BackUp\Views\RATest\Delete.cshtml" />
+    <None Include="BackUp\Views\RATest\Details.cshtml" />
+    <None Include="BackUp\Views\RATest\Edit.cshtml" />
+    <None Include="BackUp\Views\RATest\Index.cshtml" />
+    <Content Include="BackUp\Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Create.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Delete.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Details.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Edit.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Index.cshtml" />
     <None Include="DailyProcess\ProcessDaytoDay.docx" />
     <None Include="Documentation\Done\BrainStorming+MaintenanceData\Brainstorming 101.docx" />
     <None Include="Documentation\Done\BrainStorming+MaintenanceData\Data\ListofAllHomerelatedFromAngieList.docx" />
@@ -191,25 +202,14 @@
     <None Include="Documentation\What I %27m doing.docx" />
     <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
     <None Include="packages.config" />
-    <Content Include="BackUp\Views\TenantFavorite\Create.cshtml" />
-    <Content Include="BackUp\Views\TenantFavorite\Delete.cshtml" />
-    <Content Include="BackUp\Views\TenantFavorite\Details.cshtml" />
-    <Content Include="BackUp\Views\TenantFavorite\Edit.cshtml" />
-    <Content Include="BackUp\Views\TenantFavorite\Index.cshtml" />
-    <Content Include="BackUp\Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
     <Content Include="ToDelete\GeneratedContract.cshtml" />
-    <None Include="BackUp\Views\RATest\Create.cshtml" />
-    <None Include="BackUp\Views\RATest\Delete.cshtml" />
-    <None Include="BackUp\Views\RATest\Details.cshtml" />
-    <None Include="BackUp\Views\RATest\Edit.cshtml" />
-    <None Include="BackUp\Views\RATest\Index.cshtml" />
+    <None Include="WHAT TO DO\What TO DO After Including UnitofWork pattern.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Architecture\notes\day1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documentation\Done\Structure\" />
-    <Folder Include="WHAT TO DO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
