@@ -119,7 +119,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Shared
             // var tenant = db.Tenants.Find(UserHelper.GetTenantID());
 
             //Provider
-            //var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
+            //var provider = db.MaintenanceProviderProfile.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
 
         }
 
@@ -184,7 +184,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Shared
         //    //Generate Contracts for all
 
 
-        //    var provider = db.MaintenanceProviders.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
+        //    var provider = db.MaintenanceProviderProfile.Find(UserHelper.GetProviderID((Convert.ToInt32(providerid))));
 
 
         //    var tenant = db.Tenants.Find(UserHelper.GetTenantID());

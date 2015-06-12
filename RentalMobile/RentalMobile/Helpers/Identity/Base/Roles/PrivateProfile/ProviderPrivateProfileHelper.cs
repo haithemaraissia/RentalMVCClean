@@ -488,10 +488,10 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
             UnitofWork.MaintenanceProviderRepository.Delete(GetPrivateProfileProviderByProviderId(providerId));
 
             //TODO// Delete All associated records
-            //var Providershowing = Db.ProviderShowings.Where(x => x.ProviderId == id).ToList();
-            //foreach (var x in Providershowing)
+            //var ProviderProfilehowing = Db.ProviderProfilehowings.Where(x => x.ProviderId == id).ToList();
+            //foreach (var x in ProviderProfilehowing)
             //{
-            //    Db.ProviderShowings.Remove(x);
+            //    Db.ProviderProfilehowings.Remove(x);
             //}
             //Db.SaveChanges();
 

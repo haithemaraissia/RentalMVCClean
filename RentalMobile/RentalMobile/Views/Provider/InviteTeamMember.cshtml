@@ -48,12 +48,12 @@
                                     <p style="margin-bottom: 2em; text-align: center">
                                         to Join</p>
                                     <p style="text-align: center">
-                                        <a href="../Providers/@item.MaintenanceProviderId" target="_blank">@item.TeamName</a>
+                                        <a href="../ProviderProfile/@item.MaintenanceProviderId" target="_blank">@item.TeamName</a>
                                     </p>
                                 </h4>
                             </div>
                             <figure class="four columns alpha">
-                                @Html.ActionLink(" ", "Index", "Providers", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
+                                @Html.ActionLink(" ", "Index", "ProviderProfile", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
                                 <img src="@{new ViewHelper().GetTeamPrimaryPhoto(@item.TeamId)}" class=" scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="three columns alpha">

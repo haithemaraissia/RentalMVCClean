@@ -4,18 +4,18 @@ using RentalMobile.Controllers.PublicProfile;
 namespace TestProject.UnitTest.Core.InProgress.Profiles
 {
     [TestClass]
-    public class ProvidersControllerTest
+    public class ProviderProfileControllerTest
     {
-        public ProvidersController Controller;
+        public ProviderProfileController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeProviders = new FakeProviders();
-            //var providerRepo = new FakeProviderRepository(fakeProviders.MyProviders);
+            //var fakeProviderProfile = new FakeProviderProfile();
+            //var providerRepo = new FakeProviderRepository(fakeProviderProfile.MyProviderProfile);
             //var uow = new UnitofWork { ProviderRepository = providerRepo };
-            //Controller = new ProvidersController(uow);
+            //Controller = new ProviderProfileController(uow);
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
+            //var data = viewResult.ViewData.Model as IList<ProviderProfileController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -42,7 +42,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
+            //var data = viewResult.ViewData.Model as IList<ProviderProfileController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -55,7 +55,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProvidersController;
+            //var data = viewResult.ViewData.Model as ProviderProfileController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -72,7 +72,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProvidersController;
+            //var data = viewResult.ViewData.Model as ProviderProfileController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

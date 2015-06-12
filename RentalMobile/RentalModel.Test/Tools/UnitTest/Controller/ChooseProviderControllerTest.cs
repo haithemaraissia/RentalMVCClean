@@ -11,8 +11,8 @@ namespace TestProject.Tools.UnitTest.Controller
         public void Initialize()
         {
             // Arrange
-            //var fakeChooseProviders = new FakeChooseProviders();
-            //var chooseProviderRepo = new FakeChooseProviderRepository(fakeChooseProviders.MyChooseProviders);
+            //var fakeChooseProviderProfile = new FakeChooseProviderProfile();
+            //var chooseProviderRepo = new FakeChooseProviderRepository(fakeChooseProviderProfile.MyChooseProviderProfile);
             //var uow = new UnitofWork { ChooseProviderRepository = chooseProviderRepo };
             //Controller = new ChooseProviderController(uow);
         }

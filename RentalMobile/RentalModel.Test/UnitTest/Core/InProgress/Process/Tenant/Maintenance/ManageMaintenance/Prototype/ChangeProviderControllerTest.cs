@@ -11,8 +11,8 @@ namespace TestProject.UnitTest.Core.InProgress.Process.Tenant.Maintenance.Manage
         public void Initialize()
         {
             // Arrange
-            //var fakeChangeProviders = new FakeChangeProviders();
-            //var changeProviderRepo = new FakeChangeProviderRepository(fakeChangeProviders.MyChangeProviders);
+            //var fakeChangeProviderProfile = new FakeChangeProviderProfile();
+            //var changeProviderRepo = new FakeChangeProviderRepository(fakeChangeProviderProfile.MyChangeProviderProfile);
             //var uow = new UnitofWork { ChangeProviderRepository = changeProviderRepo };
             //Controller = new ChangeProviderController(uow);
         }

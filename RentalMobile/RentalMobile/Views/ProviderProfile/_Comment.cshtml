@@ -30,7 +30,7 @@
 </ul>
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("InsertComment", "Providers", new { id = ViewBag.providerId, @class = "comment-form fourteen columns row", enctype = "multipart/form-data" }, FormMethod.Post))
+    using (Html.BeginForm("InsertComment", "ProviderProfile", new { id = ViewBag.providerId, @class = "comment-form fourteen columns row", enctype = "multipart/form-data" }, FormMethod.Post))
     {
     <h4 class="divider-title fourteen columns alpha omega ">
         Leave your comment</h4>

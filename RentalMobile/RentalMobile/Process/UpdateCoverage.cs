@@ -32,7 +32,7 @@ namespace RentalMobile.Process
 
                     return new ProviderMaintenanceProfile
                         {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(ProviderId),
+                            MaintenanceProvider = Db.MaintenanceProviderProfile.Find(ProviderId),
                             MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
                             MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
                             MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
@@ -167,7 +167,7 @@ namespace RentalMobile.Process
         public bool IsPropertyInfoTrueforOtherMemberInTheTeam(PropertyInfo propertyInfo, Type coverageType, object coverageValue)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(ProviderId);
+            var provider = Db.MaintenanceProviderProfile.Find(ProviderId);
             var allSpecialistInTeam = Db.MaintenanceTeamAssociations.
                 Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId && x.SpecialistId != SpecialistId).Select(x => x.SpecialistId).ToList();
             if (allSpecialistInTeam.Count > 0)

@@ -132,7 +132,7 @@ namespace RentalMobile.Helpers.Identity.Base
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                        currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
+                        currenturl + "/ProviderProfile/" + provider.MaintenanceProviderId, provider.Photo,
                         provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -207,7 +207,7 @@ namespace RentalMobile.Helpers.Identity.Base
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                        currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
+                        currenturl + "/ProviderProfile/" + provider.MaintenanceProviderId, provider.Photo,
                         provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }

@@ -33,7 +33,7 @@ namespace RentalMobile.ControllerTester
 
         //            return new ProviderMaintenanceProfile
         //            {
-        //                MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
+        //                MaintenanceProvider = Db.MaintenanceProviderProfile.Find(providerId),
         //                MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
         //                MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
         //                MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
@@ -133,7 +133,7 @@ namespace RentalMobile.ControllerTester
         //{
 
         //    var propertyInfoTrueforOtherMember = false;
-        //    var provider = Db.MaintenanceProviders.Find(providerId);
+        //    var provider = Db.MaintenanceProviderProfile.Find(providerId);
         //    var allSpecialistInTeam = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId).Select(x => x.SpecialistId).ToList();
         //    if (allSpecialistInTeam.Count > 0)
         //    {
@@ -368,7 +368,7 @@ namespace RentalMobile.ControllerTester
         //    if (providerId != null)
         //    {
         //        //Get All Specialist in Team
-        //        var provider = Db.MaintenanceProviders.Find(providerId);
+        //        var provider = Db.MaintenanceProviderProfile.Find(providerId);
         //        var allSpecialistInTeam =
         //            Db.MaintenanceTeamAssociations.
         //               Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)

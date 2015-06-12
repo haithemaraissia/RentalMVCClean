@@ -4963,7 +4963,7 @@ warning 6002: The table/view 'DB_33736_rental.dbo.ParkingSpace' does not have a 
           <EntitySet Name="MaintenanceNewConstructions" EntityType="Self.MaintenanceNewConstruction" />
           <EntitySet Name="MaintenanceOrders" EntityType="Self.MaintenanceOrder" />
           <EntitySet Name="MaintenancePhotoes" EntityType="Self.MaintenancePhoto" />
-          <EntitySet Name="MaintenanceProviders" EntityType="Self.MaintenanceProvider" />
+          <EntitySet Name="MaintenanceProviderProfile" EntityType="Self.MaintenanceProvider" />
           <EntitySet Name="MaintenanceProviderAcceptedJobs" EntityType="Self.MaintenanceProviderAcceptedJob" />
           <EntitySet Name="MaintenanceProviderNewJobOffers" EntityType="Self.MaintenanceProviderNewJobOffer" />
           <EntitySet Name="MaintenanceProviderRejectedJobs" EntityType="Self.MaintenanceProviderRejectedJob" />
@@ -6013,7 +6013,7 @@ warning 6002: The table/view 'DB_33736_rental.dbo.ParkingSpace' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceProviders">
+          <EntitySetMapping Name="MaintenanceProviderProfile">
             <EntityTypeMapping TypeName="RentalModel.MaintenanceProvider">
               <MappingFragment StoreEntitySet="MaintenanceProvider">
                 <ScalarProperty Name="MaintenanceProviderId" ColumnName="MaintenanceProviderId" />

@@ -581,7 +581,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceCompanySpecialization(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -616,7 +616,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceCustomService(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -651,7 +651,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceExterior(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -686,7 +686,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceInterior(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -721,7 +721,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceNewConstruction(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -756,7 +756,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceRepair(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -791,7 +791,7 @@ namespace RentalMobile.ControllerTester
         public bool IsPropertyInfoTrueforOtherMemberForMaintenanceUtility(int providerId, PropertyInfo propertyInfo)
         {
             var propertyInfoTrueforOtherMember = false;
-            var provider = Db.MaintenanceProviders.Find(providerId);
+            var provider = Db.MaintenanceProviderProfile.Find(providerId);
             var allSpecialistInTeam =
                 Db.MaintenanceTeamAssociations.
                    Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -843,7 +843,7 @@ namespace RentalMobile.ControllerTester
 
                     return new ProviderMaintenanceProfile
                         {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
+                            MaintenanceProvider = Db.MaintenanceProviderProfile.Find(providerId),
                             MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
                             MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
                             MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),
@@ -892,7 +892,7 @@ namespace RentalMobile.ControllerTester
             if (providerId != 0)
             {
                 //Get All Specialist in Team
-                var provider = Db.MaintenanceProviders.Find(providerId);
+                var provider = Db.MaintenanceProviderProfile.Find(providerId);
                 var allSpecialistInTeam =
                     Db.MaintenanceTeamAssociations.
                        Where(x => x.MaintenanceProviderId == provider.MaintenanceProviderId)
@@ -1114,7 +1114,7 @@ namespace RentalMobile.ControllerTester
 
                     var providerMaintenanceProfile = new ProviderMaintenanceProfile
                         {
-                            MaintenanceProvider = Db.MaintenanceProviders.Find(providerId),
+                            MaintenanceProvider = Db.MaintenanceProviderProfile.Find(providerId),
                             MaintenanceCompanyLookUp = Db.MaintenanceCompanyLookUps.Find(companyId),
                             MaintenanceCompany = Db.MaintenanceCompanies.Find(companyId),
                             MaintenanceCompanySpecialization = Db.MaintenanceCompanySpecializations.Find(companyId),

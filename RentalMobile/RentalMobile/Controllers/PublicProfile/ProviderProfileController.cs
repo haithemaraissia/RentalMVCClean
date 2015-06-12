@@ -12,10 +12,10 @@ using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers.PublicProfile
 {
-    public class ProvidersController : BaseController
+    public class ProviderProfileController : BaseController
     {
      
-        public ProvidersController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        public ProviderProfileController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
             UnitofWork = uow;
             MembershipService = membershipService;
@@ -26,7 +26,7 @@ namespace RentalMobile.Controllers.PublicProfile
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Maintain");
+                return RedirectToAction("Index", "Providers");
             }
             var provider = UserHelper.GetPublicProfileProviderByProviderId((int)id);
             ViewBag.ProviderProfile = provider;
@@ -66,7 +66,7 @@ namespace RentalMobile.Controllers.PublicProfile
 
                 return View(provider);
             }
-            return RedirectToAction("Index", "Maintain");
+            return RedirectToAction("Index", "Providers");
         }
 
         public PartialViewResult _Coverage(int id)
@@ -160,7 +160,7 @@ namespace RentalMobile.Controllers.PublicProfile
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "providers");
+                return RedirectToAction("Index", "ProviderProfile");
             }
             var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
             if (ModelState.IsValid)

@@ -68,7 +68,7 @@ namespace RentalMobile.Helpers
         public static string FancyProvider(int id)
         {
             const string fancyBoxScriptBeginning = @" $.fancybox.open([";
-            var currentprovider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var currentprovider = db.MaintenanceProviderProfile.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (currentprovider != null)
             {
                 var providerWorkGallery = db.ProviderWorks.Where(x => x.ProviderId == id);

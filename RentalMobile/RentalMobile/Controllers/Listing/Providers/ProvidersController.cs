@@ -3,11 +3,11 @@ using System.Web.Mvc;
 using RentalMobile.Helpers.Base;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace RentalMobile.Controllers.Listing.Providers
+namespace RentalMobile.Controllers.Listing.ProviderProfile
 {
-    public class MaintainController : BaseController
+    public class ProvidersController : BaseController
     {
-        public MaintainController(IGenericUnitofWork uow)
+        public ProvidersController(IGenericUnitofWork uow)
         {
             UnitofWork = uow;
         }

@@ -3,18 +3,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestProject.Tools.UnitTest.Controller
 {
     [TestClass]
-    public class MaintainControllerTest
+    public class ProvidersControllerTest
     {
-        //public MaintainController Controller;
+        //public ProvidersController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            //var fakeMaintains = new FakeMaintains();
-            //var maintainRepo = new FakeMaintainRepository(fakeMaintains.MyMaintains);
-            //var uow = new UnitofWork { MaintainRepository = maintainRepo };
-            //Controller = new MaintainController(uow);
+            //var fakeProviderss = new FakeProviderss();
+            //var ProvidersRepo = new FakeProvidersRepository(fakeProviderss.MyProviderss);
+            //var uow = new UnitofWork { ProvidersRepository = ProvidersRepo };
+            //Controller = new ProvidersController(uow);
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MaintainController>;
+            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +41,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<MaintainController>;
+            //var data = viewResult.ViewData.Model as IList<ProvidersController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +54,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MaintainController;
+            //var data = viewResult.ViewData.Model as ProvidersController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +71,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as MaintainController;
+            //var data = viewResult.ViewData.Model as ProvidersController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

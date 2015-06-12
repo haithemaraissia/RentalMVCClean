@@ -64,7 +64,7 @@ namespace RentalMobile.Model.Models
         public virtual DbSet<MaintenanceNewConstruction> MaintenanceNewConstructions { get; set; }
         public virtual DbSet<MaintenanceOrder> MaintenanceOrders { get; set; }
         public virtual DbSet<MaintenancePhoto> MaintenancePhotoes { get; set; }
-        public virtual DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
+        public virtual DbSet<MaintenanceProvider> MaintenanceProviderProfile { get; set; }
         public virtual DbSet<MaintenanceProviderAcceptedJob> MaintenanceProviderAcceptedJobs { get; set; }
         public virtual DbSet<MaintenanceProviderNewJobOffer> MaintenanceProviderNewJobOffers { get; set; }
         public virtual DbSet<MaintenanceProviderRejectedJob> MaintenanceProviderRejectedJobs { get; set; }

@@ -133,17 +133,17 @@ namespace RentalMobile.Helpers.Old
         public static int? GetProviderId()
         {
             var userId = GetUserGuid();
-            var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId);
+            var provider = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.GUID == userId);
             if (provider != null) return provider.MaintenanceProviderId;
             return null;
         }
 
         public static int? GetProviderId(int id)
         {
-            var userId = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var userId = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (userId != null)
             {
-                var provider = Db.MaintenanceProviders.FirstOrDefault(x => x.GUID == userId.GUID);
+                var provider = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.GUID == userId.GUID);
                 if (provider != null) return provider.MaintenanceProviderId;
             }
             return null;
@@ -366,11 +366,11 @@ namespace RentalMobile.Helpers.Old
 
             if (role == "Provider")
             {
-                var provider = Db.MaintenanceProviders.Find(GetProviderId());
+                var provider = Db.MaintenanceProviderProfile.Find(GetProviderId());
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
+                                                currenturl + "/ProviderProfile/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -435,11 +435,11 @@ namespace RentalMobile.Helpers.Old
 
             if (role == "Provider")
             {
-                var provider = Db.MaintenanceProviders.Find(GetProviderId());
+                var provider = Db.MaintenanceProviderProfile.Find(GetProviderId());
                 if (provider != null)
                 {
                     return new PosterAttributes(provider.FirstName, provider.LastName,
-                                                currenturl + "/providers/" + provider.MaintenanceProviderId, provider.Photo,
+                                                currenturl + "/ProviderProfile/" + provider.MaintenanceProviderId, provider.Photo,
                                                 provider.EmailAddress, "provider", provider.MaintenanceProviderId);
                 }
             }
@@ -470,7 +470,7 @@ namespace RentalMobile.Helpers.Old
 
         public static string GetTeamPrimaryPhoto(int id)
         {
-            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.MaintenanceProviderId == id);
             return maintenanceProvider != null ? maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture) : DefaultAvatarPlaceholderImagePath;
         }
 

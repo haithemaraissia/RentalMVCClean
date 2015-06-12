@@ -34,7 +34,7 @@
 	/* 
 	* Timepicker manager.
 	* Use the singleton instance of this class, $.timepicker, to interact with the time picker.
-	* Settings for (groups of) time pickers are maintained in an instance object,
+	* Settings for (groups of) time pickers are Providersed in an instance object,
 	* allowing multiple different settings on the same page.
 	*/
 	var Timepicker = function() {

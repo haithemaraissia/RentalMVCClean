@@ -12,8 +12,8 @@ namespace TestProject.UnitTest.Core.InProgress.DashBoard
         public void Initialize()
         {
             // Arrange
-            //var fakeProviders = new FakeProviders();
-            //var providerRepo = new FakeProviderRepository(fakeProviders.MyProviders);
+            //var fakeProviderProfile = new FakeProviderProfile();
+            //var providerRepo = new FakeProviderRepository(fakeProviderProfile.MyProviderProfile);
             //var uow = new UnitofWork { ProviderRepository = providerRepo };
             //Controller = new ProviderController(uow);
         }

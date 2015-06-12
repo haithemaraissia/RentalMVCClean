@@ -87,7 +87,7 @@
                 <ul class="menu clearfix">
                     <li><a href="">Rent</a></li>
                     <li><a href="">Post</a></li>
-                    <li><a href="">Maintain</a></li>
+                    <li><a href="">Providers</a></li>
                     <li><a href="">Legal</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Contact</a></li>

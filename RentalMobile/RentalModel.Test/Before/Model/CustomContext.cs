@@ -161,7 +161,7 @@ namespace TestProject.Before.Model
 
     public DbSet<ProviderWork> ProviderWorks { get; set; }
 
-    public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
+    public DbSet<MaintenanceProvider> MaintenanceProviderProfile { get; set; }
 
     public DbSet<MaintenanceProviderZone> MaintenanceProviderZones { get; set; }
 

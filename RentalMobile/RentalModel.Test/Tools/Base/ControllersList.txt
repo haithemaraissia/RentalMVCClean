@@ -16,7 +16,7 @@ ContactController
 GeneratedRentalAgreementController
 HelpController
 HomeController
-MaintainController
+ProvidersController
 MaintenanceOrderController
 MaintenancePhotoGalleryController
 MorePhotoController
@@ -29,7 +29,7 @@ ProjectController
 ProjectDetailController
 PropertyController
 ProviderController
-ProvidersController
+ProviderProfileController
 RentalApplicationController
 RentController
 SpecialistController

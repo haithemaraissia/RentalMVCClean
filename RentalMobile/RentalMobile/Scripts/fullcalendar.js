@@ -5153,7 +5153,7 @@ function DayEventRenderer() {
 	// Render an event on the calendar, but don't report them anywhere, and don't attach mouse handlers.
 	// Append this event element to the event container, which might already be populated with events.
 	// If an event's segment will have row equal to `adjustRow`, then explicitly set its top coordinate to `adjustTop`.
-	// This hack is used to maintain continuity when user is manually resizing an event.
+	// This hack is used to Providers continuity when user is manually resizing an event.
 	// Returns an array of DOM elements for the event.
 	function renderTempDayEvent(event, adjustRow, adjustTop) {
 

@@ -162,7 +162,7 @@ namespace TestProject.Prototype
         public DbSet<SpecialistWork> SpecialistWorks { get; set; }
         public DbSet<SpecialistProfileComment> SpecialistProfileComments { get; set; }
         public DbSet<ProviderWork> ProviderWorks { get; set; }
-        public DbSet<MaintenanceProvider> MaintenanceProviders { get; set; }
+        public DbSet<MaintenanceProvider> MaintenanceProviderProfile { get; set; }
         public DbSet<MaintenanceProviderZone> MaintenanceProviderZones { get; set; }
         public DbSet<ProviderProfileComment> ProviderProfileComments { get; set; }
     }

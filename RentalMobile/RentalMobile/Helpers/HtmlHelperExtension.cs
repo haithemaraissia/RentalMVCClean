@@ -143,7 +143,7 @@ namespace RentalMobile.Helpers
 
         public static string GetMaintenanceProviderPrimaryPhoto(this HtmlHelper helper, int? id)
         {
-            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (maintenanceProvider != null)
                 return id == null ? " " : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return "";
@@ -261,7 +261,7 @@ namespace RentalMobile.Helpers
 
         public static string GetTeamPrimaryPhoto(this HtmlHelper helper, int? id)
         {
-            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviderProfile.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (maintenanceProvider != null)
                 return id == null ? DefaultAvatarPlaceholderImagePath : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return DefaultAvatarPlaceholderImagePath;

@@ -344,7 +344,7 @@
     <Compile Include="Controllers\Menu\ContactController.cs" />
     <Compile Include="Controllers\Menu\HelpController.cs" />
     <Compile Include="Controllers\Menu\HomeController.cs" />
-    <Compile Include="Controllers\Listing\Providers\MaintainController.cs" />
+    <Compile Include="Controllers\Listing\Providers\ProvidersController.cs" />
     <Compile Include="Controllers\WIP\MaintenanceOrderController.cs" />
     <Compile Include="Controllers\WIP\MaintenancePhotoGalleryController.cs" />
     <Compile Include="Controllers\PrivateProfile\Tenant\MorePhotoController.cs" />
@@ -356,7 +356,7 @@
     <Compile Include="Controllers\Listing\Projects\ProjectsController.cs" />
     <Compile Include="Controllers\PublicProfile\ProjectDetailController.cs" />
     <Compile Include="Controllers\PublicProfile\PropertyController.cs" />
-    <Compile Include="Controllers\PublicProfile\ProvidersController.cs" />
+    <Compile Include="Controllers\PublicProfile\ProviderProfileController.cs" />
     <Compile Include="Controllers\Process\RentalApplicationController.cs" />
     <Compile Include="Controllers\Listing\Properties\RentController.cs" />
     <Compile Include="Controllers\PrivateProfile\Specialist\SpecialistController.cs" />
@@ -985,7 +985,6 @@
     <Content Include="Views\Agent\_ProfileDetail.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Help\Index.cshtml" />
-    <Content Include="Views\Maintain\Index.cshtml" />
     <Content Include="Views\MaintenanceOrder\Create.cshtml" />
     <Content Include="Views\MaintenanceOrder\Delete.cshtml" />
     <Content Include="Views\MaintenanceOrder\Details.cshtml" />
@@ -1009,7 +1008,7 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Professionals\Index.cshtml" />
     <Content Include="Views\Property\Index.cshtml" />
-    <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\Provider\ChangeAddress.cshtml" />
     <Content Include="Views\Provider\Delete.cshtml" />
     <Content Include="Views\Provider\Edit.cshtml" />
@@ -1254,10 +1253,10 @@
     <Content Include="Views\Provider\RemoveZoneList.cshtml" />
     <Content Include="Views\TestClean\Index.cshtml" />
     <Content Include="Views\Provider\_Property.cshtml" />
-    <Content Include="Views\Providers\_Coverage.cshtml" />
-    <Content Include="Views\Providers\_Comment.cshtml" />
-    <Content Include="Views\Providers\_Description.cshtml" />
-    <Content Include="Views\Providers\_Team.cshtml" />
+    <Content Include="Views\ProviderProfile\_Coverage.cshtml" />
+    <Content Include="Views\ProviderProfile\_Comment.cshtml" />
+    <Content Include="Views\ProviderProfile\_Description.cshtml" />
+    <Content Include="Views\ProviderProfile\_Team.cshtml" />
     <Content Include="Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
     <Content Include="Views\UnitofWorkPattern\Index.cshtml" />
     <Content Include="Views\UnitRepositoryPattern\Index.cshtml" />
@@ -1265,6 +1264,7 @@
     <Content Include="WebForms\Web.config" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\MakeOffer.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

@@ -1,368 +1,236 @@
-﻿@using System.Globalization
+﻿@using System.Web.Mvc.Html
 @using RentalMobile.Helpers
-@model RentalMobile.Model.Models.MaintenanceProvider
+@model IEnumerable<RentalMobile.Model.Models.MaintenanceProvider>
 @{
-    ViewBag.Title = Model.FirstName + " " + Model.LastName + " Profile";
-    Layout = "~/Views/Shared/ViewofProfiles/_Provider.cshtml";
-    if (String.IsNullOrEmpty(Model.MaintenanceProviderId.ToString(CultureInfo.InvariantCulture)))
-    {
-        Response.Redirect("/Account/Logon");
-    }
-
-    var enablejNotify = ViewBag.EmailSharedwithFriend != null && ViewBag.EmailSharedwithFriend == true;
-    if (ViewBag.InsertNewComment != null && ViewBag.InsertNewComment == true)
-    {
-        enablejNotify = true;
-    }
-
-    if (enablejNotify)
-    {
-    <link rel="stylesheet" type="text/css" href="../../Scripts/jNotify-master/jquery/jNotify.jquery.css"
-        media="screen" />
-    <script type="text/javascript" src="../../Scripts/jNotify-master/jquery/jNotify.jquery.js"> </script>
-    }
-
-    if (ViewBag.EmailSharedwithFriend != null && ViewBag.EmailSharedwithFriend == true)
-    {
-        ViewBag.EmailSharedwithFriend = false;
-    <script type="text/javascript">
-            @Html.Raw(ViewBag.EmailSucessSharedwithFriend)
-    </script>
-    }
-
-    if (ViewBag.InsertNewComment != null && ViewBag.InsertNewComment == true)
-    {
-        ViewBag.InsertNewComment = false;  
-    <script type="text/javascript">
-            @Html.Raw(ViewBag.InsertNewCommentSuccess)
-    </script>
-    }
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/Template/_ConceptLayoutPage.cshtml";
+    	
 }
-@functions {
-    public string GetVideo()
-    {
-        var uri = HttpContext.Current.Request.Url;
-        var videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
-        try
+<section class="eleven columns">
+    <h2 class="remove-top">
+        Agent</h2>
+    <!-- filters -->
+    <form action="#" class="row">
+    <!-- tag filters -->
+    <ul class="filter-list nine alpha columns row">
+        <li><a data-rel="all" class="current">All</a></li>
+        <li><a data-rel="house">House</a></li>
+        <li><a data-rel="appartment">Apartment</a></li>
+        <li><a data-rel="loft">Loft</a></li>
+        <li><a data-rel="offices">Offices</a></li>
+        <li><a data-rel="condos">Condos</a></li>
+    </ul>
+    <div class="switcher fr">
+        <a href="#" id="gridview" class="switcher"><i class="icon-layout"></i></a><a href="#"
+            id="listview" class="switcher active"><i class="icon-menu"></i></a>
+    </div>
+    </form>
+    <!-- List/Grid gallery -->
+    <ul id="property-list" class="list-grid-gallery list">
+        @foreach (var item in Model)
         {
-            if (Model.YouTubeVideo)
-            {
-                videourl = HtmlHelperCustomExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
-            }
-            else if (Model.VimeoVideo)
-            {
-                videourl = HtmlHelperCustomExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
-            }
+            <li class="prop-type all @* @Html.GetUnitType(item.TypeId)*@">
+                <article>
+                    <figure class="five columns alpha">
+                        @Html.ActionLink(" ", "Index", "ProviderProfile", new {id = item.MaintenanceProviderId }, new { @class = "camera"})
+                        <img src="@item.Photo" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
+                    </figure>
+                    
+
+                    <div class="five columns omega">
+                        <h4>
+                            <span style="color: #396991">@item.FirstName @item.LastName</span>
+                        </h4>
+                        <h5 style="margin-bottom: 10px;">
+                            <span>@item.Address, @item.City, @item.Region, @item.CountryCode</span>
+                        </h5>
+                        <p class="prop-extract" style="margin-bottom: 5px;">
+                            <span>@Html.TruncateLongString(item.Description, 500)</span>
+                        </p>
+                        <p class="prop-webid">
+                            <span style="color: #396991">Agent ID <b>#@Html.DisplayFor(modelItem => item.MaintenanceProviderId)</b>
+                            </span>
+                            </p>
+                        <ul class="toolbar">
+                            <li class="next-arr">@Html.ActionLink("Select", "Index", "ProviderProfile", new { id = item.MaintenanceProviderId }, null)</li>
+                        </ul>
+                    </div>
+                </article>
+                
+            </li>
         }
-        catch (Exception)
-        {
-            videourl = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port + "/Html/NoVideo.htm";
-        }
-        return videourl;
-    }
-}
-<section class="row">
-    @section name
-    {
-        @Model.FirstName @Model.LastName
-    }
-    @section provider
-    {
-        <div id="agent" class="panel" style="width: 100%;">
-            <img src="@Model.Photo" alt=" @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)" 
-                 class="scale-with-grid"
-                 alt="image" style="width:100% ; min-height: 300px ; max-height: 300px;" />
-        </div>
-    }
-    @section work
-    {
-        <div id="photos" class="panel">
-            <a id="fancybox-manual-c" href="javascript:;">
-                <img src="@ViewBag.ProviderPrimaryPhoto" class="scale-with-grid"
-                     alt="image" style="width:100% ; min-height: 300px ; max-height: 300px;" />
-            </a>
-        </div>
-    }
-    @section video
-    {
-        <div id="video" class="panel">
-            <iframe src="@GetVideo()" width="500" height="330"></iframe>
-        </div>
-    }
-    @section map
-    {
-        <div id="map" class="panel">
-            <iframe width="100%" height="300"  scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.ProviderGoogleMap&amp;z=13&amp;output=embed">
-            </iframe>
-            <br />
-        </div>
-    }
-    @section providerrequestform
-    {
-        <h4 class="remove-top BlueHeading">
-            Hire @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+    </ul>
+    <!-- /.List -->
+</section>
+<!-- /section: gallery -->
+<aside class="five columns top-padded">
+    <div class="shadded boxed save-search">
+        <button class="tall centered">
+            Save this search</button>
         <p>
-            Please complete the form below to hire @Html.DisplayFor(model => model.FirstName)
-            for your property.
-        </p>
-        <p>
-        </p>
-        @using (Html.BeginForm("HireProvider", "Providers", new { id = @Model.MaintenanceProviderId, enctype = "multipart/form-data" }, FormMethod.Post))
-        {
-            <ul class="grid-form">
-            @if (Request.IsAuthenticated)
-            {
-                <li class="four columns alpha"> <label for="your-name" class="screen-reader-text">
-                Your name</label> <input id="your-name" placeholder="@ViewBag.VisitorName" type="text"
-                required /> </li>
-                <li class="four columns omega"> <label for="your-email" class="screen-reader-text">
-                E-mail</label> <input id="your-email" placeholder="
-                @if (ViewBag.VisitorEmail != null)
-                {
-                    @ViewBag.VisitorEmail
-                }" type="email" required /> </li>
-                <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
-                Your telephone</label> <input id="your-telephone" placeholder="telephone" type="text"/>
-                </li>
-                <li class="four columns omega"> <label for="showing-date-label" class="screen-reader-text">
-                Service date</label> <input id="datepicker" placeholder="service date" type="text"
-                required /> </li>
-            }
-            else
-            {
-                <li class="four columns alpha"> <label for="your-name" class="screen-reader-text">
-                Your name</label> <input id="your-name-unknown" placeholder="Your name" type="text"
-                required /> </li>
-                <li class="four columns omega"> <label for="your-email" class="screen-reader-text">
-                E-mail</label> <input id="your-email-unknown" placeholder="email" type="email" required
-                /> </li>
-                <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
-                Your telephone</label> <input id="your-telephone-unknown" placeholder="telephone"
-                type="text" /> </li>
-            <li class="four columns omega"> <label for="showing-date" class="screen-reader-text">
-            Service date</label> <input id="datepicker-unknown" placeholder="service date" type="text"
-            required /> </li>
-            }
-            </ul>
-            <input type="submit" class="full-width tall" value="Hire @Html.DisplayFor(model => model.FirstName)"
-        />
-        }
-    }
-</section>
-<section class="row double-bottom">
-    @section description{
-        <div id="description" class="panel">
-            @{ Html.RenderAction("_Description", "Providers", new { id = Model.MaintenanceProviderId }); }
-        </div>
-    }
-    @section coverage
-    {
-        <div id="coverage" class="panel">
-            @{ Html.RenderAction("_Coverage", "Providers", new { id = Model.MaintenanceProviderId }); }
-        </div>
-    }
-    @section team
-    {
-        <div id="team" class="panel">
-            @{ Html.RenderAction("_Team", "Providers", new { id = Model.MaintenanceProviderId }); }
-        </div>
-    }
-    @section share
-    {
-        <div id="share-on-fb" class="panel">
-            <ul class="grid-form row double-bottom" style="margin-top: 18px">
-                <li class="six columns push by-one"><a id="test" target="_blank" class="twitter-registration" style="text-align: center"
-                                                       onclick="popup('@Html.Raw(ViewBag.Twitter)', 'TwitterPopup', 500, 400);" >
-                    Share it with your Twitter</a> </li>
-                <li class="six columns push by-two"><a target="_blank" class="facebook-registration"
-                                                       style="text-align: center" 
-                                                       onclick="popup('@Html.Raw(ViewBag.FaceBook)', 'FacebookPopup', 500, 400);">
-                    Share it with your Facebook</a> </li>
-            </ul>
-            <ul class="grid-form row remove-bottom">
-                <li class="six columns push by-one"><a target="_blank" class="google-registration" style="text-align: center"
-                                                       onclick="popup('@Html.Raw(ViewBag.GooglePlusShare)', 'GooglePlusPopup', 500, 400);">
-                    Share it with your Google </a></li>
-                <li class="six columns push by-two"><a target="_blank" class="linkedin-registration" style="text-align: center"
-                                                       onclick="popup('@Html.Raw(ViewBag.LinkedIn)', 'LinkedInPopup', 500, 400);">
-                    Share it with your Linked In</a> </li>
-            </ul>
-        </div>
-    }
-    @section sendtofriend
-    {
-        <div id="send-to-friend" class="panel">
-            @using (Html.BeginForm("ForwardtoFriend", "Providers", new { id = @Model.MaintenanceProviderId, enctype = "multipart/form-data" }, FormMethod.Post))
-            {
+            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit tenetur nulla.</small></p>
+        <a href="#">Resent searches</a>
+    </div>
+    <div class="shadded boxed slider">
+        <h4 class="remove-top add-bottom">
+            Homes you might like</h4>
+        <ul class="bx-slider-points">
+            <li>
+                <img src="../../images/dotimages/sliders/home2-slide.png" class="scale-with-grid"
+                    alt="//" />
+                <h6>
+                    A property title</h6>
+                <p class="price">
+                    <span>$1.450.000</span></p>
+            </li>
+            <li>
+                <img src="../../images/dotimages/sliders/home2-slide.png" class="scale-with-grid"
+                    alt="//" />
+                <h6>
+                    Second Property</h6>
+                <p class="price">
+                    <span>$910.000</span></p>
+            </li>
+            <li>
+                <img src="../../images/dotimages/sliders/home2-slide.png" class="scale-with-grid"
+                    alt="//" />
+                <h6>
+                    Other description
+                </h6>
+                <p class="price">
+                    <span>$2.135.000</span></p>
+            </li>
+            <li>
+                <img src="../../images/dotimages/sliders/home2-slide.png" class="scale-with-grid"
+                    alt="//" />
+                <h6>
+                    Other description</h6>
+                <p class="price">
+                    <span>$2.135.000</span></p>
+            </li>
+            <li>
+                <img src="../../images/dotimages/sliders/home2-slide.png" class="scale-with-grid"
+                    alt="//" />
+                <h6>
+                    Other description</h6>
+                        <p class="price">
+                            <span>$2.135.000</span></p>
+            </li>
+        </ul>
+    </div>
+    <!-- /boxed mini slider -->
+    <div class="shadded boxed relative">
+        <h4 class="remove-top add-bottom">
+            Search</h4>
+        @*    @Html.ActionLink("AdvancedSearch", "Index", "AdvancedSearch", new { @class = "fly-out"})*@
+        @*                   @Html.ActionLink("AdvancedSearch", "Index", "AdvancedSearch", null, new { @class = "fly-out", @style = "width:100px; color: red;" })*@
+        @Html.ActionLink("AdvancedSearch", "Index", "AdvancedSearch", null, new { @class = "fly-out" })
+        @*<a href="AdvancedSearch" class="fly-out">Advanced searches</a>*@
+        <form action="#" class="remove-bottom">
+        <ul class="grid-form">
+            <li class="relative">
+                <label for="location-select" class="screen-reader-text">
+                    Location</label>
+                <select id="location-select" class="custom-select" title="Location">
+                    <option value="1">Location</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </li>
+            <li class="relative">
+                <label for="type-select" class="screen-reader-text">
+                    Property type</label>
+                <select id="type-select" class="custom-select" title="Property type">
+                    <option value="1">Property type</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </li>
+            <li>
+                <label for="price-field" class="screen-reader-text">
+                    Price</label>
+                <input type="text" id="price-field" placeholder="Price">
+            </li>
+            <li>
+                <label for="rooms-field" class="screen-reader-text">
+                    Rooms</label>
+                <input type="text" id="rooms-field" placeholder="Rooms">
+            </li>
+            <li>
+                <label for="keywords-field" class="screen-reader-text">
+                    Keywords</label>
+                <input type="text" id="keywords-field" placeholder="Keywords">
+            </li>
+        </ul>
+        <input type="submit" value="Find my place" class="remove-bottom tall centered">
+        </form>
+    </div>
+    <!-- /boxed search form -->
+    <div class="shadded boxed form">
+        <h4 class="remove-top add-bottom">
+            Mortgage calculator</h4>
+        <form action="#" class="remove-bottom">
+        <ul class="grid-form remove-bottom">
+            <li>
+                <label for="price-field" class="screen-reader-text">
+                    House Price</label>
+                <input id="price-field" type="text" placeholder="House price" required />
+            </li>
+            <li>
+                <label for="payment-field" class="screen-reader-text">
+                    Down payment</label>
+                <input id="payment-field" type="text" placeholder="Down payment" required />
+            </li>
+            <li>
+                <label for="interest-field" class="screen-reader-text">
+                    Annual Interest</label>
+                <input id="interest-field" type="text" placeholder="Interest" required />
+            </li>
+            <li>
+                <label for="term-field" class="screen-reader-text">
+                    Term</label>
+                <input id="term-field" type="text" placeholder="Term" />
+            </li>
+            <li>
+                <label for="month-field" class="screen-reader-text">
+                    Monthly Payment</label>
+                <input id="month-field" type="text" placeholder="Monthly Payment" />
+            </li>
+        </ul>
+        <input type="submit" value="Calculate" class="remove-bottom tall centered">
+        </form>
+    </div>
+    <!-- /boxed mortgage form -->
+</aside>
+<!-- BX Slider -->
+<script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
+<!-- Gallery switcher -->
+<script src="../../Scripts/js/switcher.js" type="text/javascript"></script>
+<!-- jQuery dropdown -->
+<script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
+<!-- jQuery Custom selects-->
+<script src="../../Scripts/js/jquery.customSelect.min.js" type="text/javascript"></script>
+<!-- Tipsy -->
+<script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
+<!-- Custom Scripts -->
+<script src="../../Scripts/js/scripts.js" type="text/javascript"></script>
+<script type="text/javascript">
 
-                <h4 class="section-titling" style="color: #346993;">
-                    Send this provider to a friend</h4>
-                <ul class="grid-form row remove-bottom eight columns">
-                    <li class="four columns alpha">
-                        <label for="friend-name-field" class="screen-reader-text">
-                            Name of your friend</label>
-                        <input id="friendname" type="text" name="friendname" placeholder="Name of your friend"
-                            class="full-width" />
-                    </li>
-                    <li class="four columns omega">
-                        <label for="friend-email-field" class="screen-reader-text">
-                            Email of your friend</label>
-                        <input id="friend-email-field" type="email" name="friendemailaddress" placeholder="Email of your friend"
-                            class="full-width" required />
-                    </li>
-                    <li class="eight columns alpha omega">
-                        <label for="recomendation-message-field" class="screen-reader-text">
-                            Recomendation</label>
-                        <textarea id="recomendation-message-field" placeholder="Recomendation" name="message"
-                            class="full-width"></textarea>
-                    </li>
-                    <li class="two columns alpha">
-                        <input type="submit" value="Send it" />
-                    </li>
-                    <li class="two columns omega">
-                        <input type="button" value="Clear" id="ClearRequest" />
-                    </li>
-                </ul>
-            }
-        </div>
-    }
-    @section comments
-    {
-        <div id="comments" class="panel">
-            @{ Html.RenderAction("_Comment", "Providers", new { id = Model.MaintenanceProviderId }); }
-        </div>
-    }
-</section>
-<section>
-    @section scripts
-    {
-        <!-- Scripts & Plugins
-            ================================================== -->
-        <!-- BX Slider -->
-        <script src="../../Scripts/js/jquery.bxslider.min.js" type="text/javascript"></script>
-        <!--Fancybox Ligbox-->
-        <script src="../../Scripts/js/jquery.fancybox.js" type="text/javascript"></script>
-        <!--Fancybox Ligbox Thumbnails-->
-        <script src="../../Scripts/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
-        <!-- Tabs -->
-        <script src="../../Scripts/js/jquery.easytabs.min.js" type="text/javascript"></script>
-        <!-- jQuery dropdown -->
-        <script src="../../Scripts/js/jquery.dropdown.js" type="text/javascript"></script>
-        <!-- Tipsy -->
-        <script src="../../Scripts/js/jquery.tipsy.js" type="text/javascript"></script>
-        <!-- FitVids -->
-        <script src="../../Scripts/js/fitvids.min.js" type="text/javascript"></script>
-        <!--Masked Input-->
-        <script src="../../Scripts/MaskedInputPlugin/jquery.maskedinput.js" type="text/javascript"></script>
-        <!--Max Length-->
-        <script type="text/javascript" src="../../Scripts/MaxLength/jquery.maxlength.js"></script>
-        <!--Jquery UI For DateTimeCalendar-->
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-        <!--Custom Scripts-->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                
-                //scroll to top link
-                $('.scroll-top').click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 600);
-                    return false;
-                });
+    $(document).ready(function ($) {
 
-                //Lightbox Fancybox
-                $("#fancybox-manual-c").click(function() {
-                    @Html.Raw(ViewBag.Sript);
-                });
+        // Init bx slider 
+        $('.bx-slider-points').bxSlider({
+            controls: false
+        });
 
-                //responsive menu
-                $('<select />').appendTo('header nav');
+        //Custom selects
+        $('.custom-select').customSelect();
 
-                $('<option />', {
-                    'selected': 'selected',
-                    'value': '',
-                    'text': 'Select a Page...'
-                }).appendTo('header nav select');
-
-                $('.menu-bar .menu a').each(function() {
-                    var el = $(this);
-                    if (el.parents('.menu-bar .menu ul').length) {
-                        $('<option />', {
-                            'value': el.attr('href'),
-                            'text': '... ' + el.text()
-                        }).appendTo('nav select');
-                    } else {
-                        $('<option />', {
-                            'value': el.attr('href'),
-                            'text': el.text()
-                        }).appendTo('nav select');
-                    }
-                });
-
-                $('header nav select').change(function() {
-                    window.location = $(this).find('option:selected').val();
-                });
-
-                //tipsy
-                $('ul.social a, .home-btn').tipsy({
-                    gravity: 's',
-                    fade: true
-                });
-
-                //DatePicker
-                $("#datepicker").datepicker();
-                $("#datepicker-unknown").datepicker();
-
-                //Phone
-                $(function() {
-                    $("#your-telephone-unknown").mask("(999) 999-9999");
-                    $("#your-telephone").mask("(999) 999-9999");
-
-                });
-                
-                //Init Carousel	
-                $('.bx-carousel').bxSlider({
-                    auto: true,
-                    minSlides: 1,
-                    maxSlides: 3,
-                    slideWidth: 300,
-                    slideMargin: 20,
-                    nextSelector: '#carousel-next',
-                    prevSelector: '#carousel-prev',
-                    pager: false
-                });
-
-                //Easy tabs
-                $('.tab-container').easytabs();
-
-                //FitVids
-                $('#video').fitVids();
-
-                //Character Left
-                $("#message-field").maxlength({ 'feedback': '#NumberofCharacterLeft' });
-
-                //Comment Form 
-                $("#ClearMessage").click(function () {
-                    $('#message-field').val('');
-                    $('#NumberofCharacterLeft').html('300');
-                });
-                
-                //Send To Friend Form
-                $("#ClearRequest").click(function () {
-                    $('#friendname').val('');
-                    $('#friend-email-field').val('');
-                    $('#recomendation-message-field').val('');
-                });
-            });              
-        </script>
-    }
-    <!-- Scripts & Plugins
-        ================================================== -->
-    <!--Pop Up for Social-->
-    <script type="text/javascript">
-        function popup(pageUrl, title, popupWidth, popupHeight) {
-            var left = (screen.width / 2) - (popupWidth / 2);
-            var top = (screen.height / 2) - (popupHeight / 2);
-            window.open(pageUrl, title, "toolbar=no, location=no,  directories=no, status=no, menubar=no, scrollbars=YES, resizable=YES,  copyhistory=no, width=" + popupWidth + ", height=" + popupHeight + ", top=" + top + ", left=" + left);
-        }
-    </script>
-</section>
+    });
+</script>

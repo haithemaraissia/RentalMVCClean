@@ -42,15 +42,15 @@
                 <li>
                     <article>
                         <figure class="five columns alpha">
-                            @Html.ActionLink(" ", "Index", "Providers", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
+                            @Html.ActionLink(" ", "Index", "ProviderProfile", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
                             <img src="@{ new ViewHelper().GetTeamPrimaryPhoto(@item.TeamId); }" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                         </figure>
                         <div class="ten columns omega">
                             <h4>
-                                <span style="color: #396991"><a href="../../Providers/@item.MaintenanceProviderId" target="_blank" >@item.TeamName</a></span>
+                                <span style="color: #396991"><a href="../../ProviderProfile/@item.MaintenanceProviderId" target="_blank" >@item.TeamName</a></span>
                             </h4>
                             <p>
-                                <span style="color: #396991"><a href="../../Providers/@item.MaintenanceProviderId" target="_blank">
+                                <span style="color: #396991"><a href="../../ProviderProfile/@item.MaintenanceProviderId" target="_blank">
                                     Team ID <b># @Html.DisplayFor(modelItem => item.TeamId)</b> </a>
                                 </span>
                             </p>

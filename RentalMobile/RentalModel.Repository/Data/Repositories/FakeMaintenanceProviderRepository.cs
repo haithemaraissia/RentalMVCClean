@@ -7,7 +7,7 @@ namespace RentalModel.Repository.Data.Repositories
 {
     public class FakeMaintenanceProviderRepository : FakeGenericRepository<MaintenanceProvider>
     {
-        public FakeMaintenanceProviderRepository() : base(new FakeMaintenanceProviders().MyMaintenanceProviders)
+        public FakeMaintenanceProviderRepository() : base(new FakeMaintenanceProviderProfile().MyMaintenanceProviderProfile)
         {
         }
         public FakeMaintenanceProviderRepository(List<MaintenanceProvider> myMaintenanceProvider): base(myMaintenanceProvider)

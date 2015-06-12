@@ -32,7 +32,7 @@ namespace RentalMobile.Handler
         public void CoverageMaintenanceRoutineForProvider()
         {
 
-            foreach (var maintenanceProvider in Db.MaintenanceProviders.ToList())
+            foreach (var maintenanceProvider in Db.MaintenanceProviderProfile.ToList())
             {
                 var checkteamexistance = Db.MaintenanceTeamAssociations.FirstOrDefault(
                   x => x.MaintenanceProviderId == maintenanceProvider.MaintenanceProviderId);

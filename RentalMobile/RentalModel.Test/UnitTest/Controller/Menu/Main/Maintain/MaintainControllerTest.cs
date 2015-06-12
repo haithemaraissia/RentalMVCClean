@@ -2,26 +2,26 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
-using RentalMobile.Controllers.Listing.Providers;
+using RentalMobile.Controllers.Listing.ProviderProfile;
 using RentalMobile.Controllers.Menu;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Controller.Menu.Main.Maintain
+namespace TestProject.UnitTest.Controller.Menu.Main.Providers
 {
     [TestClass]
-    public class MaintainControllerTest
+    public class ProvidersControllerTest
     {
-        public MaintainController Controller;
+        public ProvidersController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
-            var maintainRepo = new FakeMaintenanceProviderRepository();
-            var uow = new UnitofWork { MaintenanceProviderRepository = maintainRepo };
-            Controller = new MaintainController(uow);
+            var ProvidersRepo = new FakeMaintenanceProviderRepository();
+            var uow = new UnitofWork { MaintenanceProviderRepository = ProvidersRepo };
+            Controller = new ProvidersController(uow);
         }
 
         [TestMethod]
