@@ -211,14 +211,14 @@ namespace Rental.Documentation.WIP.BackUp
                         {
                             var teamMateCoverageProperty = GetCurrentProperty(maintenanceCoverage, coverageType,
                                                                               propertyInfo);
-                            if (teamMateCoverageProperty is bool)
-                            {
+                            //if (teamMateCoverageProperty is bool)
+                            //{
                                 var teamMateCoveragePropertyValue = (bool)teamMateCoverageProperty;
                                 if (teamMateCoveragePropertyValue)
                                 {
                                     propertyInfoTrueforOtherMember = true;
                                 }
-                            }
+                           // }
                             return propertyInfoTrueforOtherMember;
                         }
 

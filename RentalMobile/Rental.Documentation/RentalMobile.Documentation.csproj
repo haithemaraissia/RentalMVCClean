@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rental.Documentation</RootNamespace>
     <AssemblyName>Rental.Documentation</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,22 +31,29 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataAnnotationsExtensions">
       <HintPath>..\RentalMobile\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,7 +72,7 @@
       <Name>RentalMobile.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\RentalMobile\RentalMobile.csproj">
-      <Project>{7E67FC65-FF32-43FA-875C-401948AAA097}</Project>
+      <Project>{7e67fc65-ff32-43fa-875c-401948aaa097}</Project>
       <Name>RentalMobile</Name>
     </ProjectReference>
     <ProjectReference Include="..\RentalModel.Repository\RentalModel.Repository.csproj">
@@ -182,24 +191,25 @@
     <None Include="Documentation\What I %27m doing.docx" />
     <None Include="ExternalZipResources\fullcalendar-1.6.4\fullcalendar-1.6.4\demos\json-events.php" />
     <None Include="packages.config" />
-    <Content Include="Views\TenantFavorite\Create.cshtml" />
-    <Content Include="Views\TenantFavorite\Delete.cshtml" />
-    <Content Include="Views\TenantFavorite\Details.cshtml" />
-    <Content Include="Views\TenantFavorite\Edit.cshtml" />
-    <Content Include="Views\TenantFavorite\Index.cshtml" />
-    <Content Include="Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Create.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Delete.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Details.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Edit.cshtml" />
+    <Content Include="BackUp\Views\TenantFavorite\Index.cshtml" />
+    <Content Include="BackUp\Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
     <Content Include="ToDelete\GeneratedContract.cshtml" />
-    <None Include="Views\RATest\Create.cshtml" />
-    <None Include="Views\RATest\Delete.cshtml" />
-    <None Include="Views\RATest\Details.cshtml" />
-    <None Include="Views\RATest\Edit.cshtml" />
-    <None Include="Views\RATest\Index.cshtml" />
+    <None Include="BackUp\Views\RATest\Create.cshtml" />
+    <None Include="BackUp\Views\RATest\Delete.cshtml" />
+    <None Include="BackUp\Views\RATest\Details.cshtml" />
+    <None Include="BackUp\Views\RATest\Edit.cshtml" />
+    <None Include="BackUp\Views\RATest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Architecture\notes\day1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documentation\Done\Structure\" />
+    <Folder Include="WHAT TO DO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

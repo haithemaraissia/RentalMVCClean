@@ -1,4 +1,4 @@
-﻿@model RentalMobile.Model.Models.Owner
+﻿@*@model RentalMobile.Model.Models.Owner
 @{
     ViewBag.Title = "Generated Contract";
     Layout = "~/Views/Shared/Profiles/_Owner.cshtml";
@@ -6,16 +6,18 @@
 @section profile
 {
     @Html.Partial("_ProfileDetail", (object)ViewBag.Owner)
-}
-@section map
+}*@
+
+@*@section map
 {
     <div id="map" class="panel">
         <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?q=@ViewBag.OwnerGoogleMap&amp;z=13&amp;output=embed">
         </iframe>
         <br />
     </div>
-}
-@section account
+}*@
+
+@*@section account
 {
     <div id="account" class="panel">
         <section class="row double-bottom">
@@ -45,8 +47,11 @@
             </div>
         </section>
     </div>
-}
-@section favorite
+}*@
+
+
+
+@*@section favorite
 {
     <div id="favorite">
         <section>
@@ -243,8 +248,10 @@
             </ul>
         </section>
     </div>
-}
-@section showing
+}*@
+
+
+@*@section showing
 {
     <div id="showing" class="panel">
         <section class="fifteen columns">
@@ -277,9 +284,9 @@
                             </p>
                             <ul class="toolbar">
                                 @*                                <li class="dollar"><a href="#">Compare</a></li>
-                                <li class="map"><a href="#">Map</a></li>*@
+                                <li class="map"><a href="#">Map</a></li>
                                 <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>*@
+                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>
                             </ul>
                         </div>
                     </article>
@@ -315,7 +322,7 @@
                                 <li class="dollar"><a href="#">Compare</a></li>
                                 <li class="map"><a href="#">Map</a></li>
                                 <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>*@
+                                									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>
                             </ul>
                         </div>
                     </article>
@@ -347,7 +354,7 @@
                                 <li class="dollar"><a href="#">Compare</a></li>
                                 <li class="map"><a href="#">Map</a></li>
                                 <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>*@
+                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>
                             </ul>
                         </div>
                     </article>
@@ -379,7 +386,7 @@
                                 <li class="dollar"><a href="#">Compare</a></li>
                                 <li class="map"><a href="#">Map</a></li>
                                 <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>*@
+                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>
                             </ul>
                         </div>
                     </article>
@@ -411,7 +418,7 @@
                                 <li class="dollar"><a href="#">Compare</a></li>
                                 <li class="map"><a href="#">Map</a></li>
                                 <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>*@
+                                @*									<li class="next-arr">@Html.ActionLink("Description", "Index", "UnitDetail")></li>
                             </ul>
                         </div>
                     </article>
@@ -462,8 +469,9 @@
             <!--Pagination-->
         </section>
     </div>
-}
-@section maintenance
+}*@
+
+@*@section maintenance
 {
     <div id="maintenance">
         <section class="row double-bottom">
@@ -493,8 +501,9 @@
             </div>
         </section>
     </div>
-}
-@section application
+}*@
+
+@*@section application
 {
     <div id="application">
         <section class="row double-bottom">
@@ -514,8 +523,9 @@
             </div>
         </section>
     </div>
-}
-@section contract
+}*@
+
+@*@section contract
 {
     
     <div id="contract" class="panel">
@@ -530,8 +540,9 @@
             </div>
         </section>
     </div>
-}
-@section payment
+}*@
+
+@*@section payment
 {
     <div id="payment" class="panel">
         @*        <section class="row double-bottom">
@@ -544,7 +555,7 @@
                 </div>
             </div>
         </section>
-        *@
+        
         <style>
             
             
@@ -592,4 +603,4 @@
             </article>
         </section>
     </div>
-}
+}*@

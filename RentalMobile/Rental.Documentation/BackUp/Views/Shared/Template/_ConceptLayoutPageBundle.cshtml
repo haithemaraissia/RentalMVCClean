@@ -1,0 +1,114 @@
+﻿@*@using System.Web.Optimization
+        <!DOCTYPE html>
+        <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+        <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+        <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+        <!--[if (gte IE 9)|!(IE)]><!-->
+    <html lang="en">
+    <!--<![endif]-->
+    <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+    ================================================== -->
+    @Styles.Render("~/bundles/style")
+    @RenderSection("head", false)
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- JS
+    ================================================== -->
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../../../images/dotimages/favicon.ico">
+    <link rel="apple-touch-icon" href="../../../images/dotimages/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../../images/dotimages/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../../images/dotimages/apple-touch-icon-114x114.png">
+    @*    <script src='../../../WIP/google_analytics_auto.html'></script>
+        </head>
+    <body>
+    <div class="container page add-bottom">
+        <!-- top-bar -->
+        <div class="top-bar clearfix">
+            <p class="eight columns">
+                Sales: 555 912 5412 | Email: <a href="#">info@yourcompany.com</a>
+            </p>
+            <!-- Language nav -->
+            <ul class="nav lang">
+                <li><a href="#" class="selected">
+                    <img src="../../../images/dotimages/icons/es.gif" alt="spain"/></a></li>
+                <li><a href="#">
+                    <img src="../../../images/dotimages/icons/it.gif" alt="italy"/></a></li>
+                <li><a href="#">
+                    <img src="../../../images/dotimages/icons/en.gif" alt="uk"/></a></li>
+                <li><a href="#">
+                    <img src="../../../images/dotimages/icons/fr.gif" alt="frence"/></a></li>
+                <li><a href="#">
+                    <img src="../../../images/dotimages/icons/us.gif" alt="usa"/></a></li>
+            </ul>
+            <ul class="menu user">
+                <li><a href="/Account/Register" class="register-btn">Register</a></li>
+                <li>@Html.Partial("_LogOnPartial")</li>
+                <li><a href="Help">Help</a></li>
+            </ul>
+        </div>
+        <!-- /.top-bar -->
+        <header class="row">
+            <!-- brand -->
+            <h1 class="logo one-half column">
+                <a href="../../../WIP/index.html">
+                    <img src="../../../images/dotimages/logo.png" alt="Dot. Real State"></a>
+            </h1>
+            <!-- follow us -->
+            <div class="follow">
+                <h6 class="half-bottom">
+                    <span>Follow us</span></h6>
+                <ul class="menu social">
+                    <li><a href="#" title="Twitter"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#" title="Flickr"><i class="icon-flickr"></i></a></li>
+                    <li><a href="#" title="Facebook"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#" title="Vimeo"><i class="icon-vimeo"></i></a></li>
+                    <li><a href="#" title="Skype"><i class="icon-skype"></i></a></li>
+                </ul>
+            </div>
+            <nav class="menu-bar sixteen columns row">
+                <ul class="menu clearfix">
+                    <li>@Html.ActionLink("Rent", "Index", "Rent")</li>
+                    <li>@Html.ActionLink("Post", "Index", "Post")</li>
+                    <li>@Html.ActionLink("Maintain", "Index", "Maintain")</li>
+                    <li>@Html.ActionLink("Specialist", "Index", "Specialists")</li>
+                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                </ul>
+                <a href="." class="home-btn" title="Home"><i class="icon-home"></i></a>
+            </nav>
+        </header>
+        <div class="main" role="main">
+            @RenderBody()
+        </div>
+        <a href="#" class="scroll-top fr">Top <i class="icon-up-open"></i></a>
+    </div>
+    <!-- /.container -->
+    @*<footer class="container">
+        <p class="remove-bottom">
+            Copyright &copy; DOT Real State. All Rights Reserved. Designed by Coralix Themes.</p>
+        <p>
+            Vivamus cursus eget Phasellus quis wisi.</p>
+    </footer>
+    <!-- /footer -->
+    <!-- Scripts & Plugins
+    ================================================== -->
+
+    @RenderSection("BeforeTemplateScript", false)
+    @Scripts.Render("~/bundles/jquery", "~/bundles/framework")
+    @RenderSection("AfterTemplateScript", false)
+    </body>
+    </html>*@
