@@ -98,7 +98,7 @@ public abstract class plUploadBaseHandler : IHttpHandler
                 }
                 else
                 {
-                    WriteErrorResponse(Resources.UploadedFileIsTooLarge, 413);
+                    WriteErrorResponse(Resources.UploadedFileIsTooLarge2, 413);
                     return;
                 }
                
@@ -111,7 +111,7 @@ public abstract class plUploadBaseHandler : IHttpHandler
                 // this isn't exact! We can't see the full size of the upload
                 // and don't know the size of the large chunk
                 if (chunk == 0 && MaxUploadSize > 0 && Request.ContentLength * (chunks - 1) > MaxUploadSize)
-                    WriteErrorResponse(Resources.UploadedFileIsTooLarge, 413);
+                    WriteErrorResponse(Resources.UploadedFileIsTooLarge2, 413);
             }
 
             if (!OnUploadChunkStarted(chunk, chunks, fileName))

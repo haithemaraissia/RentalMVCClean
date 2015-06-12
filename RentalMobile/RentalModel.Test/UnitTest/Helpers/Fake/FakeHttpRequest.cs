@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Web;
 
-namespace NearForums.Tests.Fakes
+namespace TestProject.UnitTest.Helpers.Fake
 {
 
     public class FakeHttpRequest : HttpRequestBase

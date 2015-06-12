@@ -2,6 +2,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
+using RentalMobile.Controllers.PublicProfile;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile;
 using RentalMobile.Model.Models;

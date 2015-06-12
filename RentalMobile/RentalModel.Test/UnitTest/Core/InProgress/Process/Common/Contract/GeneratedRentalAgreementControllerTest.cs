@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.Process;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Controller.CRUD
+namespace TestProject.UnitTest.Core.InProgress.Process.Common.Contract
 {
     [TestClass]
     public class GeneratedRentalAgreementControllerTest

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
+using System.Web;
 
-namespace NearForums.Tests.Fakes
+namespace TestProject.UnitTest.Helpers.Fake
 {
 	public class FakeHttpServerUtility : HttpServerUtilityBase
 	{

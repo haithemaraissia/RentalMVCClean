@@ -5,6 +5,7 @@ using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RentalMobile.Controllers;
+using RentalMobile.Controllers.PublicProfile;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;

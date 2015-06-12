@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.Common;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Core.InProgress.DashBoard.Common
 {
     [TestClass]
     public class AccountControllerTest

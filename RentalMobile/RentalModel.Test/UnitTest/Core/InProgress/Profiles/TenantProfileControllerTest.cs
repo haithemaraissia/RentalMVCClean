@@ -1,11 +1,11 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.PublicProfile;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Controller.Profiles
+namespace TestProject.UnitTest.Core.InProgress.Profiles
 {
     [TestClass]
     public class TenantProfileControllerTest
@@ -18,7 +18,7 @@ namespace TestProject.UnitTest.Controller.Profiles
             // Arrange
             var tenantProfileRepo = new FakeTenantRepository();
             var uow = new UnitofWork { TenantRepository = tenantProfileRepo };
-            Controller = new TenantProfileController(uow);
+            Controller = new TenantProfileController(uow, null);
         }
 
         [TestMethod]

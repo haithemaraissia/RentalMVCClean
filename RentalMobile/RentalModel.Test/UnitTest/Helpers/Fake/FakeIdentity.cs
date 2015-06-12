@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
 
-namespace NearForums.Tests.Fakes
+namespace TestProject.UnitTest.Helpers.Fake
 {
 
 

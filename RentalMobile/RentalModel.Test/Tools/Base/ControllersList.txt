@@ -2,7 +2,6 @@
   //Controllers
  AboutController
 AccountController
-AdController
 AddMaintenancePhotoController
 AddTeamMemberController
 AdvancedSearchController
@@ -14,7 +13,6 @@ ChangeProviderController
 ChooseMaintenanceController
 ChooseProviderController
 ContactController
-EmailTestController
 GeneratedRentalAgreementController
 HelpController
 HomeController
@@ -22,7 +20,6 @@ MaintainController
 MaintenanceOrderController
 MaintenancePhotoGalleryController
 MorePhotoController
-NewUnitTestController
 OwnerController
 OwnerProfileController
 OwnersController
@@ -33,7 +30,6 @@ ProjectDetailController
 PropertyController
 ProviderController
 ProvidersController
-ReflectionHelper
 RentalApplicationController
 RentController
 SpecialistController
@@ -46,9 +42,6 @@ TenantRentalApplicationController
 TenantsController
 TenantShowingController
 UnitController
-UnitFeatureTestController
-UnitofWorkPatternController
-UnitRepositoryPatternController
 UploadAgreementController
 
 

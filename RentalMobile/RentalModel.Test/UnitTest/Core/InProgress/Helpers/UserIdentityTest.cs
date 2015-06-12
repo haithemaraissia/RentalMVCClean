@@ -12,8 +12,8 @@ using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
-using TestProject.Fake;
 using TestProject.UnitTest.Helpers;
+using TestProject.UnitTest.Helpers.Fake;
 
 namespace TestProject.UnitTest.Core.InProgress.Helpers
 {

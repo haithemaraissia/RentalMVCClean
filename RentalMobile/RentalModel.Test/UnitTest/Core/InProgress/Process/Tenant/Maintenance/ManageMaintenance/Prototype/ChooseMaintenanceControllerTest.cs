@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.PrivateProfile.Tenant;
 
-namespace TestProject.UnitTest.Controller.Simple
+namespace TestProject.UnitTest.Core.InProgress.Process.Tenant.Maintenance.ManageMaintenance.Prototype
 {
     [TestClass]
     public class ChooseMaintenanceControllerTest

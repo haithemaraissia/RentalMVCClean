@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using RentalMobile.ControllerTester;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Generic.Repositories.Base;
@@ -50,7 +51,7 @@ namespace TestProject.Prototype
         public void IndexWithMocking()
         {
             //arrange
-            var controller = new RentalMobile.Controllers.UnitofWorkPatternController(MockUnitofWork.Object);
+            var controller = new UnitofWorkPatternController(MockUnitofWork.Object);
 
             // act
             var actual = controller.Index();

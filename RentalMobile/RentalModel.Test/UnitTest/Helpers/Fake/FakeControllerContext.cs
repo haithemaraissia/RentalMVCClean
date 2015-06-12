@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
 
-namespace NearForums.Tests.Fakes
+namespace TestProject.UnitTest.Helpers.Fake
 {
 
     public class FakeControllerContext : ControllerContext

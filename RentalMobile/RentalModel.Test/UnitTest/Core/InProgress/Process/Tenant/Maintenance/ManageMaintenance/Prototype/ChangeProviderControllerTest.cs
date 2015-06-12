@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Core.InProgress.Process.Tenant.Maintenance.ManageMaintenance.Prototype
 {
     [TestClass]
     public class ChangeProviderControllerTest

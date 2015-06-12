@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.WIP.Unit;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Core.InProgress.Process.Unit.Prototype
 {
     [TestClass]
     public class UnitControllerTest

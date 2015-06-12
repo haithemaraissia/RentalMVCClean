@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Core.InProgress.Process.Tenant.Application
 {
     [TestClass]
     public class TenantRentalApplicationControllerTest

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,9 +11,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestProject</RootNamespace>
     <AssemblyName>TestProject</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,14 +33,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -60,29 +64,29 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages">
-      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\RentalMobile\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +95,135 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tools\UnitTest\Controller\AboutControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AccountControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AddMaintenancePhotoControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AddTeamMemberControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AdvancedSearchControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AgentControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AgentProfileControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\AgentsControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ChangeMaintenanceControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ChangeProviderControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ChooseMaintenanceControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ChooseProviderControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ContactControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\GeneratedRentalAgreementControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\HelpControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\HomeControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\MaintainControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\MaintenanceOrderControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\MaintenancePhotoGalleryControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\MorePhotoControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\OwnerControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\OwnerProfileControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\OwnersControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\PostControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ProfessionalsControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ProjectControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ProjectDetailControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\PropertyControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ProviderControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\ProvidersControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\RentalApplicationControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\RentControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\SpecialistControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\SpecialistsControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TeamControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantMaintenanceControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantProfileControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantRentalApplicationControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantsControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\TenantShowingControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\UnitControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UnitTest\Controller\UploadAgreementControllerTest.cs">
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnitTest\Helpers\Fake\FakeActionDescriptor.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeControllerContext.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeHttpContext.cs" />
@@ -198,6 +331,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ControllersList.tt</DependentUpon>
+    </Content>
+    <Content Include="Tools\UnitTest\Controller\ControllerCRUDGenerator.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
     </Content>
     <Content Include="UnitTest\PreGenerated\Steps.txt" />
   </ItemGroup>

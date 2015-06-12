@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
 using System.Collections.Specialized;
+using System.Web;
 
-namespace NearForums.Tests.Fakes
+namespace TestProject.UnitTest.Helpers.Fake
 {
 	public class FakeHttpResponse : HttpResponseBase
 	{

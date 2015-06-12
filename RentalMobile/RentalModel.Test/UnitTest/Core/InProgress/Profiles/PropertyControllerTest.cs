@@ -1,12 +1,12 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
+using RentalMobile.Controllers.PublicProfile;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Fake;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Core.NotDone
+namespace TestProject.UnitTest.Core.InProgress.Profiles
 {
     [TestClass]
     public class PropertyControllerTest

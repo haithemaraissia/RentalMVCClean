@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers;
-using RentalMobile.Model.Models;
+using RentalMobile.Controllers.PrivateProfile.Tenant;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace TestProject.UnitTest.Controller.CRUD
+namespace TestProject.UnitTest.Core.InProgress.Process.Tenant.MightNotNeeded.Prototype.TenantShowing
 {
     [TestClass]
     public class TenantShowingControllerTest
@@ -32,7 +31,7 @@ namespace TestProject.UnitTest.Controller.CRUD
             // Assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as IList<TenantShowing>;
+            var data = viewResult.ViewData.Model as IList<RentalMobile.Model.Models.TenantShowing>;
             if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -40,13 +39,13 @@ namespace TestProject.UnitTest.Controller.CRUD
         public void Create()
         {
             //Act
-            var newTenantShowing = new TenantShowing
+            var newTenantShowing = new RentalMobile.Model.Models.TenantShowing
             {
                 ShowingId = 4,
                 Date = new DateTime(),
                 UnitId = new Int32(),
                 TenantId = new Int32(),
-                Tenant = new Tenant()
+                Tenant = new RentalMobile.Model.Models.Tenant()
             };
             Controller.Create(newTenantShowing);
             var actual = Controller.Index();
@@ -54,7 +53,7 @@ namespace TestProject.UnitTest.Controller.CRUD
             // Assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as IList<TenantShowing>;
+            var data = viewResult.ViewData.Model as IList<RentalMobile.Model.Models.TenantShowing>;
             if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -67,7 +66,7 @@ namespace TestProject.UnitTest.Controller.CRUD
             // Assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as TenantShowing;
+            var data = viewResult.ViewData.Model as RentalMobile.Model.Models.TenantShowing;
             if (data != null) Assert.AreEqual(4, data.TenantId);
         }
 
@@ -89,7 +88,7 @@ namespace TestProject.UnitTest.Controller.CRUD
             // Assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as TenantShowing;
+            var data = viewResult.ViewData.Model as RentalMobile.Model.Models.TenantShowing;
             if (data != null) Assert.AreEqual(8, data.TenantId);
         }
 
@@ -103,7 +102,7 @@ namespace TestProject.UnitTest.Controller.CRUD
             // assert
             var viewResult = actual as ViewResult;
             if (viewResult == null) return;
-            var data = viewResult.ViewData.Model as IList<TenantShowing>;
+            var data = viewResult.ViewData.Model as IList<RentalMobile.Model.Models.TenantShowing>;
             if (data != null) Assert.AreEqual(3, data.Count);
         }
 

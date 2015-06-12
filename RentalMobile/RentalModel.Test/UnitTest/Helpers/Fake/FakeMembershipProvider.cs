@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data.Odbc;
-using System.Linq;
-using System.Text;
 using System.Web.Security;
 
-namespace TestProject.Fake
+namespace TestProject.UnitTest.Helpers.Fake
 {
 
     public  class FakeMembershipProvider : MembershipProvider

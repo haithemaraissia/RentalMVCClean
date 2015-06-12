@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers;
+using RentalMobile.Controllers.Listing.Projects;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 
@@ -11,7 +12,7 @@ namespace TestProject.UnitTest.Controller.Menu.Main.Project
     [TestClass]
     public class ProjectControllerTest
     {
-        public ProjectController Controller;
+        public ProjectsController Controller;
 
         [TestInitialize]
         public void Initialize()
@@ -19,7 +20,7 @@ namespace TestProject.UnitTest.Controller.Menu.Main.Project
             // Arrange
             var projectRepo = new FakeProjectRepository();
             var uow = new UnitofWork { ProjectRepository = projectRepo };
-            Controller = new ProjectController(uow);
+            Controller = new ProjectsController(uow);
         }
 
         [TestMethod]
