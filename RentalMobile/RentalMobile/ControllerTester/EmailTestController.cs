@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Postal;
 
-namespace RentalMobile.Controllers
+namespace RentalMobile.ControllerTester
 {
     public class EmailTestController : Controller
     {

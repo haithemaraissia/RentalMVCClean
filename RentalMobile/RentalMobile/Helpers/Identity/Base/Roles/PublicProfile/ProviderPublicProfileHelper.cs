@@ -6,6 +6,7 @@ using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
 
@@ -18,6 +19,28 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
             UnitofWork = uow;
             MembershipService = membershipService;
             UserHelper = userHelper;
+        }
+
+        public ProviderProfileViewVisitor GetProviderProfileViewVisitorProperties()
+        {
+            string visitorEmail = null;
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                var user = MembershipService.GetUser(HttpContext.User.Identity.Name);
+                if (user != null)
+                {
+                    if (user.Email != null)
+                    {
+                        visitorEmail = user.Email;
+                    }
+                    return new ProviderProfileViewVisitor
+                    {
+                        EmailAddress = visitorEmail,
+                        Name = HttpContext.User.Identity.Name
+                    };
+                }
+            }
+            return null;
         }
 
         public string TeamName(int maintenanceProviderId)
@@ -235,7 +258,6 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
             }
             return email;
         }
-
 
     }
 }

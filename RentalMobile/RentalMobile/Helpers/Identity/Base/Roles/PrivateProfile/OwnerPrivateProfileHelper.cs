@@ -147,8 +147,9 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public List<OwnerPendingApplication> GetOwnerPendingApplication()
         {
+            var ownerId = GetOwner().OwnerId;
             return UnitofWork.OwnerPendingApplicationRepository.
-                FindBy(x => x.OwnerId == GetOwner().OwnerId).ToList();
+                FindBy(x => x.OwnerId == ownerId).ToList();
         }
 
 
@@ -382,14 +383,16 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public List<OwnerAcceptedApplication> GetOwnerAcceptedApplication()
         {
+            var ownerId = GetOwner().OwnerId;
             return UnitofWork.OwnerAcceptedApplicationRepository.
-                FindBy(x => x.OwnerId == GetOwner().OwnerId).ToList();
+                FindBy(x => x.OwnerId == ownerId).ToList();
         }
 
         public List<OwnerRejectedApplication> GetOwnerRejectedApplication()
         {
+            var ownerId = GetOwner().OwnerId;
             return UnitofWork.OwnerRejectedApplicationRepository.
-                FindBy(x => x.OwnerId == GetOwner().OwnerId).ToList();
+                FindBy(x => x.OwnerId == ownerId).ToList();
         }
 
         #endregion
@@ -398,15 +401,17 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public List<GeneratedRentalContract> GetOwnerGeneratedRentalContract()
         {
+             var ownerId = GetOwner().OwnerId;
             var ownercontractcount = UnitofWork.GeneratedRentalContractRepository.
-                FindBy(x => x.LandLoradID == GetOwner().OwnerId).ToList();
+                FindBy(x => x.LandLoradID == ownerId).ToList();
             return ownercontractcount.Any() ? ownercontractcount.ToList() : null;
         }
 
         public List<UploadedContract> GetUploadedOwnerRentalContract()
         {
+            var ownerId = GetOwner().OwnerId;
             var uploadedOwnercontractcount = UnitofWork.UploadedContractRepository.
-                   FindBy(x => x.UploaderId == GetOwner().OwnerId
+                   FindBy(x => x.UploaderId == ownerId
                    && x.UploaderRole == "Owner").ToList();
             return uploadedOwnercontractcount.Any() ? uploadedOwnercontractcount.ToList() : null;
         }
@@ -417,9 +422,10 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public IQueryable<OwnerPendingShowingCalendarModelView> GetOwnerPendingShowingCalendar()
         {
+            var ownerId = GetOwner().OwnerId;
             var showingrequest = (from opsc in
                                       UnitofWork.OwnerPendingShowingCalendarRepository.
-                                      FindBy(x => x.OwnerId == GetOwner().OwnerId)
+                                      FindBy(x => x.OwnerId == ownerId)
                                   join unit in UnitofWork.UnitRepository.All
                                       on opsc.UnitId equals unit.UnitId
                                   select new OwnerPendingShowingCalendarModelView
@@ -471,8 +477,9 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public JsonResult GetOwnerCalendar()
         {
+            var ownerId = GetOwner().OwnerId;
             var calendar = from e in UnitofWork.OwnerShowingCalendarRepository
-                                .FindBy(x => x.OwnerId == GetOwner().OwnerId)
+                                .FindBy(x => x.OwnerId == ownerId)
                            select e;
             var calendarList = calendar.ToArray();
             var eventList = from e in calendarList
@@ -512,10 +519,10 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
             var feed = new SyndicationFeed("Compiled Experience", "Silverlight Development",
                                            new Uri("http://compiledexperience.com"));
-
+            var ownerId = GetOwner().OwnerId;
             var calendar = from e in UnitofWork.OwnerShowingCalendarRepository
-                          .FindBy(x => x.OwnerId == GetOwner().OwnerId)
-                           where (e.OwnerId == GetOwner().OwnerId)
+                          .FindBy(x => x.OwnerId == ownerId)
+                           where (e.OwnerId == ownerId)
                            select e;
             var calendarList = calendar.ToArray();
             var eventList = from e in calendarList

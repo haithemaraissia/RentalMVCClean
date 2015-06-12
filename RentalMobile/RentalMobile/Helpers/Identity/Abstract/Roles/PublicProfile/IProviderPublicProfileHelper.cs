@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using Ninject.Activation;
+using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 
 namespace RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile
 {
     public interface IProviderPublicProfileHelper
-    {       
+    {
+        ProviderProfileViewVisitor GetProviderProfileViewVisitorProperties();
         string TeamName(int maintenanceProviderId);
         List<Teammember> GetTeamByProviderId(int maintenanceProviderId);
         List<Teammember> GetTeamByTeamAssociation(IEnumerable<MaintenanceTeamAssociation> team);

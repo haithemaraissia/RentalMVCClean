@@ -421,7 +421,6 @@ img.scale-with-grid
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46769c', endColorstr='#215785',GradientType=0 );
     border: 0px solid #888; /*border-top: 1px solid #aaa; 	  border-left: 1px solid #aaa; */
 }
-a.
 a.button:hover
 {
     text-decoration: none;

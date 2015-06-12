@@ -127,26 +127,26 @@ namespace RentalMobile.Helpers.Account
 
         public void ChangeEmailByType(ChangeEmail model)
         {
-            if (User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole("Tenant"))
             {
                 ChangeTenantEmail(model);
             }
 
-            if (User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole("Owner"))
             {
                 ChangeOwnerEmail(model);
             }
 
-            if (User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole("Agent"))
             {
                 ChangeAgentmail(model);
             }
 
-            if (User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole("Specialist"))
             {
                 ChangeSpecialistEmail(model);
             }
-            if (User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole("Provider"))
             {
                 ChangeProviderEmail(model);
             }
@@ -624,26 +624,26 @@ namespace RentalMobile.Helpers.Account
         public void UpdateVideoByAccountType(PrimaryVideo primaryVideo)
         {
 
-            if (User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole("Tenant"))
             {
                 UpdateTenantVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole("Owner"))
             {
                 UpdateOwnerVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole("Agent"))
             {
                 UpdateAgentVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole("Specialist"))
             {
                 UpdateSpecialistVideo(primaryVideo);
             }
-            if (User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole("Provider"))
             {
                 UpdateProviderVideo(primaryVideo);
             }
@@ -742,26 +742,26 @@ namespace RentalMobile.Helpers.Account
         /// <param name="primaryVideo"></param>
         public void LoadVideoByAccountType(PrimaryVideo primaryVideo)
         {
-            if (User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole("Tenant"))
             {
                 LoadTenantVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole("Owner"))
             {
                 LoadOwnerVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole("Agent"))
             {
                 LoadAgentVideo(primaryVideo);
             }
 
-            if (User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole("Specialist"))
             {
                 LoadSpecialistVideo(primaryVideo);
             }
-            if (User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole("Provider"))
             {
                 LoadProviderVideo(primaryVideo);
             }

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using RentalModel.Repository.Old.Basic_Respository_Test.TestingRepositoryDirectly.CommonPattern;
 
-namespace RentalMobile.Controllers
+namespace RentalMobile.ControllerTester
 {
     public class UnitRepositoryPatternController : Controller
     {

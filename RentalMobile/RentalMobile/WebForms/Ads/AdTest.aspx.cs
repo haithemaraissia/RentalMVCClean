@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace RentalMobile.WebForms.Ads
 {
-    public partial class AdTest : System.Web.UI.Page
+    internal partial class AdTest2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -187,6 +187,7 @@ namespace RentalMobile.WebForms.Ads
 
 
         //Top Banner
+
         protected void TopBannerRotatorCreated(object sender, AdCreatedEventArgs e)
         {
             try

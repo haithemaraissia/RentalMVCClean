@@ -1,9 +1,11 @@
-﻿using RentalMobile.Model.Models;
+﻿using RentalMobile.Helpers.Visitor;
+using RentalMobile.Model.Models;
 
 namespace RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile
 {
     public interface ISpecialistPublicProfileHelper
     {
+        SpecialistProfileViewVisitor GetSpecialistProfileViewVisitorProperties();
         string GetTeamPrimaryPhoto(int id);
         string GetSpecialistPrimaryPhoto(int id);
         string GetSpecialistName(int id);

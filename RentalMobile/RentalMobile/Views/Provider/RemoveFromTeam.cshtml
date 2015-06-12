@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @using PagedList.Mvc
+@using RentalMobile
 @using RentalMobile.Helpers
 @model PagedList.IPagedList<RentalMobile.Model.Models.MaintenanceTeamAssociation>
 @{
@@ -21,10 +22,10 @@
         <div>
             @Html.PagedListPager(Model, page => Url.Action("RemoveFromTeam", new { page }), new PagedListRenderOptions
                 {
-                    DisplayLinkToFirstPage = false,
-                    DisplayLinkToLastPage = false,
-                    DisplayLinkToPreviousPage = true,
-                    DisplayLinkToNextPage = true,
+                    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
                     DisplayLinkToIndividualPages = false,
                     ContainerDivClasses = null,
                     UlElementClasses = new[] { "pager" },
@@ -42,7 +43,7 @@
                     <article>
                         <figure class="five columns alpha">
                             @Html.ActionLink(" ", "Index", "Providers", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
-                            <img src="@UserHelper.GetTeamPrimaryPhoto(@item.TeamId)" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
+                            <img src="@{ new ViewHelper().GetTeamPrimaryPhoto(@item.TeamId); }" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                         </figure>
                         <div class="ten columns omega">
                             <h4>
@@ -66,10 +67,10 @@
         <div>
             @Html.PagedListPager(Model, page => Url.Action("RemoveFromTeam", new { page }), new PagedListRenderOptions
                 {
-                    DisplayLinkToFirstPage = false,
-                    DisplayLinkToLastPage = false,
-                    DisplayLinkToPreviousPage = true,
-                    DisplayLinkToNextPage = true,
+                    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
                     DisplayLinkToIndividualPages = false,
                     ContainerDivClasses = null,
                     UlElementClasses = new[] { "pager" },

@@ -1,4 +1,5 @@
-﻿@using RentalMobile.Helpers
+﻿@using System.Web.Mvc.Html
+@using RentalMobile.Helpers
 @model RentalMobile.Model.ModelViews.LogOnModel
 @{
     ViewBag.Title = "Log On";
@@ -29,7 +30,7 @@
             <br />
             <label class="login-label-spacing">
                 @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "inline remove-bottom login-label-spacing" })
+                @LabelExtensions.LabelFor(Html, m => m.RememberMe, new { @class = "inline remove-bottom login-label-spacing" })
             </label>
             <br />
             @Html.DropDownListFor(x => x.Role, Html.GetRoles(), new { @class = "custom-select" })

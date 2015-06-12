@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RentalMobile.Controllers
+namespace RentalMobile.ControllerTester
 {
     public class AdController : Controller
     {

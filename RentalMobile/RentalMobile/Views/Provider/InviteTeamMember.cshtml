@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc.Html
+@using RentalMobile
 @using RentalMobile.Helpers
 @model IEnumerable<RentalMobile.Model.Models.MaintenanceTeam>
 @{
@@ -36,13 +37,13 @@
                     <li>
                         <article>
                             <figure class="four columns omega">
-                                @Html.ActionLink(" ", "Index", "Professionals", new { id = (int)ViewBag.SelectedSpecialistId }, new { @class = "camera", target = "_blank" })
-                                <img src="@UserHelper.GetSpecialistPrimaryPhoto(ViewBag.SelectedSpecialistId)" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
-                            </figure>
+                                @Html.ActionLink(" ", "Index", "Professionals", new {id = (int) ViewBag.SelectedSpecialistId}, new {@class = "camera", target = "_blank"})
+                                <img src="@{new ViewHelper().GetSpecialistPrimaryPhoto(ViewBag.SelectedSpecialistId)}" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
+                            ></figure>
                             <div class="four columns omega;" style="padding-right: 30px">
                                 <h4 style="margin-top: 1em">
                                     <p style="color: #396991; margin-bottom: 2em; text-align: center">
-                                        <a href="../Professionals/@ViewBag.SelectedSpecialistId" target="_blank">@UserHelper.GetSpecialistName(ViewBag.SelectedSpecialistId)</a>
+                                        <a href="../Professionals/@ViewBag.SelectedSpecialistId" target="_blank">@{new ViewHelper().GetSpecialistPrimaryPhoto(ViewBag.SelectedSpecialistId)}</a>
                                     </p>
                                     <p style="margin-bottom: 2em; text-align: center">
                                         to Join</p>
@@ -53,7 +54,7 @@
                             </div>
                             <figure class="four columns alpha">
                                 @Html.ActionLink(" ", "Index", "Providers", new { id = item.MaintenanceProviderId }, new { @class = "camera", target = "_blank" })
-                                <img src="@UserHelper.GetTeamPrimaryPhoto(@item.TeamId)" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
+                                <img src="@{new ViewHelper().GetTeamPrimaryPhoto(@item.TeamId)}" class=" scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="three columns alpha">
                                 <input type="submit" value="Invite" class="full-width" />

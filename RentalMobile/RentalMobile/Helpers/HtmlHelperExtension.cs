@@ -11,10 +11,10 @@ using RentalMobile.Model.Models;
 namespace RentalMobile.Helpers
 {
 
-    public static class HtmlHelperExtensions
+    public static class HtmlHelperCustomExtensions
     {
 
-        public static RentalContext db = new RentalContext();
+        public static RentalContext Db = new RentalContext();
 
         public static string DefaultAvatarPlaceholderImagePath =
             "../../images/dotimages/avatar-placeholder.png";
@@ -37,73 +37,73 @@ namespace RentalMobile.Helpers
 
         public static IEnumerable<SelectListItem> Currency(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Currencies.Select(c => new { c.CurrencyID, c.CurrencyValue });
+            var query = Db.Currencies.Select(c => new { c.CurrencyID, c.CurrencyValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", 0) : new SelectList(query.AsEnumerable(), "CurrencyID", "CurrencyValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Cooling(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Coolings.Select(c => new { c.CoolingID, c.CoolingValue });
+            var query = Db.Coolings.Select(c => new { c.CoolingID, c.CoolingValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "CoolingID", "CoolingValue", 0) : new SelectList(query.AsEnumerable(), "CoolingID", "CoolingValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Basement(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Basements.Select(c => new { c.BasementID, c.BasementValue });
+            var query = Db.Basements.Select(c => new { c.BasementID, c.BasementValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BasementID", "BasementValue", 0) : new SelectList(query.AsEnumerable(), "BasementID", "BasementValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Garage(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Garages.Select(c => new { c.GarageID, c.GarageValue });
+            var query = Db.Garages.Select(c => new { c.GarageID, c.GarageValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", 0) : new SelectList(query.AsEnumerable(), "GarageID", "GarageValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Heating(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Heatings.Select(c => new { c.HeatingID, c.HeatingValue });
+            var query = Db.Heatings.Select(c => new { c.HeatingID, c.HeatingValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "HeatingID", "HeatingValue", 0) : new SelectList(query.AsEnumerable(), "HeatingID", "HeatingValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> UnitType(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.UnitTypes.Select(c => new { c.TypeID, c.TypeValue });
+            var query = Db.UnitTypes.Select(c => new { c.TypeID, c.TypeValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "TypeID", "TypeValue", 0) : new SelectList(query.AsEnumerable(), "TypeID", "TypeValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> ParkingSpace(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.ParkingSpaces.Select(c => new { c.ParkingID, c.ParkingValue });
+            var query = Db.ParkingSpaces.Select(c => new { c.ParkingID, c.ParkingValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "ParkingID", "ParkingValue", 0) : new SelectList(query.AsEnumerable(), "ParkingID", "ParkingValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Floor(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Floors.Select(c => new { c.FloorID, c.FloorValue });
+            var query = Db.Floors.Select(c => new { c.FloorID, c.FloorValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", 0) : new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> FloorCovering(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.FloorCoverings.Select(c => new { c.FloorID, c.FloorValue });
+            var query = Db.FloorCoverings.Select(c => new { c.FloorID, c.FloorValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", 0) : new SelectList(query.AsEnumerable(), "FloorID", "FloorValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Foundation(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Foundations.Select(c => new { c.FoundationID, c.FoundationValue });
+            var query = Db.Foundations.Select(c => new { c.FoundationID, c.FoundationValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", 0) : new SelectList(query.AsEnumerable(), "FoundationID", "FoundationValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Bed(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Beds.Select(c => new { c.BedID, c.BedValue });
+            var query = Db.Beds.Select(c => new { c.BedID, c.BedValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BedID", "BedValue", 0) : new SelectList(query.AsEnumerable(), "BedID", "BedValue", selectedvalue);
         }
 
         public static IEnumerable<SelectListItem> Bathroom(this HtmlHelper helper, int? selectedvalue)
         {
-            var query = db.Bathrooms.Select(c => new { c.BathroomID, c.BathroomValue });
+            var query = Db.Bathrooms.Select(c => new { c.BathroomID, c.BathroomValue });
             return selectedvalue == null ? new SelectList(query.AsEnumerable(), "BathroomID", "BathroomValue", 0) : new SelectList(query.AsEnumerable(), "BathroomID", "BathroomValue", selectedvalue);
         }
 
@@ -113,36 +113,37 @@ namespace RentalMobile.Helpers
             return b.Value ? ifTrue : ifFalse;
         }
 
-        public static string GetCurrencyValue(this HtmlHelper helper, int? currencyID)
+        public static string GetCurrencyValue(this HtmlHelper helper, int? currencyId)
         {
-            var currency = db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyID);
+            if (currencyId == null) return "";
+            var currency = Db.Currencies.FirstOrDefault(x => x.CurrencyID == currencyId);
             if (currency != null)
                 return currency.CurrencyValue;
-            return db.Currencies.First().CurrencyValue;
+            return Db.Currencies.First().CurrencyValue;
         }
 
         public static string GetBedValue(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "1";
-            var bed = db.Beds.FirstOrDefault(x => x.BedID == selectedvalue);
+            var bed = Db.Beds.FirstOrDefault(x => x.BedID == selectedvalue);
             return bed != null ? bed.BedValue : "1";
         }
 
         public static string GetBathroomValue(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "1";
-            var bathroom = db.Bathrooms.FirstOrDefault(x => x.BathroomID == selectedvalue);
+            var bathroom = Db.Bathrooms.FirstOrDefault(x => x.BathroomID == selectedvalue);
             return bathroom != null ? bathroom.BathroomValue : "1";
         }
 
         public static string CountPhoto(this HtmlHelper helper, int? unitid)
         {
-            return unitid == null ? "1" : db.UnitGalleries.Count(x => x.UnitId == unitid).ToString(CultureInfo.InvariantCulture);
+            return unitid == null ? "1" : Db.UnitGalleries.Count(x => x.UnitId == unitid).ToString(CultureInfo.InvariantCulture);
         }
 
         public static string GetMaintenanceProviderPrimaryPhoto(this HtmlHelper helper, int? id)
         {
-            var maintenanceProvider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (maintenanceProvider != null)
                 return id == null ? " " : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return "";
@@ -151,7 +152,7 @@ namespace RentalMobile.Helpers
         public static string GetUnitType(this HtmlHelper helper, int? selectedvalue)
         {
             if (selectedvalue == null) return "house";
-            var Unit = db.UnitTypes.FirstOrDefault(x => x.TypeID == selectedvalue);
+            var Unit = Db.UnitTypes.FirstOrDefault(x => x.TypeID == selectedvalue);
             return Unit != null ? Unit.TypeValue : "house";
         }
 
@@ -260,7 +261,7 @@ namespace RentalMobile.Helpers
 
         public static string GetTeamPrimaryPhoto(this HtmlHelper helper, int? id)
         {
-            var maintenanceProvider = db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
+            var maintenanceProvider = Db.MaintenanceProviders.FirstOrDefault(x => x.MaintenanceProviderId == id);
             if (maintenanceProvider != null)
                 return id == null ? DefaultAvatarPlaceholderImagePath : maintenanceProvider.Photo.ToString(CultureInfo.InvariantCulture);
             return DefaultAvatarPlaceholderImagePath;
@@ -271,7 +272,7 @@ namespace RentalMobile.Helpers
             var renderedResult = @"<ul class='arrow'>";
             if (specialistId != null)
             {
-                var specialist = db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
+                var specialist = Db.Specialists.FirstOrDefault(x => x.SpecialistId == specialistId);
                 if (specialist != null)
                 {
                     if (specialist.City != null)
@@ -282,10 +283,10 @@ namespace RentalMobile.Helpers
                     }
                 }
                 var companyLookUp =
-                    db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId && x.Role == 1);
+                    Db.MaintenanceCompanyLookUps.FirstOrDefault(x => x.UserId == specialistId && x.Role == 1);
                 if (companyLookUp != null)
                 {
-                    var specialistcompany = db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
+                    var specialistcompany = Db.MaintenanceCompanies.FirstOrDefault(x => x.CompanyId == companyLookUp.CompanyId);
                     if (specialistcompany != null)
                     {
                         if (specialist != null && (specialistcompany.City != null && specialist.City != specialistcompany.City))
@@ -324,7 +325,7 @@ namespace RentalMobile.Helpers
         public static MvcHtmlString GetMaintenanceProviderZone(this HtmlHelper html, int? maintenanceProviderId)
         {
             var renderedResult = @"<ul class='arrow'>";
-            var providerZones = db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
+            var providerZones = Db.MaintenanceProviderZones.Where(x => x.MaintenanceProviderId == maintenanceProviderId).ToList();
             foreach (var maintenanceProviderZone in providerZones)
             {
                 renderedResult += "<li>";

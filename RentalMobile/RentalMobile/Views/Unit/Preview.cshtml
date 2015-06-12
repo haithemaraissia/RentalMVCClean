@@ -10,11 +10,11 @@
         {
             if ((Model.Unit.YouTubeVideo != null && (bool)Model.Unit.YouTubeVideo))
             {
-                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.Unit.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GetYouTubeVideoEmbeddedUrl(Model.Unit.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
             }
             else if ((Model.Unit.VimeoVideo != null && (bool)Model.Unit.VimeoVideo))
             {
-                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.Unit.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GeVimeoVideoEmbeddedUrl(Model.Unit.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
             }
         }
         catch (Exception)
@@ -54,7 +54,7 @@
 }
 @section UnitTitle
 {
-    @Model.Unit.Title
+    @if ( Model.Unit!= null) {@Model.Unit.Title}
 }
 @section MiniTabMenu
 {
@@ -176,7 +176,7 @@
                 <h4>
                     General Description</h4>
                 <div style="word-wrap: break-word; overflow: auto;">
-                    @Model.Unit.Description
+                    @if ( Model.Unit!= null) {@Model.Unit.Description;}
                 </div>
             </div>
             <div class="six columns push by-two">
@@ -184,7 +184,7 @@
                     About</h4>
                 <ul class="arrow">
                     <li>Rent</li>
-                    <li>@Model.UnitPricing.Rent <span style="color: #346993">@Html.GetCurrencyValue(Model.UnitPricing.CurrencyId)</span></li>
+                    <li>@if (Model.UnitPricing!= null) {@Model.UnitPricing.Rent}<span style="color: #346993">@if (Model.UnitPricing != null){@Html.GetCurrencyValue(Model.UnitPricing.CurrencyId)}</span></li>
                     <li>Deposit</li>
                     <li>@Model.UnitPricing.Deposit <span style="color: #346993">@Html.GetCurrencyValue(Model.UnitPricing.CurrencyId)</span></li>
                     <li>Available Date</li>

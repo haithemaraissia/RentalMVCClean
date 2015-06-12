@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using RentalMobile.Model.Models;
-using System.Web.Security;
 using RentalMobile.Helpers.Identity.Base;
+using RentalMobile.Model.Models;
 
-namespace RentalMobile.Helpers
+namespace RentalMobile.Helpers.Old
 {
     public static class UserHelperOld
     {

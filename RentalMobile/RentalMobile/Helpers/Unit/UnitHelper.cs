@@ -300,7 +300,7 @@ namespace RentalMobile.Helpers.Unit
 
         public void ShareProperty(UnitModelView u)
         {
-            if (Request.Url == null) return;
+            if (Request == null || Request.Url == null) return;
             var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
             var primaryimagethumbnail = new UserIdentity(UnitofWork, MembershipService).ResolveImageUrl(u.Unit.PrimaryPhoto);
             string title;

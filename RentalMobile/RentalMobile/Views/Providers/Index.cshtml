@@ -47,11 +47,11 @@
         {
             if (Model.YouTubeVideo)
             {
-                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
             }
             else if (Model.VimeoVideo)
             {
-                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
             }
         }
         catch (Exception)
@@ -113,14 +113,13 @@
             @if (Request.IsAuthenticated)
             {
                 <li class="four columns alpha"> <label for="your-name" class="screen-reader-text">
-                Your name</label> <input id="your-name" placeholder="@User.Identity.Name" type="text"
+                Your name</label> <input id="your-name" placeholder="@ViewBag.VisitorName" type="text"
                 required /> </li>
                 <li class="four columns omega"> <label for="your-email" class="screen-reader-text">
                 E-mail</label> <input id="your-email" placeholder="
-                @{var user = Membership.GetUser(User.Identity.Name); }
-                @if (user != null)
+                @if (ViewBag.VisitorEmail != null)
                 {
-                    @user.Email
+                    @ViewBag.VisitorEmail
                 }" type="email" required /> </li>
                 <li class="four columns alpha"> <label for="your-telephone" class="screen-reader-text">
                 Your telephone</label> <input id="your-telephone" placeholder="telephone" type="text"/>

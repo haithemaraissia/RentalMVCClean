@@ -4,6 +4,7 @@ using System.Linq;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
 
@@ -19,6 +20,28 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
         {
             MembershipService = membershipService;
             UnitofWork = uow;
+        }
+
+        public SpecialistProfileViewVisitor GetSpecialistProfileViewVisitorProperties()
+        {
+            string visitorEmail = null;
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                var user = MembershipService.GetUser(HttpContext.User.Identity.Name);
+                if (user != null)
+                {
+                    if (user.Email != null)
+                    {
+                        visitorEmail = user.Email;
+                    }
+                    return new SpecialistProfileViewVisitor
+                    {
+                        EmailAddress = visitorEmail,
+                        Name = HttpContext.User.Identity.Name
+                    };
+                }
+            }
+            return null;
         }
 
         public string GetTeamPrimaryPhoto(int id)

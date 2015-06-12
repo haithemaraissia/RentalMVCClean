@@ -14,11 +14,11 @@
         {
             if ((Model.YouTubeVideo != null && (bool)Model.YouTubeVideo))
             {
-                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GetYouTubeVideoEmbeddedUrl(Model.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
             }
             else if ((Model.VimeoVideo != null && (bool)Model.VimeoVideo))
             {
-                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GeVimeoVideoEmbeddedUrl(Model.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
             }
         }
         catch (Exception)

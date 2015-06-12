@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile.Associated.Provider;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
@@ -11,19 +12,17 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile.Associated
 {
     public class ProviderTeamPrivateProfileHelper : BaseController, IProviderTeamPrivateProfileHelper
     {
-        public ProviderTeamPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService)
+        public ProviderTeamPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
             MembershipService = membershipService;
             UnitofWork = uow;
+            UserHelper = userHelper;
         }
 
         public List<MaintenanceTeam> GetAllProviderPrivateMaintenanceTeamByProviderId(int providerId)
         {
             return
-              UnitofWork.MaintenanceTeamRepository.FindBy(
-                  x => x.MaintenanceProviderId == 
-                      new UserIdentity(UnitofWork, MembershipService).GetProviderId(providerId)).
-                      ToList();
+              UnitofWork.MaintenanceTeamRepository.FindBy(x => x.MaintenanceProviderId == providerId).ToList();
         }
 
         public MaintenanceTeam GetProviderPrivateMaintenanceTeamByProviderId(int providerId)
@@ -31,7 +30,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile.Associated
             return
               UnitofWork.MaintenanceTeamRepository.FindBy(
                   x => x.MaintenanceProviderId ==
-                      new UserIdentity(UnitofWork, MembershipService).GetProviderId(providerId)).
+                      providerId).
                       FirstOrDefault();
         }
 
@@ -47,9 +46,10 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile.Associated
 
         public void UpdateMaintenanceTeamsName(MaintenanceTeam maintenanceteam)
         {
+            var providerId = UserHelper.GetProviderId();
             var maintenanceTeamAssociation = UnitofWork.MaintenanceTeamAssociationRepository.
                 FindBy(x => x.TeamId == maintenanceteam.TeamId
-                           && x.MaintenanceProviderId == UserHelper.GetProviderId()).ToList();
+                           && x.MaintenanceProviderId == providerId).ToList();
             if (maintenanceTeamAssociation.Count > 0)
             {
                 foreach (var mta in maintenanceTeamAssociation)

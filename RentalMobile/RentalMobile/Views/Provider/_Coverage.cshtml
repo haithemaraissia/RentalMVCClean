@@ -1,4 +1,5 @@
-﻿@using RentalMobile.Helpers
+﻿@using RentalMobile
+@using RentalMobile.Helpers
 @model RentalMobile.Model.ModelViews.ProviderMaintenanceProfile
 <div id="Exteriors">
     <h3 class="section-titling" style="position: relative; color: #346993; right: 0">
@@ -137,7 +138,7 @@
 
             }
             @{
-                if (!Helper.ProviderHasAnyTeamMember(Model.MaintenanceProvider.MaintenanceProviderId))
+                if (!new ViewHelper().ProviderHasAnyTeamMember(Model.MaintenanceProvider.MaintenanceProviderId))
                 { 
                 @Helper.NoTeamMemberHtml()   
                 }

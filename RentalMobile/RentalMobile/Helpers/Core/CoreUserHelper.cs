@@ -16,6 +16,7 @@ using RentalMobile.Helpers.Photo.Unit;
 using RentalMobile.Helpers.Process.Application;
 using RentalMobile.Helpers.Process.JobOffer;
 using RentalMobile.Helpers.Unit;
+using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -73,7 +74,7 @@ namespace RentalMobile.Helpers.Core
             TenantPrivateProfileHelper = new TenantPrivateProfileHelper(uow, membershipService);
             ProviderPrivateProfileHelper = new ProviderPrivateProfileHelper(uow, membershipService, this);
             #region Associated
-            ProviderTeamPrivateProfileHelper = new ProviderTeamPrivateProfileHelper(uow, membershipService);
+            ProviderTeamPrivateProfileHelper = new ProviderTeamPrivateProfileHelper(uow, membershipService, this);
             #endregion
             #endregion
 
@@ -261,7 +262,12 @@ namespace RentalMobile.Helpers.Core
         /// SpecialistPublicProfileHelper Instance
         /// </summary>
         /// <returns></returns>
-        /// 
+
+        public SpecialistProfileViewVisitor GetSpecialistProfileViewVisitorProperties()
+        {
+            return SpecialistPublicProfileHelper.GetSpecialistProfileViewVisitorProperties();
+        }
+
         public string GetTeamPrimaryPhoto(int id)
         {
             return SpecialistPublicProfileHelper.GetTeamPrimaryPhoto(id);
@@ -483,11 +489,6 @@ namespace RentalMobile.Helpers.Core
             return TenantPublicProfileHelper.GetPublicProfileTenantByTenantId(id);
         }
 
-        public string TenantPublicProfileUsername()
-        {
-            return TenantPublicProfileHelper.TenantPublicProfileUsername();
-        }
-
         #endregion
 
         #region ProviderPrivateProfile
@@ -675,7 +676,11 @@ namespace RentalMobile.Helpers.Core
         /// ProviderPublicProfileHelper Instance
         /// </summary>
         /// <returns></returns>
-
+    
+        public ProviderProfileViewVisitor GetProviderProfileViewVisitorProperties()
+        {
+            return ProviderPublicProfileHelper.GetProviderProfileViewVisitorProperties();
+        }
         public string TeamName(int maintenanceProviderId)
         {
             return ProviderPublicProfileHelper.TeamName(maintenanceProviderId);

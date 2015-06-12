@@ -8,9 +8,7 @@
 //------------------------------------------------------------------------------
 
 namespace RentalMobile.WebForms.Ads {
-    
-    
-    public partial class AdTest {
+    internal partial class AdTest2 {
         
         /// <summary>
         /// form1 control.

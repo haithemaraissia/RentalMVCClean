@@ -69,7 +69,8 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public Tenant GetPrivateProfileTenantByTenantId(int id)
         {
-            return UnitofWork.TenantRepository.FindBy(x => x.TenantId == new UserIdentity(UnitofWork, MembershipService).GetTenantId(id)).FirstOrDefault();
+            var tenantId = new UserIdentity(UnitofWork, MembershipService).GetTenantId(id);
+            return UnitofWork.TenantRepository.FindBy(x => x.TenantId == tenantId).FirstOrDefault();
         }
 
         public MaintenanceOrder GetMaintenanceOrderByMaintenanceIdPlacedByTenant(int id)
@@ -84,7 +85,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public List<GeneratedRentalContract> GetTenantContract(int tenantId)
         {
-            return (List<GeneratedRentalContract>) UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.TenantID == tenantId);
+            return UnitofWork.GeneratedRentalContractRepository.FindBy(x => x.TenantID == tenantId).ToList();
         }
 
         public void AddTenantRequestPictures(string key)

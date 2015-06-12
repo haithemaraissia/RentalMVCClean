@@ -6,7 +6,7 @@ using RentalMobile.Helpers.Identity.Base.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace RentalMobile.Helpers.Identity
+namespace RentalMobile.Helpers.Old
 {
     public class UserHelperBefore : BaseController
     {

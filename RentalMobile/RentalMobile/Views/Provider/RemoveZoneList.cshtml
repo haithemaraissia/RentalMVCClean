@@ -14,10 +14,10 @@
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("RemoveZoneList", new { page }), new PagedListRenderOptions
                     {
-                        DisplayLinkToFirstPage = false,
-                        DisplayLinkToLastPage = false,
-                        DisplayLinkToPreviousPage = true,
-                        DisplayLinkToNextPage = true,
+                        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                        DisplayLinkToNextPage = PagedListDisplayMode.Always,
                         DisplayLinkToIndividualPages = false,
                         ContainerDivClasses = null,
                         UlElementClasses = new[] { "pager" },
@@ -58,10 +58,10 @@
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("RemoveZoneList", new { page }), new PagedListRenderOptions
            {
-               DisplayLinkToFirstPage = false,
-               DisplayLinkToLastPage = false,
-               DisplayLinkToPreviousPage = true,
-               DisplayLinkToNextPage = true,
+               DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+               DisplayLinkToLastPage = PagedListDisplayMode.Never,
+               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+               DisplayLinkToNextPage = PagedListDisplayMode.Always,
                DisplayLinkToIndividualPages = false,
                ContainerDivClasses = null,
                UlElementClasses = new[] { "pager" },

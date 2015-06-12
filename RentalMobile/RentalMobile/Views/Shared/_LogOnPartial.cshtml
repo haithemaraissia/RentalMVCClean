@@ -1,27 +1,27 @@
 ﻿@if (Request.IsAuthenticated)
 { 
     <ul id="UserMenu" class="topmenu">
-        <li class="toplast"><a href="#" style="height: 13; line-height: 0.5;"><span>Hi @User.Identity.Name</span>
+        <li class="toplast"><a href="#" style="height: 13px; line-height: 0.5;"><span>Hi @HttpContext.Current.User.Identity.Name</span>
         </a>
             <ul style="width:100%">
                 @{
-    if (User.IsInRole("Tenant"))
+    if (HttpContext.Current.User.IsInRole("Tenant"))
     {
                     <li style="width:100%">@Html.ActionLink("Profile", "Index", "Tenant") </li>
     }
-    else if (User.IsInRole("Owner"))
+    else if (HttpContext.Current.User.IsInRole("Owner"))
     {
                     <li  style="width:100%">@Html.ActionLink("Profile", "Index", "Owner") </li>
     }
-    else if (User.IsInRole("Agent"))
+    else if (HttpContext.Current.User.IsInRole("Agent"))
     {
                     <li  style="width:100%">@Html.ActionLink("Profile", "Index", "Agent") </li>
     }
-    else if (User.IsInRole("Specialist"))
+    else if (HttpContext.Current.User.IsInRole("Specialist"))
     {
                     <li  style="width:100%">@Html.ActionLink("Profile", "Index", "Specialist") </li>
     }
-    else if (User.IsInRole("Provider"))
+    else if (HttpContext.Current.User.IsInRole("Provider"))
     {
                     <li  style="width:100%">@Html.ActionLink("Profile", "Index", "Provider") </li>
     }

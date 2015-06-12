@@ -1,11 +1,13 @@
-﻿@using System.Globalization
+﻿@using System.Data.Entity
+@using System.Globalization
 @using System.Linq
 @using RentalMobile.Helpers
 @using System.Web.Mvc
-@using System.Web.Mvc.Html
 @using RentalMobile.Model.Models
+@using RentalModel.Repository.Generic.UnitofWork
 @functions {
-    private static readonly RentalContext Db = new RentalContext();
+//TODO  TO COMPLETE SO THAT EVERYTHING IS USING DEPENDECY INJECTION
+
 
     public static string GetVideo()
     {
@@ -15,11 +17,11 @@
         {
             if ((Model.Unit.YouTubeVideo != null && (bool)Model.Unit.YouTubeVideo))
             {
-                videourl = HtmlHelperExtensions.GetYouTubeVideoEmbeddedUrl(Model.Unit.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GetYouTubeVideoEmbeddedUrl(Model.Unit.YouTubeVideoURL.ToString(CultureInfo.InvariantCulture));
             }
             else if ((Model.Unit.VimeoVideo != null && (bool)Model.Unit.VimeoVideo))
             {
-                videourl = HtmlHelperExtensions.GeVimeoVideoEmbeddedUrl(Model.Unit.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
+                videourl = HtmlHelperCustomExtensions.GeVimeoVideoEmbeddedUrl(Model.Unit.VimeoVideoURL.ToString(CultureInfo.InvariantCulture));
             }
         }
         catch (Exception)
@@ -41,7 +43,7 @@
         return String.IsNullOrEmpty(Model.Unit.PrimaryPhoto) ? "../../images/property/home7.png" : Model.Unit.PrimaryPhoto;
 
     }
-    
+
     /// <summary>
     /// Functions for Specialist Coverage
     /// </summary>
@@ -77,48 +79,48 @@
         get { return ((WebViewPage)CurrentPage).Url; }
     }
 
-    public static bool ProviderHasAnyTeamMember(int maintenanceProviderId)
-    {
-        var maintenanceTeamAssociation = Db.MaintenanceTeamAssociations.Where(x => x.MaintenanceProviderId == maintenanceProviderId);
-        return maintenanceTeamAssociation.Any();
-    }
+
+
+
 
 }
+
+
 @*    /// <summary>
-      /// Begining Helper for Specialist Coverage
-      /// </summary>
+    /// Begining Helper for Specialist Coverage
+    /// </summary>
 *@
 @helper EmptyAttributesHtml()
-    {
-    
+{
+
     @SplitList()<li>No Coverage</li>
 }
 @helper NoTeamMemberHtml()
-    {
-    
+{
+
     @SplitList()<li>You have no team member</li><li>Add Team Member to Add / Remove Coverage</li>
 }
 }
 @helper SplitingAttributesListHtml(int itemcount)
+{
+    if (itemcount != 5)
     {
-        if (itemcount != 5)
-        {
-            return;
-        }
-        const string newslisthtmlraw = @"<ul/></div><div class='six columns push by-one '><ul class='arrow'>";
+        return;
+    }
+    const string newslisthtmlraw = @"<ul/></div><div class='six columns push by-one '><ul class='arrow'>";
     @Html.Raw(newslisthtmlraw)
     @ResetItemCount()
 }
 @helper SplitList()
-    {
-        Itemcount++;
+{
+    Itemcount++;
     @SplitingAttributesListHtml(Itemcount)
 }
 @helper  ResetItemCount()
-    {
-        Itemcount = 0;
+{
+    Itemcount = 0;
 }
 @*    /// <summary>
-      /// End Helper for Specialist Coverage
-      /// </summary>
+    /// End Helper for Specialist Coverage
+    /// </summary>
 *@ 

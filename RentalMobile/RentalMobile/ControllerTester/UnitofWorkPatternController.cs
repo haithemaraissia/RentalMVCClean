@@ -1,8 +1,9 @@
 ﻿using System.Web.Mvc;
 using RentalModel.Repository.Generic.UnitofWork;
+
 //using RentalModel.Repository.UnitOfWork;
 
-namespace RentalMobile.Controllers
+namespace RentalMobile.ControllerTester
 {
     public class UnitofWorkPatternController : Controller
     {

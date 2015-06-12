@@ -21,14 +21,9 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
 
         public Tenant GetPublicProfileTenantByTenantId(int id)
         {
-            var tenantId = new UserIdentity(UnitofWork, MembershipService).GetTenantId();
-            return UnitofWork.TenantRepository.FindBy(x => x.TenantId == tenantId).FirstOrDefault();
+            return UnitofWork.TenantRepository.FindBy(x => x.TenantId == id).FirstOrDefault();
         }
 
-        public string TenantPublicProfileUsername()
-        {
-            return new UserIdentity(UnitofWork, MembershipService).GetUserName();
-        }
 
     }
 }

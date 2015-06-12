@@ -9,14 +9,14 @@
 <script>
 
     function EnterKeyFilter() {
-        if (window.event.keyCode == 13) {
+        if (window.event.keyCode === 13) {
             event.returnValue = false;
             event.cancel = true;
         }
     }
 
     function is_int(value) {
-        if ((parseFloat(value) == parseInt(value)) && !isNaN(value)) {
+        if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
             return true;
         } else {
             return false;
@@ -39,11 +39,10 @@
 
                 // Call Ziptastic for information
                 $.ajax({
-                    url: "http://zip.elevenbasetwo.com",
+                    url: "http://zip.getziptastic.com/v2/US/" + el.val(),
                     cache: false,
                     dataType: "json",
                     type: "GET",
-                    data: "zip=" + el.val(),
                     success: function (result, success) {
 
                         $(".zip-error, .instructions").slideUp(200);

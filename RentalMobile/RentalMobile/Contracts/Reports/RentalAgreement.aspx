@@ -309,7 +309,9 @@
                                             29. <b>NOTICES:</b> All notices to RESIDENT shall be served at RESIDENT'S premises
                                             and all notices to OWNER shall be served at
                                             <asp:Label ID="OwnerEntireAddress" runat="server" Text=" _______________________________________________________________"
-                                                ForeColor="Red"></asp:Label>.</p>
+                                                ForeColor="Red"></asp:Label>.
+                        </table>
+                    </p>
                                     <br />
                                     <p>
                                         30. <b>KEYS AND ADDDENDUMS:</b> RESIDENT acknowledges receipt of the following which
@@ -357,9 +359,7 @@
                                 </td>
                             </tr>
                         </table>
-                </td>
-            </tr>
-        </table>
+
     </div>
     </form>
 </body>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,12 +8,12 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7E67FC65-FF32-43FA-875C-401948AAA097}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RentalMobile</RootNamespace>
     <AssemblyName>RentalMobile</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
@@ -26,6 +26,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,32 +45,37 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AdControl.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.Core, Version=1.9.43.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\BundleTransformer.Core.1.9.43\lib\net40\BundleTransformer.Core.dll</HintPath>
+    <Reference Include="BundleTransformer.Core, Version=1.9.52.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <HintPath>packages\BundleTransformer.Core.1.9.52\lib\net40\BundleTransformer.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="BundleTransformer.Yui">
-      <HintPath>packages\BundleTransformer.Yui.1.9.34\lib\net40\BundleTransformer.Yui.dll</HintPath>
+    <Reference Include="BundleTransformer.Yui, Version=1.9.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BundleTransformer.Yui.1.9.52\lib\net40\BundleTransformer.Yui.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EcmaScript.NET">
       <HintPath>packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Facebook">
-      <HintPath>..\packages\Facebook.6.4.2\lib\net40-client\Facebook.dll</HintPath>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
@@ -80,31 +87,38 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
       <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\MvcMailer3.3.1\lib\40\Mvc.Mailer.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MvcJqGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MvcJqGrid.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Extensions.Conventions">
-      <HintPath>packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\ninject.extensions.conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Web.Common">
-      <HintPath>packages\Ninject.Web.Common.3.2.3.0\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Web.Mvc">
-      <HintPath>packages\Ninject.MVC5.3.2.1.0\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,33 +128,47 @@
       <HintPath>bin\bin\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Postal">
-      <HintPath>..\packages\postal.0.8.2\lib\net40\Postal.dll</HintPath>
+      <HintPath>packages\postal.0.8.2\lib\net45\Postal.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.3.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+    <Reference Include="RazorEngine, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\RazorEngine.3.3.0\lib\net40\RazorEngine.dll</HintPath>
+      <HintPath>packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="RequestReduce">
       <HintPath>..\packages\RequestReduce.1.8.76\Lib\net40\RequestReduce.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Optimization">
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -150,19 +178,29 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivatorEx">
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -173,6 +211,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="WebForms\Ads\AdTest\Test.ascx.cs">
+      <DependentUpon>Test.ascx</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\ViewHelper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Bundles\CssUrlTransform.cs" />
@@ -199,26 +241,26 @@
     <Compile Include="Contracts\Reports\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ProviderController.cs">
+    <Compile Include="Controllers\Menu\AboutController.cs" />
+    <Compile Include="Controllers\Common\AccountController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Provider\ProviderController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\UnitController.cs">
+    <Compile Include="Controllers\WIP\Unit\UnitController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\Account\ErrorCode.cs" />
     <Compile Include="Helpers\Account\AccountHelper.cs" />
     <Compile Include="Helpers\Base\BaseController.cs" />
     <Compile Include="ControllerTester\AdController.cs" />
-    <Compile Include="Controllers\AddMaintenancePhotoController.cs" />
-    <Compile Include="Controllers\AddTeamMemberController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\AddMaintenancePhotoController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Provider\AddTeamMemberController.cs" />
     <Compile Include="ControllerTester\EmailTestController.cs" />
-    <Compile Include="Controllers\GeneratedRentalAgreementController.cs" />
-    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\Process\GeneratedRentalAgreementController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Provider\TeamController.cs" />
     <Compile Include="ControllerTester\UnitofWorkPatternController.cs" />
     <Compile Include="ControllerTester\UnitRepositoryPatternController.cs" />
-    <Compile Include="Controllers\UploadAgreementController.cs" />
+    <Compile Include="Controllers\Process\UploadAgreementController.cs" />
     <Compile Include="ControllerTester\Test2Controller.cs" />
     <Compile Include="ControllerTester\TestCleanController.cs" />
     <Compile Include="ControllerTester\TestController.cs" />
@@ -287,42 +329,44 @@
     <Compile Include="Helpers\Teammate.cs" />
     <Compile Include="Helpers\Unit\IUnitHelper.cs" />
     <Compile Include="Helpers\Unit\UnitHelper.cs" />
+    <Compile Include="Helpers\Visitor\ProviderProfileViewVisitor.cs" />
+    <Compile Include="Helpers\Visitor\SpecialistProfileViewVisitor.cs" />
     <Compile Include="Process\UpdateCoverage.cs" />
     <Compile Include="WebForms\Ads\AdTestController.cs" />
-    <Compile Include="Controllers\AdvancedSearchController.cs" />
-    <Compile Include="Controllers\AgentController.cs" />
-    <Compile Include="Controllers\AgentProfileController.cs" />
-    <Compile Include="Controllers\AgentsController.cs" />
-    <Compile Include="Controllers\ChangeMaintenanceController.cs" />
-    <Compile Include="Controllers\ChangeProviderController.cs" />
-    <Compile Include="Controllers\ChooseMaintenanceController.cs" />
-    <Compile Include="Controllers\ChooseProviderController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\HelpController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MaintainController.cs" />
-    <Compile Include="Controllers\MaintenanceOrderController.cs" />
-    <Compile Include="Controllers\MaintenancePhotoGalleryController.cs" />
-    <Compile Include="Controllers\MorePhotoController.cs" />
-    <Compile Include="Controllers\OwnerController.cs" />
-    <Compile Include="Controllers\OwnerProfileController.cs" />
-    <Compile Include="Controllers\OwnersController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\ProfessionalsController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Controllers\ProjectDetailController.cs" />
-    <Compile Include="Controllers\PropertyController.cs" />
-    <Compile Include="Controllers\ProvidersController.cs" />
-    <Compile Include="Controllers\RentalApplicationController.cs" />
-    <Compile Include="Controllers\RentController.cs" />
-    <Compile Include="Controllers\SpecialistController.cs" />
-    <Compile Include="Controllers\SpecialistsController.cs" />
-    <Compile Include="Controllers\TenantController.cs" />
-    <Compile Include="Controllers\TenantMaintenanceController.cs" />
-    <Compile Include="Controllers\TenantProfileController.cs" />
-    <Compile Include="Controllers\TenantRentalApplicationController.cs" />
-    <Compile Include="Controllers\TenantsController.cs" />
-    <Compile Include="Controllers\TenantShowingController.cs" />
+    <Compile Include="Controllers\Menu\AdvancedSearchController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Agent\AgentController.cs" />
+    <Compile Include="Controllers\PublicProfile\AgentProfileController.cs" />
+    <Compile Include="Controllers\Listing\Agents\AgentsController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\ChangeMaintenanceController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\ChangeProviderController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\ChooseMaintenanceController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Shared\Provider-Tenant\ChooseProviderController.cs" />
+    <Compile Include="Controllers\Menu\ContactController.cs" />
+    <Compile Include="Controllers\Menu\HelpController.cs" />
+    <Compile Include="Controllers\Menu\HomeController.cs" />
+    <Compile Include="Controllers\Listing\Providers\MaintainController.cs" />
+    <Compile Include="Controllers\WIP\MaintenanceOrderController.cs" />
+    <Compile Include="Controllers\WIP\MaintenancePhotoGalleryController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\MorePhotoController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Owner\OwnerController.cs" />
+    <Compile Include="Controllers\PublicProfile\OwnerProfileController.cs" />
+    <Compile Include="Controllers\Listing\Owners\OwnersController.cs" />
+    <Compile Include="Controllers\Menu\PostController.cs" />
+    <Compile Include="Controllers\PublicProfile\ProfessionalsController.cs" />
+    <Compile Include="Controllers\Listing\Projects\ProjectsController.cs" />
+    <Compile Include="Controllers\PublicProfile\ProjectDetailController.cs" />
+    <Compile Include="Controllers\PublicProfile\PropertyController.cs" />
+    <Compile Include="Controllers\PublicProfile\ProvidersController.cs" />
+    <Compile Include="Controllers\Process\RentalApplicationController.cs" />
+    <Compile Include="Controllers\Listing\Properties\RentController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Specialist\SpecialistController.cs" />
+    <Compile Include="Controllers\Listing\Specialists\SpecialistsController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\TenantController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\TenantMaintenanceController.cs" />
+    <Compile Include="Controllers\PublicProfile\TenantProfileController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\TenantRentalApplicationController.cs" />
+    <Compile Include="Controllers\Listing\Tenants\TenantsController.cs" />
+    <Compile Include="Controllers\PrivateProfile\Tenant\TenantShowingController.cs" />
     <Compile Include="Design\General.aspx.cs">
       <DependentUpon>General.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -719,7 +763,7 @@
     <Content Include="Views\Ad\Ads\Ad3.jpg" />
     <Content Include="Views\Ad\Ads\Ad4.jpg" />
     <Content Include="Views\Ad\Ads\Ad6.jpg" />
-    <Content Include="WebForms\Ads\AdTest\AdTest.ascx" />
+    <Content Include="WebForms\Ads\AdTest\AdTestUserControl.ascx" />
     <Content Include="WebForms\Ads\AdTest\Index.aspx" />
     <Content Include="WebForms\Ads\AdTest\Test.ascx" />
     <Content Include="Views\Ad\MiddleBanner.ascx" />
@@ -878,7 +922,9 @@
     <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
     <None Include="bin\itextsharp.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
-    <Content Include="Configurations\AppSettings.config" />
+    <Content Include="Configurations\AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="IdentityClassDiagram.cd" />
     <None Include="css\dotcss\base.css.bak" />
     <None Include="css\dotcss\entypo\entypo.eot" />
@@ -1079,9 +1125,7 @@
     <Content Include="Views\ChooseProvider\Select.cshtml" />
     <Content Include="Views\ChooseProvider\Submit.cshtml" />
     <Content Include="Views\Provider\NewJobOffer.cshtml" />
-    <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\ProjectDetail\Index.cshtml" />
-    <Content Include="Views\Project\MakeOffer.cshtml" />
     <Content Include="Views\ProjectDetail\Confirm.cshtml" />
     <Content Include="Views\Owner\GeneratedRentalAgreement.cshtml" />
     <Content Include="Views\GeneratedRentalAgreement\Index.cshtml" />
@@ -1126,7 +1170,6 @@
     <Content Include="Views\ReportMailer\ReportSent.cshtml" />
     <Content Include="Views\ReportMailer\ReportLoading.cshtml" />
     <Content Include="Views\Unit\_EditPictures.cshtml" />
-    <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\EmailTest\Index.cshtml" />
     <Content Include="Views\EmailTest\About.cshtml" />
     <Content Include="Views\EmailTest\Sent.cshtml" />
@@ -1218,6 +1261,10 @@
     <Content Include="Views\Shared\Template\_ConceptLayoutPageBundle.cshtml" />
     <Content Include="Views\UnitofWorkPattern\Index.cshtml" />
     <Content Include="Views\UnitRepositoryPattern\Index.cshtml" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="WebForms\Web.config" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Projects\MakeOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
