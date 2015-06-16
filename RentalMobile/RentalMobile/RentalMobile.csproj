@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="Controllers\PrivateProfile\Common\AccountController.cs" />
     <Compile Include="WebForms\Ads\AdTest\Test.ascx.cs">
       <DependentUpon>Test.ascx</DependentUpon>
     </Compile>
@@ -242,7 +243,6 @@
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Menu\AboutController.cs" />
-    <Compile Include="Controllers\Common\AccountController.cs" />
     <Compile Include="Controllers\PrivateProfile\Provider\ProviderController.cs">
       <SubType>Code</SubType>
     </Compile>

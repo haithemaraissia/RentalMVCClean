@@ -224,6 +224,18 @@
     <Compile Include="Tools\UnitTest\Controller\UploadAgreementControllerTest.cs">
       <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\AgentControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\Common\AccountControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\OwnerControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\ProviderControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\SpecialistControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PrivateProfile\TenantControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\AgentProfileControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\OwnerProfileControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\ProfessionalsControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\PropertyControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\ProvidersControllerTest.cs" />
+    <Compile Include="UnitTest\Core\InProgress\PublicProfile\TenantProfileControllerTest.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeActionDescriptor.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeControllerContext.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeHttpContext.cs" />
@@ -248,13 +260,10 @@
     <Compile Include="Prototype\UnitofWorkPatternControllerWithMoq.cs" />
     <Compile Include="UnitTest\Controller\Menu\Listing\AgentsControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\About\AboutControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\Common\AccountControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Helpers\UserIdentityTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\AddMaintenancePhotoControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Provider\Team\AddTeamMemberControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\NotIntheMenu\AdvancedSearchControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\AgentControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\AgentProfileControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\ManageMaintenance\Prototype\ChangeMaintenanceControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\ManageMaintenance\Prototype\ChangeProviderControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\ManageMaintenance\Prototype\ChooseMaintenanceControllerTest.cs" />
@@ -267,24 +276,15 @@
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\MaintenanceOrderControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\MaintenancePhotoGalleryControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Prototype\MorePhotoControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\OwnerControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\OwnerProfileControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Listing\OwnersControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Post\PostControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\ProfessionalsControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Project\ProjectControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Project\ProjectDetailControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\PropertyControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\ProviderControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\ProvidersControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Common\Application\RentalApplicationControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Rent\RentControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\SpecialistControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Main\Specialist\SpecialistsControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Provider\Team\TeamControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\DashBoard\TenantControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Maintenance\Create-Current-Archive Requests\TenantMaintenanceControllerTest.cs" />
-    <Compile Include="UnitTest\Core\InProgress\Profiles\TenantProfileControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\Application\TenantRentalApplicationControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Menu\Listing\TenantsControllerTest.cs" />
     <Compile Include="UnitTest\Core\InProgress\Process\Tenant\MightNotNeeded\Prototype\TenantShowing\TenantShowingControllerTest.cs" />
