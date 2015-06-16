@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentalMobile.Helpers.Teammember>
+﻿@model IEnumerable<RentalMobile.Helpers.Team.Teammember>
 @helper NoTeamMember()
     {
 
@@ -24,7 +24,7 @@
             <li>
                 <article>
                     <figure>
-                        <a href="../../Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                        <a href="../../SpecialistProfile/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
                             @Html.DisplayFor(modelItem => item.SpecialistName)
                         </a>
                         <img src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)" 
@@ -32,7 +32,7 @@
                                      width="160" height="115" />
                     </figure>
                     <h4>
-                        <a href="../Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                        <a href="../SpecialistProfile/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
                             @Html.DisplayFor(modelItem => item.SpecialistName)
                         </a>
                     </h4>

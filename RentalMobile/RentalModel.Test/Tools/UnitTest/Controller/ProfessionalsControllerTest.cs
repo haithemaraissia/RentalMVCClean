@@ -3,9 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestProject.Tools.UnitTest.Controller
 {
     [TestClass]
-    public class ProfessionalsControllerTest
+    public class SpecialistProfileControllerTest
     {
-        //public ProfessionalsController Controller;
+        //public SpecialistProfileController Controller;
 
         [TestInitialize]
         public void Initialize()
@@ -14,7 +14,7 @@ namespace TestProject.Tools.UnitTest.Controller
             //var fakeProfeionals = new FakeProfeionals();
             //var profeionalRepo = new FakeProfeionalRepository(fakeProfeionals.MyProfeionals);
             //var uow = new UnitofWork { ProfeionalRepository = profeionalRepo };
-            //Controller = new ProfessionalsController(uow);
+            //Controller = new SpecialistProfileController(uow);
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
+            //var data = viewResult.ViewData.Model as IList<SpecialistProfileController>;
             //if (data != null) Assert.AreEqual(3, data.Count);
         }
 
@@ -41,7 +41,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as IList<ProfessionalsController>;
+            //var data = viewResult.ViewData.Model as IList<SpecialistProfileController>;
             //if (data != null) Assert.AreEqual(4, data.Count);
         }
 
@@ -54,7 +54,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProfessionalsController;
+            //var data = viewResult.ViewData.Model as SpecialistProfileController;
             //if (data != null) Assert.AreEqual("test2", data.Url);
         }
 
@@ -71,7 +71,7 @@ namespace TestProject.Tools.UnitTest.Controller
             // Assert
             //var viewResult = actual as ViewResult;
             //if (viewResult == null) return;
-            //var data = viewResult.ViewData.Model as ProfessionalsController;
+            //var data = viewResult.ViewData.Model as SpecialistProfileController;
             //if (data != null) Assert.AreEqual("new Domain", data.Url);
         }
 

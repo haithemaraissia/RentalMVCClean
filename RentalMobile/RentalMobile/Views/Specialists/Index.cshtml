@@ -32,7 +32,7 @@
             <li class="prop-type all @* @Html.GetUnitType(item.TypeId)*@">
                 <article>
                     <figure class="five columns alpha">
-                        @Html.ActionLink(" ", "Index", "Professionals", new { id = item.SpecialistId }, new { @class = "camera" })
+                        @Html.ActionLink(" ", "Index", "SpecialistProfile", new { id = item.SpecialistId }, new { @class = "camera" })
                         <img src="@item.Photo" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                     </figure>
                     <div class="five columns omega">
@@ -50,7 +50,7 @@
                             </span>
                         </p>
                         <ul class="toolbar">
-                            <li class="next-arr">@Html.ActionLink("Select", "Index", "Professionals", new { id = item.SpecialistId }, null)</li>
+                            <li class="next-arr">@Html.ActionLink("Select", "Index", "SpecialistProfile", new { id = item.SpecialistId }, null)</li>
                         </ul>
                     </div>
                 </article>

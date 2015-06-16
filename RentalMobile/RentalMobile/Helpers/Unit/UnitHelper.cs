@@ -7,6 +7,8 @@ using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.IO;
+using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Photo.Unit;
 using RentalMobile.Model.Models;

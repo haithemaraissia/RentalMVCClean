@@ -10,7 +10,7 @@ namespace RentalMobile.Helpers
         public static IHtmlString EmbedImageExtended(this HtmlHelper html, string pathOrUrl, string alt = "", string height = "200px",  string width = "200px")
         {
             if (string.IsNullOrWhiteSpace(pathOrUrl))
-                throw new ArgumentException("Path or URL required", "pathOrUrl");
+                throw new ArgumentException(@"Path or URL required", "pathOrUrl");
             if (IsFileName(pathOrUrl))
                 pathOrUrl = html.ViewContext.HttpContext.Server.MapPath(pathOrUrl);
             return new HtmlString(string.Format("<img src=\"cid:{0}\" alt=\"{1}\"/>", (object)((ImageEmbedder)html.ViewData["Postal.ImageEmbedder"]).AddImage(pathOrUrl, (string)null).ContentId, (object)html.AttributeEncode(alt)));

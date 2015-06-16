@@ -5,6 +5,8 @@ using Microsoft.Security.Application;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
@@ -12,9 +14,9 @@ using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers.PublicProfile
 {
-    public class ProfessionalsController : BaseController
+    public class SpecialistProfileController : BaseController
     {
-        public ProfessionalsController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        public SpecialistProfileController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
             UnitofWork = uow;
             MembershipService = membershipService;

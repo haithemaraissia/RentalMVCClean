@@ -107,7 +107,7 @@
         </p>
         <p>
         </p>
-        @using (Html.BeginForm("HireProfessional", "Professionals", new { id = @Model.SpecialistId, enctype = "multipart/form-data" }, FormMethod.Post))
+        @using (Html.BeginForm("HireProfessional", "SpecialistProfile", new { id = @Model.SpecialistId, enctype = "multipart/form-data" }, FormMethod.Post))
         {
             <ul class="grid-form">
             @if (Request.IsAuthenticated)
@@ -152,13 +152,13 @@
 <section class="row double-bottom">
     @section description{
         <div id="description" class="panel">
-            @{ Html.RenderAction("_Description", "Professionals", new { id = Model.SpecialistId }); }
+            @{ Html.RenderAction("_Description", "SpecialistProfile", new { id = Model.SpecialistId }); }
         </div>
     }
     @section coverage
     {
         <div id="coverage" class="panel">
-            @{ Html.RenderAction("_Coverage", "Professionals", new { id = Model.SpecialistId }); }
+            @{ Html.RenderAction("_Coverage", "SpecialistProfile", new { id = Model.SpecialistId }); }
         </div>
     }
     @section share
@@ -186,7 +186,7 @@
     @section sendtofriend
     {
         <div id="send-to-friend" class="panel">
-            @using (Html.BeginForm("ForwardtoFriend", "Professionals", new { id = @Model.SpecialistId, enctype = "multipart/form-data" }, FormMethod.Post))
+            @using (Html.BeginForm("ForwardtoFriend", "SpecialistProfile", new { id = @Model.SpecialistId, enctype = "multipart/form-data" }, FormMethod.Post))
             {
 
                 <h4 class="section-titling" style="color: #346993;">
@@ -223,7 +223,7 @@
     @section comments
     {
         <div id="comments" class="panel">
-            @{ Html.RenderAction("_Comment", "Professionals", new { id = Model.SpecialistId }); }
+            @{ Html.RenderAction("_Comment", "SpecialistProfile", new { id = Model.SpecialistId }); }
         </div>
     }
 </section>

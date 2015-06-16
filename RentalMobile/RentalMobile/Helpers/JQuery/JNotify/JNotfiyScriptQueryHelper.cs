@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using RentalMobile.Helpers.Identity.Base;
+﻿using RentalMobile.Helpers.Identity.Base;
 
-namespace RentalMobile.Helpers
+namespace RentalMobile.Helpers.JQuery.JNotify
 {
     public  class JNotfiyScriptQueryHelper
     {

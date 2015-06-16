@@ -4,6 +4,8 @@ using PagedList;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;

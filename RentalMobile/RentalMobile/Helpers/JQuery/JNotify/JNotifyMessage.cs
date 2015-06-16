@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace RentalMobile.Helpers.JQuery
+﻿namespace RentalMobile.Helpers.JQuery.JNotify
 {
     public class JNotifyMessage
     {

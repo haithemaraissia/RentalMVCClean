@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 

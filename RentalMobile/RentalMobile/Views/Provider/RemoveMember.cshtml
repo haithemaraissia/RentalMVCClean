@@ -36,13 +36,13 @@
                     <li>
                         <article>
                             <figure class="four columns omega">
-                                @Html.ActionLink(" ", "Index", "Professionals", new { id = (int)ViewBag.SelectedSpecialistId }, new { @class = "camera", target = "_blank" })
+                                @Html.ActionLink(" ", "Index", "SpecialistProfile", new { id = (int)ViewBag.SelectedSpecialistId }, new { @class = "camera", target = "_blank" })
                                 <img src="@{ new ViewHelper().GetSpecialistPrimaryPhoto(ViewBag.SelectedSpecialistId); }" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="four columns omega;" style="padding-right: 30px">
                                 <h4 style="margin-top: 1em">
                                     <p style="color: #396991; margin-bottom: 2em; text-align: center">
-                                        <a href="../Professionals/@ViewBag.SelectedSpecialistId" target="_blank">@{ new ViewHelper().GetSpecialistName(ViewBag.SelectedSpecialistId); }</a>
+                                        <a href="../SpecialistProfile/@ViewBag.SelectedSpecialistId" target="_blank">@{ new ViewHelper().GetSpecialistName(ViewBag.SelectedSpecialistId); }</a>
                                     </p>
                                     <p style="margin-bottom: 2em; text-align: center">
                                         to be Removed from</p>

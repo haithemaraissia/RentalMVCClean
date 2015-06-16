@@ -41,12 +41,12 @@
                     <li>
                         <article>
                             <figure class="five columns alpha">
-                                @Html.ActionLink(" ", "Index", "Professionals", new { id = item.SpecialistId }, new { @class = "camera", target = "_blank" })
+                                @Html.ActionLink(" ", "Index", "SpecialistProfile", new { id = item.SpecialistId }, new { @class = "camera", target = "_blank" })
                                 <img src="@item.Photo" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="ten columns omega">
                                 <h4>
-                                    <span style="color: #396991"><a href="../Professionals/@item.SpecialistId" target="_blank">@item.FirstName
+                                    <span style="color: #396991"><a href="../SpecialistProfile/@item.SpecialistId" target="_blank">@item.FirstName
                                         @item.LastName</a></span>
                                 </h4>
                                 <h5 style="margin-bottom: 10px;">
@@ -56,7 +56,7 @@
                                     <span>@Html.TruncateLongString(item.Description, 500)</span>
                                 </p>
                                 <p>
-                                    <span style="color: #396991"><a href="../Professionals/@item.SpecialistId" target="_blank">
+                                    <span style="color: #396991"><a href="../SpecialistProfile/@item.SpecialistId" target="_blank">
                                         Specialist ID <b># @Html.DisplayFor(modelItem => item.SpecialistId)</b> </a>
                                     </span>
                                 </p>

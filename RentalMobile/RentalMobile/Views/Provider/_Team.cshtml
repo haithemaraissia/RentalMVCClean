@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentalMobile.Helpers.Teammate>
+﻿@model IEnumerable<RentalMobile.Helpers.Team.Teammate>
 <style>
     .container .one-third.column
     {
@@ -98,7 +98,7 @@
             customclass = "omega";
         }
                 <div class="one-third column thumbnail @customclass">
-                    <a href="./Professionals/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
+                    <a href="./SpecialistProfile/Index/@Html.DisplayFor(modelItem => item.SpecialistId)" target="_blank">
                         <img alt="Fishbone" src="@Html.DisplayFor(modelItem => item.SpecialistImageProfile)" height="520" width="450" />
                         <div class="details">
                             <h3>

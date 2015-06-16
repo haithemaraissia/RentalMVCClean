@@ -1,5 +1,5 @@
 ﻿
-namespace RentalMobile.Helpers
+namespace RentalMobile.Helpers.Team
 {
     public class Teammate
     {

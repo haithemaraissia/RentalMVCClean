@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ninject.Activation;
+using RentalMobile.Helpers.Team;
 using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 

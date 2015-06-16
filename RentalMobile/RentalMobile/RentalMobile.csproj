@@ -267,7 +267,7 @@
     <Compile Include="Handler\RoutinePerformance.ashx.cs">
       <DependentUpon>RoutinePerformance.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Helpers\Advertisement\AdHelper.cs" />
     <Compile Include="Helpers\Email.cs" />
     <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\FancyBoxHelper.cs" />
@@ -299,17 +299,17 @@
     <Compile Include="Helpers\Identity\Base\Roles\PublicProfile\TenantPublicProfileHelper.cs" />
     <Compile Include="Helpers\Identity\Base\UserIdentity.cs" />
     <Compile Include="Helpers\Core\IUserHelper.cs" />
-    <Compile Include="Helpers\JQuery\JNotifyMessage.cs" />
+    <Compile Include="Helpers\JQuery\JNotify\JNotifyMessage.cs" />
     <Compile Include="Helpers\Membership\IMembershipService.cs" />
     <Compile Include="Helpers\Membership\MembershipService.cs" />
     <Compile Include="Helpers\Identity\Abstract\IUserIdentity.cs" />
-    <Compile Include="Helpers\JQueryHelper.cs" />
+    <Compile Include="Helpers\JQuery\JNotify\JNotfiyScriptQueryHelper.cs" />
     <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
     <Compile Include="Helpers\Old\UserHelper.cs" />
     <Compile Include="Helpers\Old\UserHelperBefore.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\PhotoHelper.cs" />
+    <Compile Include="Helpers\Photo\PrivateProfile\Provider\PhotoHelper.cs" />
     <Compile Include="Helpers\Photo\MaintenancePhoto\Address.cs" />
     <Compile Include="Helpers\Photo\MaintenancePhoto\Person.cs" />
     <Compile Include="Helpers\Photo\MaintenancePhoto\Photo.cs" />
@@ -323,10 +323,10 @@
     <Compile Include="Helpers\Process\JobOffer\JobOffer.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="Helpers\Roles\LookUpRoles.cs" />
-    <Compile Include="Helpers\RSSHelper.cs" />
+    <Compile Include="Helpers\RSS\RSSHelper.cs" />
     <Compile Include="Helpers\SocialHelper.cs" />
-    <Compile Include="Helpers\SpecialistInTeam.cs" />
-    <Compile Include="Helpers\Teammate.cs" />
+    <Compile Include="Helpers\Team\SpecialistInTeam.cs" />
+    <Compile Include="Helpers\Team\Teammate.cs" />
     <Compile Include="Helpers\Unit\IUnitHelper.cs" />
     <Compile Include="Helpers\Unit\UnitHelper.cs" />
     <Compile Include="Helpers\Visitor\ProviderProfileViewVisitor.cs" />
@@ -352,7 +352,7 @@
     <Compile Include="Controllers\PublicProfile\OwnerProfileController.cs" />
     <Compile Include="Controllers\Listing\Owners\OwnersController.cs" />
     <Compile Include="Controllers\Menu\PostController.cs" />
-    <Compile Include="Controllers\PublicProfile\ProfessionalsController.cs" />
+    <Compile Include="Controllers\PublicProfile\SpecialistProfileController.cs" />
     <Compile Include="Controllers\Listing\Projects\ProjectsController.cs" />
     <Compile Include="Controllers\PublicProfile\ProjectDetailController.cs" />
     <Compile Include="Controllers\PublicProfile\PropertyController.cs" />
@@ -1006,7 +1006,6 @@
     <Content Include="Views\Owner\Index.cshtml" />
     <Content Include="Views\Owner\_ProfileDetail.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\Professionals\Index.cshtml" />
     <Content Include="Views\Property\Index.cshtml" />
     <Content Include="Views\ProviderProfile\Index.cshtml" />
     <Content Include="Views\Provider\ChangeAddress.cshtml" />
@@ -1225,13 +1224,10 @@
     <Content Include="Views\Deletethis.cshtml" />
     <Content Include="Views\Test\Delete5.cshtml" />
     <Content Include="Views\Specialist\_Coverage.cshtml" />
-    <Content Include="Views\Professionals\_Coverage.cshtml" />
-    <Content Include="Views\Professionals\_Description.cshtml" />
     <Content Include="Views\Shared\Script\_Paging.cshtml" />
     <Content Include="Views\Emails\ForwardtoFriend\Multipart.cshtml" />
     <Content Include="Views\Emails\ForwardtoFriend\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\ForwardtoFriend\Multipart.Text.cshtml" />
-    <Content Include="Views\Professionals\_Comment.cshtml" />
     <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.cshtml" />
     <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.Html.cshtml" />
     <Content Include="Views\Emails\InviteSpecialistToJoinTeam\Multipart.Text.cshtml" />
@@ -1265,6 +1261,10 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\MakeOffer.cshtml" />
     <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\SpecialistProfile\Index.cshtml" />
+    <Content Include="Views\SpecialistProfile\_Comment.cshtml" />
+    <Content Include="Views\SpecialistProfile\_Coverage.cshtml" />
+    <Content Include="Views\SpecialistProfile\_Description.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

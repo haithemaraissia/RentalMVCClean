@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace RentalMobile.Helpers
+namespace RentalMobile.Helpers.Photo.PrivateProfile.Provider
 {
     class PhotoHelper
     {

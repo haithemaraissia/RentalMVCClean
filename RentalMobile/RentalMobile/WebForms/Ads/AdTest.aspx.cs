@@ -110,7 +110,7 @@ namespace RentalMobile.WebForms.Ads
         //    using (var context = new SidejobEntities())
         //    {
         //        var professional = (from p in context.ProfessionalGenerals
-        //                            join pr in context.Professionals
+        //                            join pr in context.SpecialistProfile
         //                                on p.ProID equals pr.ProID
         //                            where pr.UserID == Utility.GetUserID()
         //                            select p).FirstOrDefault();

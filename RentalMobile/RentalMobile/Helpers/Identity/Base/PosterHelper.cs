@@ -119,7 +119,7 @@ namespace RentalMobile.Helpers.Identity.Base
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
-                        currenturl + "/professionals/" + specialist.SpecialistId, specialist.Photo,
+                        currenturl + "/SpecialistProfile/" + specialist.SpecialistId, specialist.Photo,
                         specialist.EmailAddress, "specialist", specialist.SpecialistId);
                 }
             }
@@ -194,7 +194,7 @@ namespace RentalMobile.Helpers.Identity.Base
                 if (specialist != null)
                 {
                     return new PosterAttributes(specialist.FirstName, specialist.LastName,
-                        currenturl + "/professionals/" + specialist.SpecialistId, specialist.Photo,
+                        currenturl + "/SpecialistProfile/" + specialist.SpecialistId, specialist.Photo,
                         specialist.EmailAddress, "specialist", specialist.SpecialistId);
                 }
             }

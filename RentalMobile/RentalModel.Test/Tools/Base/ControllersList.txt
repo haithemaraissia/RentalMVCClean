@@ -24,7 +24,7 @@ OwnerController
 OwnerProfileController
 OwnersController
 PostController
-ProfessionalsController
+SpecialistProfileController
 ProjectController
 ProjectDetailController
 PropertyController

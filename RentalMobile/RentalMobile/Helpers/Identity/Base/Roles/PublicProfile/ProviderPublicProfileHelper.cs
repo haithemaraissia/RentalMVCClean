@@ -6,6 +6,7 @@ using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Team;
 using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;

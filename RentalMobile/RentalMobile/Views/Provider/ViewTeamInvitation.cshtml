@@ -47,12 +47,12 @@
                     <li>
                         <article>
                             <figure class="five columns alpha">
-                                @Html.ActionLink(" ", "Index", "Professionals", new { id = item.SpecialistID }, new { @class = "camera", target = "_blank" })
+                                @Html.ActionLink(" ", "Index", "SpecialistProfile", new { id = item.SpecialistID }, new { @class = "camera", target = "_blank" })
                                 <img src="@item.SpecialistPhoto" class="scale-with-grid" style="min-height: 185px" alt="gallery" />
                             </figure>
                             <div class="ten columns omega">
                                 <h4>
-                                    <span style="color: #396991"><a href="../Professionals/@item.SpecialistID" target="_blank">@item.SpecialistFirstName
+                                    <span style="color: #396991"><a href="../SpecialistProfile/@item.SpecialistID" target="_blank">@item.SpecialistFirstName
                                         @item.SpecialistLastName</a></span>
                                 </h4>
                                 <h5 style="margin-bottom: 10px;">
@@ -62,12 +62,12 @@
                                     <span>@Html.TruncateLongString(item.SpecialistDescription, 500)</span>
                                 </p>
                                 <p>
-                                    <span style="color: #396991"><a href="../Professionals/@item.SpecialistID" target="_blank">
+                                    <span style="color: #396991"><a href="../SpecialistProfile/@item.SpecialistID" target="_blank">
                                         Specialist ID <b># @Html.DisplayFor(modelItem => item.SpecialistID)</b> </a>
                                     </span>
                                 </p>
                                 <ul class="toolbar">
-                                    <li class="next-arr">@Html.ActionLink("View Specialist", "Index", "Professionals", new { id = item.SpecialistID }, new { target = "_blank" })
+                                    <li class="next-arr">@Html.ActionLink("View Specialist", "Index", "SpecialistProfile", new { id = item.SpecialistID }, new { target = "_blank" })
                                     </li>
                                 </ul>
                             </div>

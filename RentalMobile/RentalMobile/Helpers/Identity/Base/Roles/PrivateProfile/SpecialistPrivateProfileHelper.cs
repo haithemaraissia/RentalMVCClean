@@ -2,6 +2,7 @@
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;

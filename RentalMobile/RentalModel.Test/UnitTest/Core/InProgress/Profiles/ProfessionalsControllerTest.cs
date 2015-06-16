@@ -18,9 +18,9 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
 {
 
     [TestClass]
-    public class ProfessionalsControllerTest
+    public class SpecialistProfileControllerTest
     {
-        public ProfessionalsController Controller;
+        public SpecialistProfileController Controller;
         public AssertHelper Helper = new AssertHelper();
         public UnitofWork Uow;
         [TestInitialize]
@@ -53,7 +53,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
              userMock.Setup(u => u.ProviderUserKey).Returns(secondSpecialist.GUID);
              userMock.Setup(u => u.UserName).Returns(secondSpecialist.FirstName);
              membershipMock.Setup(s => s.GetUser(It.IsAny<string>())).Returns(userMock.Object);
-             Controller = new ProfessionalsController(Uow, membershipMock.Object, new CoreUserHelper(Uow, membershipMock.Object));
+             Controller = new SpecialistProfileController(Uow, membershipMock.Object, new CoreUserHelper(Uow, membershipMock.Object));
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace TestProject.UnitTest.Core.InProgress.Profiles
             var insertedRecord = Uow.SpecialistProfileCommentRepository.FindBy(x => x.PosterId == 2 ).First();
             Debug.Assert(insertedRecord != null, "insertedRecord != null");
             Assert.AreEqual(insertedRecord.PosterProfileLink,
-                "http://tempuri.org:80/professionals/2");
+                "http://tempuri.org:80/SpecialistProfile/2");
         }
 
         /// <summary>

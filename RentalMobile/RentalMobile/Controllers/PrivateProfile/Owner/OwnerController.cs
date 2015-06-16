@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalModel.Repository.Generic.UnitofWork;
 
