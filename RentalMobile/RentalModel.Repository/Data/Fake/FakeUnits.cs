@@ -24,11 +24,12 @@ namespace RentalModel.Repository.Data.Fake
         }
 
        public Unit FirstUnit()
-        {
+       {
+           var firstUnitId = new Int32();
 
             var firstUnit = new Unit {
 
-                 UnitId = new Int32()
+                UnitId = firstUnitId
 ,
                  Bed = new Int32()
 ,
@@ -79,7 +80,12 @@ namespace RentalModel.Repository.Data.Fake
 ,
                  UnitLuxuryAmenity = new UnitLuxuryAmenity()
 ,
-                 UnitPricing = new UnitPricing()
+                 UnitPricing = new UnitPricing
+                 {
+                     UnitId = firstUnitId,
+                     Rent = 50
+                     
+                 }
 
     
  };
