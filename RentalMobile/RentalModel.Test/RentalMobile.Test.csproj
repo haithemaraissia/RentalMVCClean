@@ -237,7 +237,7 @@
     <Compile Include="UnitTest\Controller\Done\Menu\Main\HelpControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Done\Menu\Main\HomeControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Done\Menu\Main\PostControllerTest.cs" />
-    <Compile Include="UnitTest\Controller\InProgress\Helpers\UserIdentityTest.cs" />
+    <Compile Include="UnitTest\Controller\InProgress\Helpers\Identity\UserIdentityHelper.cs" />
     <Compile Include="UnitTest\Controller\InProgress\PrivateProfile\AgentControllerTest.cs" />
     <Compile Include="UnitTest\Controller\InProgress\PrivateProfile\Common\AccountControllerTest.cs" />
     <Compile Include="UnitTest\Controller\InProgress\PrivateProfile\OwnerControllerTest.cs" />
