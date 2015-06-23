@@ -21,31 +21,31 @@ namespace TestProject.UnitTest.Helpers.Fake
         private int _minRequiredPasswordLength = 3;
         private string _passwordStrengthRegularExpression = "";
 
-        public static MembershipUser FakeUserFred = new MembershipUser("AspNetSqlMembershipProvider", "fred", "fredKey",
+        public static MembershipUser FakeUserFred = new MembershipUser("AspNetSqlMembershipProvider", "fred", "ffffffff-dddd-dddd-dddd-dddddddddddd",
             "fred@microsoft.com", "Mother's maiden name", "fake existing user", true, false,
             DateTime.Now.Subtract(TimeSpan.FromDays(10.0)), DateTime.Now.Subtract(TimeSpan.FromDays(2.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(2.0)), DateTime.Now.Subtract(TimeSpan.FromDays(8.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(9.0)));
 
-        public static MembershipUser FakeUserLisa = new MembershipUser("AspNetSqlMembershipProvider", "lisa", "lisaKey",
+        public static MembershipUser FakeUserLisa = new MembershipUser("AspNetSqlMembershipProvider", "lisa", "dddddddd-dddd-dddd-4567-dddddddddddd",
             "lisa@microsoft.com", "Cat's middle name", "fake new user", true, false,
             DateTime.Now.Subtract(TimeSpan.FromDays(40.0)), DateTime.Now.Subtract(TimeSpan.FromDays(4.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(4.0)), DateTime.Now.Subtract(TimeSpan.FromDays(28.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(29.0)));
 
-        public static MembershipUser FakeUserMike = new MembershipUser("AspNetSqlMembershipProvider", "mike", "MikeKey",
+        public static MembershipUser FakeUserMike = new MembershipUser("AspNetSqlMembershipProvider", "mike", "dddddddd-dddd-dddd-1234-dddddddddddd",
             "Mike@microsoft.com", "Mike's middle name", "fake Mike new user", true, false,
             DateTime.Now.Subtract(TimeSpan.FromDays(20.0)), DateTime.Now.Subtract(TimeSpan.FromDays(4.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(4.0)), DateTime.Now.Subtract(TimeSpan.FromDays(38.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(49.0)));
 
-        public static MembershipUser FakeUserSara = new MembershipUser("AspNetSqlMembershipProvider", "sara", "saraKey",
+        public static MembershipUser FakeUserSara = new MembershipUser("AspNetSqlMembershipProvider", "sara", "dddddddd-dddd-dddd-1111-dddddddddddd",
             "sara@microsoft.com", "Sara's middle name", "fake Sara new user", true, false,
             DateTime.Now.Subtract(TimeSpan.FromDays(40.0)), DateTime.Now.Subtract(TimeSpan.FromDays(4.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(4.0)), DateTime.Now.Subtract(TimeSpan.FromDays(28.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(29.0)));
 
-        public static MembershipUser FakeUserJeff = new MembershipUser("AspNetSqlMembershipProvider", "jeff", "jeffKey",
+        public static MembershipUser FakeUserJeff = new MembershipUser("AspNetSqlMembershipProvider", "jeff", "dddddddd-dddd-dddd-1122-dddddddddddd",
             "jeff@microsoft.com", "Jeff's middle name", "fake Jeffnew user", true, false,
             DateTime.Now.Subtract(TimeSpan.FromDays(40.0)), DateTime.Now.Subtract(TimeSpan.FromDays(4.0)),
             DateTime.Now.Subtract(TimeSpan.FromDays(4.0)), DateTime.Now.Subtract(TimeSpan.FromDays(28.0)),

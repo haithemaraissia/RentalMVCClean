@@ -164,7 +164,7 @@ namespace RentalMobile.Controllers.PublicProfile
             {
                 return RedirectToAction("Index", "ProviderProfile");
             }
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             if (ModelState.IsValid)
             {
                 var providerComment = new ProviderProfileComment

@@ -35,7 +35,7 @@ namespace RentalModel.Repository.Data.Fake
                  Address = "8080 north Broadway, South Beach, Florida 5404",
                  EmailAddress = "BobGoddar@yahoo.com",
                  Description = "Bob Description",
-                 GUID = new Guid()
+                 GUID = new Guid("dddddddd-dddd-dddd-4567-dddddddddddd")
 ,
                  VCard = null,
                  Skype = null,

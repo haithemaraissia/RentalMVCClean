@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers.PrivateProfile.Tenant;
 
@@ -34,6 +35,8 @@ namespace TestProject.UnitTest.Controller.InProgress.Process.Tenant.Maintenance
         [TestMethod]
         public void Create()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
             // Act
             //var newDomain = new Domain { Url = "Test5" };
             //Controller.Create(newDomain);

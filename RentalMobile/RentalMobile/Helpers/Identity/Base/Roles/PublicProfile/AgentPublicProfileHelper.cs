@@ -17,7 +17,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
 
         public Agent GetAgentPublicProfileByAgentId(int id)
         {
-            var agentId = new UserIdentity(UnitofWork, MembershipService).GetAgentId();
+            var agentId = new UserIdentity(UnitofWork, MembershipService).GetAgentId(id);
             return UnitofWork.AgentRepository.FindBy(x => x.AgentId == agentId).FirstOrDefault();
         }
     }

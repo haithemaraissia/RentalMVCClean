@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestProject.UnitTest.Controller.InProgress.Process.Tenant.Application
@@ -20,6 +21,8 @@ namespace TestProject.UnitTest.Controller.InProgress.Process.Tenant.Application
         [TestMethod]
         public void Index()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
             // Act
             //var actual = Controller.Index();
 

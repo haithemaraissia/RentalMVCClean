@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Social;
 using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -16,15 +19,17 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
         public string DefaultSpecialistName = "Specialist";
 
 
-        public SpecialistPublicProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService)
+        public SpecialistPublicProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
             MembershipService = membershipService;
             UnitofWork = uow;
+            UserHelper = userHelper;
         }
 
         public SpecialistProfileViewVisitor GetSpecialistProfileViewVisitorProperties()
         {
             string visitorEmail = null;
+
             if (HttpContext.Request.IsAuthenticated)
             {
                 var user = MembershipService.GetUser(HttpContext.User.Identity.Name);
@@ -71,15 +76,15 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
 
         public Specialist GetPublicProfileSpecialistBySpecialistId(int id)
         {
-            var specialistId = new UserIdentity(UnitofWork, MembershipService).GetSpecialistId();
+            var specialistId = new UserIdentity(UnitofWork, MembershipService).GetSpecialistId(id);
            return  UnitofWork.SpecialistRepository.FindBy(x => x.SpecialistId == specialistId).FirstOrDefault();
         }
 
 
-        public void ShareSpecialist(Specialist s)
+        public CommonSharedSocialLinks ShareSpecialist(Specialist s)
         {
-            if (Request == null || Request.Url == null) return;
-            var url = Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
+            if (HttpContext.Request == null || HttpContext.Request.Url == null) return null;
+            var url = HttpContext.Request.Url.AbsoluteUri.ToString(CultureInfo.InvariantCulture);
             var title = SocialTitleBuilding(s);
             var summary = s.Description;
             if (!String.IsNullOrEmpty(summary))
@@ -108,10 +113,13 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
             //This is the correct one for production because facebook require active url present. after you Register your domain
             //ViewBag.FaceBook = SocialHelper.FacebookShareOnlyUrl(url);
             //TOD UPDATE BEFORE RELEASE
-            ViewBag.FaceBook =  new SocialHelper().FacebookShareOnlyUrl(sitename);
-            ViewBag.Twitter = new SocialHelper().TwitterShare(tweet);
-            ViewBag.GooglePlusShare = new SocialHelper().GooglePlusShare(url);
-            ViewBag.LinkedIn = new SocialHelper().LinkedInShare(url, title, summary, sitename);
+            return new  CommonSharedSocialLinks
+            {
+                FaceBook = new SocialHelper().FacebookShareOnlyUrl(sitename),
+                Twitter = new SocialHelper().TwitterShare(tweet),
+                GooglePlusShare = new SocialHelper().GooglePlusShare(url),
+                LinkedIn = new SocialHelper().LinkedInShare(url, title, summary, sitename)
+            };
         }
 
         public string SocialTitleBuilding(Specialist s)
@@ -172,7 +180,8 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
         public dynamic SpecialPublicProfileComposeForwardToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
             dynamic email = new Email("ForwardtoFriend/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var newposter = new PosterHelper(UnitofWork, MembershipService);
+            var poster = newposter.GetSendtoFriendPoster(HttpContext.Request.Url);
             email.To = friendemailaddress;
             email.FriendName = friendname;
             email.From = "postmaster@haithem-araissia.com";
@@ -182,12 +191,12 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
             email.Message = message;
             email.InvitationNote = " invite you to see this skilled professional.";
             email.FooterNote = "Check out this Professional";
-            var uri = Request.Url;
+            var uri = HttpContext.Request.Url;
             if (uri != null)
             {
                 var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
                 email.ProfileUrl = host + uri.AbsolutePath.Replace("ForwardtoFriend", "");
-                var currentSpecialist = UserHelper.GetPublicProfileSpecialistBySpecialistId(id);
+                var currentSpecialist = UserHelper.SpecialistPublicProfileHelper.GetPublicProfileSpecialistBySpecialistId(id);
                 if (currentSpecialist != null)
                 {
                     var specialistTitle = currentSpecialist.FirstName + " , " + currentSpecialist.LastName;
@@ -205,4 +214,6 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
             return email;
         }
     }
+
+
 }

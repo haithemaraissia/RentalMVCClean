@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers.PrivateProfile.Tenant;
 
@@ -21,6 +22,8 @@ namespace TestProject.UnitTest.Controller.InProgress.Process.Tenant.Maintenance.
         [TestMethod]
         public void Index()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
             // Act
             //var actual = Controller.Index();
 

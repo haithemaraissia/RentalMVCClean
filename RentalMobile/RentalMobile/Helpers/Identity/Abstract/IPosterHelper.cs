@@ -1,9 +1,11 @@
-﻿namespace RentalMobile.Helpers.Identity.Abstract
+﻿using System;
+
+namespace RentalMobile.Helpers.Identity.Abstract
 {
     public interface IPosterHelper
     {
-        PosterAttributes GetPoster(int uniId);
-        PosterAttributes GetSendtoFriendPoster();
-        PosterAttributes GetCommentPoster();
+        PosterAttributes GetPoster(int uniId, Uri requestUri);
+        PosterAttributes GetSendtoFriendPoster(Uri requestUri);
+        PosterAttributes GetCommentPoster(Uri requestUri);
     }
 }

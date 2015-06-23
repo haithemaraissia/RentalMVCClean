@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RentalMobile.Controllers.WIP.Unit;
 
@@ -11,6 +12,8 @@ namespace TestProject.UnitTest.Controller.InProgress.Process.Unit.Prototype
         [TestInitialize]
         public void Initialize()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
             // Arrange
             //var fakeUnits = new FakeUnits();
             //var unitRepo = new FakeUnitRepository(fakeUnits.MyUnits);

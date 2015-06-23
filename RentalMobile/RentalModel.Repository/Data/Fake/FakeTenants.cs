@@ -28,14 +28,14 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstTenant = new Tenant {
 
-                 TenantId = new Int32()
+                 TenantId = 5
 ,
                  FirstName = null,
                  LastName = null,
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
+                 GUID = new Guid("ffffffff-dddd-dddd-dddd-dddddddddddd")
 ,
                  VCard = null,
                  Skype = null,

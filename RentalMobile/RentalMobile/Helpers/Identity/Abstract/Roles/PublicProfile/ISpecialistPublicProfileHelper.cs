@@ -1,4 +1,6 @@
-﻿using RentalMobile.Helpers.Visitor;
+﻿using RentalMobile.Helpers.Identity.Base.Roles.PublicProfile;
+using RentalMobile.Helpers.Social;
+using RentalMobile.Helpers.Visitor;
 using RentalMobile.Model.Models;
 
 namespace RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile
@@ -12,7 +14,7 @@ namespace RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile
         int GetTotalAvailableZoneSpotForProvider(int providerId);
         Specialist GetPublicProfileSpecialistBySpecialistId(int id);
 
-        void ShareSpecialist(Specialist s);
+        CommonSharedSocialLinks ShareSpecialist(Specialist s);
         string SocialTitleBuilding(Specialist s);
         string GetSpecialistCommentCount(int id);
         string GetSpecialistPrimaryWorkPhoto(int id);

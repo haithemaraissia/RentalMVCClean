@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestProject.UnitTest.Controller.InProgress.Process.Provider.Team
@@ -33,6 +34,8 @@ namespace TestProject.UnitTest.Controller.InProgress.Process.Provider.Team
         [TestMethod]
         public void Create()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
             // Act
             //var newDomain = new Domain { Url = "Test5" };
             //Controller.Create(newDomain);

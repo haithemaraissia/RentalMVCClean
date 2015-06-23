@@ -95,7 +95,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
         public dynamic ComposeForwardUnitToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
             dynamic email = new Email("ForwardtoFriend/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             email.To = friendemailaddress;
             email.FriendName = friendname;
             email.From = "postmaster@haithem-araissia.com";

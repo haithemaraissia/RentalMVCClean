@@ -16,6 +16,7 @@ using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Photo.Unit;
 using RentalMobile.Helpers.Process.Application;
 using RentalMobile.Helpers.Process.JobOffer;
+using RentalMobile.Helpers.Social;
 using RentalMobile.Helpers.Team;
 using RentalMobile.Helpers.Unit;
 using RentalMobile.Helpers.Visitor;
@@ -81,7 +82,7 @@ namespace RentalMobile.Helpers.Core
             #endregion
 
             #region PublicProfileHelper
-            SpecialistPublicProfileHelper = new SpecialistPublicProfileHelper(uow, membershipService);
+            SpecialistPublicProfileHelper = new SpecialistPublicProfileHelper(uow, membershipService, this);
             OwnerPublicProfileHelper = new OwnerPublicProfileHelper(uow, membershipService);
             AgentPublicProfileHelper = new AgentPublicProfileHelper(uow, membershipService);
             TenantPublicProfileHelper = new TenantPublicProfileHelper(uow, membershipService);
@@ -214,19 +215,19 @@ namespace RentalMobile.Helpers.Core
         /// </summary>
         /// <returns></returns>
 
-        public PosterAttributes GetPoster(int uniId)
+        public PosterAttributes GetPoster(int uniId, Uri requestUri )
         {
-            return PosterHelper.GetPoster(uniId);
+            return PosterHelper.GetPoster(uniId, requestUri);
         }
 
-        public PosterAttributes GetSendtoFriendPoster()
+        public PosterAttributes GetSendtoFriendPoster(Uri requestUri)
         {
-            return PosterHelper.GetSendtoFriendPoster();
+            return PosterHelper.GetSendtoFriendPoster(requestUri);
         }
 
-        public PosterAttributes GetCommentPoster()
+        public PosterAttributes GetCommentPoster(Uri requestUri )
         {
-            return PosterHelper.GetCommentPoster();
+            return PosterHelper.GetCommentPoster(requestUri);
         }
 
         public string SetPhotoPathByCurrentRole(out string photoPath)
@@ -295,9 +296,9 @@ namespace RentalMobile.Helpers.Core
             return SpecialistPublicProfileHelper.GetPublicProfileSpecialistBySpecialistId(id);
         }
 
-        public void ShareSpecialist(Specialist s)
+        public CommonSharedSocialLinks ShareSpecialist(Specialist s)
         {
-            SpecialistPublicProfileHelper.ShareSpecialist(s);
+            return SpecialistPublicProfileHelper.ShareSpecialist(s);
         }
 
         public string SocialTitleBuilding(Specialist s)

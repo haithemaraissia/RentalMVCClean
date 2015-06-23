@@ -4,7 +4,9 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using Moq;
+using RentalMobile.Helpers.Roles;
 
 namespace TestProject.UnitTest.Helpers
 {
@@ -17,8 +19,19 @@ namespace TestProject.UnitTest.Helpers
         /// Mock is Mock Instance of HtpContext
         /// 
         /// </summary>
-     
+
+        #region FakingContext
+
+        //Faking Context
+
         public static void FakeHttpContext(this System.Web.Mvc.Controller controller)
+        {
+            HttpContext myhttpContext = new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
+                new HttpResponse(null));
+            HttpContext.Current = myhttpContext;
+        }
+
+        public static void FakeHttpContextWithUserLoginAndLogOff(this System.Web.Mvc.Controller controller)
         {
             HttpContext myhttpContext = new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
                 new HttpResponse(null));
@@ -41,27 +54,100 @@ namespace TestProject.UnitTest.Helpers
 
         public static void FakeHttpContextWithAuthenticatedSpecialist(this System.Web.Mvc.Controller controller)
         {
-            HttpContext myhttpContext = new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
-                new HttpResponse(null));
-            HttpContext.Current = myhttpContext;
+            FakeHttpContext(controller);
 
-            var ident = new GenericIdentity("sami5");
-            var principal = new GenericPrincipal(ident, new[] { "Specialist" });
+            var principal = SpecialistGenericPrincipal();
             Thread.CurrentPrincipal = principal;
 
             // User is logged in
             HttpContext.Current.User = principal;
-
-            MockControllerContext(controller);
         }
 
-        public static void MockControllerContext(this System.Web.Mvc.Controller controller)
+        public static void FakeHttpContextWithAuthenticatedUser(this System.Web.Mvc.Controller controller, LookUpRoles.Roles r)
+        {
+            FakeHttpContext(controller);
+
+            var principal = AuthenticatedRole(r);
+            Thread.CurrentPrincipal = principal;
+
+            // User is logged in
+            HttpContext.Current.User = principal;
+        }
+
+
+        #region generic Role Credentials
+        public static GenericPrincipal TenantGenericPrincipal()
+        {
+            //TenantId = 5
+            var ident = new GenericIdentity("fred");
+            var principal = new GenericPrincipal(ident, new[] { "Tenant" });
+            return principal;
+        }
+        public static GenericPrincipal OwnerGenericPrincipal()
+        {
+            //OwnerId = 1
+            var ident = new GenericIdentity("lisa");
+            var principal = new GenericPrincipal(ident, new[] { "Owner" });
+            return principal;
+        }
+        public static GenericPrincipal AgentGenericPrincipal()
+        {
+            //AgentId = 1,
+            var ident = new GenericIdentity("mike");
+            var principal = new GenericPrincipal(ident, new[] { "Agent" });
+            return principal;
+        }
+        public static GenericPrincipal SpecialistGenericPrincipal()
+        {
+            //  SpecialistId = 1
+            var ident = new GenericIdentity("sara");
+            var principal = new GenericPrincipal(ident, new[] { "Specialist" });
+            return principal;
+        }
+        public static GenericPrincipal ProviderGenericPrincipal()
+        {
+            //  MaintenanceProviderId = 1
+            var ident = new GenericIdentity("jeff");
+            var principal = new GenericPrincipal(ident, new[] { "MaintenanceProvider" });
+            return principal;
+        }
+        #endregion
+
+
+
+        public static GenericPrincipal AuthenticatedRole(LookUpRoles.Roles r)
+        {
+            switch (r)
+            {
+                case LookUpRoles.Roles.Tenant:
+                    return  TenantGenericPrincipal();
+                case LookUpRoles.Roles.Owner:
+                    return OwnerGenericPrincipal();
+                case LookUpRoles.Roles.Agent:
+                    return AgentGenericPrincipal();
+                case LookUpRoles.Roles.Specialist:
+                    return SpecialistGenericPrincipal();
+                case LookUpRoles.Roles.Provider:
+                    return ProviderGenericPrincipal();
+            }
+            return null;
+        }
+
+        #endregion
+
+        #region MockingContext
+        //Moking Context
+
+        public static void MockHttpContext(this System.Web.Mvc.Controller controller)
         {
             var controllerContext = new Mock<ControllerContext>();
             var myhttpContext =
                 new HttpContextWrapper(new HttpContext(new HttpRequest(null, "http://tempuri.org", null),
                     new HttpResponse(null)));
-            controllerContext.SetupGet(x => x.HttpContext) .Returns(myhttpContext);
+            //controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("sara");
+            //controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            //controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("Specialist")))).Returns(true);
+            controllerContext.SetupGet(x => x.HttpContext).Returns(myhttpContext);
             controller.ControllerContext = controllerContext.Object;
         }
 
@@ -89,6 +175,9 @@ namespace TestProject.UnitTest.Helpers
                                               new RouteData(), controller);
 
         }
+        #endregion
+
+
 
     }
 }

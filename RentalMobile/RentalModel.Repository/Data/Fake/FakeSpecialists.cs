@@ -36,7 +36,8 @@ namespace RentalModel.Repository.Data.Fake
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new CustomGuid().CreateGuid("BSNAItOawkSl07t77RKnMjYwYyG4bCt0g8DVDBv5m0")
+                // GUID = new CustomGuid().CreateGuid("BSNAItOawkSl07t77RKnMjYwYyG4bCt0g8DVDBv5m0")
+                 GUID = new Guid("dddddddd-dddd-dddd-1111-dddddddddddd")
 ,
                  VCard = null,
                  Skype = null,

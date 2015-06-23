@@ -6,6 +6,7 @@ using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Json;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Social;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers.PublicProfile

@@ -1,5 +1,6 @@
 ﻿using System;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile;
 using RentalMobile.Helpers.Identity.Base.Roles.PublicProfile;
@@ -29,7 +30,7 @@ namespace RentalMobile.Helpers.Old
             LocationHelper = new LocationHelper(uow, membershipService);
             PosterHelper = new PosterHelper(uow, membershipService);           
             UserIdentity = new UserIdentity(uow, membershipService);
-            SpecialistHelper = new SpecialistPublicProfileHelper(uow, membershipService);
+            SpecialistHelper = new SpecialistPublicProfileHelper(uow, membershipService, new CoreUserHelper(uow, membershipService));
             TenantHelper = new TenantPrivateProfileHelper(uow, membershipService);
 
 
@@ -131,19 +132,22 @@ namespace RentalMobile.Helpers.Old
         /// </summary>
         /// <returns></returns>
 
-        public PosterAttributes GetPoster(int uniId)
+        public PosterAttributes GetPoster(int uniId, Uri requestUri)
         {
-            return PosterHelper.GetPoster(uniId);
+            return PosterHelper.GetPoster(uniId, requestUri);
         }
 
-        public PosterAttributes GetSendtoFriendPoster()
+        public PosterAttributes GetSendtoFriendPoster(Uri requestUri)
         {
-            return PosterHelper.GetSendtoFriendPoster();
+            return PosterHelper.GetSendtoFriendPoster(requestUri);
         }
 
         public PosterAttributes GetCommentPoster()
         {
-            return PosterHelper.GetCommentPoster();
+            PosterHelper tempQualifier = PosterHelper;
+            PosterHelper tempQualifier1 = PosterHelper;
+            PosterHelper tempQualifier2 = PosterHelper;
+            return PosterHelper.GetCommentPoster(HttpContext.Request.Url);
         }
 
 

@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Security.Application;
+using Postal;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Identity.Base;
 using RentalMobile.Helpers.JQuery;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
@@ -29,7 +31,7 @@ namespace RentalMobile.Controllers.PublicProfile
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var specialist = UserHelper.GetPublicProfileSpecialistBySpecialistId((int)id);
+            var specialist = UserHelper.SpecialistPublicProfileHelper.GetPublicProfileSpecialistBySpecialistId((int)id);
             ViewBag.SpecialistProfile = specialist;
             var visitor = UserHelper.SpecialistPublicProfileHelper.GetSpecialistProfileViewVisitorProperties();
             if (visitor != null)
@@ -45,7 +47,14 @@ namespace RentalMobile.Controllers.PublicProfile
                 ViewBag.CommentCount = UserHelper.SpecialistPublicProfileHelper.GetSpecialistCommentCount((int)id);
                 ViewBag.Sript = FancyBox.FancySpecialist((int)id);
                 ViewBag.SpecialistPrimaryPhoto = UserHelper.SpecialistPublicProfileHelper.GetSpecialistPrimaryWorkPhoto((int)id);
-                UserHelper.SpecialistPublicProfileHelper.ShareSpecialist(specialist);
+                var socialLinks =  UserHelper.SpecialistPublicProfileHelper.ShareSpecialist(specialist);
+                if (socialLinks != null)
+                {
+                    ViewBag.FaceBook = socialLinks.FaceBook;
+                    ViewBag.Twitter = socialLinks.Twitter;
+                    ViewBag.GooglePlusShare = socialLinks.GooglePlusShare;
+                    ViewBag.LinkedIn = socialLinks.LinkedIn;
+                }
                 if (sharespecialist != null && sharespecialist == true)
                 {
                     ViewBag.EmailSharedwithFriend = true;
@@ -120,19 +129,55 @@ namespace RentalMobile.Controllers.PublicProfile
 
         public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
         {
-            var email = UserHelper.SpecialistPublicProfileHelper.SpecialPublicProfileComposeForwardToFriendEmail(friendname, friendemailaddress, message, id);
+            //var email = UserHelper.SpecialistPublicProfileHelper.SpecialPublicProfileComposeForwardToFriendEmail(friendname, friendemailaddress, message, id);
+            dynamic email = new Postal.Email("ForwardtoFriend/Multipart");
+            var newposter = new PosterHelper(UnitofWork, MembershipService);
+            var poster = newposter.GetSendtoFriendPoster(HttpContext.Request.Url);
+            email.To = friendemailaddress;
+            email.FriendName = friendname;
+            email.From = "postmaster@haithem-araissia.com";
+            email.SenderFirstName = poster.FirstName;
+            email.Title = string.Format("Request From {0}", poster.FirstName);
+            email.SubTitle = "Request from ";
+            email.Message = message;
+            email.InvitationNote = " invite you to see this skilled professional.";
+            email.FooterNote = "Check out this Professional";
+            var uri = HttpContext.Request.Url;
+            if (uri != null)
+            {
+                var host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+                email.ProfileUrl = host + uri.AbsolutePath.Replace("ForwardtoFriend", "");
+                var currentSpecialist = UserHelper.SpecialistPublicProfileHelper.GetPublicProfileSpecialistBySpecialistId(id);
+                if (currentSpecialist != null)
+                {
+                    var specialistTitle = currentSpecialist.FirstName + " , " + currentSpecialist.LastName;
+                    if (specialistTitle.Length >= 50)
+                    {
+                        specialistTitle = specialistTitle.Substring(0, 50);
+                    }
+                    email.CustomTitle = specialistTitle;
+                }
+                if (currentSpecialist != null)
+                {
+                    email.PhotoPath = host + "/" + UserHelper.SpecialistPublicProfileHelper.GetSpecialistPrimaryWorkPhoto(id).Replace("../../", "");
+                }
+            }
+            
             try
             {
-                email.SendAsync();
+               // ViewBag.Email = email;
+                ((Postal.Email) email).SendAsync();
 
+               // EmailService.Send(email);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return RedirectToAction("Index", new { id, sharespecialist = false });
             }
             return RedirectToAction("Index", new { id, sharespecialist = true });
 
         }
+
 
         public PartialViewResult _Comment(int id)
         {
@@ -150,7 +195,8 @@ namespace RentalMobile.Controllers.PublicProfile
             {
                 return RedirectToAction("Index", "Specialists");
             }
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            PosterHelper tempQualifier = UserHelper.PosterHelper;
+            var poster = UserHelper.PosterHelper.GetSendtoFriendPoster(tempQualifier.HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             if (ModelState.IsValid)
             {
                 var specialistComment = new SpecialistProfileComment

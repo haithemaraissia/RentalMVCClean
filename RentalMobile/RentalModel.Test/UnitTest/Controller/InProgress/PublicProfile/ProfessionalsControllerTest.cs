@@ -1,17 +1,23 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Ninject.Infrastructure.Language;
 using RentalMobile.Controllers.PublicProfile;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Identity.Base;
+using RentalMobile.Helpers.Identity.Base.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Roles;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
 using TestProject.UnitTest.Helpers;
+using TestProject.UnitTest.Helpers.Fake;
 
 namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
 {
@@ -19,13 +25,20 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
     [TestClass]
     public class SpecialistProfileControllerTest
     {
+
+        #region Initialization
+
         public SpecialistProfileController Controller;
         public AssertHelper Helper = new AssertHelper();
         public UnitofWork Uow;
+
         [TestInitialize]
         public void Initialize()
         {
             // Arrange
+            #region SpecialistPublicProfileHelper
+
+            #region Repo
             var professionalRepo = new FakeSpecialistRepository();
             var maintenanceCompanyLookUpRepo = new FakeMaintenanceCompanyLookUpRepository();
             var maintenanceRepairRepo = new FakeMaintenanceRepairRepository();
@@ -33,28 +46,66 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var currencyRepo = new FakeCurrencyRepository();
             var specialistProfileCommentRepo = new FakeSpecialistProfileCommentRepository();
             var specialistWorkRepo = new FakeSpecialistWorkRepository();
+            var tenantRepo = new FakeTenantRepository();
+            Uow = new UnitofWork
+           {
+               SpecialistRepository = professionalRepo,
+               MaintenanceCompanyLookUpRepository = maintenanceCompanyLookUpRepo,
+               MaintenanceRepairRepository = maintenanceRepairRepo,
+               MaintenanceCompanySpecializationRepository = maintenanceCompanySpecializationRepo,
+               CurrencyRepository = currencyRepo,
+               SpecialistProfileCommentRepository = specialistProfileCommentRepo,
+               SpecialistWorkRepository = specialistWorkRepo,
+               TenantRepository = tenantRepo
+           };
+            #endregion
 
-             Uow = new UnitofWork
-            {
-                SpecialistRepository = professionalRepo,
-                MaintenanceCompanyLookUpRepository = maintenanceCompanyLookUpRepo,
-                MaintenanceRepairRepository = maintenanceRepairRepo,
-                MaintenanceCompanySpecializationRepository = maintenanceCompanySpecializationRepo,
-                CurrencyRepository = currencyRepo,
-                SpecialistProfileCommentRepository = specialistProfileCommentRepo,
-                SpecialistWorkRepository = specialistWorkRepo,
-            };
+            #region Mocking Context
 
-             //MembershipService
-             var membershipMock = new Mock<IMembershipService>();
-             var userMock = new Mock<MembershipUser>();
-             var secondSpecialist = professionalRepo.MyList[1];
-             userMock.Setup(u => u.ProviderUserKey).Returns(secondSpecialist.GUID);
-             userMock.Setup(u => u.UserName).Returns(secondSpecialist.FirstName);
-             membershipMock.Setup(s => s.GetUser(It.IsAny<string>())).Returns(userMock.Object);
-             Controller = new SpecialistProfileController(Uow, membershipMock.Object, new CoreUserHelper(Uow, membershipMock.Object));
+            //MockHelper  
+            var specialistPublicProfileHelperController =
+                new SpecialistPublicProfileHelper(Uow, new FakeMembershipProvider(), null);
+
+            //Context
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.Request.Url).Returns(new Uri("http://tempuri.org"));
+            specialistPublicProfileHelperController.ControllerContext = controllerContext.Object;
+            #endregion
+
+            #region Mocking IUserHelper
+            var mockHelper = new Mock<IUserHelper>();
+            mockHelper.
+                Setup(x => x.SpecialistPublicProfileHelper).
+                Returns(specialistPublicProfileHelperController);
+            mockHelper.
+                Setup(x => x.PosterHelper).
+                Returns(new PosterHelper(Uow, new FakeMembershipProvider()));
+            #endregion
+
+            #region Mocking MemberShipService
+            //MembershipService Optional 
+            var membershipMock = new Mock<IMembershipService>();
+            //var userMock = new Mock<MembershipUser>();
+            //var secondSpecialist = professionalRepo.MyList[1];
+            //userMock.Setup(u => u.ProviderUserKey).Returns(secondSpecialist.GUID);
+            //userMock.Setup(u => u.UserName).Returns(secondSpecialist.FirstName);
+            //membershipMock.Setup(s => s.GetUser(It.IsAny<string>())).Returns(userMock.Object);
+            #endregion
+
+            #region Controller Construction
+
+            // Controller = new SpecialistProfileController(Uow, membershipMock.Object, new CoreUserHelper(Uow, membershipMock.Object));
+            Controller = new SpecialistProfileController(Uow, membershipMock.Object, mockHelper.Object);
+
+            #endregion
+
+            #endregion
+
         }
 
+        #endregion
+
+        #region Index
         /// <summary>
         /// Index
         /// </summary>
@@ -114,6 +165,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Debug.Assert(data != null, "data != null");
             Assert.AreEqual(data.Country, "USA");
         }
+
         [TestCategory("Index")]
         [TestMethod]
         public void Index_Where_Insertingnewcomment_isTrue()
@@ -133,8 +185,6 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         public void Index_Where_Sharespecialist_isTrue()
         {
             //Act
-            Controller.MockControllerContext();
-
             var actual = Controller.Index(2, true, null);
 
             //Assert
@@ -150,7 +200,9 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Assert.AreEqual(viewResult.ViewBag.LinkedIn,
                 "http://www.linkedin.com/shareArticle?mini=true&url=http://tempuri.org/&title=&summary=&source=http://www.haithem-araissia.com");
         }
+        #endregion
 
+        #region Coverage
         /// <summary>
         /// Coverage Partial View
         /// </summary>
@@ -162,7 +214,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Coverage(0);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Assert.AreEqual(viewResult, null);
         }
 
@@ -174,7 +226,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Coverage(500);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Assert.AreEqual(viewResult, null);
         }
 
@@ -186,13 +238,15 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Coverage(2);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Debug.Assert(viewResult != null, "viewResult != null");
             var data = viewResult.ViewData.Model as SpecialistMaintenanceProfile;
             Debug.Assert(data != null, "data != null");
             Assert.AreEqual(data.MaintenanceRepair.Drain_Pipe, true);
         }
+        #endregion
 
+        #region Description
         /// <summary>
         /// Description Partial View
         /// </summary>
@@ -204,7 +258,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Description(0);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Assert.AreEqual(viewResult, null);
         }
 
@@ -216,7 +270,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Description(500);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Assert.AreEqual(viewResult, null);
         }
 
@@ -228,7 +282,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             var actual = Controller._Description(2);
 
             //Assert
-            var viewResult = (PartialViewResult)actual;
+            var viewResult = actual;
             Debug.Assert(viewResult != null, "viewResult != null");
             Assert.AreEqual(viewResult.ViewBag.Rate, 55.50);
             Assert.AreEqual(viewResult.ViewBag.YearsofExperience, 5);
@@ -238,6 +292,11 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Assert.AreEqual(data.Country, "USA");
         }
 
+        #endregion
+
+        #region Forward to Friend
+
+
         /// <summary>
         /// Forward to Friend
         /// </summary>
@@ -245,8 +304,55 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestMethod]
         public void ForwardToFriend()
         {
+            //Act
 
-            //            public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
+
+
+            //var actual = new SpecialistPublicProfileHelper(Uow, new FakeMembershipProvider());
+
+            //var controllerContext = new Mock<ControllerContext>();
+            //controllerContext.SetupGet(x => x.HttpContext.Request.Url).Returns(new Uri("http://tempuri.org"));   
+            //actual.ControllerContext = controllerContext.Object;
+
+            //var email = actual.SpecialPublicProfileComposeForwardToFriendEmail("myFriendName", "myFriendEmailAddress", "myMessage", 5);
+
+
+            //Assert.AreEqual(email.SenderFirstName, "A Friend");
+
+            //// email.ProfileUrl
+            ////  email.CustomTitle
+            ////email.PhotoPath 
+            //Assert.AreEqual(email.ProfileUrl, "A Friend");
+            //Assert.AreEqual(email.CustomTitle, "A Friend");
+            //Assert.AreEqual(email.PhotoPath, "A Friend");
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.Request.Url).Returns(new Uri("http://tempuri.org"));
+            Controller.ControllerContext = controllerContext.Object;
+
+
+
+            var email = new Postal.Email("ForwardtoFriend/Multipart");
+            try
+            {
+                email.SendAsync();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
+
+            var actual = Controller.ForwardtoFriend("myFriendName", "myFriendEmailAddress", "myMessage", 5);
+            var viewResult = actual as ViewResult;
+            if (viewResult != null)
+            {
+                Assert.AreEqual(viewResult.ViewBag.Email, 55.50);
+
+
+            }
+
+            //   public ActionResult ForwardtoFriend(string friendname, string friendemailaddress, string message, int id)
             //{
             //    dynamic email = new Email("ForwardtoFriend/Multipart");
             //    var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
@@ -308,7 +414,9 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             //                                    tenant.EmailAddress, "tenant", tenant.TenantId);
             Assert.Inconclusive("Not Implemented Yet");
         }
+        #endregion
 
+        #region Comment
         /// <summary>
         /// Comment Partial View
         /// </summary>
@@ -361,45 +469,10 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         /// </summary>
         [TestCategory("InsertComment")]
         [TestMethod]
-        public void InsertComment()
-        {
-
-            //     [HttpPost]
-            //[ValidateInput(false)]
-            //public ActionResult InsertComment(int? id, string comment)
-            //{
-            //    if (id == null)
-            //    {
-            //        return RedirectToAction("Index", "Specialists");
-            //    }
-            //    var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.DefaultPoster;
-            //    if (ModelState.IsValid)
-            //    {
-            //        var specialistComment = new SpecialistProfileComment
-            //            {
-            //                Comment = Sanitizer.GetSafeHtmlFragment(comment),
-            //                CommentDate = DateTime.UtcNow,
-            //                PosterId = poster.PosterId,
-            //                PosterName = poster.FirstName + " , " + poster.LastName,
-            //                PosterPhotoPath = poster.ProfilePicturePath,
-            //                PosterProfileLink = poster.ProfileLink,
-            //                PosterRole = UserHelper.GetRoleId(poster.Role),
-            //                SpecialistId = id
-            //            };
-            //        _unitOfWork.SpecialistProfileCommentRepository.Add(specialistComment);
-            //        _unitOfWork.Save();
-            //    }
-            //    return RedirectToAction("Index", new { id, insertingnewcomment = true });
-            // }
-            Assert.Inconclusive("Not Implemented Yet");
-        }
-
-        [TestCategory("InsertComment")]
-        [TestMethod]
         public void InsertCommen_When_Id_Is_Zero_Should_Return_Null()
         {
             //Act
-            var actual = Controller.InsertComment(null,"");
+            var actual = Controller.InsertComment(null, "");
             Assert.IsInstanceOfType(actual, typeof(RedirectToRouteResult));
             var routeResult = actual as RedirectToRouteResult;
             Debug.Assert(routeResult != null, "routeResult != null");
@@ -416,7 +489,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
 
             //Context
             var actual = Controller.InsertComment(1000, "");
-            
+
             //Assert
             Assert.IsInstanceOfType(actual, typeof(RedirectToRouteResult));
             var routeResult = actual as RedirectToRouteResult;
@@ -424,8 +497,10 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Assert.AreEqual(routeResult.RouteValues["action"], "Index");
             Assert.AreEqual(1000, routeResult.RouteValues["id"], "Route should map to the id parameter");
             Assert.AreEqual(true, routeResult.RouteValues["insertingnewcomment"], "Route should map to the insertingnewcomment parameter");
+
+            var poster = new PosterHelper(Uow, new FakeMembershipProvider()).GetSendtoFriendPoster(new Uri("http://tempuri.org:80"));
             var defaultInsertedRecord = Uow.SpecialistProfileCommentRepository.
-                FindBy(x => x.PosterId == 0 && x.PosterRole.Value == 6);
+                FindBy(x => x.PosterId == poster.PosterId && x.SpecialistId == 1000);
             Assert.AreEqual(defaultInsertedRecord.First().PosterPhotoPath,
                 "../../images/dotimages/single-property/agent-480x350.png");
         }
@@ -433,9 +508,9 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestCategory("InsertComment")]
         [TestMethod]
         public void InsertComment_When_Poster_Is_Authenticated()
-        {            
+        {
             //Act
-            Controller.FakeHttpContextWithAuthenticatedSpecialist();
+            Controller.FakeHttpContextWithAuthenticatedUser(LookUpRoles.Roles.Specialist);
             Controller.MockControllerContextForServerMap();
 
             var actual = Controller.InsertComment(2, "");
@@ -447,11 +522,27 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Assert.AreEqual(routeResult.RouteValues["action"], "Index");
             Assert.AreEqual(2, routeResult.RouteValues["id"], "Route should map to the id parameter");
             Assert.AreEqual(true, routeResult.RouteValues["insertingnewcomment"], "Route should map to the insertingnewcomment parameter");
-            var insertedRecord = Uow.SpecialistProfileCommentRepository.FindBy(x => x.PosterId == 2 ).First();
-            Debug.Assert(insertedRecord != null, "insertedRecord != null");
-            Assert.AreEqual(insertedRecord.PosterProfileLink,
-                "http://tempuri.org:80/SpecialistProfile/2");
+
+            var poster = new PosterHelper(Uow, new FakeMembershipProvider()).GetSendtoFriendPoster(new Uri("http://tempuri.org:80"));
+            var specialistCommentsInserted = Uow.SpecialistProfileCommentRepository.
+                                                FindBy(x => x.PosterId == poster.PosterId && x.SpecialistId == 2);
+            var specialistProfileComments = specialistCommentsInserted as IList<SpecialistProfileComment> ?? specialistCommentsInserted.ToList();
+
+
+            if (specialistCommentsInserted != null && specialistProfileComments.Any())
+            {
+                Assert.AreEqual(specialistProfileComments.First().PosterProfileLink,
+                "http://tempuri.org:80/SpecialistProfile/1");
+            }
+            else
+            {
+                Debug.Assert(specialistCommentsInserted == null || specialistProfileComments.First() == null, "No Records has been inserted");
+                Assert.AreEqual("No- Records has been inserted", "No Records has been inserted");
+            }
         }
+        #endregion
+
+        #region Hire Professional
 
         /// <summary>
         /// HireProfessional 
@@ -460,9 +551,13 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestMethod]
         public void HireProfessional()
         {
+            var actual = Controller.HireProfessional(1, "");
             Assert.Inconclusive("Not Implemented Yet");
         }
 
+        #endregion
+
+        #region CleanUp
         [TestCleanup]
         public void CleanUp()
         {
@@ -470,5 +565,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             Uow.Dispose();
             Helper = null;
         }
+        #endregion
+
     }
 }

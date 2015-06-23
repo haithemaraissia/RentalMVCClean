@@ -11,6 +11,7 @@ using RentalMobile.Helpers.JQuery;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Photo.Unit;
+using RentalMobile.Helpers.Social;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -426,7 +427,7 @@ namespace RentalMobile.Helpers.Unit
         {
 
             dynamic email = new Email("RequestShowing/Receiver/Multipart");
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.PosterHelper.DefaultPoster;
+            var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var currentunit = UnitofWork.UnitRepository.FirstOrDefault(x => x.UnitId == id);
             const string previewPathWithHost = @"/Unit/Preview";
             var unitPicture = currentunit.PrimaryPhoto;
@@ -464,7 +465,7 @@ namespace RentalMobile.Helpers.Unit
         {
             //Depending on the Poster role
             //Insert into PendingRequestWShowing.
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.PosterHelper.DefaultPoster;
+            var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
 
             if (unitposter.Role == "owner")
             {
@@ -498,7 +499,7 @@ namespace RentalMobile.Helpers.Unit
         {
             UserHelper.UnitHelper.ShareProperty(unitModel);
             ViewBag.UnitGoogleMap = UserHelper.UnitHelper.UnitGoogleMap(unitModel);
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.PosterHelper.DefaultPoster;
+            var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             ViewBag.PosterFirstName = unitposter.FirstName;
             ViewBag.PosterLastName = unitposter.LastName;
             ViewBag.PosterPictureProfile = unitposter.ProfilePicturePath;
@@ -513,7 +514,7 @@ namespace RentalMobile.Helpers.Unit
         public dynamic ComposeForwardToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
             dynamic email = new Email("SendtoFriend/Multipart");
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.PosterHelper.DefaultPoster;
+            var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var currentunit = UnitofWork.UnitRepository.FirstOrDefault(x => x.UnitId == id);
             const string previewPathWithHost = @"/Unit/Preview";
             var unitPicture = currentunit.PrimaryPhoto;
@@ -567,7 +568,7 @@ namespace RentalMobile.Helpers.Unit
             SendRequestToRequester(yourname, youremail, datepicker, id);
 
             //Send Request to Receiver
-            var unitposter = UserHelper.GetPoster(id) ?? UserHelper.PosterHelper.DefaultPoster;
+            var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             if (unitposter.Role != null)
             {
                 SendRequestToReceiver(yourname, youremail, yourtelephone, datepicker, id);

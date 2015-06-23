@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace RentalMobile.Model.Models
 {
     using System;
@@ -14,6 +16,7 @@ namespace RentalMobile.Model.Models
     
     public partial class Agent
     {
+
         public int AgentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

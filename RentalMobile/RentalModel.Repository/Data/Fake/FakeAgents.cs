@@ -27,16 +27,13 @@ namespace RentalModel.Repository.Data.Fake
         {
 
             var firstAgent = new Agent {
-
-                 AgentId = new Int32()
-,
+                 AgentId = 1,
                  FirstName = null,
                  LastName = null,
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
-,
+                 GUID = new Guid("dddddddd-dddd-dddd-1234-dddddddddddd"),
                  VCard = null,
                  Skype = null,
                  Twitter = null,

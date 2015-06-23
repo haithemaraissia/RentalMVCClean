@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestProject.UnitTest.Controller.Done.Menu.Main
@@ -10,6 +11,8 @@ namespace TestProject.UnitTest.Controller.Done.Menu.Main
         [TestMethod]
         public void IndexHasNoCode()
         {
+            //Not Implemented
+            { throw new NotImplementedException(); }
         }
 
 

@@ -30,5 +30,16 @@ namespace RentalMobile.Helpers.Roles
         public const string Provider = "Provider";
         public const string NotAuthenticated = "NotAuthenticated";
 
+        public enum Roles
+        {
+            Tenant = 1,
+            Owner = 2,
+            Agent = 3,
+            Specialist = 4,
+            Provider = 5
+
+        }
+            
+
     }
 }

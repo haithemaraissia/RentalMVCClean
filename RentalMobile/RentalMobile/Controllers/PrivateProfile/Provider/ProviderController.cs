@@ -414,7 +414,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Provider
         public void InviteSpecialist(int stid, int pid)
         {
             dynamic email = new Email("InviteSpecialistToJoinTeam/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var selectedspecialist = UnitofWork.SpecialistRepository.FirstOrDefault(x => x.SpecialistId == pid);
             if (selectedspecialist == null) return;
             email.To = selectedspecialist.EmailAddress;
@@ -582,7 +582,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Provider
         public void RemoveSpecialist(int stid, int pid)
         {
             dynamic email = new Email("RemoveSpecialistForTeam/Multipart");
-            var poster = UserHelper.GetSendtoFriendPoster() ?? UserHelper.PosterHelper.DefaultPoster;
+            var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var selectedspecialist = UnitofWork.SpecialistRepository.FirstOrDefault(x => x.SpecialistId == pid);
             if (selectedspecialist == null) return;
             email.To = selectedspecialist.EmailAddress;

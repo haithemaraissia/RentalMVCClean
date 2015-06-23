@@ -1,6 +1,11 @@
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using RentalMobile.Controllers.PublicProfile;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Identity.Base.Roles.PublicProfile;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
 using RentalModel.Repository.Data.Repositories;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -16,14 +21,27 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         public void Initialize()
         {
             // Arrange
+            //UOW
             var ownerProfileRepo = new FakeOwnerRepository();
             var uow = new UnitofWork { OwnerRepository = ownerProfileRepo };
-            Controller = new OwnerProfileController(uow,null);
+
+            //MEMBERSHIP
+            var membershipMock = new Mock<IMembershipService>();
+            var userMock = new Mock<MembershipUser>();
+            //OR // var userIdentity = new UserIdentity(Uow, new FakeMembershipProvider());
+
+            //HELPER 
+            var mockHelper = new Mock<IUserHelper>();
+            mockHelper.Setup(x => x.OwnerPublicProfileHelper).Returns(new OwnerPublicProfileHelper(uow, membershipMock.Object));
+            
+            //Init
+            Controller = new OwnerProfileController(uow, mockHelper.Object);
         }
 
         [TestMethod]
         public void Index()
         {
+
             // Act
             var actual = Controller.Index(1);
 
@@ -32,14 +50,14 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
             if (viewResult == null) return;
             var data = viewResult.Model as Owner;
             if (data == null) return;
-            Assert.AreEqual("Bob Owner", viewResult.ViewBag.FirstName);
-            Assert.AreEqual("1", viewResult.ViewBag.agentId);
-            Assert.AreEqual("Google Map", viewResult.ViewBag.agentGoogleMap);
+            Assert.AreEqual(1, viewResult.ViewBag.OwnerId);
+            Assert.AreEqual("Google Map", viewResult.ViewBag.OwnerGoogleMap);
         }
 
         [TestMethod]
         public void Create()
         {
+            Assert.Inconclusive("Not Implemented Yet");
             // Act
             //var newDomain = new Domain { Url = "Test5" };
             //Controller.Create(newDomain);
@@ -55,6 +73,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestMethod]
         public void Details()
         {
+            Assert.Inconclusive("Not Implemented Yet");
             // Act
             //var actual = Controller.Details(2);
 
@@ -68,6 +87,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestMethod]
         public void Edit()
         {
+            Assert.Inconclusive("Not Implemented Yet");
             // Act
             //var newDomain = new Domain { Id = 2, Url = "new Domain" };
             //Controller.Edit(newDomain);
@@ -85,6 +105,7 @@ namespace TestProject.UnitTest.Controller.InProgress.PublicProfile
         [TestMethod]
         public void Delete()
         {
+            Assert.Inconclusive("Not Implemented Yet");
             // Act
             //Controller.Delete(1);
             //var actual = Controller.Index();

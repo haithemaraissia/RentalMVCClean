@@ -28,14 +28,14 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstMaintenanceProvider = new MaintenanceProvider {
 
-                 MaintenanceProviderId = new Int32()
+                 MaintenanceProviderId = 1
 ,
                  FirstName = null,
                  LastName = null,
                  Address = null,
                  EmailAddress = null,
                  Description = null,
-                 GUID = new Guid()
+                 GUID = new Guid("dddddddd-dddd-dddd-1122-dddddddddddd")
 ,
                  VCard = null,
                  Skype = null,

@@ -17,7 +17,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
 
         public Owner GetPublicProfileOwnerByOwnerId(int id)
         {
-            var ownerId = new UserIdentity(UnitofWork, MembershipService).GetOwnerId();
+            var ownerId = new UserIdentity(UnitofWork, MembershipService).GetOwnerId(id);
             return UnitofWork.OwnerRepository.FindBy(x => x.OwnerId ==
                 ownerId).FirstOrDefault();
         }
