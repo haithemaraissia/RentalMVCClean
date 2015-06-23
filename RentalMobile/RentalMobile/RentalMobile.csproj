@@ -316,13 +316,13 @@
     <Compile Include="Helpers\Photo\MaintenancePhoto\Photo.cs" />
     <Compile Include="Helpers\Photo\Unit\UnitPhoto.cs" />
     <Compile Include="Helpers\Photo\Unit\UnitUploaderAttributes.cs" />
-    <Compile Include="Helpers\PostalExtenedHelper.cs" />
-    <Compile Include="Helpers\PosterAttributes.cs" />
+    <Compile Include="Helpers\HtmlExtensions\PostalExtenedHelper.cs" />
+    <Compile Include="Helpers\Poster\PosterAttributes.cs" />
     <Compile Include="Helpers\Process\Application\ITenantRentalApplication.cs" />
     <Compile Include="Helpers\Process\Application\TenantRentalApplicationHelper.cs" />
     <Compile Include="Helpers\Process\JobOffer\IJobOfferHelper.cs" />
     <Compile Include="Helpers\Process\JobOffer\JobOffer.cs" />
-    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="Helpers\Reflection\ReflectionHelper.cs" />
     <Compile Include="Helpers\Roles\LookUpRoles.cs" />
     <Compile Include="Helpers\RSS\RSSHelper.cs" />
     <Compile Include="Helpers\Social\SocialHelper.cs" />
@@ -387,8 +387,8 @@
     <Compile Include="Handler\ProfileImageUploadHandler.ashx.cs">
       <DependentUpon>ProfileImageUploadHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GoogleGeoCodeResponse.cs" />
-    <Compile Include="Helpers\HtmlHelperExtension.cs" />
+    <Compile Include="Helpers\GoogleGeoCode\GoogleGeoCodeResponse.cs" />
+    <Compile Include="Helpers\HtmlExtensions\HtmlHelperExtension.cs" />
     <Compile Include="Helpers\IO\DirectoryHelper.cs" />
     <Compile Include="Helpers\Core\CoreUserHelper.cs" />
     <Compile Include="MobileViewEngine.cs" />
