@@ -6,7 +6,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Moq;
+using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Roles;
+using TestProject.UnitTest.Helpers.Fake;
 
 namespace TestProject.UnitTest.Helpers
 {
@@ -80,40 +82,38 @@ namespace TestProject.UnitTest.Helpers
         {
             //TenantId = 5
             var ident = new GenericIdentity("fred");
-            var principal = new GenericPrincipal(ident, new[] { "Tenant" });
+            var principal = new GenericPrincipal(ident, new[] { LookUpRoles.TenantRole });
             return principal;
         }
         public static GenericPrincipal OwnerGenericPrincipal()
         {
             //OwnerId = 1
             var ident = new GenericIdentity("lisa");
-            var principal = new GenericPrincipal(ident, new[] { "Owner" });
+            var principal = new GenericPrincipal(ident, new[] { LookUpRoles.OwnerRole });
             return principal;
         }
         public static GenericPrincipal AgentGenericPrincipal()
         {
             //AgentId = 1,
             var ident = new GenericIdentity("mike");
-            var principal = new GenericPrincipal(ident, new[] { "Agent" });
+            var principal = new GenericPrincipal(ident, new[] { LookUpRoles.AgentRole });
             return principal;
         }
         public static GenericPrincipal SpecialistGenericPrincipal()
         {
             //  SpecialistId = 1
             var ident = new GenericIdentity("sara");
-            var principal = new GenericPrincipal(ident, new[] { "Specialist" });
+            var principal = new GenericPrincipal(ident, new[] { LookUpRoles.SpecialistRole });
             return principal;
         }
         public static GenericPrincipal ProviderGenericPrincipal()
         {
             //  MaintenanceProviderId = 1
             var ident = new GenericIdentity("jeff");
-            var principal = new GenericPrincipal(ident, new[] { "MaintenanceProvider" });
+            var principal = new GenericPrincipal(ident, new[] {LookUpRoles.ProviderRole });
             return principal;
         }
         #endregion
-
-
 
         public static GenericPrincipal AuthenticatedRole(LookUpRoles.Roles r)
         {
@@ -154,8 +154,24 @@ namespace TestProject.UnitTest.Helpers
         public static void MockControllerContextForServerMap(this System.Web.Mvc.Controller controller)
         {
 
+            const string uploadedImagesFodlerPath = @"C:\Users\haraissia\Desktop\Latest\RentalMobile\RentalModel.Test\UploadedImages";
+            const string photoFolderPath = @"C:\Users\haraissia\Desktop\Latest\RentalMobile\RentalModel.Test\Photo\";
+
             var server = new Mock<HttpServerUtilityBase>(MockBehavior.Loose);
-            server.Setup(x => x.MapPath(It.IsAny<string>())).Returns("test");
+            server.Setup(x => x.MapPath("~/UploadedImages")).Returns(uploadedImagesFodlerPath);
+            
+            
+            const string ownerPhotoPath = "~/Photo/" + LookUpRoles.OwnerRole + "/Profile";
+            const string tenantPhotoPath = "~/Photo/" + LookUpRoles.TenantRole + "/Profile";
+            const string agentPhotoPath = "~/Photo/" + LookUpRoles.AgentRole + "/Profile";
+            const string providerPhotoPath = "~/Photo/" + LookUpRoles.ProviderRole + "/Profile";
+            const string specialistPhotoPath = "~/Photo/" + LookUpRoles.SpecialistRole + "/Profile";
+
+            server.Setup(x => x.MapPath(ownerPhotoPath)).Returns(photoFolderPath + LookUpRoles.OwnerRole + @"\Profile");
+            server.Setup(x => x.MapPath(tenantPhotoPath)).Returns(photoFolderPath + LookUpRoles.TenantRole + @"\Profile");
+            server.Setup(x => x.MapPath(agentPhotoPath)).Returns(photoFolderPath + LookUpRoles.AgentRole + @"\Profile");
+            server.Setup(x => x.MapPath(providerPhotoPath)).Returns(photoFolderPath + LookUpRoles.ProviderRole + @"\Profile");
+            server.Setup(x => x.MapPath(specialistPhotoPath)).Returns(photoFolderPath + LookUpRoles.SpecialistRole + @"\Profile");
 
             var response = new Mock<HttpResponseBase>(MockBehavior.Loose);
 
@@ -175,8 +191,61 @@ namespace TestProject.UnitTest.Helpers
                                               new RouteData(), controller);
 
         }
+
+
+
         #endregion
 
+
+
+        #region MockingUser
+
+        public static void MockTenantFred(this System.Web.Mvc.Controller controller)
+        {
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("fred");
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("Tenant")))).Returns(true);
+            controller.ControllerContext = controllerContext.Object;
+        }
+
+        public static void MockLisaOwner(this System.Web.Mvc.Controller controller)
+        {
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("lisa");
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("Owner")))).Returns(true);
+            controller.ControllerContext = controllerContext.Object;
+        }
+
+        public static void MockMikeAgent(this System.Web.Mvc.Controller controller)
+        {
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("mike");
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("Agent")))).Returns(true);
+            controller.ControllerContext = controllerContext.Object;
+        }
+
+        public static void MockSaraSpecialist(this System.Web.Mvc.Controller controller)
+        {
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("sara");
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("Specialist")))).Returns(true);
+            controller.ControllerContext = controllerContext.Object;
+        }
+
+        public static void MockJeffProvider(this System.Web.Mvc.Controller controller)
+        {
+            var controllerContext = new Mock<ControllerContext>();
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.Name).Returns("jeff");
+            controllerContext.SetupGet(x => x.HttpContext.User.Identity.IsAuthenticated).Returns(true);
+            controllerContext.Setup(x => x.HttpContext.User.IsInRole(It.Is<string>(s => s.Equals("MaintenanceProvider")))).Returns(true);
+            controller.ControllerContext = controllerContext.Object;
+        }
+
+        #endregion
 
 
     }

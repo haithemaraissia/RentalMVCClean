@@ -215,23 +215,23 @@ namespace RentalMobile.Helpers.Identity.Base
             if (System.Web.HttpContext.Current != null)
             {
                 var user = System.Web.HttpContext.Current.User;
-                if (user.IsInRole("Tenant"))
+                if (user.IsInRole(LookUpRoles.TenantRole))
                 {
-                    return "Tenant";
+                    return LookUpRoles.TenantRole;
                 }
-                if (user.IsInRole("Owner"))
+                if (user.IsInRole(LookUpRoles.OwnerRole))
                 {
-                    return "Owner";
+                    return LookUpRoles.OwnerRole;
                 }
-                if (user.IsInRole("Agent"))
+                if (user.IsInRole(LookUpRoles.AgentRole))
                 {
-                    return "Agent";
+                    return LookUpRoles.AgentRole;
                 }
-                if (user.IsInRole("Provider"))
+                if (user.IsInRole(LookUpRoles.ProviderRole))
                 {
-                    return "Provider";
+                    return LookUpRoles.ProviderRole;
                 }
-                return user.IsInRole("Specialist") ? "Specialist" : null;
+                return user.IsInRole(LookUpRoles.SpecialistRole) ? LookUpRoles.SpecialistRole : null;
             }
             return null;
         }

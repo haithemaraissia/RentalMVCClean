@@ -1,17 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
 
-using RentalMobile.Helpers;
-
-
-namespace RentalMobile.Helpers
+namespace RentalMobile.Helpers.Postal
 {
     public class Email
     {

@@ -11,6 +11,7 @@ using RentalMobile.Helpers.JQuery;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Photo.Unit;
+using RentalMobile.Helpers.Postal;
 using RentalMobile.Helpers.Social;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
@@ -392,7 +393,7 @@ namespace RentalMobile.Helpers.Unit
 
         public void SendRequestToRequester(string requestername, string requesteremailaddress,string datepicker, int id)
         {
-            dynamic email = new Email("RequestShowing/Sender/Multipart");
+            dynamic email = new Postal.Email("RequestShowing/Sender/Multipart");
             var currentunit = UnitofWork.UnitRepository.FirstOrDefault(x=>x.UnitId == id);
             const string previewPathWithHost = @"/Unit/Preview";
             var unitPicture = currentunit.PrimaryPhoto;
@@ -426,7 +427,7 @@ namespace RentalMobile.Helpers.Unit
         public void SendRequestToReceiver(string requestername, string requesteremailaddress, string requestertelephone,string datepicker, int id)
         {
 
-            dynamic email = new Email("RequestShowing/Receiver/Multipart");
+            dynamic email = new Postal.Email("RequestShowing/Receiver/Multipart");
             var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var currentunit = UnitofWork.UnitRepository.FirstOrDefault(x => x.UnitId == id);
             const string previewPathWithHost = @"/Unit/Preview";
@@ -513,7 +514,7 @@ namespace RentalMobile.Helpers.Unit
 
         public dynamic ComposeForwardToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
-            dynamic email = new Email("SendtoFriend/Multipart");
+            dynamic email = new Postal.Email("SendtoFriend/Multipart");
             var unitposter = UserHelper.GetPoster(id, HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             var currentunit = UnitofWork.UnitRepository.FirstOrDefault(x => x.UnitId == id);
             const string previewPathWithHost = @"/Unit/Preview";

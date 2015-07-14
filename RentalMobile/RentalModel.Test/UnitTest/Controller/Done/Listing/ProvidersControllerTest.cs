@@ -17,8 +17,8 @@ namespace TestProject.UnitTest.Controller.Done.Listing
         public void Initialize()
         {
             // Arrange
-            var ProvidersRepo = new FakeMaintenanceProviderRepository();
-            var uow = new UnitofWork { MaintenanceProviderRepository = ProvidersRepo };
+            var providersRepo = new FakeMaintenanceProviderRepository();
+            var uow = new UnitofWork { MaintenanceProviderRepository = providersRepo };
             Controller = new ProvidersController(uow);
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile;
 using RentalMobile.Helpers.IO;
 using RentalMobile.Helpers.Membership;
@@ -17,15 +18,16 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
         public string RequestId;
         public string RequestType = "Request";
 
-        public TenantPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService)
+        public TenantPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
-            MembershipService = membershipService;
             UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
         }
 
         public Tenant GetTenant()
         {
-            var tenantId = new UserIdentity(UnitofWork, MembershipService).GetTenantId();
+            var tenantId = UserHelper.UserIdentity.GetTenantId();
             return UnitofWork.TenantRepository.FindBy(x => x.TenantId == tenantId).FirstOrDefault();
         }
 
@@ -56,7 +58,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public void DeleteTenantMemebership()
         {
-            var username = UserHelper.GetUserName();
+            var username = UserHelper.UserIdentity.GetUserName();
             if (MembershipService.GetRolesForUser(username).Any())
             {
                 MembershipService.RemoveUserFromRoles(username,
@@ -69,7 +71,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public Tenant GetPrivateProfileTenantByTenantId(int id)
         {
-            var tenantId = new UserIdentity(UnitofWork, MembershipService).GetTenantId(id);
+            var tenantId = UserHelper.UserIdentity.GetTenantId(id);
             return UnitofWork.TenantRepository.FindBy(x => x.TenantId == tenantId).FirstOrDefault();
         }
 

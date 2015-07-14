@@ -95,7 +95,7 @@ namespace RentalMobile.Controllers.WIP.Unit
             //ViewBag.Type = "Requests";
             //TempData["Id"] = "5";
 
-            // SavePictures(unitModelView.Unit);
+            // SaveProfilePhoto(unitModelView.Unit);
             //ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
             return PartialView("_Partial2", unitModelView.UnitGallery);
         }

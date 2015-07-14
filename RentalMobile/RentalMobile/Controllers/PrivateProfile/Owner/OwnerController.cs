@@ -330,7 +330,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Owner
         //            db.UnitLuxuryAmenities.Add(u.UnitLuxuryAmenity);
         //            ViewBag.CurrencyCode = u.Unit.CurrencyCode;
         //            db.SaveChanges();
-        //            //  SavePictures(u.Unit);
+        //            //  SaveProfilePhoto(u.Unit);
         //            return RedirectToAction("Index");
         //        }
         //        return View(u);
@@ -511,7 +511,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Owner
         //    //ViewBag.Type = "Requests";
         //    //TempData["Id"] = "5";
 
-        //    // SavePictures(unitModelView.Unit);
+        //    // SaveProfilePhoto(unitModelView.Unit);
         //    //ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
         //    return PartialView("_Partial2", unitModelView.UnitGallery);
         //    }

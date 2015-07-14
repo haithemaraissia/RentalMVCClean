@@ -1,16 +1,17 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Mail;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Security;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
-using RentalMobile.Helpers.Identity.Base;
+using RentalMobile.Helpers.Email;
 using RentalMobile.Helpers.IO;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Roles;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -23,40 +24,23 @@ namespace RentalMobile.Helpers.Account
         #region AccountHelper Constructor
         /// AccountHelper
 
-        public AccountHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        public AccountHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper, IEmailService emailService)
         {
             UnitofWork = uow;
             MembershipService = membershipService;
             UserHelper = userHelper;
+            EmailService = emailService;
         }
 
         #endregion
 
         #region ChangeEmail
         /// ChangeEmail
-
-        public void ChangeSpecialistEmail(ChangeEmail model)
-        {
-            //Specialist
-            var specialistId = UserHelper.GetSpecialistId();
-            if (specialistId == 0)
-            {
-                UserHelper.Login();
-            }
-            else
-            {
-                var specialist = UserHelper.GetPrivateProfileSpecialistBySpecialistId(specialistId);
-                {
-                    if (specialist != null) specialist.EmailAddress = model.Email;
-                }
-                UnitofWork.Save();
-            }
-        }
-
+        /// 
         public void ChangeTenantEmail(ChangeEmail model)
         {
             //Tenant
-            var tenantId = UserHelper.GetTenantId();
+            var tenantId = UserHelper.UserIdentity.GetTenantId();
             if (tenantId == 0)
             {
                 UserHelper.Login();
@@ -71,28 +55,10 @@ namespace RentalMobile.Helpers.Account
             }
         }
 
-        public void ChangeProviderEmail(ChangeEmail model)
-        {
-            //MaintenanceProvider
-            var providerId = UserHelper.GetProviderId();
-            if (providerId == 0)
-            {
-                UserHelper.Login();
-            }
-            else
-            {
-                var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(providerId);
-                {
-                    if (provider != null) provider.EmailAddress = model.Email;
-                }
-                UnitofWork.Save();
-            }
-        }
-
         public void ChangeOwnerEmail(ChangeEmail model)
         {
             //Owner
-            var ownerId = UserHelper.GetOwnerId();
+            var ownerId = UserHelper.UserIdentity.GetOwnerId();
             if (ownerId == 0)
             {
                 UserHelper.Login();
@@ -110,7 +76,7 @@ namespace RentalMobile.Helpers.Account
         public void ChangeAgentmail(ChangeEmail model)
         {
             //Agent
-            var agentId = UserHelper.GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             if (agentId == 0)
             {
                 UserHelper.Login();
@@ -125,33 +91,68 @@ namespace RentalMobile.Helpers.Account
             }
         }
 
+        public void ChangeSpecialistEmail(ChangeEmail model)
+        {
+            //Specialist
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
+            if (specialistId == 0)
+            {
+                UserHelper.Login();
+            }
+            else
+            {
+                var specialist = UserHelper.SpecialistPrivateProfileHelper.GetPrivateProfileSpecialistBySpecialistId(specialistId);
+                {
+                    if (specialist != null) specialist.EmailAddress = model.Email;
+                }
+                UnitofWork.Save();
+            }
+        }
+
+        public void ChangeProviderEmail(ChangeEmail model)
+        {
+            //MaintenanceProvider
+            var providerId = UserHelper.UserIdentity.GetProviderId();
+            if (providerId == 0)
+            {
+                UserHelper.Login();
+            }
+            else
+            {
+                var provider = UserHelper.ProviderPrivateProfileHelper.GetPrivateProfileProviderByProviderId(providerId);
+                {
+                    if (provider != null) provider.EmailAddress = model.Email;
+                }
+                UnitofWork.Save();
+            }
+        }
+
         public void ChangeEmailByType(ChangeEmail model)
         {
-            if (HttpContext.User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole(LookUpRoles.TenantRole))
             {
                 ChangeTenantEmail(model);
             }
 
-            if (HttpContext.User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole(LookUpRoles.OwnerRole))
             {
                 ChangeOwnerEmail(model);
             }
 
-            if (HttpContext.User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole(LookUpRoles.AgentRole))
             {
                 ChangeAgentmail(model);
             }
 
-            if (HttpContext.User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole(LookUpRoles.SpecialistRole))
             {
                 ChangeSpecialistEmail(model);
             }
-            if (HttpContext.User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole(LookUpRoles.ProviderRole))
             {
                 ChangeProviderEmail(model);
             }
         }
-
         #endregion
 
         #region RegisterAccount
@@ -159,27 +160,27 @@ namespace RentalMobile.Helpers.Account
 
         public void RegisterAccountByType(RegisterModel model)
         {
-            if (model.Role == "Tenant")
+            if (model.Role == LookUpRoles.TenantRole)
             {
                 RegisterTenant(model);
             }
 
-            if (model.Role == "Owner")
+            if (model.Role == LookUpRoles.OwnerRole)
             {
                 RegisterOwner(model);
             }
 
-            if (model.Role == "Agent")
+            if (model.Role == LookUpRoles.AgentRole)
             {
                 RegisterAgent(model);
             }
 
-            if (model.Role == "Specialist")
+            if (model.Role == LookUpRoles.SpecialistRole)
             {
                 RegisterSpecialist(model);
             }
 
-            if (model.Role == "Provider")
+            if (model.Role == LookUpRoles.ProviderRole)
             {
                 RegisterProvider(model);
             }
@@ -191,16 +192,13 @@ namespace RentalMobile.Helpers.Account
             var user = MembershipService.GetUser(model.UserName);
             if (user != null)
             {
-                var providerUserKey = user.ProviderUserKey;
-                if (providerUserKey != null)
-                    newtenant.GUID = (Guid)providerUserKey;
+                if (user.ProviderUserKey != null) newtenant.GUID = new Guid(user.ProviderUserKey.ToString());
                 newtenant.FirstName = model.UserName;
                 newtenant.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newtenant.GoogleMap = "USA";
+                UnitofWork.TenantRepository.Add(newtenant);
+                UnitofWork.Save();
             }
-
-            UnitofWork.TenantRepository.Add(newtenant);
-            UnitofWork.Save();
         }
 
         public void RegisterOwner(RegisterModel model)
@@ -209,16 +207,13 @@ namespace RentalMobile.Helpers.Account
             var user = MembershipService.GetUser(model.UserName);
             if (user != null)
             {
-                var providerUserKey = user.ProviderUserKey;
-                if (providerUserKey != null)
-                    newowner.GUID = (Guid)providerUserKey;
+                if (user.ProviderUserKey != null) newowner.GUID = new Guid(user.ProviderUserKey.ToString());
                 newowner.FirstName = model.UserName;
                 newowner.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newowner.GoogleMap = "USA";
+                UnitofWork.OwnerRepository.Add(newowner);
+                UnitofWork.Save(); 
             }
-
-            UnitofWork.OwnerRepository.Add(newowner);
-            UnitofWork.Save();
         }
 
         public void RegisterAgent(RegisterModel model)
@@ -227,61 +222,54 @@ namespace RentalMobile.Helpers.Account
             var user = MembershipService.GetUser(model.UserName);
             if (user != null)
             {
-                var providerUserKey = user.ProviderUserKey;
-                if (providerUserKey != null)
-                    newagent.GUID = (Guid)providerUserKey;
+                if (user.ProviderUserKey != null) newagent.GUID = new Guid(user.ProviderUserKey.ToString());
                 newagent.FirstName = model.UserName;
                 newagent.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newagent.GoogleMap = "USA";
+                UnitofWork.AgentRepository.Add(newagent);
+                UnitofWork.Save();
             }
-
-            UnitofWork.AgentRepository.Add(newagent);
-            UnitofWork.Save();
-
         }
 
         public void RegisterSpecialist(RegisterModel model)
         {
-            var newspecialist = new Specialist { EmailAddress = model.Email };
+            var nextspecialistId =
+                    UnitofWork.SpecialistRepository.All.OrderByDescending(x => x.SpecialistId)
+                        .First()
+                        .SpecialistId + 1;
+            var newspecialist = new Specialist { EmailAddress = model.Email, SpecialistId = nextspecialistId };
             var user = MembershipService.GetUser(model.UserName);
             if (user != null)
             {
-                var providerUserKey = user.ProviderUserKey;
-                if (providerUserKey != null)
-                    newspecialist.GUID = (Guid)providerUserKey;
+                if (user.ProviderUserKey != null) newspecialist.GUID = new Guid(user.ProviderUserKey.ToString());
                 newspecialist.FirstName = model.UserName;
                 newspecialist.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newspecialist.GoogleMap = "USA";
                 newspecialist.PercentageofCompletion = 50;
-
+                UnitofWork.SpecialistRepository.Add(newspecialist);
+                UnitofWork.Save();
+                SpecialistInitialProfileValues(model, newspecialist.SpecialistId);
             }
-            UnitofWork.SpecialistRepository.Add(newspecialist);
-            UnitofWork.Save();
-
-            SpecialistInitialProfileValues(model, newspecialist.SpecialistId);
         }
 
         public void RegisterProvider(RegisterModel model)
         {
-            var newprovider = new MaintenanceProvider { EmailAddress = model.Email };
+            var nextproviderId = UnitofWork.MaintenanceProviderRepository.All.
+                OrderByDescending(x => x.MaintenanceProviderId).
+                First().MaintenanceProviderId + 1;
+            var newprovider = new MaintenanceProvider { EmailAddress = model.Email, MaintenanceProviderId = nextproviderId };
             var user = MembershipService.GetUser(model.UserName);
             if (user != null)
             {
-                var providerUserKey = user.ProviderUserKey;
-                if (providerUserKey != null)
-                    newprovider.GUID = (Guid)providerUserKey;
+                if (user.ProviderUserKey != null) newprovider.GUID = new Guid(user.ProviderUserKey.ToString());
                 newprovider.FirstName = model.UserName;
                 newprovider.Photo = "./../images/dotimages/avatar-placeholder.png";
                 newprovider.GoogleMap = "USA";
+                UnitofWork.MaintenanceProviderRepository.Add(newprovider);
+                UnitofWork.Save();
+                ProviderInitialProfileValues(model, newprovider.MaintenanceProviderId);
             }
-
-            UnitofWork.MaintenanceProviderRepository.Add(newprovider);
-            UnitofWork.Save();
-
-            ProviderInitialProfileValues(model, newprovider.MaintenanceProviderId);
         }
-
-        #endregion
 
         #region InitializeProfileByType
         /// Initialize ProfileByType
@@ -290,66 +278,75 @@ namespace RentalMobile.Helpers.Account
         {
 
             if (specialistId != 0)
-            {
+            {  
+                var nextCompanyId =
+                    UnitofWork.MaintenanceCompanyLookUpRepository.All.OrderByDescending(x => x.CompanyId)
+                        .First()
+                        .CompanyId + 1;      
                 var newMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp
                 {
+                    CompanyId = nextCompanyId,
                     UserId = specialistId,
-                    Role = 1
+                    Role = (int) LookUpRoles.Roles.Specialist
                 };
-                UnitofWork.MaintenanceCompanyLookUpRepository.Add(newMaintenanceCompanyLookUp);
-                UnitofWork.Save();
-
-                var specialistCompanyId = newMaintenanceCompanyLookUp.CompanyId;
                 var newMaintenanceCompany = new MaintenanceCompany
                 {
-                    CompanyId = specialistCompanyId,
+                    CompanyId = nextCompanyId,
                     Name = model.UserName,
                     EmailAddress = model.Email,
                     GoogleMap = "USA",
-                    Country = "US"
+                    Country = "US",
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                     //   CountryCode = "US"
                 };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
                 {
-                    CompanyId = specialistCompanyId,
+                    CompanyId = nextCompanyId,
                     NumberofEmployee = 1,
                     NumberofCertifitedEmplyee = 1,
                     IsInsured = true,
                     Rate = 50,
                     CurrencyID = 1,
-                    Currency = "USD"
+                    Currency = "USD",
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceCustomService = new MaintenanceCustomService
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
-
                 var newMaintenanceExterior = new MaintenanceExterior
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceInterior = new MaintenanceInterior
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceNewConstruction = new MaintenanceNewConstruction
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceRepair = new MaintenanceRepair
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceUtility = new MaintenanceUtility
                 {
-                    CompanyId = specialistCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var specialistwork = new SpecialistWork
                 {
                     PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
-                    SpecialistId = specialistCompanyId
+                    SpecialistId = specialistId
                 };
 
+                UnitofWork.MaintenanceCompanyLookUpRepository.Add(newMaintenanceCompanyLookUp);
                 UnitofWork.MaintenanceCompanyRepository.Add(newMaintenanceCompany);
                 UnitofWork.MaintenanceCompanySpecializationRepository.Add(newMaintenanceCompanySpecialization);
                 UnitofWork.MaintenanceCustomServiceRepository.Add(newMaintenanceCustomService);
@@ -369,65 +366,75 @@ namespace RentalMobile.Helpers.Account
 
             if (providerId != 0)
             {
+                var nextCompanyId =
+                    UnitofWork.MaintenanceCompanyLookUpRepository.All.OrderByDescending(x => x.CompanyId)
+                        .First()
+                        .CompanyId + 1;      
+
                 var newMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp
                 {
+                    CompanyId = nextCompanyId,
                     UserId = providerId,
-                    Role = 2
+                    Role = (int)LookUpRoles.Roles.Provider
                 };
-                UnitofWork.MaintenanceCompanyLookUpRepository.Add(newMaintenanceCompanyLookUp);
-                UnitofWork.Save();
-
-                var providerCompanyId = newMaintenanceCompanyLookUp.CompanyId;
                 var newMaintenanceCompany = new MaintenanceCompany
                 {
-                    CompanyId = providerCompanyId,
+                    CompanyId = nextCompanyId,
                     Name = model.UserName,
                     EmailAddress = model.Email,
                     GoogleMap = "USA",
-                    Country = "US"
+                    Country = "US",
                     //   CountryCode = "US"
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceCompanySpecialization = new MaintenanceCompanySpecialization
                 {
-                    CompanyId = providerCompanyId,
+                    CompanyId = nextCompanyId,
                     NumberofEmployee = 1,
                     NumberofCertifitedEmplyee = 1,
                     IsInsured = true,
                     Rate = 50,
                     CurrencyID = 1,
-                    Currency = "USD"
+                    Currency = "USD",
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceCustomService = new MaintenanceCustomService
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
 
                 var newMaintenanceExterior = new MaintenanceExterior
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceInterior = new MaintenanceInterior
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceNewConstruction = new MaintenanceNewConstruction
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceRepair = new MaintenanceRepair
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var newMaintenanceUtility = new MaintenanceUtility
                 {
-                    CompanyId = providerCompanyId
+                    CompanyId = nextCompanyId,
+                    MaintenanceCompanyLookUp = newMaintenanceCompanyLookUp
                 };
                 var providerwork = new ProviderWork
                 {
                     PhotoPath = "./../images/dotimages/home-handyman-projects.jpg",
-                    ProviderId = providerCompanyId
+                    ProviderId = providerId
                 };
-
+                UnitofWork.MaintenanceCompanyLookUpRepository.Add(newMaintenanceCompanyLookUp);
                 UnitofWork.MaintenanceCompanyRepository.Add(newMaintenanceCompany);
                 UnitofWork.MaintenanceCompanySpecializationRepository.Add(newMaintenanceCompanySpecialization);
                 UnitofWork.MaintenanceCustomServiceRepository.Add(newMaintenanceCustomService);
@@ -444,37 +451,59 @@ namespace RentalMobile.Helpers.Account
 
         #endregion
 
+        #endregion
+ 
         #region Add Picture
         // Add Picture
 
-        public void AddPicture(string photoPath)
+        public void AddPictureToProfile(string photoPath)
         {
-            var role = UserHelper.GetCurrentRole();
-            if (role == "Agent")
+            var role = UserHelper.UserIdentity.GetCurrentRole();
+            if (role == LookUpRoles.TenantRole)
             {
-                AddAgentPicture(photoPath);
+                AddTenantPicture(photoPath);
             }
-            if (role == "Owner")
+            if (role == LookUpRoles.OwnerRole)
             {
                 AddOwnerPicture(photoPath);
             }
-            if (role == "Agent")
+            if (role == LookUpRoles.AgentRole)
             {
                 AddAgentPicture(photoPath);
             }
-            if (role == "Specialist")
+            if (role == LookUpRoles.SpecialistRole)
             {
                 AddSpecialistPicture(photoPath);
             }
-            if (role == "Provider")
+            if (role == LookUpRoles.ProviderRole)
             {
                 AddProviderPicture(photoPath);
             }
         }
 
+        public void AddTenantPicture(string photoPath)
+        {
+            var tenantId = UserHelper.UserIdentity.GetTenantId();
+            var tenant = UnitofWork.TenantRepository.FindBy
+                (x => x.TenantId == tenantId).FirstOrDefault();
+            if (!ModelState.IsValid) return;
+            if (tenant != null) tenant.Photo = CleanUpPhotoPath(photoPath);
+            UnitofWork.Save();
+        }
+
+        public void AddOwnerPicture(string photoPath)
+        {
+            var ownerId = UserHelper.UserIdentity.GetOwnerId();
+            var owner = UnitofWork.OwnerRepository.FindBy
+                (x => x.OwnerId == ownerId).FirstOrDefault();
+            if (!ModelState.IsValid) return;
+            if (owner != null) owner.Photo = CleanUpPhotoPath(photoPath);
+            UnitofWork.Save();
+        }   
+      
         public void AddAgentPicture(string photoPath)
         {
-            var agentId = UserHelper.GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             var agent = UnitofWork.AgentRepository.FindBy
                 (x => x.AgentId == agentId).FirstOrDefault();
             if (!ModelState.IsValid) return;
@@ -482,19 +511,9 @@ namespace RentalMobile.Helpers.Account
             UnitofWork.Save();
         }
 
-        public void AddOwnerPicture(string photoPath)
-        {
-            var ownerId = UserHelper.GetOwnerId();
-            var owner = UnitofWork.OwnerRepository.FindBy
-                (x => x.OwnerId == ownerId).FirstOrDefault();
-            if (!ModelState.IsValid) return;
-            if (owner != null) owner.Photo = CleanUpPhotoPath(photoPath);
-            UnitofWork.Save();
-        }
-
         public void AddSpecialistPicture(string photoPath)
         {
-            var specialistId = UserHelper.GetSpecialistId();
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
             var specialist = UnitofWork.SpecialistRepository.FindBy
                 (x => x.SpecialistId == specialistId).FirstOrDefault();
             if (!ModelState.IsValid) return;
@@ -504,8 +523,7 @@ namespace RentalMobile.Helpers.Account
 
         public void AddProviderPicture(string photoPath)
         {
-
-            var providerId = UserHelper.GetProviderId();
+            var providerId = UserHelper.UserIdentity.GetProviderId();
             var provider = UnitofWork.MaintenanceProviderRepository.
                 FindBy(x => x.MaintenanceProviderId ==
                             providerId).FirstOrDefault();
@@ -516,69 +534,79 @@ namespace RentalMobile.Helpers.Account
 
         public string CleanUpPhotoPath(string photoPath)
         {
-            return photoPath.Replace(@"~\Photo", @"../../Photo").Replace("\\", "/");
+            return photoPath.Replace(@"~\Photo", @"../../Photo").Replace(@"\", "/");
         }
         #endregion
 
         #region Saving Picture
         //Saving Picture
 
-        public void SavePictures(int id)
+        public void SaveProfilePhoto(int uploaderId)
         {
-            var userName = new UserIdentity(UnitofWork, MembershipService).GetUserName();
-            var imageStoragePath = ImageStoragePath();
+            var userName = UserHelper.UserIdentity.GetUserName();
+            var imageStoragePath = UploadPath();
             var photoPath = PhotoPath();
-            var directory = @"\" + userName + @"\" + "Profile" + @"\" + id + @"\";
-            var desinationdirectory = @"\" + userName + @"\" + id + @"\";
+            var directory = @"\" + userName + @"\" + "Profile" + @"\" + uploaderId + @"\";
+            var desinationdirectory = @"\" + userName + @"\" + uploaderId + @"\";
             var path = imageStoragePath + directory;
+            CreateDirectoryIfItDoesNotExist(path);
             var uploadDirectory = new DirectoryInfo(path);
             var newdirectory = photoPath + desinationdirectory;
-            if (Directory.Exists(newdirectory))
-            {
-                new DirectoryHelper().CreateDirectoryIfNotExist(newdirectory);
-            }
-            var latestFile = (from f in uploadDirectory.GetFiles()
-                              orderby f.LastWriteTime descending
-                              select f).First();
-            if (latestFile != null)
-                try
-                {
-                    var destinationFile = newdirectory + @"\" + latestFile.Name;
-                    var virtualdestinationFile = GetVirtualUserPhotoPath() + @"\" + "Profile" + @"\" +
-                                                 userName + @"\" + id + @"\" +
-                                                 latestFile.Name;
-                    if (!System.IO.File.Exists(destinationFile))
-                    {
-                        var desintationDirectoryFolder = new DirectoryInfo(newdirectory);
-                        if (desintationDirectoryFolder.Exists)
-                        {
-                            var files = desintationDirectoryFolder.GetFiles();
-                            foreach (var f in files)
-                            {
-                                System.IO.File.Delete(f.Name);
-                            }
-                        }
-                        else
-                        {
-                            new DirectoryHelper().CreateDirectoryIfNotExist(newdirectory);
+            var newDirectoryPath = new DirectoryInfo(newdirectory);
+            CreateDirectoryIfItDoesNotExist(newdirectory);
 
-                        }
-                        System.IO.File.Move(latestFile.FullName, destinationFile);
-                        AddPicture(virtualdestinationFile);
-                    }
-                    var uploadfiles = uploadDirectory.GetFiles();
-                    foreach (var f in uploadfiles)
-                    {
-                        System.IO.File.Delete(f.Name);
-                    }
+            var filesInDirectoryCount = (from f in uploadDirectory.GetFiles() orderby f.LastWriteTime descending select f).Count();
+            if (filesInDirectoryCount <= 0) return;
+            var latestUploadedFile = (from f in uploadDirectory.GetFiles() orderby f.LastWriteTime descending select f).First();
+
+            if (latestUploadedFile != null)
+                try
+                {                       
+                    var destinationFile = newdirectory + @"\" + latestUploadedFile.Name;
+                    var virtualdestinationFile = GetVirtualUserPhotoPath() + @"\" + "Profile" + @"\" + userName + @"\" + uploaderId + @"\" + latestUploadedFile.Name;
+                    DeleteDestinationDirectoryFiles(newDirectoryPath);
+                    CopyUploadedFileToDestinationFolder(latestUploadedFile, destinationFile);
+                    AddPictureToProfile(virtualdestinationFile);
+                    DeleteUploadDirectoryFiles(uploadDirectory);
                 }
                 catch (Exception e)
                 {
 
                     Response.Write(string.Format("Error occurs in uploading profile picture! {0}", e.Message));
                 }
+        }
 
-            new DirectoryHelper().DeleteDirectoryIfExist(path);
+        public void CopyUploadedFileToDestinationFolder(FileInfo latestUploadedFile, string destinationFile)
+        {
+                System.IO.File.Delete(destinationFile);
+                System.IO.File.Copy(latestUploadedFile.FullName, destinationFile);
+        }
+
+        public void DeleteDestinationDirectoryFiles(DirectoryInfo  newdirectory )
+        {
+            var uploadfiles = newdirectory.GetFiles();
+            foreach (var f in uploadfiles)
+            {
+                System.IO.File.Delete(f.FullName);
+            }
+
+        }
+
+        public void DeleteUploadDirectoryFiles(DirectoryInfo uploadDirectory)
+        {
+            var uploadfiles = uploadDirectory.GetFiles();
+            foreach (var f in uploadfiles)
+            {
+                System.IO.File.Delete(f.FullName);
+            }
+        }
+
+        public void CreateDirectoryIfItDoesNotExist(string newdirectory)
+        {
+            if (Directory.Exists(newdirectory) == false)
+            {
+                new DirectoryHelper().CreateDirectoryIfNotExist(newdirectory);
+            }
         }
 
         public string PhotoPath()
@@ -587,7 +615,7 @@ namespace RentalMobile.Helpers.Account
             return photoPath;
         }
 
-        public string ImageStoragePath()
+        public string UploadPath()
         {
             var imageStoragePath = HttpContext.Server.MapPath("~/UploadedImages");
             return imageStoragePath;
@@ -605,7 +633,7 @@ namespace RentalMobile.Helpers.Account
 
         public string GetVirtualUserPhotoPath()
         {
-            var role = UserHelper.GetCurrentRole();
+            var role = UserHelper.UserIdentity.GetCurrentRole();
             if (role != null)
             {
                 return @"~\Photo\" + role;
@@ -623,27 +651,23 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateVideoByAccountType(PrimaryVideo primaryVideo)
         {
-
-            if (HttpContext.User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole(LookUpRoles.TenantRole))
             {
                 UpdateTenantVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole(LookUpRoles.OwnerRole))
             {
                 UpdateOwnerVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole(LookUpRoles.AgentRole))
             {
                 UpdateAgentVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole(LookUpRoles.SpecialistRole))
             {
                 UpdateSpecialistVideo(primaryVideo);
             }
-            if (HttpContext.User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole(LookUpRoles.ProviderRole))
             {
                 UpdateProviderVideo(primaryVideo);
             }
@@ -651,7 +675,7 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateProviderVideo(PrimaryVideo primaryVideo)
         {
-            var providerId = UserHelper.GetProviderId();
+            var providerId = UserHelper.UserIdentity.GetProviderId();
             var provider = UnitofWork.MaintenanceProviderRepository.FindBy
                (x => x.MaintenanceProviderId == providerId).FirstOrDefault();
             if (provider != null)
@@ -667,7 +691,7 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateSpecialistVideo(PrimaryVideo primaryVideo)
         {
-            var specialistId = UserHelper.GetSpecialistId();
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
             var specialist = UnitofWork.SpecialistRepository.FindBy
           (x => x.SpecialistId == specialistId).FirstOrDefault();
 
@@ -684,7 +708,7 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateAgentVideo(PrimaryVideo primaryVideo)
         {
-            var agentId = UserHelper.GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             var agent = UnitofWork.AgentRepository.FindBy
           (x => x.AgentId == agentId).FirstOrDefault();
 
@@ -701,7 +725,7 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateOwnerVideo(PrimaryVideo primaryVideo)
         {
-            var ownerId = UserHelper.GetOwnerId();
+            var ownerId = UserHelper.UserIdentity.GetOwnerId();
             var owner = UnitofWork.OwnerRepository.FindBy
           (x => x.OwnerId == ownerId).FirstOrDefault();
 
@@ -718,7 +742,7 @@ namespace RentalMobile.Helpers.Account
 
         public void UpdateTenantVideo(PrimaryVideo primaryVideo)
         {
-            var tenantId = UserHelper.GetTenantId();
+            var tenantId = UserHelper.UserIdentity.GetTenantId();
             var tenant = UnitofWork.TenantRepository.FindBy
           (x => x.TenantId == tenantId).FirstOrDefault();
 
@@ -733,43 +757,38 @@ namespace RentalMobile.Helpers.Account
             UnitofWork.Save();
         }
 
-
-
-
         /// <summary>
         /// Load Video
         /// </summary>
         /// <param name="primaryVideo"></param>
-        public void LoadVideoByAccountType(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadVideoByAccountType(PrimaryVideo primaryVideo)
         {
-            if (HttpContext.User.IsInRole("Tenant"))
+            if (HttpContext.User.IsInRole(LookUpRoles.TenantRole))
             {
                 LoadTenantVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Owner"))
+            if (HttpContext.User.IsInRole(LookUpRoles.OwnerRole))
             {
                 LoadOwnerVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Agent"))
+            if (HttpContext.User.IsInRole(LookUpRoles.AgentRole))
             {
                 LoadAgentVideo(primaryVideo);
             }
-
-            if (HttpContext.User.IsInRole("Specialist"))
+            if (HttpContext.User.IsInRole(LookUpRoles.SpecialistRole))
             {
                 LoadSpecialistVideo(primaryVideo);
             }
-            if (HttpContext.User.IsInRole("Provider"))
+            if (HttpContext.User.IsInRole(LookUpRoles.ProviderRole))
             {
                 LoadProviderVideo(primaryVideo);
             }
+            return null;
         }
 
-        private void LoadProviderVideo(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadProviderVideo(PrimaryVideo primaryVideo)
         {
-            var providerId = UserHelper.GetProviderId();
+            var providerId = UserHelper.UserIdentity.GetProviderId();
             var provider = UnitofWork.MaintenanceProviderRepository.FindBy
             (x => x.MaintenanceProviderId == providerId).FirstOrDefault();
 
@@ -780,11 +799,12 @@ namespace RentalMobile.Helpers.Account
                 primaryVideo.YouTubeVideo = provider.YouTubeVideo;
                 primaryVideo.YouTubeVideoUrl = provider.YouTubeVideoURL ?? "";
             }
+            return primaryVideo;
         }
 
-        private void LoadSpecialistVideo(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadSpecialistVideo(PrimaryVideo primaryVideo)
         {
-            var specialistId = UserHelper.GetSpecialistId();
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
             var specialist = UnitofWork.SpecialistRepository.FindBy
             (x => x.SpecialistId == specialistId).FirstOrDefault();
 
@@ -795,11 +815,12 @@ namespace RentalMobile.Helpers.Account
                 primaryVideo.YouTubeVideo = specialist.YouTubeVideo ?? false;
                 primaryVideo.YouTubeVideoUrl = specialist.YouTubeVideoURL ?? "";
             }
+            return primaryVideo;
         }
 
-        private void LoadAgentVideo(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadAgentVideo(PrimaryVideo primaryVideo)
         {
-            var agentId = UserHelper.GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             var agent = UnitofWork.AgentRepository.FindBy
             (x => x.AgentId == agentId).FirstOrDefault();
 
@@ -810,11 +831,12 @@ namespace RentalMobile.Helpers.Account
                 primaryVideo.YouTubeVideo = agent.YouTubeVideo ?? false;
                 primaryVideo.YouTubeVideoUrl = agent.YouTubeVideoURL ?? "";
             }
+            return primaryVideo;
         }
 
-        private void LoadOwnerVideo(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadOwnerVideo(PrimaryVideo primaryVideo)
         {
-            var ownerId = UserHelper.GetOwnerId();
+            var ownerId = UserHelper.UserIdentity.GetOwnerId();
             var owner = UnitofWork.OwnerRepository.FindBy
             (x => x.OwnerId == ownerId).FirstOrDefault();
 
@@ -825,11 +847,12 @@ namespace RentalMobile.Helpers.Account
                 primaryVideo.YouTubeVideo = owner.YouTubeVideo ?? false;
                 primaryVideo.YouTubeVideoUrl = owner.YouTubeVideoURL ?? "";
             }
+            return primaryVideo;
         }
 
-        private void LoadTenantVideo(PrimaryVideo primaryVideo)
+        public PrimaryVideo LoadTenantVideo( PrimaryVideo primaryVideo)
         {
-            var tenantId = UserHelper.GetTenantId();
+            var tenantId = UserHelper.UserIdentity.GetTenantId();
             var tenant = UnitofWork.TenantRepository.FindBy
             (x => x.TenantId == tenantId).FirstOrDefault();
 
@@ -840,6 +863,7 @@ namespace RentalMobile.Helpers.Account
                 primaryVideo.YouTubeVideo = tenant.YouTubeVideo ?? false;
                 primaryVideo.YouTubeVideoUrl = tenant.YouTubeVideoURL ?? "";
             }
+            return primaryVideo;
         }
 
         #endregion
@@ -849,45 +873,48 @@ namespace RentalMobile.Helpers.Account
 
         public void SendResetEmail(MembershipUser user)
         {
-            //The URL to login
-            if (HttpContext.Request.Url == null) return;
-            var domain = HttpContext.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;
-
-            //link to send
-            var link = domain + "/Account/Logon";
-
-            var body = "<p> Dear " + user.UserName + ",</p>";
-            body += "<p> Your Orion password has been reset, Click " + link + " to login with details below</p>";
-            body += "<p> UserName: " + user.UserName + "</p>";
-            body += "<p> Password: " + user.ResetPassword() + "</p>";
-            body += "<p>It is recomended that you change it after logon.</p>";
-            body += "<p>If you did not request a password reset you do not need to take any action.</p>";
-
-            var plainView = AlternateView.CreateAlternateViewFromString
-                (Regex.Replace(body, @"<(.|\n)*?>", string.Empty), null, "text/plain");
-
-            var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
-
+            var messagebody = ComposeEmailMessage(user);
+            var plainView = AlternateView.CreateAlternateViewFromString(Regex.Replace(messagebody, @"<(.|\n)*?>", string.Empty), null, "text/plain");
+            var htmlView = AlternateView.CreateAlternateViewFromString(messagebody, null, "text/html");
             var message = new MailMessage("haithem-araissia.com", user.Email)
             {
                 Subject = "Password Reset",
-                BodyEncoding = System.Text.Encoding.GetEncoding("utf-8"),
+                BodyEncoding = Encoding.GetEncoding("utf-8"),
                 IsBodyHtml = true,
                 Priority = MailPriority.High
-            };
-
+            }; 
             message.AlternateViews.Add(plainView);
             message.AlternateViews.Add(htmlView);
+            SendEmailMessage(message);
+        }
 
-            var smtpMail = new SmtpClient();
-            var basicAuthenticationInfo = new NetworkCredential("postmaster@haithem-araissia.com",
-                                                                           "haithem759163");
-            smtpMail.Host = "mail.haithem-araissia.com";
-            smtpMail.UseDefaultCredentials = false;
-            smtpMail.Credentials = basicAuthenticationInfo;
+        public string ComposeEmailMessage(MembershipUser user)
+        {
+            var domainLink = GetDomainLink();
+            var body = "<p> Dear " + user.UserName + ",</p>";
+            body += "<p> Your password has been reset. Click " + domainLink + " to login with details below</p>";
+            body += "<p> UserName: " + user.UserName + "</p>";
+            body += "<p> Password: " + MembershipService.ResetPassword() + "</p>";
+            body += "<p> It is recommended that you change it after logging in.</p>";
+            body += "<p> If you did not request a password reset, you do not need to take any action.</p>";
+            return body;
+        }
+
+        public string GetDomainLink()
+        {
+            //The URL to login
+            if (HttpContext.Request.Url == null) return "";
+            var domain = HttpContext.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;
+
+            //link to send
+            return domain + "/Account/Logon";
+        }
+
+        public void SendEmailMessage(MailMessage message)
+        {
             try
             {
-                smtpMail.Send(message);
+                EmailService.SendEmail(message);
             }
             catch (Exception)
             {

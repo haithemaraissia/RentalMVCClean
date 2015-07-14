@@ -23,6 +23,8 @@ namespace RentalMobile.Helpers.Membership
 
         void RemoveUserFromRoles(string username, string[] roleNames);
 
+        string ResetPassword();
+
         void SignOut();
     }
 }

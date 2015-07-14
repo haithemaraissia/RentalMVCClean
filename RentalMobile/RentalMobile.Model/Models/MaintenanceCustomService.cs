@@ -35,5 +35,7 @@ namespace RentalMobile.Model.Models
         public bool Mudjacking { get; set; }
         public bool Picture_Framing { get; set; }
         public bool Woodworking_Services { get; set; }
+
+        public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Models;
@@ -9,21 +10,22 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 {
     public class AgentPrivateProfileHelper : BaseController ,IAgentPrivateProfileHelper
     {
-        public AgentPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService)
+        public AgentPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
-            MembershipService = membershipService;
             UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
         }
 
         public Agent GetAgentPrivateProfileByAgentId(int id)
         {
-            var agentId = new UserIdentity(UnitofWork, MembershipService).GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             return UnitofWork.AgentRepository.FindBy(x => x.AgentId == agentId).FirstOrDefault();
         }
 
         public Agent GetAgent()
         {
-            var agentId = new UserIdentity(UnitofWork, MembershipService).GetAgentId();
+            var agentId = UserHelper.UserIdentity.GetAgentId();
             return UnitofWork.AgentRepository.FindBy(x => x.AgentId == agentId).FirstOrDefault();
         }
 

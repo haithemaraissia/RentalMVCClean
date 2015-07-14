@@ -121,7 +121,7 @@ namespace RentalMobile.Controllers.PrivateProfile.Specialist
             //ViewBag.Type = "Requests";
             //TempData["Id"] = "5";
 
-            //  SavePictures(unitModelView.Unit);
+            //  SaveProfilePhoto(unitModelView.Unit);
             //ViewBag.Sript = FancyBox.Fancy(unitModelView.Unit.UnitId);
             return PartialView("_UploadPhoto", unitModelView.UnitGallery);
         }

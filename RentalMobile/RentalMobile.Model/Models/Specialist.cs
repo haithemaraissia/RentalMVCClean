@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace RentalMobile.Model.Models
 {
     using System;
@@ -14,7 +17,11 @@ namespace RentalMobile.Model.Models
     
     public partial class Specialist
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SpecialistId { get; set; }
+
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

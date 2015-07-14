@@ -6,9 +6,11 @@ using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Web.Mvc;
 using RentalMobile.Helpers.Base;
+using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile;
 using RentalMobile.Helpers.IO;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Postal;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -24,20 +26,21 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
         public string RequestId;
         public string RequestType = "UploadedContract";
 
-        public OwnerPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService)
+        public OwnerPrivateProfileHelper(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
         {
-            MembershipService = membershipService;
             UnitofWork = uow;
+            MembershipService = membershipService;
+            UserHelper = userHelper;
         }
 
         public string OwnerUsername()
         {
-            return new UserIdentity(UnitofWork, MembershipService).GetUserName();
+            return UserHelper.UserIdentity.GetUserName();
         }
 
         public Owner GetOwner()
         {
-            var ownerId = new UserIdentity(UnitofWork, MembershipService).GetOwnerId();
+            var ownerId = UserHelper.UserIdentity.GetOwnerId();
             return
                 UnitofWork.OwnerRepository.FindBy(
                     x => x.OwnerId == ownerId).FirstOrDefault();
@@ -45,7 +48,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public Owner GetPrivateProfileOwnerByOwnerId(int id)
         {
-            var ownerId = new UserIdentity(UnitofWork, MembershipService).GetOwnerId(id);
+            var ownerId = UserHelper.UserIdentity.GetOwnerId(id);
             return
                 UnitofWork.OwnerRepository.FindBy(
                     x => x.OwnerId == ownerId).FirstOrDefault();
@@ -94,7 +97,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public dynamic ComposeForwardUnitToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
-            dynamic email = new Email("ForwardtoFriend/Multipart");
+            dynamic email = new Postal.Email("ForwardtoFriend/Multipart");
             var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             email.To = friendemailaddress;
             email.FriendName = friendname;

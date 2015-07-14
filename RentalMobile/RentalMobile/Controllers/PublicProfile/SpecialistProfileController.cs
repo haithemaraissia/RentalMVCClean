@@ -170,7 +170,7 @@ namespace RentalMobile.Controllers.PublicProfile
 
                // EmailService.Send(email);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Index", new { id, sharespecialist = false });
             }

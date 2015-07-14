@@ -6,6 +6,7 @@ using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PublicProfile;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Postal;
 using RentalMobile.Helpers.Social;
 using RentalMobile.Helpers.Team;
 using RentalMobile.Helpers.Visitor;
@@ -227,7 +228,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PublicProfile
 
         public dynamic ProviderPublicComposeForwardToFriendEmail(string friendname, string friendemailaddress, string message, int id)
         {
-            dynamic email = new Email("ForwardtoFriend/Multipart");
+            dynamic email = new Postal.Email("ForwardtoFriend/Multipart");
             var poster = UserHelper.GetSendtoFriendPoster(HttpContext.Request.Url) ?? UserHelper.PosterHelper.DefaultPoster;
             email.To = friendemailaddress;
             email.FriendName = friendname;

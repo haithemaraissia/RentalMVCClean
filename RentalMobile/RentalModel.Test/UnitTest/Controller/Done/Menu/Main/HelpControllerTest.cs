@@ -11,8 +11,7 @@ namespace TestProject.UnitTest.Controller.Done.Menu.Main
         [TestMethod]
         public void IndexHasNoCode()
         {
-            //Not Implemented
-            { throw new NotImplementedException(); }
+            //Nothing
         }
 
         [TestCleanup]

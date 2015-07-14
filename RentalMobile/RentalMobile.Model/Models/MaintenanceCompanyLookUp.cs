@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace RentalMobile.Model.Models
 {
     using System;
@@ -14,7 +17,9 @@ namespace RentalMobile.Model.Models
     
     public partial class MaintenanceCompanyLookUp
     {
+        [Key]
         public int CompanyId { get; set; }
+
         public int UserId { get; set; }
         public int Role { get; set; }
     

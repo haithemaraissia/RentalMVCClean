@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Email;
 using RentalMobile.Helpers.Membership;
 using RentalMobile.Model.Pattern.UnitOfWork;
 using RentalModel.Repository.Generic.UnitofWork;
@@ -75,6 +76,11 @@ namespace RentalMobile.Helpers.Base
                 _membershipProvider = value;
             }
         }
+
+
+        #region EmailService
+        public IEmailService EmailService;
+        #endregion
 
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Web;
 using System.Web.Security;
 
@@ -50,6 +51,13 @@ namespace RentalMobile.Helpers.Membership
         public void RemoveUserFromRoles(string username, string[] roleNames)
         {
             System.Web.Security.Roles.RemoveUserFromRoles(username, System.Web.Security.Roles.GetRolesForUser(username));
+        }
+
+        public string ResetPassword()
+        {
+            var member = System.Web.Security.Membership.GetUser(HttpContext.Current.User.Identity.Name);
+            Debug.Assert(member != null, "member != null");
+            return member.ResetPassword();
         }
 
         public void SignOut()

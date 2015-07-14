@@ -7,7 +7,7 @@ namespace RentalMobile.Helpers.Account
         #region Status Codes
 
 
-        public static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        public string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
             // a full list of status codes.

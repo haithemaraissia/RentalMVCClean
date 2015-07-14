@@ -39,6 +39,11 @@ namespace TestProject.UnitTest.Controller.Done.Listing
         public void OnlySpecialistCanMakeAnOffer()
         {
           //Not Implemented
+
+
+            //Only Specialist Make an Offer
+            //Make sure to show it when they are log in
+
             { throw new NotImplementedException(); }
         }
 

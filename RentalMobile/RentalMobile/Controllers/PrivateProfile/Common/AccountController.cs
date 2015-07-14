@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
-using RentalMobile.Helpers;
 using RentalMobile.Helpers.Account;
 using RentalMobile.Helpers.Base;
 using RentalMobile.Helpers.Core;
-using RentalMobile.Helpers.JQuery;
+using RentalMobile.Helpers.Email;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Roles;
 using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
 
-namespace RentalMobile.Controllers.Common
+namespace RentalMobile.Controllers.PrivateProfile.Common
 {
     public class AccountController : BaseController
     {
         public readonly AccountHelper AccountHelper;
         
-        public AccountController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper)
+        public AccountController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper ,IEmailService emailService)
         {
             UnitofWork = uow;
             MembershipService = membershipService;
             UserHelper = userHelper;
-            AccountHelper = new AccountHelper(uow, membershipService, userHelper);
+            EmailService = emailService;
+            AccountHelper = new AccountHelper(uow, membershipService, userHelper, emailService);
         }
 
         public ActionResult LogOn()
@@ -97,7 +98,7 @@ namespace RentalMobile.Controllers.Common
                 AccountHelper.RegisterAccountByType(model);
                 return RedirectToAction("Index", model.Role);
             }
-            ModelState.AddModelError("", ErrorCode.ErrorCodeToString(createStatus));
+            ModelState.AddModelError("", new ErrorCode().ErrorCodeToString(createStatus));
             return View(model);
         }
 
@@ -265,20 +266,20 @@ namespace RentalMobile.Controllers.Common
         [Authorize]
         public ActionResult UpdateProfilePhoto(int id)
         {
-            AccountHelper.SavePictures(id);
+            AccountHelper.SaveProfilePhoto(id);
             var user = UserHelper.GetCurrentRole();
             switch (user)
             {
-                case "Tenant":
-                    return RedirectToAction("Index", "Tenant");
-                case "Owner":
-                    return RedirectToAction("Index", "Owner");
-                case "Agent":
-                    return RedirectToAction("Index", "Agent");
-                case "Provider":
-                    return RedirectToAction("Index", "Provider");
+                case LookUpRoles.TenantRole:
+                    return RedirectToAction("Index", LookUpRoles.TenantRole);
+                case LookUpRoles.OwnerRole:
+                    return RedirectToAction("Index", LookUpRoles.OwnerRole);
+                case LookUpRoles.AgentRole:
+                    return RedirectToAction("Index", LookUpRoles.AgentRole);
+                case LookUpRoles.ProviderRole:
+                    return RedirectToAction("Index", LookUpRoles.ProviderRole);
             }
-            return user == "Specialist" ? RedirectToAction("Index", "Specialist") : null;
+            return user == LookUpRoles.SpecialistRole ? RedirectToAction("Index", LookUpRoles.SpecialistRole) : null;
         }
 
         [Authorize]
@@ -291,7 +292,7 @@ namespace RentalMobile.Controllers.Common
                     YouTubeVideo = false,
                     YouTubeVideoUrl = ""
                 };
-            AccountHelper.LoadVideoByAccountType(primaryVideoModel);
+           primaryVideoModel = AccountHelper.LoadVideoByAccountType(primaryVideoModel);
             if (updatevideo != null && updatevideo == true)
             {
                 ViewBag.UpdateVideo = true;

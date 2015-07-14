@@ -15,7 +15,7 @@ namespace TestProject.UnitTest.Controller.InProgress.Helpers.Identity
     [TestClass]
     public class UserIdentityHelper
     {
-        #region Intialization and 2 different style for Mocking
+        #region Initialization and 2 different style for Mocking
 
         public AssertHelper Helper = new AssertHelper();
         public UnitofWork Uow;

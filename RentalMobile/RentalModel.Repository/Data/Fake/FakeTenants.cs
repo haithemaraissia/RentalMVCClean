@@ -50,7 +50,7 @@ namespace RentalModel.Repository.Data.Fake
                  Zip = null,
                  CountryCode = null,
                  YouTubeVideo = new Boolean(),
-                 YouTubeVideoURL = null,
+                 YouTubeVideoURL = "http://www.agenttenant.com",
                  VimeoVideo = new Boolean(),
                  VimeoVideoURL = null,
 //Skipping TenantFavorite Collection

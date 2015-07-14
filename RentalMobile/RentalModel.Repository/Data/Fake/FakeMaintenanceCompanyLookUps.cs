@@ -28,7 +28,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp {
 
-                 CompanyId = new Int32()
+                 CompanyId = 0
 ,
                  UserId = new Int32()
 ,
@@ -57,7 +57,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp {
 
-                 CompanyId = 2
+                 CompanyId = 1
 ,
                  UserId = 2
 ,
@@ -86,7 +86,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdMaintenanceCompanyLookUp = new MaintenanceCompanyLookUp {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
                  UserId = new Int32()
 ,

@@ -43,5 +43,8 @@ namespace RentalMobile.Model.Models
         public double Rate { get; set; }
         public string Currency { get; set; }
         public int CurrencyID { get; set; }
+
+
+        public virtual MaintenanceCompanyLookUp MaintenanceCompanyLookUp { get; set; }
     }
 }

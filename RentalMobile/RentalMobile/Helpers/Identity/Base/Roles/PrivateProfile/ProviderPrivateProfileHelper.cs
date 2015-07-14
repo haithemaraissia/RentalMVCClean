@@ -32,14 +32,14 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public MaintenanceProvider GetProvider()
         {
-            var providerId = new UserIdentity(UnitofWork, MembershipService).GetProviderId();
+            var providerId = UserHelper.UserIdentity.GetProviderId();
             return UnitofWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == providerId).FirstOrDefault();
 
         }
        
         public MaintenanceProvider GetPrivateProfileProviderByProviderId(int id)
         {
-            var providerId = new UserIdentity(UnitofWork, MembershipService).GetProviderId();
+            var providerId = UserHelper.UserIdentity.GetProviderId();
             return UnitofWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == providerId).FirstOrDefault();
         }
 

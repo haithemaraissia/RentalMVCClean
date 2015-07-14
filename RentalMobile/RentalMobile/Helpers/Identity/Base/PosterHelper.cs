@@ -57,9 +57,9 @@ namespace RentalMobile.Helpers.Identity.Base
                         }
                         break;
                     default:
-                    {
-                        return DefaultPoster;
-                    }
+                        {
+                            return DefaultPoster;
+                        }
                 }
             }
             return DefaultPoster;
@@ -75,7 +75,7 @@ namespace RentalMobile.Helpers.Identity.Base
             return GetUserPosterAttributes(currenturl);
         }
 
-    public PosterAttributes GetCommentPoster(Uri requestUri)
+        public PosterAttributes GetCommentPoster(Uri requestUri)
         {
             if (requestUri == null)
             {

@@ -31,7 +31,7 @@ namespace RentalMobile.Helpers.Old
             PosterHelper = new PosterHelper(uow, membershipService);           
             UserIdentity = new UserIdentity(uow, membershipService);
             SpecialistHelper = new SpecialistPublicProfileHelper(uow, membershipService, new CoreUserHelper(uow, membershipService));
-            TenantHelper = new TenantPrivateProfileHelper(uow, membershipService);
+            TenantHelper = new TenantPrivateProfileHelper(uow, membershipService, null);
 
 
         }

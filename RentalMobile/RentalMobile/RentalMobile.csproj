@@ -212,6 +212,8 @@
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
     <Compile Include="Controllers\PrivateProfile\Common\AccountController.cs" />
+    <Compile Include="Helpers\Email\EmailService.cs" />
+    <Compile Include="Helpers\Email\IEmailService.cs" />
     <Compile Include="Helpers\Social\CommonSharedSocialLinks.cs" />
     <Compile Include="WebForms\Ads\AdTest\Test.ascx.cs">
       <DependentUpon>Test.ascx</DependentUpon>

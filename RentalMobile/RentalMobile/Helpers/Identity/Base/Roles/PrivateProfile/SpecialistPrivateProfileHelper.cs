@@ -30,13 +30,13 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public Specialist GetSpecialist()
         {
-            var specialistId = new UserIdentity(UnitofWork, MembershipService).GetSpecialistId();
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
             return UnitofWork.SpecialistRepository.FindBy(x => x.SpecialistId == specialistId).FirstOrDefault();
         }
 
         public Specialist GetPrivateProfileSpecialistBySpecialistId(int id)
         {
-            var specialistId = new UserIdentity(UnitofWork, MembershipService).GetSpecialistId();
+            var specialistId = UserHelper.UserIdentity.GetSpecialistId();
             return UnitofWork.SpecialistRepository.FindBy(x => x.SpecialistId == specialistId).FirstOrDefault();
         }
 
@@ -61,7 +61,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
         /// NOT Complete, wrong
         public void UploadPhoto()
         {
-                ViewBag.Id = UserHelper.GetSpecialistId();
+                ViewBag.Id = UserHelper.UserIdentity.GetSpecialistId();
                 ViewBag.UserName = UserHelper.GetUserName();
                 ViewBag.Type = "Property";
                 TempData["UserID"] = UserHelper.GetSpecialistId();

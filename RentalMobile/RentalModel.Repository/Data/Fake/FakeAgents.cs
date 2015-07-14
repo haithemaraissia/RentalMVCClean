@@ -48,7 +48,7 @@ namespace RentalModel.Repository.Data.Fake
                  CountryCode = null,
                  Video = null,
                  YouTubeVideo = new Boolean(),
-                 YouTubeVideoURL = null,
+                 YouTubeVideoURL = "http://www.agenttube.com",
                  VimeoVideo = new Boolean(),
                  VimeoVideoURL = null
     

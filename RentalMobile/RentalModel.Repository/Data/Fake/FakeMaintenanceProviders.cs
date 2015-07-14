@@ -53,7 +53,7 @@ namespace RentalModel.Repository.Data.Fake
                  Rating = new Int32(),
                  YouTubeVideo = new Boolean()
 ,
-                 YouTubeVideoURL = null,
+                 YouTubeVideoURL = "http://www.providerTube.com",
                  VimeoVideo = new Boolean()
 ,
                  VimeoVideoURL = null

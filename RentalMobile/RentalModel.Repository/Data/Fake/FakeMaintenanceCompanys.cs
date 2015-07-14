@@ -28,7 +28,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstMaintenanceCompany = new MaintenanceCompany {
 
-                 CompanyId = new Int32()
+                 CompanyId = 0
 ,
                  Name = null,
                  Website = null,
@@ -61,7 +61,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondMaintenanceCompany = new MaintenanceCompany {
 
-                 CompanyId = new Int32()
+                 CompanyId = 1
 ,
                  Name = null,
                  Website = null,
@@ -94,7 +94,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdMaintenanceCompany = new MaintenanceCompany {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
                  Name = null,
                  Website = null,

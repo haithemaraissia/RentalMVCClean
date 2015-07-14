@@ -240,6 +240,7 @@
     <Compile Include="Tools\UnitTest\Controller\UploadAgreementControllerTest.cs">
       <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitTest\Controller\Done\Helpers\Account\AccountHelper.cs" />
     <Compile Include="UnitTest\Controller\Done\Listing\AgentsControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Done\Listing\OwnersControllerTest.cs" />
     <Compile Include="UnitTest\Controller\Done\Listing\ProjectsControllerTest.cs" />
@@ -284,6 +285,9 @@
     <Compile Include="UnitTest\Controller\InProgress\PublicProfile\PropertyControllerTest.cs" />
     <Compile Include="UnitTest\Controller\InProgress\PublicProfile\ProvidersControllerTest.cs" />
     <Compile Include="UnitTest\Controller\InProgress\PublicProfile\TenantProfileControllerTest.cs" />
+    <Compile Include="UnitTest\Helpers\Fake\FakeMemberShipService.cs" />
+    <Compile Include="UnitTest\Helpers\Mocks\Email\MockEmailService.cs" />
+    <Compile Include="UnitTest\Helpers\Util\Expected\ExpectedHelper.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeActionDescriptor.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeControllerContext.cs" />
     <Compile Include="UnitTest\Helpers\Fake\FakeHttpContext.cs" />
@@ -306,9 +310,10 @@
     <Compile Include="Before\Fake\FakeUnits.cs" />
     <Compile Include="Before\UnitOfWork\UnitofWorkPatternTest.cs" />
     <Compile Include="Prototype\UnitofWorkPatternControllerWithMoq.cs" />
-    <Compile Include="UnitTest\Helpers\AssertHelper.cs" />
-    <Compile Include="UnitTest\Helpers\MockControllerContext.cs" />
-    <Compile Include="UnitTest\Helpers\MVCMockHelper.cs" />
+    <Compile Include="UnitTest\Helpers\Util\AssertHelper.cs" />
+    <Compile Include="UnitTest\Helpers\Util\MockControllerContext.cs" />
+    <Compile Include="UnitTest\Helpers\Util\MockMemberShipService.cs" />
+    <Compile Include="UnitTest\Helpers\Util\MVCMockHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tools\Base\ClassHelper.tt" />
@@ -343,6 +348,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Photo\Agent\Profile\ToStatisyNoEmptyDirectoryForSVN.txt" />
+    <Content Include="Photo\Owner\Profile\ToStatisyNoEmptyDirectoryForSVN.txt" />
+    <Content Include="Photo\Provider\Profile\ToStatisyNoEmptyDirectoryForSVN.txt" />
+    <Content Include="Photo\Specialist\Profile\ToStatisyNoEmptyDirectoryForSVN.txt" />
+    <Content Include="Photo\Tenant\Profile\ToStatisyNoEmptyDirectoryForSVN.txt" />
     <Content Include="Prototype\Documentation.txt" />
     <Content Include="Tools\Base\ControllersList.txt">
       <AutoGen>True</AutoGen>
@@ -355,6 +365,7 @@
       <DependentUpon>ControllerCRUDGenerator.tt</DependentUpon>
     </Content>
     <Content Include="UnitTest\PreGenerated\Steps.txt" />
+    <Content Include="UploadedImages\ToStatisyNoEmptyDirectoryForSVN.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

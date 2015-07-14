@@ -52,7 +52,7 @@ namespace RentalModel.Repository.Data.Fake
                  YouTubeVideo = new Boolean(),
                  YouTubeVideoURL = null,
                  VimeoVideo = new Boolean(),
-                 VimeoVideoURL = null
+                 VimeoVideoURL = "http://www.OwnerVimeo.com"
     
  };
 

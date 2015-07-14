@@ -72,9 +72,9 @@ namespace RentalMobile.Helpers.Core
 
             #region PrivateProfileHelper
             SpecialistPrivateProfileHelper = new SpecialistPrivateProfileHelper(uow, membershipService, this);
-            OwnerPrivateProfileHelper = new OwnerPrivateProfileHelper(uow, membershipService);
-            AgentPrivateProfileHelper = new AgentPrivateProfileHelper(uow, membershipService);
-            TenantPrivateProfileHelper = new TenantPrivateProfileHelper(uow, membershipService);
+            OwnerPrivateProfileHelper = new OwnerPrivateProfileHelper(uow, membershipService, this);
+            AgentPrivateProfileHelper = new AgentPrivateProfileHelper(uow, membershipService, this);
+            TenantPrivateProfileHelper = new TenantPrivateProfileHelper(uow, membershipService, this);
             ProviderPrivateProfileHelper = new ProviderPrivateProfileHelper(uow, membershipService, this);
             #region Associated
             ProviderTeamPrivateProfileHelper = new ProviderTeamPrivateProfileHelper(uow, membershipService, this);

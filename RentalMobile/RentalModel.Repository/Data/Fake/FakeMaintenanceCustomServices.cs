@@ -28,7 +28,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var firstMaintenanceCustomService = new MaintenanceCustomService {
 
-                 CompanyId = new Int32()
+                 CompanyId = 0
 ,
                  Demolition_Services = new Boolean()
 ,
@@ -81,7 +81,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var secondMaintenanceCustomService = new MaintenanceCustomService {
 
-                 CompanyId = new Int32()
+                 CompanyId = 1
 ,
                  Demolition_Services = new Boolean()
 ,
@@ -134,7 +134,7 @@ namespace RentalModel.Repository.Data.Fake
 
             var thirdMaintenanceCustomService = new MaintenanceCustomService {
 
-                 CompanyId = new Int32()
+                 CompanyId = 2
 ,
                  Demolition_Services = new Boolean()
 ,

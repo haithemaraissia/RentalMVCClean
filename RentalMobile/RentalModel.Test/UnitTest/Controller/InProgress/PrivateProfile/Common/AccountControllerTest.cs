@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RentalMobile.Controllers.Common;
+using RentalMobile.Controllers.PrivateProfile.Common;
 
 namespace TestProject.UnitTest.Controller.InProgress.PrivateProfile.Common
 {
