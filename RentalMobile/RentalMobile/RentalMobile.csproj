@@ -124,8 +124,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
-    <Reference Include="PagedList.Mvc">
-      <HintPath>bin\bin\PagedList.Mvc.dll</HintPath>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Postal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -919,7 +920,6 @@
   <ItemGroup>
     <Content Include="App_Code\Helper.cshtml" />
     <None Include="App_Data\GeoLiteCity.dat" />
-    <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
     <Content Include="Configurations\AppSettings.config">
       <SubType>Designer</SubType>
