@@ -12,11 +12,11 @@ namespace RentalMobile.Helpers.Identity.Base
     {
         public string DefaultAvatarPlaceholderImagePath = "../../images/dotimages/avatar-placeholder.png";
         public string DefaultSpecialistName = "Specialist";
-        public string TenantPhotoPath = "~/Photo/Tenant/Property";
-        public string OwnerPhotoPath = "~/Photo/Owner/Property";
-        public string AgentPhotoPath = "~/Photo/Agent/Property";
-        public string ProviderPhotoPath = "~/Photo/Provider/Property";
-        public string SpecialistPhotoPath = "~/Photo/Specialist/Property";
+        public string TenantPhotoPath = "~/Photo/Tenant/Profile";
+        public string OwnerPhotoPath = "~/Photo/Owner/Profile";
+        public string AgentPhotoPath = "~/Photo/Agent/Profile";
+        public string ProviderPhotoPath = "~/Photo/Provider/Profile";
+        public string SpecialistPhotoPath = "~/Photo/Specialist/Profile";
 
         public IGenericUnitofWork UnitOfWork;
 
@@ -153,14 +153,6 @@ namespace RentalMobile.Helpers.Identity.Base
 
         public int GetSpecialistId(int id)
         {
-            //var userId = UnitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
-            //if (userId != null)
-            //{
-            //    var specialist = UnitOfWork.SpecialistRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
-            //    if (specialist != null) return specialist.SpecialistId;
-            //}
-            //return 0;
-
             var specialist = UnitOfWork.SpecialistRepository.FindBy(x => x.SpecialistId == id).FirstOrDefault();
             if (specialist != null) return specialist.SpecialistId;
             return 0;
@@ -176,14 +168,6 @@ namespace RentalMobile.Helpers.Identity.Base
 
         public int GetProviderId(int id)
         {
-            //var userId = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == id).FirstOrDefault();
-            //if (userId != null)
-            //{
-            //    var provider = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.GUID == userId.GUID).FirstOrDefault();
-            //    if (provider != null) return provider.MaintenanceProviderId;
-            //}
-            //return 0;
-
             var provider = UnitOfWork.MaintenanceProviderRepository.FindBy(x => x.MaintenanceProviderId == id).FirstOrDefault();
             if (provider != null) return provider.MaintenanceProviderId;
             return 0;

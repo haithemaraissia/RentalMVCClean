@@ -1,7 +1,7 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject.UnitTest.Helpers
+namespace TestProject.UnitTest.Helpers.Util
 {
     public class AssertHelper
     {

@@ -38,7 +38,7 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
 
         public int GetTenantApplicationCount(int tenantId)
         {
-            return UnitofWork.TenantRepository.Count(x => x.TenantId == tenantId);
+            return UnitofWork.RentalApplicationRepository.Count(x => x.TenantId == tenantId);
         }
 
         public void DeleteTenantRecords(int tenantId)

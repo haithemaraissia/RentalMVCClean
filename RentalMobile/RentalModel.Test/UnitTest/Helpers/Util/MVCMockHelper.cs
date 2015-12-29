@@ -8,7 +8,7 @@ using Moq;
 // http://www.hanselman.com/blog/ASPNETMVCSessionAtMix08TDDAndMvcMockHelpers.aspx
 //http://stackoverflow.com/questions/758066/how-to-mock-controller-user-using-moq
 
-namespace TestProject.UnitTest.Helpers
+namespace TestProject.UnitTest.Helpers.Util
 {
     public static class MvcMockHelpers
     {

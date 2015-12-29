@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using RentalMobile.Helpers.Roles;
 
 namespace RentalMobile.Helpers.Photo.PrivateProfile.Provider
 {
@@ -17,28 +18,29 @@ namespace RentalMobile.Helpers.Photo.PrivateProfile.Provider
         {
             var user = HttpContext.Current.User;
 
-            if (user.IsInRole("Tenant"))
+            if (user.IsInRole(LookUpRoles.TenantRole))
             {
                 PhotoPath = HttpContext.Current.Server.MapPath(TenantPhotoPath);
-                Role = "Tenant";
+                Role = LookUpRoles.TenantRole;
             }
-            if (user.IsInRole("Owner"))
+            if (user.IsInRole(LookUpRoles.OwnerRole))
             {
                 PhotoPath = HttpContext.Current.Server.MapPath(OwnerPhotoPath);
-                Role = "Owner";
+                Role = LookUpRoles.OwnerRole;
             }
-            if (user.IsInRole("Agent"))
+            if (user.IsInRole(LookUpRoles.AgentRole))
             {
                 PhotoPath = HttpContext.Current.Server.MapPath(AgentPhotoPath);
+                Role = LookUpRoles.AgentRole;
             }
-            if (user.IsInRole("Provider"))
+            if (user.IsInRole(LookUpRoles.ProviderRole))
             {
                 PhotoPath = HttpContext.Current.Server.MapPath(ProviderPhotoPath);
-                Role = "Provider";
+                Role = LookUpRoles.ProviderRole;
             }
 
             PhotoPath = HttpContext.Current.Server.MapPath(SpecialistPhotoPath);
-            Role = user.IsInRole("Specialist") ? "Specialist" : null;
+            Role = user.IsInRole(LookUpRoles.SpecialistRole) ? LookUpRoles.SpecialistRole : null;
         }
     }
 }

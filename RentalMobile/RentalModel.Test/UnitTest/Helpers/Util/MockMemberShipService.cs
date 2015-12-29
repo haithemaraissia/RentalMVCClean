@@ -3,7 +3,7 @@ using Moq;
 using RentalMobile.Helpers.Membership;
 using TestProject.UnitTest.Helpers.Fake;
 
-namespace TestProject.UnitTest.Helpers
+namespace TestProject.UnitTest.Helpers.Util
 {
     public class MockMemberShipService
     {

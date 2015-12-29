@@ -1,0 +1,12 @@
+﻿List of Potential Helper Classess to be done in Testing based Upon Helper Folder
+
+HtmlHelperCustomExtensions
+Identity
+FancyBox
+Postal/Email
+UnitHelper
+Social/Facebook
+Process/Application/IJobOffer
+Process/JobOffer
+
+

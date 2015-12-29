@@ -308,10 +308,6 @@
     <Compile Include="Helpers\Identity\Abstract\IUserIdentity.cs" />
     <Compile Include="Helpers\JQuery\JNotify\JNotfiyScriptQueryHelper.cs" />
     <Compile Include="Helpers\Json\UnitGalleryJsonData.cs" />
-    <Compile Include="Helpers\Old\UserHelper.cs" />
-    <Compile Include="Helpers\Old\UserHelperBefore.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Helpers\Photo\PrivateProfile\Provider\PhotoHelper.cs" />
     <Compile Include="Helpers\Photo\MaintenancePhoto\Address.cs" />
     <Compile Include="Helpers\Photo\MaintenancePhoto\Person.cs" />

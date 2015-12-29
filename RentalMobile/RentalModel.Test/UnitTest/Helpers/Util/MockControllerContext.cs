@@ -4,13 +4,10 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
 using Moq;
-using RentalMobile.Helpers.Membership;
 using RentalMobile.Helpers.Roles;
-using TestProject.UnitTest.Helpers.Fake;
 
-namespace TestProject.UnitTest.Helpers
+namespace TestProject.UnitTest.Helpers.Util
 {
     public static class ControllerContextHelper
     {

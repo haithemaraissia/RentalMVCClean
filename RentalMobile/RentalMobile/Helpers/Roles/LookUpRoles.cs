@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Ninject.Activation;
-using RentalMobile.Model.Models;
-
-namespace RentalMobile.Helpers.Roles
+﻿namespace RentalMobile.Helpers.Roles
 {
     public static class LookUpRoles
     {
