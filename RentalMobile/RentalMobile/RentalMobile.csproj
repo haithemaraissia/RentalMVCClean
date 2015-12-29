@@ -416,6 +416,7 @@
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\Facebook.dll" />
     <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="lib\ICSharpCode.SharpZipLib.dll" />
     <Content Include="lib\itextsharp.dll" />
     <Content Include="bin\Mvc.Mailer.dll" />
     <Content Include="bin\MvcJqGrid.dll" />
@@ -427,6 +428,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="bin\plUploadHandler.dll" />
+    <Content Include="lib\MvcJqGrid.dll" />
     <Content Include="lib\Postal.dll" />
     <Content Include="bin\RazorEngine.dll" />
     <Content Include="bin\System.Web.Razor.dll" />
@@ -917,9 +919,7 @@
   <ItemGroup>
     <Content Include="App_Code\Helper.cshtml" />
     <None Include="App_Data\GeoLiteCity.dat" />
-    <None Include="lib\AdControl.dll.refresh" />
     <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
-    <None Include="lib\itextsharp.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
     <Content Include="Configurations\AppSettings.config">
       <SubType>Designer</SubType>
