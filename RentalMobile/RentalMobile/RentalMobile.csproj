@@ -427,7 +427,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="bin\plUploadHandler.dll" />
-    <Content Include="bin\Postal.dll" />
+    <Content Include="lib\Postal.dll" />
     <Content Include="bin\RazorEngine.dll" />
     <Content Include="bin\System.Web.Razor.dll" />
     <Content Include="Content\fullcalendar.css" />
