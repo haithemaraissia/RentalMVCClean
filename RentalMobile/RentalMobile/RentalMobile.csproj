@@ -412,11 +412,11 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
-    <Content Include="bin\AdControl.dll" />
+    <Content Include="lib\AdControl.dll" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\Facebook.dll" />
     <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="bin\itextsharp.dll" />
+    <Content Include="lib\itextsharp.dll" />
     <Content Include="bin\Mvc.Mailer.dll" />
     <Content Include="bin\MvcJqGrid.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
@@ -917,9 +917,9 @@
   <ItemGroup>
     <Content Include="App_Code\Helper.cshtml" />
     <None Include="App_Data\GeoLiteCity.dat" />
-    <None Include="bin\AdControl.dll.refresh" />
+    <None Include="lib\AdControl.dll.refresh" />
     <None Include="bin\ICSharpCode.SharpZipLib.dll.refresh" />
-    <None Include="bin\itextsharp.dll.refresh" />
+    <None Include="lib\itextsharp.dll.refresh" />
     <Content Include="Configurations\ConnectionString.config" />
     <Content Include="Configurations\AppSettings.config">
       <SubType>Designer</SubType>
