@@ -2,6 +2,11 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Ninject;
+using Ninject.Web.Common;
+using RentalMobile.Helpers.Core;
+using RentalMobile.Helpers.Membership;
+using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile
 {
@@ -78,6 +83,13 @@ namespace RentalMobile
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterDependencyResolver();
         }
+        private void RegisterDependencyResolver()
+        {
+            var kernel = new Bootstrapper().Kernel;
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+        }
+
     }
 }

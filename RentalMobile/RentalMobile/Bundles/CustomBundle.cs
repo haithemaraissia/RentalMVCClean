@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Optimization;
 using Microsoft.Ajax.Utilities;
-using RequestReduce.Utilities;
 using Minifier = Microsoft.Ajax.Utilities.Minifier;
 
 namespace RentalMobile.Bundles
