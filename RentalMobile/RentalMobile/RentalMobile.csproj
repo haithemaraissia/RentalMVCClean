@@ -406,7 +406,6 @@
     <Content Include="lib\MvcJqGrid.dll" />
     <Content Include="lib\Postal.dll" />
     <Content Include="bin\RazorEngine.dll" />
-    <Content Include="bin\System.Web.Razor.dll" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
