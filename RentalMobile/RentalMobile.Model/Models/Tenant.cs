@@ -11,7 +11,9 @@ namespace RentalMobile.Model.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Tenant
     {
         public Tenant()
@@ -20,7 +22,8 @@ namespace RentalMobile.Model.Models
             this.TenantSavedSearches = new HashSet<TenantSavedSearch>();
             this.TenantShowings = new HashSet<TenantShowing>();
         }
-    
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TenantId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

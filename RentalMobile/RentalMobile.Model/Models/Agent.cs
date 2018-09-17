@@ -13,10 +13,12 @@ namespace RentalMobile.Model.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Agent
     {
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AgentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

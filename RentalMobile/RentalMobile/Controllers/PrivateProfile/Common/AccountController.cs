@@ -16,8 +16,8 @@ namespace RentalMobile.Controllers.PrivateProfile.Common
     public class AccountController : BaseController
     {
         public readonly AccountHelper AccountHelper;
-        
-        public AccountController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper ,IEmailService emailService)
+
+         public AccountController(IGenericUnitofWork uow, IMembershipService membershipService, IUserHelper userHelper ,IEmailService emailService)
         {
             UnitofWork = uow;
             MembershipService = membershipService;

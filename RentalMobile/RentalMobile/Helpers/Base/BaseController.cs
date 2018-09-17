@@ -12,7 +12,7 @@ namespace RentalMobile.Helpers.Base
 {
     public class BaseController : Controller
     {
-        //public IGenericUnitofWork _unitOfWork;
+       // public IGenericUnitofWork _unitOfWork;
 
         //public BaseController(IGenericUnitofWork uow)
         //{

@@ -67,6 +67,7 @@ namespace RentalMobile
             kernel.Bind<IGenericUnitofWork>().To<UnitofWork>().InRequestScope();
             kernel.Bind<IMembershipService>().To<MembershipService>().InRequestScope();
             kernel.Bind<IUserHelper>().To<CoreUserHelper>().InRequestScope();
+            kernel.Bind<Helpers.Email.IEmailService>().To<RentalMobile.Helpers.Email.EmailService>().InRequestScope();
         }        
     }
 }

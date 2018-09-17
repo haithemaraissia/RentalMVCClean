@@ -188,8 +188,12 @@ namespace RentalMobile.Helpers.Account
 
         public void RegisterTenant(RegisterModel model)
         {
-            var newtenant = new Tenant { EmailAddress = model.Email };
-            var user = MembershipService.GetUser(model.UserName);
+            var nexttenantId =
+                UnitofWork.TenantRepository.All.OrderByDescending(x => x.TenantId)
+                .First()
+                .TenantId + 1;
+            var newtenant = new Tenant { EmailAddress = model.Email, TenantId = nexttenantId };
+            var user = MembershipService.GetUser(model.UserName, true);
             if (user != null)
             {
                 if (user.ProviderUserKey != null) newtenant.GUID = new Guid(user.ProviderUserKey.ToString());
@@ -203,8 +207,12 @@ namespace RentalMobile.Helpers.Account
 
         public void RegisterOwner(RegisterModel model)
         {
-            var newowner = new Owner { EmailAddress = model.Email };
-            var user = MembershipService.GetUser(model.UserName);
+            var nextownerId =
+                UnitofWork.OwnerRepository.All.OrderByDescending(x => x.OwnerId)
+                .First()
+                .OwnerId + 1;
+            var newowner = new Owner { EmailAddress = model.Email , OwnerId = nextownerId};
+            var user = MembershipService.GetUser(model.UserName, true);
             if (user != null)
             {
                 if (user.ProviderUserKey != null) newowner.GUID = new Guid(user.ProviderUserKey.ToString());
@@ -218,8 +226,12 @@ namespace RentalMobile.Helpers.Account
 
         public void RegisterAgent(RegisterModel model)
         {
-            var newagent = new Agent { EmailAddress = model.Email };
-            var user = MembershipService.GetUser(model.UserName);
+            var nextagentId =
+                UnitofWork.AgentRepository.All.OrderByDescending(x => x.AgentId)
+                .First()
+                .AgentId + 1; 
+            var newagent = new Agent { EmailAddress = model.Email , AgentId = nextagentId};
+            var user = MembershipService.GetUser(model.UserName, true);
             if (user != null)
             {
                 if (user.ProviderUserKey != null) newagent.GUID = new Guid(user.ProviderUserKey.ToString());
@@ -238,7 +250,7 @@ namespace RentalMobile.Helpers.Account
                         .First()
                         .SpecialistId + 1;
             var newspecialist = new Specialist { EmailAddress = model.Email, SpecialistId = nextspecialistId };
-            var user = MembershipService.GetUser(model.UserName);
+            var user = MembershipService.GetUser(model.UserName, true);
             if (user != null)
             {
                 if (user.ProviderUserKey != null) newspecialist.GUID = new Guid(user.ProviderUserKey.ToString());
@@ -258,7 +270,7 @@ namespace RentalMobile.Helpers.Account
                 OrderByDescending(x => x.MaintenanceProviderId).
                 First().MaintenanceProviderId + 1;
             var newprovider = new MaintenanceProvider { EmailAddress = model.Email, MaintenanceProviderId = nextproviderId };
-            var user = MembershipService.GetUser(model.UserName);
+            var user = MembershipService.GetUser(model.UserName, true);
             if (user != null)
             {
                 if (user.ProviderUserKey != null) newprovider.GUID = new Guid(user.ProviderUserKey.ToString());
