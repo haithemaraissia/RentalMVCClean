@@ -44,6 +44,9 @@ namespace RentalMobile.Controllers.WIP.Unit
         public ActionResult Create(UnitModelView u)
         {
             if (!ModelState.IsValid) return View(u);
+            //For Now then update it as you go it should reflec the current owner
+            u.Unit.OwnerId = 0;
+
             UserHelper.UnitHelper.CreateNewUnit(u);
             ViewBag.CurrencyCode = UserHelper.UnitHelper.GetUnitCurrencyCode(u);
             return RedirectToAction("Index");

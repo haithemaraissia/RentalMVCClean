@@ -1240,6 +1240,8 @@
     <Content Include="Views\SpecialistProfile\_Description.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Owner\Property.cshtml" />
+    <Content Include="Views\Owner\AddProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />

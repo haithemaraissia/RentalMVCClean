@@ -59,11 +59,11 @@ ul#UserMenu
 {
 	display: inline-block;
 }
-ul#UserMenu > li
-{
-	margin: 0;
-	width: 100%;
-}
+    ul#UserMenu > li {
+        margin: 0;
+        width: 100%;
+        margin-bottom: 0;
+    }
 body:first-of-type ul#UserMenu
 {
 	display: inline-table;

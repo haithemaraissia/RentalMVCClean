@@ -1,9 +1,9 @@
 ﻿@if (Request.IsAuthenticated)
 { 
     <ul id="UserMenu" class="topmenu">
-        <li class="toplast"><a href="#" style="height: 13px; line-height: 0.5;"><span>Hi @HttpContext.Current.User.Identity.Name</span>
+        <li class="toplast"><a href="#" style=" line-height: 0.5;"><span>Hi @HttpContext.Current.User.Identity.Name</span>
         </a>
-            <ul style="width:100%">
+            <ul>
                 @{
     if (HttpContext.Current.User.IsInRole("Tenant"))
     {
@@ -30,7 +30,6 @@
             </ul>
         </li>
     </ul>
-    <link href="../../css/dotcss/UserMenu.css" rel="stylesheet" type="text/css" />
 }
 else
 {

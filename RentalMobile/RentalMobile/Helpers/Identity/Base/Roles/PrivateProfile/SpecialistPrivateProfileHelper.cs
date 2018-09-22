@@ -4,6 +4,7 @@ using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.Identity.Abstract.Roles.PrivateProfile;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Helpers.Roles;
 using RentalMobile.Model.Models;
 using RentalMobile.Model.ModelViews;
 using RentalMobile.Process;
@@ -214,10 +215,9 @@ namespace RentalMobile.Helpers.Identity.Base.Roles.PrivateProfile
         {
             var specialistId = UserHelper.GetSpecialistId();
             if (specialistId == 0) return null;
-            const int specialistrole = 1;
             var lookUp =
                 UnitofWork.MaintenanceCompanyLookUpRepository.FirstOrDefault(
-                    x => x.Role == specialistrole && x.UserId == specialistId);
+                    x => x.Role == (int)LookUpRoles.Roles.Specialist && x.UserId == specialistId);
             if (lookUp == null) return null;
             var companyId = lookUp.CompanyId;
             return GetSpecialistMaintenanceProfileByCompanyId(companyId);

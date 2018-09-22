@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using RentalMobile.Helpers;
 using RentalMobile.Helpers.Base;
@@ -6,6 +7,7 @@ using RentalMobile.Helpers.Core;
 using RentalMobile.Helpers.JQuery;
 using RentalMobile.Helpers.JQuery.JNotify;
 using RentalMobile.Helpers.Membership;
+using RentalMobile.Model.ModelViews;
 using RentalModel.Repository.Generic.UnitofWork;
 
 namespace RentalMobile.Controllers.PrivateProfile.Owner
@@ -521,6 +523,40 @@ namespace RentalMobile.Controllers.PrivateProfile.Owner
 
 
         //}
+
+
+        public ActionResult Property()
+        {
+            int OwnerId = UserHelper.GetOwner().OwnerId;
+            var Units = View(UnitofWork.UnitRepository.AllIncluding(x => x.UnitPricing));
+            //var Units = UnitofWork.UnitRepository.Where(x => x.Owner.OwnerId == OwnerId).ToList();
+            return View(Units);
+                //return View(UnitofWork.UnitRepository.AllIncluding(x => x.UnitPricing)
+                //    .Where(x => x.Owner.OwnerId == OwnerId).ToList());
+
+        }
+
+        public ActionResult AddProperty()
+        {
+            //TODO Helpers if needed
+            //CREATE YOUR OWN SELECTLIST
+            // ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Description");
+            //var newunit = new UnitModelView();
+            // SetCurrencyViewBag();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProperty(UnitModelView u)
+        {
+            if (!ModelState.IsValid) return View(u);
+            u.Unit.OwnerId = UserHelper.GetOwner().OwnerId;
+
+            UserHelper.UnitHelper.CreateNewUnit(u);
+            ViewBag.CurrencyCode = UserHelper.UnitHelper.GetUnitCurrencyCode(u);
+            return RedirectToAction("Index");
+        }
+
         #endregion
 
         #endregion

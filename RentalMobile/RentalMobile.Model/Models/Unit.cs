@@ -53,7 +53,9 @@ namespace RentalMobile.Model.Models
         public Nullable<bool> VimeoVideo { get; set; }
         public string VimeoVideoURL { get; set; }
         public string Title { get; set; }
-    
+        public int OwnerId { get; set; }
+
+        public virtual Owner Owner { get; set; }
         public virtual UnitAppliance UnitAppliance { get; set; }
         public virtual UnitCommunityAmenity UnitCommunityAmenity { get; set; }
         public virtual UnitExteriorAmenity UnitExteriorAmenity { get; set; }
